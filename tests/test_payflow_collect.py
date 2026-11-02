@@ -279,3 +279,16 @@ def test_window_end_enforced_client_side(monkeypatch, tmp_path):
 def test_rate_cap(monkeypatch, tmp_path):
     with pytest.raises(SystemExit):
         run(monkeypatch, tmp_path, FakeRpc(101), "--rate", "2")
+
+
+def test_non_account_root_nodes_ignored():
+    nodes = [
+        {"ModifiedNode": {"LedgerEntryType": "RippleState",
+                          "FinalFields": {"Balance": {"currency": "USD", "issuer": "rI", "value": "1"}},
+                          "PreviousFields": {"Balance": {"currency": "USD", "issuer": "rI", "value": "2"}}}},
+        {"ModifiedNode": {"LedgerEntryType": "DirectoryNode", "FinalFields": {"Owner": "rA"}}},
+        {"CreatedNode": {"LedgerEntryType": "Offer", "NewFields": {"Account": "rA"}}},
+        acct_mod("rA", 100, 90),
+    ]
+    d = cp.delta_rows(100, {"hash": "X"}, {"TransactionIndex": 0, "AffectedNodes": nodes})
+    assert [(r["account"], r["delta_drops"]) for r in d] == [("rA", -10)]

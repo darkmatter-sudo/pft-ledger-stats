@@ -263,3 +263,32 @@ def test_charts_written(tmp_path, fifo_world):
     assert rc == 0
     assert (out / "lorenz.png").stat().st_size > 0 and (out / "onward.png").stat().st_size > 0
     assert "![onward.png](onward.png)" in (out / "REPORT.md").read_text()
+
+
+def test_failed_row_with_amount_not_counted():
+    # the collector never writes a delivered amount for a failed payment; the analyzer must not trust that
+    assert not ap.counted({"result": "tecPATH_PARTIAL", "kind": "native", "delivered_drops": "5"})
+    assert ap.counted({"result": "tesSUCCESS", "kind": "native", "delivered_drops": "5"})
+
+
+def test_accounts_for_half_boundary():
+    assert ap.concentration({"a": 50, "b": 30, "c": 20})["accounts_for_half"] == 1  # exactly 50 % counts
+    assert ap.concentration({"a": 49, "b": 31, "c": 20})["accounts_for_half"] == 2
+
+
+def _row(li, h, prev, delta, final=None):
+    return {"ledger_index": str(li), "tx_index": "0", "tx_hash": h, "close_time": str(CT0 + li),
+            "prev_drops": str(prev), "delta_drops": str(delta),
+            "final_drops": str(prev + delta if final is None else final)}
+
+
+def test_reward_lot_capped_at_balance_delta():
+    p = {"account": PAYER, "destination": R1, "result": "tesSUCCESS", "kind": "native",
+         "delivered_drops": "1000"}
+    r = ap.onward_model(R1, 0, [_row(1, "H1", 0, 600)], {"H1": p}, {}, PAYER, "reward_first")
+    assert r["received"] == 600 and r["retained"] == 600 and r["mismatches"] == []
+
+
+def test_final_balance_break_detected():
+    r = ap.onward_model(R1, 100, [_row(1, "H1", 100, 50, final=151)], {}, {}, PAYER, "reward_first")
+    assert [m["cause"] for m in r["mismatches"]] == ["final_balance"]
