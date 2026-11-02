@@ -169,14 +169,14 @@ MUTANTS = [
     (
         "M25 reconcile: escrow holder change ignored",
         REC,
-        '    report(held_change == into_holders, "C3"',
-        '    report(True, "C3"',
+        "        held_change == into_holders,\n",
+        "        True,\n",
     ),
     (
         "M26 reconcile: sender delta check dropped",
         REC,
-        '            (send == -(delivered + int(p["fee_drops"])), "sender_delta",',
-        '            (True, "sender_delta",',
+        '                send == -(delivered + int(p["fee_drops"])),\n',
+        "                True,\n",
     ),
     (
         "M27 reconcile: snapshot adjacency not checked",
@@ -189,8 +189,8 @@ MUTANTS = [
     (
         "M29 crosscheck: balance changes not compared",
         XC,
-        '"delivered",\n                         "balance_changes") if want[k] != got[k]]',
-        '"delivered",\n                         ) if want[k] != got[k]]',
+        '            "delivered",\n            "balance_changes",\n        )\n',
+        '            "delivered",\n        )\n',
     ),
     (
         "M30 crosscheck: unvalidated answer accepted",
