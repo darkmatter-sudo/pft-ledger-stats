@@ -1,0 +1,38 @@
+# senders verification: fee and failure shares by class from the pinned data (recorded run 15)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T07:58:42Z | repo HEAD 6193c984cb6e289c15f9b9b81113e9a1ef027ec9
+$ git show 6193c984cb6e289c15f9b9b81113e9a1ef027ec9:senders/REPORT.md | grep -n -A6 '^## Classes'
+36:## Classes
+37-
+38-Rule (fixed constants in `analyze_senders.py`): *periodic* if n >= 6, CV <= 0.5 and >= 60% of gaps within +-20% of the median gap; *bursty* if burstiness B >= 0.25; otherwise *sporadic* (including every sender with fewer than 6 events).
+39-
+40-| class | senders | share | transactions | share | fees (drops) | share | failed | share of failures | fail rate |
+41-|---|---|---|---|---|---|---|---|---|---|
+42-| periodic | 0 | 0.0 % | 0 | 0.0 % | 0 | 0.0 % | 0 | 0.0 % | 0.00% |
+(exit 0)
+$ git show 6193c984cb6e289c15f9b9b81113e9a1ef027ec9:senders/REPORT.md | grep -n -E '^\| (fees|failed|transactions \(tx.csv rows\)) '
+9:| transactions (tx.csv rows) | 29650 |
+13:| fees | 296820 drops |
+14:| failed (result != tesSUCCESS) | 33 (0.1 %) |
+(exit 0)
+$ git show 6193c984cb6e289c15f9b9b81113e9a1ef027ec9:senders/data/tx/tx.csv | head -1
+ledger_index,close_time,close_time_iso,tx_index,tx_hash,account,tx_type,result,fee_drops,sequence,ticket
+(exit 0)
+$ git show 6193c984cb6e289c15f9b9b81113e9a1ef027ec9:senders/data/tx/tx.csv | awk -F, 'NR>1 {n++; fee+=$9; if ($8!="tesSUCCESS") {f++; r[$8]++; ff[$7]++}} END {print "rows", n, "fee_drops", fee, "failed", f; for (k in r) print "result", k, r[k]; for (k in ff) print "failed_type", k, ff[k]}' | sort
+failed_type Payment 33
+result tecUNFUNDED_PAYMENT 33
+rows 29650 fee_drops 296820 failed 33
+(exit 0)
+$ git show 6193c984cb6e289c15f9b9b81113e9a1ef027ec9:senders/data/senders.json > /tmp/s.json; git show 6193c984cb6e289c15f9b9b81113e9a1ef027ec9:senders/data/tx/tx.csv > /tmp/tx.csv; python3 -c 'import json,csv,collections; per=json.load(open("/tmp/s.json"))["per_sender"]; t=collections.defaultdict(lambda:[0,0,0,collections.Counter()]); rows=list(csv.DictReader(open("/tmp/tx.csv")))
+for r in rows:
+  c=per[r["account"]]["class"]; v=t[c]; v[0]+=1; v[1]+=int(r["fee_drops"]); f=r["result"]!="tesSUCCESS"; v[2]+=f
+  if f: v[3][r["account"][:6]+"..."+r["account"][-4:]]+=1
+T=[sum(v[i] for v in t.values()) for i in range(3)]
+for c in ("periodic","bursty","sporadic"):
+  v=t.get(c,[0,0,0,{}]); print(c, "tx", v[0], "fee_drops", v[1], "fee_share %.4f" % (v[1]/T[1]), "failed", v[2], "failed_share %.4f" % (v[2]/T[2]), "fail_rate %.5f" % (v[2]/v[0] if v[0] else 0), "failed_by_sender", dict(v[3]))
+print("totals tx", T[0], "fee_drops", T[1], "failed", T[2])'; rm -f /tmp/s.json /tmp/tx.csv
+periodic tx 0 fee_drops 0 fee_share 0.0000 failed 0 failed_share 0.0000 fail_rate 0.00000 failed_by_sender {}
+bursty tx 0 fee_drops 0 fee_share 0.0000 failed 0 failed_share 0.0000 fail_rate 0.00000 failed_by_sender {}
+sporadic tx 29650 fee_drops 296820 fee_share 1.0000 failed 33 failed_share 1.0000 fail_rate 0.00111 failed_by_sender {'rwztrY...c6jP': 6, 'r3beGY...UJwS': 3, 'rJ9gWh...zdNv': 3, 'r944gF...FG7U': 3, 'rwhRHh...3KF3': 3, 'rp2m3d...MvLQ': 9, 'rMzGUd...i7TE': 3, 'rBTFfb...PgJ6': 3}
+totals tx 29650 fee_drops 296820 failed 33
+(exit 0)
+end 2026-11-03T07:58:43Z

@@ -1,0 +1,16 @@
+# senders verification: REPORT.md class table, full (recorded run 15b; 15a's grep -A6 stopped before the bursty/sporadic rows)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T07:58:52Z | repo HEAD 6193c984cb6e289c15f9b9b81113e9a1ef027ec9
+$ git show 6193c984cb6e289c15f9b9b81113e9a1ef027ec9:senders/REPORT.md | sed -n '36,46p' | nl -ba -v36
+    36	## Classes
+    37	
+    38	Rule (fixed constants in `analyze_senders.py`): *periodic* if n >= 6, CV <= 0.5 and >= 60% of gaps within +-20% of the median gap; *bursty* if burstiness B >= 0.25; otherwise *sporadic* (including every sender with fewer than 6 events).
+    39	
+    40	| class | senders | share | transactions | share | fees (drops) | share | failed | share of failures | fail rate |
+    41	|---|---|---|---|---|---|---|---|---|---|
+    42	| periodic | 0 | 0.0 % | 0 | 0.0 % | 0 | 0.0 % | 0 | 0.0 % | 0.00% |
+    43	| bursty | 0 | 0.0 % | 0 | 0.0 % | 0 | 0.0 % | 0 | 0.0 % | 0.00% |
+    44	| sporadic | 82 | 100.0 % | 29650 | 100.0 % | 296820 | 100.0 % | 33 | 100.0 % | 0.11% |
+    45	
+    46	## Regularity and dominant period (eligible senders)
+(exit 0)
+end 2026-11-03T07:58:52Z
