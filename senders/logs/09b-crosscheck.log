@@ -1,0 +1,84 @@
+# senders public-RPC crosscheck, 20 senders + daily recount + 50 ledgers (recorded run 09b)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T07:32:53Z | repo HEAD 330af7dd3f98630eaed3d954daec44aaa6604750
+$ curl -s -m 20 -X POST -H 'Content-Type: application/json' -d '{"method":"server_info","params":[{}]}' https://rpc.testnet.postfiat.org | jq -c '.result.info | {build_version, server_state, complete_ledgers}'
+{"build_version":"1.0.9","server_state":"full","complete_ledgers":"7650054-7721611"}
+(exit 0)
+$ timeout 2400 python3 -u senders/crosscheck_senders.py --data senders/data/tx --count 20 --ledgers 50 --seed 1
+RANGE collection 7634323-7720573 public_rpc 7650054-7721611 margin 2048 checked 7652102-7720573 (68472 ledgers, 23605 tx) NOT CHECKABLE 17779 ledgers, 6045 tx
+OK       S rpCzwY...fEfn local=331 rpc=331 pages=3 outside_window_dropped=26
+OK       S rwztrY...c6jP local=153 rpc=153 pages=2 outside_window_dropped=41
+OK       S r9H2nn...2m7e local=534 rpc=534 pages=5 outside_window_dropped=0
+OK       S rD5BRJ...Hn42 local=528 rpc=528 pages=5 outside_window_dropped=0
+OK       S rhj38E...3NiD local=19 rpc=19 pages=1 outside_window_dropped=0
+OK       S rbhaMm...VRuz local=308 rpc=308 pages=3 outside_window_dropped=43
+OK       S rMzGUd...i7TE local=837 rpc=837 pages=8 outside_window_dropped=38
+OK       S r3beGY...UJwS local=108 rpc=108 pages=1 outside_window_dropped=27
+OK       S r98r3Z...ry7V local=328 rpc=328 pages=3 outside_window_dropped=0
+OK       S rsck3U...4AuP local=335 rpc=335 pages=4 outside_window_dropped=0
+OK       S rKZ9SV...z4Df local=1 rpc=1 pages=1 outside_window_dropped=0
+OK       S rwdm72...SfH7 local=128 rpc=128 pages=1 outside_window_dropped=3
+OK       S rh1n36...aKAq local=428 rpc=428 pages=4 outside_window_dropped=0
+OK       S rKF7zT...bQSf local=5 rpc=5 pages=1 outside_window_dropped=0
+OK       S rpgHto...X1qE local=286 rpc=286 pages=3 outside_window_dropped=0
+OK       S rwhRHh...3KF3 local=584 rpc=584 pages=5 outside_window_dropped=0
+OK       S rUD8z2...sZwP local=6 rpc=6 pages=1 outside_window_dropped=0
+OK       S rnsrVj...HwMF local=202 rpc=202 pages=2 outside_window_dropped=42
+OK       S rUEzqb...8qST local=85 rpc=85 pages=1 outside_window_dropped=0
+OK       S r9qZh3...uDcR local=602 rpc=602 pages=6 outside_window_dropped=44
+OK       D slice 0 tx_rows=9686 header_txn_count=9686 ledgers_with_tx_rows_ne_txn_count=0
+OK       D slice 1 tx_rows=9845 header_txn_count=9845 ledgers_with_tx_rows_ne_txn_count=0
+OK       D slice 2 tx_rows=10119 header_txn_count=10119 ledgers_with_tx_rows_ne_txn_count=0
+OK       L 7655190 hash_equal=True local_txn_count=1 rpc_txn_count=1
+OK       L 7655348 hash_equal=True local_txn_count=5 rpc_txn_count=5
+OK       L 7657344 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7658882 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7659942 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7660139 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7661416 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7662530 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7662951 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7663005 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7663453 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7664138 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7665516 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7666130 hash_equal=True local_txn_count=1 rpc_txn_count=1
+OK       L 7667004 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7669762 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7670060 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7670585 hash_equal=True local_txn_count=2 rpc_txn_count=2
+OK       L 7670667 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7671417 hash_equal=True local_txn_count=3 rpc_txn_count=3
+OK       L 7671587 hash_equal=True local_txn_count=2 rpc_txn_count=2
+OK       L 7676385 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7676861 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7678089 hash_equal=True local_txn_count=1 rpc_txn_count=1
+OK       L 7681267 hash_equal=True local_txn_count=3 rpc_txn_count=3
+OK       L 7683868 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7684819 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7688863 hash_equal=True local_txn_count=1 rpc_txn_count=1
+OK       L 7689870 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7690744 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7692786 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7694939 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7696319 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7697388 hash_equal=True local_txn_count=3 rpc_txn_count=3
+OK       L 7699499 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7699809 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7702388 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7703437 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7706469 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7707949 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7708412 hash_equal=True local_txn_count=1 rpc_txn_count=1
+OK       L 7710165 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7710250 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7710839 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7711953 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7712952 hash_equal=True local_txn_count=1 rpc_txn_count=1
+OK       L 7713329 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7716273 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7716957 hash_equal=True local_txn_count=0 rpc_txn_count=0
+OK       L 7717999 hash_equal=True local_txn_count=0 rpc_txn_count=0
+RANGE end: public_rpc oldest 7650054 (start 7650054), checked span starts 7652102
+SUMMARY ok=73 mismatch=0 negative=False seed=1 rpc_calls=112 retries=0 retries_by_error={}
+(exit 0)
+end 2026-11-03T07:37:09Z

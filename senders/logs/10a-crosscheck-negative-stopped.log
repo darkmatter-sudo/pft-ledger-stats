@@ -1,0 +1,5 @@
+# senders public-RPC crosscheck --negative control, must exit 1 (recorded run 10)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T07:30:23Z | repo HEAD 2bf8d0fb62c68e81f8a5a175c84286e793d9ec12
+$ timeout 2400 python3 -u senders/crosscheck_senders.py --data senders/data/tx --count 20 --ledgers 50 --seed 1 --negative
+
+# STOPPED by the agent at 2026-11-03T07:30:50Z: run 09 showed the public RPC no longer holds the first ledgers of the window; crosscheck fixed to check the overlap, this run superseded.

@@ -1,0 +1,50 @@
+# senders resume drill with injected torn/orphan state (recorded run 13)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T07:25:51Z | repo HEAD 2bf8d0fb62c68e81f8a5a175c84286e793d9ec12
+$ sudo docker exec postfiatd curl -s -X POST -d '{"method":"server_info","params":[{}]}' http://127.0.0.1:5005/ | jq -c '.result.info | {build_version, server_state, complete_ledgers}'
+{"build_version":"1.0.9","server_state":"full","complete_ledgers":"7720577-7721472"}
+(exit 0)
+$ sha256sum senders/resume_drill_senders.sh senders/collect_senders.py
+db0f74cc2319eb885a272622ae8ab2500b80093247113f9e79d1c3935f83895f  senders/resume_drill_senders.sh
+c7bcfea7628b2ff273c69ef456d1ce2e41f7da4c2164307d4b8bfbb13be1b997  senders/collect_senders.py
+(exit 0)
+$ TERM_AFTER=60 KILL_AFTER=60 timeout 3000 senders/resume_drill_senders.sh 7721467 7721666 data/senders/drill-13
+== reference run 7721467..7721666
+== drill run: SIGTERM after 60s
+after SIGTERM: ledgers 60, last 7721526
+== resume 1, SIGKILL after 60s
+senders/resume_drill_senders.sh: line 48: 2082488 Killed                  "${col[@]}" --out "$drl" --log "$work/drill.log" > /dev/null
+after SIGKILL: ledgers 119, last 7721585
+last byte after the SIGKILL: tx.csv 0a, ledgers.csv 0a (0a = ends on a full line)
+== inject: orphan tx.csv rows of the first reference ledger after 7721585 with transactions, torn ledgers.csv tail
+appended 5 tx.csv row(s) of ledger 7721589
+appended torn ledgers.csv tail: '7721589,TORN' (no newline)
+== resume 2 to the end
+2026-11-03T07:36:44Z STOP (signal) requests this run=61
+2026-11-03T07:36:44Z SUMMARY window 2026-11-03T07:35:44Z -> 2026-11-06T07:35:44Z ledgers 7721467-7721526 fetched=60 tx=25 gaps=0 retries=0 restarts=1
+2026-11-03T07:36:44Z RESUME at ledger 7721527 (window 2026-11-03T07:35:44Z -> 2026-11-06T07:35:44Z, start seq 7721467, behind by 160)
+2026-11-03T07:37:44Z RESUME dropped torn last line of ledgers.csv (12 bytes)
+2026-11-03T07:37:44Z RESUME dropped 5 tx.csv rows after ledger 7721585 (no ledgers.csv row)
+2026-11-03T07:37:44Z RESUME at ledger 7721586 (window 2026-11-03T07:35:44Z -> 2026-11-06T07:35:44Z, start seq 7721467, behind by 121)
+2026-11-03T07:39:05Z STOP (stop_at reached) requests this run=82
+2026-11-03T07:39:05Z SUMMARY window 2026-11-03T07:35:44Z -> 2026-11-06T07:35:44Z ledgers 7721467-7721666 fetched=200 tx=76 gaps=0 retries=0 restarts=3
+PASS tx.csv identical (76 rows)
+PASS ledgers.csv identical without fetched_utc
+PASS every ledger 7721467..7721666 exactly once
+PASS no gaps
+PASS txn_count sum == tx_rows sum == tx.csv rows
+PASS restarts.csv kinds start,resume,resume
+PASS last resume cut the torn ledgers.csv line
+PASS last resume dropped the 5 injected orphan row(s) (>=: a mid-ledger SIGKILL adds its own)
+restarts.csv:
+kind,at_utc,first_ledger,validated,lag,torn_bytes,orphan_rows
+start,2026-11-03T07:35:44Z,7721467,7721666,200,0,0
+resume,2026-11-03T07:36:44Z,7721527,7721686,160,0,0
+resume,2026-11-03T07:37:44Z,7721586,7721706,121,12,5
+sha256 ref   a0c09359dafaa4b07568f19f984cac20318e37444562fd659ccb7bfd515d8620
+sha256 drill a0c09359dafaa4b07568f19f984cac20318e37444562fd659ccb7bfd515d8620
+RESULT: PASS
+(exit 0)
+$ sudo docker exec postfiatd curl -s -X POST -d '{"method":"server_info","params":[{}]}' http://127.0.0.1:5005/ | jq -c '.result.info | {server_state, complete_ledgers}'
+{"server_state":"full","complete_ledgers":"7721089-7721733"}
+(exit 0)
+end 2026-11-03T07:39:06Z

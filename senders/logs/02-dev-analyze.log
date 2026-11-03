@@ -1,0 +1,15 @@
+# senders dev analyze on the raw collection (unpublished dev run 02)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T07:09:30Z | repo HEAD 4d42e341f60ba69d0cf27a288cf9cae5f6ac98ee
+$ timeout 600 .venv/bin/python -u senders/analyze_senders.py --data data/senders/tx --json ~/.cache/senders-dev.json
+coverage ledgers 7634323-7720573 fetched=86251 gaps=0 holes=0 duplicates=0
+window 72.5 h, 3 slices; tx=29650 (ledger txn_count sum 29650) senders=82 fees=296820 drops failed=33
+slice 0: active=47 new=47 returning=0 tx=9686
+slice 1: active=53 new=20 returning=33 tx=9845
+slice 2: active=50 new=15 returning=35 tx=10119
+cohort 0 size=47: 47 33 15
+cohort 1 size=20: - 20 20
+cohort 2 size=15: - - 15
+class periodic: senders=0 (0.0%) tx=0 (0.0%) fees=0.0% failed=0 (0.0% of failures, rate 0.00%)
+class bursty: senders=0 (0.0%) tx=0 (0.0%) fees=0.0% failed=0 (0.0% of failures, rate 0.00%)
+class sporadic: senders=82 (100.0%) tx=29650 (100.0%) fees=100.0% failed=33 (100.0% of failures, rate 0.11%)
+(exit 0)

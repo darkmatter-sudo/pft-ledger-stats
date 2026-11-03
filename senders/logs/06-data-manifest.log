@@ -1,0 +1,38 @@
+# senders collector end + data copy + manifest (recorded run 06)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T07:25:58Z | repo HEAD 2bf8d0fb62c68e81f8a5a175c84286e793d9ec12
+$ grep -c PROGRESS data/senders/tx/collect.log; head -2 data/senders/tx/collect.log; tail -2 data/senders/tx/collect.log
+72
+2026-10-31T06:10:37Z node: build 1.0.9 state full complete_ledgers 7633537-7634323
+2026-10-31T06:10:37Z WINDOW START 2026-10-31T06:10:37Z -> 2026-11-03T06:40:37Z at ledger 7634323, stop_at None, rate <= 1.0 req/s
+2026-11-03T06:40:41Z STOP (window end reached (ledger 7720574 closed 2026-11-03T06:40:40Z, not written)) requests this run=241444
+2026-11-03T06:40:42Z SUMMARY window 2026-10-31T06:10:37Z -> 2026-11-03T06:40:37Z ledgers 7634323-7720573 fetched=86251 tx=29650 gaps=0 retries=0 restarts=1
+(exit 0)
+$ test -e data/senders/tx/gaps.csv && cat data/senders/tx/gaps.csv || echo 'no gaps.csv'; test -e data/senders/tx/retries.csv && wc -l data/senders/tx/retries.csv || echo 'no retries.csv'; cat data/senders/tx/restarts.csv
+no gaps.csv
+no retries.csv
+kind,at_utc,first_ledger,validated,lag,torn_bytes,orphan_rows
+start,2026-10-31T06:10:37Z,7634323,7634323,1,0,0
+(exit 0)
+$ mkdir -p senders/data/tx && cp data/senders/tx/{tx,ledgers,restarts}.csv data/senders/tx/collect.log data/senders/tx/state.json senders/data/tx/
+(exit 0)
+$ for f in data/senders/tx/gaps.csv data/senders/tx/retries.csv; do test -e $f && cp $f senders/data/tx/; done; true
+(exit 0)
+$ cd senders/data && find tx -type f | sort | xargs sha256sum | tee SHA256SUMS
+f9e326b9ec73a834fa1755445cd5a0a7ed74bb6ea950edc06df5fa3ac8915a79  tx/collect.log
+a917cd786924453f98798338a2bebee6228d121e26f0f4d01414c3f033a55c00  tx/ledgers.csv
+eedeae661cfe64c222dea7d8646f1f3c593a5e93961720b3d52e180f261bdcc6  tx/restarts.csv
+4f074c427c8ddd6640c03da04de5cfb5b0cffb18268b67ed48c172f7c3479d83  tx/state.json
+e3a83fb3be35913cf8ada28fe96318ded82d377fc5ae5f85535e484f3231ed6f  tx/tx.csv
+(exit 0)
+$ cd senders/data && for f in tx/*.csv; do echo "$f $(( $(wc -l < $f) - 1 )) rows"; done | tee ROWS.txt
+tx/ledgers.csv 86251 rows
+tx/restarts.csv 1 rows
+tx/tx.csv 29650 rows
+(exit 0)
+$ cd senders/data && sha256sum -c SHA256SUMS | grep -vc ': OK$'
+0
+(exit 1)
+$ tail -n +2 senders/data/tx/ledgers.csv | cut -d, -f1 | awk 'NR==1{f=$1} {if (NR>1 && $1!=p+1) h++; p=$1} END {print "first", f, "last", p, "rows", NR, "non-consecutive steps", h+0}'
+first 7634323 last 7720573 rows 86251 non-consecutive steps 0
+(exit 0)
+end 2026-11-03T07:25:59Z

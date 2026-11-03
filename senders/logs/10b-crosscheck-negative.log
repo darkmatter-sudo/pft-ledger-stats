@@ -1,0 +1,81 @@
+# senders public-RPC crosscheck --negative control, must exit 1 (recorded run 10b)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T07:37:09Z | repo HEAD 330af7dd3f98630eaed3d954daec44aaa6604750
+$ timeout 2400 python3 -u senders/crosscheck_senders.py --data senders/data/tx --count 20 --ledgers 50 --seed 1 --negative
+RANGE collection 7634323-7720573 public_rpc 7650054-7721694 margin 2048 checked 7652102-7720573 (68472 ledgers, 23605 tx) NOT CHECKABLE 17779 ledgers, 6045 tx
+MISMATCH S rpCzwY...fEfn local=332 rpc=331 pages=3 outside_window_dropped=26 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rwztrY...c6jP local=154 rpc=153 pages=2 outside_window_dropped=41 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S r9H2nn...2m7e local=535 rpc=534 pages=5 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rD5BRJ...Hn42 local=529 rpc=528 pages=5 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rhj38E...3NiD local=20 rpc=19 pages=1 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rbhaMm...VRuz local=309 rpc=308 pages=3 outside_window_dropped=43 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rMzGUd...i7TE local=838 rpc=837 pages=8 outside_window_dropped=38 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S r3beGY...UJwS local=109 rpc=108 pages=1 outside_window_dropped=27 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S r98r3Z...ry7V local=329 rpc=328 pages=3 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rsck3U...4AuP local=336 rpc=335 pages=4 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rKZ9SV...z4Df local=2 rpc=1 pages=1 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rwdm72...SfH7 local=129 rpc=128 pages=1 outside_window_dropped=3 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rh1n36...aKAq local=429 rpc=428 pages=4 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rKF7zT...bQSf local=6 rpc=5 pages=1 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rpgHto...X1qE local=287 rpc=286 pages=3 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rwhRHh...3KF3 local=585 rpc=584 pages=5 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rUD8z2...sZwP local=7 rpc=6 pages=1 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rnsrVj...HwMF local=203 rpc=202 pages=2 outside_window_dropped=42 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S rUEzqb...8qST local=86 rpc=85 pages=1 outside_window_dropped=0 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH S r9qZh3...uDcR local=603 rpc=602 pages=6 outside_window_dropped=44 not_in_rpc=['NEGATIVE-CON'] not_in_local=[]
+MISMATCH D slice 0 tx_rows=9686 header_txn_count=9687 ledgers_with_tx_rows_ne_txn_count=0
+MISMATCH D slice 1 tx_rows=9845 header_txn_count=9846 ledgers_with_tx_rows_ne_txn_count=0
+MISMATCH D slice 2 tx_rows=10119 header_txn_count=10120 ledgers_with_tx_rows_ne_txn_count=0
+MISMATCH L 7655190 hash_equal=True local_txn_count=2 rpc_txn_count=1
+MISMATCH L 7655348 hash_equal=True local_txn_count=6 rpc_txn_count=5
+MISMATCH L 7657344 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7658882 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7659942 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7660139 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7661416 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7662530 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7662951 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7663005 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7663453 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7664138 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7665516 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7666130 hash_equal=True local_txn_count=2 rpc_txn_count=1
+MISMATCH L 7667004 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7669762 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7670060 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7670585 hash_equal=True local_txn_count=3 rpc_txn_count=2
+MISMATCH L 7670667 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7671417 hash_equal=True local_txn_count=4 rpc_txn_count=3
+MISMATCH L 7671587 hash_equal=True local_txn_count=3 rpc_txn_count=2
+MISMATCH L 7676385 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7676861 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7678089 hash_equal=True local_txn_count=2 rpc_txn_count=1
+MISMATCH L 7681267 hash_equal=True local_txn_count=4 rpc_txn_count=3
+MISMATCH L 7683868 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7684819 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7688863 hash_equal=True local_txn_count=2 rpc_txn_count=1
+MISMATCH L 7689870 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7690744 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7692786 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7694939 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7696319 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7697388 hash_equal=True local_txn_count=4 rpc_txn_count=3
+MISMATCH L 7699499 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7699809 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7702388 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7703437 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7706469 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7707949 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7708412 hash_equal=True local_txn_count=2 rpc_txn_count=1
+MISMATCH L 7710165 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7710250 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7710839 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7711953 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7712952 hash_equal=True local_txn_count=2 rpc_txn_count=1
+MISMATCH L 7713329 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7716273 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7716957 hash_equal=True local_txn_count=1 rpc_txn_count=0
+MISMATCH L 7717999 hash_equal=True local_txn_count=1 rpc_txn_count=0
+RANGE end: public_rpc oldest 7650054 (start 7650054), checked span starts 7652102
+SUMMARY ok=0 mismatch=73 negative=True seed=1 rpc_calls=112 retries=0 retries_by_error={}
+(exit 1)
+end 2026-11-03T07:41:23Z

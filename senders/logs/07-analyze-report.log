@@ -1,0 +1,35 @@
+# senders analyze + REPORT.md + charts (recorded run 07)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T07:25:59Z | repo HEAD 2bf8d0fb62c68e81f8a5a175c84286e793d9ec12
+$ sha256sum senders/*.py senders/*.sh
+b9c1b550202f0cce3c14f2baf05bd08513d9780ba4d88a5a184aadca85de2be0  senders/analyze_senders.py
+c7bcfea7628b2ff273c69ef456d1ce2e41f7da4c2164307d4b8bfbb13be1b997  senders/collect_senders.py
+a18c580f5e03c2162c121f56823d9d0225f56dc96cc15e90fa0034331d55ede1  senders/controls_senders.py
+b3789ac294392fdf30caf6c2c7b1b8e69445f3b3ad35569bf2b8cbdef3b98be7  senders/crosscheck_senders.py
+dbe8c38480fd486a68075f25eff31a123cc3b3b9d6bf9a3a9c2917ec9c28d791  senders/mutants_senders.py
+9d79aa3a65fe1abf17daa953aa46d0730423a8f170f500c00a0048869410ef0a  senders/report_senders.py
+db0f74cc2319eb885a272622ae8ab2500b80093247113f9e79d1c3935f83895f  senders/resume_drill_senders.sh
+(exit 0)
+$ timeout 900 .venv/bin/python -u senders/analyze_senders.py --data senders/data/tx --json senders/data/senders.json
+coverage ledgers 7634323-7720573 fetched=86251 gaps=0 holes=0 duplicates=0
+window 72.5 h, 3 slices; tx=29650 (ledger txn_count sum 29650) senders=82 fees=296820 drops failed=33
+slice 0: active=47 new=47 returning=0 tx=9686
+slice 1: active=53 new=20 returning=33 tx=9845
+slice 2: active=50 new=15 returning=35 tx=10119
+cohort 0 size=47: 47 33 15
+cohort 1 size=20: - 20 20
+cohort 2 size=15: - - 15
+class periodic: senders=0 (0.0%) tx=0 (0.0%) fees=0.0% failed=0 (0.0% of failures, rate 0.00%)
+class bursty: senders=0 (0.0%) tx=0 (0.0%) fees=0.0% failed=0 (0.0% of failures, rate 0.00%)
+class sporadic: senders=82 (100.0%) tx=29650 (100.0%) fees=100.0% failed=33 (100.0% of failures, rate 0.11%)
+(exit 0)
+$ timeout 900 .venv/bin/python -u senders/report_senders.py --data senders/data/tx --out-dir senders
+REPORT senders/REPORT.md charts=['cohorts.png', 'regularity.png', 'gaps.png'] senders=82 tx=29650 classes={'periodic': 0, 'bursty': 0, 'sporadic': 82} controls failed=[] incomplete=False
+(exit 0)
+$ sha256sum senders/REPORT.md senders/cohorts.png senders/regularity.png senders/gaps.png senders/data/senders.json
+40b3931f0ecb90327d68d13a0caccce8a698a7f4b9ae86cd97b8884b8ed4b985  senders/REPORT.md
+0f00f07cc039c34d37f8d9d401e2fb43d774fe447d8c567466af98f36a449972  senders/cohorts.png
+9322217f20cd3abd81897dd2625768cd4509a03d1212f57ead2caaefbf59d7ee  senders/regularity.png
+fa841e0227e41955ad82c45505f85e567e6750e071959dfbc7930f12003dab2c  senders/gaps.png
+e4233ae9780aa2cad561b8e1ba60939e3cc24737843586c24c26a806a027035c  senders/data/senders.json
+(exit 0)
+end 2026-11-03T07:26:08Z

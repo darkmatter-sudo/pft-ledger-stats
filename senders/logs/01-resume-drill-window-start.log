@@ -1,0 +1,33 @@
+# senders resume drill 2026-10-31T06:14:30Z | Ubuntu 22.04.5 LTS | commit 3f869c125cf380483b4052359cd07cf6c062086d
+$ sudo docker exec postfiatd curl -s -X POST -d '{"method":"server_info","params":[{}]}' http://127.0.0.1:5005/ | jq -c '.result.info | {build_version, server_state, complete_ledgers}'
+{"build_version":"1.0.9","server_state":"full","complete_ledgers":"7633537-7634401"}
+(exit 0)
+$ TERM_AFTER=60 KILL_AFTER=60 senders/resume_drill_senders.sh 7634000 7634299 data/senders/drill-01
+== reference run 7634000..7634299
+== drill run: SIGTERM after 60s
+after SIGTERM: ledgers 57, last 7634056
+== resume 1, SIGKILL after 60s
+senders/resume_drill_senders.sh: line 44: 3770466 Killed                  "${col[@]}" --out "$drl" --log "$work/drill.log" > /dev/null
+after SIGKILL: ledgers 115, last 7634114
+== resume 2 to the end
+2026-10-31T06:20:45Z STOP (signal) requests this run=58
+2026-10-31T06:20:45Z SUMMARY window 2026-10-31T06:19:45Z -> 2026-11-03T06:19:45Z ledgers 7634000-7634056 fetched=57 tx=19 gaps=0 retries=0 restarts=1
+2026-10-31T06:20:45Z RESUME at ledger 7634057 (window 2026-10-31T06:19:45Z -> 2026-11-03T06:19:45Z, start seq 7634000, behind by 468)
+2026-10-31T06:21:45Z RESUME at ledger 7634115 (window 2026-10-31T06:19:45Z -> 2026-11-03T06:19:45Z, start seq 7634000, behind by 430)
+2026-10-31T06:24:54Z STOP (stop_at reached) requests this run=186
+2026-10-31T06:24:54Z SUMMARY window 2026-10-31T06:19:45Z -> 2026-11-03T06:19:45Z ledgers 7634000-7634299 fetched=300 tx=112 gaps=0 retries=0 restarts=3
+PASS tx.csv identical (112 rows)
+PASS ledgers.csv identical without fetched_utc
+PASS every ledger 7634000..7634299 exactly once
+PASS no gaps
+PASS txn_count sum == tx_rows sum == tx.csv rows
+PASS restarts.csv kinds start,resume,resume
+restarts.csv:
+kind,at_utc,first_ledger,validated,lag,torn_bytes,orphan_rows
+start,2026-10-31T06:19:45Z,7634000,7634504,505,0,0
+resume,2026-10-31T06:20:45Z,7634057,7634524,468,0,0
+resume,2026-10-31T06:21:45Z,7634115,7634544,430,0,0
+sha256 ref   c1b1fca748f79f0ffd9d5d358eec23217592df50d0b533742bea4dee03157078
+sha256 drill c1b1fca748f79f0ffd9d5d358eec23217592df50d0b533742bea4dee03157078
+RESULT: PASS
+(exit 0)

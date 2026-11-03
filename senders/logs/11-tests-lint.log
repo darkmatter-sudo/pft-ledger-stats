@@ -1,0 +1,24 @@
+# senders tests + lint (recorded run 11)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T07:43:33Z | repo HEAD 330af7dd3f98630eaed3d954daec44aaa6604750
+$ sha256sum senders/*.py senders/*.sh tests/test_senders_*.py
+b9c1b550202f0cce3c14f2baf05bd08513d9780ba4d88a5a184aadca85de2be0  senders/analyze_senders.py
+c7bcfea7628b2ff273c69ef456d1ce2e41f7da4c2164307d4b8bfbb13be1b997  senders/collect_senders.py
+a18c580f5e03c2162c121f56823d9d0225f56dc96cc15e90fa0034331d55ede1  senders/controls_senders.py
+8a061769229cb99e3bec392836b4f7a09f0d689b04531f63198a7efa1462ec76  senders/crosscheck_senders.py
+17566b0a32e4a411a6627d2e26427986d1c8a8d4125024cd46e5aa9eb52a7945  senders/mutants_senders.py
+9d79aa3a65fe1abf17daa953aa46d0730423a8f170f500c00a0048869410ef0a  senders/report_senders.py
+db0f74cc2319eb885a272622ae8ab2500b80093247113f9e79d1c3935f83895f  senders/resume_drill_senders.sh
+9e0aa3f4675662a55841ba48c6bed030c9af3fe3e318fcea24f778a4deecbadb  tests/test_senders_analyze.py
+cd5bacacdb191821e577425ae2b087413f26779ccca83069769e17e2536067e3  tests/test_senders_collect.py
+d302af435a5327a03b928b4520be15a3f83c6031ab0da5c76591c8795d2616df  tests/test_senders_crosscheck.py
+434673b0b1e50b76da05e45e7d7697f118fae63ae098d714179079dc98ee9250  tests/test_senders_report.py
+(exit 0)
+$ nice -n 15 timeout 900 .venv/bin/python -m pytest -q -p no:cacheprovider --basetemp=$TMPDIR/pt11 tests/test_senders_analyze.py tests/test_senders_collect.py tests/test_senders_crosscheck.py tests/test_senders_report.py
+...........................................                              [100%]
+43 passed in 16.13s
+(exit 0)
+$ .venv/bin/ruff check senders tests && shellcheck senders/resume_drill_senders.sh && echo LINT CLEAN
+All checks passed!
+LINT CLEAN
+(exit 0)
+end 2026-11-03T07:43:50Z

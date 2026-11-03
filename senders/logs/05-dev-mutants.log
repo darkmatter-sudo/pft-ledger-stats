@@ -1,0 +1,33 @@
+CONTROL unmutated: rc=0 39 passed in 14.22s
+CAUGHT M1 collector: window end not enforced client-side: 2 failed, 37 passed in 14.89s
+CAUGHT M2 collector: rows not in TransactionIndex order: 1 failed, 38 passed in 14.40s
+CAUGHT M3 collector: orphan tx rows kept on resume: 1 failed, 38 passed in 14.28s
+CAUGHT M4 collector: ticket flag inverted: 1 failed, 38 passed in 20.68s
+CAUGHT M5 collector: failed fetch never recorded as a gap: 1 failed, 38 passed in 17.43s
+CAUGHT M6 analyzer: MIN_EVENTS not enforced: 1 failed, 38 passed in 17.56s
+CAUGHT M7 analyzer: periodic ignores period_share: 2 failed, 37 passed in 17.48s
+CAUGHT M8 analyzer: bursty threshold off by sign: 7 failed, 32 passed in 14.54s
+CAUGHT M9 analyzer: tolerance band ignored: 2 failed, 37 passed in 16.96s
+CAUGHT M10 analyzer: last slice does not absorb the remainder: 1 failed, 38 passed in 16.80s
+CAUGHT M11 analyzer: returning counted as new: 1 failed, 38 passed in 15.94s
+CAUGHT M12 analyzer: retention counts the whole slice, not the cohort: 1 failed, 38 passed in 14.31s
+CAUGHT M13 analyzer: one event per tx instead of per ledger: 1 failed, 38 passed in 14.48s
+CAUGHT M14 analyzer: per-sender failures not counted: 1 failed, 38 passed in 16.67s
+CAUGHT M15 analyzer: unlisted holes accepted: 1 failed, 38 passed in 19.16s
+CAUGHT M16 analyzer: tx rows vs txn_count not checked: 1 failed, 38 passed in 15.36s
+CAUGHT M17 analyzer: full addresses in top periodic: 3 failed, 36 passed in 17.33s
+CAUGHT M18 crosscheck: window not enforced client-side: 4 failed, 35 passed in 15.17s
+CAUGHT M19 crosscheck: received transactions counted as sent: 4 failed, 35 passed in 14.81s
+CAUGHT M20 crosscheck: paging stops after the first page: 4 failed, 35 passed in 13.88s
+CAUGHT M21 crosscheck: --negative leaves sender sets unaltered: 1 failed, 38 passed in 15.14s
+CAUGHT M22 crosscheck: ledger hash not compared: 1 failed, 38 passed in 15.09s
+CAUGHT M23 crosscheck: daily recount ignores per-ledger tx_rows: 1 failed, 38 passed in 14.32s
+CAUGHT M24 controls: shuffled periodic senders never counted: 1 failed, 38 passed in 14.31s
+CAUGHT M25 controls: pass threshold ignored: 1 failed, 38 passed in 16.12s
+CAUGHT M26 controls: planted events not offset to the real window start: 4 failed, 35 passed in 14.26s
+CAUGHT M27 controls: planted control result ignored: 1 failed, 38 passed in 16.58s
+CAUGHT M28 controls: shuffled senders that turn periodic not checked: 1 failed, 38 passed in 16.04s
+CAUGHT M29 report: incomplete collection does not fail the report: 1 failed, 38 passed in 16.67s
+CAUGHT M30 report: retention share against the wrong base: 1 failed, 38 passed in 14.31s
+CAUGHT M31 report: planted control result ignored: 1 failed, 38 passed in 14.26s
+MUTANTS 31 caught=31 failed=0

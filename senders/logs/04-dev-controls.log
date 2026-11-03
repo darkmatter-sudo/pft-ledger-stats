@@ -1,0 +1,8 @@
+control periodic: expected periodic 200/200 classes={'periodic': 200} PASS
+control poisson: expected sporadic 200/200 classes={'sporadic': 200} PASS
+control burst: expected bursty 200/200 classes={'bursty': 200} PASS
+control planted-periodic: expected periodic 200/200 classes={'periodic': 200} PASS
+control planted-poisson: expected sporadic 200/200 classes={'sporadic': 200} PASS
+control planted-burst: expected bursty 200/200 classes={'bursty': 200} PASS
+control shuffled: eligible=76 real periodic=0 periodic after shuffle=0 real classes={'sporadic': 76} shuffled classes={'sporadic': 76} median CV real=1.001 shuffled=0.997 PASS
+RESULT PASS
