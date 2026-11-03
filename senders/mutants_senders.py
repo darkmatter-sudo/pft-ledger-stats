@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mutation check for senders (collector, analyzer, controls, crosscheck): put one broken line in
+"""Mutation check for senders (collector, analyzer, controls, crosscheck, report): put one broken line in
 at a time in a temporary copy of the repo and run the senders tests; every mutant must be CAUGHT
 (tests fail). Each mutant's text must occur exactly once, or it is reported NOT APPLIED (counts
 as a failure). The unmutated copy is run first as the control and must pass.
@@ -161,8 +161,44 @@ MUTANTS = [
     (
         'M25 controls: pass threshold ignored',
         'senders/controls_senders.py',
-        '        ok = r["correct"] >= a.min_correct * r["n"]\n',
-        '        ok = True\n',
+        '        r = run_positive(name, a.n, a.seed)\n        ok = r["correct"] >= a.min_correct * r["n"]\n',
+        '        r = run_positive(name, a.n, a.seed)\n        ok = True\n',
+    ),
+    (
+        'M26 controls: planted events not offset to the real window start',
+        'senders/controls_senders.py',
+        'idx = (bisect.bisect_left(pool, t0 + t) for t in gen(rng))',
+        'idx = (bisect.bisect_left(pool, t) for t in gen(rng))',
+    ),
+    (
+        'M27 controls: planted control result ignored',
+        'senders/controls_senders.py',
+        '            ok = r["correct"] >= a.min_correct * r["n"]\n',
+        '            ok = True\n',
+    ),
+    (
+        'M28 controls: shuffled senders that turn periodic not checked',
+        'senders/controls_senders.py',
+        'ok = r["shuffled_periodic"] <= limit and r["shuffled_classes"].get("periodic", 0) <= limit',
+        'ok = r["shuffled_periodic"] <= limit',
+    ),
+    (
+        'M29 report: incomplete collection does not fail the report',
+        'senders/report_senders.py',
+        '    return 1 if bad or failed else 0\n',
+        '    return 1 if failed else 0\n',
+    ),
+    (
+        'M30 report: retention share against the wrong base',
+        'senders/report_senders.py',
+        "pct(v / r['size'])",
+        "pct(v / (r['size'] + 1))",
+    ),
+    (
+        'M31 report: planted control result ignored',
+        'senders/report_senders.py',
+        '    for r in planted:\n        r["ok"] = r["correct"] >= 0.95 * r["n"]\n',
+        '    for r in planted:\n        r["ok"] = True\n',
     ),
 ]
 TIMEOUT = 120

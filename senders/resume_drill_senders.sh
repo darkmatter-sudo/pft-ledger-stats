@@ -77,8 +77,9 @@ check "txn_count sum == tx_rows sum == tx.csv rows" \
 check "restarts.csv kinds start,resume,resume" \
   '[ "$(tail -n +2 "$drl/restarts.csv" | cut -d, -f1 | paste -sd,)" = "start,resume,resume" ]'
 check "last resume cut the torn ledgers.csv line" 'grep -q "RESUME dropped torn last line of ledgers.csv" "$work/drill.log"'
+# csv.writer ends rows with \r\n: strip \r before comparing fields (run 03 failed on "2\r")
 check "last resume dropped the $inj_rows injected orphan row(s) (>=: a mid-ledger SIGKILL adds its own)" \
-  '[ "$(tail -1 "$drl/restarts.csv" | cut -d, -f7)" -ge "$inj_rows" ] && [ "$inj_rows" -ge 1 ]'
+  '[ "$(tail -1 "$drl/restarts.csv" | tr -d "\r" | cut -d, -f7)" -ge "$inj_rows" ] && [ "$inj_rows" -ge 1 ]'
 echo "restarts.csv:"; cat "$drl/restarts.csv"
 echo "sha256 ref   $(sha256sum <"$ref/tx.csv" | cut -d' ' -f1)"
 echo "sha256 drill $(sha256sum <"$drl/tx.csv" | cut -d' ' -f1)"

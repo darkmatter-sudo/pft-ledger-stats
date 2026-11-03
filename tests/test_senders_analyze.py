@@ -151,7 +151,11 @@ def test_negative_control_destroys_schedule(tmp_path):
     write_csv(tmp_path / "ledgers.csv", list(led[0]), led)
     write_csv(tmp_path / "tx.csv", list(tx[0]), tx)
     r = ctl.run_negative(str(tmp_path), "t")
-    assert r == {"control": "shuffled", "eligible": 30, "real_periodic": 30, "shuffled_periodic": 0}
+    assert {k: r[k] for k in ("control", "eligible", "real_periodic", "shuffled_periodic")} == {
+        "control": "shuffled", "eligible": 30, "real_periodic": 30, "shuffled_periodic": 0}
+    assert r["real_classes"] == {"periodic": 30}
+    assert r["shuffled_classes"].get("periodic", 0) == 0 and sum(r["shuffled_classes"].values()) == 30
+    assert r["median_cv_real"] == 0.0 and 0.8 < r["median_cv_shuffled"] < 1.2
     assert ctl.main(["--n", "50", "--data", str(tmp_path)]) == 0
 
 
@@ -171,3 +175,53 @@ def test_negative_control_fails_when_schedule_survives(tmp_path):
     r = ctl.run_negative(str(tmp_path), "t")
     assert r["real_periodic"] == 1 and r["shuffled_periodic"] == 1
     assert ctl.main(["--n", "20", "--data", str(tmp_path)]) == 1
+
+
+def irregular_ledgers(tmp_path, t0=800_000_000, hours=72.5, seed=7):
+    # real-like ledger timeline: close times 3..5 s apart, starting far from 0
+    import random
+
+    rng, t, led = random.Random(seed), t0, []
+    while t < t0 + hours * 3600:
+        led.append({"ledger_index": len(led) + 1, "close_time": t, "txn_count": 0})
+        t += rng.choice((3, 4, 4, 5))
+    write_csv(tmp_path / "ledgers.csv", list(led[0]), led)
+    return led
+
+
+def test_planted_controls_on_real_timeline(tmp_path):
+    irregular_ledgers(tmp_path)
+    res = ctl.run_planted(str(tmp_path), 60, "t")
+    assert [r["control"] for r in res] == ["planted-periodic", "planted-poisson", "planted-burst"]
+    for r in res:
+        assert r["correct"] >= 57, r
+    assert res == ctl.run_planted(str(tmp_path), 60, "t")
+
+
+def test_planted_controls_fail_when_rule_broken(tmp_path, monkeypatch):
+    irregular_ledgers(tmp_path)
+    fields = ["ledger_index", "close_time", "account", "result", "fee_drops", "tx_type"]
+    write_csv(tmp_path / "tx.csv", fields,
+              [{"ledger_index": 1, "close_time": 800_000_000, "account": "A", "result": "tesSUCCESS",
+                "fee_drops": 10, "tx_type": "Payment"}])
+    assert ctl.main(["--n", "30", "--data", str(tmp_path)]) == 0
+    real = ctl.classify
+    monkeypatch.setattr(ctl, "classify", lambda st: "bursty" if real(st) == "periodic" else real(st))
+    monkeypatch.setattr(ctl, "run_positive", lambda name, n, seed: {
+        "control": name, "expected": "x", "n": n, "correct": n, "classes": {}})
+    assert ctl.main(["--n", "30", "--data", str(tmp_path)]) == 1
+
+
+def test_negative_control_fails_when_any_shuffled_sender_is_periodic(tmp_path, monkeypatch):
+    irregular_ledgers(tmp_path, hours=6)
+    tx = [{"ledger_index": 1, "close_time": 800_000_000 + 37 * k, "account": "S", "result": "tesSUCCESS",
+           "fee_drops": 10, "tx_type": "Payment"} for k in range(50)]
+    write_csv(tmp_path / "tx.csv", list(tx[0]), tx)
+    # inverted rule: the real 37 s clock (CV 0) reads sporadic, its shuffled copy (CV > 0) periodic
+    monkeypatch.setattr(ctl, "classify", lambda st: "periodic" if st["cv"] > 0 else "sporadic")
+    r = ctl.run_negative(str(tmp_path), "t")
+    assert r["real_periodic"] == 0 and r["shuffled_classes"] == {"periodic": 1}
+    monkeypatch.setattr(ctl, "run_positive", lambda name, n, seed: {
+        "control": name, "expected": "x", "n": n, "correct": n, "classes": {}})
+    monkeypatch.setattr(ctl, "run_planted", lambda data, n, seed: [])
+    assert ctl.main(["--n", "10", "--data", str(tmp_path)]) == 1

@@ -16,11 +16,12 @@ and `ledger` to the public RPC (an allowlist in the code). Nothing is submitted 
 | file | what it does |
 |---|---|
 | `collect_senders.py` | resumable collector: follows validated ledgers from `--start` for `--hours` (default 72), one `tx.csv` row per transaction (ledger, close time, index, hash, sender, type, result, fee, sequence, ticket flag), one `ledgers.csv` row per ledger (`txn_count`, `tx_rows`), `gaps.csv` for ledgers it could not fetch, `retries.csv` for every failed attempt, `restarts.csv` for every start/resume; a ledger that closed after the window end is never written (client-side window); a torn or orphan row is repaired on resume, so SIGTERM or SIGKILL cannot duplicate or lose a ledger |
-| `resume_drill_senders.sh` | resume drill on a fixed ledger range: an uninterrupted reference run vs a run that gets SIGTERM and then SIGKILL and is resumed each time; `tx.csv` byte-identical, every ledger once, no gaps, `txn_count` = `tx_rows` = `tx.csv` rows, `restarts.csv` = start,resume,resume |
+| `resume_drill_senders.sh` | resume drill on a fixed ledger range: an uninterrupted reference run vs a run that gets SIGTERM and then SIGKILL and is resumed each time; after the SIGKILL it injects orphan `tx.csv` rows of the next ledger and a torn `ledgers.csv` tail, so the repair is proven live; `tx.csv` byte-identical, every ledger once, no gaps, `txn_count` = `tx_rows` = `tx.csv` rows, `restarts.csv` = start,resume,resume, torn cut + orphan drop logged |
 | `analyze_senders.py` | daily active / new / returning senders, retention matrix, per-sender inter-arrival statistics, periodic/bursty/sporadic classes, class shares of senders, transactions, fees and failures, top periodic senders (truncated); exits 1 on an unlisted hole, a duplicate ledger or `tx.csv` rows != `txn_count` sum |
-| `controls_senders.py` | seeded synthetic periodic, Poisson and burst senders (must classify periodic / sporadic / bursty, >= 95 %) and a shuffled-timestamp negative control on the real data (real periodic senders must not stay periodic) |
+| `controls_senders.py` | seeded synthetic periodic, Poisson and burst senders (must classify periodic / sporadic / bursty, >= 95 %), the same generators *planted* on the real ledger timeline of the collection (every event moved to the next real close time, >= 95 %), and a shuffled-timestamp negative control on the real data (real periodic senders must not stay periodic, no shuffled sender may become periodic; class counts and median CV real vs shuffled are printed) |
+| `report_senders.py` | runs the analyzer and the controls on one collection and writes `REPORT.md`, `cohorts.png`, `regularity.png` and `gaps.png`; every number in the report is computed from the data; exits 1 on an incomplete collection or a failed control |
 | `crosscheck_senders.py` | public-RPC checks: 20 random senders' sent-transaction sets via `account_tx` (window enforced client-side), per-slice recount against ledger `txn_count`, sampled ledger hashes and transaction counts; `--negative` alters every expected value and must exit 1 |
-| `mutants_senders.py` | mutation check: one broken line at a time in a temp copy of the repo; the senders tests must fail for every mutant (25 mutants) |
+| `mutants_senders.py` | mutation check: one broken line at a time in a temp copy of the repo; the senders tests must fail for every mutant (31 mutants) |
 
 ## Run it
 
@@ -29,6 +30,7 @@ senders/collect_senders.py --out data/senders/tx --log data/senders/tx/collect.l
 senders/resume_drill_senders.sh <first> <last> data/senders/drill-01      # already-validated range
 senders/analyze_senders.py --data data/senders/tx --json senders.json
 senders/controls_senders.py --data data/senders/tx
+senders/report_senders.py --data data/senders/tx --out-dir senders --json senders.json   # REPORT.md + charts
 senders/crosscheck_senders.py --data data/senders/tx --count 20 --ledgers 50 --seed 1
 senders/crosscheck_senders.py --data data/senders/tx --count 20 --ledgers 50 --seed 1 --negative  # exit 1
 .venv/bin/python -m pytest -q && .venv/bin/ruff check . && .venv/bin/python senders/mutants_senders.py
