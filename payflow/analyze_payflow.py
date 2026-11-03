@@ -63,12 +63,26 @@ def coverage(ledgers, gaps):
     idx = sorted(int(r["ledger_index"]) for r in ledgers)
     gap_idx = sorted(int(r["ledger_index"]) for r in gaps)
     if not idx:
-        return {"first": None, "last": None, "fetched": 0, "gaps": len(gap_idx), "gap_ledgers": gap_idx,
-                "holes": [], "duplicates": 0}
+        return {
+            "first": None,
+            "last": None,
+            "fetched": 0,
+            "gaps": len(gap_idx),
+            "gap_ledgers": gap_idx,
+            "holes": [],
+            "duplicates": 0,
+        }
     have = set(idx) | set(gap_idx)
     holes = [i for i in range(idx[0], idx[-1] + 1) if i not in have]
-    return {"first": idx[0], "last": idx[-1], "fetched": len(idx), "gaps": len(gap_idx),
-            "gap_ledgers": gap_idx, "holes": holes, "duplicates": len(idx) - len(set(idx))}
+    return {
+        "first": idx[0],
+        "last": idx[-1],
+        "fetched": len(idx),
+        "gaps": len(gap_idx),
+        "gap_ledgers": gap_idx,
+        "holes": holes,
+        "duplicates": len(idx) - len(set(idx)),
+    }
 
 
 def counted(p):
@@ -87,17 +101,30 @@ def concentration(vol):
     vals = sorted(vol.values(), reverse=True)
     total = sum(vals)
     if not total:
-        return {"accounts": len(vals), "total_drops": 0, "gini": 0.0, "top1_share": 0.0, "top10_share": 0.0,
-                "hhi": 0.0, "accounts_for_half": 0}
+        return {
+            "accounts": len(vals),
+            "total_drops": 0,
+            "gini": 0.0,
+            "top1_share": 0.0,
+            "top10_share": 0.0,
+            "hhi": 0.0,
+            "accounts_for_half": 0,
+        }
     c, half = 0, 0
     for i, v in enumerate(vals, 1):
         c += v
         if 2 * c >= total:
             half = i
             break
-    return {"accounts": len(vals), "total_drops": total, "gini": round(gini(vals), 6),
-            "top1_share": round(vals[0] / total, 6), "top10_share": round(sum(vals[:10]) / total, 6),
-            "hhi": round(sum((v / total) ** 2 for v in vals), 6), "accounts_for_half": half}
+    return {
+        "accounts": len(vals),
+        "total_drops": total,
+        "gini": round(gini(vals), 6),
+        "top1_share": round(vals[0] / total, 6),
+        "top10_share": round(sum(vals[:10]) / total, 6),
+        "hhi": round(sum((v / total) ** 2 for v in vals), 6),
+        "accounts_for_half": half,
+    }
 
 
 def lorenz(vol):
@@ -172,19 +199,27 @@ def graph(pays):
     n = len(nodes)
     top_edges = sorted(edges.items(), key=lambda kv: (-kv[1][1], kv[0]))[:10]
     return {
-        "accounts": n, "senders": len(senders), "receivers": len(receivers),
-        "edges": len(edges), "self_edges": sum(1 for a, b in edges if a == b),
+        "accounts": n,
+        "senders": len(senders),
+        "receivers": len(receivers),
+        "edges": len(edges),
+        "self_edges": sum(1 for a, b in edges if a == b),
         "density": round(len(pairs) / (n * (n - 1)), 8) if n > 1 else 0.0,
         "reciprocal_pairs": recip,
-        "sources": len(senders - receivers), "sinks": len(receivers - senders),
+        "sources": len(senders - receivers),
+        "sinks": len(receivers - senders),
         "intermediaries": len(senders & receivers),
-        "out_degree_max": max(out_deg.values(), default=0), "in_degree_max": max(in_deg.values(), default=0),
+        "out_degree_max": max(out_deg.values(), default=0),
+        "in_degree_max": max(in_deg.values(), default=0),
         "out_degree_median": median([out_deg[a] for a in senders]),
         "in_degree_median": median([in_deg[b] for b in receivers]),
-        "components": len(comps), "largest_component": comps[0] if comps else 0,
+        "components": len(comps),
+        "largest_component": comps[0] if comps else 0,
         "component_sizes_top5": comps[:5],
-        "top_edges": [{"from": truncate(a), "to": truncate(b), "payments": c, "drops": d}
-                      for (a, b), (c, d) in top_edges],
+        "top_edges": [
+            {"from": truncate(a), "to": truncate(b), "payments": c, "drops": d}
+            for (a, b), (c, d) in top_edges
+        ],
     }
 
 
@@ -210,15 +245,30 @@ def onward_model(acct, opening, deltas, pay_by_hash, fee_by_hash, payer, policy)
     """
     lots = deque()  # [drops, close_time]
     untagged = opening if opening is not None else 0
-    res = {"received": 0, "lots": 0, "onward": 0, "fee": 0, "other": 0, "to": defaultdict(int),
-           "holds": [], "mismatches": []}
+    res = {
+        "received": 0,
+        "lots": 0,
+        "onward": 0,
+        "fee": 0,
+        "other": 0,
+        "to": defaultdict(int),
+        "holds": [],
+        "mismatches": [],
+    }
     for d in deltas:
         prev, delta, h = int(d["prev_drops"]), int(d["delta_drops"]), d["tx_hash"]
         ct = int(d["close_time"])
         have = untagged + sum(x[0] for x in lots)
         if prev != have:
-            res["mismatches"].append({"ledger": int(d["ledger_index"]), "tx": h, "cause": "prev_balance",
-                                      "metadata_prev": prev, "model": have})
+            res["mismatches"].append(
+                {
+                    "ledger": int(d["ledger_index"]),
+                    "tx": h,
+                    "cause": "prev_balance",
+                    "metadata_prev": prev,
+                    "model": have,
+                }
+            )
             untagged += prev - have  # resync so one break is reported once, not on every later row
             if untagged < 0:
                 lots.clear()
@@ -263,8 +313,14 @@ def onward_model(acct, opening, deltas, pay_by_hash, fee_by_hash, payer, policy)
                     lots.popleft()
             if amt > 0:
                 if amt > untagged:
-                    res["mismatches"].append({"ledger": int(d["ledger_index"]), "tx": h,
-                                              "cause": "negative_pool", "short_drops": amt - untagged})
+                    res["mismatches"].append(
+                        {
+                            "ledger": int(d["ledger_index"]),
+                            "tx": h,
+                            "cause": "negative_pool",
+                            "short_drops": amt - untagged,
+                        }
+                    )
                     untagged = 0
                 else:
                     untagged -= amt
@@ -272,16 +328,23 @@ def onward_model(acct, opening, deltas, pay_by_hash, fee_by_hash, payer, policy)
     res["final_model"] = res["retained"] + untagged
     res["final_metadata"] = int(deltas[-1]["final_drops"]) if deltas else opening
     if deltas and res["final_model"] != res["final_metadata"]:
-        res["mismatches"].append({"ledger": int(deltas[-1]["ledger_index"]), "tx": deltas[-1]["tx_hash"],
-                                  "cause": "final_balance", "metadata_final": res["final_metadata"],
-                                  "model": res["final_model"]})
+        res["mismatches"].append(
+            {
+                "ledger": int(deltas[-1]["ledger_index"]),
+                "tx": deltas[-1]["tx_hash"],
+                "cause": "final_balance",
+                "metadata_final": res["final_metadata"],
+                "model": res["final_model"],
+            }
+        )
     return res
 
 
 def onward(pays, deltas, txs, ledgers, payer, opening, top_n=10):
     ct_by_ledger = {int(r["ledger_index"]): int(r["close_time"]) for r in ledgers}
-    recipients = sorted({p["destination"] for p in pays
-                         if p["account"] == payer and p["destination"] != payer})
+    recipients = sorted(
+        {p["destination"] for p in pays if p["account"] == payer and p["destination"] != payer}
+    )
     pay_by_hash = {p["tx_hash"]: p for p in pays}
     fee_by_hash = {t["tx_hash"]: (t["account"], int(t["fee_drops"])) for t in txs}
     by_acct = defaultdict(list)
@@ -289,8 +352,11 @@ def onward(pays, deltas, txs, ledgers, payer, opening, top_n=10):
     for d in sorted(deltas, key=order_key):
         if d["account"] in want:
             by_acct[d["account"]].append(dict(d, close_time=ct_by_ledger.get(int(d["ledger_index"]), 0)))
-    out = {"payer": truncate(payer), "recipients": len(recipients),
-           "opening_missing": sorted(truncate(a) for a in recipients if a not in opening)}
+    out = {
+        "payer": truncate(payer),
+        "recipients": len(recipients),
+        "opening_missing": sorted(truncate(a) for a in recipients if a not in opening),
+    }
     rset = set(recipients)
     for pol in POLICIES:
         agg = {"received": 0, "lots": 0, "onward": 0, "fee": 0, "other": 0, "retained": 0}
@@ -303,9 +369,17 @@ def onward(pays, deltas, txs, ledgers, payer, opening, top_n=10):
                 to[dest] += v
             holds += r["holds"]
             mism += [dict(m, account=truncate(a)) for m in r["mismatches"]]
-            per.append({"account": truncate(a), "received": r["received"], "onward": r["onward"],
-                        "fee": r["fee"], "other": r["other"], "retained": r["retained"],
-                        "destinations": len(r["to"])})
+            per.append(
+                {
+                    "account": truncate(a),
+                    "received": r["received"],
+                    "onward": r["onward"],
+                    "fee": r["fee"],
+                    "other": r["other"],
+                    "retained": r["retained"],
+                    "destinations": len(r["to"]),
+                }
+            )
         rec = agg["received"] or 1
         dests = sorted(to.items(), key=lambda kv: (-kv[1], kv[0]))
         out[pol] = {
@@ -315,8 +389,10 @@ def onward(pays, deltas, txs, ledgers, payer, opening, top_n=10):
             "onward_to_other_recipients": sum(v for d, v in to.items() if d in rset),
             "onward_destinations": len(to),
             "hold_median_s": weighted_median(holds),
-            "top_destinations": [{"account": truncate(d), "drops": v, "is_payer": d == payer,
-                                  "is_recipient": d in rset} for d, v in dests[:top_n]],
+            "top_destinations": [
+                {"account": truncate(d), "drops": v, "is_payer": d == payer, "is_recipient": d in rset}
+                for d, v in dests[:top_n]
+            ],
             "top_recipients": sorted(per, key=lambda x: (-x["received"], x["account"]))[:top_n],
             "conserved": agg["received"] == agg["onward"] + agg["fee"] + agg["other"] + agg["retained"],
             "mismatches": mism,
@@ -339,8 +415,13 @@ def analyze(txs, pays, deltas, ledgers, gaps, payer=PAYER, opening=None, top_n=1
     ranked = sorted(net.items(), key=lambda kv: (-kv[1], kv[0]))
 
     def row(a, v):
-        return {"account": truncate(a), "net_drops": v, "received": recv.get(a, 0), "sent": sent.get(a, 0),
-                "fees": fees.get(a, 0)}
+        return {
+            "account": truncate(a),
+            "net_drops": v,
+            "received": recv.get(a, 0),
+            "sent": sent.get(a, 0),
+            "fees": fees.get(a, 0),
+        }
 
     t0 = min((int(r["close_time"]) for r in ledgers), default=0)
     t1 = max((int(r["close_time"]) for r in ledgers), default=0)
@@ -356,29 +437,48 @@ def analyze(txs, pays, deltas, ledgers, gaps, payer=PAYER, opening=None, top_n=1
         "coverage": cov,
         "window": {"first_close": t0, "last_close": t1, "hours": round((t1 - t0) / 3600, 3)},
         "totals": {
-            "tx": len(txs), "ledger_txn_count": sum(int(r["txn_count"]) for r in ledgers),
-            "payments": len(pays), "counted": len(ok),
+            "tx": len(txs),
+            "ledger_txn_count": sum(int(r["txn_count"]) for r in ledgers),
+            "payments": len(pays),
+            "counted": len(ok),
             "failed": sum(1 for p in pays if p["result"] != "tesSUCCESS"),
             "non_native": sum(1 for p in pays if p["result"] == "tesSUCCESS" and p["kind"] != "native"),
-            "zero_delivered": sum(1 for p in pays if p["result"] == "tesSUCCESS" and p["kind"] == "native"
-                                  and int(p["delivered_drops"] or 0) == 0),
+            "zero_delivered": sum(
+                1
+                for p in pays
+                if p["result"] == "tesSUCCESS"
+                and p["kind"] == "native"
+                and int(p["delivered_drops"] or 0) == 0
+            ),
             "partial": sum(1 for p in ok if p["partial"] == "y"),
-            "volume_drops": total, "fee_drops": sum(fees.values()),
+            "volume_drops": total,
+            "fee_drops": sum(fees.values()),
             "payment_fee_drops": sum(int(p["fee_drops"]) for p in pays),
         },
         "graph": graph(ok),
         "concentration": {"sent": concentration(sent), "received": concentration(recv)},
-        "net": {"sum_drops": sum(net.values()), "gainers": [row(a, v) for a, v in ranked[:top_n] if v > 0],
-                "losers": [row(a, v) for a, v in reversed(ranked[-top_n:]) if v < 0]},
-        "top_senders": [{"account": truncate(a), "drops": v} for a, v in
-                        sorted(sent.items(), key=lambda kv: (-kv[1], kv[0]))[:top_n]],
-        "top_receivers": [{"account": truncate(a), "drops": v} for a, v in
-                          sorted(recv.items(), key=lambda kv: (-kv[1], kv[0]))[:top_n]],
+        "net": {
+            "sum_drops": sum(net.values()),
+            "gainers": [row(a, v) for a, v in ranked[:top_n] if v > 0],
+            "losers": [row(a, v) for a, v in reversed(ranked[-top_n:]) if v < 0],
+        },
+        "top_senders": [
+            {"account": truncate(a), "drops": v}
+            for a, v in sorted(sent.items(), key=lambda kv: (-kv[1], kv[0]))[:top_n]
+        ],
+        "top_receivers": [
+            {"account": truncate(a), "drops": v}
+            for a, v in sorted(recv.items(), key=lambda kv: (-kv[1], kv[0]))[:top_n]
+        ],
         "hourly": [{"hour": h, "payments": hourly[h][0], "drops": hourly[h][1]} for h in sorted(hourly)],
-        "payer": {"account": truncate(payer), "payments": len(payer_out),
-                  "drops": sum(int(p["delivered_drops"]) for p in payer_out),
-                  "share_of_volume": round(sum(int(p["delivered_drops"]) for p in payer_out) / total, 6)
-                  if total else 0.0},
+        "payer": {
+            "account": truncate(payer),
+            "payments": len(payer_out),
+            "drops": sum(int(p["delivered_drops"]) for p in payer_out),
+            "share_of_volume": round(sum(int(p["delivered_drops"]) for p in payer_out) / total, 6)
+            if total
+            else 0.0,
+        },
         "onward": onward(ok, deltas, txs, ledgers, payer, opening or {}, top_n),
         "_lorenz": {"sent": lorenz(sent), "received": lorenz(recv)},
     }
@@ -386,6 +486,7 @@ def analyze(txs, pays, deltas, ledgers, gaps, payer=PAYER, opening=None, top_n=1
 
 def charts(res, out_dir):
     import matplotlib
+
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
@@ -416,8 +517,9 @@ def charts(res, out_dir):
     ax.set_yticks(range(len(POLICIES)), [p.replace("_", "-") for p in POLICIES])
     ax.set_xlabel("PFT received from the reward payer")
     ax.set_title("Fate of reward-payer PFT by end of window (FIFO lots)")
-    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=len(SINK_LABELS), fontsize=8,
-              frameon=False)
+    ax.legend(
+        loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=len(SINK_LABELS), fontsize=8, frameon=False
+    )
     fig.tight_layout()
     files.append("onward.png")
     fig.savefig(os.path.join(out_dir, files[-1]), dpi=110)
@@ -445,7 +547,8 @@ def render(res, chart_files):
         "",
         "## Totals",
         "",
-        "| metric | value |", "|---|---:|",
+        "| metric | value |",
+        "|---|---:|",
         f"| transactions (tx.csv rows / ledger txn_count sum) | {tot['tx']} / {tot['ledger_txn_count']} |",
         f"| payments (all results) | {tot['payments']} |",
         f"| counted payments | {tot['counted']} |",
@@ -459,7 +562,8 @@ def render(res, chart_files):
         "",
         "## Graph",
         "",
-        "| metric | value |", "|---|---:|",
+        "| metric | value |",
+        "|---|---:|",
         f"| accounts (senders / receivers) | {g['accounts']} ({g['senders']} / {g['receivers']}) |",
         f"| distinct edges (self-payments) | {g['edges']} ({g['self_edges']}) |",
         f"| density | {g['density']} |",
@@ -472,44 +576,78 @@ def render(res, chart_files):
         "",
         "Top edges by volume:",
         "",
-        "| from | to | payments | PFT |", "|---|---|---:|---:|",
+        "| from | to | payments | PFT |",
+        "|---|---|---:|---:|",
     ]
     L += [f"| `{e['from']}` | `{e['to']}` | {e['payments']} | {pft(e['drops'])} |" for e in g["top_edges"]]
-    L += ["", "## Concentration", "", "| side | accounts | Gini | top-1 | top-10 | HHI | accounts for 50 % |",
-          "|---|---:|---:|---:|---:|---:|---:|"]
+    L += [
+        "",
+        "## Concentration",
+        "",
+        "| side | accounts | Gini | top-1 | top-10 | HHI | accounts for 50 % |",
+        "|---|---:|---:|---:|---:|---:|---:|",
+    ]
     for side, c in res["concentration"].items():
-        L.append(f"| {side} | {c['accounts']} | {c['gini']:.4f} | {pct(c['top1_share'])} | "
-                 f"{pct(c['top10_share'])} | {c['hhi']:.4f} | {c['accounts_for_half']} |")
-    L += ["", "## Net flows (received - sent, delivered PFT)", "",
-          f"Sum over all accounts: {res['net']['sum_drops']} drops (0 by construction).", "",
-          "| account | net PFT | received | sent | fees |", "|---|---:|---:|---:|---:|"]
+        L.append(
+            f"| {side} | {c['accounts']} | {c['gini']:.4f} | {pct(c['top1_share'])} | "
+            f"{pct(c['top10_share'])} | {c['hhi']:.4f} | {c['accounts_for_half']} |"
+        )
+    L += [
+        "",
+        "## Net flows (received - sent, delivered PFT)",
+        "",
+        f"Sum over all accounts: {res['net']['sum_drops']} drops (0 by construction).",
+        "",
+        "| account | net PFT | received | sent | fees |",
+        "|---|---:|---:|---:|---:|",
+    ]
     for r in res["net"]["gainers"] + res["net"]["losers"]:
-        L.append(f"| `{r['account']}` | {pft(r['net_drops'])} | {pft(r['received'])} | {pft(r['sent'])} | "
-                 f"{pft(r['fees'])} |")
-    L += ["", "## Reward-payer onward flows", "",
-          f"{on['recipients']} accounts received PFT from {on['payer']}. "
-          "Each recipient's balance is replayed from its snapshot balance through every metadata "
-          "balance change; reward receipts are FIFO lots. "
-          "`reward_first` spends lots before other balance (upper bound of onward flow), `balance_first` "
-          "spends them last (lower bound).", "",
-          "| policy | received | onward | fees | other | retained | to payer | to other recipients | "
-          "destinations | median hold | mismatches |",
-          "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
+        L.append(
+            f"| `{r['account']}` | {pft(r['net_drops'])} | {pft(r['received'])} | {pft(r['sent'])} | "
+            f"{pft(r['fees'])} |"
+        )
+    L += [
+        "",
+        "## Reward-payer onward flows",
+        "",
+        f"{on['recipients']} accounts received PFT from {on['payer']}. "
+        "Each recipient's balance is replayed from its snapshot balance through every metadata "
+        "balance change; reward receipts are FIFO lots. "
+        "`reward_first` spends lots before other balance (upper bound of onward flow), `balance_first` "
+        "spends them last (lower bound).",
+        "",
+        "| policy | received | onward | fees | other | retained | to payer | to other recipients | "
+        "destinations | median hold | mismatches |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ]
     for pol in POLICIES:
         o = on[pol]
         hold = "-" if o["hold_median_s"] is None else f"{o['hold_median_s'] / 60:.1f} min"
-        L.append(f"| {pol} | {pft(o['received'])} | {pft(o['onward'])} ({pct(o['shares']['onward'])}) | "
-                 f"{pft(o['fee'])} | {pft(o['other'])} | "
-                 f"{pft(o['retained'])} ({pct(o['shares']['retained'])}) | "
-                 f"{pft(o['onward_to_payer'])} | {pft(o['onward_to_other_recipients'])} | "
-                 f"{o['onward_destinations']} | {hold} | {len(o['mismatches'])} |")
-    L += ["", "Top onward destinations (reward_first):", "", "| account | PFT | payer | recipient |",
-          "|---|---:|---|---|"]
-    L += [f"| `{d['account']}` | {pft(d['drops'])} | {'yes' if d['is_payer'] else ''} | "
-          f"{'yes' if d['is_recipient'] else ''} |" for d in on["reward_first"]["top_destinations"]]
+        L.append(
+            f"| {pol} | {pft(o['received'])} | {pft(o['onward'])} ({pct(o['shares']['onward'])}) | "
+            f"{pft(o['fee'])} | {pft(o['other'])} | "
+            f"{pft(o['retained'])} ({pct(o['shares']['retained'])}) | "
+            f"{pft(o['onward_to_payer'])} | {pft(o['onward_to_other_recipients'])} | "
+            f"{o['onward_destinations']} | {hold} | {len(o['mismatches'])} |"
+        )
+    L += [
+        "",
+        "Top onward destinations (reward_first):",
+        "",
+        "| account | PFT | payer | recipient |",
+        "|---|---:|---|---|",
+    ]
+    L += [
+        f"| `{d['account']}` | {pft(d['drops'])} | {'yes' if d['is_payer'] else ''} | "
+        f"{'yes' if d['is_recipient'] else ''} |"
+        for d in on["reward_first"]["top_destinations"]
+    ]
     if on["opening_missing"]:
-        L += ["", f"Recipients absent from the start snapshot (opening balance 0, created in window): "
-                  f"{len(on['opening_missing'])}."]
+        L += [
+            "",
+            f"Recipients absent from the start snapshot (opening balance 0, created in window): "
+            f"{len(on['opening_missing'])}.",
+        ]
     if chart_files:
         L += ["", "## Charts", ""] + [f"![{f}]({f})" for f in chart_files]
     return "\n".join(L) + "\n"
@@ -518,23 +656,30 @@ def render(res, chart_files):
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--data", default="data/payflow/tx")
-    p.add_argument("--snapshot", required=True,
-                   help="start-state snapshot-<ledger>.jsonl.gz (ledger = first collected - 1)")
+    p.add_argument(
+        "--snapshot",
+        required=True,
+        help="start-state snapshot-<ledger>.jsonl.gz (ledger = first collected - 1)",
+    )
     p.add_argument("--payer", default=PAYER)
     p.add_argument("--json", default=None)
     p.add_argument("--out-dir", default=None, help="write REPORT.md (+ charts unless --no-charts) here")
     p.add_argument("--no-charts", action="store_true")
     p.add_argument("--top", type=int, default=10)
     a = p.parse_args(argv)
-    rd = {n: read_csv(os.path.join(a.data, f"{n}.csv"))
-          for n in ("tx", "payments", "deltas", "ledgers", "gaps")}
+    rd = {
+        n: read_csv(os.path.join(a.data, f"{n}.csv")) for n in ("tx", "payments", "deltas", "ledgers", "gaps")
+    }
     recipients = {r["destination"] for r in rd["payments"] if r["account"] == a.payer}
     header, opening = snapshot_balances(a.snapshot, recipients)
     res = analyze(rd["tx"], rd["payments"], rd["deltas"], rd["ledgers"], rd["gaps"], a.payer, opening, a.top)
     cov, tot = res["coverage"], res["totals"]
     snap_ok = cov["first"] is None or header.get("ledger_index") == cov["first"] - 1
-    res["snapshot"] = {"ledger_index": header.get("ledger_index"), "ledger_hash": header.get("ledger_hash"),
-                       "adjacent": snap_ok}
+    res["snapshot"] = {
+        "ledger_index": header.get("ledger_index"),
+        "ledger_hash": header.get("ledger_hash"),
+        "adjacent": snap_ok,
+    }
     chart_files = []
     if a.out_dir:
         os.makedirs(a.out_dir, exist_ok=True)
@@ -549,24 +694,34 @@ def main(argv=None):
             fh.write("\n")
     res["_lorenz"] = lor
     g, on = res["graph"], res["onward"]
-    print(f"coverage ledgers {cov['first']}-{cov['last']} fetched={cov['fetched']} gaps={cov['gaps']} "
-          f"holes={len(cov['holes'])} duplicates={cov['duplicates']}; snapshot {header.get('ledger_index')} "
-          f"adjacent={snap_ok}")
-    print(f"payments={tot['payments']} counted={tot['counted']} failed={tot['failed']} "
-          f"volume={tot['volume_drops']} drops fees={tot['fee_drops']} drops")
-    print(f"graph accounts={g['accounts']} edges={g['edges']} reciprocal={g['reciprocal_pairs']} "
-          f"components={g['components']} largest={g['largest_component']}")
+    print(
+        f"coverage ledgers {cov['first']}-{cov['last']} fetched={cov['fetched']} gaps={cov['gaps']} "
+        f"holes={len(cov['holes'])} duplicates={cov['duplicates']}; snapshot {header.get('ledger_index')} "
+        f"adjacent={snap_ok}"
+    )
+    print(
+        f"payments={tot['payments']} counted={tot['counted']} failed={tot['failed']} "
+        f"volume={tot['volume_drops']} drops fees={tot['fee_drops']} drops"
+    )
+    print(
+        f"graph accounts={g['accounts']} edges={g['edges']} reciprocal={g['reciprocal_pairs']} "
+        f"components={g['components']} largest={g['largest_component']}"
+    )
     for side, c in res["concentration"].items():
-        print(f"concentration {side}: gini={c['gini']} top1={c['top1_share']} top10={c['top10_share']} "
-              f"hhi={c['hhi']} half={c['accounts_for_half']}")
+        print(
+            f"concentration {side}: gini={c['gini']} top1={c['top1_share']} top10={c['top10_share']} "
+            f"hhi={c['hhi']} half={c['accounts_for_half']}"
+        )
     print(f"net sum={res['net']['sum_drops']}")
     bad = 0
     for pol in POLICIES:
         o = on[pol]
         bad += len(o["mismatches"]) + (not o["conserved"])
-        print(f"onward {pol}: recipients={on['recipients']} received={o['received']} onward={o['onward']} "
-              f"fee={o['fee']} other={o['other']} retained={o['retained']} conserved={o['conserved']} "
-              f"mismatches={len(o['mismatches'])}")
+        print(
+            f"onward {pol}: recipients={on['recipients']} received={o['received']} onward={o['onward']} "
+            f"fee={o['fee']} other={o['other']} retained={o['retained']} conserved={o['conserved']} "
+            f"mismatches={len(o['mismatches'])}"
+        )
         for m in o["mismatches"]:
             print(f"  MISMATCH {json.dumps(m, sort_keys=True)}")
     rc = 0

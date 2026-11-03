@@ -283,9 +283,13 @@ def test_rate_cap(monkeypatch, tmp_path):
 
 def test_non_account_root_nodes_ignored():
     nodes = [
-        {"ModifiedNode": {"LedgerEntryType": "RippleState",
-                          "FinalFields": {"Balance": {"currency": "USD", "issuer": "rI", "value": "1"}},
-                          "PreviousFields": {"Balance": {"currency": "USD", "issuer": "rI", "value": "2"}}}},
+        {
+            "ModifiedNode": {
+                "LedgerEntryType": "RippleState",
+                "FinalFields": {"Balance": {"currency": "USD", "issuer": "rI", "value": "1"}},
+                "PreviousFields": {"Balance": {"currency": "USD", "issuer": "rI", "value": "2"}},
+            }
+        },
         {"ModifiedNode": {"LedgerEntryType": "DirectoryNode", "FinalFields": {"Owner": "rA"}}},
         {"CreatedNode": {"LedgerEntryType": "Offer", "NewFields": {"Account": "rA"}}},
         acct_mod("rA", 100, 90),

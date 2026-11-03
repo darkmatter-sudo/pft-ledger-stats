@@ -25,26 +25,60 @@ class World:
         self.li = 1000
 
     def _ledger(self, ntx):
-        self.ledgers.append({"ledger_index": str(self.li), "close_time": str(CT0 + (self.li - 1000) * 60),
-                             "txn_count": str(ntx)})
+        self.ledgers.append(
+            {
+                "ledger_index": str(self.li),
+                "close_time": str(CT0 + (self.li - 1000) * 60),
+                "txn_count": str(ntx),
+            }
+        )
 
     def _delta(self, h, acct, d):
         prev = self.bal.get(acct, 0)
         self.bal[acct] = prev + d
-        self.deltas.append({"ledger_index": str(self.li), "tx_index": "0", "tx_hash": h, "account": acct,
-                            "node": "Modified", "prev_drops": str(prev), "final_drops": str(prev + d),
-                            "delta_drops": str(d)})
+        self.deltas.append(
+            {
+                "ledger_index": str(self.li),
+                "tx_index": "0",
+                "tx_hash": h,
+                "account": acct,
+                "node": "Modified",
+                "prev_drops": str(prev),
+                "final_drops": str(prev + d),
+                "delta_drops": str(d),
+            }
+        )
 
     def pay(self, src, dst, amt, fee=10, res="tesSUCCESS", kind="native"):
         self.li += 1
         h = f"H{self.li}"
         ok = res == "tesSUCCESS"
-        self.txs.append({"ledger_index": str(self.li), "tx_index": "0", "tx_hash": h, "account": src,
-                         "tx_type": "Payment", "result": res, "fee_drops": str(fee)})
-        self.pays.append({"ledger_index": str(self.li), "close_time": str(CT0 + (self.li - 1000) * 60),
-                          "tx_index": "0", "tx_hash": h, "account": src, "destination": dst, "result": res,
-                          "fee_drops": str(fee), "kind": kind,
-                          "delivered_drops": str(amt) if ok and kind == "native" else "", "partial": "n"})
+        self.txs.append(
+            {
+                "ledger_index": str(self.li),
+                "tx_index": "0",
+                "tx_hash": h,
+                "account": src,
+                "tx_type": "Payment",
+                "result": res,
+                "fee_drops": str(fee),
+            }
+        )
+        self.pays.append(
+            {
+                "ledger_index": str(self.li),
+                "close_time": str(CT0 + (self.li - 1000) * 60),
+                "tx_index": "0",
+                "tx_hash": h,
+                "account": src,
+                "destination": dst,
+                "result": res,
+                "fee_drops": str(fee),
+                "kind": kind,
+                "delivered_drops": str(amt) if ok and kind == "native" else "",
+                "partial": "n",
+            }
+        )
         moved = amt if ok and kind == "native" else 0
         self._delta(h, src, -(moved + fee))
         if moved:
@@ -55,8 +89,17 @@ class World:
     def other(self, acct, d, fee=10, tx_type="OfferCreate"):
         self.li += 1
         h = f"H{self.li}"
-        self.txs.append({"ledger_index": str(self.li), "tx_index": "0", "tx_hash": h, "account": acct,
-                         "tx_type": tx_type, "result": "tesSUCCESS", "fee_drops": str(fee)})
+        self.txs.append(
+            {
+                "ledger_index": str(self.li),
+                "tx_index": "0",
+                "tx_hash": h,
+                "account": acct,
+                "tx_type": tx_type,
+                "result": "tesSUCCESS",
+                "fee_drops": str(fee),
+            }
+        )
         self._delta(h, acct, d - fee)
         self._ledger(1)
 
@@ -178,9 +221,15 @@ def test_concentration_and_net():
     assert c["hhi"] == pytest.approx(0.82)
     assert c["gini"] == pytest.approx(0.4)
     assert r["concentration"]["sent"]["accounts"] == 2
-    assert r["concentration"]["received"] == {"accounts": 1, "total_drops": 100, "gini": 0.0,
-                                              "top1_share": 1.0, "top10_share": 1.0, "hhi": 1.0,
-                                              "accounts_for_half": 1}
+    assert r["concentration"]["received"] == {
+        "accounts": 1,
+        "total_drops": 100,
+        "gini": 0.0,
+        "top1_share": 1.0,
+        "top10_share": 1.0,
+        "hhi": 1.0,
+        "accounts_for_half": 1,
+    }
     assert r["net"]["sum_drops"] == 0
     assert r["net"]["gainers"][0]["net_drops"] == 100
     assert [x["net_drops"] for x in r["net"]["losers"]] == [-90, -10]
@@ -220,8 +269,21 @@ def write_world(tmp_path, w, snap_ledger, balances):
 def test_main_end_to_end(tmp_path, fifo_world, capsys):
     data, snap = write_world(tmp_path, fifo_world, 1000, {PAYER: 10**9, R1: 30})
     out = tmp_path / "report"
-    rc = ap.main(["--data", str(data), "--snapshot", str(snap), "--payer", PAYER, "--json",
-                  str(tmp_path / "p.json"), "--out-dir", str(out), "--no-charts"])
+    rc = ap.main(
+        [
+            "--data",
+            str(data),
+            "--snapshot",
+            str(snap),
+            "--payer",
+            PAYER,
+            "--json",
+            str(tmp_path / "p.json"),
+            "--out-dir",
+            str(out),
+            "--no-charts",
+        ]
+    )
     assert rc == 0
     res = json.loads((tmp_path / "p.json").read_text())
     assert res["onward"]["reward_first"]["onward"] == 120
@@ -277,14 +339,25 @@ def test_accounts_for_half_boundary():
 
 
 def _row(li, h, prev, delta, final=None):
-    return {"ledger_index": str(li), "tx_index": "0", "tx_hash": h, "close_time": str(CT0 + li),
-            "prev_drops": str(prev), "delta_drops": str(delta),
-            "final_drops": str(prev + delta if final is None else final)}
+    return {
+        "ledger_index": str(li),
+        "tx_index": "0",
+        "tx_hash": h,
+        "close_time": str(CT0 + li),
+        "prev_drops": str(prev),
+        "delta_drops": str(delta),
+        "final_drops": str(prev + delta if final is None else final),
+    }
 
 
 def test_reward_lot_capped_at_balance_delta():
-    p = {"account": PAYER, "destination": R1, "result": "tesSUCCESS", "kind": "native",
-         "delivered_drops": "1000"}
+    p = {
+        "account": PAYER,
+        "destination": R1,
+        "result": "tesSUCCESS",
+        "kind": "native",
+        "delivered_drops": "1000",
+    }
     r = ap.onward_model(R1, 0, [_row(1, "H1", 0, 600)], {"H1": p}, {}, PAYER, "reward_first")
     assert r["received"] == 600 and r["retained"] == 600 and r["mismatches"] == []
 
