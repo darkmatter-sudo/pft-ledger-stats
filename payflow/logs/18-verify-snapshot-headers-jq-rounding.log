@@ -1,0 +1,33 @@
+# payflow verification answer (recorded run 18): snapshot header ledger_index for snapA and snapB, coin burn vs fees
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T02:08:21Z | repo HEAD 67e6149fe61bb79045068a0cb98c8ba40b687970
+$ zcat payflow/data/snapB/snapshot-7714380.jsonl.gz | head -1 | jq .ledger_index
+7714380
+(exit 141)
+$ zcat payflow/data/snapA/snapshot-7685509.jsonl.gz | head -1 | jq .ledger_index
+7685509
+(exit 141)
+$ zcat payflow/data/snapB/snapshot-7714380.jsonl.gz | head -1 | jq -c '{format, ledger_index, ledger_hash, account_hash, total_coins}'
+{"format":"pft-state-snapshot/1","ledger_index":7714380,"ledger_hash":"FC1903B226981A5A543843640FCDB39A0BF9D22A269B2E0A4DD9EABDBE405148","account_hash":"35C8A311018301BD4EE8D5F8D4654644A456DB33D12C48689C621887764AD592","total_coins":99999999968490060}
+(exit 141)
+$ zcat payflow/data/snapA/snapshot-7685509.jsonl.gz | head -1 | jq -c '{format, ledger_index, ledger_hash, account_hash, total_coins}'
+{"format":"pft-state-snapshot/1","ledger_index":7685509,"ledger_hash":"6F1EA5360BFCB848CEDF95623A066BF0D39C2529F9D9AF0C02D978BFCD77707A","account_hash":"26C9ACECC335144A313CFF023B179510EA9BE4E3D2A5DC306D91DE8EC9A4CE2E","total_coins":99999999968590180}
+(exit 141)
+$ sha256sum payflow/data/snapB/snapshot-7714380.jsonl.gz payflow/data/snapA/snapshot-7685509.jsonl.gz
+b2867fd2a5ef09e7d78d953e346db32a26d091b344171a15525152088e208bf1  payflow/data/snapB/snapshot-7714380.jsonl.gz
+116b761eee9ca0ff04cd339eb24a1822a851b4746d0e17b68dec7e0b32771457  payflow/data/snapA/snapshot-7685509.jsonl.gz
+(exit 0)
+$ grep -E 'snap[AB]/snapshot-' payflow/data/SHA256SUMS
+116b761eee9ca0ff04cd339eb24a1822a851b4746d0e17b68dec7e0b32771457  snapA/snapshot-7685509.jsonl.gz
+b2867fd2a5ef09e7d78d953e346db32a26d091b344171a15525152088e208bf1  snapB/snapshot-7714380.jsonl.gz
+(exit 0)
+$ jq -n --argjson a "$(zcat payflow/data/snapA/snapshot-7685509.jsonl.gz | head -1 | jq .total_coins)" --argjson b "$(zcat payflow/data/snapB/snapshot-7714380.jsonl.gz | head -1 | jq .total_coins)" '{total_coins_A: $a, total_coins_B: $b, burned_drops: ($a - $b)}'
+{
+  "total_coins_A": 99999999968590180,
+  "total_coins_B": 99999999968490060,
+  "burned_drops": 100112
+}
+(exit 0)
+$ jq -c '{fees_drops, burned_drops, mismatch_lines: (.mismatch_lines|length)}' payflow/data/reconcile.json
+{"fees_drops":100124,"burned_drops":100124,"mismatch_lines":0}
+(exit 0)
+end 2026-11-03T02:08:21Z
