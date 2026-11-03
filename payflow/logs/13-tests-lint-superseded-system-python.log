@@ -1,0 +1,721 @@
+# payflow test suite + lint at the final code (recorded run 13)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T01:10:23Z | repo HEAD f9efa7349059307f69e9b991ad9fcc54c9c489e2
+$ git diff --stat f9efa7349059307f69e9b991ad9fcc54c9c489e2 HEAD -- payflow/*.py payflow/*.sh tests/test_payflow_*.py; sha256sum payflow/*.py payflow/*.sh
+eb3ea7953fa7f5e05d6eebf6e4bd61db4a3f3a81a829150da361ca5bf1caed58  payflow/analyze_payflow.py
+ac1bb950b718e38b80905cf6f1258a8dba60c7e104f11af79a009698f7734195  payflow/collect_payflow.py
+a55116a2438c9d09ea6f85845348b1265590cb0479e7145bb9fcd4d703717737  payflow/crosscheck_payflow.py
+1dd672c4e9a52d4f2578c1fec73405fe45932151b8a2427aa8dc2e17acd10b5a  payflow/mutants_payflow.py
+554c33897b2cb99971e366359041c5de0ddbe9c21b723cfa9812d39aa447be9a  payflow/reconcile_payflow.py
+d5601fd2e5f20e35e97b5f4e9a97ab826255958ec2f19db2eff67d74725b2c8e  payflow/resume_drill_payflow.sh
+(exit 0)
+$ nice -n 15 timeout 600 python3 -m pytest -q -rA -p no:cacheprovider --basetemp=$TMPDIR/pt13 tests/test_payflow_collect.py tests/test_payflow_analyze.py tests/test_payflow_reconcile.py tests/test_payflow_crosscheck.py | tail -n 70
+MISMATCH C7 000000000000 sender_delta=-20000010 -(delivered+fee)=-20000011 cause=sender_delta
+MISMATCH C7 payments_checked=3 path_payments=0 mismatches=6 cause=payment_delta
+SUMMARY ok=7 mismatch=16 causes={'account_balance': 2, 'burn_ne_fees': 1, 'dest_delta': 3, 'payment_delta': 1, 'sender_delta': 3, 'tx_value_not_conserved': 6} negative=True accounts=4 fees=55 burned=50
+INPUT ERROR ~/.cache/pftmp/pt13/test_main_end_to_end1/bad.jsonl.gz: header is not JSON (Expecting value: line 1 column 1 (char 0))
+_________ test_retry_counted_not_mismatch_and_persisting_error_raises __________
+----------------------------- Captured stdout call -----------------------------
+2026-11-03T01:10:24Z RETRY tx attempt 1/6 error=slowDown backoff=2.0s
+2026-11-03T01:10:24Z RETRY tx attempt 2/6 error=slowDown backoff=4.0s
+2026-11-03T01:10:24Z RETRY tx attempt 1/3 error=lgrNotFound backoff=2.0s
+2026-11-03T01:10:24Z RETRY tx attempt 2/3 error=lgrNotFound backoff=4.0s
+=========================== short test summary info ============================
+PASSED tests/test_payflow_collect.py::test_payment_rows_use_delivered_amount_not_amount
+PASSED tests/test_payflow_collect.py::test_iou_mpt_and_failed_payments
+PASSED tests/test_payflow_collect.py::test_successful_payment_without_delivered_amount_is_an_error
+PASSED tests/test_payflow_collect.py::test_delta_nodes_created_deleted_unchanged
+PASSED tests/test_payflow_collect.py::test_meta_variant_missing_and_duplicate_index
+PASSED tests/test_payflow_collect.py::test_in_window_boundary
+PASSED tests/test_payflow_collect.py::test_full_run_retries_gaps_and_counts
+PASSED tests/test_payflow_collect.py::test_resume_after_kill_with_orphans_in_every_file_and_torn_line
+PASSED tests/test_payflow_collect.py::test_window_end_enforced_client_side
+PASSED tests/test_payflow_collect.py::test_rate_cap
+PASSED tests/test_payflow_collect.py::test_non_account_root_nodes_ignored
+PASSED tests/test_payflow_analyze.py::test_fifo_reward_first
+PASSED tests/test_payflow_analyze.py::test_fifo_balance_first
+PASSED tests/test_payflow_analyze.py::test_lower_bound_never_exceeds_upper
+PASSED tests/test_payflow_analyze.py::test_onward_to_payer_and_other_recipient
+PASSED tests/test_payflow_analyze.py::test_non_payment_outflow_is_other
+PASSED tests/test_payflow_analyze.py::test_prev_balance_mismatch_detected
+PASSED tests/test_payflow_analyze.py::test_missing_opening_balance_detected
+PASSED tests/test_payflow_analyze.py::test_failed_and_non_native_excluded
+PASSED tests/test_payflow_analyze.py::test_graph_metrics
+PASSED tests/test_payflow_analyze.py::test_concentration_and_net
+PASSED tests/test_payflow_analyze.py::test_coverage_hole_and_duplicate
+PASSED tests/test_payflow_analyze.py::test_main_end_to_end
+PASSED tests/test_payflow_analyze.py::test_main_wrong_opening_exits_1
+PASSED tests/test_payflow_analyze.py::test_main_non_adjacent_snapshot_exits_1
+PASSED tests/test_payflow_analyze.py::test_main_txn_count_mismatch_exits_1
+PASSED tests/test_payflow_analyze.py::test_failed_row_with_amount_not_counted
+PASSED tests/test_payflow_analyze.py::test_accounts_for_half_boundary
+PASSED tests/test_payflow_analyze.py::test_reward_lot_capped_at_balance_delta
+PASSED tests/test_payflow_analyze.py::test_final_balance_break_detected
+PASSED tests/test_payflow_reconcile.py::test_clean_world_reconciles
+PASSED tests/test_payflow_reconcile.py::test_balance_off_by_one_drop
+PASSED tests/test_payflow_reconcile.py::test_created_account_absent_in_a
+PASSED tests/test_payflow_reconcile.py::test_deleted_account_absent_in_b
+PASSED tests/test_payflow_reconcile.py::test_chain_break_detected
+PASSED tests/test_payflow_reconcile.py::test_burn_ne_fees
+PASSED tests/test_payflow_reconcile.py::test_tx_value_not_conserved
+PASSED tests/test_payflow_reconcile.py::test_payment_dest_delta_ne_delivered
+PASSED tests/test_payflow_reconcile.py::test_path_payment_counted_not_checked
+PASSED tests/test_payflow_reconcile.py::test_non_adjacent_snapshot
+PASSED tests/test_payflow_reconcile.py::test_hole_gap_duplicate_txn_count
+PASSED tests/test_payflow_reconcile.py::test_escrow_holder_reconciles_and_missing_escrow_detected
+PASSED tests/test_payflow_reconcile.py::test_negative_control_mismatches_every_value_check
+PASSED tests/test_payflow_reconcile.py::test_main_end_to_end
+PASSED tests/test_payflow_crosscheck.py::test_clean_all_ok
+PASSED tests/test_payflow_crosscheck.py::test_sample_includes_failed_and_is_deterministic
+PASSED tests/test_payflow_crosscheck.py::test_tx_field_difference_is_mismatch[Fee-13]
+PASSED tests/test_payflow_crosscheck.py::test_tx_field_difference_is_mismatch[Destination-rSENDERxxxxxxxxxxxxxxxxxxxxxxxxxxx]
+PASSED tests/test_payflow_crosscheck.py::test_tx_field_difference_is_mismatch[ledger_index-1]
+PASSED tests/test_payflow_crosscheck.py::test_delivered_and_balance_and_validated_differences
+PASSED tests/test_payflow_crosscheck.py::test_ledger_hash_and_count_difference
+PASSED tests/test_payflow_crosscheck.py::test_api_v2_shape
+PASSED tests/test_payflow_crosscheck.py::test_deleted_node_change
+PASSED tests/test_payflow_crosscheck.py::test_negative_every_check_mismatches
+PASSED tests/test_payflow_crosscheck.py::test_retry_counted_not_mismatch_and_persisting_error_raises
+PASSED tests/test_payflow_crosscheck.py::test_offline_pass_and_tamper
+PASSED tests/test_payflow_crosscheck.py::test_negative_alters_delivered_on_every_payment
+SKIPPED [1] tests/test_payflow_analyze.py:259: could not import 'matplotlib': No module named 'matplotlib'
+57 passed, 1 skipped in 0.36s
+(exit 0)
+$ nice -n 15 timeout 900 python3 -m pytest -q -p no:cacheprovider --basetemp=$TMPDIR/pt13all | tail -n 3
+FAILED tests/test_nftflow_stats.py::test_clean_stats - ModuleNotFoundError: N...
+FAILED tests/test_txmix.py::TestEndToEnd::test_report_written - ModuleNotFoun...
+4 failed, 418 passed, 1 skipped in 10.84s
+(exit 0)
+$ ruff check . && ruff format --check payflow tests/test_payflow_*.py
+All checks passed!
+unformatted: File would be reformatted
+   --> payflow/analyze_payflow.py:66:17
+    |
+65  |     if not idx:
+    -         return {"first": None, "last": None, "fetched": 0, "gaps": len(gap_idx), "gap_ledgers": gap_idx,
+    -                 "holes": [], "duplicates": 0}
+66  +         return {
+67  +             "first": None,
+68  +             "last": None,
+69  +             "fetched": 0,
+70  +             "gaps": len(gap_idx),
+71  +             "gap_ledgers": gap_idx,
+72  +             "holes": [],
+73  +             "duplicates": 0,
+74  +         }
+75  |     have = set(idx) | set(gap_idx)
+76  |     holes = [i for i in range(idx[0], idx[-1] + 1) if i not in have]
+    -     return {"first": idx[0], "last": idx[-1], "fetched": len(idx), "gaps": len(gap_idx),
+    -             "gap_ledgers": gap_idx, "holes": holes, "duplicates": len(idx) - len(set(idx))}
+77  +     return {
+78  +         "first": idx[0],
+79  +         "last": idx[-1],
+80  +         "fetched": len(idx),
+81  +         "gaps": len(gap_idx),
+82  +         "gap_ledgers": gap_idx,
+83  +         "holes": holes,
+84  +         "duplicates": len(idx) - len(set(idx)),
+85  +     }
+86  |
+--------------------------------------------------------------------------------
+103 |     if not total:
+    -         return {"accounts": len(vals), "total_drops": 0, "gini": 0.0, "top1_share": 0.0, "top10_share": 0.0,
+    -                 "hhi": 0.0, "accounts_for_half": 0}
+104 +         return {
+105 +             "accounts": len(vals),
+106 +             "total_drops": 0,
+107 +             "gini": 0.0,
+108 +             "top1_share": 0.0,
+109 +             "top10_share": 0.0,
+110 +             "hhi": 0.0,
+111 +             "accounts_for_half": 0,
+112 +         }
+113 |     c, half = 0, 0
+--------------------------------------------------------------------------------
+118 |             break
+    -     return {"accounts": len(vals), "total_drops": total, "gini": round(gini(vals), 6),
+    -             "top1_share": round(vals[0] / total, 6), "top10_share": round(sum(vals[:10]) / total, 6),
+    -             "hhi": round(sum((v / total) ** 2 for v in vals), 6), "accounts_for_half": half}
+119 +     return {
+120 +         "accounts": len(vals),
+121 +         "total_drops": total,
+122 +         "gini": round(gini(vals), 6),
+123 +         "top1_share": round(vals[0] / total, 6),
+124 +         "top10_share": round(sum(vals[:10]) / total, 6),
+125 +         "hhi": round(sum((v / total) ** 2 for v in vals), 6),
+126 +         "accounts_for_half": half,
+127 +     }
+128 |
+--------------------------------------------------------------------------------
+201 |     return {
+    -         "accounts": n, "senders": len(senders), "receivers": len(receivers),
+    -         "edges": len(edges), "self_edges": sum(1 for a, b in edges if a == b),
+202 +         "accounts": n,
+203 +         "senders": len(senders),
+204 +         "receivers": len(receivers),
+205 +         "edges": len(edges),
+206 +         "self_edges": sum(1 for a, b in edges if a == b),
+207 |         "density": round(len(pairs) / (n * (n - 1)), 8) if n > 1 else 0.0,
+208 |         "reciprocal_pairs": recip,
+    -         "sources": len(senders - receivers), "sinks": len(receivers - senders),
+209 +         "sources": len(senders - receivers),
+210 +         "sinks": len(receivers - senders),
+211 |         "intermediaries": len(senders & receivers),
+    -         "out_degree_max": max(out_deg.values(), default=0), "in_degree_max": max(in_deg.values(), default=0),
+212 +         "out_degree_max": max(out_deg.values(), default=0),
+213 +         "in_degree_max": max(in_deg.values(), default=0),
+214 |         "out_degree_median": median([out_deg[a] for a in senders]),
+215 |         "in_degree_median": median([in_deg[b] for b in receivers]),
+    -         "components": len(comps), "largest_component": comps[0] if comps else 0,
+216 +         "components": len(comps),
+217 +         "largest_component": comps[0] if comps else 0,
+218 |         "component_sizes_top5": comps[:5],
+    -         "top_edges": [{"from": truncate(a), "to": truncate(b), "payments": c, "drops": d}
+    -                       for (a, b), (c, d) in top_edges],
+219 +         "top_edges": [
+220 +             {"from": truncate(a), "to": truncate(b), "payments": c, "drops": d}
+221 +             for (a, b), (c, d) in top_edges
+222 +         ],
+223 |     }
+--------------------------------------------------------------------------------
+247 |     untagged = opening if opening is not None else 0
+    -     res = {"received": 0, "lots": 0, "onward": 0, "fee": 0, "other": 0, "to": defaultdict(int),
+    -            "holds": [], "mismatches": []}
+248 +     res = {
+249 +         "received": 0,
+250 +         "lots": 0,
+251 +         "onward": 0,
+252 +         "fee": 0,
+253 +         "other": 0,
+254 +         "to": defaultdict(int),
+255 +         "holds": [],
+256 +         "mismatches": [],
+257 +     }
+258 |     for d in deltas:
+--------------------------------------------------------------------------------
+262 |         if prev != have:
+    -             res["mismatches"].append({"ledger": int(d["ledger_index"]), "tx": h, "cause": "prev_balance",
+    -                                       "metadata_prev": prev, "model": have})
+263 +             res["mismatches"].append(
+264 +                 {
+265 +                     "ledger": int(d["ledger_index"]),
+266 +                     "tx": h,
+267 +                     "cause": "prev_balance",
+268 +                     "metadata_prev": prev,
+269 +                     "model": have,
+270 +                 }
+271 +             )
+272 |             untagged += prev - have  # resync so one break is reported once, not on every later row
+--------------------------------------------------------------------------------
+315 |                 if amt > untagged:
+    -                     res["mismatches"].append({"ledger": int(d["ledger_index"]), "tx": h,
+    -                                               "cause": "negative_pool", "short_drops": amt - untagged})
+316 +                     res["mismatches"].append(
+317 +                         {
+318 +                             "ledger": int(d["ledger_index"]),
+319 +                             "tx": h,
+320 +                             "cause": "negative_pool",
+321 +                             "short_drops": amt - untagged,
+322 +                         }
+323 +                     )
+324 |                     untagged = 0
+--------------------------------------------------------------------------------
+330 |     if deltas and res["final_model"] != res["final_metadata"]:
+    -         res["mismatches"].append({"ledger": int(deltas[-1]["ledger_index"]), "tx": deltas[-1]["tx_hash"],
+    -                                   "cause": "final_balance", "metadata_final": res["final_metadata"],
+    -                                   "model": res["final_model"]})
+331 +         res["mismatches"].append(
+332 +             {
+333 +                 "ledger": int(deltas[-1]["ledger_index"]),
+334 +                 "tx": deltas[-1]["tx_hash"],
+335 +                 "cause": "final_balance",
+336 +                 "metadata_final": res["final_metadata"],
+337 +                 "model": res["final_model"],
+338 +             }
+339 +         )
+340 |     return res
+--------------------------------------------------------------------------------
+344 |     ct_by_ledger = {int(r["ledger_index"]): int(r["close_time"]) for r in ledgers}
+    -     recipients = sorted({p["destination"] for p in pays
+    -                          if p["account"] == payer and p["destination"] != payer})
+345 +     recipients = sorted(
+346 +         {p["destination"] for p in pays if p["account"] == payer and p["destination"] != payer}
+347 +     )
+348 |     pay_by_hash = {p["tx_hash"]: p for p in pays}
+--------------------------------------------------------------------------------
+354 |             by_acct[d["account"]].append(dict(d, close_time=ct_by_ledger.get(int(d["ledger_index"]), 0)))
+    -     out = {"payer": truncate(payer), "recipients": len(recipients),
+    -            "opening_missing": sorted(truncate(a) for a in recipients if a not in opening)}
+355 +     out = {
+356 +         "payer": truncate(payer),
+357 +         "recipients": len(recipients),
+358 +         "opening_missing": sorted(truncate(a) for a in recipients if a not in opening),
+359 +     }
+360 |     rset = set(recipients)
+--------------------------------------------------------------------------------
+371 |             mism += [dict(m, account=truncate(a)) for m in r["mismatches"]]
+    -             per.append({"account": truncate(a), "received": r["received"], "onward": r["onward"],
+    -                         "fee": r["fee"], "other": r["other"], "retained": r["retained"],
+    -                         "destinations": len(r["to"])})
+372 +             per.append(
+373 +                 {
+374 +                     "account": truncate(a),
+375 +                     "received": r["received"],
+376 +                     "onward": r["onward"],
+377 +                     "fee": r["fee"],
+378 +                     "other": r["other"],
+379 +                     "retained": r["retained"],
+380 +                     "destinations": len(r["to"]),
+381 +                 }
+382 +             )
+383 |         rec = agg["received"] or 1
+--------------------------------------------------------------------------------
+391 |             "hold_median_s": weighted_median(holds),
+    -             "top_destinations": [{"account": truncate(d), "drops": v, "is_payer": d == payer,
+    -                                   "is_recipient": d in rset} for d, v in dests[:top_n]],
+392 +             "top_destinations": [
+393 +                 {"account": truncate(d), "drops": v, "is_payer": d == payer, "is_recipient": d in rset}
+394 +                 for d, v in dests[:top_n]
+395 +             ],
+396 |             "top_recipients": sorted(per, key=lambda x: (-x["received"], x["account"]))[:top_n],
+--------------------------------------------------------------------------------
+417 |     def row(a, v):
+    -         return {"account": truncate(a), "net_drops": v, "received": recv.get(a, 0), "sent": sent.get(a, 0),
+    -                 "fees": fees.get(a, 0)}
+418 +         return {
+419 +             "account": truncate(a),
+420 +             "net_drops": v,
+421 +             "received": recv.get(a, 0),
+422 +             "sent": sent.get(a, 0),
+423 +             "fees": fees.get(a, 0),
+424 +         }
+425 |
+--------------------------------------------------------------------------------
+439 |         "totals": {
+    -             "tx": len(txs), "ledger_txn_count": sum(int(r["txn_count"]) for r in ledgers),
+    -             "payments": len(pays), "counted": len(ok),
+440 +             "tx": len(txs),
+441 +             "ledger_txn_count": sum(int(r["txn_count"]) for r in ledgers),
+442 +             "payments": len(pays),
+443 +             "counted": len(ok),
+444 |             "failed": sum(1 for p in pays if p["result"] != "tesSUCCESS"),
+445 |             "non_native": sum(1 for p in pays if p["result"] == "tesSUCCESS" and p["kind"] != "native"),
+    -             "zero_delivered": sum(1 for p in pays if p["result"] == "tesSUCCESS" and p["kind"] == "native"
+    -                                   and int(p["delivered_drops"] or 0) == 0),
+446 +             "zero_delivered": sum(
+447 +                 1
+448 +                 for p in pays
+449 +                 if p["result"] == "tesSUCCESS"
+450 +                 and p["kind"] == "native"
+451 +                 and int(p["delivered_drops"] or 0) == 0
+452 +             ),
+453 |             "partial": sum(1 for p in ok if p["partial"] == "y"),
+    -             "volume_drops": total, "fee_drops": sum(fees.values()),
+454 +             "volume_drops": total,
+455 +             "fee_drops": sum(fees.values()),
+456 |             "payment_fee_drops": sum(int(p["fee_drops"]) for p in pays),
+457 |         },
+458 |         "graph": graph(ok),
+459 |         "concentration": {"sent": concentration(sent), "received": concentration(recv)},
+    -         "net": {"sum_drops": sum(net.values()), "gainers": [row(a, v) for a, v in ranked[:top_n] if v > 0],
+    -                 "losers": [row(a, v) for a, v in reversed(ranked[-top_n:]) if v < 0]},
+    -         "top_senders": [{"account": truncate(a), "drops": v} for a, v in
+    -                         sorted(sent.items(), key=lambda kv: (-kv[1], kv[0]))[:top_n]],
+    -         "top_receivers": [{"account": truncate(a), "drops": v} for a, v in
+    -                           sorted(recv.items(), key=lambda kv: (-kv[1], kv[0]))[:top_n]],
+460 +         "net": {
+461 +             "sum_drops": sum(net.values()),
+462 +             "gainers": [row(a, v) for a, v in ranked[:top_n] if v > 0],
+463 +             "losers": [row(a, v) for a, v in reversed(ranked[-top_n:]) if v < 0],
+464 +         },
+465 +         "top_senders": [
+466 +             {"account": truncate(a), "drops": v}
+467 +             for a, v in sorted(sent.items(), key=lambda kv: (-kv[1], kv[0]))[:top_n]
+468 +         ],
+469 +         "top_receivers": [
+470 +             {"account": truncate(a), "drops": v}
+471 +             for a, v in sorted(recv.items(), key=lambda kv: (-kv[1], kv[0]))[:top_n]
+472 +         ],
+473 |         "hourly": [{"hour": h, "payments": hourly[h][0], "drops": hourly[h][1]} for h in sorted(hourly)],
+    -         "payer": {"account": truncate(payer), "payments": len(payer_out),
+    -                   "drops": sum(int(p["delivered_drops"]) for p in payer_out),
+    -                   "share_of_volume": round(sum(int(p["delivered_drops"]) for p in payer_out) / total, 6)
+    -                   if total else 0.0},
+474 +         "payer": {
+475 +             "account": truncate(payer),
+476 +             "payments": len(payer_out),
+477 +             "drops": sum(int(p["delivered_drops"]) for p in payer_out),
+478 +             "share_of_volume": round(sum(int(p["delivered_drops"]) for p in payer_out) / total, 6)
+479 +             if total
+480 +             else 0.0,
+481 +         },
+482 |         "onward": onward(ok, deltas, txs, ledgers, payer, opening or {}, top_n),
+--------------------------------------------------------------------------------
+488 |     import matplotlib
+489 +
+490 |     matplotlib.use("Agg")
+--------------------------------------------------------------------------------
+519 |     ax.set_title("Fate of reward-payer PFT by end of window (FIFO lots)")
+    -     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=len(SINK_LABELS), fontsize=8,
+    -               frameon=False)
+520 +     ax.legend(
+521 +         loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=len(SINK_LABELS), fontsize=8, frameon=False
+522 +     )
+523 |     fig.tight_layout()
+--------------------------------------------------------------------------------
+549 |         "",
+    -         "| metric | value |", "|---|---:|",
+550 +         "| metric | value |",
+551 +         "|---|---:|",
+552 |         f"| transactions (tx.csv rows / ledger txn_count sum) | {tot['tx']} / {tot['ledger_txn_count']} |",
+--------------------------------------------------------------------------------
+564 |         "",
+    -         "| metric | value |", "|---|---:|",
+565 +         "| metric | value |",
+566 +         "|---|---:|",
+567 |         f"| accounts (senders / receivers) | {g['accounts']} ({g['senders']} / {g['receivers']}) |",
+--------------------------------------------------------------------------------
+578 |         "",
+    -         "| from | to | payments | PFT |", "|---|---|---:|---:|",
+579 +         "| from | to | payments | PFT |",
+580 +         "|---|---|---:|---:|",
+581 |     ]
+582 |     L += [f"| `{e['from']}` | `{e['to']}` | {e['payments']} | {pft(e['drops'])} |" for e in g["top_edges"]]
+    -     L += ["", "## Concentration", "", "| side | accounts | Gini | top-1 | top-10 | HHI | accounts for 50 % |",
+    -           "|---|---:|---:|---:|---:|---:|---:|"]
+583 +     L += [
+584 +         "",
+585 +         "## Concentration",
+586 +         "",
+587 +         "| side | accounts | Gini | top-1 | top-10 | HHI | accounts for 50 % |",
+588 +         "|---|---:|---:|---:|---:|---:|---:|",
+589 +     ]
+590 |     for side, c in res["concentration"].items():
+    -         L.append(f"| {side} | {c['accounts']} | {c['gini']:.4f} | {pct(c['top1_share'])} | "
+    -                  f"{pct(c['top10_share'])} | {c['hhi']:.4f} | {c['accounts_for_half']} |")
+    -     L += ["", "## Net flows (received - sent, delivered PFT)", "",
+    -           f"Sum over all accounts: {res['net']['sum_drops']} drops (0 by construction).", "",
+    -           "| account | net PFT | received | sent | fees |", "|---|---:|---:|---:|---:|"]
+591 +         L.append(
+592 +             f"| {side} | {c['accounts']} | {c['gini']:.4f} | {pct(c['top1_share'])} | "
+593 +             f"{pct(c['top10_share'])} | {c['hhi']:.4f} | {c['accounts_for_half']} |"
+594 +         )
+595 +     L += [
+596 +         "",
+597 +         "## Net flows (received - sent, delivered PFT)",
+598 +         "",
+599 +         f"Sum over all accounts: {res['net']['sum_drops']} drops (0 by construction).",
+600 +         "",
+601 +         "| account | net PFT | received | sent | fees |",
+602 +         "|---|---:|---:|---:|---:|",
+603 +     ]
+604 |     for r in res["net"]["gainers"] + res["net"]["losers"]:
+    -         L.append(f"| `{r['account']}` | {pft(r['net_drops'])} | {pft(r['received'])} | {pft(r['sent'])} | "
+    -                  f"{pft(r['fees'])} |")
+    -     L += ["", "## Reward-payer onward flows", "",
+    -           f"{on['recipients']} accounts received PFT from {on['payer']}. "
+    -           "Each recipient's balance is replayed from its snapshot balance through every metadata "
+    -           "balance change; reward receipts are FIFO lots. "
+    -           "`reward_first` spends lots before other balance (upper bound of onward flow), `balance_first` "
+    -           "spends them last (lower bound).", "",
+    -           "| policy | received | onward | fees | other | retained | to payer | to other recipients | "
+    -           "destinations | median hold | mismatches |",
+    -           "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
+605 +         L.append(
+606 +             f"| `{r['account']}` | {pft(r['net_drops'])} | {pft(r['received'])} | {pft(r['sent'])} | "
+607 +             f"{pft(r['fees'])} |"
+608 +         )
+609 +     L += [
+610 +         "",
+611 +         "## Reward-payer onward flows",
+612 +         "",
+613 +         f"{on['recipients']} accounts received PFT from {on['payer']}. "
+614 +         "Each recipient's balance is replayed from its snapshot balance through every metadata "
+615 +         "balance change; reward receipts are FIFO lots. "
+616 +         "`reward_first` spends lots before other balance (upper bound of onward flow), `balance_first` "
+617 +         "spends them last (lower bound).",
+618 +         "",
+619 +         "| policy | received | onward | fees | other | retained | to payer | to other recipients | "
+620 +         "destinations | median hold | mismatches |",
+621 +         "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+622 +     ]
+623 |     for pol in POLICIES:
+624 |         o = on[pol]
+625 |         hold = "-" if o["hold_median_s"] is None else f"{o['hold_median_s'] / 60:.1f} min"
+    -         L.append(f"| {pol} | {pft(o['received'])} | {pft(o['onward'])} ({pct(o['shares']['onward'])}) | "
+    -                  f"{pft(o['fee'])} | {pft(o['other'])} | "
+    -                  f"{pft(o['retained'])} ({pct(o['shares']['retained'])}) | "
+    -                  f"{pft(o['onward_to_payer'])} | {pft(o['onward_to_other_recipients'])} | "
+    -                  f"{o['onward_destinations']} | {hold} | {len(o['mismatches'])} |")
+    -     L += ["", "Top onward destinations (reward_first):", "", "| account | PFT | payer | recipient |",
+    -           "|---|---:|---|---|"]
+    -     L += [f"| `{d['account']}` | {pft(d['drops'])} | {'yes' if d['is_payer'] else ''} | "
+    -           f"{'yes' if d['is_recipient'] else ''} |" for d in on["reward_first"]["top_destinations"]]
+626 +         L.append(
+627 +             f"| {pol} | {pft(o['received'])} | {pft(o['onward'])} ({pct(o['shares']['onward'])}) | "
+628 +             f"{pft(o['fee'])} | {pft(o['other'])} | "
+629 +             f"{pft(o['retained'])} ({pct(o['shares']['retained'])}) | "
+630 +             f"{pft(o['onward_to_payer'])} | {pft(o['onward_to_other_recipients'])} | "
+631 +             f"{o['onward_destinations']} | {hold} | {len(o['mismatches'])} |"
+632 +         )
+633 +     L += [
+634 +         "",
+635 +         "Top onward destinations (reward_first):",
+636 +         "",
+637 +         "| account | PFT | payer | recipient |",
+638 +         "|---|---:|---|---|",
+639 +     ]
+640 +     L += [
+641 +         f"| `{d['account']}` | {pft(d['drops'])} | {'yes' if d['is_payer'] else ''} | "
+642 +         f"{'yes' if d['is_recipient'] else ''} |"
+643 +         for d in on["reward_first"]["top_destinations"]
+644 +     ]
+645 |     if on["opening_missing"]:
+    -         L += ["", f"Recipients absent from the start snapshot (opening balance 0, created in window): "
+    -                   f"{len(on['opening_missing'])}."]
+646 +         L += [
+647 +             "",
+648 +             f"Recipients absent from the start snapshot (opening balance 0, created in window): "
+649 +             f"{len(on['opening_missing'])}.",
+650 +         ]
+651 |     if chart_files:
+--------------------------------------------------------------------------------
+658 |     p.add_argument("--data", default="data/payflow/tx")
+    -     p.add_argument("--snapshot", required=True,
+    -                    help="start-state snapshot-<ledger>.jsonl.gz (ledger = first collected - 1)")
+659 +     p.add_argument(
+660 +         "--snapshot",
+661 +         required=True,
+662 +         help="start-state snapshot-<ledger>.jsonl.gz (ledger = first collected - 1)",
+663 +     )
+664 |     p.add_argument("--payer", default=PAYER)
+--------------------------------------------------------------------------------
+669 |     a = p.parse_args(argv)
+    -     rd = {n: read_csv(os.path.join(a.data, f"{n}.csv"))
+    -           for n in ("tx", "payments", "deltas", "ledgers", "gaps")}
+670 +     rd = {
+671 +         n: read_csv(os.path.join(a.data, f"{n}.csv")) for n in ("tx", "payments", "deltas", "ledgers", "gaps")
+672 +     }
+673 |     recipients = {r["destination"] for r in rd["payments"] if r["account"] == a.payer}
+--------------------------------------------------------------------------------
+677 |     snap_ok = cov["first"] is None or header.get("ledger_index") == cov["first"] - 1
+    -     res["snapshot"] = {"ledger_index": header.get("ledger_index"), "ledger_hash": header.get("ledger_hash"),
+    -                        "adjacent": snap_ok}
+678 +     res["snapshot"] = {
+679 +         "ledger_index": header.get("ledger_index"),
+680 +         "ledger_hash": header.get("ledger_hash"),
+681 +         "adjacent": snap_ok,
+682 +     }
+683 |     chart_files = []
+--------------------------------------------------------------------------------
+696 |     g, on = res["graph"], res["onward"]
+    -     print(f"coverage ledgers {cov['first']}-{cov['last']} fetched={cov['fetched']} gaps={cov['gaps']} "
+    -           f"holes={len(cov['holes'])} duplicates={cov['duplicates']}; snapshot {header.get('ledger_index')} "
+    -           f"adjacent={snap_ok}")
+    -     print(f"payments={tot['payments']} counted={tot['counted']} failed={tot['failed']} "
+    -           f"volume={tot['volume_drops']} drops fees={tot['fee_drops']} drops")
+    -     print(f"graph accounts={g['accounts']} edges={g['edges']} reciprocal={g['reciprocal_pairs']} "
+    -           f"components={g['components']} largest={g['largest_component']}")
+697 +     print(
+698 +         f"coverage ledgers {cov['first']}-{cov['last']} fetched={cov['fetched']} gaps={cov['gaps']} "
+699 +         f"holes={len(cov['holes'])} duplicates={cov['duplicates']}; snapshot {header.get('ledger_index')} "
+700 +         f"adjacent={snap_ok}"
+701 +     )
+702 +     print(
+703 +         f"payments={tot['payments']} counted={tot['counted']} failed={tot['failed']} "
+704 +         f"volume={tot['volume_drops']} drops fees={tot['fee_drops']} drops"
+705 +     )
+706 +     print(
+707 +         f"graph accounts={g['accounts']} edges={g['edges']} reciprocal={g['reciprocal_pairs']} "
+708 +         f"components={g['components']} largest={g['largest_component']}"
+709 +     )
+710 |     for side, c in res["concentration"].items():
+    -         print(f"concentration {side}: gini={c['gini']} top1={c['top1_share']} top10={c['top10_share']} "
+    -               f"hhi={c['hhi']} half={c['accounts_for_half']}")
+711 +         print(
+712 +             f"concentration {side}: gini={c['gini']} top1={c['top1_share']} top10={c['top10_share']} "
+713 +             f"hhi={c['hhi']} half={c['accounts_for_half']}"
+714 +         )
+715 |     print(f"net sum={res['net']['sum_drops']}")
+--------------------------------------------------------------------------------
+719 |         bad += len(o["mismatches"]) + (not o["conserved"])
+    -         print(f"onward {pol}: recipients={on['recipients']} received={o['received']} onward={o['onward']} "
+    -               f"fee={o['fee']} other={o['other']} retained={o['retained']} conserved={o['conserved']} "
+    -               f"mismatches={len(o['mismatches'])}")
+720 +         print(
+721 +             f"onward {pol}: recipients={on['recipients']} received={o['received']} onward={o['onward']} "
+722 +             f"fee={o['fee']} other={o['other']} retained={o['retained']} conserved={o['conserved']} "
+723 +             f"mismatches={len(o['mismatches'])}"
+724 +         )
+725 |         for m in o["mismatches"]:
+    |
+
+unformatted: File would be reformatted
+   --> tests/test_payflow_analyze.py:28:29
+    |
+27  |     def _ledger(self, ntx):
+    -         self.ledgers.append({"ledger_index": str(self.li), "close_time": str(CT0 + (self.li - 1000) * 60),
+    -                              "txn_count": str(ntx)})
+28  +         self.ledgers.append(
+29  +             {
+30  +                 "ledger_index": str(self.li),
+31  +                 "close_time": str(CT0 + (self.li - 1000) * 60),
+32  +                 "txn_count": str(ntx),
+33  +             }
+34  +         )
+35  |
+36  |     def _delta(self, h, acct, d):
+37  |         prev = self.bal.get(acct, 0)
+38  |         self.bal[acct] = prev + d
+    -         self.deltas.append({"ledger_index": str(self.li), "tx_index": "0", "tx_hash": h, "account": acct,
+    -                             "node": "Modified", "prev_drops": str(prev), "final_drops": str(prev + d),
+    -                             "delta_drops": str(d)})
+39  +         self.deltas.append(
+40  +             {
+41  +                 "ledger_index": str(self.li),
+42  +                 "tx_index": "0",
+43  +                 "tx_hash": h,
+44  +                 "account": acct,
+45  +                 "node": "Modified",
+46  +                 "prev_drops": str(prev),
+47  +                 "final_drops": str(prev + d),
+48  +                 "delta_drops": str(d),
+49  +             }
+50  +         )
+51  |
+--------------------------------------------------------------------------------
+55  |         ok = res == "tesSUCCESS"
+    -         self.txs.append({"ledger_index": str(self.li), "tx_index": "0", "tx_hash": h, "account": src,
+    -                          "tx_type": "Payment", "result": res, "fee_drops": str(fee)})
+    -         self.pays.append({"ledger_index": str(self.li), "close_time": str(CT0 + (self.li - 1000) * 60),
+    -                           "tx_index": "0", "tx_hash": h, "account": src, "destination": dst, "result": res,
+    -                           "fee_drops": str(fee), "kind": kind,
+    -                           "delivered_drops": str(amt) if ok and kind == "native" else "", "partial": "n"})
+56  +         self.txs.append(
+57  +             {
+58  +                 "ledger_index": str(self.li),
+59  +                 "tx_index": "0",
+60  +                 "tx_hash": h,
+61  +                 "account": src,
+62  +                 "tx_type": "Payment",
+63  +                 "result": res,
+64  +                 "fee_drops": str(fee),
+65  +             }
+66  +         )
+67  +         self.pays.append(
+68  +             {
+69  +                 "ledger_index": str(self.li),
+70  +                 "close_time": str(CT0 + (self.li - 1000) * 60),
+71  +                 "tx_index": "0",
+72  +                 "tx_hash": h,
+73  +                 "account": src,
+74  +                 "destination": dst,
+75  +                 "result": res,
+76  +                 "fee_drops": str(fee),
+77  +                 "kind": kind,
+78  +                 "delivered_drops": str(amt) if ok and kind == "native" else "",
+79  +                 "partial": "n",
+80  +             }
+81  +         )
+82  |         moved = amt if ok and kind == "native" else 0
+--------------------------------------------------------------------------------
+91  |         h = f"H{self.li}"
+    -         self.txs.append({"ledger_index": str(self.li), "tx_index": "0", "tx_hash": h, "account": acct,
+    -                          "tx_type": tx_type, "result": "tesSUCCESS", "fee_drops": str(fee)})
+92  +         self.txs.append(
+93  +             {
+94  +                 "ledger_index": str(self.li),
+95  +                 "tx_index": "0",
+96  +                 "tx_hash": h,
+97  +                 "account": acct,
+98  +                 "tx_type": tx_type,
+99  +                 "result": "tesSUCCESS",
+100 +                 "fee_drops": str(fee),
+101 +             }
+102 +         )
+103 |         self._delta(h, acct, d - fee)
+--------------------------------------------------------------------------------
+223 |     assert r["concentration"]["sent"]["accounts"] == 2
+    -     assert r["concentration"]["received"] == {"accounts": 1, "total_drops": 100, "gini": 0.0,
+    -                                               "top1_share": 1.0, "top10_share": 1.0, "hhi": 1.0,
+    -                                               "accounts_for_half": 1}
+224 +     assert r["concentration"]["received"] == {
+225 +         "accounts": 1,
+226 +         "total_drops": 100,
+227 +         "gini": 0.0,
+228 +         "top1_share": 1.0,
+229 +         "top10_share": 1.0,
+230 +         "hhi": 1.0,
+231 +         "accounts_for_half": 1,
+232 +     }
+233 |     assert r["net"]["sum_drops"] == 0
+--------------------------------------------------------------------------------
+271 |     out = tmp_path / "report"
+    -     rc = ap.main(["--data", str(data), "--snapshot", str(snap), "--payer", PAYER, "--json",
+    -                   str(tmp_path / "p.json"), "--out-dir", str(out), "--no-charts"])
+272 +     rc = ap.main(
+273 +         [
+274 +             "--data",
+275 +             str(data),
+276 +             "--snapshot",
+277 +             str(snap),
+278 +             "--payer",
+279 +             PAYER,
+280 +             "--json",
+281 +             str(tmp_path / "p.json"),
+282 +             "--out-dir",
+283 +             str(out),
+284 +             "--no-charts",
+285 +         ]
+286 +     )
+287 |     assert rc == 0
+--------------------------------------------------------------------------------
+341 | def _row(li, h, prev, delta, final=None):
+    -     return {"ledger_index": str(li), "tx_index": "0", "tx_hash": h, "close_time": str(CT0 + li),
+    -             "prev_drops": str(prev), "delta_drops": str(delta),
+    -             "final_drops": str(prev + delta if final is None else final)}
+342 +     return {
+343 +         "ledger_index": str(li),
+344 +         "tx_index": "0",
+345 +         "tx_hash": h,
+346 +         "close_time": str(CT0 + li),
+347 +         "prev_drops": str(prev),
+348 +         "delta_drops": str(delta),
+349 +         "final_drops": str(prev + delta if final is None else final),
+350 +     }
+351 |
+352 |
+353 | def test_reward_lot_capped_at_balance_delta():
+    -     p = {"account": PAYER, "destination": R1, "result": "tesSUCCESS", "kind": "native",
+    -          "delivered_drops": "1000"}
+354 +     p = {
+355 +         "account": PAYER,
+356 +         "destination": R1,
+357 +         "result": "tesSUCCESS",
+358 +         "kind": "native",
+359 +         "delivered_drops": "1000",
+360 +     }
+361 |     r = ap.onward_model(R1, 0, [_row(1, "H1", 0, 600)], {"H1": p}, {}, PAYER, "reward_first")
+    |
+
+unformatted: File would be reformatted
+   --> tests/test_payflow_collect.py:286:10
+    |
+285 |     nodes = [
+    -         {"ModifiedNode": {"LedgerEntryType": "RippleState",
+    -                           "FinalFields": {"Balance": {"currency": "USD", "issuer": "rI", "value": "1"}},
+    -                           "PreviousFields": {"Balance": {"currency": "USD", "issuer": "rI", "value": "2"}}}},
+286 +         {
+287 +             "ModifiedNode": {
+288 +                 "LedgerEntryType": "RippleState",
+289 +                 "FinalFields": {"Balance": {"currency": "USD", "issuer": "rI", "value": "1"}},
+290 +                 "PreviousFields": {"Balance": {"currency": "USD", "issuer": "rI", "value": "2"}},
+291 +             }
+292 +         },
+293 |         {"ModifiedNode": {"LedgerEntryType": "DirectoryNode", "FinalFields": {"Owner": "rA"}}},
+    |
+
+3 files would be reformatted, 7 files already formatted
+(exit 1)
+$ shellcheck payflow/resume_drill_payflow.sh
+(exit 0)
+end 2026-11-03T01:10:36Z

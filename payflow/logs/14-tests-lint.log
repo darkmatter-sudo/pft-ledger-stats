@@ -1,0 +1,172 @@
+# payflow test suite + lint at the final code, venv python (recorded run 14; supersedes 13)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T01:14:46Z | repo HEAD b7254544f8196081e8a1f0084269289b24803b43
+$ sha256sum payflow/*.py payflow/*.sh
+a24abd71ae49e9678edd5ef854a02c8d005ba088490aff3c9e25736a3436c0fb  payflow/analyze_payflow.py
+ac1bb950b718e38b80905cf6f1258a8dba60c7e104f11af79a009698f7734195  payflow/collect_payflow.py
+a55116a2438c9d09ea6f85845348b1265590cb0479e7145bb9fcd4d703717737  payflow/crosscheck_payflow.py
+1dd672c4e9a52d4f2578c1fec73405fe45932151b8a2427aa8dc2e17acd10b5a  payflow/mutants_payflow.py
+554c33897b2cb99971e366359041c5de0ddbe9c21b723cfa9812d39aa447be9a  payflow/reconcile_payflow.py
+d5601fd2e5f20e35e97b5f4e9a97ab826255958ec2f19db2eff67d74725b2c8e  payflow/resume_drill_payflow.sh
+(exit 0)
+$ nice -n 15 timeout 600 .venv/bin/python -m pytest -q -rA -p no:cacheprovider --basetemp=$TMPDIR/pt14 tests/test_payflow_collect.py tests/test_payflow_analyze.py tests/test_payflow_reconcile.py tests/test_payflow_crosscheck.py
+..........................................................               [100%]
+==================================== PASSES ====================================
+____________________ test_full_run_retries_gaps_and_counts _____________________
+----------------------------- Captured stdout call -----------------------------
+2026-11-03T01:14:46Z node: build x state full complete_ledgers 100-110
+2026-11-03T01:14:46Z WINDOW START 2026-11-03T01:14:46Z -> 2026-11-04T01:14:46Z at ledger 100, stop_at 110, rate <= 1.0 req/s
+2026-11-03T01:14:46Z WARN ledger 104 attempt 1/3: RuntimeError: boom
+2026-11-03T01:14:46Z WARN ledger 104 attempt 2/3: RuntimeError: boom
+2026-11-03T01:14:46Z STOP (stop_at reached) requests this run=14
+2026-11-03T01:14:46Z SUMMARY window 2026-11-03T01:14:46Z -> 2026-11-04T01:14:46Z ledgers 100-110 ledgers=11 tx=18 payments=12 deltas=30 gaps=0 retries=2 restarts=1
+2026-11-03T01:14:46Z node: build x state full complete_ledgers 100-106
+2026-11-03T01:14:46Z WINDOW START 2026-11-03T01:14:46Z -> 2026-11-04T01:14:46Z at ledger 100, stop_at 106, rate <= 1.0 req/s
+2026-11-03T01:14:46Z WARN ledger 103 attempt 1/3: RuntimeError: boom
+2026-11-03T01:14:46Z WARN ledger 103 attempt 2/3: RuntimeError: boom
+2026-11-03T01:14:46Z WARN ledger 103 attempt 3/3: RuntimeError: boom
+2026-11-03T01:14:46Z GAP ledger 103: RuntimeError: boom
+2026-11-03T01:14:46Z STOP (stop_at reached) requests this run=10
+2026-11-03T01:14:46Z SUMMARY window 2026-11-03T01:14:46Z -> 2026-11-04T01:14:46Z ledgers 100-106 ledgers=6 tx=10 payments=6 deltas=16 gaps=1 retries=3 restarts=1
+_______ test_resume_after_kill_with_orphans_in_every_file_and_torn_line ________
+----------------------------- Captured stdout call -----------------------------
+2026-11-03T01:14:46Z node: build x state full complete_ledgers 100-115
+2026-11-03T01:14:46Z WINDOW START 2026-11-03T01:14:46Z -> 2026-11-04T01:14:46Z at ledger 100, stop_at 115, rate <= 1.0 req/s
+2026-11-03T01:14:46Z node: build x state full complete_ledgers 100-115
+2026-11-03T01:14:46Z RESUME dropped torn last line of ledgers.csv (13 bytes)
+2026-11-03T01:14:46Z RESUME dropped 1 tx.csv rows after ledger 107 (no ledgers.csv row)
+2026-11-03T01:14:46Z RESUME dropped 1 deltas.csv rows after ledger 107 (no ledgers.csv row)
+2026-11-03T01:14:46Z RESUME at ledger 108 (window 2026-11-03T01:14:46Z -> 2026-11-04T01:14:46Z, start seq 100, behind by 8)
+2026-11-03T01:14:46Z STOP (stop_at reached) requests this run=9
+2026-11-03T01:14:46Z SUMMARY window 2026-11-03T01:14:46Z -> 2026-11-04T01:14:46Z ledgers 100-115 ledgers=16 tx=24 payments=16 deltas=40 gaps=0 retries=0 restarts=2
+_____________________ test_window_end_enforced_client_side _____________________
+----------------------------- Captured stdout call -----------------------------
+2026-11-03T01:14:46Z node: build x state full complete_ledgers 100-120
+2026-11-03T01:14:46Z WINDOW START 2026-11-03T01:14:46Z -> 2025-10-28T20:53:40Z at ledger 100, stop_at 120, rate <= 1.0 req/s
+2026-11-03T01:14:46Z STOP (window end reached (ledger 106 closed 2025-10-28T20:53:44Z, not written)) requests this run=8
+2026-11-03T01:14:46Z SUMMARY window 2026-11-03T01:14:46Z -> 2025-10-28T20:53:40Z ledgers 100-105 ledgers=6 tx=9 payments=6 deltas=15 gaps=0 retries=0 restarts=1
+________________________________ test_rate_cap _________________________________
+----------------------------- Captured stderr call -----------------------------
+usage: __main__.py [-h] [--out OUT] [--log LOG] [--container CONTAINER]
+                   [--port PORT] [--rate RATE] [--hours HOURS] [--start START]
+                   [--stop-at STOP_AT] [--retries RETRIES] [--no-sudo]
+__main__.py: error: --rate above 1 req/s is not allowed
+_____________________________ test_charts_written ______________________________
+----------------------------- Captured stdout call -----------------------------
+coverage ledgers 1001-1004 fetched=4 gaps=0 holes=0 duplicates=0; snapshot 1000 adjacent=True
+payments=3 counted=3 failed=0 volume=270 drops fees=30 drops
+graph accounts=3 edges=2 reciprocal=0 components=1 largest=3
+concentration sent: gini=0.055556 top1=0.555556 top10=1.0 hhi=0.506173 half=1
+concentration received: gini=0.055556 top1=0.555556 top10=1.0 hhi=0.506173 half=1
+net sum=0
+onward reward_first: recipients=1 received=150 onward=120 fee=10 other=0 retained=20 conserved=True mismatches=0
+onward balance_first: recipients=1 received=150 onward=90 fee=10 other=0 retained=50 conserved=True mismatches=0
+_____________________________ test_main_end_to_end _____________________________
+----------------------------- Captured stdout call -----------------------------
+OK       C1 snapshots A=100 B=105 collection=101..105
+OK       C1 holes=0 first=[]
+OK       C1 duplicate_ledgers=0
+OK       C1 gaps=0
+OK       C1 ledgers_with_tx_rows_ne_txn_count=0 tx_rows=5
+MISMATCH C2 burned=50 fees=55 txs=5 cause=burn_ne_fees
+OK       C3 escrow+paychannel A=0 B=0 change=0 from_holder_txs=0 holder_txs=0
+MISMATCH C4 rAAAAA...AAAA A=1000000000 +deltas=-21000020 B=978999981 cause=account_balance
+MISMATCH C4 accounts=4 in_A=3 in_B=4 with_deltas=4 balance_mismatches=1 cause=account_balance
+OK       C5 chains=4 delta_rows=8 breaks=0
+MISMATCH C6 000000000000 Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 000000000000 Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 000000000000 Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 000000000000 Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 000000000000 Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 txs=5 not_conserved=5 cause=tx_value_not_conserved
+MISMATCH C7 000000000000 dest_delta=1000000 delivered=1000001 cause=dest_delta
+MISMATCH C7 000000000000 sender_delta=-1000010 -(delivered+fee)=-1000011 cause=sender_delta
+MISMATCH C7 000000000000 dest_delta=2500000 delivered=2500001 cause=dest_delta
+MISMATCH C7 000000000000 sender_delta=-2500010 -(delivered+fee)=-2500011 cause=sender_delta
+MISMATCH C7 000000000000 dest_delta=20000000 delivered=20000001 cause=dest_delta
+MISMATCH C7 000000000000 sender_delta=-20000010 -(delivered+fee)=-20000011 cause=sender_delta
+MISMATCH C7 payments_checked=3 path_payments=0 mismatches=6 cause=payment_delta
+SUMMARY ok=7 mismatch=16 causes={'account_balance': 2, 'burn_ne_fees': 1, 'dest_delta': 3, 'payment_delta': 1, 'sender_delta': 3, 'tx_value_not_conserved': 6} negative=True accounts=4 fees=55 burned=50
+INPUT ERROR ~/.cache/pftmp/pt14/test_main_end_to_end1/bad.jsonl.gz: header is not JSON (Expecting value: line 1 column 1 (char 0))
+_________ test_retry_counted_not_mismatch_and_persisting_error_raises __________
+----------------------------- Captured stdout call -----------------------------
+2026-11-03T01:14:47Z RETRY tx attempt 1/6 error=slowDown backoff=2.0s
+2026-11-03T01:14:47Z RETRY tx attempt 2/6 error=slowDown backoff=4.0s
+2026-11-03T01:14:47Z RETRY tx attempt 1/3 error=lgrNotFound backoff=2.0s
+2026-11-03T01:14:47Z RETRY tx attempt 2/3 error=lgrNotFound backoff=4.0s
+=========================== short test summary info ============================
+PASSED tests/test_payflow_collect.py::test_payment_rows_use_delivered_amount_not_amount
+PASSED tests/test_payflow_collect.py::test_iou_mpt_and_failed_payments
+PASSED tests/test_payflow_collect.py::test_successful_payment_without_delivered_amount_is_an_error
+PASSED tests/test_payflow_collect.py::test_delta_nodes_created_deleted_unchanged
+PASSED tests/test_payflow_collect.py::test_meta_variant_missing_and_duplicate_index
+PASSED tests/test_payflow_collect.py::test_in_window_boundary
+PASSED tests/test_payflow_collect.py::test_full_run_retries_gaps_and_counts
+PASSED tests/test_payflow_collect.py::test_resume_after_kill_with_orphans_in_every_file_and_torn_line
+PASSED tests/test_payflow_collect.py::test_window_end_enforced_client_side
+PASSED tests/test_payflow_collect.py::test_rate_cap
+PASSED tests/test_payflow_collect.py::test_non_account_root_nodes_ignored
+PASSED tests/test_payflow_analyze.py::test_fifo_reward_first
+PASSED tests/test_payflow_analyze.py::test_fifo_balance_first
+PASSED tests/test_payflow_analyze.py::test_lower_bound_never_exceeds_upper
+PASSED tests/test_payflow_analyze.py::test_onward_to_payer_and_other_recipient
+PASSED tests/test_payflow_analyze.py::test_non_payment_outflow_is_other
+PASSED tests/test_payflow_analyze.py::test_prev_balance_mismatch_detected
+PASSED tests/test_payflow_analyze.py::test_missing_opening_balance_detected
+PASSED tests/test_payflow_analyze.py::test_failed_and_non_native_excluded
+PASSED tests/test_payflow_analyze.py::test_graph_metrics
+PASSED tests/test_payflow_analyze.py::test_concentration_and_net
+PASSED tests/test_payflow_analyze.py::test_coverage_hole_and_duplicate
+PASSED tests/test_payflow_analyze.py::test_main_end_to_end
+PASSED tests/test_payflow_analyze.py::test_main_wrong_opening_exits_1
+PASSED tests/test_payflow_analyze.py::test_main_non_adjacent_snapshot_exits_1
+PASSED tests/test_payflow_analyze.py::test_main_txn_count_mismatch_exits_1
+PASSED tests/test_payflow_analyze.py::test_charts_written
+PASSED tests/test_payflow_analyze.py::test_failed_row_with_amount_not_counted
+PASSED tests/test_payflow_analyze.py::test_accounts_for_half_boundary
+PASSED tests/test_payflow_analyze.py::test_reward_lot_capped_at_balance_delta
+PASSED tests/test_payflow_analyze.py::test_final_balance_break_detected
+PASSED tests/test_payflow_reconcile.py::test_clean_world_reconciles
+PASSED tests/test_payflow_reconcile.py::test_balance_off_by_one_drop
+PASSED tests/test_payflow_reconcile.py::test_created_account_absent_in_a
+PASSED tests/test_payflow_reconcile.py::test_deleted_account_absent_in_b
+PASSED tests/test_payflow_reconcile.py::test_chain_break_detected
+PASSED tests/test_payflow_reconcile.py::test_burn_ne_fees
+PASSED tests/test_payflow_reconcile.py::test_tx_value_not_conserved
+PASSED tests/test_payflow_reconcile.py::test_payment_dest_delta_ne_delivered
+PASSED tests/test_payflow_reconcile.py::test_path_payment_counted_not_checked
+PASSED tests/test_payflow_reconcile.py::test_non_adjacent_snapshot
+PASSED tests/test_payflow_reconcile.py::test_hole_gap_duplicate_txn_count
+PASSED tests/test_payflow_reconcile.py::test_escrow_holder_reconciles_and_missing_escrow_detected
+PASSED tests/test_payflow_reconcile.py::test_negative_control_mismatches_every_value_check
+PASSED tests/test_payflow_reconcile.py::test_main_end_to_end
+PASSED tests/test_payflow_crosscheck.py::test_clean_all_ok
+PASSED tests/test_payflow_crosscheck.py::test_sample_includes_failed_and_is_deterministic
+PASSED tests/test_payflow_crosscheck.py::test_tx_field_difference_is_mismatch[Fee-13]
+PASSED tests/test_payflow_crosscheck.py::test_tx_field_difference_is_mismatch[Destination-rSENDERxxxxxxxxxxxxxxxxxxxxxxxxxxx]
+PASSED tests/test_payflow_crosscheck.py::test_tx_field_difference_is_mismatch[ledger_index-1]
+PASSED tests/test_payflow_crosscheck.py::test_delivered_and_balance_and_validated_differences
+PASSED tests/test_payflow_crosscheck.py::test_ledger_hash_and_count_difference
+PASSED tests/test_payflow_crosscheck.py::test_api_v2_shape
+PASSED tests/test_payflow_crosscheck.py::test_deleted_node_change
+PASSED tests/test_payflow_crosscheck.py::test_negative_every_check_mismatches
+PASSED tests/test_payflow_crosscheck.py::test_retry_counted_not_mismatch_and_persisting_error_raises
+PASSED tests/test_payflow_crosscheck.py::test_offline_pass_and_tamper
+PASSED tests/test_payflow_crosscheck.py::test_negative_alters_delivered_on_every_payment
+58 passed in 1.44s
+(exit 0)
+$ nice -n 15 timeout 900 .venv/bin/python -m pytest -q -p no:cacheprovider --basetemp=$TMPDIR/pt14all
+........................................................................ [ 17%]
+........................................................................ [ 34%]
+........................................................................ [ 51%]
+........................................................................ [ 68%]
+........................................................................ [ 85%]
+...............................................................          [100%]
+423 passed in 17.33s
+(exit 0)
+$ ruff check . && ruff format --check payflow tests/test_payflow_*.py
+All checks passed!
+10 files already formatted
+(exit 0)
+$ shellcheck payflow/resume_drill_payflow.sh
+(exit 0)
+end 2026-11-03T01:15:06Z

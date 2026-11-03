@@ -1,0 +1,735 @@
+{
+ "concentration": {
+  "received": {
+   "accounts": 58,
+   "accounts_for_half": 14,
+   "gini": 0.44486,
+   "hhi": 0.033299,
+   "top10_share": 0.411809,
+   "top1_share": 0.101973,
+   "total_drops": 34322686397
+  },
+  "sent": {
+   "accounts": 46,
+   "accounts_for_half": 10,
+   "gini": 0.44911,
+   "hhi": 0.062496,
+   "top10_share": 0.501761,
+   "top1_share": 0.200327,
+   "total_drops": 34322686397
+  }
+ },
+ "coverage": {
+  "duplicates": 0,
+  "fetched": 28871,
+  "first": 7685510,
+  "gap_ledgers": [],
+  "gaps": 0,
+  "holes": [],
+  "last": 7714380
+ },
+ "graph": {
+  "accounts": 59,
+  "component_sizes_top5": [
+   45,
+   14
+  ],
+  "components": 2,
+  "density": 0.43103448,
+  "edges": 1475,
+  "in_degree_max": 42,
+  "in_degree_median": 33.5,
+  "intermediaries": 45,
+  "largest_component": 45,
+  "out_degree_max": 43,
+  "out_degree_median": 36.0,
+  "receivers": 58,
+  "reciprocal_pairs": 653,
+  "self_edges": 0,
+  "senders": 46,
+  "sinks": 13,
+  "sources": 1,
+  "top_edges": [
+   {
+    "drops": 3500000001,
+    "from": "rwdm72...SfH7",
+    "payments": 2,
+    "to": "rpHvzM...EKkA"
+   },
+   {
+    "drops": 2003750000,
+    "from": "rwdm72...SfH7",
+    "payments": 2,
+    "to": "rPo8Gk...HxNx"
+   },
+   {
+    "drops": 410653468,
+    "from": "rQED5S...1kcR",
+    "payments": 1,
+    "to": "r9k51c...UJGR"
+   },
+   {
+    "drops": 300000000,
+    "from": "r9k51c...UJGR",
+    "payments": 3,
+    "to": "rEr54V...5Sxf"
+   },
+   {
+    "drops": 299600000,
+    "from": "rwdm72...SfH7",
+    "payments": 12,
+    "to": "rKF7zT...bQSf"
+   },
+   {
+    "drops": 276144723,
+    "from": "rwAMci...E3TL",
+    "payments": 1,
+    "to": "r9k51c...UJGR"
+   },
+   {
+    "drops": 271425238,
+    "from": "rKzL1Q...mhVZ",
+    "payments": 1,
+    "to": "r9k51c...UJGR"
+   },
+   {
+    "drops": 255000000,
+    "from": "rwdm72...SfH7",
+    "payments": 2,
+    "to": "rHv6jS...ZJG3"
+   },
+   {
+    "drops": 240540015,
+    "from": "rBPvTt...DVbS",
+    "payments": 1,
+    "to": "r9k51c...UJGR"
+   },
+   {
+    "drops": 219500000,
+    "from": "rwdm72...SfH7",
+    "payments": 6,
+    "to": "r3F4NY...pXPc"
+   }
+  ]
+ },
+ "hourly": [
+  {
+   "drops": 4420214135,
+   "hour": 0,
+   "payments": 316
+  },
+  {
+   "drops": 1091852851,
+   "hour": 1,
+   "payments": 314
+  },
+  {
+   "drops": 1174990198,
+   "hour": 2,
+   "payments": 345
+  },
+  {
+   "drops": 917010479,
+   "hour": 3,
+   "payments": 317
+  },
+  {
+   "drops": 1268669259,
+   "hour": 4,
+   "payments": 311
+  },
+  {
+   "drops": 1151480413,
+   "hour": 5,
+   "payments": 282
+  },
+  {
+   "drops": 1374332354,
+   "hour": 6,
+   "payments": 371
+  },
+  {
+   "drops": 1036317593,
+   "hour": 7,
+   "payments": 353
+  },
+  {
+   "drops": 1058569562,
+   "hour": 8,
+   "payments": 325
+  },
+  {
+   "drops": 1019776148,
+   "hour": 9,
+   "payments": 345
+  },
+  {
+   "drops": 1270086034,
+   "hour": 10,
+   "payments": 338
+  },
+  {
+   "drops": 1088708361,
+   "hour": 11,
+   "payments": 365
+  },
+  {
+   "drops": 1179092911,
+   "hour": 12,
+   "payments": 322
+  },
+  {
+   "drops": 1273353407,
+   "hour": 13,
+   "payments": 281
+  },
+  {
+   "drops": 1111715158,
+   "hour": 14,
+   "payments": 362
+  },
+  {
+   "drops": 1249550880,
+   "hour": 15,
+   "payments": 338
+  },
+  {
+   "drops": 953647491,
+   "hour": 16,
+   "payments": 358
+  },
+  {
+   "drops": 942029009,
+   "hour": 17,
+   "payments": 302
+  },
+  {
+   "drops": 1053217650,
+   "hour": 18,
+   "payments": 348
+  },
+  {
+   "drops": 1157401305,
+   "hour": 19,
+   "payments": 312
+  },
+  {
+   "drops": 1541346089,
+   "hour": 20,
+   "payments": 300
+  },
+  {
+   "drops": 1109026884,
+   "hour": 21,
+   "payments": 295
+  },
+  {
+   "drops": 1255053234,
+   "hour": 22,
+   "payments": 316
+  },
+  {
+   "drops": 4402011859,
+   "hour": 23,
+   "payments": 341
+  },
+  {
+   "drops": 223233133,
+   "hour": 24,
+   "payments": 88
+  }
+ ],
+ "net": {
+  "gainers": [
+   {
+    "account": "rpHvzM...EKkA",
+    "fees": 0,
+    "net_drops": 3500000001,
+    "received": 3500000001,
+    "sent": 0
+   },
+   {
+    "account": "rPo8Gk...HxNx",
+    "fees": 0,
+    "net_drops": 2003750000,
+    "received": 2003750000,
+    "sent": 0
+   },
+   {
+    "account": "rKF7zT...bQSf",
+    "fees": 36,
+    "net_drops": 299600000,
+    "received": 299600000,
+    "sent": 0
+   },
+   {
+    "account": "rHv6jS...ZJG3",
+    "fees": 0,
+    "net_drops": 255000000,
+    "received": 255000000,
+    "sent": 0
+   },
+   {
+    "account": "rHcXeT...8EJw",
+    "fees": 1400,
+    "net_drops": 254797393,
+    "received": 497218997,
+    "sent": 242421604
+   },
+   {
+    "account": "r3F4NY...pXPc",
+    "fees": 0,
+    "net_drops": 219500000,
+    "received": 219500000,
+    "sent": 0
+   },
+   {
+    "account": "rPExxz...snSk",
+    "fees": 0,
+    "net_drops": 203000000,
+    "received": 203000000,
+    "sent": 0
+   },
+   {
+    "account": "rpgHto...X1qE",
+    "fees": 2230,
+    "net_drops": 200397363,
+    "received": 599055764,
+    "sent": 398658401
+   },
+   {
+    "account": "rMKRnK...YbZ9",
+    "fees": 480,
+    "net_drops": 158095929,
+    "received": 252356146,
+    "sent": 94260217
+   },
+   {
+    "account": "rsJu5D...XNv9",
+    "fees": 3330,
+    "net_drops": 156265484,
+    "received": 824783448,
+    "sent": 668517964
+   }
+  ],
+  "losers": [
+   {
+    "account": "rwdm72...SfH7",
+    "fees": 624,
+    "net_drops": -6875750001,
+    "received": 0,
+    "sent": 6875750001
+   },
+   {
+    "account": "r9k51c...UJGR",
+    "fees": 300,
+    "net_drops": -860675915,
+    "received": 2139324085,
+    "sent": 3000000000
+   },
+   {
+    "account": "rQED5S...1kcR",
+    "fees": 2790,
+    "net_drops": -311688985,
+    "received": 700612774,
+    "sent": 1012301759
+   },
+   {
+    "account": "rD5BRJ...Hn42",
+    "fees": 3020,
+    "net_drops": -234878831,
+    "received": 771973878,
+    "sent": 1006852709
+   },
+   {
+    "account": "rKzL1Q...mhVZ",
+    "fees": 760,
+    "net_drops": -218281108,
+    "received": 207595914,
+    "sent": 425877022
+   },
+   {
+    "account": "r9qZh3...uDcR",
+    "fees": 2530,
+    "net_drops": -208750551,
+    "received": 413908505,
+    "sent": 622659056
+   },
+   {
+    "account": "rwAMci...E3TL",
+    "fees": 930,
+    "net_drops": -173657561,
+    "received": 209032897,
+    "sent": 382690458
+   },
+   {
+    "account": "rhUyVq...f8RL",
+    "fees": 1250,
+    "net_drops": -152759642,
+    "received": 101819333,
+    "sent": 254578975
+   },
+   {
+    "account": "r4iUaB...dR1W",
+    "fees": 1870,
+    "net_drops": -141404422,
+    "received": 437615468,
+    "sent": 579019890
+   },
+   {
+    "account": "rh1n36...aKAq",
+    "fees": 3130,
+    "net_drops": -138219156,
+    "received": 611450382,
+    "sent": 749669538
+   }
+  ],
+  "sum_drops": 0
+ },
+ "onward": {
+  "balance_first": {
+   "conserved": true,
+   "fee": 0,
+   "hold_median_s": null,
+   "lots": 52,
+   "mismatches": [],
+   "onward": 0,
+   "onward_destinations": 0,
+   "onward_to_other_recipients": 0,
+   "onward_to_payer": 0,
+   "other": 0,
+   "received": 6875750001,
+   "retained": 6875750001,
+   "shares": {
+    "fee": 0.0,
+    "onward": 0.0,
+    "other": 0.0,
+    "retained": 1.0
+   },
+   "top_destinations": [],
+   "top_recipients": [
+    {
+     "account": "rpHvzM...EKkA",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 3500000001,
+     "retained": 3500000001
+    },
+    {
+     "account": "rPo8Gk...HxNx",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 2003750000,
+     "retained": 2003750000
+    },
+    {
+     "account": "rKF7zT...bQSf",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 299600000,
+     "retained": 299600000
+    },
+    {
+     "account": "rHv6jS...ZJG3",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 255000000,
+     "retained": 255000000
+    },
+    {
+     "account": "r3F4NY...pXPc",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 219500000,
+     "retained": 219500000
+    },
+    {
+     "account": "rPExxz...snSk",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 203000000,
+     "retained": 203000000
+    },
+    {
+     "account": "r33kyx...3vFC",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 83300000,
+     "retained": 83300000
+    },
+    {
+     "account": "r4RPpe...WghS",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 83000000,
+     "retained": 83000000
+    },
+    {
+     "account": "rDTaft...FZGo",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 80000000,
+     "retained": 80000000
+    },
+    {
+     "account": "rs5hbB...wcZQ",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 66600000,
+     "retained": 66600000
+    }
+   ]
+  },
+  "opening_missing": [
+   "rDTaft...FZGo"
+  ],
+  "payer": "rwdm72...SfH7",
+  "recipients": 13,
+  "reward_first": {
+   "conserved": true,
+   "fee": 48,
+   "hold_median_s": null,
+   "lots": 52,
+   "mismatches": [],
+   "onward": 0,
+   "onward_destinations": 0,
+   "onward_to_other_recipients": 0,
+   "onward_to_payer": 0,
+   "other": 0,
+   "received": 6875750001,
+   "retained": 6875749953,
+   "shares": {
+    "fee": 0.0,
+    "onward": 0.0,
+    "other": 0.0,
+    "retained": 1.0
+   },
+   "top_destinations": [],
+   "top_recipients": [
+    {
+     "account": "rpHvzM...EKkA",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 3500000001,
+     "retained": 3500000001
+    },
+    {
+     "account": "rPo8Gk...HxNx",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 2003750000,
+     "retained": 2003750000
+    },
+    {
+     "account": "rKF7zT...bQSf",
+     "destinations": 0,
+     "fee": 24,
+     "onward": 0,
+     "other": 0,
+     "received": 299600000,
+     "retained": 299599976
+    },
+    {
+     "account": "rHv6jS...ZJG3",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 255000000,
+     "retained": 255000000
+    },
+    {
+     "account": "r3F4NY...pXPc",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 219500000,
+     "retained": 219500000
+    },
+    {
+     "account": "rPExxz...snSk",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 203000000,
+     "retained": 203000000
+    },
+    {
+     "account": "r33kyx...3vFC",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 83300000,
+     "retained": 83300000
+    },
+    {
+     "account": "r4RPpe...WghS",
+     "destinations": 0,
+     "fee": 12,
+     "onward": 0,
+     "other": 0,
+     "received": 83000000,
+     "retained": 82999988
+    },
+    {
+     "account": "rDTaft...FZGo",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 80000000,
+     "retained": 80000000
+    },
+    {
+     "account": "rs5hbB...wcZQ",
+     "destinations": 0,
+     "fee": 0,
+     "onward": 0,
+     "other": 0,
+     "received": 66600000,
+     "retained": 66600000
+    }
+   ]
+  }
+ },
+ "payer": {
+  "account": "rwdm72...SfH7",
+  "drops": 6875750001,
+  "payments": 52,
+  "share_of_volume": 0.200327
+ },
+ "snapshot": {
+  "adjacent": true,
+  "ledger_hash": "6F1EA5360BFCB848CEDF95623A066BF0D39C2529F9D9AF0C02D978BFCD77707A",
+  "ledger_index": 7685509
+ },
+ "top_receivers": [
+  {
+   "account": "rpHvzM...EKkA",
+   "drops": 3500000001
+  },
+  {
+   "account": "r9k51c...UJGR",
+   "drops": 2139324085
+  },
+  {
+   "account": "rPo8Gk...HxNx",
+   "drops": 2003750000
+  },
+  {
+   "account": "rptcLi...YdiC",
+   "drops": 979973139
+  },
+  {
+   "account": "rMzGUd...i7TE",
+   "drops": 959648932
+  },
+  {
+   "account": "rBTFfb...PgJ6",
+   "drops": 944949811
+  },
+  {
+   "account": "rEr54V...5Sxf",
+   "drops": 942397526
+  },
+  {
+   "account": "r9YBTn...WkMf",
+   "drops": 922096085
+  },
+  {
+   "account": "rwf8sD...GyB3",
+   "drops": 882490267
+  },
+  {
+   "account": "rp2m3d...MvLQ",
+   "drops": 859770606
+  }
+ ],
+ "top_senders": [
+  {
+   "account": "rwdm72...SfH7",
+   "drops": 6875750001
+  },
+  {
+   "account": "r9k51c...UJGR",
+   "drops": 3000000000
+  },
+  {
+   "account": "rQED5S...1kcR",
+   "drops": 1012301759
+  },
+  {
+   "account": "rD5BRJ...Hn42",
+   "drops": 1006852709
+  },
+  {
+   "account": "rptcLi...YdiC",
+   "drops": 937399808
+  },
+  {
+   "account": "rp2m3d...MvLQ",
+   "drops": 911911626
+  },
+  {
+   "account": "rMzGUd...i7TE",
+   "drops": 903326147
+  },
+  {
+   "account": "r9YBTn...WkMf",
+   "drops": 893490371
+  },
+  {
+   "account": "rwhRHh...3KF3",
+   "drops": 870283337
+  },
+  {
+   "account": "rEr54V...5Sxf",
+   "drops": 810458794
+  }
+ ],
+ "totals": {
+  "counted": 7945,
+  "failed": 12,
+  "fee_drops": 100124,
+  "ledger_txn_count": 10001,
+  "non_native": 0,
+  "partial": 0,
+  "payment_fee_drops": 79674,
+  "payments": 7957,
+  "tx": 10001,
+  "volume_drops": 34322686397,
+  "zero_delivered": 0
+ },
+ "window": {
+  "first_close": 846897170,
+  "hours": 24.25,
+  "last_close": 846984471
+ }
+}

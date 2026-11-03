@@ -1,0 +1,46 @@
+# payflow public-RPC crosscheck --negative control (recorded run 11)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T01:30:27Z | repo HEAD b7254544f8196081e8a1f0084269289b24803b43
+$ timeout 1200 python3 -u payflow/crosscheck_payflow.py --data payflow/data/tx --negative --json payflow/data/crosscheck-negative.json
+MISMATCH P 9CBC10...46F9 ledger=7705509 rp2m3d...MvLQ->rD5BRJ...Hn42 result=tecUNFUNDED_PAYMENT fee=10 delivered=- accounts_changed=1 differs=['fee_drops', 'delivered']
+MISMATCH P FBECBD...D8A6 ledger=7687418 rp2m3d...MvLQ->rEFrJH...k85j result=tecUNFUNDED_PAYMENT fee=10 delivered=- accounts_changed=1 differs=['fee_drops', 'delivered']
+MISMATCH P 0B7B50...6462 ledger=7693818 rfVwZT...a22w->rptcLi...YdiC result=tesSUCCESS fee=10 delivered=3183407 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P B32ABC...AD45 ledger=7685645 rBztDQ...49ng->rQED5S...1kcR result=tesSUCCESS fee=10 delivered=1000000 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 1EA996...40AE ledger=7701065 r4iUaB...dR1W->rEr54V...5Sxf result=tesSUCCESS fee=10 delivered=1306953 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 7189E1...2CCE ledger=7708195 rwhRHh...3KF3->rG7aZq...HDnq result=tesSUCCESS fee=10 delivered=1000000 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P DFC96C...4A8E ledger=7687880 rhUyVq...f8RL->rsJu5D...XNv9 result=tesSUCCESS fee=10 delivered=1772801 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 630AF1...9C9F ledger=7699487 r9H2nn...2m7e->rsck3U...4AuP result=tesSUCCESS fee=10 delivered=2391229 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 4C574A...42B9 ledger=7710933 rMKRnK...YbZ9->rBPvTt...DVbS result=tesSUCCESS fee=10 delivered=1000000 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P EB5873...B01C ledger=7706483 r9yyPv...qGZC->rD5BRJ...Hn42 result=tesSUCCESS fee=10 delivered=3122592 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 01E54A...E76B ledger=7712123 r98r3Z...ry7V->rEuWJC...ZRQV result=tesSUCCESS fee=10 delivered=1000000 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 0905B1...5B3E ledger=7702051 rsck3U...4AuP->r9yyPv...qGZC result=tesSUCCESS fee=10 delivered=1404915 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 005885...7F83 ledger=7686993 r4iUaB...dR1W->rwf8sD...GyB3 result=tesSUCCESS fee=10 delivered=1000000 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 864548...75B2 ledger=7691159 rESRuM...CC4c->rsJu5D...XNv9 result=tesSUCCESS fee=10 delivered=1859269 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 3AA878...06C8 ledger=7711650 rUaAsm...Bgnd->rG2Hpp...UCEC result=tesSUCCESS fee=10 delivered=1278381 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P D3128A...4139 ledger=7709395 rp2m3d...MvLQ->rKr9Lj...Us7Q result=tesSUCCESS fee=10 delivered=3604251 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 83A18E...CB32 ledger=7704786 rEuWJC...ZRQV->rpgHto...X1qE result=tesSUCCESS fee=10 delivered=1000000 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 85E2E1...D6F3 ledger=7689993 rBPvTt...DVbS->r9YBTn...WkMf result=tesSUCCESS fee=10 delivered=2000670 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P 3C6A2E...5DF8 ledger=7710387 rp2m3d...MvLQ->r98r3Z...ry7V result=tesSUCCESS fee=10 delivered=1000000 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH P B3D277...82EB ledger=7706444 rp2m3d...MvLQ->rUKrM8...bHwc result=tesSUCCESS fee=10 delivered=1084391 accounts_changed=2 differs=['fee_drops', 'delivered']
+MISMATCH L 7685645 hash_equal=False local_txn_count=4 rpc_txn_count=4
+MISMATCH L 7686993 hash_equal=False local_txn_count=2 rpc_txn_count=2
+MISMATCH L 7687418 hash_equal=False local_txn_count=2 rpc_txn_count=2
+MISMATCH L 7687880 hash_equal=False local_txn_count=4 rpc_txn_count=4
+MISMATCH L 7689993 hash_equal=False local_txn_count=4 rpc_txn_count=4
+MISMATCH L 7691159 hash_equal=False local_txn_count=5 rpc_txn_count=5
+MISMATCH L 7693818 hash_equal=False local_txn_count=2 rpc_txn_count=2
+MISMATCH L 7699487 hash_equal=False local_txn_count=3 rpc_txn_count=3
+MISMATCH L 7701065 hash_equal=False local_txn_count=5 rpc_txn_count=5
+MISMATCH L 7702051 hash_equal=False local_txn_count=1 rpc_txn_count=1
+MISMATCH L 7704786 hash_equal=False local_txn_count=4 rpc_txn_count=4
+MISMATCH L 7705509 hash_equal=False local_txn_count=1 rpc_txn_count=1
+MISMATCH L 7706444 hash_equal=False local_txn_count=2 rpc_txn_count=2
+MISMATCH L 7706483 hash_equal=False local_txn_count=4 rpc_txn_count=4
+MISMATCH L 7708195 hash_equal=False local_txn_count=1 rpc_txn_count=1
+MISMATCH L 7709395 hash_equal=False local_txn_count=2 rpc_txn_count=2
+MISMATCH L 7710387 hash_equal=False local_txn_count=2 rpc_txn_count=2
+MISMATCH L 7710933 hash_equal=False local_txn_count=5 rpc_txn_count=5
+MISMATCH L 7711650 hash_equal=False local_txn_count=4 rpc_txn_count=4
+MISMATCH L 7712123 hash_equal=False local_txn_count=2 rpc_txn_count=2
+SUMMARY ok=0 mismatch=40 negative=True seed=1 rpc_calls=40 retries=0 retries_by_error={}
+(exit 1)
+end 2026-11-03T01:31:25Z

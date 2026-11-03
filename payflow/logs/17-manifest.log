@@ -1,0 +1,33 @@
+# payflow manifest completion (recorded run 17): snapshot counts without the header line, result-file SHA-256
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T01:32:00Z | repo HEAD b7254544f8196081e8a1f0084269289b24803b43
+$ zcat payflow/data/snapA/snapshot-7685509.jsonl.gz | head -1 | jq -c '{format, ledger_index}'
+{"format":"pft-state-snapshot/1","ledger_index":7685509}
+(exit 0)
+$ cd payflow/data && for f in tx/*.csv; do echo "$f $(( $(wc -l < $f) - 1 )) rows (excluding header)"; done > ROWS.txt; for f in snapA/*.gz snapB/*.gz; do echo "$f $(( $(zcat $f | wc -l) - 1 )) objects (excluding the header line)"; done >> ROWS.txt; cat ROWS.txt
+tx/deltas.csv 17946 rows (excluding header)
+tx/ledgers.csv 28871 rows (excluding header)
+tx/payments.csv 7957 rows (excluding header)
+tx/restarts.csv 1 rows (excluding header)
+tx/tx.csv 10001 rows (excluding header)
+snapA/snapshot-7685509.jsonl.gz 4995 objects (excluding the header line)
+snapB/snapshot-7714380.jsonl.gz 5011 objects (excluding the header line)
+(exit 0)
+$ cd payflow/data && sha256sum reconcile.json reconcile-negative.json payflow.json crosscheck.json crosscheck-negative.json ROWS.txt ../REPORT.md ../lorenz.png ../onward.png | tee RESULTS.sha256
+c88751783ac711416eb233fbce97270440130113ed88e77cd1c81d565143c8f5  reconcile.json
+d97d772d6829d35096465895d1bc558e7926b10acdbf9d757addfa66f4daa59d  reconcile-negative.json
+01b710277b7459fd692273c35d1b0d62fb2c2a0d004d9cc8aab08d3c019e8332  payflow.json
+9d8f9a290b212904a346c888fcbfe129ec34c05e7eb335c46781a82258c799ee  crosscheck.json
+eb21bf9eba39a0743edfad0d8fe23e7054c2e6b43dfc247400b2be71e199aacd  crosscheck-negative.json
+6fb4f86fb3e5b922b847c41096d1aac9b43570c63f1efeab711b438783dd17a0  ROWS.txt
+2d15c636492346c18f6a8d577d5e3624887353027355785830bb15c699557890  ../REPORT.md
+a119650d325f4ac2cc6955747c82328dcfee0b8ae494cda8e0dddfe158751c1f  ../lorenz.png
+ff2961994100a1096866616660dda31eb8cc2a863612cd28c4f3509cca19a5b3  ../onward.png
+(exit 0)
+$ cd payflow/data && sha256sum -c SHA256SUMS RESULTS.sha256 | grep -c ': OK$'
+22
+(exit 0)
+$ jq -c '{ok_lines: (.ok_lines|length), mismatch_lines: (.mismatch_lines|length), fees_drops, burned_drops, accounts, ledgers, negative}' payflow/data/reconcile.json payflow/data/reconcile-negative.json
+{"ok_lines":11,"mismatch_lines":0,"fees_drops":100124,"burned_drops":100124,"accounts":4487,"ledgers":{"count":28871,"first":7685510,"last":7714380},"negative":false}
+{"ok_lines":7,"mismatch_lines":25,"fees_drops":110125,"burned_drops":100124,"accounts":4487,"ledgers":{"count":28871,"first":7685510,"last":7714380},"negative":true}
+(exit 0)
+end 2026-11-03T01:32:01Z

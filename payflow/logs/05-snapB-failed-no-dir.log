@@ -1,0 +1,26 @@
+# payflow snapshot B (recorded run 05, transient timer after the window end 2026-11-03T01:27:51Z)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T01:29:00Z | repo HEAD b7254544f8196081e8a1f0084269289b24803b43
+$ systemctl is-active pft-payflow-tx; tail -3 data/payflow/tx/collect.log
+inactive
+2026-11-03T01:13:11Z PROGRESS last=7714087 lag=0 ledgers=28578 tx=9897 payments=7869 deltas=17754 gaps=0 retries=0 requests=80716
+2026-11-03T01:27:57Z STOP (window end reached (ledger 7714381 closed 2026-11-03T01:27:52Z, not written)) requests this run=81552
+2026-11-03T01:27:57Z SUMMARY window 2026-11-02T01:12:51Z -> 2026-11-03T01:27:51Z ledgers 7685510-7714380 ledgers=28871 tx=10001 payments=7957 deltas=17946 gaps=0 retries=0 restarts=1
+(exit 0)
+last ledger in ledgers.csv: 7714380
+$ sudo docker exec postfiatd curl -s -X POST -d '{"method":"server_info","params":[{}]}' http://127.0.0.1:5005/ | jq -c '.result.info | {server_state, complete_ledgers}'
+{"server_state":"full","complete_ledgers":"7713409-7714402"}
+(exit 0)
+$ timeout 900 .venv/bin/python -u state/snapshot.py --out data/payflow/snapB --ledger 7714380 --log data/payflow/snapB/snapshot.log
+Traceback (most recent call last):
+  File "~/work/pft-ledger-stats/state/snapshot.py", line 291, in <module>
+    sys.exit(main())
+  File "~/work/pft-ledger-stats/state/snapshot.py", line 281, in main
+    logfh = open(args.log, "a") if args.log else None
+FileNotFoundError: [Errno 2] No such file or directory: 'data/payflow/snapB/snapshot.log'
+(exit 1)
+$ ls -l data/payflow/snapB; sha256sum data/payflow/snapB/snapshot-7714380.jsonl.gz; zcat data/payflow/snapB/snapshot-7714380.jsonl.gz | head -1
+ls: cannot access 'data/payflow/snapB': No such file or directory
+sha256sum: data/payflow/snapB/snapshot-7714380.jsonl.gz: No such file or directory
+gzip: data/payflow/snapB/snapshot-7714380.jsonl.gz: No such file or directory
+(exit 0)
+end 2026-11-03T01:29:01Z

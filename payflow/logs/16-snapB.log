@@ -1,0 +1,31 @@
+# payflow snapshot B retry (recorded run 16; run 05 failed: snapB dir missing, lesson 154)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T01:29:12Z | repo HEAD b7254544f8196081e8a1f0084269289b24803b43
+$ sudo docker exec postfiatd curl -s -X POST -d '{"method":"server_info","params":[{}]}' http://127.0.0.1:5005/ | jq -c '.result.info | {server_state, complete_ledgers}'
+{"server_state":"full","complete_ledgers":"7713409-7714406"}
+(exit 0)
+$ mkdir -p data/payflow/snapB && timeout 900 .venv/bin/python -u state/snapshot.py --out data/payflow/snapB --ledger 7714380 --log data/payflow/snapB/snapshot.log
+2026-11-03T01:29:13Z START ledger 7714380 FC1903B226981A5A543843640FCDB39A0BF9D22A269B2E0A4DD9EABDBE405148 total_coins 99999999968490058 close 2026-11-03T01:27:51Z limit 2048 | host python 3.10.12
+2026-11-03T01:29:14Z page 0 +2048 objects (total 2048) marker 66B87CF246AA7DDE
+2026-11-03T01:29:15Z page 1 +2048 objects (total 4096) marker CED49B6203CB23DD
+2026-11-03T01:29:16Z page 2 +915 objects (total 5011) marker -
+2026-11-03T01:29:17Z DONE 5011 objects in 3 pages, 5 RPC calls this run -> snapshot-7714380.jsonl.gz
+(exit 0)
+$ ls data/payflow/snapB; sha256sum data/payflow/snapB/snapshot-7714380.jsonl.gz; cat data/payflow/snapB/state.json
+pages.jsonl
+snapshot-7714380.jsonl.gz
+snapshot.log
+state.json
+b2867fd2a5ef09e7d78d953e346db32a26d091b344171a15525152088e208bf1  data/payflow/snapB/snapshot-7714380.jsonl.gz
+{
+ "account_hash": "35C8A311018301BD4EE8D5F8D4654644A456DB33D12C48689C621887764AD592",
+ "close_time": 846984471,
+ "close_time_iso": "2026-11-03T01:27:51Z",
+ "ledger_hash": "FC1903B226981A5A543843640FCDB39A0BF9D22A269B2E0A4DD9EABDBE405148",
+ "ledger_index": 7714380,
+ "server_state_reserve_base": 10000000,
+ "server_state_reserve_inc": 2000000,
+ "server_state_validated_seq": 7714406,
+ "total_coins": 99999999968490058
+}
+(exit 0)
+end 2026-11-03T01:29:17Z

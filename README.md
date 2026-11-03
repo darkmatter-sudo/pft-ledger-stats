@@ -24,6 +24,7 @@ window to plain CSV/JSONL, so the report can be rebuilt and audited later from c
 | `acctchurn/` | account churn between two state snapshots ~24 h apart: per-type diff, exact native-PFT conservation vs `total_coins` and the fee burn, funding graph of new accounts, see [`acctchurn/README.md`](acctchurn/README.md) |
 | `nftflow/` | NFT lifecycle between two state snapshots ~24 h apart: exact supply, owner and issuer-counter reconciliation from a gap-free NFToken* collection, lifecycle stats, public-RPC crosscheck, see [`nftflow/README.md`](nftflow/README.md) |
 | `keyposture/` | signing-key posture (master / regular key / multisig / black-holed) of every account at two state snapshots ~24 h apart: exact per-account and per-class reconciliation from a gap-free key-tx collection, weak-config flags, public-RPC crosscheck, see [`keyposture/README.md`](keyposture/README.md) |
+| `payflow/` | who pays whom over a 24 h window: directed payment graph, volume concentration, net flows and FIFO onward flows of the reward payer's recipients; snapshot-to-snapshot conservation exact to the drop, public-RPC crosscheck with offline re-check, see [`payflow/README.md`](payflow/README.md) |
 
 ## Requirements
 

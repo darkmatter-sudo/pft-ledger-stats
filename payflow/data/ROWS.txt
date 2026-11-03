@@ -1,0 +1,7 @@
+tx/deltas.csv 17946 rows (excluding header)
+tx/ledgers.csv 28871 rows (excluding header)
+tx/payments.csv 7957 rows (excluding header)
+tx/restarts.csv 1 rows (excluding header)
+tx/tx.csv 10001 rows (excluding header)
+snapA/snapshot-7685509.jsonl.gz 4995 objects (excluding the header line)
+snapB/snapshot-7714380.jsonl.gz 5011 objects (excluding the header line)

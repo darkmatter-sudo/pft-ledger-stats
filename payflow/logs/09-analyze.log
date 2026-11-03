@@ -1,0 +1,23 @@
+# payflow analyze: report, JSON, charts (recorded run 09)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T01:29:24Z | repo HEAD b7254544f8196081e8a1f0084269289b24803b43
+$ timeout 900 .venv/bin/python -u payflow/analyze_payflow.py --data payflow/data/tx --snapshot payflow/data/snapA/snapshot-7685509.jsonl.gz --json payflow/data/payflow.json --out-dir payflow
+coverage ledgers 7685510-7714380 fetched=28871 gaps=0 holes=0 duplicates=0; snapshot 7685509 adjacent=True
+payments=7957 counted=7945 failed=12 volume=34322686397 drops fees=100124 drops
+graph accounts=59 edges=1475 reciprocal=653 components=2 largest=45
+concentration sent: gini=0.44911 top1=0.200327 top10=0.501761 hhi=0.062496 half=10
+concentration received: gini=0.44486 top1=0.101973 top10=0.411809 hhi=0.033299 half=14
+net sum=0
+onward reward_first: recipients=13 received=6875750001 onward=0 fee=48 other=0 retained=6875749953 conserved=True mismatches=0
+onward balance_first: recipients=13 received=6875750001 onward=0 fee=0 other=0 retained=6875750001 conserved=True mismatches=0
+(exit 0)
+$ ls payflow/REPORT.md payflow/lorenz.png payflow/onward.png payflow/data/payflow.json; sha256sum payflow/REPORT.md payflow/lorenz.png payflow/onward.png payflow/data/payflow.json
+payflow/REPORT.md
+payflow/data/payflow.json
+payflow/lorenz.png
+payflow/onward.png
+2d15c636492346c18f6a8d577d5e3624887353027355785830bb15c699557890  payflow/REPORT.md
+a119650d325f4ac2cc6955747c82328dcfee0b8ae494cda8e0dddfe158751c1f  payflow/lorenz.png
+ff2961994100a1096866616660dda31eb8cc2a863612cd28c4f3509cca19a5b3  payflow/onward.png
+01b710277b7459fd692273c35d1b0d62fb2c2a0d004d9cc8aab08d3c019e8332  payflow/data/payflow.json
+(exit 0)
+end 2026-11-03T01:29:27Z

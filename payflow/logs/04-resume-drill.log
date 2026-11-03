@@ -1,0 +1,54 @@
+# payflow live resume drill (recorded run 04)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-02T17:28:49Z | repo HEAD df0660014701622dbdb9e91ed022144e01feeccc
+$ sudo docker exec postfiatd curl -s -X POST -d '{"method":"server_info","params":[{}]}' http://127.0.0.1:5005/ | jq -c '.result.info | {build_version, server_state, complete_ledgers}'
+{"build_version":"1.0.9","server_state":"full","complete_ledgers":"7704193-7704873"}
+(exit 0)
+$ TERM_AFTER=45 KILL_AFTER=45 timeout 1500 bash payflow/resume_drill_payflow.sh 7704613 7704812 data/payflow/drill-04
+== reference run 7704613..7704812
+reference: ledgers 200 tx 65 payments 53 deltas 118
+== drill run: SIGTERM after 45s
+after SIGTERM: ledgers 45, last 7704657
+== resume 1, SIGKILL after 45s
+payflow/resume_drill_payflow.sh: line 49: 2437481 Killed                  "${col[@]}" --out "$drl" --log "$work/drill.log" > /dev/null
+after SIGKILL: ledgers 89, last 7704701
+tx.csv: 29 rows, last byte is newline: yes
+payments.csv: 22 rows, last byte is newline: yes
+deltas.csv: 51 rows, last byte is newline: yes
+== inject: orphan rows of the first reference ledger after 7704701 with payments, torn deltas.csv tail
+appended 3 tx.csv row(s) of ledger 7704705
+appended 3 payments.csv row(s) of ledger 7704705
+appended torn deltas.csv tail: '7704705,0,TORN' (no newline)
+== resume 2 to the end
+2026-11-02T17:32:58Z STOP (signal) requests this run=46
+2026-11-02T17:32:58Z SUMMARY window 2026-11-02T17:32:13Z -> 2026-11-03T17:32:13Z ledgers 7704613-7704657 ledgers=45 tx=13 payments=10 deltas=23 gaps=0 retries=0 restarts=1
+2026-11-02T17:32:58Z RESUME at ledger 7704658 (window 2026-11-02T17:32:13Z -> 2026-11-03T17:32:13Z, start seq 7704613, behind by 298)
+2026-11-02T17:33:44Z RESUME dropped torn last line of deltas.csv (14 bytes)
+2026-11-02T17:33:44Z RESUME dropped 3 tx.csv rows after ledger 7704701 (no ledgers.csv row)
+2026-11-02T17:33:44Z RESUME dropped 3 payments.csv rows after ledger 7704701 (no ledgers.csv row)
+2026-11-02T17:33:44Z RESUME at ledger 7704702 (window 2026-11-02T17:32:13Z -> 2026-11-03T17:32:13Z, start seq 7704613, behind by 269)
+2026-11-02T17:35:35Z STOP (stop_at reached) requests this run=112
+2026-11-02T17:35:35Z SUMMARY window 2026-11-02T17:32:13Z -> 2026-11-03T17:32:13Z ledgers 7704613-7704812 ledgers=200 tx=65 payments=53 deltas=118 gaps=0 retries=0 restarts=3
+PASS tx.csv identical (65 rows)
+PASS payments.csv identical (53 rows)
+PASS deltas.csv identical (118 rows)
+PASS ledgers.csv identical without fetched_utc
+PASS every ledger 7704613..7704812 exactly once
+PASS no gaps
+PASS txn_count sum == tx_rows sum == tx.csv rows
+PASS restarts.csv kinds start,resume,resume
+PASS last resume cut the torn deltas.csv line
+PASS last resume dropped the 6 injected orphan row(s) (>=: a mid-ledger SIGKILL adds its own)
+restarts.csv:
+kind,at_utc,first_ledger,validated,lag,torn_bytes,orphan_rows
+start,2026-11-02T17:32:13Z,7704613,7704940,328,0,0
+resume,2026-11-02T17:32:58Z,7704658,7704955,298,0,0
+resume,2026-11-02T17:33:44Z,7704702,7704970,269,14,6
+sha256 tx.csv ref   7b5acc4698a4dcc2b9474afea96154f0196009d089d7f72f7ecb223c6bc992ad
+sha256 tx.csv drill 7b5acc4698a4dcc2b9474afea96154f0196009d089d7f72f7ecb223c6bc992ad
+sha256 payments.csv ref   167b740f3371b297bf68148792ae9ba87b3c3b4c624e9a9898c76da235a5fdc8
+sha256 payments.csv drill 167b740f3371b297bf68148792ae9ba87b3c3b4c624e9a9898c76da235a5fdc8
+sha256 deltas.csv ref   35a6536739a1e27971622b79ac06ef1748078c3f4b9097e6216d076e0573f581
+sha256 deltas.csv drill 35a6536739a1e27971622b79ac06ef1748078c3f4b9097e6216d076e0573f581
+RESULT: PASS
+(exit 0)
+end 2026-11-02T17:35:35Z

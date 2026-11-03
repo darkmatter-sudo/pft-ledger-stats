@@ -1,0 +1,56 @@
+# 2026-11-02T01:12:46Z payflow window start | "Ubuntu 22.04.5 LTS" | commit 8412f59051cc92cc9121e1cf818c97eb6a1f4e6b
+$ sha256sum state/snapshot.py payflow/collect_payflow.py txmix/collect_tx.py
+0aac883bded3612f6b8b139f9d17b9b7cb92f5609815b17b5f435e80fb460f2b  state/snapshot.py
+ac1bb950b718e38b80905cf6f1258a8dba60c7e104f11af79a009698f7734195  payflow/collect_payflow.py
+7a1371f803fb51757b82819afd6a11d38f765730b9fe370dc3329488b89d4357  txmix/collect_tx.py
+(exit 0)
+$ git status --short | wc -l
+0
+(exit 0)
+$ mkdir -p data/payflow/snapA
+(exit 0)
+$ python3 -u state/snapshot.py --out data/payflow/snapA --log data/payflow/snapA/snapshot.log
+2026-11-02T01:12:47Z START ledger 7685509 6F1EA5360BFCB848CEDF95623A066BF0D39C2529F9D9AF0C02D978BFCD77707A total_coins 99999999968590182 close 2026-11-02T01:12:42Z limit 2048 | host python 3.10.12
+2026-11-02T01:12:49Z page 0 +2048 objects (total 2048) marker 66D917B2F0D2622F
+2026-11-02T01:12:50Z page 1 +2048 objects (total 4096) marker CFF159D6C85D6CC2
+2026-11-02T01:12:50Z page 2 +899 objects (total 4995) marker -
+2026-11-02T01:12:51Z DONE 4995 objects in 3 pages, 5 RPC calls this run -> snapshot-7685509.jsonl.gz
+(exit 0)
+snapshot A ledger = 7685509, collector starts at 7685510
+$ ls -l data/payflow/snapA/snapshot-7685509.jsonl.gz | awk '{print $5, $9}'
+2170141 data/payflow/snapA/snapshot-7685509.jsonl.gz
+(exit 0)
+$ sha256sum data/payflow/snapA/snapshot-7685509.jsonl.gz
+116b761eee9ca0ff04cd339eb24a1822a851b4746d0e17b68dec7e0b32771457  data/payflow/snapA/snapshot-7685509.jsonl.gz
+(exit 0)
+$ sudo systemd-run --unit pft-payflow-tx --uid 1001 --gid 1001 --working-directory "$PWD" -p RuntimeMaxSec=27h /usr/bin/python3 -u payflow/collect_payflow.py --out data/payflow/tx --log data/payflow/tx/collect.log --start 7685510 --hours 24.25 >/dev/null 2>&1
+(exit 0)
+$ sleep 20
+(exit 0)
+$ systemctl is-active pft-payflow-tx
+active
+(exit 0)
+$ cat data/payflow/tx/state.json
+{
+ "start": 1793581971,
+ "end": 1793669271,
+ "start_seq": 7685510,
+ "start_utc": "2026-11-02T01:12:51Z",
+ "stop_at": null,
+ "end_utc": "2026-11-03T01:27:51Z"
+}(exit 0)
+$ cat data/payflow/tx/collect.log
+2026-11-02T01:12:51Z node: build 1.0.9 state full complete_ledgers 7684737-7685511
+2026-11-02T01:12:51Z WINDOW START 2026-11-02T01:12:51Z -> 2026-11-03T01:27:51Z at ledger 7685510, stop_at None, rate <= 1.0 req/s
+(exit 0)
+$ wc -l data/payflow/tx/ledgers.csv
+8 data/payflow/tx/ledgers.csv
+(exit 0)
+$ sudo pft-maint lock add payflow-tx --until 2026-11-03T01:53:11Z --reason 'task_310e2a9c payflow 24h payment collector (pft-payflow-tx)'
+lock payflow-tx held until 2026-11-03T01:53:11Z
+(exit 0)
+$ sudo pft-maint status | tail -3
+data-collection locks held:
+  payflow-tx 2026-11-03T01:53:11Z task_310e2a9c payflow 24h payment collector (pft-payflow-tx)
+  senders-tx 2026-11-03T06:55:37Z task_8a53593a senders 72h sender collector (pft-senders-tx)
+(exit 0)

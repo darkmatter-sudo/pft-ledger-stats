@@ -1,0 +1,31 @@
+{
+ "accounts": 4487,
+ "burned_drops": 100124,
+ "fees_drops": 100124,
+ "ledgers": {
+  "count": 28871,
+  "first": 7685510,
+  "last": 7714380
+ },
+ "mismatch_causes": {},
+ "mismatch_lines": 0,
+ "negative": false,
+ "ok_lines": 11,
+ "path_payments": 0,
+ "payments_checked": 7945,
+ "rows": {
+  "deltas": 17946,
+  "payments": 7957,
+  "tx": 10001
+ },
+ "snapshot_a": {
+  "ledger_hash": "6F1EA5360BFCB848CEDF95623A066BF0D39C2529F9D9AF0C02D978BFCD77707A",
+  "ledger_index": 7685509,
+  "total_coins": 99999999968590182
+ },
+ "snapshot_b": {
+  "ledger_hash": "FC1903B226981A5A543843640FCDB39A0BF9D22A269B2E0A4DD9EABDBE405148",
+  "ledger_index": 7714380,
+  "total_coins": 99999999968490058
+ }
+}

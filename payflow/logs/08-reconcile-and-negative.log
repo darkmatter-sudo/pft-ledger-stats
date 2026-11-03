@@ -1,0 +1,57 @@
+# payflow conservation reconcile + forced-negative control (recorded run 08)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T01:29:22Z | repo HEAD b7254544f8196081e8a1f0084269289b24803b43
+$ timeout 900 python3 -u payflow/reconcile_payflow.py payflow/data/snapA/snapshot-7685509.jsonl.gz payflow/data/snapB/snapshot-7714380.jsonl.gz --data payflow/data/tx --json payflow/data/reconcile.json
+OK       C1 snapshots A=7685509 B=7714380 collection=7685510..7714380
+OK       C1 holes=0 first=[]
+OK       C1 duplicate_ledgers=0
+OK       C1 gaps=0
+OK       C1 ledgers_with_tx_rows_ne_txn_count=0 tx_rows=10001
+OK       C2 burned=100124 fees=100124 txs=10001
+OK       C3 escrow+paychannel A=0 B=0 change=0 from_holder_txs=0 holder_txs=0
+OK       C4 accounts=4487 in_A=4472 in_B=4487 with_deltas=59 balance_mismatches=0
+OK       C5 chains=59 delta_rows=17946 breaks=0
+OK       C6 txs=10001 not_conserved=0
+OK       C7 payments_checked=7945 path_payments=0 mismatches=0
+SUMMARY ok=11 mismatch=0 causes={} negative=False accounts=4487 fees=100124 burned=100124
+(exit 0)
+$ timeout 900 python3 -u payflow/reconcile_payflow.py payflow/data/snapA/snapshot-7685509.jsonl.gz payflow/data/snapB/snapshot-7714380.jsonl.gz --data payflow/data/tx --negative --json payflow/data/reconcile-negative.json
+OK       C1 snapshots A=7685509 B=7714380 collection=7685510..7714380
+OK       C1 holes=0 first=[]
+OK       C1 duplicate_ledgers=0
+OK       C1 gaps=0
+OK       C1 ledgers_with_tx_rows_ne_txn_count=0 tx_rows=10001
+MISMATCH C2 burned=100124 fees=110125 txs=10001 cause=burn_ne_fees
+OK       C3 escrow+paychannel A=0 B=0 change=0 from_holder_txs=0 holder_txs=0
+MISMATCH C4 r14mmf...SExJ A=120546315 +deltas=0 B=120546316 cause=account_balance
+MISMATCH C4 accounts=4487 in_A=4472 in_B=4487 with_deltas=59 balance_mismatches=1 cause=account_balance
+OK       C5 chains=59 delta_rows=17946 breaks=0
+MISMATCH C6 DF13956A9C4D Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 01A7C392E027 Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 7DFFED69B687 Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 AC7532789E66 Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 F41D10F55158 NFTokenBurn deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 AA5644FBC728 Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 A57D9FF23674 Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 9DE473B040FA Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 98C736941A9A Payment deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 4FB99D7199C4 NFTokenMint deltas=-10 -fee=-11 cause=tx_value_not_conserved
+MISMATCH C6 txs=10001 not_conserved=10001 cause=tx_value_not_conserved
+MISMATCH C7 DF13956A9C4D dest_delta=5341848 delivered=5341849 cause=dest_delta
+MISMATCH C7 DF13956A9C4D sender_delta=-5341858 -(delivered+fee)=-5341859 cause=sender_delta
+MISMATCH C7 01A7C392E027 dest_delta=4905949 delivered=4905950 cause=dest_delta
+MISMATCH C7 01A7C392E027 sender_delta=-4905959 -(delivered+fee)=-4905960 cause=sender_delta
+MISMATCH C7 7DFFED69B687 dest_delta=4146181 delivered=4146182 cause=dest_delta
+MISMATCH C7 7DFFED69B687 sender_delta=-4146191 -(delivered+fee)=-4146192 cause=sender_delta
+MISMATCH C7 AC7532789E66 dest_delta=2861589 delivered=2861590 cause=dest_delta
+MISMATCH C7 AC7532789E66 sender_delta=-2861599 -(delivered+fee)=-2861600 cause=sender_delta
+MISMATCH C7 AA5644FBC728 dest_delta=1000000 delivered=1000001 cause=dest_delta
+MISMATCH C7 AA5644FBC728 sender_delta=-1000010 -(delivered+fee)=-1000011 cause=sender_delta
+MISMATCH C7 payments_checked=7945 path_payments=0 mismatches=15890 cause=payment_delta
+SUMMARY ok=7 mismatch=25 causes={'account_balance': 2, 'burn_ne_fees': 1, 'dest_delta': 5, 'payment_delta': 1, 'sender_delta': 5, 'tx_value_not_conserved': 11} negative=True accounts=4487 fees=110125 burned=100124
+(exit 1)
+$ grep -c MISMATCH payflow/data/reconcile-negative.json; jq -c '{result: .result}' payflow/data/reconcile.json payflow/data/reconcile-negative.json 2>/dev/null | head -4
+0
+{"result":null}
+{"result":null}
+(exit 0)
+end 2026-11-03T01:29:24Z

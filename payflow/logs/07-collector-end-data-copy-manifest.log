@@ -1,0 +1,53 @@
+# payflow collector end + data copy + manifest (recorded run 07)
+OS: Ubuntu 22.04.5 LTS | host: validator | 2026-11-03T01:29:22Z | repo HEAD b7254544f8196081e8a1f0084269289b24803b43
+$ systemctl is-active pft-payflow-tx; systemctl show pft-payflow-tx -p ExecMainStatus -p Result
+inactive
+Result=success
+ExecMainStatus=0
+(exit 0)
+$ grep -c PROGRESS data/payflow/tx/collect.log; head -2 data/payflow/tx/collect.log; tail -3 data/payflow/tx/collect.log
+24
+2026-11-02T01:12:51Z node: build 1.0.9 state full complete_ledgers 7684737-7685511
+2026-11-02T01:12:51Z WINDOW START 2026-11-02T01:12:51Z -> 2026-11-03T01:27:51Z at ledger 7685510, stop_at None, rate <= 1.0 req/s
+2026-11-03T01:13:11Z PROGRESS last=7714087 lag=0 ledgers=28578 tx=9897 payments=7869 deltas=17754 gaps=0 retries=0 requests=80716
+2026-11-03T01:27:57Z STOP (window end reached (ledger 7714381 closed 2026-11-03T01:27:52Z, not written)) requests this run=81552
+2026-11-03T01:27:57Z SUMMARY window 2026-11-02T01:12:51Z -> 2026-11-03T01:27:51Z ledgers 7685510-7714380 ledgers=28871 tx=10001 payments=7957 deltas=17946 gaps=0 retries=0 restarts=1
+(exit 0)
+$ test -e data/payflow/tx/gaps.csv && cat data/payflow/tx/gaps.csv || echo 'no gaps.csv'; test -e data/payflow/tx/retries.csv && wc -l data/payflow/tx/retries.csv || echo 'no retries.csv'; cat data/payflow/tx/restarts.csv
+no gaps.csv
+no retries.csv
+kind,at_utc,first_ledger,validated,lag,torn_bytes,orphan_rows
+start,2026-11-02T01:12:51Z,7685510,7685511,2,0,0
+(exit 0)
+$ mkdir -p payflow/data/tx payflow/data/snapA payflow/data/snapB && cp data/payflow/tx/{tx,payments,deltas,ledgers,restarts}.csv data/payflow/tx/collect.log data/payflow/tx/state.json payflow/data/tx/ && cp data/payflow/snapA/{snapshot-7685509.jsonl.gz,snapshot.log,state.json} payflow/data/snapA/ && cp data/payflow/snapB/{snapshot-7714380.jsonl.gz,snapshot.log,state.json} payflow/data/snapB/
+(exit 0)
+$ for f in data/payflow/tx/gaps.csv data/payflow/tx/retries.csv; do test -e $f && cp $f payflow/data/tx/; done; true
+(exit 0)
+$ cd payflow/data && find tx snapA snapB -type f | sort | xargs sha256sum | tee SHA256SUMS
+116b761eee9ca0ff04cd339eb24a1822a851b4746d0e17b68dec7e0b32771457  snapA/snapshot-7685509.jsonl.gz
+749dcdd3b4f2b99d1effac2fa217e95bf6b65e41963097b342b51764a707f824  snapA/snapshot.log
+4154037b2414743f6fbbb2f27e6fcec1366194406bef8a51d27422823b39a2d5  snapA/state.json
+b2867fd2a5ef09e7d78d953e346db32a26d091b344171a15525152088e208bf1  snapB/snapshot-7714380.jsonl.gz
+132a3a168a1eefc5ed4e5e7714ae55171bdb3733512f28a903abd2e612bafc9e  snapB/snapshot.log
+a2a58c2a28a14364bec2140209d0ef75040de3c1b440a94d8abb8c3a0be66ab4  snapB/state.json
+a8acddea0462122be8f5e846698165e370bd63589459bfb9f540f4cd09987e85  tx/collect.log
+d6eb718a193f5121c10c4308fd21adce7a6a796263ff79cf58fb1dab8b5405b6  tx/deltas.csv
+e4b4ee884093f1e6a84fa8aa79c351be2437fa02324b73658b0deefa10b7e044  tx/ledgers.csv
+be013d9393b0361c96970ed5560a2dafeeef4be48aff4c4b5c0f7f9863725407  tx/payments.csv
+7cf59d9d480154873f996d708dcb768ddebb63cfda7e85b3b12d853252c602c6  tx/restarts.csv
+5758de5af246664a6fc79773fb8908a6ecc41e09b217b7d778b422417ecd218c  tx/state.json
+d543bb171a65210d291fbeb38876043960f36876588ca7efd3f8a0ed4bf8238a  tx/tx.csv
+(exit 0)
+$ cd payflow/data && for f in tx/*.csv; do echo "$f $(( $(wc -l < $f) - 1 )) rows"; done | tee ROWS.txt; for f in snapA/*.gz snapB/*.gz; do echo "$f $(zcat $f | wc -l) objects"; done | tee -a ROWS.txt
+tx/deltas.csv 17946 rows
+tx/ledgers.csv 28871 rows
+tx/payments.csv 7957 rows
+tx/restarts.csv 1 rows
+tx/tx.csv 10001 rows
+snapA/snapshot-7685509.jsonl.gz 4996 objects
+snapB/snapshot-7714380.jsonl.gz 5012 objects
+(exit 0)
+$ cd payflow/data && sha256sum -c SHA256SUMS | grep -vc ': OK$'
+0
+(exit 1)
+end 2026-11-03T01:29:22Z

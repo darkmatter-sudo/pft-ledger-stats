@@ -1,0 +1,28 @@
+2026-11-02T01:12:51Z node: build 1.0.9 state full complete_ledgers 7684737-7685511
+2026-11-02T01:12:51Z WINDOW START 2026-11-02T01:12:51Z -> 2026-11-03T01:27:51Z at ledger 7685510, stop_at None, rate <= 1.0 req/s
+2026-11-02T02:12:52Z PROGRESS last=7686704 lag=0 ledgers=1195 tx=397 payments=319 deltas=713 gaps=0 retries=0 requests=3236
+2026-11-02T03:12:53Z PROGRESS last=7687893 lag=0 ledgers=2384 tx=815 payments=639 deltas=1445 gaps=0 retries=0 requests=6585
+2026-11-02T04:12:54Z PROGRESS last=7689085 lag=0 ledgers=3576 tx=1235 payments=984 deltas=2210 gaps=0 retries=0 requests=9930
+2026-11-02T05:12:55Z PROGRESS last=7690277 lag=0 ledgers=4768 tx=1632 payments=1301 deltas=2924 gaps=0 retries=0 requests=13264
+2026-11-02T06:12:57Z PROGRESS last=7691460 lag=0 ledgers=5951 tx=2061 payments=1613 deltas=3665 gaps=0 retries=0 requests=16605
+2026-11-02T07:12:57Z PROGRESS last=7692651 lag=0 ledgers=7142 tx=2464 payments=1894 deltas=4349 gaps=0 retries=0 requests=19969
+2026-11-02T08:12:58Z PROGRESS last=7693841 lag=0 ledgers=8332 tx=2907 payments=2266 deltas=5164 gaps=0 retries=0 requests=23335
+2026-11-02T09:12:59Z PROGRESS last=7695027 lag=0 ledgers=9518 tx=3335 payments=2621 deltas=5947 gaps=0 retries=0 requests=26668
+2026-11-02T10:13:00Z PROGRESS last=7696219 lag=0 ledgers=10710 tx=3729 payments=2943 deltas=6663 gaps=0 retries=0 requests=30022
+2026-11-02T11:13:00Z PROGRESS last=7697412 lag=0 ledgers=11903 tx=4146 payments=3288 deltas=7425 gaps=0 retries=0 requests=33385
+2026-11-02T12:13:01Z PROGRESS last=7698603 lag=1 ledgers=13094 tx=4576 payments=3628 deltas=8195 gaps=0 retries=0 requests=36739
+2026-11-02T13:13:02Z PROGRESS last=7699795 lag=0 ledgers=14286 tx=5016 payments=3991 deltas=8998 gaps=0 retries=0 requests=40046
+2026-11-02T14:13:03Z PROGRESS last=7700988 lag=0 ledgers=15479 tx=5439 payments=4314 deltas=9744 gaps=0 retries=0 requests=43381
+2026-11-02T15:13:05Z PROGRESS last=7702179 lag=0 ledgers=16670 tx=5816 payments=4598 deltas=10405 gaps=0 retries=0 requests=46686
+2026-11-02T16:13:06Z PROGRESS last=7703369 lag=0 ledgers=17860 tx=6234 payments=4956 deltas=11181 gaps=0 retries=0 requests=50068
+2026-11-02T17:13:06Z PROGRESS last=7704560 lag=0 ledgers=19051 tx=6668 payments=5296 deltas=11955 gaps=0 retries=0 requests=53472
+2026-11-02T18:13:06Z PROGRESS last=7705750 lag=0 ledgers=20241 tx=7102 payments=5661 deltas=12751 gaps=0 retries=0 requests=56832
+2026-11-02T19:13:07Z PROGRESS last=7706941 lag=0 ledgers=21432 tx=7466 payments=5961 deltas=13415 gaps=0 retries=0 requests=60261
+2026-11-02T20:13:07Z PROGRESS last=7708130 lag=0 ledgers=22621 tx=7872 payments=6305 deltas=14165 gaps=0 retries=0 requests=63682
+2026-11-02T21:13:08Z PROGRESS last=7709323 lag=0 ledgers=23814 tx=8273 payments=6618 deltas=14879 gaps=0 retries=0 requests=67105
+2026-11-02T22:13:09Z PROGRESS last=7710515 lag=0 ledgers=25006 tx=8666 payments=6918 deltas=15572 gaps=0 retries=0 requests=70534
+2026-11-02T23:13:09Z PROGRESS last=7711704 lag=0 ledgers=26195 tx=9071 payments=7216 deltas=16275 gaps=0 retries=0 requests=73954
+2026-11-03T00:13:10Z PROGRESS last=7712896 lag=0 ledgers=27387 tx=9463 payments=7534 deltas=16985 gaps=0 retries=0 requests=77334
+2026-11-03T01:13:11Z PROGRESS last=7714087 lag=0 ledgers=28578 tx=9897 payments=7869 deltas=17754 gaps=0 retries=0 requests=80716
+2026-11-03T01:27:57Z STOP (window end reached (ledger 7714381 closed 2026-11-03T01:27:52Z, not written)) requests this run=81552
+2026-11-03T01:27:57Z SUMMARY window 2026-11-02T01:12:51Z -> 2026-11-03T01:27:51Z ledgers 7685510-7714380 ledgers=28871 tx=10001 payments=7957 deltas=17946 gaps=0 retries=0 restarts=1
