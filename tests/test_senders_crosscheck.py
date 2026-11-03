@@ -45,6 +45,12 @@ class Handler(BaseHTTPRequestHandler):
     page = 2
     fail_first = 0
     seen = 0
+    complete = ["1-1000"]  # server_info complete_ledgers per call; the last one repeats
+    infos = 0
+
+    @classmethod
+    def oldest(cls):
+        return int(cls.complete[min(cls.infos, len(cls.complete)) - 1].split("-")[0]) if cls.infos else 1
 
     def do_POST(self):  # noqa: N802
         body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
@@ -52,14 +58,21 @@ class Handler(BaseHTTPRequestHandler):
         Handler.seen += 1
         if Handler.seen <= Handler.fail_first:
             res = {"status": "error", "error": "slowDown"}
+        elif body["method"] == "server_info":
+            res = {"status": "success", "info": {"complete_ledgers": Handler.complete[
+                min(Handler.infos, len(Handler.complete) - 1)]}}
+            Handler.infos += 1
         elif body["method"] == "account_tx":
-            txs = history(p["account"])  # ignores ledger_index_min/max like the public RPC
+            # ignores ledger_index_min/max like the public RPC, but knows nothing it has pruned
+            txs = [e for e in history(p["account"]) if e["tx"]["ledger_index"] >= Handler.oldest()]
             if not p.get("forward"):
                 txs = txs[::-1]
             start = p.get("marker", 0)
             res = {"status": "success", "transactions": txs[start:start + Handler.page]}
             if start + Handler.page < len(txs):
                 res["marker"] = start + Handler.page
+        elif body["method"] == "ledger" and p["ledger_index"] < Handler.oldest():
+            res = {"status": "error", "error": "lgrNotFound"}
         elif body["method"] == "ledger":
             li = p["ledger_index"]
             res = {"status": "success", "ledger": {"ledger_hash": f"H{li}",
@@ -80,6 +93,7 @@ class Handler(BaseHTTPRequestHandler):
 @pytest.fixture
 def server():
     Handler.seen, Handler.fail_first, Handler.page = 0, 0, 2
+    Handler.complete, Handler.infos = ["1-1000"], 0
     srv = HTTPServer(("127.0.0.1", 0), Handler)
     th = threading.Thread(target=srv.serve_forever, daemon=True)
     th.start()
@@ -111,7 +125,8 @@ def data(tmp_path):
 
 
 def args(url, data, *extra):
-    return ["--data", str(data), "--rpc", url, "--gap", "0", "--count", "3", "--ledgers", "5", *extra]
+    base = ["--data", str(data), "--rpc", url, "--gap", "0", "--count", "3", "--ledgers", "5"]
+    return [*base, "--margin", "0", *extra]
 
 
 def test_all_ok_against_window_ignoring_server(server, data, capsys):
@@ -186,3 +201,32 @@ def test_persistent_rpc_failure_exits_2(server, data, capsys, monkeypatch):
     Handler.fail_first = 10**6
     assert cx.main(args(server, data)) == 2
     assert "RPC FAILURE" in capsys.readouterr().out
+
+
+def test_checks_only_the_overlap_with_the_rpc_history(server, data, capsys, monkeypatch):
+    fast_rpc(monkeypatch, retries=1)
+    Handler.complete = ["102-1000"]
+    assert cx.main(args(server, data)) == 0
+    out = capsys.readouterr().out
+    assert "checked 102-104 (3 ledgers, 3 tx) NOT CHECKABLE 2 ledgers, 2 tx" in out
+    assert "S rA local=1 rpc=1" in out  # A100 is outside the RPC's history, A102 is checked
+    assert "L 100 " not in out and "L 101 " not in out and out.count("L 10") == 3
+    assert "MISMATCH" not in out and "RANGE end: public_rpc oldest 102" in out
+
+
+def test_margin_keeps_clear_of_the_oldest_rpc_ledger(server, data, capsys):
+    Handler.complete = ["100-1000"]
+    assert cx.main(args(server, data)[:-2] + ["--margin", "2"]) == 0
+    assert "margin 2 checked 102-104" in capsys.readouterr().out
+
+
+def test_rpc_pruned_into_checked_span_exits_2(server, data, capsys):
+    Handler.complete = ["100-1000", "103-1000"]
+    assert cx.main(args(server, data)) == 2
+    assert "pruned into the checked span" in capsys.readouterr().out
+
+
+def test_no_overlap_exits_2(server, data, capsys):
+    Handler.complete = ["200-1000"]
+    assert cx.main(args(server, data)) == 2
+    assert "no overlap" in capsys.readouterr().out

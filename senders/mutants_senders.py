@@ -137,7 +137,7 @@ MUTANTS = [
     (
         'M21 crosscheck: --negative leaves sender sets unaltered',
         'senders/crosscheck_senders.py',
-        '            want.add(("NEGATIVE-CONTROL", lo, "Payment", "tesSUCCESS", 0))\n',
+        '            want.add(("NEGATIVE-CONTROL", c_lo, "Payment", "tesSUCCESS", 0))\n',
         '            pass\n',
     ),
     (
@@ -199,6 +199,24 @@ MUTANTS = [
         'senders/report_senders.py',
         '    for r in planted:\n        r["ok"] = r["correct"] >= 0.95 * r["n"]\n',
         '    for r in planted:\n        r["ok"] = True\n',
+    ),
+    (
+        'M32 crosscheck: checked span ignores the public RPC history',
+        'senders/crosscheck_senders.py',
+        '    c_lo, c_hi = max(lo, r_lo + margin), min(hi, r_hi)\n',
+        '    c_lo, c_hi = lo, hi\n',
+    ),
+    (
+        'M33 crosscheck: pruning during the run not detected',
+        'senders/crosscheck_senders.py',
+        '    if r_lo2 > c_lo:\n',
+        '    if False:\n',
+    ),
+    (
+        'M34 crosscheck: local sets not limited to the checked span',
+        'senders/crosscheck_senders.py',
+        'sets = local_sets(r for r in txs if c_lo <= int(r["ledger_index"]) <= c_hi)',
+        'sets = local_sets(txs)',
     ),
 ]
 TIMEOUT = 120

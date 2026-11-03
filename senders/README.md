@@ -21,7 +21,7 @@ and `ledger` to the public RPC (an allowlist in the code). Nothing is submitted 
 | `controls_senders.py` | seeded synthetic periodic, Poisson and burst senders (must classify periodic / sporadic / bursty, >= 95 %), the same generators *planted* on the real ledger timeline of the collection (every event moved to the next real close time, >= 95 %), and a shuffled-timestamp negative control on the real data (real periodic senders must not stay periodic, no shuffled sender may become periodic; class counts and median CV real vs shuffled are printed) |
 | `report_senders.py` | runs the analyzer and the controls on one collection and writes `REPORT.md`, `cohorts.png`, `regularity.png` and `gaps.png`; every number in the report is computed from the data; exits 1 on an incomplete collection or a failed control |
 | `crosscheck_senders.py` | public-RPC checks: 20 random senders' sent-transaction sets via `account_tx` (window enforced client-side), per-slice recount against ledger `txn_count`, sampled ledger hashes and transaction counts; `--negative` alters every expected value and must exit 1 |
-| `mutants_senders.py` | mutation check: one broken line at a time in a temp copy of the repo; the senders tests must fail for every mutant (31 mutants) |
+| `mutants_senders.py` | mutation check: one broken line at a time in a temp copy of the repo; the senders tests must fail for every mutant (34 mutants) |
 
 ## Run it
 

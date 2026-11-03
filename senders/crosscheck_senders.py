@@ -1,16 +1,25 @@
 #!/usr/bin/env python3
-"""Cross-check a senders/ collection against the public RPC (read-only: account_tx, ledger).
+"""Cross-check a senders/ collection against the public RPC (read-only: server_info, account_tx, ledger).
+
+Range: the public RPC keeps only part of the history (its own online_delete). server_info's
+complete_ledgers is read first, and the S and L checks cover only the overlap of the collection
+with the RPC's range, starting --margin ledgers above the RPC's oldest ledger (it keeps pruning
+while the run goes on). A RANGE line prints the checked span and the NOT CHECKABLE span with its
+ledger and local transaction counts; server_info is read again at the end and the run exits 2 if
+the RPC pruned into the checked span meanwhile. The D check needs no RPC and covers every slice.
 
 Checks, each printed as one OK/MISMATCH line (accounts truncated):
-  S  --count random senders (seeded, drawn uniformly from all senders in tx.csv): account_tx
-     over the collection's ledger range, paged forward, keeping only transactions SENT by the
-     account (tx Account == sender) inside the range. The window is enforced HERE, because the
-     public RPC returns transactions outside ledger_index_min/max (acctchurn lesson). The set of
-     (hash, ledger, type, result, fee) must equal the local tx.csv rows of that sender.
+  S  --count random senders (seeded, drawn uniformly from the senders with at least one tx.csv
+     row in the checked span): account_tx over the checked span, paged newest first, keeping
+     only transactions SENT by the account (tx Account == sender) inside the span. The window is
+     enforced HERE, because the public RPC returns transactions outside ledger_index_min/max
+     (acctchurn lesson). The set of (hash, ledger, type, result, fee) must equal the sender's
+     local tx.csv rows in the span.
   D  daily recount: per 24 h slice (same slicing as analyze_senders.py), tx.csv rows must equal
      the sum of the ledger headers' txn_count, and per ledger tx_rows == txn_count.
-  L  --ledgers random ledgers (seeded): the public RPC's `ledger` (transactions, not expanded)
-     must give the same ledger_hash and the same number of transaction hashes as ledgers.csv.
+  L  --ledgers random ledgers of the checked span (seeded): the public RPC's `ledger`
+     (transactions, not expanded) must give the same ledger_hash and the same number of
+     transaction hashes as ledgers.csv.
 
 --negative is the control: every sampled sender's expected set gets one extra hash, every
 ledger's expected count gets +1 and every slice's expected total gets +1, so every check must
@@ -34,7 +43,7 @@ from analyze_senders import DAY, read_csv, truncate  # noqa: E402
 from collect_rewardflow import RETRY_ERRORS, Rpc, RpcError  # noqa: E402
 
 RETRY = RETRY_ERRORS | {"lgrNotFound", "internal"}
-METHODS = ("account_tx", "ledger")
+METHODS = ("server_info", "account_tx", "ledger")
 
 
 def key_of(hash_, ledger, tt, result, fee):
@@ -82,7 +91,19 @@ def rpc_sent(rpc, account, lo, hi, limit=200):
             return got, pages, outside
 
 
-def run(data, rpc, count, nledgers, seed, negative=False, out=print):
+def rpc_range(rpc, hi):
+    """(first, last) of the public RPC's complete_ledgers range that contains `hi` (or the newest)."""
+    spans = []
+    for part in str(rpc.call("server_info", {})["info"].get("complete_ledgers", "")).split(","):
+        a, _, b = part.strip().partition("-")
+        if a.isdigit():
+            spans.append((int(a), int(b or a)))
+    if not spans:
+        raise RpcError("server_info: no complete_ledgers")
+    return next((sp for sp in spans if sp[0] <= hi <= sp[1]), max(spans))
+
+
+def run(data, rpc, count, nledgers, seed, negative=False, out=print, margin=2048):
     txs = read_csv(os.path.join(data, "tx.csv"))
     ledgers = read_csv(os.path.join(data, "ledgers.csv"))
     lo = min(int(r["ledger_index"]) for r in ledgers)
@@ -94,13 +115,25 @@ def run(data, rpc, count, nledgers, seed, negative=False, out=print):
         res["ok" if ok else "mismatch"] += 1
         out(f"{'OK      ' if ok else 'MISMATCH'} {line}")
 
-    sets = local_sets(txs)
+    r_lo, r_hi = rpc_range(rpc, hi)
+    c_lo, c_hi = max(lo, r_lo + margin), min(hi, r_hi)
+    if c_lo > c_hi:
+        raise RpcError(f"no overlap: collection {lo}-{hi}, public RPC {r_lo}-{r_hi}, margin {margin}")
+    n_out = sum(1 for r in ledgers if not c_lo <= int(r["ledger_index"]) <= c_hi)
+    tx_out = sum(1 for r in txs if not c_lo <= int(r["ledger_index"]) <= c_hi)
+    res["range"] = {"collection": [lo, hi], "rpc": [r_lo, r_hi], "checked": [c_lo, c_hi],
+                    "not_checkable_ledgers": n_out, "not_checkable_tx": tx_out}
+    out(f"RANGE collection {lo}-{hi} public_rpc {r_lo}-{r_hi} margin {margin} checked {c_lo}-{c_hi} "
+        f"({len(ledgers) - n_out} ledgers, {len(txs) - tx_out} tx) "
+        f"NOT CHECKABLE {n_out} ledgers, {tx_out} tx")
+
+    sets = local_sets(r for r in txs if c_lo <= int(r["ledger_index"]) <= c_hi)
     senders = rng.sample(sorted(sets), min(count, len(sets)))
     for acct in senders:
         want = set(sets[acct])
         if negative:
-            want.add(("NEGATIVE-CONTROL", lo, "Payment", "tesSUCCESS", 0))
-        got, pages, outside = rpc_sent(rpc, acct, lo, hi)
+            want.add(("NEGATIVE-CONTROL", c_lo, "Payment", "tesSUCCESS", 0))
+        got, pages, outside = rpc_sent(rpc, acct, c_lo, c_hi)
         miss_rpc, miss_local = sorted(want - got), sorted(got - want)
         detail = ""
         if miss_rpc or miss_local:
@@ -126,13 +159,18 @@ def run(data, rpc, count, nledgers, seed, negative=False, out=print):
                f"D slice {s} tx_rows={rows_by_slice[s]} header_txn_count={want} "
                f"ledgers_with_tx_rows_ne_txn_count={len(per_ledger_bad)}")
 
-    for r in sorted(rng.sample(ledgers, min(nledgers, len(ledgers))), key=lambda r: int(r["ledger_index"])):
+    span = [r for r in ledgers if c_lo <= int(r["ledger_index"]) <= c_hi]
+    for r in sorted(rng.sample(span, min(nledgers, len(span))), key=lambda r: int(r["ledger_index"])):
         led = rpc.call("ledger", {"ledger_index": int(r["ledger_index"]), "transactions": True})["ledger"]
         n = len(led.get("transactions") or [])
         want = int(r["txn_count"]) + (1 if negative else 0)
         report(led.get("ledger_hash") == r["ledger_hash"] and n == want,
                f"L {r['ledger_index']} hash_equal={led.get('ledger_hash') == r['ledger_hash']} "
                f"local_txn_count={want} rpc_txn_count={n}")
+    r_lo2, _ = rpc_range(rpc, hi)
+    out(f"RANGE end: public_rpc oldest {r_lo2} (start {r_lo}), checked span starts {c_lo}")
+    if r_lo2 > c_lo:
+        raise RpcError(f"public RPC pruned into the checked span during the run ({r_lo2} > {c_lo})")
     return res, senders
 
 
@@ -145,10 +183,11 @@ def main(argv=None):
     p.add_argument("--negative", action="store_true")
     p.add_argument("--rpc", default="https://rpc.testnet.postfiat.org")
     p.add_argument("--gap", type=float, default=0.5, help="seconds between public RPC requests")
+    p.add_argument("--margin", type=int, default=2048, help="ledgers kept clear of the RPC's oldest ledger")
     a = p.parse_args(argv)
     rpc = Rpc(a.rpc, gap=a.gap, retry_errors=RETRY, methods=METHODS)
     try:
-        res, _ = run(a.data, rpc, a.count, a.ledgers, a.seed, a.negative)
+        res, _ = run(a.data, rpc, a.count, a.ledgers, a.seed, a.negative, margin=a.margin)
     except RpcError as e:
         print(f"RPC FAILURE {e}")
         return 2
