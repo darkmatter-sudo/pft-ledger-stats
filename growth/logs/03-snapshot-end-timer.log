@@ -1,0 +1,15 @@
+# growth snapshot B timer 2026-11-04T00:12:06Z | Ubuntu 22.04.5 LTS | commit 8a1167de11e86f99388ccc13efe3d871aa39b06f
+$ sha256sum growth/snapshot_end.sh
+d797a4846f90e882ec2456ee8d2534df253e2a13681c8c822d2a6b34037f469f  growth/snapshot_end.sh
+(exit 0)
+$ sudo systemd-run --unit pft-growth-snapB --on-calendar '2026-11-05 00:14:00 UTC' --timer-property=AccuracySec=1s --uid 1001 --gid 1001 --property=WorkingDirectory=$PWD growth/snapshot_end.sh data/growth pft-growth-tx
+Running timer as unit: pft-growth-snapB.timer
+Will run service as unit: pft-growth-snapB.service
+(exit 0)
+$ TZ=UTC systemctl list-timers pft-growth-snapB.timer --no-pager
+NEXT                        LEFT     LAST PASSED UNIT                   ACTIVATES
+Thu 2026-11-05 00:14:00 UTC 24h left n/a  n/a    pft-growth-snapB.timer pft-growth-snapB.service
+
+1 timers listed.
+Pass --all to see loaded but inactive timers, too.
+(exit 0)

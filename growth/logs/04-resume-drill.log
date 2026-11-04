@@ -1,0 +1,52 @@
+OS: Ubuntu 22.04.5 LTS
+repo HEAD: 2aa69e9c3a5ccf0e99f0cb879b94e7e8cd71a66c
+script sha256: 5bf80480f8f6918312febadaf402cffca185b53dbef201c2fbdcf7b813034ff4  growth/resume_drill_growth.sh
+collector sha256: bd25bf659d36a7df137139963f14a465c6e992316b2a71c4361722177c985b83  growth/collect_growth.py
+started 2026-11-04T02:15:37Z, validated 7743858
+$ TERM_AFTER=30 KILL_AFTER=30 RATE=2 bash growth/resume_drill_growth.sh 7743736 7743855 data/growth/drill-04
+== reference run 7743736..7743855
+reference: ledgers 120 tx 45 nodes 90
+== drill run: SIGTERM after 30s
+after SIGTERM: ledgers 21, last 7743756
+== resume 1, SIGKILL after 30s
+growth/resume_drill_growth.sh: line 55: 2792037 Killed                  "${col[@]}" --out "$drl" --log "$work/drill.log" > /dev/null
+after SIGKILL: ledgers 44, last 7743779
+ledgers.csv: 44 rows, last byte is newline: yes
+tx.csv: 16 rows, last byte is newline: yes
+nodes.csv: 32 rows, last byte is newline: yes
+== inject: orphan rows of the first reference ledger after 7743779 with transactions, torn nodes.csv tail
+appended 1 tx.csv row(s) of ledger 7743782
+appended 2 nodes.csv row(s) of ledger 7743782
+appended torn nodes.csv tail: '7743782,0,TORN' (no newline)
+== resume 2 to the end
+2026-11-04T02:19:11Z STOP (signal)
+2026-11-04T02:19:11Z SUMMARY window 2026-11-04T02:18:41Z -> 2026-11-05T02:18:41Z ledgers 7743736-7743756 ledgers=21 tx=7 nodes=14 gaps=0 retries=0 local_requests=43 public_requests=0 restarts=1
+2026-11-04T02:19:12Z RESUME at ledger 7743757 (window 2026-11-04T02:18:41Z -> 2026-11-05T02:18:41Z, start seq 7743736, behind by 174)
+2026-11-04T02:19:42Z RESUME dropped torn last line of nodes.csv (14 bytes)
+2026-11-04T02:19:42Z RESUME dropped 1 tx.csv rows after ledger 7743779 (no ledgers.csv row)
+2026-11-04T02:19:42Z RESUME dropped 2 nodes.csv rows after ledger 7743779 (no ledgers.csv row)
+2026-11-04T02:19:42Z RESUME at ledger 7743780 (window 2026-11-04T02:18:41Z -> 2026-11-05T02:18:41Z, start seq 7743736, behind by 160)
+2026-11-04T02:21:39Z STOP (stop_at reached)
+2026-11-04T02:21:39Z SUMMARY window 2026-11-04T02:18:41Z -> 2026-11-05T02:18:41Z ledgers 7743736-7743855 ledgers=120 tx=45 nodes=90 gaps=0 retries=0 local_requests=153 public_requests=0 restarts=3
+PASS tx.csv identical (45 rows)
+PASS nodes.csv identical (90 rows)
+PASS ledgers.csv identical without fetched_utc
+PASS every ledger 7743736..7743855 exactly once
+PASS no gaps (gaps.csv absent or header only, both runs)
+PASS every row from the local node (source=local)
+PASS txn_count sum == tx.csv rows
+PASS created+modified+deleted sum == nodes.csv rows
+PASS restarts.csv kinds start,resume,resume
+PASS last resume cut the torn nodes.csv line
+PASS last resume dropped the 3 injected orphan row(s) (>=: a mid-ledger SIGKILL adds its own)
+restarts.csv:
+kind,at_utc,first_ledger,validated,lag,torn_bytes,orphan_rows
+start,2026-11-04T02:18:41Z,7743736,7743919,184,0,0
+resume,2026-11-04T02:19:12Z,7743757,7743930,174,0,0
+resume,2026-11-04T02:19:42Z,7743780,7743939,160,14,3
+sha256 tx.csv ref   acbefb027904a714275d6c443faa321f1b78a8a5b4deff4037951e184791a2ff
+sha256 tx.csv drill acbefb027904a714275d6c443faa321f1b78a8a5b4deff4037951e184791a2ff
+sha256 nodes.csv ref   f230101d7388b020335e39d65374f003eb3221f4121fcade37a290d29d5f8913
+sha256 nodes.csv drill f230101d7388b020335e39d65374f003eb3221f4121fcade37a290d29d5f8913
+RESULT: PASS
+(exit 0)

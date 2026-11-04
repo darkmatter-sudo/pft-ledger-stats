@@ -1,0 +1,21 @@
+# growth snapshot A 2026-11-04T00:11:29Z | Ubuntu 22.04.5 LTS | commit 281f0efed0b95c48d36a3109882dba48b2d19381
+$ sha256sum state/snapshot.py
+0aac883bded3612f6b8b139f9d17b9b7cb92f5609815b17b5f435e80fb460f2b  state/snapshot.py
+(exit 0)
+$ python3 -u state/snapshot.py --out data/growth/snapA --ledger 7741387 --log data/growth/snapA/snapshot.log | tail -5
+2026-11-04T00:11:30Z START ledger 7741387 836FF22CE8DEABC116A47E6587B9B6A9029D3104F3AAB73843697B8857E23ACE total_coins 99999999968396802 close 2026-11-04T00:11:01Z limit 2048 | host python 3.10.12
+2026-11-04T00:11:30Z page 0 +2048 objects (total 2048) marker 669C7FF3FA59A6CF
+2026-11-04T00:11:31Z page 1 +2048 objects (total 4096) marker CEBE5EE69FF48060
+2026-11-04T00:11:31Z page 2 +928 objects (total 5024) marker -
+2026-11-04T00:11:32Z DONE 5024 objects in 3 pages, 5 RPC calls this run -> snapshot-7741387.jsonl.gz
+(exit 0)
+$ ls -l data/growth/snapA | awk '{print $5, $9}'
+ 
+5080784 pages.jsonl
+2178054 snapshot-7741387.jsonl.gz
+519 snapshot.log
+420 state.json
+(exit 0)
+$ zcat data/growth/snapA/snapshot-7741387.jsonl.gz | head -1
+{"account_hash":"F960C89B355B3DC5AF584666BA533FDEB5AB5DDE80BE2C85EA8905604512DC5C","close_time":847066261,"close_time_iso":"2026-11-04T00:11:01Z","format":"pft-state-snapshot/1","ledger_hash":"836FF22CE8DEABC116A47E6587B9B6A9029D3104F3AAB73843697B8857E23ACE","ledger_index":7741387,"objects_paged":5024,"server_state_reserve_base":10000000,"server_state_reserve_inc":2000000,"total_coins":99999999968396802}
+(exit 0)

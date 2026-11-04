@@ -1,0 +1,33 @@
+# growth window start 2026-11-04T00:11:05Z | Ubuntu 22.04.5 LTS | commit 281f0efed0b95c48d36a3109882dba48b2d19381
+$ sha256sum growth/collect_growth.py txmix/collect_tx.py
+bd25bf659d36a7df137139963f14a465c6e992316b2a71c4361722177c985b83  growth/collect_growth.py
+7a1371f803fb51757b82819afd6a11d38f765730b9fe370dc3329488b89d4357  txmix/collect_tx.py
+(exit 0)
+$ sudo docker exec postfiatd curl -s -X POST -d '{"method":"server_info","params":[{}]}' http://127.0.0.1:5005/ | jq -c '.result.info | {build_version, server_state, complete_ledgers}'
+{"build_version":"1.0.9","server_state":"full","complete_ledgers":"7740545-7741388"}
+(exit 0)
+$ sudo systemd-run --unit pft-growth-tx --uid 1001 --gid 1001 --property=WorkingDirectory=$PWD --property=StandardOutput=null python3 -u growth/collect_growth.py --out data/growth/tx --log data/growth/collect.log --hours 24
+Running as unit: pft-growth-tx.service
+(exit 0)
+$ systemctl is-active pft-growth-tx
+active
+(exit 0)
+$ cat data/growth/tx/state.json
+{
+ "start": 1793751067,
+ "end": 1793837467,
+ "start_seq": 7741388,
+ "start_utc": "2026-11-04T00:11:07Z",
+ "stop_at": null,
+ "end_utc": "2026-11-05T00:11:07Z"
+}(exit 0)
+$ cat data/growth/collect.log
+2026-11-04T00:11:07Z node: build 1.0.9 state full complete_ledgers 7740545-7741388
+2026-11-04T00:11:07Z WINDOW START 2026-11-04T00:11:07Z -> 2026-11-05T00:11:07Z at ledger 7741388, stop_at None, local rate <= 2.0 req/s, fallback https://rpc.testnet.postfiat.org
+(exit 0)
+$ sudo pft-maint lock add growth-tx --until 1793838367 --reason 'task_c7b353f8 growth 24h collection window'
+lock growth-tx held until 2026-11-05T00:26:07Z
+(exit 0)
+$ pft-maint lock list
+run as root
+(exit 3)
