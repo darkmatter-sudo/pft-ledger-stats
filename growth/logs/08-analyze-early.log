@@ -1,0 +1,52 @@
+# growth early-window analyze 2026-11-04T09:14:56Z | Ubuntu 22.04.5 LTS | commit 58ddd353270393de801e35bbc56fb9fb610171b9
+$ sha256sum growth/analyze_growth.py
+4dfda78026e649390dd1c2835fe81f5fdb9c41fbb1aa788128600c10482794f7  growth/analyze_growth.py
+(exit 0)
+$ mkdir -p data/growth/early/tx
+(exit 0)
+$ for f in ledgers tx nodes; do awk -F, 'NR==1 || $1+0<=7752169' data/growth/tx/$f.csv > data/growth/early/tx/$f.csv; done; wc -l data/growth/early/tx/*.csv; tail -n 1 data/growth/early/tx/ledgers.csv | cut -d, -f1
+  10783 data/growth/early/tx/ledgers.csv
+   7580 data/growth/early/tx/nodes.csv
+   3785 data/growth/early/tx/tx.csv
+  22148 total
+7752169
+(exit 0)
+$ sudo cat /var/lib/pft-retention/samples.csv > data/growth/early/nudb-samples.csv; wc -l data/growth/early/nudb-samples.csv
+1821 data/growth/early/nudb-samples.csv
+(exit 0)
+$ sudo docker exec postfiatd grep -A1 -E '^\[node_db\]' /etc/opt/postfiatd/postfiatd.cfg | head -0; sudo docker exec postfiatd sh -c 'grep -E "^online_delete" /etc/opt/postfiatd/postfiatd.cfg /etc/postfiatd/postfiatd.cfg 2>/dev/null'
+grep: /etc/opt/postfiatd/postfiatd.cfg: No such file or directory
+/etc/postfiatd/postfiatd.cfg:online_delete=512
+(exit 2)
+$ python3 -u growth/analyze_growth.py --data data/growth/early/tx --snap-a data/growth/snapA/snapshot-7741387.jsonl.gz --snap-b data/growth/snapMid/snapshot-7752169.jsonl.gz --statebytes data/growth/statebytes-mid/statebytes-7752169.json --nudb data/growth/early/nudb-samples.csv --online-delete 512 --out data/growth/early/res
+ledgers 7741388..7752169 n=10782 holes=0 sources={'local': 10782}
+txns 3784 raw bytes 5348671 per ledger 496.074105
+nudb samples 54 retained {'min': 521, 'max': 1021, 'mean': 769.518519} overhead ratio 5.074053
+fit nudb {'fixed': 2895312.952995, 'per_ledger': 11741.119183, 'r2': 0.998417} fit sqlite {'fixed': 6872841.285946, 'per_ledger': -100.281596, 'r2': 0.000144}
+RESULT OK problems=0
+(exit 0)
+$ jq -c '.state.types[] | [.entry_type,.a,.created,.deleted,.b,.ok]' data/growth/early/res/growth.json
+["AccountRoot",4505,4,0,4509,true]
+["Amendments",1,0,0,1,true]
+["DirectoryNode",52,0,0,52,true]
+["FeeSettings",1,0,0,1,true]
+["LedgerHashes",120,0,0,120,true]
+["NFTokenOffer",45,0,0,45,true]
+["NFTokenPage",293,28,26,295,true]
+["Offer",3,0,0,3,true]
+["RippleState",4,0,0,4,true]
+(exit 0)
+$ jq -c '.nudb | {samples, retained, overhead_ratio, fit_nudb, fit_sqlite}' data/growth/early/res/growth.json
+{"samples":54,"retained":{"max":1021,"mean":769.518519,"min":521},"overhead_ratio":5.074053,"fit_nudb":{"fixed":2895312.952995,"per_ledger":11741.119183,"r2":0.998417},"fit_sqlite":{"fixed":6872841.285946,"per_ledger":-100.281596,"r2":0.000144}}
+(exit 0)
+$ cat data/growth/early/res/sizing.csv
+online_delete,retained_min,retained_mean,retained_max,raw_bytes,raw_bytes_max,nudb_bytes,nudb_bytes_max,sqlite_bytes
+256,256,384.759259,512,2160372.105174,2223492.941755,7412817.272794,8906765.974788,6795672.740741
+512,512,769.518519,1024,2351241.210347,2477482.88351,11930321.592593,14918218.996581,6795672.740741
+2000,2000,3005.931713,4000,3460667.884169,3953799.419959,38188315.451424,49859789.685755,6795672.740741
+8192,8192,12312.296296,16384,8077314.365554,10097181.136153,147455451.186559,195261809.65038,6795672.740741
+32768,32768,49249.185185,65536,26400748.462218,34480215.544611,581135865.88725,772361299.742536,6795672.740741
+(exit 0)
+$ python3 -u growth/analyze_growth.py --data data/growth/early/tx --snap-a data/growth/snapA/snapshot-7741387.jsonl.gz --snap-b data/growth/snapMid/snapshot-7752169.jsonl.gz --statebytes data/growth/statebytes-mid/statebytes-7752169.json --nudb data/growth/early/nudb-samples.csv --online-delete 512 --out data/growth/early/res --check data/growth/early/res/growth.json
+CHECK recomputed result IDENTICAL to growth.json
+(exit 0)

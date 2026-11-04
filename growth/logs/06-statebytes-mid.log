@@ -1,0 +1,30 @@
+# growth mid-window state bytes 2026-11-04T09:14:33Z | Ubuntu 22.04.5 LTS | commit 58ddd353270393de801e35bbc56fb9fb610171b9
+$ sha256sum growth/statebytes_growth.py state/snapshot.py
+fa3465d18da51eb7502c95317d55fdb9baac3b5ae3b962f1981f4215237537e9  growth/statebytes_growth.py
+0aac883bded3612f6b8b139f9d17b9b7cb92f5609815b17b5f435e80fb460f2b  state/snapshot.py
+(exit 0)
+# mid ledger L=7752169 (current validated)
+$ mkdir -p data/growth/snapMid data/growth/statebytes-mid
+(exit 0)
+$ python3 -u state/snapshot.py --out data/growth/snapMid --ledger 7752169 --log data/growth/snapMid/snapshot.log | tail -2
+2026-11-04T09:14:35Z page 2 +934 objects (total 5030) marker -
+2026-11-04T09:14:36Z DONE 5030 objects in 3 pages, 5 RPC calls this run -> snapshot-7752169.jsonl.gz
+(exit 0)
+$ python3 -u growth/statebytes_growth.py --out data/growth/statebytes-mid --ledger 7752169 --join data/growth/snapMid/snapshot-7752169.jsonl.gz
+2026-11-04T09:14:36Z START statebytes ledger 7752169
+2026-11-04T09:14:37Z DONE ledger 7752169 A2146AF3FD61909F620C448FEE5F5CD112F331757484E93161E541F4CF8FC152 objects 5030 bytes 1969503 pages 3 rpc 3 join problems 0/5030
+  LedgerHashes                 120 objects     979344 bytes
+  NFTokenPage                  295 objects     501453 bytes
+  AccountRoot                 4509 objects     469112 bytes
+  DirectoryNode                 52 objects       9444 bytes
+  NFTokenOffer                  45 objects       6662 bytes
+  Amendments                     1 objects       2060 bytes
+  RippleState                    4 objects        844 bytes
+  Offer                          3 objects        549 bytes
+  FeeSettings                    1 objects         35 bytes
+(exit 0)
+$ wc -l data/growth/statebytes-mid/statebytes-7752169.csv; sha256sum data/growth/statebytes-mid/statebytes-7752169.csv data/growth/statebytes-mid/statebytes-7752169.json
+5031 data/growth/statebytes-mid/statebytes-7752169.csv
+d1b2f653c8be66e121f1da88ed9ef278d68c5382a63f24e427b418be379d312d  data/growth/statebytes-mid/statebytes-7752169.csv
+f8c07d020f0401fed362614d835e8b31170b5e7f7fcb631e9d0187517a004473  data/growth/statebytes-mid/statebytes-7752169.json
+(exit 0)

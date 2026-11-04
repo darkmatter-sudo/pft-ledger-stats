@@ -1,0 +1,17 @@
+# growth statebytes-end timer 2026-11-04T09:14:44Z | Ubuntu 22.04.5 LTS | commit 58ddd353270393de801e35bbc56fb9fb610171b9
+$ sha256sum growth/statebytes_end.sh growth/statebytes_growth.py
+e1193ef1c46d46adffd289bcb66778aa0fb869fe3e8f57e61fe0731e1ef4cbc6  growth/statebytes_end.sh
+fa3465d18da51eb7502c95317d55fdb9baac3b5ae3b962f1981f4215237537e9  growth/statebytes_growth.py
+(exit 0)
+$ sudo systemd-run --unit pft-growth-statebytes --on-calendar '2026-11-05 00:16:00 UTC' --timer-property=AccuracySec=1s --uid 1001 --gid 1001 --property=WorkingDirectory=$PWD growth/statebytes_end.sh data/growth
+Running timer as unit: pft-growth-statebytes.timer
+Will run service as unit: pft-growth-statebytes.service
+(exit 0)
+$ TZ=UTC systemctl list-timers pft-growth-snapB.timer pft-growth-statebytes.timer --no-pager
+NEXT                        LEFT     LAST PASSED UNIT                        ACTIVATES
+Thu 2026-11-05 00:14:00 UTC 14h left n/a  n/a    pft-growth-snapB.timer      pft-growth-snapB.service
+Thu 2026-11-05 00:16:00 UTC 15h left n/a  n/a    pft-growth-statebytes.timer pft-growth-statebytes.service
+
+2 timers listed.
+Pass --all to see loaded but inactive timers, too.
+(exit 0)
