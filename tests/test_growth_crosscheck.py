@@ -182,3 +182,44 @@ def test_torn_last_row_of_a_live_collection_is_skipped(tmp_path):
 
 def test_only_read_only_methods():
     assert set(xc.METHODS) == {"server_info", "ledger"}
+
+
+def test_retry_with_exponential_backoff_is_printed_and_counted(tmp_path, capsys):
+    """The real public-RPC client (no network): lgrNotFound twice, then a transport error, then OK."""
+    import urllib.error
+
+    write_collection(tmp_path)
+    fake = FakeRpc()
+    failures = {"lgrNotFound": 2, "transport": 1}
+    sleeps = []
+
+    def post(body):
+        req = json.loads(body)
+        params = req["params"][0]
+        if req["method"] == "ledger" and params["ledger_index"] == 102 and params.get("binary"):
+            if failures["lgrNotFound"]:
+                failures["lgrNotFound"] -= 1
+                return {"result": {"status": "error", "error": "lgrNotFound"}}
+            if failures["transport"]:
+                failures["transport"] -= 1
+                raise urllib.error.URLError("connection reset")
+        return {"result": {"status": "success", **fake.call(req["method"], params)}}
+
+    rpc = xc.Rpc(
+        "https://rpc.invalid",
+        gap=0,
+        retry_errors=xc.RETRY,
+        methods=xc.METHODS,
+        post=post,
+        sleep=sleeps.append,
+    )
+    res, _ = run(tmp_path, rpc, count=20)
+    assert res == {"ok": 20, "mismatch": 0}
+    retry = [x for x in capsys.readouterr().out.splitlines() if " RETRY ledger " in x]
+    assert [x.split("RETRY ", 1)[1] for x in retry] == [
+        "ledger attempt 1/6 error=lgrNotFound backoff=2.0s",
+        "ledger attempt 2/6 error=lgrNotFound backoff=4.0s",
+        "ledger attempt 3/6 error=URLError: <urlopen error connection reset> backoff=8.0s",
+    ]
+    assert [s for s in sleeps if s] == [2.0, 4.0, 8.0]
+    assert rpc.retry_kinds == {"lgrNotFound": 2, "transport": 1}
