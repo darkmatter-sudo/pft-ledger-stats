@@ -132,6 +132,19 @@ def test_state_reconcile_ok_and_mismatch(tmp_path):
     assert "snapshot A ledger 9 != first-1 10" in st["problems"]
 
 
+def test_state_reconcile_counts_deleted(tmp_path):
+    a, b = tmp_path / "a.jsonl.gz", tmp_path / "b.jsonl.gz"
+    write_snap(a, 9, ["AccountRoot", "Offer", "Offer"])
+    write_snap(b, 12, ["AccountRoot", "Offer"])
+    nodes = [node(11, 0, "deleted", "Offer"), node(11, 0, "modified", "AccountRoot")]
+    st = ag.state_reconcile(str(a), str(b), nodes, 10, 12)
+    assert st["problems"] == []
+    assert {r["entry_type"]: (r["a"], r["deleted"], r["b"]) for r in st["types"]}["Offer"] == (2, 1, 1)
+    write_snap(b, 12, ["AccountRoot", "Offer", "Offer"])
+    st = ag.state_reconcile(str(a), str(b), nodes, 10, 12)
+    assert st["problems"] == ["Offer: A 2 + 0 - 1 != B 2"]
+
+
 def test_fit_line_exact_and_degenerate():
     f = ag.fit_line([10, 20, 30], [200, 300, 400])
     assert (
@@ -140,6 +153,10 @@ def test_fit_line_exact_and_degenerate():
         and f["r2"] == pytest.approx(1)
     )
     assert ag.fit_line([5, 5], [1, 2]) is None
+    # y = 1 + 0.5 x, residuals 0.5/-1/0.5: ss_res 1.5, ss_tot 2 -> r2 0.25
+    f = ag.fit_line([1, 2, 3], [1, 3, 2])
+    assert f["fixed"] == pytest.approx(1) and f["per_ledger"] == pytest.approx(0.5)
+    assert f["r2"] == pytest.approx(0.25)
     assert ag.fit_line([5], [1]) is None
 
 
@@ -195,6 +212,8 @@ def test_sizing_with_fit_and_sqlite_fallback():
     assert r["online_delete"] == 256 and r["retained_mean"] == 384
     assert r["nudb_bytes"] == 100 + 10 * 384 and r["nudb_bytes_max"] == 100 + 10 * 512
     assert r["raw_bytes"] == 50 + 2 * 384 and r["sqlite_bytes"] == 70.0
+    assert (r["retained_min"], r["retained_max"], r["raw_bytes_max"]) == (256, 512, 50 + 2 * 512)
+    assert [x["retained_max"] for x in sz["rows"]] == [2 * n for n in ag.SIZES]
     full = sz["full_history"]
     assert full["raw_bytes_per_day"] == 2 * 1000 + 7
     assert full["disk_bytes_per_day"] == 10 * 1000 + 7  # SQLite per ledger 0 in measured_mean mode
@@ -253,6 +272,10 @@ def test_main_exits_1_on_problem(tmp_path):
     d.mkdir()
     write_dir(str(d), [LEDGERS[0], LEDGERS[2]], TXS[:1], NODES[:1])
     assert ag.main(["--data", str(d), "--out", str(tmp_path / "o")]) == 1
+    # a recorded result that is reproduced exactly still fails --check while it has problems
+    rec = tmp_path / "o" / "growth.json"
+    assert json.loads(rec.read_text())["problems"]
+    assert ag.main(["--data", str(d), "--out", str(tmp_path / "o"), "--check", str(rec)]) == 1
 
 
 # ---- statebytes_growth ----

@@ -128,6 +128,26 @@ def test_disagreeing_answers_are_rejected():
         cg.growth_rows(j, b)
 
 
+class OneAnswer:
+    """Answers every `ledger` call with the given (json, binary) pair, whatever was asked."""
+
+    def __init__(self, j, b):
+        self.j, self.b = j, b
+
+    def call(self, method, params=None):
+        return {"ledger": self.b if params.get("binary") else self.j}
+
+
+def test_fetch_pair_rejects_wrong_or_open_ledger():
+    j, b = pair(100, SPEC)
+    assert cg.fetch_pair(OneAnswer(j, b), 100)[0] is j
+    with pytest.raises(LookupError, match="unexpected ledger 100"):
+        cg.fetch_pair(OneAnswer(j, b), 101)
+    j = dict(j, closed=False)
+    with pytest.raises(LookupError, match="unexpected ledger"):
+        cg.fetch_pair(OneAnswer(j, b), 100)
+
+
 def specs_for(i):
     return SPEC[: i % 3]
 
