@@ -1,0 +1,157 @@
+# growth analyze-final 2026-11-05T00:16:57Z
+OS: Ubuntu 22.04.5 LTS
+repo HEAD: 3fab184acb888f5348c76bef7d73aaf1ba257f48
+$ sha256sum growth/analyze_growth.py growth/charts_growth.py
+4dfda78026e649390dd1c2835fe81f5fdb9c41fbb1aa788128600c10482794f7  growth/analyze_growth.py
+c625cc3e5122cbc19fd8dcee7a6ede7eca5b159b707e0500772c3031b77eee6d  growth/charts_growth.py
+(exit 0)
+$ cat data/growth/statebytes/statebytes_end.log
+2026-11-05T00:16:01Z snapshot B data/growth/snapB/snapshot-7769949.jsonl.gz ready; statebytes of ledger 7769949
+2026-11-05T00:16:01Z START statebytes ledger 7769949
+2026-11-05T00:16:05Z DONE ledger 7769949 1EE81FD804F35A25FD7DA0B3A342BED46227A5ABC724A8D9953A541E52EBE004 objects 5048 bytes 1983867 pages 3 rpc 3 join problems 0/5048
+  LedgerHashes                 120 objects     981584 bytes
+  NFTokenPage                  303 objects     512551 bytes
+  AccountRoot                 4519 objects     470138 bytes
+  DirectoryNode                 52 objects       9444 bytes
+  NFTokenOffer                  45 objects       6662 bytes
+  Amendments                     1 objects       2060 bytes
+  RippleState                    4 objects        844 bytes
+  Offer                          3 objects        549 bytes
+  FeeSettings                    1 objects         35 bytes
+2026-11-05T00:16:05Z statebytes_growth.py exit 0
+(exit 0)
+$ jq -c '{ledger_index, objects, bytes, join}' data/growth/statebytes/statebytes-7769949.json data/growth/statebytes-mid/statebytes-7752169.json
+{"ledger_index":7769949,"objects":5048,"bytes":1983867,"join":{"objects":5048,"problems":0,"snapshot":"snapshot-7769949.jsonl.gz"}}
+{"ledger_index":7752169,"objects":5030,"bytes":1969503,"join":{"objects":5030,"problems":0,"snapshot":"snapshot-7752169.jsonl.gz"}}
+(exit 0)
+$ sudo cat /var/lib/pft-retention/samples.csv > data/growth/nudb-samples-full.csv; wc -l data/growth/nudb-samples-full.csv
+1911 data/growth/nudb-samples-full.csv
+(exit 0)
+$ cut -d, -f1-8 data/growth/nudb-samples-full.csv > data/growth/nudb-samples.csv; head -1 data/growth/nudb-samples.csv
+epoch,utc,server_state,validated_seq,complete_lo,complete_hi,nudb_bytes,sqlite_bytes
+(exit 0)
+$ mkdir -p growth/data/tx growth/data/snapA growth/data/snapB growth/data/statebytes growth/data/xc-early growth/data/xc-final
+(exit 0)
+$ cp data/growth/tx/ledgers.csv data/growth/tx/tx.csv data/growth/tx/nodes.csv data/growth/tx/restarts.csv data/growth/tx/state.json data/growth/collect.log growth/data/tx/
+(exit 0)
+$ cp data/growth/snapA/snapshot-7741387.jsonl.gz data/growth/snapA/snapshot.log growth/data/snapA/; cp data/growth/snapB/snapshot-7769949.jsonl.gz data/growth/snapB/snapshot.log data/growth/snapB/snapshot_end.log growth/data/snapB/
+(exit 0)
+$ cp data/growth/statebytes-mid/statebytes-7752169.json data/growth/statebytes-mid/statebytes-7752169.csv data/growth/statebytes/statebytes-7769949.json data/growth/statebytes/statebytes-7769949.csv data/growth/statebytes/statebytes_end.log growth/data/statebytes/
+(exit 0)
+$ cp data/growth/xc-early/crosscheck-early.json growth/data/xc-early/; cp data/growth/xc-final/crosscheck-final.json growth/data/xc-final/; cp data/growth/nudb-samples.csv growth/data/
+(exit 0)
+$ ls growth/data/tx/gaps.csv growth/data/tx/retries.csv 2>&1 | head -2
+ls: cannot access 'growth/data/tx/gaps.csv': No such file or directory
+ls: cannot access 'growth/data/tx/retries.csv': No such file or directory
+(exit 0)
+$ sudo docker exec postfiatd sh -c 'grep -E "^online_delete" /etc/opt/postfiatd/postfiatd.cfg /etc/postfiatd/postfiatd.cfg 2>/dev/null'
+/etc/postfiatd/postfiatd.cfg:online_delete=512
+(exit 2)
+$ python3 -u growth/analyze_growth.py --data growth/data/tx --snap-a growth/data/snapA/snapshot-7741387.jsonl.gz --snap-b growth/data/snapB/snapshot-7769949.jsonl.gz --statebytes growth/data/statebytes/statebytes-7752169.json --statebytes growth/data/statebytes/statebytes-7769949.json --nudb growth/data/nudb-samples.csv --online-delete 512 --out growth/data/final
+ledgers 7741388..7769949 n=28562 holes=0 sources={'local': 28562}
+txns 9924 raw bytes 14447016 per ledger 505.812478
+nudb samples 143 retained {'min': 520, 'max': 1021, 'mean': 770.06993} overhead ratio 5.045092
+fit nudb {'fixed': 2906386.389071, 'per_ledger': 11774.935056, 'r2': 0.99765} fit sqlite {'fixed': 7123957.119455, 'per_ledger': -499.455758, 'r2': 0.003714}
+RESULT OK problems=0
+(exit 0)
+$ jq -c '.coverage' growth/data/final/growth.json
+{"first":7741388,"gaps_listed":0,"holes":0,"last":7769949,"ledgers":28562,"problems":[],"sources":{"local":28562}}
+(exit 0)
+$ jq -c '.state.types[] | [.entry_type,.a,.created,.deleted,.b,.ok]' growth/data/final/growth.json
+["AccountRoot",4505,14,0,4519,true]
+["Amendments",1,0,0,1,true]
+["DirectoryNode",52,0,0,52,true]
+["FeeSettings",1,0,0,1,true]
+["LedgerHashes",120,0,0,120,true]
+["NFTokenOffer",45,0,0,45,true]
+["NFTokenPage",293,69,59,303,true]
+["Offer",3,0,0,3,true]
+["RippleState",4,0,0,4,true]
+(exit 0)
+$ jq -c '{per_day: .per_day, interval: .mean_interval_s, raw_per_ledger: .raw_bytes_per_ledger}' growth/data/final/growth.json
+{"per_day":{"created":82.997094,"deleted":58.997934,"header_bytes":3370198,"ledgers":28561,"meta_bytes":9220932.149534,"modified":19749.308522,"raw_bytes":14446510.187522,"tx_blob_bytes":1855380.037988,"txns":9923.652545},"interval":3.025104,"raw_per_ledger":505.812478}
+(exit 0)
+$ jq -c '.state_bytes | {bytes, objects, growth_per_ledger, growth_per_day, points}' growth/data/final/growth.json
+{"bytes":1983867,"objects":5048,"growth_per_ledger":0.807874,"growth_per_day":23073.689764,"points":[{"bytes":1969503,"ledger_index":7752169,"objects":5030},{"bytes":1983867,"ledger_index":7769949,"objects":5048}]}
+(exit 0)
+$ jq -c '.nudb' growth/data/final/growth.json
+{"fit_nudb":{"fixed":2906386.389071,"per_ledger":11774.935056,"r2":0.99765},"fit_sqlite":{"fixed":7123957.119455,"per_ledger":-499.455758,"r2":0.003714},"nudb_bytes":{"max":15049410,"mean":11973909.804196,"min":8993180},"online_delete":512,"overhead_ratio":5.045092,"raw_projection_bytes":2373377.979653,"retained":{"max":1021,"mean":770.06993,"min":520},"retained_ratio":{"max":1.994141,"mean":1.504043,"min":1.015625},"samples":143,"sqlite_bytes":{"max":9888976,"mean":6739341.258741,"min":5117952}}
+(exit 0)
+$ jq -c '.sizing.full_history, .sizing.assumed_retained_ratio, .sizing.sqlite_mode' growth/data/final/growth.json
+{"disk_bytes_per_day":336326993.823186,"disk_bytes_per_year":122759352745.46295,"naive_all_ledgers_disk_bytes":91490644863.16183,"note":"naive_all_ledgers_*: every ledger since genesis assumed to cost what this window's cost","raw_bytes_per_day":14469583.877286,"raw_bytes_per_year":5281398115.209267}
+1.504043
+"measured_mean"
+(exit 0)
+$ cat growth/data/final/sizing.csv
+online_delete,retained_min,retained_mean,retained_max,raw_bytes,raw_bytes_max,nudb_bytes,nudb_bytes_max,sqlite_bytes
+256,256,385.034965,512,2178622.489826,2242842.988796,7440148.096633,8935153.137725,6739341.258741
+512,512,770.06993,1024,2373377.979653,2501818.977593,11973909.804196,14963919.886379,6739341.258741
+2000,2000,3008.085664,4000,3505394.264268,4007116.912471,38326399.729403,50006126.612932,6739341.258741
+8192,8192,12321.118881,16384,8216042.674442,10271098.641482,147986761.031072,195826922.346005,6739341.258741
+32768,32768,49284.475524,65536,26912569.69777,35132793.565927,583227884.957077,774588530.216807,6739341.258741
+(exit 0)
+$ jq -c '.top.tx_types[:6][] | [.tx_type,.count,.bytes,.byte_share]' growth/data/final/growth.json
+["Payment",7890,3981937,0.359488]
+["NFTokenMint",1107,3978649,0.359191]
+["NFTokenBurn",927,3116114,0.281322]
+(exit 0)
+$ jq -c '.top.entries[:8][] | [.entry_type,.action,.count]' growth/data/final/growth.json
+["AccountRoot","modified",17779]
+["NFTokenPage","modified",1971]
+["NFTokenPage","created",69]
+["NFTokenPage","deleted",59]
+["AccountRoot","created",14]
+(exit 0)
+$ python3 -u growth/analyze_growth.py --data growth/data/tx --snap-a growth/data/snapA/snapshot-7741387.jsonl.gz --snap-b growth/data/snapB/snapshot-7769949.jsonl.gz --statebytes growth/data/statebytes/statebytes-7752169.json --statebytes growth/data/statebytes/statebytes-7769949.json --nudb growth/data/nudb-samples.csv --online-delete 512 --out growth/data/final --check growth/data/final/growth.json
+CHECK recomputed result IDENTICAL to growth.json
+(exit 0)
+$ .venv/bin/python -u growth/charts_growth.py --result growth/data/final/growth.json --data growth/data/tx --nudb growth/data/nudb-samples.csv --out growth
+wrote growth/growth_hourly.png
+wrote growth/growth_nudb_fit.png
+wrote growth/growth_sizing.png
+(exit 0)
+$ for f in $(cd growth/data && ls tx/*.csv statebytes/*.csv final/*.csv nudb-samples.csv); do echo "$f $(($(wc -l < growth/data/$f) - 1)) rows (excluding header)"; done | tee growth/data/ROWS.txt
+final/hourly.csv 25 rows (excluding header)
+final/sizing.csv 5 rows (excluding header)
+nudb-samples.csv 1910 rows (excluding header)
+statebytes/statebytes-7752169.csv 5030 rows (excluding header)
+statebytes/statebytes-7769949.csv 5048 rows (excluding header)
+tx/ledgers.csv 28562 rows (excluding header)
+tx/nodes.csv 19892 rows (excluding header)
+tx/restarts.csv 1 rows (excluding header)
+tx/tx.csv 9924 rows (excluding header)
+(exit 0)
+$ for f in snapA/snapshot-7741387.jsonl.gz snapB/snapshot-7769949.jsonl.gz; do echo "$f $(($(zcat growth/data/$f | wc -l) - 1)) objects (excluding the header line)"; done | tee -a growth/data/ROWS.txt
+snapA/snapshot-7741387.jsonl.gz 5024 objects (excluding the header line)
+snapB/snapshot-7769949.jsonl.gz 5048 objects (excluding the header line)
+(exit 0)
+$ (cd growth/data && sha256sum $(find . -type f ! -name SHA256SUMS | sed 's|^./||' | sort)) | tee growth/data/SHA256SUMS
+0ba16573f70f7c6c72946d20a2a5eb24bf4a366850ed7a99f27050fc52a6c9bb  ROWS.txt
+938eff92591143db539590775904c287a039203cd45046f4dea82677b1313f8d  final/growth.json
+be082180ca1315b427a6dd2fac9b3071b84e53fc2e712a00632b6a4ed973d06c  final/hourly.csv
+f6c0ba63ee28307a66fb9cdad136eda6087bfffb78386100ee7af267b4ff234f  final/sizing.csv
+ae2865b91d8fc5f953d487264e4b0b278583161e7c76fcd3c63d0e040d82445b  nudb-samples.csv
+3c53bae3620deae67a3090fcbdd69afc1944f29dc41f7c720cfdc961a4b203ed  snapA/snapshot-7741387.jsonl.gz
+660518ef3251ccf35dd7ece2df1925a3b8cc7346f15758834ad8e89a8cf4a564  snapA/snapshot.log
+227cac2bf69fc06a21aeea88e21a6491c8663427f6d254cf1bdfd41217158931  snapB/snapshot-7769949.jsonl.gz
+97327b3d9c70bc751d1f9ed37f36fb60afbfc7193a9ab04e509aee7af43ede43  snapB/snapshot.log
+1f7dec4f1df816ce76c5369145654d5bdc8f0b9eb9e0b7d3b48059e8df71b052  snapB/snapshot_end.log
+d1b2f653c8be66e121f1da88ed9ef278d68c5382a63f24e427b418be379d312d  statebytes/statebytes-7752169.csv
+f8c07d020f0401fed362614d835e8b31170b5e7f7fcb631e9d0187517a004473  statebytes/statebytes-7752169.json
+7068017b74ced7040f897cf0217eba3cb95115be8e7f4e36d8353fa4962f2ffa  statebytes/statebytes-7769949.csv
+5aa30834726b4d26e12130888f8d11e2ee7ef688b387f7bc3bb2e6b8e2e0c6c7  statebytes/statebytes-7769949.json
+ba7962cfa4ee2e2f2bd5ee9da1e520be18a054c050e524e509c13493d6bf2a0d  statebytes/statebytes_end.log
+a79ed74b95db859afd0e9756a1d70f8824c802409730a2ece4ecab5229eb3bb7  tx/collect.log
+bd90f2d4f14ac383bd53784b073973e3bee9fff263ebb79c12de8908f5a10cf0  tx/ledgers.csv
+c51a26385373712b2b85aaf4cf21bf1603f20a68f85427ce6a64d778fc917cfd  tx/nodes.csv
+1e8076d83c99b6873993374a2f3aefa765a8a98b182e0caefa066994f1ab5ac0  tx/restarts.csv
+5d5f3006aa1224722d57ad4b2088a03b84a27eca018cea83e08da415291cab1d  tx/state.json
+6ecafdab6e342ef1aa3d9ae05b9f9e92d6b07b3a64029d2b881145fcc2ff1051  tx/tx.csv
+eac9cfc98bff5cb89f14726afb1d1460cd713865fedf0d13e274c87faabdf7df  xc-early/crosscheck-early.json
+9632418e89c6ea55ed95add52eeb1d88162207dac94fe9957408e18f8f86aeb9  xc-final/crosscheck-final.json
+(exit 0)
+$ sha256sum growth/*.png
+8e8f70f70b0743d7d92912d36f3d4a97ea7574390f2bb7cddeea7da8c2c9fc02  growth/growth_hourly.png
+3079c97c908188c4c18ed8ddd0b7b67118e522bfcf8b05ed66618784d76a8814  growth/growth_nudb_fit.png
+91de78a8387b5961cb7271830c1aeca1988d77ae6a83c4102c8cede1447eea35  growth/growth_sizing.png
+(exit 0)

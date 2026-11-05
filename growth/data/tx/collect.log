@@ -1,0 +1,27 @@
+2026-11-04T00:11:07Z node: build 1.0.9 state full complete_ledgers 7740545-7741388
+2026-11-04T00:11:07Z WINDOW START 2026-11-04T00:11:07Z -> 2026-11-05T00:11:07Z at ledger 7741388, stop_at None, local rate <= 2.0 req/s, fallback https://rpc.testnet.postfiat.org
+2026-11-04T01:11:07Z PROGRESS last=7742578 lag=0 ledgers=1191 tx=437 nodes=874 gaps=0 retries=0 local_requests=4796 public_requests=0
+2026-11-04T02:11:07Z PROGRESS last=7743769 lag=0 ledgers=2382 tx=842 nodes=1681 gaps=0 retries=0 local_requests=9463 public_requests=0
+2026-11-04T03:11:08Z PROGRESS last=7744962 lag=0 ledgers=3575 tx=1255 nodes=2509 gaps=0 retries=0 local_requests=13805 public_requests=0
+2026-11-04T04:11:09Z PROGRESS last=7746152 lag=0 ledgers=4765 tx=1660 nodes=3325 gaps=0 retries=0 local_requests=18355 public_requests=0
+2026-11-04T05:11:10Z PROGRESS last=7747345 lag=0 ledgers=5958 tx=2067 nodes=4138 gaps=0 retries=0 local_requests=23120 public_requests=0
+2026-11-04T06:11:10Z PROGRESS last=7748535 lag=1 ledgers=7148 tx=2488 nodes=4980 gaps=0 retries=0 local_requests=27818 public_requests=0
+2026-11-04T07:11:11Z PROGRESS last=7749725 lag=0 ledgers=8338 tx=2914 nodes=5835 gaps=0 retries=0 local_requests=32556 public_requests=0
+2026-11-04T08:11:12Z PROGRESS last=7750913 lag=0 ledgers=9526 tx=3319 nodes=6646 gaps=0 retries=0 local_requests=37319 public_requests=0
+2026-11-04T09:11:13Z PROGRESS last=7752102 lag=0 ledgers=10715 tx=3759 nodes=7529 gaps=0 retries=0 local_requests=42160 public_requests=0
+2026-11-04T10:11:15Z PROGRESS last=7753290 lag=0 ledgers=11903 tx=4178 nodes=8369 gaps=0 retries=0 local_requests=46902 public_requests=0
+2026-11-04T11:11:16Z PROGRESS last=7754481 lag=0 ledgers=13094 tx=4599 nodes=9214 gaps=0 retries=0 local_requests=51623 public_requests=0
+2026-11-04T12:11:17Z PROGRESS last=7755674 lag=0 ledgers=14287 tx=5016 nodes=10052 gaps=0 retries=0 local_requests=56376 public_requests=0
+2026-11-04T13:11:18Z PROGRESS last=7756863 lag=0 ledgers=15476 tx=5424 nodes=10870 gaps=0 retries=0 local_requests=60956 public_requests=0
+2026-11-04T14:11:19Z PROGRESS last=7758056 lag=0 ledgers=16669 tx=5819 nodes=11664 gaps=0 retries=0 local_requests=65718 public_requests=0
+2026-11-04T15:11:21Z PROGRESS last=7759245 lag=0 ledgers=17858 tx=6217 nodes=12462 gaps=0 retries=0 local_requests=70419 public_requests=0
+2026-11-04T16:11:21Z PROGRESS last=7760435 lag=0 ledgers=19048 tx=6593 nodes=13211 gaps=0 retries=0 local_requests=74786 public_requests=0
+2026-11-04T17:11:22Z PROGRESS last=7761627 lag=0 ledgers=20240 tx=6994 nodes=14013 gaps=0 retries=0 local_requests=79130 public_requests=0
+2026-11-04T18:11:23Z PROGRESS last=7762816 lag=0 ledgers=21429 tx=7419 nodes=14860 gaps=0 retries=0 local_requests=83516 public_requests=0
+2026-11-04T19:11:24Z PROGRESS last=7764006 lag=0 ledgers=22619 tx=7841 nodes=15706 gaps=0 retries=0 local_requests=87646 public_requests=0
+2026-11-04T20:11:25Z PROGRESS last=7765196 lag=1 ledgers=23809 tx=8260 nodes=16553 gaps=0 retries=0 local_requests=92104 public_requests=0
+2026-11-04T21:11:25Z PROGRESS last=7766382 lag=0 ledgers=24995 tx=8683 nodes=17399 gaps=0 retries=0 local_requests=96607 public_requests=0
+2026-11-04T22:11:26Z PROGRESS last=7767572 lag=0 ledgers=26185 tx=9119 nodes=18274 gaps=0 retries=0 local_requests=101450 public_requests=0
+2026-11-04T23:11:26Z PROGRESS last=7768766 lag=0 ledgers=27379 tx=9527 nodes=19094 gaps=0 retries=0 local_requests=106248 public_requests=0
+2026-11-05T00:11:12Z STOP (window end reached (ledger 7769950 closed 2026-11-05T00:11:10Z, not written))
+2026-11-05T00:11:12Z SUMMARY window 2026-11-04T00:11:07Z -> 2026-11-05T00:11:07Z ledgers 7741388-7769949 ledgers=28562 tx=9924 nodes=19892 gaps=0 retries=0 local_requests=111010 public_requests=0 restarts=1

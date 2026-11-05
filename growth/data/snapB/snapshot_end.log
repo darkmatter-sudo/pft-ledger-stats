@@ -1,0 +1,7 @@
+2026-11-05T00:14:01Z collector pft-growth-tx inactive; snapshot B of last window ledger 7769949
+2026-11-05T00:14:02Z START ledger 7769949 1EE81FD804F35A25FD7DA0B3A342BED46227A5ABC724A8D9953A541E52EBE004 total_coins 99999999968297312 close 2026-11-05T00:11:02Z limit 2048 | host python 3.10.12
+2026-11-05T00:14:04Z page 0 +2048 objects (total 2048) marker 6654FA5822584677
+2026-11-05T00:14:05Z page 1 +2048 objects (total 4096) marker CE6D2E06DB146588
+2026-11-05T00:14:06Z page 2 +952 objects (total 5048) marker -
+2026-11-05T00:14:07Z DONE 5048 objects in 3 pages, 5 RPC calls this run -> snapshot-7769949.jsonl.gz
+2026-11-05T00:14:07Z snapshot.py exit 0

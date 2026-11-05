@@ -1,0 +1,96 @@
+# growth crosscheck-final 2026-11-05T00:12:59Z
+OS: Ubuntu 22.04.5 LTS
+repo HEAD: 3fab184acb888f5348c76bef7d73aaf1ba257f48
+$ sha256sum growth/crosscheck_growth.py growth/collect_growth.py
+a987c5f681d9cf2f63a1245187e29638b5d6857277526ad8c92e91d42493d632  growth/crosscheck_growth.py
+bd25bf659d36a7df137139963f14a465c6e992316b2a71c4361722177c985b83  growth/collect_growth.py
+(exit 0)
+$ systemctl is-active pft-growth-tx
+inactive
+(exit 3)
+$ wc -l data/growth/tx/ledgers.csv data/growth/tx/tx.csv data/growth/tx/nodes.csv
+  28563 data/growth/tx/ledgers.csv
+   9925 data/growth/tx/tx.csv
+  19893 data/growth/tx/nodes.csv
+  58381 total
+(exit 0)
+$ mkdir -p data/growth/xc-final
+(exit 0)
+$ .venv/bin/python -u growth/crosscheck_growth.py --data data/growth/tx --count 20 --seed final-1 --record data/growth/xc-final/crosscheck-final.json
+RANGE collection 7741388-7769949 public_rpc 7700054-7769987 margin 256 checked 7741388-7769949 (28562 ledgers, 5493 with tx) NOT CHECKABLE 0 ledgers
+SAMPLE seed final-1: 20 ledgers (12 with tx): 7742242 7743385 7745971 7746067 7746644 7748078 7749537 7750338 7750583 7752512 7753443 7756177 7759266 7759763 7759877 7763857 7763886 7763910 7767282 7768429
+OK       7742242 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7743385 txn_count=3 header=118 blob=546 meta=966 nodes=6
+OK       7745971 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7746067 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7746644 txn_count=2 header=118 blob=394 meta=1216 nodes=4
+OK       7748078 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7749537 txn_count=2 header=118 blob=364 meta=644 nodes=4
+OK       7750338 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7750583 txn_count=4 header=118 blob=728 meta=1282 nodes=8
+OK       7752512 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7753443 txn_count=5 header=118 blob=910 meta=1610 nodes=10
+OK       7756177 txn_count=4 header=118 blob=758 meta=2220 nodes=8
+OK       7759266 txn_count=2 header=118 blob=364 meta=644 nodes=4
+OK       7759763 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7759877 txn_count=3 header=118 blob=546 meta=966 nodes=6
+OK       7763857 txn_count=2 header=118 blob=366 meta=5930 nodes=4
+OK       7763886 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7763910 txn_count=1 header=118 blob=182 meta=322 nodes=2
+OK       7767282 txn_count=1 header=118 blob=182 meta=322 nodes=2
+OK       7768429 txn_count=1 header=118 blob=182 meta=322 nodes=2
+RANGE end: public_rpc oldest 7700054 (start 7700054), checked span starts 7741388
+RECORD 20 recounts -> data/growth/xc-final/crosscheck-final.json
+SUMMARY ok=20 mismatch=0 negative=False seed=final-1 rpc_calls=42 retries=0 retries_by_error={}
+(exit 0)
+$ .venv/bin/python -u growth/crosscheck_growth.py --data data/growth/tx --offline data/growth/xc-final/crosscheck-final.json
+OFFLINE crosscheck-final.json: 20 recounts recorded 2026-11-05T00:14:00Z (seed final-1, checked [7741388, 7769949]), no RPC
+OK       7742242 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7743385 txn_count=3 header=118 blob=546 meta=966 nodes=6
+OK       7745971 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7746067 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7746644 txn_count=2 header=118 blob=394 meta=1216 nodes=4
+OK       7748078 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7749537 txn_count=2 header=118 blob=364 meta=644 nodes=4
+OK       7750338 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7750583 txn_count=4 header=118 blob=728 meta=1282 nodes=8
+OK       7752512 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7753443 txn_count=5 header=118 blob=910 meta=1610 nodes=10
+OK       7756177 txn_count=4 header=118 blob=758 meta=2220 nodes=8
+OK       7759266 txn_count=2 header=118 blob=364 meta=644 nodes=4
+OK       7759763 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7759877 txn_count=3 header=118 blob=546 meta=966 nodes=6
+OK       7763857 txn_count=2 header=118 blob=366 meta=5930 nodes=4
+OK       7763886 txn_count=0 header=118 blob=0 meta=0 nodes=0
+OK       7763910 txn_count=1 header=118 blob=182 meta=322 nodes=2
+OK       7767282 txn_count=1 header=118 blob=182 meta=322 nodes=2
+OK       7768429 txn_count=1 header=118 blob=182 meta=322 nodes=2
+SUMMARY ok=20 mismatch=0 negative=False seed=recorded rpc_calls=0 (offline)
+(exit 0)
+$ .venv/bin/python -u growth/crosscheck_growth.py --data data/growth/tx --offline data/growth/xc-final/crosscheck-final.json --negative
+OFFLINE crosscheck-final.json: 20 recounts recorded 2026-11-05T00:14:00Z (seed final-1, checked [7741388, 7769949]), no RPC
+MISMATCH 7742242 txn_count=0 header=118 blob=0 meta=0 nodes=0 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7743385 txn_count=3 header=118 blob=546 meta=966 nodes=6 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7745971 txn_count=0 header=118 blob=0 meta=0 nodes=0 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7746067 txn_count=0 header=118 blob=0 meta=0 nodes=0 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7746644 txn_count=2 header=118 blob=394 meta=1216 nodes=4 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7748078 txn_count=0 header=118 blob=0 meta=0 nodes=0 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7749537 txn_count=2 header=118 blob=364 meta=644 nodes=4 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7750338 txn_count=0 header=118 blob=0 meta=0 nodes=0 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7750583 txn_count=4 header=118 blob=728 meta=1282 nodes=8 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7752512 txn_count=0 header=118 blob=0 meta=0 nodes=0 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7753443 txn_count=5 header=118 blob=910 meta=1610 nodes=10 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7756177 txn_count=4 header=118 blob=758 meta=2220 nodes=8 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7759266 txn_count=2 header=118 blob=364 meta=644 nodes=4 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7759763 txn_count=0 header=118 blob=0 meta=0 nodes=0 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7759877 txn_count=3 header=118 blob=546 meta=966 nodes=6 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7763857 txn_count=2 header=118 blob=366 meta=5930 nodes=4 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7763886 txn_count=0 header=118 blob=0 meta=0 nodes=0 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7763910 txn_count=1 header=118 blob=182 meta=322 nodes=2 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7767282 txn_count=1 header=118 blob=182 meta=322 nodes=2 differ=header_bytes,tx_rows,node_rows
+MISMATCH 7768429 txn_count=1 header=118 blob=182 meta=322 nodes=2 differ=header_bytes,tx_rows,node_rows
+SUMMARY ok=0 mismatch=20 negative=True seed=recorded rpc_calls=0 (offline)
+(exit 1)
+$ sha256sum data/growth/xc-final/crosscheck-final.json
+9632418e89c6ea55ed95add52eeb1d88162207dac94fe9957408e18f8f86aeb9  data/growth/xc-final/crosscheck-final.json
+(exit 0)

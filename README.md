@@ -25,6 +25,7 @@ window to plain CSV/JSONL, so the report can be rebuilt and audited later from c
 | `nftflow/` | NFT lifecycle between two state snapshots ~24 h apart: exact supply, owner and issuer-counter reconciliation from a gap-free NFToken* collection, lifecycle stats, public-RPC crosscheck, see [`nftflow/README.md`](nftflow/README.md) |
 | `keyposture/` | signing-key posture (master / regular key / multisig / black-holed) of every account at two state snapshots ~24 h apart: exact per-account and per-class reconciliation from a gap-free key-tx collection, weak-config flags, public-RPC crosscheck, see [`keyposture/README.md`](keyposture/README.md) |
 | `payflow/` | who pays whom over a 24 h window: directed payment graph, volume concentration, net flows and FIFO onward flows of the reward payer's recipients; snapshot-to-snapshot conservation exact to the drop, public-RPC crosscheck with offline re-check, see [`payflow/README.md`](payflow/README.md) |
+| `growth/` | ledger growth and node storage sizing over a 24 h window: exact header/tx_blob/metadata/state bytes, snapshot-to-snapshot object reconciliation, NuDB size fitted against retained ledgers (overhead ratio), disk projections for online_delete 256-32768 and full history; public-RPC recount, offline re-check, controlled mutants, see [`growth/README.md`](growth/README.md) |
 
 ## Requirements
 

@@ -1,0 +1,50 @@
+{
+ "by_type": {
+  "AccountRoot": {
+   "bytes": 469112,
+   "count": 4509
+  },
+  "Amendments": {
+   "bytes": 2060,
+   "count": 1
+  },
+  "DirectoryNode": {
+   "bytes": 9444,
+   "count": 52
+  },
+  "FeeSettings": {
+   "bytes": 35,
+   "count": 1
+  },
+  "LedgerHashes": {
+   "bytes": 979344,
+   "count": 120
+  },
+  "NFTokenOffer": {
+   "bytes": 6662,
+   "count": 45
+  },
+  "NFTokenPage": {
+   "bytes": 501453,
+   "count": 295
+  },
+  "Offer": {
+   "bytes": 549,
+   "count": 3
+  },
+  "RippleState": {
+   "bytes": 844,
+   "count": 4
+  }
+ },
+ "bytes": 1969503,
+ "join": {
+  "objects": 5030,
+  "problems": 0,
+  "snapshot": "snapshot-7752169.jsonl.gz"
+ },
+ "ledger_hash": "A2146AF3FD61909F620C448FEE5F5CD112F331757484E93161E541F4CF8FC152",
+ "ledger_index": 7752169,
+ "objects": 5030,
+ "pages": 3
+}

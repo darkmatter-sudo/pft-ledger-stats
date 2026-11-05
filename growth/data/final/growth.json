@@ -1,0 +1,656 @@
+{
+ "coverage": {
+  "first": 7741388,
+  "gaps_listed": 0,
+  "holes": 0,
+  "last": 7769949,
+  "ledgers": 28562,
+  "problems": [],
+  "sources": {
+   "local": 28562
+  }
+ },
+ "hourly": [
+  {
+   "created": 4,
+   "deleted": 1,
+   "header_bytes": 114696,
+   "hour": "2026-11-04T00:00Z",
+   "ledgers": 972,
+   "meta_bytes": 314514,
+   "modified": 715,
+   "raw_bytes": 497046,
+   "tx_blob_bytes": 67836,
+   "txns": 360
+  },
+  {
+   "created": 2,
+   "deleted": 3,
+   "header_bytes": 140184,
+   "hour": "2026-11-04T01:00Z",
+   "ledgers": 1188,
+   "meta_bytes": 292737,
+   "modified": 808,
+   "raw_bytes": 508982,
+   "tx_blob_bytes": 76061,
+   "txns": 408
+  },
+  {
+   "created": 2,
+   "deleted": 1,
+   "header_bytes": 140774,
+   "hour": "2026-11-04T02:00Z",
+   "ledgers": 1193,
+   "meta_bytes": 362254,
+   "modified": 827,
+   "raw_bytes": 580724,
+   "tx_blob_bytes": 77696,
+   "txns": 415
+  },
+  {
+   "created": 5,
+   "deleted": 2,
+   "header_bytes": 140420,
+   "hour": "2026-11-04T03:00Z",
+   "ledgers": 1190,
+   "meta_bytes": 343520,
+   "modified": 820,
+   "raw_bytes": 560164,
+   "tx_blob_bytes": 76224,
+   "txns": 410
+  },
+  {
+   "created": 4,
+   "deleted": 4,
+   "header_bytes": 140774,
+   "hour": "2026-11-04T04:00Z",
+   "ledgers": 1193,
+   "meta_bytes": 349407,
+   "modified": 799,
+   "raw_bytes": 565273,
+   "tx_blob_bytes": 75092,
+   "txns": 402
+  },
+  {
+   "created": 1,
+   "deleted": 1,
+   "header_bytes": 140538,
+   "hour": "2026-11-04T05:00Z",
+   "ledgers": 1191,
+   "meta_bytes": 382852,
+   "modified": 819,
+   "raw_bytes": 599778,
+   "tx_blob_bytes": 76388,
+   "txns": 412
+  },
+  {
+   "created": 3,
+   "deleted": 4,
+   "header_bytes": 140184,
+   "hour": "2026-11-04T06:00Z",
+   "ledgers": 1188,
+   "meta_bytes": 425610,
+   "modified": 844,
+   "raw_bytes": 644530,
+   "tx_blob_bytes": 78736,
+   "txns": 424
+  },
+  {
+   "created": 7,
+   "deleted": 7,
+   "header_bytes": 140184,
+   "hour": "2026-11-04T07:00Z",
+   "ledgers": 1188,
+   "meta_bytes": 416373,
+   "modified": 803,
+   "raw_bytes": 633161,
+   "tx_blob_bytes": 76604,
+   "txns": 408
+  },
+  {
+   "created": 4,
+   "deleted": 3,
+   "header_bytes": 140302,
+   "hour": "2026-11-04T08:00Z",
+   "ledgers": 1189,
+   "meta_bytes": 390200,
+   "modified": 858,
+   "raw_bytes": 611090,
+   "tx_blob_bytes": 80588,
+   "txns": 431
+  },
+  {
+   "created": 4,
+   "deleted": 3,
+   "header_bytes": 140184,
+   "hour": "2026-11-04T09:00Z",
+   "ledgers": 1188,
+   "meta_bytes": 418439,
+   "modified": 855,
+   "raw_bytes": 638787,
+   "tx_blob_bytes": 80164,
+   "txns": 430
+  },
+  {
+   "created": 3,
+   "deleted": 1,
+   "header_bytes": 140656,
+   "hour": "2026-11-04T10:00Z",
+   "ledgers": 1192,
+   "meta_bytes": 420187,
+   "modified": 829,
+   "raw_bytes": 639017,
+   "tx_blob_bytes": 78174,
+   "txns": 416
+  },
+  {
+   "created": 9,
+   "deleted": 5,
+   "header_bytes": 140420,
+   "hour": "2026-11-04T11:00Z",
+   "ledgers": 1190,
+   "meta_bytes": 472625,
+   "modified": 846,
+   "raw_bytes": 693382,
+   "tx_blob_bytes": 80337,
+   "txns": 427
+  },
+  {
+   "created": 2,
+   "deleted": 3,
+   "header_bytes": 140302,
+   "hour": "2026-11-04T12:00Z",
+   "ledgers": 1189,
+   "meta_bytes": 374195,
+   "modified": 807,
+   "raw_bytes": 590317,
+   "tx_blob_bytes": 75820,
+   "txns": 405
+  },
+  {
+   "created": 6,
+   "deleted": 1,
+   "header_bytes": 140774,
+   "hour": "2026-11-04T13:00Z",
+   "ledgers": 1193,
+   "meta_bytes": 356284,
+   "modified": 813,
+   "raw_bytes": 573529,
+   "tx_blob_bytes": 76471,
+   "txns": 408
+  },
+  {
+   "created": 1,
+   "deleted": 3,
+   "header_bytes": 140184,
+   "hour": "2026-11-04T14:00Z",
+   "ledgers": 1188,
+   "meta_bytes": 567603,
+   "modified": 768,
+   "raw_bytes": 779416,
+   "tx_blob_bytes": 71629,
+   "txns": 385
+  },
+  {
+   "created": 2,
+   "deleted": 2,
+   "header_bytes": 140538,
+   "hour": "2026-11-04T15:00Z",
+   "ledgers": 1191,
+   "meta_bytes": 277660,
+   "modified": 753,
+   "raw_bytes": 488872,
+   "tx_blob_bytes": 70674,
+   "txns": 380
+  },
+  {
+   "created": 0,
+   "deleted": 0,
+   "header_bytes": 140420,
+   "hour": "2026-11-04T16:00Z",
+   "ledgers": 1190,
+   "meta_bytes": 305565,
+   "modified": 796,
+   "raw_bytes": 519579,
+   "tx_blob_bytes": 73594,
+   "txns": 398
+  },
+  {
+   "created": 3,
+   "deleted": 1,
+   "header_bytes": 140420,
+   "hour": "2026-11-04T17:00Z",
+   "ledgers": 1190,
+   "meta_bytes": 378558,
+   "modified": 838,
+   "raw_bytes": 599332,
+   "tx_blob_bytes": 80354,
+   "txns": 421
+  },
+  {
+   "created": 1,
+   "deleted": 0,
+   "header_bytes": 140302,
+   "hour": "2026-11-04T18:00Z",
+   "ledgers": 1189,
+   "meta_bytes": 360134,
+   "modified": 830,
+   "raw_bytes": 578676,
+   "tx_blob_bytes": 78240,
+   "txns": 416
+  },
+  {
+   "created": 4,
+   "deleted": 3,
+   "header_bytes": 140420,
+   "hour": "2026-11-04T19:00Z",
+   "ledgers": 1190,
+   "meta_bytes": 401122,
+   "modified": 850,
+   "raw_bytes": 620969,
+   "tx_blob_bytes": 79427,
+   "txns": 426
+  },
+  {
+   "created": 2,
+   "deleted": 1,
+   "header_bytes": 140656,
+   "hour": "2026-11-04T20:00Z",
+   "ledgers": 1192,
+   "meta_bytes": 352256,
+   "modified": 841,
+   "raw_bytes": 571818,
+   "tx_blob_bytes": 78906,
+   "txns": 420
+  },
+  {
+   "created": 5,
+   "deleted": 2,
+   "header_bytes": 139830,
+   "hour": "2026-11-04T21:00Z",
+   "ledgers": 1185,
+   "meta_bytes": 372282,
+   "modified": 845,
+   "raw_bytes": 591258,
+   "tx_blob_bytes": 79146,
+   "txns": 425
+  },
+  {
+   "created": 4,
+   "deleted": 4,
+   "header_bytes": 140538,
+   "hour": "2026-11-04T22:00Z",
+   "ledgers": 1191,
+   "meta_bytes": 393629,
+   "modified": 851,
+   "raw_bytes": 614091,
+   "tx_blob_bytes": 79924,
+   "txns": 428
+  },
+  {
+   "created": 3,
+   "deleted": 3,
+   "header_bytes": 140538,
+   "hour": "2026-11-04T23:00Z",
+   "ledgers": 1191,
+   "meta_bytes": 357569,
+   "modified": 794,
+   "raw_bytes": 572253,
+   "tx_blob_bytes": 74146,
+   "txns": 398
+  },
+  {
+   "created": 2,
+   "deleted": 1,
+   "header_bytes": 26078,
+   "hour": "2026-11-05T00:00Z",
+   "ledgers": 221,
+   "meta_bytes": 135680,
+   "modified": 141,
+   "raw_bytes": 174972,
+   "tx_blob_bytes": 13214,
+   "txns": 71
+  }
+ ],
+ "mean_interval_s": 3.025104,
+ "nudb": {
+  "fit_nudb": {
+   "fixed": 2906386.389071,
+   "per_ledger": 11774.935056,
+   "r2": 0.99765
+  },
+  "fit_sqlite": {
+   "fixed": 7123957.119455,
+   "per_ledger": -499.455758,
+   "r2": 0.003714
+  },
+  "nudb_bytes": {
+   "max": 15049410,
+   "mean": 11973909.804196,
+   "min": 8993180
+  },
+  "online_delete": 512,
+  "overhead_ratio": 5.045092,
+  "raw_projection_bytes": 2373377.979653,
+  "retained": {
+   "max": 1021,
+   "mean": 770.06993,
+   "min": 520
+  },
+  "retained_ratio": {
+   "max": 1.994141,
+   "mean": 1.504043,
+   "min": 1.015625
+  },
+  "samples": 143,
+  "sqlite_bytes": {
+   "max": 9888976,
+   "mean": 6739341.258741,
+   "min": 5117952
+  }
+ },
+ "per_day": {
+  "created": 82.997094,
+  "deleted": 58.997934,
+  "header_bytes": 3370198.0,
+  "ledgers": 28561.0,
+  "meta_bytes": 9220932.149534,
+  "modified": 19749.308522,
+  "raw_bytes": 14446510.187522,
+  "tx_blob_bytes": 1855380.037988,
+  "txns": 9923.652545
+ },
+ "problems": [],
+ "raw_bytes_per_ledger": 505.812478,
+ "sizing": {
+  "assumed_retained_ratio": 1.504043,
+  "full_history": {
+   "disk_bytes_per_day": 336326993.823186,
+   "disk_bytes_per_year": 122759352745.46295,
+   "naive_all_ledgers_disk_bytes": 91490644863.16183,
+   "note": "naive_all_ledgers_*: every ledger since genesis assumed to cost what this window's cost",
+   "raw_bytes_per_day": 14469583.877286,
+   "raw_bytes_per_year": 5281398115.209267
+  },
+  "rows": [
+   {
+    "nudb_bytes": 7440148.096633,
+    "nudb_bytes_max": 8935153.137725,
+    "online_delete": 256,
+    "raw_bytes": 2178622.489826,
+    "raw_bytes_max": 2242842.988796,
+    "retained_max": 512,
+    "retained_mean": 385.034965,
+    "retained_min": 256,
+    "sqlite_bytes": 6739341.258741
+   },
+   {
+    "nudb_bytes": 11973909.804196,
+    "nudb_bytes_max": 14963919.886379,
+    "online_delete": 512,
+    "raw_bytes": 2373377.979653,
+    "raw_bytes_max": 2501818.977593,
+    "retained_max": 1024,
+    "retained_mean": 770.06993,
+    "retained_min": 512,
+    "sqlite_bytes": 6739341.258741
+   },
+   {
+    "nudb_bytes": 38326399.729403,
+    "nudb_bytes_max": 50006126.612932,
+    "online_delete": 2000,
+    "raw_bytes": 3505394.264268,
+    "raw_bytes_max": 4007116.912471,
+    "retained_max": 4000,
+    "retained_mean": 3008.085664,
+    "retained_min": 2000,
+    "sqlite_bytes": 6739341.258741
+   },
+   {
+    "nudb_bytes": 147986761.031072,
+    "nudb_bytes_max": 195826922.346005,
+    "online_delete": 8192,
+    "raw_bytes": 8216042.674442,
+    "raw_bytes_max": 10271098.641482,
+    "retained_max": 16384,
+    "retained_mean": 12321.118881,
+    "retained_min": 8192,
+    "sqlite_bytes": 6739341.258741
+   },
+   {
+    "nudb_bytes": 583227884.957077,
+    "nudb_bytes_max": 774588530.216807,
+    "online_delete": 32768,
+    "raw_bytes": 26912569.69777,
+    "raw_bytes_max": 35132793.565927,
+    "retained_max": 65536,
+    "retained_mean": 49284.475524,
+    "retained_min": 32768,
+    "sqlite_bytes": 6739341.258741
+   }
+  ],
+  "sqlite_mode": "measured_mean"
+ },
+ "state": {
+  "a_ledger": 7741387,
+  "a_objects": 5024,
+  "b_ledger": 7769949,
+  "b_objects": 5048,
+  "problems": [],
+  "types": [
+   {
+    "a": 4505,
+    "b": 4519,
+    "created": 14,
+    "deleted": 0,
+    "entry_type": "AccountRoot",
+    "ok": true
+   },
+   {
+    "a": 1,
+    "b": 1,
+    "created": 0,
+    "deleted": 0,
+    "entry_type": "Amendments",
+    "ok": true
+   },
+   {
+    "a": 52,
+    "b": 52,
+    "created": 0,
+    "deleted": 0,
+    "entry_type": "DirectoryNode",
+    "ok": true
+   },
+   {
+    "a": 1,
+    "b": 1,
+    "created": 0,
+    "deleted": 0,
+    "entry_type": "FeeSettings",
+    "ok": true
+   },
+   {
+    "a": 120,
+    "b": 120,
+    "created": 0,
+    "deleted": 0,
+    "entry_type": "LedgerHashes",
+    "ok": true
+   },
+   {
+    "a": 45,
+    "b": 45,
+    "created": 0,
+    "deleted": 0,
+    "entry_type": "NFTokenOffer",
+    "ok": true
+   },
+   {
+    "a": 293,
+    "b": 303,
+    "created": 69,
+    "deleted": 59,
+    "entry_type": "NFTokenPage",
+    "ok": true
+   },
+   {
+    "a": 3,
+    "b": 3,
+    "created": 0,
+    "deleted": 0,
+    "entry_type": "Offer",
+    "ok": true
+   },
+   {
+    "a": 4,
+    "b": 4,
+    "created": 0,
+    "deleted": 0,
+    "entry_type": "RippleState",
+    "ok": true
+   }
+  ]
+ },
+ "state_bytes": {
+  "by_type": {
+   "AccountRoot": {
+    "bytes": 470138,
+    "count": 4519
+   },
+   "Amendments": {
+    "bytes": 2060,
+    "count": 1
+   },
+   "DirectoryNode": {
+    "bytes": 9444,
+    "count": 52
+   },
+   "FeeSettings": {
+    "bytes": 35,
+    "count": 1
+   },
+   "LedgerHashes": {
+    "bytes": 981584,
+    "count": 120
+   },
+   "NFTokenOffer": {
+    "bytes": 6662,
+    "count": 45
+   },
+   "NFTokenPage": {
+    "bytes": 512551,
+    "count": 303
+   },
+   "Offer": {
+    "bytes": 549,
+    "count": 3
+   },
+   "RippleState": {
+    "bytes": 844,
+    "count": 4
+   }
+  },
+  "bytes": 1983867,
+  "growth_per_day": 23073.689764,
+  "growth_per_ledger": 0.807874,
+  "objects": 5048,
+  "points": [
+   {
+    "bytes": 1969503,
+    "ledger_index": 7752169,
+    "objects": 5030
+   },
+   {
+    "bytes": 1983867,
+    "ledger_index": 7769949,
+    "objects": 5048
+   }
+  ]
+ },
+ "top": {
+  "entries": [
+   {
+    "action": "modified",
+    "count": 17779,
+    "entry_type": "AccountRoot"
+   },
+   {
+    "action": "modified",
+    "count": 1971,
+    "entry_type": "NFTokenPage"
+   },
+   {
+    "action": "created",
+    "count": 69,
+    "entry_type": "NFTokenPage"
+   },
+   {
+    "action": "deleted",
+    "count": 59,
+    "entry_type": "NFTokenPage"
+   },
+   {
+    "action": "created",
+    "count": 14,
+    "entry_type": "AccountRoot"
+   }
+  ],
+  "results": [
+   {
+    "count": 9903,
+    "result": "tesSUCCESS",
+    "share": 0.997884
+   },
+   {
+    "count": 21,
+    "result": "tecUNFUNDED_PAYMENT",
+    "share": 0.002116
+   }
+  ],
+  "tx_bytes": 11076700,
+  "tx_types": [
+   {
+    "blob_bytes": 1450106,
+    "byte_share": 0.359488,
+    "bytes": 3981937,
+    "count": 7890,
+    "created": 14,
+    "deleted": 0,
+    "meta_bytes": 2531831,
+    "tx_type": "Payment"
+   },
+   {
+    "blob_bytes": 234771,
+    "byte_share": 0.359191,
+    "bytes": 3978649,
+    "count": 1107,
+    "created": 69,
+    "deleted": 0,
+    "meta_bytes": 3743878,
+    "tx_type": "NFTokenMint"
+   },
+   {
+    "blob_bytes": 170568,
+    "byte_share": 0.281322,
+    "bytes": 3116114,
+    "count": 927,
+    "created": 0,
+    "deleted": 59,
+    "meta_bytes": 2945546,
+    "tx_type": "NFTokenBurn"
+   }
+  ]
+ },
+ "totals": {
+  "created": 83,
+  "deleted": 59,
+  "header_bytes": 3370316,
+  "ledgers": 28562,
+  "meta_bytes": 9221255,
+  "modified": 19750,
+  "raw_bytes": 14447016,
+  "tx_blob_bytes": 1855445,
+  "txns": 9924
+ }
+}

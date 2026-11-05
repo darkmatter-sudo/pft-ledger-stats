@@ -1,0 +1,101 @@
+# growth tests+mutants 2026-11-05T00:22:32Z
+OS: Ubuntu 22.04.5 LTS
+repo HEAD: 0fd6db935665bec05fa378024fad8e54e17571d2
+$ git status --short -- growth tests
+?? growth/README.md
+?? growth/REPORT.md
+?? growth/data/
+?? growth/growth_hourly.png
+?? growth/growth_nudb_fit.png
+?? growth/growth_sizing.png
+(exit 0)
+$ sha256sum growth/*.py growth/*.sh tests/test_growth_*.py
+4dfda78026e649390dd1c2835fe81f5fdb9c41fbb1aa788128600c10482794f7  growth/analyze_growth.py
+c95b9d618cd357460507539eb4e9cf645d9ab2fadafe206bc7037d832530cc52  growth/charts_growth.py
+bd25bf659d36a7df137139963f14a465c6e992316b2a71c4361722177c985b83  growth/collect_growth.py
+a987c5f681d9cf2f63a1245187e29638b5d6857277526ad8c92e91d42493d632  growth/crosscheck_growth.py
+8829a958e6a56d71806a693bf4f7e2460eda97c3826940d2ad566b4b2e7c3d05  growth/mutants_growth.py
+fa3465d18da51eb7502c95317d55fdb9baac3b5ae3b962f1981f4215237537e9  growth/statebytes_growth.py
+5bf80480f8f6918312febadaf402cffca185b53dbef201c2fbdcf7b813034ff4  growth/resume_drill_growth.sh
+d797a4846f90e882ec2456ee8d2534df253e2a13681c8c822d2a6b34037f469f  growth/snapshot_end.sh
+e1193ef1c46d46adffd289bcb66778aa0fb869fe3e8f57e61fe0731e1ef4cbc6  growth/statebytes_end.sh
+6ab955c1da6426e0b05ffb3263171d51cf505a30b35e6802f5b8470edafe657f  tests/test_growth_analyze.py
+46e5eb28939b18218c3ae2ab27826acd6e5109905f6d8b0a5db91d651c107144  tests/test_growth_collect.py
+54087b10ac4ddd44a330fed7fef2c275b90878e17ce5f29f9e3a72e3ffc5ae31  tests/test_growth_crosscheck.py
+(exit 0)
+$ .venv/bin/python -m pytest -q -p no:cacheprovider tests/test_growth_*.py 2>&1 | tail -3
+..............................................                           [100%]
+46 passed in 0.39s
+(exit 0)
+$ .venv/bin/python -m pytest -q -p no:cacheprovider tests 2>&1 | tail -2
+.................................................                        [100%]
+481 passed in 28.17s
+(exit 0)
+$ .venv/bin/ruff --version; .venv/bin/ruff check growth tests
+ruff 0.17.1
+All checks passed!
+(exit 0)
+$ .venv/bin/ruff format --check growth tests/test_growth_*.py
+11 files already formatted
+(exit 0)
+$ shellcheck growth/*.sh
+(exit 0)
+$ .venv/bin/python -u growth/mutants_growth.py --timeout 120
+CONTROL unmutated copy: rc=0 46 passed in 0.94s
+CAUGHT C1 collector: window end not enforced: 1 failed, 45 passed in 0.62s (1.4s)
+CAUGHT C2 collector: binary header hash not checked: 3 failed, 43 passed in 1.21s (1.8s)
+CAUGHT C3 collector: duplicate binary tx accepted: 1 failed, 45 passed in 0.78s (1.7s)
+CAUGHT C4 collector: JSON/binary tx count not compared: 1 failed, 45 passed in 0.58s (1.1s)
+CAUGHT C5 collector: JSON tx without binary twin accepted: 1 failed, 45 passed in 0.83s (1.3s)
+CAUGHT C6 collector: meta bytes = hex length: 2 failed, 44 passed in 0.87s (1.5s)
+CAUGHT C7 collector: header bytes = hex length: 3 failed, 43 passed in 0.92s (1.5s)
+CAUGHT C8 collector: DeletedNode counted as modified: 1 failed, 45 passed in 0.81s (1.6s)
+CAUGHT C9 collector: orphan tx/nodes rows kept on resume: 1 failed, 45 passed in 0.79s (1.5s)
+CAUGHT C10 collector: torn tail kept on resume: 1 failed, 45 passed in 0.87s (1.6s)
+CAUGHT C11 collector: failed ledger never written to gaps.csv: 2 failed, 44 passed in 0.74s (1.5s)
+CAUGHT C12 collector: no public-RPC fallback: 2 failed, 44 passed in 0.80s (1.3s)
+CAUGHT C13 collector: public backoff not exponential: 1 failed, 45 passed in 0.99s (1.6s)
+CAUGHT C14 collector: wrong-ledger answer accepted: 1 failed, 45 passed in 0.66s (1.2s)
+CAUGHT C15 collector: resume restarts at window start: 1 failed, 45 passed in 0.67s (1.2s)
+CAUGHT A1 analyzer: unlisted holes not reported: 1 failed, 45 passed in 0.97s (1.8s)
+CAUGHT A2 analyzer: duplicate ledgers not reported: 1 failed, 45 passed in 0.75s (1.2s)
+CAUGHT A3 analyzer: tx rows vs txn_count not checked: 1 failed, 45 passed in 0.88s (1.4s)
+CAUGHT A4 analyzer: reconcile ignores deleted objects: 1 failed, 45 passed in 0.88s (1.4s)
+CAUGHT A5 analyzer: snapshot A adjacency not checked: 1 failed, 45 passed in 1.23s (1.9s)
+CAUGHT A6 analyzer: mean interval divides by n: 1 failed, 45 passed in 0.89s (1.5s)
+CAUGHT A7 analyzer: non-full NuDB samples kept: 1 failed, 45 passed in 0.71s (1.3s)
+CAUGHT A8 analyzer: NuDB samples outside the window kept: 1 failed, 45 passed in 0.74s (1.3s)
+CAUGHT A9 analyzer: retained ledgers off by one: 1 failed, 45 passed in 0.63s (1.1s)
+CAUGHT A10 analyzer: raw projection without state bytes: 1 failed, 45 passed in 0.74s (1.4s)
+CAUGHT A11 analyzer: low-r2 NuDB fit still used: 1 failed, 45 passed in 0.82s (1.3s)
+CAUGHT A12 analyzer: retained_max = N: 1 failed, 45 passed in 0.80s (1.3s)
+CAUGHT A13 analyzer: sizing raw bytes without state: 1 failed, 45 passed in 0.57s (1.1s)
+CAUGHT A14 analyzer: --check passes with problems: 1 failed, 45 passed in 0.65s (1.1s)
+CAUGHT A15 analyzer: r2 always 1: 1 failed, 45 passed in 0.79s (1.4s)
+CAUGHT X1 crosscheck: tx rows not compared: 3 failed, 43 passed in 0.86s (1.4s)
+CAUGHT X2 crosscheck: node rows not compared: 3 failed, 43 passed in 0.64s (1.2s)
+CAUGHT X3 crosscheck: negative leaves header_bytes alone: 1 failed, 45 passed in 0.57s (1.0s)
+CAUGHT X4 crosscheck: busy ledgers not stratified: 2 failed, 44 passed in 0.65s (1.2s)
+CAUGHT X5 crosscheck: prune guard off: 1 failed, 45 passed in 1.35s (2.2s)
+CAUGHT X6 crosscheck: no refetch on disagreeing answers: 2 failed, 44 passed in 0.86s (1.6s)
+CAUGHT S1 statebytes: first field not checked: 1 failed, 45 passed in 1.05s (1.5s)
+CAUGHT S2 statebytes: hash change between pages accepted: 1 failed, 45 passed in 0.61s (1.1s)
+CAUGHT S3 statebytes: join ignores objects missing in binary: 1 failed, 45 passed in 0.80s (1.7s)
+CAUGHT S4 statebytes: join ignores type mismatch: 1 failed, 45 passed in 1.61s (2.8s)
+CAUGHT S5 statebytes: bytes = hex length: 1 failed, 45 passed in 1.39s (2.1s)
+MUTANTS 41 caught=41 CAUGHT=41
+RESULT: PASS (0 not caught)
+(exit 0)
+$ pgrep -af 'pytest|collect_growth' | grep -v pgrep || echo 'no orphan pytest/collector processes'
+no orphan pytest/collector processes
+(exit 0)
+$ .venv/bin/python -u growth/charts_growth.py --result growth/data/final/growth.json --data growth/data/tx --nudb growth/data/nudb-samples.csv --out growth
+wrote growth/growth_hourly.png
+wrote growth/growth_nudb_fit.png
+wrote growth/growth_sizing.png
+(exit 0)
+$ sha256sum growth/*.png
+8325e7c684b7241fe474e0167ea07dc7f9158b0638a26b1fb50a43aa891c31bc  growth/growth_hourly.png
+3079c97c908188c4c18ed8ddd0b7b67118e522bfcf8b05ed66618784d76a8814  growth/growth_nudb_fit.png
+8d977f7e1d65c2ed8c332f2c357ef57f7d16b10bce2c4db44810291ef5fffb6d  growth/growth_sizing.png
+(exit 0)

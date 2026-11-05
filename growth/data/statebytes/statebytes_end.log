@@ -1,0 +1,13 @@
+2026-11-05T00:16:01Z snapshot B data/growth/snapB/snapshot-7769949.jsonl.gz ready; statebytes of ledger 7769949
+2026-11-05T00:16:01Z START statebytes ledger 7769949
+2026-11-05T00:16:05Z DONE ledger 7769949 1EE81FD804F35A25FD7DA0B3A342BED46227A5ABC724A8D9953A541E52EBE004 objects 5048 bytes 1983867 pages 3 rpc 3 join problems 0/5048
+  LedgerHashes                 120 objects     981584 bytes
+  NFTokenPage                  303 objects     512551 bytes
+  AccountRoot                 4519 objects     470138 bytes
+  DirectoryNode                 52 objects       9444 bytes
+  NFTokenOffer                  45 objects       6662 bytes
+  Amendments                     1 objects       2060 bytes
+  RippleState                    4 objects        844 bytes
+  Offer                          3 objects        549 bytes
+  FeeSettings                    1 objects         35 bytes
+2026-11-05T00:16:05Z statebytes_growth.py exit 0

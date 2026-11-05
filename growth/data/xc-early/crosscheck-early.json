@@ -1,0 +1,918 @@
+{
+ "ledgers": {
+  "7741481": {
+   "ledger": {
+    "close_time": 847066541,
+    "close_time_iso": "2026-11-04T00:15:41Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "DF3CB18898BE19A840BEE13CCEA7E3011C3A72B0D5744364F6D997CFDF5DDB3A",
+    "ledger_index": 7741481,
+    "meta_bytes": 0,
+    "modified": 0,
+    "tx_blob_bytes": 0,
+    "txn_count": 0
+   },
+   "nodes": [],
+   "raw_sha256": {
+    "binary": "ffa6dc881ae2500ffbd16734f4551093d3e8d56b59647a9936ca529ffc5112f1",
+    "json": "655c878be3e7c4de1d52c382319ba6b678ef579af146318dbb5f61e75c3e9ffd"
+   },
+   "tx": []
+  },
+  "7741625": {
+   "ledger": {
+    "close_time": 847066973,
+    "close_time_iso": "2026-11-04T00:22:53Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "3D1503EA1CD3834BBADD52FF797B6DAFAC0667404E0EF4D388B53CDD0864E64F",
+    "ledger_index": 7741625,
+    "meta_bytes": 644,
+    "modified": 4,
+    "tx_blob_bytes": 364,
+    "txn_count": 2
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741625,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741625,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741625,
+     "tx_index": 1
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741625,
+     "tx_index": 1
+    }
+   ],
+   "raw_sha256": {
+    "binary": "6c05e1ca663df218e71b6b9ef697f1723aa4939f45a194fc71ba0a2945cf3da6",
+    "json": "e0878f5f592aad9af6d0b5f7235ec13ecdb93141f3de3ca6c929a275e2765f34"
+   },
+   "tx": [
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7741625,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "6FB5FBD46A0F60A2CF6CBE995C4257A2FB6BB214F19C1872583CC8F242986AB2",
+     "tx_index": 0,
+     "tx_type": "Payment"
+    },
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7741625,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "F750DB5509A1853508B62BF1BE66F8DC42547F6EFFB5EFE34B7327E87AEA1AE2",
+     "tx_index": 1,
+     "tx_type": "Payment"
+    }
+   ]
+  },
+  "7741679": {
+   "ledger": {
+    "close_time": 847067140,
+    "close_time_iso": "2026-11-04T00:25:40Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "CD52A704FC53330004D71824BBD6CF5E31F475EF85A5EF3F31AA7DBD5B4C1EE5",
+    "ledger_index": 7741679,
+    "meta_bytes": 0,
+    "modified": 0,
+    "tx_blob_bytes": 0,
+    "txn_count": 0
+   },
+   "nodes": [],
+   "raw_sha256": {
+    "binary": "993f4d5249ff93810f79ecbb59091e4d72c2df4346fea3b6262184d443d7dad2",
+    "json": "53aa2617d19a4fa4a84edb2bacab6f37a766c5f38b3050c9f1d0a0fbdcc49cbb"
+   },
+   "tx": []
+  },
+  "7741693": {
+   "ledger": {
+    "close_time": 847067181,
+    "close_time_iso": "2026-11-04T00:26:21Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "4E73F8111E62932B5728919296E9FC0C1CFE083CBE9AFDB2026E1A53E1C514A3",
+    "ledger_index": 7741693,
+    "meta_bytes": 322,
+    "modified": 2,
+    "tx_blob_bytes": 182,
+    "txn_count": 1
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741693,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741693,
+     "tx_index": 0
+    }
+   ],
+   "raw_sha256": {
+    "binary": "f9c6f09beb9f331335137d822e3142adb3f57e1d725e70312a89d7ac1318896c",
+    "json": "96400acf7b41381817afceee7e9a1010650283cb7b68d197170015bcb4feb4a6"
+   },
+   "tx": [
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7741693,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "D32AB128EBCFEFB2AB22024CD475259C14AD0EE7F12A051F440FBBA0A40D297A",
+     "tx_index": 0,
+     "tx_type": "Payment"
+    }
+   ]
+  },
+  "7741714": {
+   "ledger": {
+    "close_time": 847067242,
+    "close_time_iso": "2026-11-04T00:27:22Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "ABE4698DC9E94AA760279D2B20C07A7730FDBBB4EFCC72EEDF1CB8DE8117D5CA",
+    "ledger_index": 7741714,
+    "meta_bytes": 0,
+    "modified": 0,
+    "tx_blob_bytes": 0,
+    "txn_count": 0
+   },
+   "nodes": [],
+   "raw_sha256": {
+    "binary": "9e2fbbd87fe8dc1e23abfb0d0ed6fbbf7a64daa9d245770e7e0d65e47504d02d",
+    "json": "365522f62ff8ce573f497d8faf180578c1dd69fa02b5c4545aeb77d6b1d1bffc"
+   },
+   "tx": []
+  },
+  "7741903": {
+   "ledger": {
+    "close_time": 847067813,
+    "close_time_iso": "2026-11-04T00:36:53Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "4FB6436086FEFF714A4C0B3AB2214557F07DE7EE89EEF1FCC86C53CE9ADFE3EA",
+    "ledger_index": 7741903,
+    "meta_bytes": 0,
+    "modified": 0,
+    "tx_blob_bytes": 0,
+    "txn_count": 0
+   },
+   "nodes": [],
+   "raw_sha256": {
+    "binary": "0acbf9aacf630369a014378b9fd4f17cf62c13dd2a9758ee5225f3889faf5aba",
+    "json": "d44d427b6d5ece5e6e74fe6be5e2672f0cd4283fa9fd71407e167b2a2fd3a175"
+   },
+   "tx": []
+  },
+  "7741914": {
+   "ledger": {
+    "close_time": 847067851,
+    "close_time_iso": "2026-11-04T00:37:31Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "C2A592B84C9DA1A0B30B07E98AF60789E38C34E2AE9DE2135834CB0F17718B55",
+    "ledger_index": 7741914,
+    "meta_bytes": 2542,
+    "modified": 10,
+    "tx_blob_bytes": 912,
+    "txn_count": 5
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741914,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741914,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741914,
+     "tx_index": 1
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741914,
+     "tx_index": 1
+    },
+    {
+     "action": "modified",
+     "entry_type": "NFTokenPage",
+     "ledger_index": 7741914,
+     "tx_index": 2
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741914,
+     "tx_index": 2
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741914,
+     "tx_index": 3
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741914,
+     "tx_index": 3
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741914,
+     "tx_index": 4
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7741914,
+     "tx_index": 4
+    }
+   ],
+   "raw_sha256": {
+    "binary": "57f2ab50ddc0d9b693043cfc2cf55175ec77e9948c8ac159012ff18ef0f8c7d5",
+    "json": "c77b65533eb3eb23fb7f074334ab260dbd98effe84c7adc1e873ea14d47eea3f"
+   },
+   "tx": [
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7741914,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "8F93C1352E66D00F169ABBB36E1AE4C604235753848671FE6FEC11CBBE1F76FF",
+     "tx_index": 0,
+     "tx_type": "Payment"
+    },
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7741914,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "016426F26B5DDF2CE4824020BF9D74BDEA63C3C36B83A20C4031A03FF726AF3A",
+     "tx_index": 1,
+     "tx_type": "Payment"
+    },
+    {
+     "blob_bytes": 184,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7741914,
+     "meta_bytes": 1254,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "CA78D479278C94FF99CAD9540B6C6D102D68F3FE095889A27285581C44B8DBFA",
+     "tx_index": 2,
+     "tx_type": "NFTokenBurn"
+    },
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7741914,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "B7B1B83B17B0D25AF3D4C16BAD5CD88448D9D204773F1083941C3DD2AE023980",
+     "tx_index": 3,
+     "tx_type": "Payment"
+    },
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7741914,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "DF56E7E7F094BE7AC30AA570DEC0440BFAFB81672DF41766134766EA3BEB8399",
+     "tx_index": 4,
+     "tx_type": "Payment"
+    }
+   ]
+  },
+  "7741968": {
+   "ledger": {
+    "close_time": 847068011,
+    "close_time_iso": "2026-11-04T00:40:11Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "809C13957FF97160817A18CCB3E26048C3221E19C1D78221363AC04D7552B240",
+    "ledger_index": 7741968,
+    "meta_bytes": 0,
+    "modified": 0,
+    "tx_blob_bytes": 0,
+    "txn_count": 0
+   },
+   "nodes": [],
+   "raw_sha256": {
+    "binary": "553243c3a1889533198d08974d7266c4493a2e326feff6fa169ad287215f5f9f",
+    "json": "207d203f1a1152cd3f2a15e3797f2cb1c9d183c6c58fb8558c585301e7bad7b3"
+   },
+   "tx": []
+  },
+  "7742130": {
+   "ledger": {
+    "close_time": 847068500,
+    "close_time_iso": "2026-11-04T00:48:20Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "CAA04635F45F491340106ED373B3EBF3F0BF2F3F0730BF3FCB26CA9C489AF8DB",
+    "ledger_index": 7742130,
+    "meta_bytes": 322,
+    "modified": 2,
+    "tx_blob_bytes": 182,
+    "txn_count": 1
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7742130,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7742130,
+     "tx_index": 0
+    }
+   ],
+   "raw_sha256": {
+    "binary": "02a65041a0a6eadfac639daee5ea85c3698ff84a81269432d2cf7e02097ef8a8",
+    "json": "030630373353b356268c3a72f90cfea2250268e6fccab79f2b1c05cc79342951"
+   },
+   "tx": [
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7742130,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "FD84BFB2D66BFA48A39D80E705EE649F10F00E949B2120D96AAD97C308E53C4E",
+     "tx_index": 0,
+     "tx_type": "Payment"
+    }
+   ]
+  },
+  "7742156": {
+   "ledger": {
+    "close_time": 847068580,
+    "close_time_iso": "2026-11-04T00:49:40Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "9EDECFF74E4C760B912F7960AF2475DC840AA90A5FE94480CFAEC6CBCC49F890",
+    "ledger_index": 7742156,
+    "meta_bytes": 322,
+    "modified": 2,
+    "tx_blob_bytes": 182,
+    "txn_count": 1
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7742156,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7742156,
+     "tx_index": 0
+    }
+   ],
+   "raw_sha256": {
+    "binary": "7dcb47fe15426a548cb9b7476cc0349df7bf1cbadb4a7f2874d48f2b536ee85a",
+    "json": "f13b238edef643d956538b92b977193a79a649d80f05c045c70054ff88761dad"
+   },
+   "tx": [
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7742156,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "770FFA8624278B9A6E9CD00A843A30707001B9AD79598BCB51C676B77D077DA6",
+     "tx_index": 0,
+     "tx_type": "Payment"
+    }
+   ]
+  },
+  "7742219": {
+   "ledger": {
+    "close_time": 847068770,
+    "close_time_iso": "2026-11-04T00:52:50Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "0C1D4B8FB2BB3EBCF401342BCAC50F912625AFC4983DB855B8E337A1C41855F6",
+    "ledger_index": 7742219,
+    "meta_bytes": 0,
+    "modified": 0,
+    "tx_blob_bytes": 0,
+    "txn_count": 0
+   },
+   "nodes": [],
+   "raw_sha256": {
+    "binary": "102cbb123007a5d14b525c9cdc595247cb4942329c9a3e9af0cf7e9318e9c61f",
+    "json": "321d397d6ef07bb4a05ec1bb36fb4034e179e6c9659992a867309ddf90ecefbb"
+   },
+   "tx": []
+  },
+  "7742656": {
+   "ledger": {
+    "close_time": 847070102,
+    "close_time_iso": "2026-11-04T01:15:02Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "C8B7CA1BAE897F8D9BFCBE2D77066D9D50D50C811951A23FAE3E8DEA22FD9D7E",
+    "ledger_index": 7742656,
+    "meta_bytes": 0,
+    "modified": 0,
+    "tx_blob_bytes": 0,
+    "txn_count": 0
+   },
+   "nodes": [],
+   "raw_sha256": {
+    "binary": "9c625f31843ab2d5b168c3edab60b4cc6b0760e08a2c705a9404c1eefb2d29af",
+    "json": "c3ae07f8e03ca75841d8f67b4edd81ebf6cbb1c9e923fc8186e08df85bea3601"
+   },
+   "tx": []
+  },
+  "7742821": {
+   "ledger": {
+    "close_time": 847070601,
+    "close_time_iso": "2026-11-04T01:23:21Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "8711C2DD31386A31F0F7BDE20B9B61290BE08990F61CF5146945F4DC6A5DB154",
+    "ledger_index": 7742821,
+    "meta_bytes": 644,
+    "modified": 4,
+    "tx_blob_bytes": 364,
+    "txn_count": 2
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7742821,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7742821,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7742821,
+     "tx_index": 1
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7742821,
+     "tx_index": 1
+    }
+   ],
+   "raw_sha256": {
+    "binary": "c02d9a320688c2820a5a526f563733e11b40b52a1f831ff11f1ac70d3328250b",
+    "json": "c342fe392a29299d5a6ab027c0fe0b8be1914480d03f6ec9542125e5bce734af"
+   },
+   "tx": [
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7742821,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "30AB38F5E02AA6634ABAEF1371B2C1E8AD44DB29CADD9E5BCC7E548ED2E53DD4",
+     "tx_index": 0,
+     "tx_type": "Payment"
+    },
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7742821,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "44C68DBB9DCD62276D883037C5242D2AC18B89CBB167DEA0751D821EB628EB68",
+     "tx_index": 1,
+     "tx_type": "Payment"
+    }
+   ]
+  },
+  "7742943": {
+   "ledger": {
+    "close_time": 847070970,
+    "close_time_iso": "2026-11-04T01:29:30Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "9E22A5B5887917AD3F82ADFE826DB84C0285B35EA8A6A009C4D34D786783A6B9",
+    "ledger_index": 7742943,
+    "meta_bytes": 322,
+    "modified": 2,
+    "tx_blob_bytes": 182,
+    "txn_count": 1
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7742943,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7742943,
+     "tx_index": 0
+    }
+   ],
+   "raw_sha256": {
+    "binary": "ea1bc867e111a05ebaaf7d883ae31e15a8a26c558a4211436a8720665e1e1ca6",
+    "json": "0d2085dfbd6f02709bff4c269988090f1755892265d793de38a1ce71556436e9"
+   },
+   "tx": [
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7742943,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "4D515D91EE634AE8C2258BF00AEA3D2CCC07F8F21CE37334C9C8CAE2469C0D23",
+     "tx_index": 0,
+     "tx_type": "Payment"
+    }
+   ]
+  },
+  "7743356": {
+   "ledger": {
+    "close_time": 847072213,
+    "close_time_iso": "2026-11-04T01:50:13Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "8798E5DC237428E71AAEBDAADDD7EA6CA6075DBC3EDD379793922C3D492B675C",
+    "ledger_index": 7743356,
+    "meta_bytes": 0,
+    "modified": 0,
+    "tx_blob_bytes": 0,
+    "txn_count": 0
+   },
+   "nodes": [],
+   "raw_sha256": {
+    "binary": "e91ba79b33438fdbbe5eeaff8bd4f80866dd58e363c0095b5eb264efaad092af",
+    "json": "45f23947d36706513a2b13462da52e929374cf08f4c9276256d2d5038d891dae"
+   },
+   "tx": []
+  },
+  "7743539": {
+   "ledger": {
+    "close_time": 847072771,
+    "close_time_iso": "2026-11-04T01:59:31Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "1A2899951DD44C94126E5077BC87ADBC11D4591EA2E22B64D2146C098FB7C62E",
+    "ledger_index": 7743539,
+    "meta_bytes": 322,
+    "modified": 2,
+    "tx_blob_bytes": 182,
+    "txn_count": 1
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7743539,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7743539,
+     "tx_index": 0
+    }
+   ],
+   "raw_sha256": {
+    "binary": "d9cacb6aafb385ce4b8dae971d3669a595c4f73c1a61f42ec0a16fb305cad528",
+    "json": "e14a4e65c8d2780abc5651087855e50fd1ead52dafefd742563de620c2a82cfd"
+   },
+   "tx": [
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7743539,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "195AF7881D11233C0FA2FEBC9B28E28ACB86B0156DC8AF1B5F98AC3C63E6C06E",
+     "tx_index": 0,
+     "tx_type": "Payment"
+    }
+   ]
+  },
+  "7743700": {
+   "ledger": {
+    "close_time": 847073253,
+    "close_time_iso": "2026-11-04T02:07:33Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "89AF73C39BB452001EC03C47CBFE82767406E2EA5A588BCF1F8825E24BAA89ED",
+    "ledger_index": 7743700,
+    "meta_bytes": 2116,
+    "modified": 4,
+    "tx_blob_bytes": 394,
+    "txn_count": 2
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "NFTokenPage",
+     "ledger_index": 7743700,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7743700,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7743700,
+     "tx_index": 1
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7743700,
+     "tx_index": 1
+    }
+   ],
+   "raw_sha256": {
+    "binary": "4690713e42499e7ceb088ac3ecd58607de9fa597297c672d9a9d48b65c755d1a",
+    "json": "96f876f74db7847be934e2ee2f69d5744390e0ec3d819fb1b6d1d7058efc5178"
+   },
+   "tx": [
+    {
+     "blob_bytes": 212,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7743700,
+     "meta_bytes": 1794,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "03F7E3097EA8430E4B226B82C58EA9010150A95E59E0B28C08298FD0236BD5B1",
+     "tx_index": 0,
+     "tx_type": "NFTokenMint"
+    },
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7743700,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "8500C7EF61045C6C65EC34382A159FB65D09DBA7BE113ED8833500DF9311E1E2",
+     "tx_index": 1,
+     "tx_type": "Payment"
+    }
+   ]
+  },
+  "7743702": {
+   "ledger": {
+    "close_time": 847073261,
+    "close_time_iso": "2026-11-04T02:07:41Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "57B757329E3690A4D416B9092DD65B93330841E2FAD53E656B3110EA31DE28A1",
+    "ledger_index": 7743702,
+    "meta_bytes": 0,
+    "modified": 0,
+    "tx_blob_bytes": 0,
+    "txn_count": 0
+   },
+   "nodes": [],
+   "raw_sha256": {
+    "binary": "6f22dce33295e2c9371849f773fbd543d2b6c196bafbc808289b419fbb5b1141",
+    "json": "c71b2395390d6c3852b3d0de0cd8cc95ddfa429f204298f3fa2339ed49fc2752"
+   },
+   "tx": []
+  },
+  "7743746": {
+   "ledger": {
+    "close_time": 847073392,
+    "close_time_iso": "2026-11-04T02:09:52Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "753A41FA829C9065C1B3B60EF0524D71212F59A1122EA93510F29B2A915B82B5",
+    "ledger_index": 7743746,
+    "meta_bytes": 5176,
+    "modified": 4,
+    "tx_blob_bytes": 394,
+    "txn_count": 2
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "NFTokenPage",
+     "ledger_index": 7743746,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7743746,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7743746,
+     "tx_index": 1
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7743746,
+     "tx_index": 1
+    }
+   ],
+   "raw_sha256": {
+    "binary": "f034a32c5346c6bbbff1a95e6f7212e8eed0cbed0ae2b8f31f46e44dec1e527e",
+    "json": "baa81e301156afdb756272285e1e52c04b24fac6456ae8f81a4e114c1f0f9e85"
+   },
+   "tx": [
+    {
+     "blob_bytes": 212,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7743746,
+     "meta_bytes": 4854,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "CD4AB6142D82682B4248C789EEFAD1786C6EDCD7077EEF5E0DE24875B9F1139D",
+     "tx_index": 0,
+     "tx_type": "NFTokenMint"
+    },
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7743746,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "D7D532489AB62EE66C30D2985AC59030D342B983D0B7B5519B1C846A1A111490",
+     "tx_index": 1,
+     "tx_type": "Payment"
+    }
+   ]
+  },
+  "7743987": {
+   "ledger": {
+    "close_time": 847074122,
+    "close_time_iso": "2026-11-04T02:22:02Z",
+    "created": 0,
+    "deleted": 0,
+    "header_bytes": 118,
+    "ledger_hash": "FD21C996549C9771A4205D92FF3634D6A11E13F615EFEC0F1EB61642367D650A",
+    "ledger_index": 7743987,
+    "meta_bytes": 322,
+    "modified": 2,
+    "tx_blob_bytes": 182,
+    "txn_count": 1
+   },
+   "nodes": [
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7743987,
+     "tx_index": 0
+    },
+    {
+     "action": "modified",
+     "entry_type": "AccountRoot",
+     "ledger_index": 7743987,
+     "tx_index": 0
+    }
+   ],
+   "raw_sha256": {
+    "binary": "f822aa90625c7882e68afda122825a14d3b0c8695c519f38e47e2b79060cea62",
+    "json": "b1ac88a51f4ebf97c4e890f20c7f5dceb97d64e80a6722fd46f7c32ecd99c3c8"
+   },
+   "tx": [
+    {
+     "blob_bytes": 182,
+     "created": 0,
+     "deleted": 0,
+     "ledger_index": 7743987,
+     "meta_bytes": 322,
+     "modified": 2,
+     "result": "tesSUCCESS",
+     "tx_hash": "206587E71E528FCE068C15822EB6FE93379226A10628619112B0968193DD6176",
+     "tx_index": 0,
+     "tx_type": "Payment"
+    }
+   ]
+  }
+ },
+ "range": {
+  "checked": [
+   7741388,
+   7744078
+  ],
+  "collection": [
+   7741388,
+   7744078
+  ],
+  "rpc": [
+   7650054,
+   7744080
+  ]
+ },
+ "recorded_utc": "2026-11-04T02:27:52Z",
+ "seed": "early-1"
+}
