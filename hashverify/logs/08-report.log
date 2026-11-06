@@ -1,0 +1,4 @@
+# hashverify report  | 2026-11-06T09:18:36Z | Ubuntu 22.04.5 LTS | git e1d682b292d6771f791ca5e2481d9c438aa40154
+$ .venv/bin/python hashverify/report_hashverify.py --data hashverify/data --out hashverify
+wrote hashverify/REPORT.md and hashverify/counts.csv (68 values)
+(exit 0)

@@ -1,0 +1,52 @@
+# hashverify headers 3 | 2026-11-06T07:23:35Z | Ubuntu 22.04.5 LTS | git f99ae9743629dee83435e0f6c294319028a75c03
+$ .venv/bin/python -u hashverify/verify_headers.py --local http://127.0.0.1:5005 --public https://rpc.testnet.postfiat.org --out hashverify/data/headers-3 --record hashverify/data/headers-3/headers.jsonl.gz
+RANGE local=[(7806086, 7807080)] public=[(7750054, 7807080)] overlap=7806086-7807080 checked=7806086-7807080 (995)
+2026-11-06T07:23:36Z RETRY ledger attempt 1/7 error=lgrNotFound backoff=2.0s
+PROGRESS source=local 100/995
+PROGRESS source=local 200/995
+PROGRESS source=local 300/995
+PROGRESS source=local 400/995
+PROGRESS source=local 500/995
+PROGRESS source=local 600/995
+PROGRESS source=local 700/995
+PROGRESS source=local 800/995
+PROGRESS source=local 900/995
+FETCHED source=local 995/995 in 10.3s
+PROGRESS source=public 100/995
+PROGRESS source=public 200/995
+PROGRESS source=public 300/995
+PROGRESS source=public 400/995
+PROGRESS source=public 500/995
+PROGRESS source=public 600/995
+PROGRESS source=public 700/995
+PROGRESS source=public 800/995
+PROGRESS source=public 900/995
+FETCHED source=public 995/995 in 1364.1s
+RANGE_END local=[(7806598, 7807535)] public=[(7750054, 7807535)]
+SUMMARY range_first=7806086
+SUMMARY range_last=7807080
+SUMMARY range_ledgers=995
+SUMMARY local_covered=995
+SUMMARY local_hash_ok=995
+SUMMARY local_hash_mismatch=0
+SUMMARY local_parent_links_checked=994
+SUMMARY local_chain_breaks=0
+SUMMARY local_gaps=0
+SUMMARY local_empty_ledgers=809
+SUMMARY public_covered=995
+SUMMARY public_hash_ok=995
+SUMMARY public_hash_mismatch=0
+SUMMARY public_parent_links_checked=994
+SUMMARY public_chain_breaks=0
+SUMMARY public_gaps=0
+SUMMARY public_empty_ledgers=809
+SUMMARY agree=995
+SUMMARY disagree=0
+SUMMARY findings=0
+SUMMARY runtime_s=1376.6
+SUMMARY local_rpc_calls=998
+SUMMARY local_rpc_retries=1
+SUMMARY public_rpc_calls=997
+SUMMARY public_rpc_retries=0
+RESULT: PASS (0 findings)
+(exit 0)

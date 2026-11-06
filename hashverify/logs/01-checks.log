@@ -1,0 +1,28 @@
+# hashverify checks | 2026-11-06T07:23:36Z | Ubuntu 22.04.5 LTS | git f99ae9743629dee83435e0f6c294319028a75c03
+$ .venv/bin/python -m pytest -q -p no:cacheprovider tests/
+........................................................................ [ 13%]
+........................................................................ [ 27%]
+........................................................................ [ 40%]
+........................................................................ [ 54%]
+........................................................................ [ 67%]
+........................................................................ [ 81%]
+........................................................................ [ 94%]
+.............................                                            [100%]
+533 passed in 28.41s
+(exit 0)
+$ .venv/bin/ruff check .
+All checks passed!
+(exit 0)
+$ .venv/bin/ruff format --check hashverify tests/test_hashverify_lib.py tests/test_hashverify_headers.py tests/test_hashverify_txtree.py tests/test_hashverify_report.py
+9 files already formatted
+(exit 0)
+$ shellcheck hashverify/run_hashverify.sh
+(exit 0)
+$ sha256sum hashverify/lib_hashverify.py hashverify/mutants_hashverify.py hashverify/report_hashverify.py hashverify/verify_headers.py hashverify/verify_txtree.py hashverify/run_hashverify.sh
+64ec1dacc49fcc955975a6c5f5ee85d657c9c7921dbe0ef15cd9b9411ef4e414  hashverify/lib_hashverify.py
+01fee50545585ab3f44adcb2f27abc20a61a672e6e703c0eb4a4d96ba599283b  hashverify/mutants_hashverify.py
+2488888a2883720e5b188a275f46e24295de2c19b2fbbbf4b502e7876740f331  hashverify/report_hashverify.py
+9e1e21150faeeed34f4fc517feb9644a90de733b942092d071eb004a109afe61  hashverify/verify_headers.py
+2b10fbf15ba0e01f1d12893c62bb5204e8647193d447ce7985cc4d32752e1131  hashverify/verify_txtree.py
+595eb598201c1bd21be4b0c933e32db6461dba7dbf18641aacfa00b946146d4d  hashverify/run_hashverify.sh
+(exit 0)
