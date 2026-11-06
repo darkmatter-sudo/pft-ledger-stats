@@ -43,7 +43,7 @@ local)
 	;;
 tamper)
 	h=${3:?headers run number} p=${4:?public run number}
-	mid=$("$PY" -c 'import csv,sys; r=list(csv.DictReader(open(sys.argv[1]))); print(r[len(r)//2]["ledger_index"])' "$D/headers-$h/headers.csv")
+	mid=$("$PY" -c 'import csv,sys; r=[x for x in csv.DictReader(open(sys.argv[1])) if x["source"]=="local"]; print(r[len(r)//2]["ledger_index"])' "$D/headers-$h/headers.csv")
 	busy=$("$PY" -c 'import csv,sys; r=[x for x in csv.DictReader(open(sys.argv[1])) if int(x["txn_count"])>0]; print(max(r, key=lambda x: int(x["txn_count"]))["ledger_index"])' "$D/public-$p/txtree.csv")
 	echo "controls: header ledger $mid (middle of headers-$h), tx ledger $busy (busiest of public-$p)"
 	x "$PY" -u hashverify/verify_headers.py --offline "$D/headers-$h/headers.jsonl.gz" \
