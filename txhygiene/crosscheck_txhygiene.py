@@ -11,6 +11,9 @@ the tx counts as FAIL.
 --negative alters EVERY field of every sampled local row (null -> a value, ints +1, strings +"x") and
 passes only if every field of every tx is reported as a mismatch, which proves the comparison can fail.
 
+--json records each public answer as the rebuilt row (rpc_row); --offline FILE re-compares such a record
+against the committed tx.jsonl with no RPC at all.
+
 Exit 0: every sampled tx matched in every field (or, with --negative, every field mismatched).
 """
 
@@ -98,6 +101,35 @@ def remote_row(res, key):
     return tx_row(int(res["ledger_index"]), int(res["date"]), tx, res["meta"], key)
 
 
+def offline(record_path, tx_path):
+    """Re-compare every recorded public row with the committed local row of the same hash."""
+    with open(record_path) as fh:
+        rec = json.load(fh)
+    local = {r["tx_hash"]: r for r in read_jsonl(tx_path)}
+    ok = bad = 0
+    for res in rec["results"]:
+        h, row = res["tx_hash"], res.get("rpc_row")
+        if row is None or h not in local:
+            bad += 1
+            say(f"FAIL {h}: {'no recorded rpc_row' if row is None else 'not in tx.jsonl'}")
+            continue
+        diffs = compare(local[h], row)
+        for f, lv, rv in diffs:
+            say(f"MISMATCH {h[:16]} {f}: local={lv!r} recorded rpc={rv!r}")
+        ok += not diffs
+        bad += bool(diffs)
+        say(
+            f"{'PASS' if not diffs else 'FAIL'} {h} ledger {res['ledger_index']}: "
+            f"{'OK' if not diffs else str(len(diffs)) + ' fields differ'} (offline)"
+        )
+    passed = bad == 0 and ok == rec["count"] and not rec["negative"]
+    say(
+        f"OFFLINE SUMMARY {ok}/{rec['count']} recorded tx match tx.jsonl in all {len(TX_FIELDS)} fields -> "
+        f"{'PASS' if passed else 'FAIL'}"
+    )
+    return 0 if passed else 1
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--data", default="data/txhygiene/tx", help="collector output dir (tx.jsonl, .hmac_key)")
@@ -108,7 +140,10 @@ def main(argv=None):
     ap.add_argument("--max-ledger", type=int, default=None, help="sample only up to this ledger")
     ap.add_argument("--negative", action="store_true")
     ap.add_argument("--json", default=None, help="write the result as JSON here")
+    ap.add_argument("--offline", default=None, help="re-check a --json record against the data, no RPC")
     a = ap.parse_args(argv)
+    if a.offline:
+        return offline(a.offline, os.path.join(a.data, "tx.jsonl"))
 
     key = load_key(a.key_file or os.path.join(a.data, ".hmac_key"))
     rows = read_jsonl(os.path.join(a.data, "tx.jsonl"))
@@ -159,6 +194,7 @@ def main(argv=None):
                 "ledger_index": r["ledger_index"],
                 "fields_compared": len(TX_FIELDS),
                 "mismatches": [{"field": f, "local": lv, "rpc": rv} for f, lv, rv in diffs],
+                "rpc_row": remote,
             }
         )
     passed = failed == 0 and len(picked) == a.count

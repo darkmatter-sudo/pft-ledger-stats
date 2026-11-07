@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 
@@ -101,3 +102,21 @@ def test_fetch_retries_incomplete_then_succeeds_or_fails():
     del no_meta["meta"]
     with pytest.raises(xc.RpcError):
         xc.fetch(FakeRpc([no_meta]), "H1", tries=1, sleep=waits.append)
+
+
+def test_offline_rechecks_recorded_rows(tmp_path):
+    row = local_row()
+    ch.append_jsonl(tmp_path / "tx.jsonl", [row])
+    rec = {
+        "count": 1,
+        "negative": False,
+        "results": [{"tx_hash": row["tx_hash"], "ledger_index": 100, "rpc_row": dict(row)}],
+    }
+    (tmp_path / "r.json").write_text(json.dumps(rec))
+    assert xc.main(["--data", str(tmp_path), "--offline", str(tmp_path / "r.json")]) == 0
+    rec["results"][0]["rpc_row"]["fee_drops"] = 999
+    (tmp_path / "r.json").write_text(json.dumps(rec))
+    assert xc.main(["--data", str(tmp_path), "--offline", str(tmp_path / "r.json")]) == 1
+    rec["results"][0]["rpc_row"] = None
+    (tmp_path / "r.json").write_text(json.dumps(rec))
+    assert xc.main(["--data", str(tmp_path), "--offline", str(tmp_path / "r.json")]) == 1
