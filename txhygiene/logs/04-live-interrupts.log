@@ -1,0 +1,70 @@
+# 2026-11-07T02:26:32Z txhygiene live 24h collector: SIGTERM + SIGKILL resume | "Ubuntu 22.04.5 LTS" | commit 27c7f46fe216bd5d6da522fd98a3459f171a7df7
+$ sha256sum txhygiene/collect_txhygiene.py
+4a39ebad14b8ea55f074337115e70009846a46d553267c0e7772811532cb49df  txhygiene/collect_txhygiene.py
+(exit 0)
+$ systemctl show -p MainPID -p ActiveState pft-txhygiene-tx
+MainPID=2504725
+ActiveState=active
+(exit 0)
+$ wc -l data/txhygiene/tx/ledgers.jsonl data/txhygiene/tx/tx.jsonl
+   242 data/txhygiene/tx/ledgers.jsonl
+    83 data/txhygiene/tx/tx.jsonl
+   325 total
+(exit 0)
+== 1. SIGTERM to the main process only
+$ sudo systemctl kill --kill-who=main -s TERM pft-txhygiene-tx
+(exit 0)
+pft-txhygiene-tx: inactive
+$ tail -2 data/txhygiene/tx/collect.log
+2026-11-07T02:26:33Z STOP (signal) requests this run=727
+2026-11-07T02:26:33Z SUMMARY window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z ledgers 7829493-7829734 ledgers=242 tx=83 fees=241 gaps=0 retries=0 restarts=1
+(exit 0)
+$ sudo systemd-run --unit pft-txhygiene-tx-r1 --uid 1001 --gid 1001 --working-directory "$PWD" -p RuntimeMaxSec=27h /usr/bin/python3 -u txhygiene/collect_txhygiene.py --out data/txhygiene/tx --log data/txhygiene/tx/collect.log --start 7829493 --hours 24.25 >/dev/null 2>&1
+(exit 0)
+$ sleep 45
+(exit 0)
+$ grep -E "RESUME" data/txhygiene/tx/collect.log | tail -2
+2026-11-07T02:26:34Z RESUME at ledger 7829735 (window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z, start seq 7829493, behind by 1)
+(exit 0)
+== 2. SIGKILL to the main process only (no handler, may land between fsyncs)
+$ sudo systemctl kill --kill-who=main -s KILL pft-txhygiene-tx-r1
+(exit 0)
+pft-txhygiene-tx-r1: failed
+$ tail -c 120 data/txhygiene/tx/tx.jsonl | od -c | tail -3 | head -2
+0000140   t   i   o   n   T   y   p   e   +   T   x   n   S   i   g   n
+0000160   a   t   u   r   e   "   }  \n
+(exit 0)
+$ sudo systemctl reset-failed pft-txhygiene-tx-r1 2>/dev/null; true
+(exit 0)
+$ sudo systemd-run --unit pft-txhygiene-tx-r2 --uid 1001 --gid 1001 --working-directory "$PWD" -p RuntimeMaxSec=27h /usr/bin/python3 -u txhygiene/collect_txhygiene.py --out data/txhygiene/tx --log data/txhygiene/tx/collect.log --start 7829493 --hours 24.25 >/dev/null 2>&1
+(exit 0)
+$ sleep 40
+(exit 0)
+$ systemctl is-active pft-txhygiene-tx-r2 pft-txhygiene-txmix
+active
+active
+(exit 0)
+$ grep -E "RESUME|STOP" data/txhygiene/tx/collect.log
+2026-11-07T02:26:33Z STOP (signal) requests this run=727
+2026-11-07T02:26:34Z RESUME at ledger 7829735 (window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z, start seq 7829493, behind by 1)
+2026-11-07T02:27:19Z RESUME at ledger 7829750 (window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z, start seq 7829493, behind by 1)
+(exit 0)
+$ cat data/txhygiene/tx/restarts.jsonl
+{"kind":"start","at_utc":"2026-11-07T02:14:20Z","first_ledger":7829493,"validated":7829493,"lag":1,"torn_bytes":0,"orphan_rows":0}
+{"kind":"resume","at_utc":"2026-11-07T02:26:34Z","first_ledger":7829735,"validated":7829735,"lag":1,"torn_bytes":0,"orphan_rows":0}
+{"kind":"resume","at_utc":"2026-11-07T02:27:19Z","first_ledger":7829750,"validated":7829750,"lag":1,"torn_bytes":0,"orphan_rows":0}
+(exit 0)
+== 3. continuity so far: every ledger start_seq..last exactly once, no duplicate tx, txn_count == lines
+$ python3 -c 'import json
+L=[json.loads(l) for l in open("data/txhygiene/tx/ledgers.jsonl")]
+T=[json.loads(l) for l in open("data/txhygiene/tx/tx.jsonl")]
+s=json.load(open("data/txhygiene/tx/state.json"))["start_seq"]
+idx=[r["ledger_index"] for r in L]
+print("ledgers", len(idx), idx[0], idx[-1], "contiguous", idx==list(range(s, idx[-1]+1)))
+print("tx lines", len(T), "unique hashes", len({t["tx_hash"] for t in T}), "txn_count sum", sum(r["txn_count"] for r in L))
+print("tx after last ledger", sum(t["ledger_index"]>idx[-1] for t in T))
+assert idx==list(range(s, idx[-1]+1)) and len(T)==len({t["tx_hash"] for t in T})'
+ledgers 270 7829493 7829762 contiguous True
+tx lines 94 unique hashes 94 txn_count sum 94
+tx after last ledger 0
+(exit 0)

@@ -1,0 +1,62 @@
+# 2026-11-07T02:14:19Z txhygiene window start | "Ubuntu 22.04.5 LTS" | commit d32e5084c6d3af1df3812adaf6a687c06e904e14
+$ sha256sum txhygiene/collect_txhygiene.py txmix/collect_tx.py
+4a39ebad14b8ea55f074337115e70009846a46d553267c0e7772811532cb49df  txhygiene/collect_txhygiene.py
+7a1371f803fb51757b82819afd6a11d38f765730b9fe370dc3329488b89d4357  txmix/collect_tx.py
+(exit 0)
+$ git status --short | wc -l
+0
+(exit 0)
+$ mkdir -p data/txhygiene/tx data/txhygiene/txmix
+(exit 0)
+current validated ledger = 7829493; both collectors start at 7829493
+$ sudo systemd-run --unit pft-txhygiene-tx --uid 1001 --gid 1001 --working-directory "$PWD" -p RuntimeMaxSec=27h /usr/bin/python3 -u txhygiene/collect_txhygiene.py --out data/txhygiene/tx --log data/txhygiene/tx/collect.log --start 7829493 --hours 24.25 >/dev/null 2>&1
+(exit 0)
+$ sudo systemd-run --unit pft-txhygiene-txmix --uid 1001 --gid 1001 --working-directory "$PWD" -p RuntimeMaxSec=27h /usr/bin/python3 -u txmix/collect_tx.py --out data/txhygiene/txmix --log data/txhygiene/txmix/collect.log --start 7829493 --hours 24.25 >/dev/null 2>&1
+(exit 0)
+$ sleep 25
+(exit 0)
+$ systemctl is-active pft-txhygiene-tx pft-txhygiene-txmix
+active
+active
+(exit 0)
+$ cat data/txhygiene/tx/state.json; echo
+{
+ "start": 1794017660,
+ "end": 1794104960,
+ "start_seq": 7829493,
+ "start_utc": "2026-11-07T02:14:20Z",
+ "stop_at": null,
+ "end_utc": "2026-11-08T02:29:20Z"
+}
+(exit 0)
+$ cat data/txhygiene/txmix/state.json; echo
+{
+ "start": 1794017660,
+ "end": 1794104960,
+ "start_seq": 7829493,
+ "start_utc": "2026-11-07T02:14:20Z",
+ "end_utc": "2026-11-08T02:29:20Z"
+}
+(exit 0)
+$ sudo pft-maint lock add txhygiene-window --until 1794108560 --reason 'task_4a522a15 txhygiene 24h collection (node must stay up; drills only after)'
+lock txhygiene-window held until 2026-11-08T03:29:20Z
+(exit 0)
+$ sudo pft-maint lock list
+txhygiene-window 2026-11-08T03:29:20Z task_4a522a15 txhygiene 24h collection (node must stay up; drills only after)
+(exit 0)
+$ tail -3 data/txhygiene/tx/collect.log
+2026-11-07T02:14:20Z node: build 1.0.9 state full complete_ledgers 7828614-7829493
+2026-11-07T02:14:20Z WINDOW START 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z at ledger 7829493, stop_at None, rate <= 1.0 req/s
+(exit 0)
+$ tail -3 data/txhygiene/txmix/collect.log
+2026-11-07T02:14:20Z OS: Ubuntu 22.04.5 LTS | kernel 5.15.0-202-generic | python 3.10.12
+2026-11-07T02:14:20Z node: build 1.0.9 state full complete_ledgers 7828614-7829493
+2026-11-07T02:14:20Z WINDOW START 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z at ledger 7829493, rate <= 1.0 req/s
+(exit 0)
+$ wc -l data/txhygiene/tx/*.jsonl
+   8 data/txhygiene/tx/fees.jsonl
+   9 data/txhygiene/tx/ledgers.jsonl
+   1 data/txhygiene/tx/restarts.jsonl
+   1 data/txhygiene/tx/tx.jsonl
+  19 total
+(exit 0)

@@ -1,0 +1,40 @@
+# 2026-11-07T02:17:10Z txhygiene tests + lint | "Ubuntu 22.04.5 LTS" | commit 27c7f46fe216bd5d6da522fd98a3459f171a7df7
+$ sha256sum txhygiene/collect_txhygiene.py txhygiene/resume_drill_txhygiene.sh tests/test_txhygiene_collect.py
+4a39ebad14b8ea55f074337115e70009846a46d553267c0e7772811532cb49df  txhygiene/collect_txhygiene.py
+320451154925ed0acb814890108e464b75e6234d06eb595247cf6fd9926186bf  txhygiene/resume_drill_txhygiene.sh
+3207ef88dfec5df005e47f80d681250a14604974b66e312a71f69c243c1eef51  tests/test_txhygiene_collect.py
+(exit 0)
+$ .venv/bin/python --version
+Python 3.10.12
+(exit 0)
+$ timeout 600 nice -n 15 .venv/bin/python -m pytest -q -rA -p no:cacheprovider tests/test_txhygiene_collect.py 2>&1 | grep -E "^(PASSED|FAILED|ERROR)|passed|failed"
+PASSED tests/test_txhygiene_collect.py::test_key_type_from_prefix_only
+PASSED tests/test_txhygiene_collect.py::test_tx_row_fields_margin_ticket_and_no_raw_key
+PASSED tests/test_txhygiene_collect.py::test_tx_row_absent_fields_are_null
+PASSED tests/test_txhygiene_collect.py::test_margin_negative_never_happens_but_is_kept
+PASSED tests/test_txhygiene_collect.py::test_ledger_rows_sorted_and_duplicate_index_rejected
+PASSED tests/test_txhygiene_collect.py::test_fee_row_parses_string_drops
+PASSED tests/test_txhygiene_collect.py::test_in_window_boundary
+PASSED tests/test_txhygiene_collect.py::test_append_jsonl_and_drop_orphans
+PASSED tests/test_txhygiene_collect.py::test_full_run_retries_gaps_and_counts
+PASSED tests/test_txhygiene_collect.py::test_resume_after_kill_with_orphans_and_torn_lines
+PASSED tests/test_txhygiene_collect.py::test_resume_is_byte_identical_to_uninterrupted
+PASSED tests/test_txhygiene_collect.py::test_fee_sampled_once_per_new_validated_ledger
+PASSED tests/test_txhygiene_collect.py::test_window_end_enforced_client_side
+PASSED tests/test_txhygiene_collect.py::test_rate_cap
+PASSED tests/test_txhygiene_collect.py::test_rpc_refuses_write_methods
+15 passed in 2.57s
+(exit 0)
+$ timeout 900 nice -n 15 .venv/bin/python -m pytest -q -p no:cacheprovider tests 2>&1 | tail -1
+548 passed in 31.73s
+(exit 0)
+$ ruff --version; ruff check . && ruff format --check txhygiene tests/test_txhygiene_collect.py
+ruff 0.17.1
+All checks passed!
+2 files already formatted
+(exit 0)
+$ shellcheck --version | head -2; shellcheck txhygiene/resume_drill_txhygiene.sh && echo shellcheck clean
+ShellCheck - shell script analysis tool
+version: 0.8.0
+shellcheck clean
+(exit 0)

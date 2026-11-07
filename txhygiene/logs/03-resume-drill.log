@@ -1,0 +1,96 @@
+# 2026-11-07T02:17:59Z txhygiene resume drill + negative control | "Ubuntu 22.04.5 LTS" | commit 27c7f46fe216bd5d6da522fd98a3459f171a7df7
+$ sha256sum txhygiene/collect_txhygiene.py txhygiene/resume_drill_txhygiene.sh
+4a39ebad14b8ea55f074337115e70009846a46d553267c0e7772811532cb49df  txhygiene/collect_txhygiene.py
+320451154925ed0acb814890108e464b75e6234d06eb595247cf6fd9926186bf  txhygiene/resume_drill_txhygiene.sh
+(exit 0)
+node: validated / complete_ledgers = 7829565 7828614-7829565
+== A. drill on retained range 7829305..7829425 (121 ledgers), unmodified collector
+$ TERM_AFTER=25 KILL_AFTER=25 timeout 900 bash txhygiene/resume_drill_txhygiene.sh 7829305 7829425 data/txhygiene/drill-03
+== reference run 7829305..7829425
+reference: ledgers 121 tx 36
+== drill run: SIGTERM after 25s
+after SIGTERM: ledgers 23, last 7829327
+== resume 1, SIGKILL after 25s
+txhygiene/resume_drill_txhygiene.sh: line 51: 2540134 Killed                  "${col[@]}" --out "$drl" --log "$work/drill.log" > /dev/null
+after SIGKILL: ledgers 47, last 7829351
+tx.jsonl: 14 lines, last byte is newline: yes
+ledgers.jsonl: 47 lines, last byte is newline: yes
+== inject: orphan tx lines of the first reference ledger after 7829351 that has txs, then a torn tx.jsonl tail
+appended 3 tx.jsonl line(s) of ledger 7829353
+appended torn tx.jsonl tail: '{"ledger_index":7829353,"close_time":TORN' (no newline)
+== resume 2 to the end
+2026-11-07T02:20:28Z STOP (signal) requests this run=24
+2026-11-07T02:20:28Z SUMMARY window 2026-11-07T02:20:05Z -> 2026-11-08T02:20:05Z ledgers 7829305-7829327 ledgers=23 tx=5 fees=0 gaps=0 retries=0 restarts=1
+2026-11-07T02:20:28Z RESUME at ledger 7829328 (window 2026-11-07T02:20:05Z -> 2026-11-08T02:20:05Z, start seq 7829305, behind by 288)
+2026-11-07T02:20:53Z RESUME dropped torn last line of tx.jsonl (41 bytes)
+2026-11-07T02:20:53Z RESUME dropped 3 tx.jsonl rows after ledger 7829351 (no ledgers.jsonl row)
+2026-11-07T02:20:53Z RESUME at ledger 7829352 (window 2026-11-07T02:20:05Z -> 2026-11-08T02:20:05Z, start seq 7829305, behind by 272)
+2026-11-07T02:22:07Z STOP (stop_at reached) requests this run=75
+2026-11-07T02:22:07Z SUMMARY window 2026-11-07T02:20:05Z -> 2026-11-08T02:20:05Z ledgers 7829305-7829425 ledgers=121 tx=36 fees=0 gaps=0 retries=0 restarts=3
+PASS tx.jsonl identical (36 lines)
+PASS ledgers.jsonl identical without fetched_utc
+PASS every ledger 7829305..7829425 exactly once
+PASS no duplicate (ledger, tx_index) or tx_hash
+PASS no gaps
+PASS txn_count sum == tx_rows sum == tx.jsonl lines
+PASS restarts kinds start,resume,resume
+PASS last resume cut the torn tx.jsonl line
+PASS last resume dropped the 3 injected orphan line(s) (>=: a mid-ledger SIGKILL adds its own)
+restarts.jsonl:
+{"kind":"start","at_utc":"2026-11-07T02:20:06Z","first_ledger":7829305,"validated":7829607,"lag":303,"torn_bytes":0,"orphan_rows":0}
+{"kind":"resume","at_utc":"2026-11-07T02:20:28Z","first_ledger":7829328,"validated":7829615,"lag":288,"torn_bytes":0,"orphan_rows":0}
+{"kind":"resume","at_utc":"2026-11-07T02:20:53Z","first_ledger":7829352,"validated":7829623,"lag":272,"torn_bytes":41,"orphan_rows":3}
+sha256 tx.jsonl ref   86e1e3314434e62ff9750c64a63ba7d22075150b5f17a9c7c06384bc6778a7e2
+sha256 tx.jsonl drill 86e1e3314434e62ff9750c64a63ba7d22075150b5f17a9c7c06384bc6778a7e2
+RESULT: PASS
+(exit 0)
+== B. negative control: same drill, collector copy whose resume skips the orphan drop (must FAIL)
+$ python3 -c 'import sys; p=sys.argv[1]; s=open(p).read(); old="orphans = drop_orphans(tx_f, done)"; assert s.count(old)==1; open(p,"w").write(s.replace(old,"orphans = 0  # MUTANT"))' ../scratch/txh-ctl/txhygiene/collect_txhygiene.py
+(exit 0)
+$ diff <(cat txhygiene/collect_txhygiene.py) ../scratch/txh-ctl/txhygiene/collect_txhygiene.py; cmp txhygiene/resume_drill_txhygiene.sh ../scratch/txh-ctl/txhygiene/resume_drill_txhygiene.sh && echo drill script identical
+356c356
+<         orphans = drop_orphans(tx_f, done)
+---
+>         orphans = 0  # MUTANT
+drill script identical
+(exit 0)
+$ TERM_AFTER=25 KILL_AFTER=25 timeout 900 bash ../scratch/txh-ctl/txhygiene/resume_drill_txhygiene.sh 7829305 7829425 data/txhygiene/drill-03-ctl
+== reference run 7829305..7829425
+reference: ledgers 121 tx 36
+== drill run: SIGTERM after 25s
+after SIGTERM: ledgers 25, last 7829329
+== resume 1, SIGKILL after 25s
+../scratch/txh-ctl/txhygiene/resume_drill_txhygiene.sh: line 51: 2566078 Killed                  "${col[@]}" --out "$drl" --log "$work/drill.log" > /dev/null
+after SIGKILL: ledgers 49, last 7829353
+tx.jsonl: 17 lines, last byte is newline: yes
+ledgers.jsonl: 49 lines, last byte is newline: yes
+== inject: orphan tx lines of the first reference ledger after 7829353 that has txs, then a torn tx.jsonl tail
+appended 3 tx.jsonl line(s) of ledger 7829361
+appended torn tx.jsonl tail: '{"ledger_index":7829361,"close_time":TORN' (no newline)
+== resume 2 to the end
+2026-11-07T02:24:36Z STOP (signal) requests this run=26
+2026-11-07T02:24:36Z SUMMARY window 2026-11-07T02:24:11Z -> 2026-11-08T02:24:11Z ledgers 7829305-7829329 ledgers=25 tx=6 fees=0 gaps=0 retries=0 restarts=1
+2026-11-07T02:24:36Z RESUME at ledger 7829330 (window 2026-11-07T02:24:11Z -> 2026-11-08T02:24:11Z, start seq 7829305, behind by 367)
+2026-11-07T02:25:02Z RESUME dropped torn last line of tx.jsonl (41 bytes)
+2026-11-07T02:25:02Z RESUME at ledger 7829354 (window 2026-11-07T02:24:11Z -> 2026-11-08T02:24:11Z, start seq 7829305, behind by 352)
+2026-11-07T02:26:14Z STOP (stop_at reached) requests this run=73
+2026-11-07T02:26:14Z SUMMARY window 2026-11-07T02:24:11Z -> 2026-11-08T02:24:11Z ledgers 7829305-7829425 ledgers=121 tx=39 fees=0 gaps=0 retries=0 restarts=3
+FAIL tx.jsonl identical (36 lines)
+PASS ledgers.jsonl identical without fetched_utc
+PASS every ledger 7829305..7829425 exactly once
+FAIL no duplicate (ledger, tx_index) or tx_hash
+PASS no gaps
+FAIL txn_count sum == tx_rows sum == tx.jsonl lines
+PASS restarts kinds start,resume,resume
+PASS last resume cut the torn tx.jsonl line
+../scratch/txh-ctl/txhygiene/resume_drill_txhygiene.sh: line 82: [: : integer expression expected
+FAIL last resume dropped the 3 injected orphan line(s) (>=: a mid-ledger SIGKILL adds its own)
+restarts.jsonl:
+{"kind":"start","at_utc":"2026-11-07T02:24:11Z","first_ledger":7829305,"validated":7829688,"lag":384,"torn_bytes":0,"orphan_rows":0}
+{"kind":"resume","at_utc":"2026-11-07T02:24:36Z","first_ledger":7829330,"validated":7829696,"lag":367,"torn_bytes":0,"orphan_rows":0}
+{"kind":"resume","at_utc":"2026-11-07T02:25:02Z","first_ledger":7829354,"validated":7829705,"lag":352,"torn_bytes":41,"orphan_rows":0}
+sha256 tx.jsonl ref   59927c1860d6c4e99ecebb9b7724b07b85619c87f10a2acae28f6da8c99728da
+sha256 tx.jsonl drill 7afcf041c901e1caabd68a13dea82f2b3ace2b4f00e06cdfc5b0a35d81787c43
+RESULT: FAIL
+(exit 1)
+(control expected: exit 1 with FAIL lines for tx.jsonl identical / duplicates / orphan drop)
