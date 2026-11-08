@@ -51,14 +51,14 @@ class Transient(Exception):
 
 
 class HttpRpc:
-    def __init__(self, url, gap=0.25, timeout=20, opener=None):
-        self.url, self.gap, self.timeout = url, gap, timeout
+    def __init__(self, url, gap=0.25, timeout=20, opener=None, allow=READ_ONLY):
+        self.url, self.gap, self.timeout, self.allow = url, gap, timeout, frozenset(allow)
         self.last = 0.0
         self.count = 0
         self.opener = opener or urllib.request.urlopen
 
     def call(self, method, params=None):
-        if method not in READ_ONLY:
+        if method not in self.allow:
             raise ValueError(f"refusing non read-only method {method}")
         wait = self.gap - (time.monotonic() - self.last)
         if wait > 0:
