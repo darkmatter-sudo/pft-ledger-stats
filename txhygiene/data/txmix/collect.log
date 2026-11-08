@@ -1,0 +1,29 @@
+2026-11-07T02:14:20Z OS: Ubuntu 22.04.5 LTS | kernel 5.15.0-202-generic | python 3.10.12
+2026-11-07T02:14:20Z node: build 1.0.9 state full complete_ledgers 7828614-7829493
+2026-11-07T02:14:20Z WINDOW START 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z at ledger 7829493, rate <= 1.0 req/s
+2026-11-07T03:14:20Z PROGRESS last=7830683 lag=0 ledgers=1191 tx=424 gaps=0 requests=3393
+2026-11-07T04:14:20Z PROGRESS last=7831873 lag=0 ledgers=2381 tx=824 gaps=0 requests=6788
+2026-11-07T05:14:22Z PROGRESS last=7833061 lag=0 ledgers=3569 tx=1230 gaps=0 requests=10176
+2026-11-07T06:14:23Z PROGRESS last=7834251 lag=0 ledgers=4759 tx=1641 gaps=0 requests=13566
+2026-11-07T07:14:24Z PROGRESS last=7835441 lag=0 ledgers=5949 tx=2059 gaps=0 requests=16962
+2026-11-07T08:14:24Z PROGRESS last=7836633 lag=0 ledgers=7141 tx=2453 gaps=0 requests=20380
+2026-11-07T09:14:25Z PROGRESS last=7837823 lag=0 ledgers=8331 tx=2870 gaps=0 requests=23793
+2026-11-07T10:14:26Z PROGRESS last=7839015 lag=0 ledgers=9523 tx=3292 gaps=0 requests=27212
+2026-11-07T11:14:27Z PROGRESS last=7840205 lag=0 ledgers=10713 tx=3706 gaps=0 requests=30633
+2026-11-07T12:14:27Z PROGRESS last=7841393 lag=0 ledgers=11901 tx=4123 gaps=0 requests=34055
+2026-11-07T13:14:29Z PROGRESS last=7842584 lag=0 ledgers=13092 tx=4529 gaps=0 requests=37437
+2026-11-07T14:14:29Z PROGRESS last=7843768 lag=1 ledgers=14276 tx=4912 gaps=0 requests=40812
+2026-11-07T15:14:29Z PROGRESS last=7844953 lag=0 ledgers=15461 tx=5295 gaps=0 requests=44164
+2026-11-07T16:14:30Z PROGRESS last=7846145 lag=0 ledgers=16653 tx=5721 gaps=0 requests=47542
+2026-11-07T17:14:31Z PROGRESS last=7847334 lag=0 ledgers=17842 tx=6125 gaps=0 requests=50939
+2026-11-07T18:14:32Z PROGRESS last=7848528 lag=0 ledgers=19036 tx=6518 gaps=0 requests=54347
+2026-11-07T19:14:34Z PROGRESS last=7849717 lag=0 ledgers=20225 tx=6907 gaps=0 requests=57783
+2026-11-07T20:14:34Z PROGRESS last=7850906 lag=0 ledgers=21414 tx=7309 gaps=0 requests=61204
+2026-11-07T21:14:35Z PROGRESS last=7852097 lag=0 ledgers=22605 tx=7707 gaps=0 requests=64604
+2026-11-07T22:14:36Z PROGRESS last=7853288 lag=0 ledgers=23796 tx=8125 gaps=0 requests=67999
+2026-11-07T23:14:36Z PROGRESS last=7854477 lag=0 ledgers=24985 tx=8565 gaps=0 requests=71393
+2026-11-08T00:14:36Z PROGRESS last=7855669 lag=0 ledgers=26177 tx=9012 gaps=0 requests=74790
+2026-11-08T01:14:37Z PROGRESS last=7856861 lag=0 ledgers=27369 tx=9409 gaps=0 requests=78176
+2026-11-08T02:14:37Z PROGRESS last=7858053 lag=0 ledgers=28561 tx=9853 gaps=0 requests=81602
+2026-11-08T02:29:20Z STOP (window end reached) requests this run=82441
+2026-11-08T02:29:20Z SUMMARY window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z ledgers 7829493-7858345 fetched=28853 tx_rows=9943 gaps=0

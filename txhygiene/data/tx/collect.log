@@ -1,0 +1,34 @@
+2026-11-07T02:14:20Z node: build 1.0.9 state full complete_ledgers 7828614-7829493
+2026-11-07T02:14:20Z WINDOW START 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z at ledger 7829493, stop_at None, rate <= 1.0 req/s
+2026-11-07T02:26:33Z STOP (signal) requests this run=727
+2026-11-07T02:26:33Z SUMMARY window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z ledgers 7829493-7829734 ledgers=242 tx=83 fees=241 gaps=0 retries=0 restarts=1
+2026-11-07T02:26:34Z node: build 1.0.9 state full complete_ledgers 7829126-7829735
+2026-11-07T02:26:34Z RESUME at ledger 7829735 (window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z, start seq 7829493, behind by 1)
+2026-11-07T02:27:19Z node: build 1.0.9 state full complete_ledgers 7829126-7829750
+2026-11-07T02:27:19Z RESUME at ledger 7829750 (window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z, start seq 7829493, behind by 1)
+2026-11-07T03:27:19Z PROGRESS last=7830940 lag=1 ledgers=1448 tx=520 fees=1441 gaps=0 retries=0 requests=3572
+2026-11-07T04:27:19Z PROGRESS last=7832129 lag=1 ledgers=2637 tx=922 fees=2623 gaps=0 retries=0 requests=7139
+2026-11-07T05:27:21Z PROGRESS last=7833318 lag=1 ledgers=3826 tx=1305 fees=3809 gaps=0 retries=0 requests=10716
+2026-11-07T06:27:23Z PROGRESS last=7834508 lag=1 ledgers=5016 tx=1721 fees=4993 gaps=0 retries=0 requests=14286
+2026-11-07T07:27:23Z PROGRESS last=7835700 lag=0 ledgers=6208 tx=2162 fees=6178 gaps=0 retries=0 requests=17856
+2026-11-07T08:27:24Z PROGRESS last=7836889 lag=1 ledgers=7397 tx=2556 fees=7364 gaps=0 retries=0 requests=21429
+2026-11-07T09:27:24Z PROGRESS last=7838081 lag=0 ledgers=8589 tx=2948 fees=8552 gaps=0 retries=0 requests=25008
+2026-11-07T10:27:26Z PROGRESS last=7839273 lag=1 ledgers=9781 tx=3374 fees=9742 gaps=0 retries=0 requests=28589
+2026-11-07T11:27:28Z PROGRESS last=7840462 lag=1 ledgers=10970 tx=3797 fees=10930 gaps=0 retries=0 requests=32171
+2026-11-07T12:27:28Z PROGRESS last=7841651 lag=1 ledgers=12159 tx=4213 fees=12115 gaps=0 retries=0 requests=35749
+2026-11-07T13:27:29Z PROGRESS last=7842837 lag=1 ledgers=13345 tx=4620 fees=13294 gaps=0 retries=0 requests=39311
+2026-11-07T14:27:30Z PROGRESS last=7844022 lag=1 ledgers=14530 tx=4989 fees=14467 gaps=0 retries=0 requests=42866
+2026-11-07T15:27:30Z PROGRESS last=7845211 lag=0 ledgers=15719 tx=5391 fees=15641 gaps=0 retries=0 requests=46412
+2026-11-07T16:27:31Z PROGRESS last=7846403 lag=0 ledgers=16911 tx=5809 fees=16824 gaps=0 retries=0 requests=49978
+2026-11-07T17:27:33Z PROGRESS last=7847593 lag=1 ledgers=18101 tx=6222 fees=18005 gaps=0 retries=0 requests=53547
+2026-11-07T18:27:34Z PROGRESS last=7848785 lag=1 ledgers=19293 tx=6609 fees=19191 gaps=0 retries=0 requests=57121
+2026-11-07T19:27:36Z PROGRESS last=7849971 lag=1 ledgers=20479 tx=6984 fees=20377 gaps=0 retries=0 requests=60706
+2026-11-07T20:27:36Z PROGRESS last=7851165 lag=1 ledgers=21673 tx=7396 fees=21566 gaps=0 retries=0 requests=64285
+2026-11-07T21:27:37Z PROGRESS last=7852355 lag=1 ledgers=22863 tx=7812 fees=22746 gaps=0 retries=0 requests=67848
+2026-11-07T22:27:39Z PROGRESS last=7853546 lag=1 ledgers=24054 tx=8224 fees=23930 gaps=0 retries=0 requests=71417
+2026-11-07T23:27:39Z PROGRESS last=7854737 lag=1 ledgers=25245 tx=8644 fees=25112 gaps=0 retries=0 requests=74984
+2026-11-08T00:27:40Z PROGRESS last=7855929 lag=1 ledgers=26437 tx=9102 fees=26297 gaps=0 retries=0 requests=78556
+2026-11-08T01:27:41Z PROGRESS last=7857121 lag=0 ledgers=27629 tx=9497 fees=27478 gaps=0 retries=0 requests=82119
+2026-11-08T02:27:41Z PROGRESS last=7858312 lag=1 ledgers=28820 tx=9927 fees=28668 gaps=0 retries=0 requests=85701
+2026-11-08T02:29:24Z STOP (window end reached (ledger 7858347 closed 2026-11-08T02:29:21Z, not written)) requests this run=85804
+2026-11-08T02:29:24Z SUMMARY window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z ledgers 7829493-7858346 ledgers=28854 tx=9943 fees=28702 gaps=0 retries=0 restarts=3

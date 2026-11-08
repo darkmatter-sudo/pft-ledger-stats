@@ -3,3 +3,6 @@ __pycache__/
 *.log
 !logs/*.log
 data/tx/.hmac_key
+!data/tx/collect.log
+!data/txmix/collect.log
+data/txmix/.hmac_key
