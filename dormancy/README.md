@@ -76,3 +76,33 @@ exact header close time (when the time map has that header).
   A call that is not in the recording stops the run with exit 3 (it is never read as a node answer).
 
 Exit 0 all match, 1 any mismatch, 2 not enough accounts checked, 3 offline recording incomplete.
+
+## Mutation check
+
+```
+.venv/bin/python dormancy/mutants_dormancy.py [--timeout 120] [--only L9]
+```
+
+Puts one broken line at a time (39 mutants: lib, header fetcher, anchors, analyzer, crosscheck)
+into a temporary copy of the repo and runs `tests/test_*dormancy*.py`. The unmutated copy runs
+first as the control, made the same way and in the same place, and must pass. Each copy gets its
+own temporary directory. A mutant counts as CAUGHT only if pytest exits 1 with failed tests, and
+the failing test names are printed so you can check the kill came from the right test. TIMEOUT
+also counts as caught. SURVIVED, BROKEN (collection/import error) and NOT APPLIED (the mutant's
+text is not found exactly once) count as failures. Exit 0 = control passed and every mutant caught.
+
+## Resume drill (header fetcher)
+
+```
+dormancy/resume_drill_dormancy.sh dormancy/data/A/snapshot-<ledger>.jsonl.gz data/dormancy/drill-1
+```
+
+Makes one uninterrupted reference fetch. Then the same fetch is stopped with SIGTERM (must exit
+4 after the current line), resumed, and SIGKILLed. Next the drill appends the first `CUT` bytes
+of the next reference line with no newline: the torn line a SIGKILL mid-write leaves. A SIGKILL
+that lands between writes leaves no torn line, so the drill injects one every time. Finally it
+resumes to the end. To pass, headers.jsonl must be byte-identical to the reference with every
+seq exactly once. The last resume must report `torn_bytes` equal to the injected length and skip
+every complete line. Exit codes must be 4 / 137 / 0, and the public `complete_ledgers` must
+still hold the oldest fetched seq. The drill uses public RPC only (`server_info`, `ledger`),
+and `TERM_AFTER`, `KILL_AFTER`, `ITEM_DELAY` and `CUT` tune the timing.
