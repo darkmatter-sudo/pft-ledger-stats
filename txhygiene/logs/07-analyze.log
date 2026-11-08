@@ -1,0 +1,17 @@
+# 2026-11-08T02:30:53Z txhygiene analysis of the full window | "Ubuntu 22.04.5 LTS" | commit bd911cc8a71fe0504d31a36a652f93125cf4a5e2
+$ sha256sum data/txhygiene/tx/tx.jsonl data/txhygiene/tx/fees.jsonl data/txhygiene/tx/ledgers.jsonl
+fc76fb4adf92e18b83b5bad1de415fd4d9e34d504a81d6289891f9f12c5bb925  data/txhygiene/tx/tx.jsonl
+07cd3016822411c53c04ee6b34420b23df8e972e6266822101eeb00473ee0185  data/txhygiene/tx/fees.jsonl
+7e8bec9681d6946f246331ce9d0113ddd1292a065ebe47bb807e47e23959212b  data/txhygiene/tx/ledgers.jsonl
+(exit 0)
+$ .venv/bin/python txhygiene/analyze_txhygiene.py --data data/txhygiene/tx --out txhygiene/report --charts
+analyzed 9943 tx in 28854 ledgers (7829493-7858346) -> txhygiene/report/REPORT.md, txhygiene.json, margin.png, overpay_lorenz.png, classes.png
+(exit 0)
+$ ls -l txhygiene/report | awk "{print \$5, \$9}"
+ 
+5305 REPORT.md
+34382 classes.png
+29251 margin.png
+37309 overpay_lorenz.png
+5082 txhygiene.json
+(exit 0)

@@ -1,0 +1,35 @@
+# 2026-11-08T02:32:08Z txhygiene publish window data (no HMAC key) and re-run from the published copy | "Ubuntu 22.04.5 LTS" | commit bd911cc8a71fe0504d31a36a652f93125cf4a5e2
+$ mkdir -p txhygiene/data/tx txhygiene/data/txmix && cp data/txhygiene/tx/{tx.jsonl,fees.jsonl,ledgers.jsonl,restarts.jsonl,state.json,collect.log} txhygiene/data/tx/ && cp data/txhygiene/txmix/{ledgers.csv,tx.csv,samples.jsonl,state.json,collect.log} txhygiene/data/txmix/ && cp data/txhygiene/reconcile.json data/txhygiene/crosscheck.json data/txhygiene/crosscheck-negative.json txhygiene/data/
+(exit 0)
+$ find txhygiene/data -name ".hmac_key" | wc -l
+0
+(exit 0)
+$ cd data/txhygiene && find tx txmix -type f ! -name .hmac_key | sort | xargs sha256sum > /tmp/a && cd ../../txhygiene/data && find tx txmix -type f | sort | xargs sha256sum > /tmp/b && diff /tmp/a /tmp/b && echo identical: $(wc -l < /tmp/b) files
+identical: 11 files
+(exit 0)
+$ cp txhygiene/report/txhygiene.json /tmp/txh-live.json && .venv/bin/python txhygiene/analyze_txhygiene.py --data txhygiene/data/tx --out /tmp/txh-pub && cmp txhygiene/report/txhygiene.json /tmp/txh-pub/txhygiene.json && cmp txhygiene/report/REPORT.md /tmp/txh-pub/REPORT.md && echo report identical from published copy
+analyzed 9943 tx in 28854 ledgers (7829493-7858346) -> /tmp/txh-pub/REPORT.md, txhygiene.json
+txhygiene/report/REPORT.md /tmp/txh-pub/REPORT.md differ: byte 1472, line 32
+(exit 1)
+$ python3 txhygiene/reconcile_txhygiene.py --tx txhygiene/data/tx --twin txhygiene/data/txmix | tail -n 1
+RESULT: PASS (15/15 checks pass)
+(exit 0)
+$ python3 txhygiene/crosscheck_txhygiene.py --data data/txhygiene/tx --offline txhygiene/data/crosscheck.json | tail -n 1
+2026-11-08T02:32:58Z OFFLINE SUMMARY 20/20 recorded tx match tx.jsonl in all 21 fields -> PASS
+(exit 0)
+== the REPORT.md cmp above failed because that re-run omitted --charts (no image lines); diff, then re-run with --charts:
+$ diff txhygiene/report/REPORT.md /tmp/txh-pub/REPORT.md
+32,33d31
+< ![LastLedgerSequence margin](margin.png)
+< 
+63,64d60
+< ![Overpay Lorenz curve](overpay_lorenz.png)
+< 
+121,122d116
+< 
+< ![Client classes](classes.png)
+(exit 1)
+$ rm -rf /tmp/txh-pub && .venv/bin/python txhygiene/analyze_txhygiene.py --data txhygiene/data/tx --out /tmp/txh-pub --charts && cmp txhygiene/report/txhygiene.json /tmp/txh-pub/txhygiene.json && cmp txhygiene/report/REPORT.md /tmp/txh-pub/REPORT.md && echo "REPORT.md and txhygiene.json identical from published copy"
+analyzed 9943 tx in 28854 ledgers (7829493-7858346) -> /tmp/txh-pub/REPORT.md, txhygiene.json, margin.png, overpay_lorenz.png, classes.png
+REPORT.md and txhygiene.json identical from published copy
+(exit 0)

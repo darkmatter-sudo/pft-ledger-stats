@@ -94,5 +94,40 @@ python3 txhygiene/crosscheck_txhygiene.py --data data/txhygiene/tx --offline cro
 | `logs/02-tests-lint.log` | collector tests, full suite, ruff, shellcheck |
 | `logs/03-resume-drill.log` | resume drill on ledgers 7829305-7829425: PASS 9/9; negative control (collector copy whose resume skips the orphan drop) FAIL 4/9 as expected |
 | `logs/04-live-interrupts.log` | the live 24 h collector itself: SIGTERM, resume, SIGKILL, resume; window contiguous afterwards |
+| `logs/05-window-end-reconcile.log` | both STOP lines (exit 0), `restarts.jsonl` (start + 2 resumes), reconciliation PASS 15/15, negative control: all planted faults reported |
+| `logs/06-public-crosscheck.log` | 20 random tx re-fetched from the public RPC: 20/20 match in all 21 fields, 0 retries; negative 20/20 with 21/21 fields differing; offline re-check PASS |
+| `logs/07-analyze.log` | input sha256 and the analyzer run that wrote `report/` |
+| `logs/08-publish-copy.log` | window data copied to `data/` without the HMAC key (11 files, sha256-identical); report, JSON and reconciliation re-run from the published copy (first re-run omitted `--charts`, so `REPORT.md` differed only by the 3 image lines; re-run with `--charts` identical) |
+| `logs/09-margin-overpay-crosstab.log` | the long-margin and overpaying tx are the same 66 tx |
+| `logs/10-tests-lint.log` | 56 txhygiene tests, full suite 589 passed, ruff, shellcheck |
 
-Results: `report/REPORT.md`, written from the full window after it closes.
+`data/tx/` (collector output: `tx.jsonl`, `fees.jsonl`, `ledgers.jsonl`, `restarts.jsonl`, `state.json`,
+`collect.log`), `data/txmix/` (the independent twin collection), `data/reconcile.json`,
+`data/crosscheck.json` (the public answers, for `--offline`) and `data/crosscheck-negative.json`.
+Re-run the report with `.venv/bin/python txhygiene/analyze_txhygiene.py --data txhygiene/data/tx --out /tmp/r --charts`.
+
+## Results (2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z)
+
+Full report: [`report/REPORT.md`](report/REPORT.md). 28854 ledgers (7829493-7858346), 9943 validated
+tx from 53 accounts (Payment 8023, NFTokenMint 1033, NFTokenBurn 887; 3 `tecUNFUNDED_PAYMENT`).
+
+- **Expiry.** Every tx set `LastLedgerSequence` (0 of 9943 without). 9877 tx were included with 17-19
+  ledgers to spare (about 1 minute at the window's ~3.0 s per ledger); 66 tx had 118-119. No
+  negative margins. On this window no validated tx could have been replayed late by a missing expiry.
+- **Fees.** Base fee 10 drops in all 28702 samples; the open-ledger fee never rose above base and the
+  queue was always empty. 9877 tx paid exactly 10 drops; 66 tx paid 12 (1.2x). Total overpay 132 of
+  99562 fee drops (0.13 %), from 6 of 53 accounts; one account paid 92.4 % of it (Gini 0.973).
+  0 tx paid below the required fee.
+- **Two construction families.** The 66 long-margin tx and the 66 overpaying tx are the same tx
+  (`logs/09`): one family with fee 12, margin ~118 and an explicit `Flags` field (1 ed25519 account
+  sending Payments with Memos, 61 tx; 5 secp256k1 accounts minting one NFT each with `TransferFee`).
+  The other 9877 tx from 47 accounts have fee 10, margin 17-19 and no `Flags` field. No account was
+  seen in both families.
+- **Signing.** ed25519 9938 tx / 48 accounts, secp256k1 5 tx / 5 accounts; no multisig.
+- **Sequences.** All Sequence-based, 0 Ticket tx; 9890 steps between an account's consecutive tx,
+  all +1 (no sequence holes, no reuse); at most 1 tx per account per ledger.
+- **Optional fields.** Every tx carries `NetworkID` 2025; no `SourceTag`, `DestinationTag` or
+  `AccountTxnID` anywhere; Memos on 61 tx (one account).
+
+What this does not show: transactions that were never validated (see limitations), and which
+software built each family. Field patterns are not library names.

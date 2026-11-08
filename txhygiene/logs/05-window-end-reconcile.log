@@ -1,0 +1,79 @@
+# 2026-11-08T02:29:37Z txhygiene window end + reconciliation | "Ubuntu 22.04.5 LTS" | commit bd911cc8a71fe0504d31a36a652f93125cf4a5e2
+$ systemctl show -p Result -p ExecMainStatus pft-txhygiene-tx-r2 pft-txhygiene-txmix
+Result=success
+ExecMainStatus=0
+
+Result=success
+ExecMainStatus=0
+(exit 0)
+$ tail -n 3 data/txhygiene/tx/collect.log
+2026-11-08T02:27:41Z PROGRESS last=7858312 lag=1 ledgers=28820 tx=9927 fees=28668 gaps=0 retries=0 requests=85701
+2026-11-08T02:29:24Z STOP (window end reached (ledger 7858347 closed 2026-11-08T02:29:21Z, not written)) requests this run=85804
+2026-11-08T02:29:24Z SUMMARY window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z ledgers 7829493-7858346 ledgers=28854 tx=9943 fees=28702 gaps=0 retries=0 restarts=3
+(exit 0)
+$ tail -n 2 data/txhygiene/txmix/collect.log
+2026-11-08T02:29:20Z STOP (window end reached) requests this run=82441
+2026-11-08T02:29:20Z SUMMARY window 2026-11-07T02:14:20Z -> 2026-11-08T02:29:20Z ledgers 7829493-7858345 fetched=28853 tx_rows=9943 gaps=0
+(exit 0)
+$ cat data/txhygiene/tx/restarts.jsonl
+{"kind":"start","at_utc":"2026-11-07T02:14:20Z","first_ledger":7829493,"validated":7829493,"lag":1,"torn_bytes":0,"orphan_rows":0}
+{"kind":"resume","at_utc":"2026-11-07T02:26:34Z","first_ledger":7829735,"validated":7829735,"lag":1,"torn_bytes":0,"orphan_rows":0}
+{"kind":"resume","at_utc":"2026-11-07T02:27:19Z","first_ledger":7829750,"validated":7829750,"lag":1,"torn_bytes":0,"orphan_rows":0}
+(exit 0)
+$ wc -l data/txhygiene/tx/ledgers.jsonl data/txhygiene/tx/tx.jsonl data/txhygiene/tx/fees.jsonl data/txhygiene/txmix/ledgers.csv data/txhygiene/txmix/tx.csv
+   28854 data/txhygiene/tx/ledgers.jsonl
+    9943 data/txhygiene/tx/tx.jsonl
+   28702 data/txhygiene/tx/fees.jsonl
+   28854 data/txhygiene/txmix/ledgers.csv
+    9944 data/txhygiene/txmix/tx.csv
+  106297 total
+(exit 0)
+$ ls data/txhygiene/tx/gaps.jsonl data/txhygiene/tx/retries.jsonl 2>&1 | sed "s/^/  /"
+  ls: cannot access 'data/txhygiene/tx/gaps.jsonl': No such file or directory
+  ls: cannot access 'data/txhygiene/tx/retries.jsonl': No such file or directory
+(exit 0)
+$ python3 txhygiene/reconcile_txhygiene.py --tx data/txhygiene/tx --twin data/txhygiene/txmix --json data/txhygiene/reconcile.json
+txhygiene: 28854 ledgers, 9943 tx lines | txmix twin: 28853 ledgers, 9943 tx
+== part 1: txhygiene data alone
+PASS ledgers start_seq..last exactly once: 28854 ledgers 7829493-7858346, 0 duplicate(s), 0 missing
+PASS no gaps recorded: 0 gap line(s)
+PASS every tx once (hash and (ledger, tx_index)): 9943 lines, 9943 hashes, 9943 (ledger, index) keys
+PASS no tx line without its ledger line: 0 orphan line(s)
+PASS per ledger txn_count == tx_rows == tx lines: 0 ledger(s) differ; txn_count sum 9943, tx lines 9943
+PASS tx_index 0..n-1 in every ledger: 0 ledger(s) with holes
+== part 2: against the independent txmix collection
+PASS both sides hold every ledger of the common range: common 7829493-7858345 (28853 ledgers); only txhygiene 1, only txmix 0 (outside the common range: not compared)
+PASS per-ledger ledger_hash equal: 0 differ
+PASS per-ledger txn_count equal: 0 differ
+PASS same tx hashes: 9943 vs 9943; only txhygiene 0, only txmix 0
+PASS per tx (ledger, tx_index, type, result, fee) equal: 0 differ
+PASS window total tx equal: txhygiene 9943 | txmix 9943
+PASS window total by_type equal: txhygiene {'NFTokenBurn': 887, 'NFTokenMint': 1033, 'Payment': 8023} | txmix {'NFTokenBurn': 887, 'NFTokenMint': 1033, 'Payment': 8023}
+PASS window total by_result equal: txhygiene {'tecUNFUNDED_PAYMENT': 3, 'tesSUCCESS': 9940} | txmix {'tecUNFUNDED_PAYMENT': 3, 'tesSUCCESS': 9940}
+PASS window total fee_sum_drops equal: txhygiene 99562 | txmix 99562
+RESULT: PASS (15/15 checks pass)
+(exit 0)
+$ python3 txhygiene/reconcile_txhygiene.py --tx data/txhygiene/tx --twin data/txhygiene/txmix --negative
+NEGATIVE: dropped every tx line of ledger 7854309; fee +1 drop on 4047E60A1544ACE9
+txhygiene: 28854 ledgers, 9939 tx lines | txmix twin: 28853 ledgers, 9943 tx
+== part 1: txhygiene data alone
+PASS ledgers start_seq..last exactly once: 28854 ledgers 7829493-7858346, 0 duplicate(s), 0 missing
+PASS no gaps recorded: 0 gap line(s)
+PASS every tx once (hash and (ledger, tx_index)): 9939 lines, 9939 hashes, 9939 (ledger, index) keys
+PASS no tx line without its ledger line: 0 orphan line(s)
+FAIL per ledger txn_count == tx_rows == tx lines: 1 ledger(s) differ: 7854309; txn_count sum 9943, tx lines 9939
+PASS tx_index 0..n-1 in every ledger: 0 ledger(s) with holes
+== part 2: against the independent txmix collection
+PASS both sides hold every ledger of the common range: common 7829493-7858345 (28853 ledgers); only txhygiene 1, only txmix 0 (outside the common range: not compared)
+PASS per-ledger ledger_hash equal: 0 differ
+PASS per-ledger txn_count equal: 0 differ
+FAIL same tx hashes: 9939 vs 9943; only txhygiene 0, only txmix 4
+FAIL per tx (ledger, tx_index, type, result, fee) equal: 1 differ
+      4047E60A1544ACE9 txhygiene=(7847630, 0, 'Payment', 'tesSUCCESS', 11) txmix=(7847630, 0, 'Payment', 'tesSUCCESS', 10)
+FAIL window total tx equal: txhygiene 9939 | txmix 9943
+FAIL window total by_type equal: txhygiene {'NFTokenBurn': 886, 'NFTokenMint': 1033, 'Payment': 8020} | txmix {'NFTokenBurn': 887, 'NFTokenMint': 1033, 'Payment': 8023}
+FAIL window total by_result equal: txhygiene {'tecUNFUNDED_PAYMENT': 3, 'tesSUCCESS': 9936} | txmix {'tecUNFUNDED_PAYMENT': 3, 'tesSUCCESS': 9940}
+FAIL window total fee_sum_drops equal: txhygiene 99523 | txmix 99562
+negative control: expected FAIL ['per ledger txn_count == tx_rows == tx lines', 'per tx (ledger, tx_index, type, result, fee) equal', 'same tx hashes', 'window total fee_sum_drops equal', 'window total tx equal']; missing []
+RESULT: PASS (7/15 checks fail as planted)
+(exit 0)

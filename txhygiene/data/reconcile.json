@@ -1,0 +1,100 @@
+{
+ "negative": false,
+ "planted": null,
+ "checks": [
+  {
+   "check": "ledgers start_seq..last exactly once",
+   "ok": true,
+   "detail": "28854 ledgers 7829493-7858346, 0 duplicate(s), 0 missing"
+  },
+  {
+   "check": "no gaps recorded",
+   "ok": true,
+   "detail": "0 gap line(s)"
+  },
+  {
+   "check": "every tx once (hash and (ledger, tx_index))",
+   "ok": true,
+   "detail": "9943 lines, 9943 hashes, 9943 (ledger, index) keys"
+  },
+  {
+   "check": "no tx line without its ledger line",
+   "ok": true,
+   "detail": "0 orphan line(s)"
+  },
+  {
+   "check": "per ledger txn_count == tx_rows == tx lines",
+   "ok": true,
+   "detail": "0 ledger(s) differ; txn_count sum 9943, tx lines 9943"
+  },
+  {
+   "check": "tx_index 0..n-1 in every ledger",
+   "ok": true,
+   "detail": "0 ledger(s) with holes"
+  },
+  {
+   "check": "both sides hold every ledger of the common range",
+   "ok": true,
+   "detail": "common 7829493-7858345 (28853 ledgers); only txhygiene 1, only txmix 0 (outside the common range: not compared)"
+  },
+  {
+   "check": "per-ledger ledger_hash equal",
+   "ok": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "per-ledger txn_count equal",
+   "ok": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "same tx hashes",
+   "ok": true,
+   "detail": "9943 vs 9943; only txhygiene 0, only txmix 0"
+  },
+  {
+   "check": "per tx (ledger, tx_index, type, result, fee) equal",
+   "ok": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "window total tx equal",
+   "ok": true,
+   "detail": "txhygiene 9943 | txmix 9943"
+  },
+  {
+   "check": "window total by_type equal",
+   "ok": true,
+   "detail": "txhygiene {'NFTokenBurn': 887, 'NFTokenMint': 1033, 'Payment': 8023} | txmix {'NFTokenBurn': 887, 'NFTokenMint': 1033, 'Payment': 8023}"
+  },
+  {
+   "check": "window total by_result equal",
+   "ok": true,
+   "detail": "txhygiene {'tecUNFUNDED_PAYMENT': 3, 'tesSUCCESS': 9940} | txmix {'tecUNFUNDED_PAYMENT': 3, 'tesSUCCESS': 9940}"
+  },
+  {
+   "check": "window total fee_sum_drops equal",
+   "ok": true,
+   "detail": "txhygiene 99562 | txmix 99562"
+  }
+ ],
+ "common": {
+  "lo": 7829493,
+  "hi": 7858345,
+  "ledgers": 28853,
+  "totals": {
+   "tx": 9943,
+   "by_type": {
+    "NFTokenBurn": 887,
+    "NFTokenMint": 1033,
+    "Payment": 8023
+   },
+   "by_result": {
+    "tecUNFUNDED_PAYMENT": 3,
+    "tesSUCCESS": 9940
+   },
+   "fee_sum_drops": 99562
+  }
+ },
+ "pass": true
+}

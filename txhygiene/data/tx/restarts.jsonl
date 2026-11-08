@@ -1,0 +1,3 @@
+{"kind":"start","at_utc":"2026-11-07T02:14:20Z","first_ledger":7829493,"validated":7829493,"lag":1,"torn_bytes":0,"orphan_rows":0}
+{"kind":"resume","at_utc":"2026-11-07T02:26:34Z","first_ledger":7829735,"validated":7829735,"lag":1,"torn_bytes":0,"orphan_rows":0}
+{"kind":"resume","at_utc":"2026-11-07T02:27:19Z","first_ledger":7829750,"validated":7829750,"lag":1,"torn_bytes":0,"orphan_rows":0}

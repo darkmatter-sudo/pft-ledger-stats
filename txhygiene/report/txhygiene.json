@@ -1,0 +1,254 @@
+{
+ "concentration": {
+  "accounts": 53,
+  "top1_share": 0.035200643668912804,
+  "top5_share": 0.16876194307553052,
+  "tx_gini": 0.3693999191618642
+ },
+ "expiry": {
+  "buckets": {
+   "0-1": 0,
+   "11-20": 9877,
+   "2-4": 0,
+   "21-100": 0,
+   "5-10": 0,
+   "<0": 0,
+   ">100": 66
+  },
+  "by_type": {
+   "NFTokenBurn": {
+    "margin_max": 19,
+    "margin_median": 18.0,
+    "margin_min": 17,
+    "no_lls": 0,
+    "tx": 887
+   },
+   "NFTokenMint": {
+    "margin_max": 118,
+    "margin_median": 18.0,
+    "margin_min": 17,
+    "no_lls": 0,
+    "tx": 1033
+   },
+   "Payment": {
+    "margin_max": 119,
+    "margin_median": 18.0,
+    "margin_min": 17,
+    "no_lls": 0,
+    "tx": 8023
+   }
+  },
+  "margin_quantiles": {
+   "0.0": 17.0,
+   "0.1": 18.0,
+   "0.5": 18.0,
+   "0.9": 18.0,
+   "1.0": 119.0
+  },
+  "margin_values": {
+   "118": 49,
+   "119": 17,
+   "17": 22,
+   "18": 9289,
+   "19": 566
+  },
+  "negative_margin": 0,
+  "no_lls": 0,
+  "no_lls_accounts": 0,
+  "no_lls_pct": 0.0,
+  "tx": 9943,
+  "with_lls": 9943
+ },
+ "fees": {
+  "accounts": 53,
+  "base_fee_values": {
+   "10": 28702
+  },
+  "below_required": 0,
+  "escalated_samples": 0,
+  "escalated_samples_pct": 0.0,
+  "fee_drops_total": 99562,
+  "fee_quantiles": {
+   "0.0": 10.0,
+   "0.5": 10.0,
+   "0.9": 10.0,
+   "0.99": 10.0,
+   "1.0": 12.0
+  },
+  "fee_samples": 28702,
+  "matched_tx": 9943,
+  "open_ledger_fee_max": 10,
+  "overpay_accounts": 6,
+  "overpay_drops_total": 132,
+  "overpay_gini": 0.9725557461406518,
+  "overpay_top1_share": 0.9242424242424242,
+  "overpay_top5_share": 0.9848484848484849,
+  "overpay_top_accounts": [
+   {
+    "account": "6efdc80b",
+    "overpay_drops": 122
+   },
+   {
+    "account": "41731c26",
+    "overpay_drops": 2
+   },
+   {
+    "account": "810d756a",
+    "overpay_drops": 2
+   },
+   {
+    "account": "81ebe2b0",
+    "overpay_drops": 2
+   },
+   {
+    "account": "9f4fb105",
+    "overpay_drops": 2
+   }
+  ],
+  "overpay_tx": 66,
+  "paid_below_open_ledger_fee": 0,
+  "queue_max": 0,
+  "ratio_buckets": {
+   "1x (exact)": 9877,
+   "<1x": 0,
+   ">1-2x": 66,
+   ">10-100x": 0,
+   ">100x": 0,
+   ">2-10x": 0
+  },
+  "ratio_quantiles": {
+   "0.5": 1.0,
+   "0.9": 1.0,
+   "0.99": 1.0,
+   "1.0": 1.2
+  },
+  "required_drops_total": 99430,
+  "unmatched_tx": 0
+ },
+ "fingerprints": {
+  "accounts_with_several_classes": 0,
+  "classes": [
+   {
+    "accounts": 47,
+    "class": "ed25519: LastLedgerSequence+NetworkID",
+    "tx": 9877
+   },
+   {
+    "accounts": 1,
+    "class": "ed25519: Flags+LastLedgerSequence+NetworkID+Memos",
+    "tx": 61
+   },
+   {
+    "accounts": 5,
+    "class": "secp256k1: Flags+LastLedgerSequence+NetworkID",
+    "tx": 5
+   }
+  ],
+  "distinct_fieldsets": 5,
+  "fieldsets": [
+   {
+    "accounts": 47,
+    "fieldset": "Account+Amount+Destination+Fee+LastLedgerSequence+NetworkID+Sequence+SigningPubKey+TransactionType+TxnSignature",
+    "tx": 7962,
+    "tx_type": "Payment"
+   },
+   {
+    "accounts": 44,
+    "fieldset": "Account+Fee+LastLedgerSequence+NFTokenTaxon+NetworkID+Sequence+SigningPubKey+TransactionType+TxnSignature+URI",
+    "tx": 1028,
+    "tx_type": "NFTokenMint"
+   },
+   {
+    "accounts": 44,
+    "fieldset": "Account+Fee+LastLedgerSequence+NFTokenID+NetworkID+Sequence+SigningPubKey+TransactionType+TxnSignature",
+    "tx": 887,
+    "tx_type": "NFTokenBurn"
+   },
+   {
+    "accounts": 1,
+    "fieldset": "Account+Amount+Destination+Fee+Flags+LastLedgerSequence+Memos+NetworkID+Sequence+SigningPubKey+TransactionType+TxnSignature",
+    "tx": 61,
+    "tx_type": "Payment"
+   },
+   {
+    "accounts": 5,
+    "fieldset": "Account+Fee+Flags+LastLedgerSequence+NFTokenTaxon+NetworkID+Sequence+SigningPubKey+TransactionType+TransferFee+TxnSignature+URI",
+    "tx": 5,
+    "tx_type": "NFTokenMint"
+   }
+  ]
+ },
+ "optional_fields": {
+  "account_txn_id": 0,
+  "dest_tag": 0,
+  "flags_field_absent": 9877,
+  "flags_nonzero": 5,
+  "memos": 61,
+  "network_id_values": {
+   "2025": 9943
+  },
+  "no_network_id": 0,
+  "pct": {
+   "account_txn_id": 0.0,
+   "dest_tag": 0.0,
+   "flags_field_absent": 99.34,
+   "flags_nonzero": 0.05,
+   "memos": 0.61,
+   "no_network_id": 0.0,
+   "source_tag": 0.0
+  },
+  "source_tag": 0,
+  "tx": 9943
+ },
+ "sequencing": {
+  "accounts_with_2plus_tx": 48,
+  "gap_examples": [],
+  "ledger_minus_sequence_quantiles": {
+   "0.0": 6.0,
+   "0.5": 31537.0,
+   "1.0": 7849704.0
+  },
+  "sequence_tx": 9943,
+  "steps": {
+   "+1": 9890,
+   "<=0": 0,
+   ">+1": 0
+  },
+  "ticket_tx": 0,
+  "tx_per_account_ledger": {
+   "1": 9943
+  }
+ },
+ "signing": {
+  "accounts": 53,
+  "by_account": {
+   "ed25519": 48,
+   "secp256k1": 5
+  },
+  "by_tx": {
+   "ed25519": 9938,
+   "secp256k1": 5
+  },
+  "fully_canonical_flag_tx": 0,
+  "multisig_signer_counts": {}
+ },
+ "window": {
+  "by_result": {
+   "tecUNFUNDED_PAYMENT": 3,
+   "tesSUCCESS": 9940
+  },
+  "by_type": {
+   "NFTokenBurn": 887,
+   "NFTokenMint": 1033,
+   "Payment": 8023
+  },
+  "end_utc": "2026-11-08T02:29:20Z",
+  "first_close": "2026-11-07T02:14:20Z",
+  "first_ledger": 7829493,
+  "last_close": "2026-11-08T02:29:20Z",
+  "last_ledger": 7858346,
+  "ledgers": 28854,
+  "start_utc": "2026-11-07T02:14:20Z",
+  "tx": 9943
+ }
+}

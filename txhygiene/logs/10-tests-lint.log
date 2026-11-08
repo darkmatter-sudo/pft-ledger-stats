@@ -1,0 +1,15 @@
+# 2026-11-08T02:34:28Z txhygiene tests and lint after the window | "Ubuntu 22.04.5 LTS" | commit bd911cc8a71fe0504d31a36a652f93125cf4a5e2
+$ python3 -m pytest -q tests/test_txhygiene_collect.py tests/test_txhygiene_analyze.py tests/test_txhygiene_crosscheck.py tests/test_txhygiene_reconcile.py 2>&1 | tail -n 3
+........................................................                 [100%]
+56 passed in 0.99s
+(exit 0)
+$ .venv/bin/python -m pytest -q 2>&1 | tail -n 2
+.............                                                            [100%]
+589 passed in 22.43s
+(exit 0)
+$ .venv/bin/ruff check . || ruff check .
+All checks passed!
+(exit 0)
+$ shellcheck txhygiene/resume_drill_txhygiene.sh && echo shellcheck clean
+shellcheck clean
+(exit 0)

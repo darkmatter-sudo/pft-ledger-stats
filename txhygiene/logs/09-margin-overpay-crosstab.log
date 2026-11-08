@@ -1,0 +1,12 @@
+# 2026-11-08T02:34:28Z txhygiene cross-tab: long LastLedgerSequence margin vs overpay | "Ubuntu 22.04.5 LTS" | commit bd911cc8a71fe0504d31a36a652f93125cf4a5e2
+$ python3 -I -c 'import json,collections; rows=[json.loads(l) for l in open("txhygiene/data/tx/tx.jsonl")]; lo={r["tx_hash"] for r in rows if r["lls_margin"]>100}; ov={r["tx_hash"] for r in rows if r["fee_drops"]>10}; print("margin>100:",len(lo),"fee>10:",len(ov),"both:",len(lo&ov)); c=collections.Counter((r["account"][:8],r["key_type"],r["flags"],r["memos"]>0,r["lls_margin"],r["fee_drops"]) for r in rows if r["tx_hash"] in lo|ov); [print(*k,n) for k,n in sorted(c.items())]; rest=[r for r in rows if r["tx_hash"] not in lo|ov]; print("other tx:",len(rest),"fees",sorted({r["fee_drops"] for r in rest}),"margins",sorted({r["lls_margin"] for r in rest}),"Flags field present",sum("Flags" in r["fieldset"].split("+") for r in rest))'
+margin>100: 66 fee>10: 66 both: 66
+41731c26 secp256k1 9 False 118 12 1
+6efdc80b ed25519 0 True 118 12 44
+6efdc80b ed25519 0 True 119 12 17
+810d756a secp256k1 9 False 118 12 1
+81ebe2b0 secp256k1 9 False 118 12 1
+9f4fb105 secp256k1 9 False 118 12 1
+abd1d535 secp256k1 9 False 118 12 1
+other tx: 9877 fees [10] margins [17, 18, 19] Flags field present 0
+(exit 0)
