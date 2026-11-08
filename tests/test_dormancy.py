@@ -332,3 +332,65 @@ def test_wanted_seqs(tmp_path):
         for o in objs:
             fh.write(json.dumps(o) + "\n")
     assert H.wanted_seqs([str(p)]) == {7, 10}
+
+
+# -------------------------------- added after the mutants_dormancy.py dev pass (L9 L17-L19 H4 H8)
+
+
+def test_interp_point_off_midpoint():
+    # 1/4 of the way from 100 to 200: the point is 1/4 of the way from t_lo to t_hi, not 3/4
+    tm = L.TimeMap({100: (1000, "A"), 200: (3000, "B")})
+    assert tm.lookup(125) == ("interp", 1000, 1500.0, 3000)
+
+
+def test_reconcile_objects_paged_mismatch():
+    objs = [acct("rA", 5, 10, "T")]
+    hdr = header(10, 100, objs)
+    hdr["objects_paged"] = 2
+    tm = L.TimeMap({10: (100, "H")})
+    rows = L.classify_accounts(hdr, objs, tm)
+    checks = {n: ok for n, ok, _ in L.reconcile(hdr, objs, rows, L.bucket_table(rows))}
+    assert checks["objects_paged"] is False
+    assert all(ok for n, ok in checks.items() if n != "objects_paged")
+
+
+def _row(bal, cands, bucket):
+    return {
+        "balance": bal,
+        "reserve": 0,
+        "owner_count": 0,
+        "kind": "exact",
+        "candidates": cands,
+        "bucket": bucket,
+    }
+
+
+def test_bucket_table_top_share_and_count_bounds():
+    rows = [_row(b, ["<1h"], "<1h") for b in (1, 2, 3, 10)] + [_row(7, ["<1h", "1h-1d"], "1h-1d")]
+    t = L.bucket_table(rows, top_n=2)
+    assert t["<1h"]["top_share"] == round(13 / 16, 6)
+    assert (t["<1h"]["accounts_min"], t["<1h"]["accounts"], t["<1h"]["accounts_max"]) == (4, 4, 5)
+    assert (t["1h-1d"]["accounts_min"], t["1h-1d"]["accounts"], t["1h-1d"]["accounts_max"]) == (0, 1, 1)
+
+
+class UnvalidatedRpc(FakeRpc):
+    def call(self, method, params=None):
+        res = super().call(method, params)
+        if method == "ledger":
+            res["validated"] = False
+        return res
+
+
+def test_fetch_skips_unvalidated_ledger(tmp_path):
+    out = str(tmp_path / "h.jsonl")
+    st = H.fetch([("public", UnvalidatedRpc("1-10"))], {3, 4}, out, sleep=nosleep)
+    assert st["fetched"] == 0 and st["pruned"] == 2
+    assert L.load_headers_jsonl(out) == {}
+
+
+def test_fetch_fsyncs_every_header(tmp_path, monkeypatch):
+    synced = []
+    real = H.os.fsync
+    monkeypatch.setattr(H.os, "fsync", lambda fd: (synced.append(fd), real(fd)))
+    st = H.fetch([("public", FakeRpc("1-10"))], {1, 2, 3}, str(tmp_path / "h.jsonl"), sleep=nosleep)
+    assert st["fetched"] == 3 and len(synced) == 3

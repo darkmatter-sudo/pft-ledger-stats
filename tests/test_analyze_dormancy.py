@@ -275,3 +275,19 @@ def test_charts_written(tmp_path):
     assert names <= set(os.listdir(out))
     assert all((out / n).stat().st_size > 1000 for n in names)
     assert all(f"![{n}]({n})" in (out / "REPORT.md").read_text() for n in names)
+
+
+def test_accounts_conserved_catches_a_lost_created_cell(tmp_path, monkeypatch):
+    # added after the mutants dev pass (N2): must fail when the matrix loses a created account
+    a, b, anchors, headers = fixture(tmp_path)
+    real = L.transitions
+
+    def lossy(*args):
+        tr = real(*args)
+        tr["matrix"] = {k: v for k, v in tr["matrix"].items() if not k.startswith("created|")}
+        return tr
+
+    monkeypatch.setattr(A.L, "transitions", lossy)
+    res = A.analyze([a, b], anchors, headers)
+    assert [c["name"] for c in res["transitions"]["checks"] if not c["ok"]] == ["accounts_conserved"]
+    assert not A.all_ok(res)
