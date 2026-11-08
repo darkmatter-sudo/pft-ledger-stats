@@ -265,3 +265,16 @@ def test_in_range_only_samples_held_ledgers(tmp_path):
         snap, hp, Fake(roots), 5, 1, False, io.StringIO(), retries=0, backoff=0, in_range_only=True
     )
     assert code == 2 and c["accounts"] == 4  # fewer held accounts than asked: not enough
+
+
+def test_main_offline_incomplete_recording_exits_3(tmp_path, capsys):
+    snap, hp, roots = fixture(tmp_path)
+    rec = tmp_path / "rec.jsonl"
+    rec.write_text(
+        json.dumps(
+            {"method": "server_info", "params": {}, "result": {"info": {"complete_ledgers": "900-1000"}}}
+        )
+        + "\n"
+    )
+    assert X.main([snap, "--headers", hp, "--count", "2", "--offline", str(rec)]) == 3
+    assert "offline recording incomplete" in capsys.readouterr().out

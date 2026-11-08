@@ -30,7 +30,8 @@ of every account as a MISMATCH and exit 1.
 from such a file with no network access (same seed, same sample, same verdicts).
 
 Only read-only methods are sent: server_info, account_info, tx. Accounts are printed by address
-(public ledger data). Exit 0 all match, 1 any mismatch, 2 not enough accounts checked.
+(public ledger data). Exit 0 all match, 1 any mismatch, 2 not enough accounts checked,
+3 --offline recording lacks a call this run needs.
 
 Usage:
   ./crosscheck_dormancy.py snap.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 \\
@@ -329,18 +330,22 @@ def main(argv=None):
             rpc = Recorder(rpc, a.record)
     mode = "offline " + os.path.basename(a.offline) if a.offline else "live"
     print(f"{H.utcnow()} crosscheck_dormancy {mode}")
-    code, _ = run(
-        a.snapshot,
-        a.headers,
-        rpc,
-        a.count,
-        a.seed,
-        a.negative,
-        sys.stdout,
-        retries=a.retries,
-        backoff=a.backoff,
-        in_range_only=a.in_range_only,
-    )
+    try:
+        code, _ = run(
+            a.snapshot,
+            a.headers,
+            rpc,
+            a.count,
+            a.seed,
+            a.negative,
+            sys.stdout,
+            retries=a.retries,
+            backoff=a.backoff,
+            in_range_only=a.in_range_only,
+        )
+    except NotRecorded as e:
+        print(f"RESULT: offline recording incomplete: {e} -> exit 3")
+        return 3
     return code
 
 
