@@ -151,6 +151,15 @@ control from a temp copy first, then each mutant in its own temp copy with a per
 kills the process group; CAUGHT needs a failed test (names printed), anything else is BROKEN.
 59 mutants over the collector, watcher, analyzer and crosscheck.
 
+Recorded at 6592338de939113870d1c4964c752f77a29f8415: `logs/09-tests.log` (89 PASSED lines, objlife
+suites with `POSTFIATD_SRC` set, 0 skipped) and `logs/10-mutants.log` (control passed, 59 CAUGHT of
+59, 0 survived, 0 not applied, 0 equivalent). The first dev pass (not published as a recorded run)
+left 2 survivors, both real test gaps, closed before the commit: C3 (a `typecount.json` left from
+another ledger was trusted; new `test_typecount_from_another_ledger_refused`) and A17 (the
+created-object default rule in the node checks; new `test_r4_created_then_deleted_with_non_default_field`).
+`logs/08-tests-superseded.log` is an earlier recorded run of the same commit with `$SRC` unset (one
+test skipped, and its exit line was sed's); see the note at its end.
+
 ```bash
 TMPDIR=$HOME/.cache .venv/bin/python objlife/mutants_objlife.py --timeout 120
 ```
