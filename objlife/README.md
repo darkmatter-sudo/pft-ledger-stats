@@ -40,6 +40,27 @@ python3 -I objlife/collect_objlife.py snapshot --types objlife/data/types.json -
 Snapshot A (`logs/02-snapshotA.log`): 5117 objects; deferred rows 48 = NFTokenOffer 45 + Offer 3,
 every other deferred type 0, and the full tree and the type filter agree for all 8 types.
 
-Tests: `tests/test_collect_objlife.py` (macro parsing, rule, committed types.json equals a re-parse
+## Crosscheck (public RPC)
+
+`crosscheck_objlife.py objlife-<L>.jsonl` asks `https://rpc.testnet.postfiat.org` (read-only:
+`server_info`, `ledger`, `ledger_data`, `ledger_entry`) for: the ledger header (hash, account_hash,
+close_time); for every deferred type, the full index set via `ledger_data type=<rpc>` (missing and
+extra objects are both MISMATCH, empty types are checked too); every snapshot object field for field
+via `ledger_entry`; and `--absent K` seeded indexes not in the snapshot, which must be
+`entryNotFound`. `server_info` is read once and a ledger outside `complete_ledgers` stops with exit 2.
+Transient errors (timeouts, HTTP 429/5xx, `tooBusy`, `lgrNotFound` inside the range) are retried with
+exponential backoff, each retry logged as a `RETRY` line; a call that never answers is `GAVE_UP`
+(exit 2), never a MATCH. `--negative` changes every expectation (each type also gets one fake index
+and each absent probe is expected present) so every check must MISMATCH. `--record`/`--offline`
+replay the answers with no network; a call missing from the recording exits 3.
+
+Snapshot A, live (`logs/04`): 64 checks (3 header, 8 types, 48 objects, 5 absent), 64 MATCH, 0
+retries needed, rc 0. Negative (`logs/05`): 64 MISMATCH, rc 1. Offline (`logs/06`): same 64 verdicts
+as live, negative offline 64 MISMATCH, and the recording minus its last line exits 3.
+
+Tests: `tests/test_crosscheck_objlife.py` (all match, negative covers empty types and absent probes,
+missing/extra objects, field diff, present absent-probe, out of range stops after `server_info`,
+logged backoff, give-up is exit 2, non-transient errors not retried, record/offline + incomplete
+recording, snapshot row count). `tests/test_collect_objlife.py` (macro parsing, rule, committed types.json equals a re-parse
 of the source when `POSTFIATD_SRC` is set, count/index disagreement refused, deterministic bytes,
 interrupted run + torn tail resumes to the same bytes, ledger-hash drift refused, typecount resume).

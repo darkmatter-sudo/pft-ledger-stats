@@ -1,0 +1,33 @@
+$ POSTFIATD_SRC=<postfiatd checkout @32723c15> python3 -m pytest -v tests/test_collect_objlife.py tests/test_crosscheck_objlife.py
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.7.0 -- /usr/bin/python3
+rootdir: ~/work/pft-ledger-stats
+configfile: pyproject.toml
+collecting ... collected 23 items
+
+tests/test_collect_objlife.py::test_parse_macro_lines_codes_fields PASSED [  4%]
+tests/test_collect_objlife.py::test_classify_rule PASSED                 [  8%]
+tests/test_collect_objlife.py::test_types_on_real_macro_if_present PASSED [ 13%]
+tests/test_collect_objlife.py::test_build_sorts_counts_and_header PASSED [ 17%]
+tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc0] PASSED [ 21%]
+tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc1] PASSED [ 26%]
+tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc2] PASSED [ 30%]
+tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc3] PASSED [ 34%]
+tests/test_collect_objlife.py::test_write_lines_deterministic PASSED     [ 39%]
+tests/test_collect_objlife.py::test_snapshot_end_to_end_and_resume_with_torn_tail PASSED [ 43%]
+tests/test_collect_objlife.py::test_snapshot_refuses_other_ledger_hash_on_type_filter PASSED [ 47%]
+tests/test_collect_objlife.py::test_typecount_resume_skips_done_types PASSED [ 52%]
+tests/test_crosscheck_objlife.py::test_all_match PASSED                  [ 56%]
+tests/test_crosscheck_objlife.py::test_negative_mismatches_every_check_including_empty_and_absent PASSED [ 60%]
+tests/test_crosscheck_objlife.py::test_missing_and_extra_objects PASSED  [ 65%]
+tests/test_crosscheck_objlife.py::test_field_difference PASSED           [ 69%]
+tests/test_crosscheck_objlife.py::test_present_absent_probe_is_mismatch PASSED [ 73%]
+tests/test_crosscheck_objlife.py::test_out_of_range_stops_after_server_info PASSED [ 78%]
+tests/test_crosscheck_objlife.py::test_backoff_logged_then_success PASSED [ 82%]
+tests/test_crosscheck_objlife.py::test_gave_up_is_exit_2_not_match PASSED [ 86%]
+tests/test_crosscheck_objlife.py::test_other_lookup_error_not_retried PASSED [ 91%]
+tests/test_crosscheck_objlife.py::test_record_offline_same_verdicts_and_incomplete PASSED [ 95%]
+tests/test_crosscheck_objlife.py::test_snapshot_row_count_checked PASSED [100%]
+
+============================== 23 passed in 0.28s ==============================
+rc=0
