@@ -149,6 +149,7 @@ Full tables and charts: [`report/REPORT.md`](report/REPORT.md); every figure: `r
 | reconciliation + transitions | 8/8 OK | 8/8 OK, transitions 4/4 OK | `17` |
 | header fetcher resume drill (SIGTERM/SIGKILL + injected 23-byte torn tail) | PASS 7/7, rc 4/137/0 | | `13` |
 | mutation harness | control 76 passed, 39/39 CAUGHT | | `14` |
+| fresh anonymous public clone at 1f7d8acfb40814827f1b2b8bd669ab8a95f5baa5: 23/23 SHA256SUMS OK, analyzer re-run byte-identical (REPORT, JSON, 6 charts), offline crosschecks A+B (positive rc 0, negative rc 1, in-range rc 0), 76 tests passed | | | `18` |
 | tests / lint | dormancy 76 passed, full repo suite 665 passed, ruff check + format, shellcheck clean | | `17` |
 
 The live SIGKILL in the drill landed between two writes (no torn line of its own); the torn

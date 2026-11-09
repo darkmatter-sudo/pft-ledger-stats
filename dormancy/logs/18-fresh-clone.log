@@ -1,0 +1,101 @@
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+# dormancy run 18 - 2026-11-09T15:53:57Z | python 3.10.12 (repo .venv interpreter, outside the clone)
+$ git -c credential.helper= clone -q https://github.com/darkmatter-sudo/pft-ledger-stats.git clone
+(exit 0)
+$ git checkout -q 1f7d8acfb40814827f1b2b8bd669ab8a95f5baa5 && git rev-parse HEAD
+1f7d8acfb40814827f1b2b8bd669ab8a95f5baa5
+(exit 0)
+$ sha256sum dormancy/*.py dormancy/*.sh tests/test_dormancy.py tests/test_crosscheck_dormancy.py tests/test_analyze_dormancy.py
+cc8ad98ed6d827c4a6cf43b4a211347f32f7b4182bb95e74faf4b67b634ec44c  dormancy/analyze_dormancy.py
+e511c16894aa1713dc4c9b38706cc910db235d134b423ba2dc9b4cdd0a2d5165  dormancy/anchors_dormancy.py
+db8c40c0c6f363ee1ce3e1662293575310fd99aaed92aef33d44d33f3bf42c86  dormancy/crosscheck_dormancy.py
+b0c08b0468be5456189f882c7d2e6f96ef737646a9f18a58b77ae496ac2600de  dormancy/headers_dormancy.py
+8febc59240e68b8fe6724b62ea5db85e660c103bdeb03ea0ab152354c3896735  dormancy/lib_dormancy.py
+736a90ca64395991dbd507d7523ff436b8e37933c8e8e65600fdbe24c7e3f5a2  dormancy/mutants_dormancy.py
+9df8c768fe1ff51f21a6d23f36e75d24114ee46b5caecae6f93b2bc37d71e7f8  dormancy/resume_drill_dormancy.sh
+2f123be5998aa2f4d4f5a53c6bc4e37a003917b0a5d18f236fb03d8977987e5e  tests/test_dormancy.py
+cc8e4133b4effc7d9ddfc1f5f0e5e4d38bf221a873e40e8986ab4b7544a65c5c  tests/test_crosscheck_dormancy.py
+84efb84c288331bc5d857b8c0b80b84a29a832fb430c71daa9498f3de55e9912  tests/test_analyze_dormancy.py
+(exit 0)
+$ (cd dormancy/data && sha256sum -c SHA256SUMS)
+A/crosscheck-A-inrange-seed1.jsonl: OK
+A/crosscheck-A-inrange89-seed1.jsonl: OK
+A/crosscheck-A-random-seed1.jsonl: OK
+A/snapshot-7874004.jsonl.gz: OK
+A/snapshot.log: OK
+A/state.json: OK
+B/crosscheck-B-inrange75-seed1.jsonl: OK
+B/crosscheck-B-random-seed1.jsonl: OK
+B/snapshot-7902546.jsonl.gz: OK
+B/snapshot.log: OK
+B/state.json: OK
+anchors.csv: OK
+headers-A.log: OK
+headers-B.log: OK
+headers.jsonl: OK
+../report/REPORT.md: OK
+../report/dormancy.json: OK
+../report/accounts_A.png: OK
+../report/accounts_B.png: OK
+../report/balance_A.png: OK
+../report/balance_B.png: OK
+../report/topk_share.png: OK
+../report/transitions.png: OK
+(exit 0)
+$ cat dormancy/data/ROWS.txt
+A/snapshot-7874004.jsonl.gz 5106 objects (excluding the header line)
+B/snapshot-7902546.jsonl.gz 5113 objects (excluding the header line)
+anchors.csv 146 rows (excluding header)
+headers.jsonl 116 lines
+A/crosscheck-A-inrange-seed1.jsonl 179 lines
+A/crosscheck-A-inrange89-seed1.jsonl 179 lines
+A/crosscheck-A-random-seed1.jsonl 204 lines
+B/crosscheck-B-inrange75-seed1.jsonl 151 lines
+B/crosscheck-B-random-seed1.jsonl 206 lines
+(exit 0)
+$ $PY dormancy/analyze_dormancy.py --snap dormancy/data/A/snapshot-7874004.jsonl.gz --snap dormancy/data/B/snapshot-7902546.jsonl.gz --anchors dormancy/data/anchors.csv --headers dormancy/data/headers.jsonl --out ../rerun --charts
+snapshot A ledger 7874004: 4573 accounts, checks 8/8 OK
+snapshot B ledger 7902546: 4586 accounts, checks 8/8 OK
+transitions: touched 47 untouched 4526 created 13 deleted 0, checks 4/4 OK
+RESULT PASS -> ../rerun/REPORT.md, dormancy.json, accounts_A.png, balance_A.png, accounts_B.png, balance_B.png, topk_share.png, transitions.png
+(exit 0)
+$ for f in REPORT.md dormancy.json accounts_A.png balance_A.png accounts_B.png balance_B.png topk_share.png transitions.png; do cmp ../rerun/$f dormancy/report/$f && echo "identical $f"; done
+identical REPORT.md
+identical dormancy.json
+identical accounts_A.png
+identical balance_A.png
+identical accounts_B.png
+identical balance_B.png
+identical topk_share.png
+identical transitions.png
+(exit 0)
+$ $PY dormancy/crosscheck_dormancy.py dormancy/data/A/snapshot-7874004.jsonl.gz --headers dormancy/data/headers.jsonl --count 200 --seed 1 --offline dormancy/data/A/crosscheck-A-random-seed1.jsonl > ../p.out; rc=$?; tail -2 ../p.out; echo crosscheck_rc=$rc
+SUMMARY {"accounts": 200, "date_checked": 3, "fields_mismatch": 0, "fields_ok": 1000, "retries": 0, "retries_by_error": {}, "rpc_calls": 204, "skipped": 0, "tx_checked": 3, "tx_mismatch": 0, "tx_ok": 3, "tx_out_of_range": 197, "tx_skipped": 0}
+RESULT: all match -> exit 0
+crosscheck_rc=0
+(exit 0)
+$ $PY dormancy/crosscheck_dormancy.py dormancy/data/A/snapshot-7874004.jsonl.gz --headers dormancy/data/headers.jsonl --count 200 --seed 1 --negative --offline dormancy/data/A/crosscheck-A-random-seed1.jsonl > ../n.out; rc=$?; tail -1 ../n.out; echo crosscheck_rc=$rc
+RESULT: negative control PASS: field mismatches 1000/1000, tx mismatches 3/3, OK lines 0 -> exit 1
+crosscheck_rc=1
+(exit 0)
+$ $PY dormancy/crosscheck_dormancy.py dormancy/data/B/snapshot-7902546.jsonl.gz --headers dormancy/data/headers.jsonl --count 200 --seed 1 --offline dormancy/data/B/crosscheck-B-random-seed1.jsonl > ../p.out; rc=$?; tail -2 ../p.out; echo crosscheck_rc=$rc
+SUMMARY {"accounts": 200, "date_checked": 5, "fields_mismatch": 0, "fields_ok": 1000, "retries": 0, "retries_by_error": {}, "rpc_calls": 206, "skipped": 0, "tx_checked": 5, "tx_mismatch": 0, "tx_ok": 5, "tx_out_of_range": 195, "tx_skipped": 0}
+RESULT: all match -> exit 0
+crosscheck_rc=0
+(exit 0)
+$ $PY dormancy/crosscheck_dormancy.py dormancy/data/B/snapshot-7902546.jsonl.gz --headers dormancy/data/headers.jsonl --count 200 --seed 1 --negative --offline dormancy/data/B/crosscheck-B-random-seed1.jsonl > ../n.out; rc=$?; tail -1 ../n.out; echo crosscheck_rc=$rc
+RESULT: negative control PASS: field mismatches 1000/1000, tx mismatches 5/5, OK lines 0 -> exit 1
+crosscheck_rc=1
+(exit 0)
+$ $PY dormancy/crosscheck_dormancy.py dormancy/data/A/snapshot-7874004.jsonl.gz --headers dormancy/data/headers.jsonl --count 89 --seed 1 --in-range-only --offline dormancy/data/A/crosscheck-A-inrange89-seed1.jsonl > ../a.out; rc=$?; tail -1 ../a.out; echo crosscheck_rc=$rc
+RESULT: all match -> exit 0
+crosscheck_rc=0
+(exit 0)
+$ $PY dormancy/crosscheck_dormancy.py dormancy/data/B/snapshot-7902546.jsonl.gz --headers dormancy/data/headers.jsonl --count 75 --seed 1 --in-range-only --offline dormancy/data/B/crosscheck-B-inrange75-seed1.jsonl > ../b.out; rc=$?; tail -1 ../b.out; echo crosscheck_rc=$rc
+RESULT: all match -> exit 0
+crosscheck_rc=0
+(exit 0)
+$ TMPDIR=$HOME/.cache timeout 600 $PY -m pytest -q -p no:cacheprovider tests/test_dormancy.py tests/test_crosscheck_dormancy.py tests/test_analyze_dormancy.py 2>&1 | tail -1
+76 passed in 4.36s
+(exit 0)
+# end 2026-11-09T15:54:36Z
