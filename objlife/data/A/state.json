@@ -1,0 +1,11 @@
+{
+ "account_hash": "654923F97BC43C2515B25C917721B10028A47C871F85E49F5842F8234CF2703C",
+ "close_time": 847568492,
+ "close_time_iso": "2026-11-09T19:41:32Z",
+ "ledger_hash": "3A1D806007BF4538AB0BEB302B8F4BD785EA2B0CFCA84FA3EFAB83BC1825D612",
+ "ledger_index": 7907362,
+ "server_state_reserve_base": 10000000,
+ "server_state_reserve_inc": 2000000,
+ "server_state_validated_seq": 7907362,
+ "total_coins": 99999999967823266
+}

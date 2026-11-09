@@ -1,0 +1,9 @@
+include/xrpl/protocol/detail/ledger_entries.macro:45 NFTokenOffer (nft_offer) deferred: time-bound field sfExpiration
+include/xrpl/protocol/detail/ledger_entries.macro:61 Check (check) deferred: time-bound field sfExpiration
+include/xrpl/protocol/detail/ledger_entries.macro:136 Ticket (ticket) deferred: reserved future Sequence (named in request)
+include/xrpl/protocol/detail/ledger_entries.macro:245 Offer (offer) deferred: time-bound field sfExpiration
+include/xrpl/protocol/detail/ledger_entries.macro:264 DepositPreauth (deposit_preauth) deferred: standing authorization (named in request)
+include/xrpl/protocol/detail/ledger_entries.macro:347 Escrow (escrow) deferred: time-bound field sfCancelAfter,sfFinishAfter
+include/xrpl/protocol/detail/ledger_entries.macro:369 PayChannel (payment_channel) deferred: time-bound field sfExpiration,sfCancelAfter,sfSettleDelay
+include/xrpl/protocol/detail/ledger_entries.macro:455 Credential (credential) deferred: time-bound field sfExpiration
+8 deferred of 31 types -> objlife/data/types.json

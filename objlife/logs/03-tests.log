@@ -1,0 +1,22 @@
+$ POSTFIATD_SRC=<postfiatd checkout @32723c15> python3 -m pytest -v tests/test_collect_objlife.py
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.7.0 -- /usr/bin/python3
+rootdir: ~/work/pft-ledger-stats
+configfile: pyproject.toml
+collecting ... collected 12 items
+
+tests/test_collect_objlife.py::test_parse_macro_lines_codes_fields PASSED [  8%]
+tests/test_collect_objlife.py::test_classify_rule PASSED                 [ 16%]
+tests/test_collect_objlife.py::test_types_on_real_macro_if_present PASSED [ 25%]
+tests/test_collect_objlife.py::test_build_sorts_counts_and_header PASSED [ 33%]
+tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc0] PASSED [ 41%]
+tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc1] PASSED [ 50%]
+tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc2] PASSED [ 58%]
+tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc3] PASSED [ 66%]
+tests/test_collect_objlife.py::test_write_lines_deterministic PASSED     [ 75%]
+tests/test_collect_objlife.py::test_snapshot_end_to_end_and_resume_with_torn_tail PASSED [ 83%]
+tests/test_collect_objlife.py::test_snapshot_refuses_other_ledger_hash_on_type_filter PASSED [ 91%]
+tests/test_collect_objlife.py::test_typecount_resume_skips_done_types PASSED [100%]
+
+============================== 12 passed in 0.30s ==============================
+rc=0
