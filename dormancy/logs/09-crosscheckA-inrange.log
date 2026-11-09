@@ -1,0 +1,760 @@
+OS: Ubuntu 22.04.5 LTS | 2026-11-08T16:27:31Z | git e5c4ba561caa50e62b7a7268864085c0ae3ef84a | changed tracked files under dormancy/*.py tests/: 0
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 89 --seed 1 --in-range-only --record data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl
+2026-11-08T16:27:31Z crosscheck_dormancy live
+source complete_ledgers [(7800054, 7874973)]
+snapshot ledger 7874004 793B89EB45C4625A49391C233FA64A6ED3D346A7250FEBDABBE75C03332671E0 mode positive seed 1 count 89
+--in-range-only: 89 AccountRoots with PreviousTxnLgrSeq inside the range
+ #   account                             field              expected -> got   result
+  1 rMHJoxVH8ULrJwXftNB3H9KFDX2kUC64To  acct  5 fields MATCH
+  1 rMHJoxVH8ULrJwXftNB3H9KFDX2kUC64To  tx    validated=True ledger_index=7874003 touches_root=True date=847467512 MATCH
+  2 rHv6jSGsuZnfqBHGnpWkMueRbnXXNdZJG3  acct  5 fields MATCH
+  2 rHv6jSGsuZnfqBHGnpWkMueRbnXXNdZJG3  tx    validated=True ledger_index=7873374 touches_root=True date=847465611 MATCH
+  3 rNwJ7wxnMyWnFNWLawetoceaed7VyBZjBD  acct  5 fields MATCH
+  3 rNwJ7wxnMyWnFNWLawetoceaed7VyBZjBD  tx    validated=True ledger_index=7857881 touches_root=True date=847418752 MATCH
+  4 r9k51cJFVaYRST5vMUsdokiYcwdpQdUJGR  acct  5 fields MATCH
+  4 r9k51cJFVaYRST5vMUsdokiYcwdpQdUJGR  tx    validated=True ledger_index=7873408 touches_root=True date=847465712 MATCH
+  5 r4yCEJFRCguHJpX5HGw2nVMTw3RtzT2mb1  acct  5 fields MATCH
+  5 r4yCEJFRCguHJpX5HGw2nVMTw3RtzT2mb1  tx    validated=True ledger_index=7863939 touches_root=True date=847437083 MATCH
+  6 rp5pMxGJKSBCy6BEYBmXiNsmeGywJRVTvM  acct  5 fields MATCH
+  6 rp5pMxGJKSBCy6BEYBmXiNsmeGywJRVTvM  tx    validated=True ledger_index=7836319 touches_root=True date=847353512 MATCH
+  7 rpDA7VFQezSGRv1VLLd2ckRK6RARDcEKHn  acct  5 fields MATCH
+  7 rpDA7VFQezSGRv1VLLd2ckRK6RARDcEKHn  tx    validated=True ledger_index=7839391 touches_root=True date=847362801 MATCH
+  8 rN1LbCQk4mfPGibNNNuFvUKTuNVkPyQkqV  acct  5 fields MATCH
+  8 rN1LbCQk4mfPGibNNNuFvUKTuNVkPyQkqV  tx    validated=True ledger_index=7803117 touches_root=True date=847253032 MATCH
+  9 rQLhfWHGmEE6aqhAXc3RRifQZj1QUdnwUP  acct  5 fields MATCH
+  9 rQLhfWHGmEE6aqhAXc3RRifQZj1QUdnwUP  tx    validated=True ledger_index=7843944 touches_root=True date=847376611 MATCH
+ 10 rsSYAkLuAquosKCTC5TMdaeWoUXYGNAQvx  acct  5 fields MATCH
+ 10 rsSYAkLuAquosKCTC5TMdaeWoUXYGNAQvx  tx    validated=True ledger_index=7817864 touches_root=True date=847297661 MATCH
+ 11 r33kyxcTytBLvs6RPCDzMfxGGBTL9T3vFC  acct  5 fields MATCH
+ 11 r33kyxcTytBLvs6RPCDzMfxGGBTL9T3vFC  tx    validated=True ledger_index=7871145 touches_root=True date=847458870 MATCH
+ 12 rN74pE5MFZGtD64i1EcX34eenzQeM8gfCJ  acct  5 fields MATCH
+ 12 rN74pE5MFZGtD64i1EcX34eenzQeM8gfCJ  tx    validated=True ledger_index=7873890 touches_root=True date=847467172 MATCH
+ 13 ra6yaRUKpZRA1qRj72MrgMuUTFSADHjxFi  acct  5 fields MATCH
+ 13 ra6yaRUKpZRA1qRj72MrgMuUTFSADHjxFi  tx    validated=True ledger_index=7873986 touches_root=True date=847467462 MATCH
+ 14 rPExxzu9ULk8yuGDkfAJb4xYgPSgSesnSk  acct  5 fields MATCH
+ 14 rPExxzu9ULk8yuGDkfAJb4xYgPSgSesnSk  tx    validated=True ledger_index=7855498 touches_root=True date=847411553 MATCH
+ 15 rKeFPFyWHT3WuwNiXFmv3q2vep65veaggK  acct  5 fields MATCH
+ 15 rKeFPFyWHT3WuwNiXFmv3q2vep65veaggK  tx    validated=True ledger_index=7873843 touches_root=True date=847467031 MATCH
+ 16 r39NNaxioaRJdcrGBvzAbGZd49f66vd8UM  acct  5 fields MATCH
+ 16 r39NNaxioaRJdcrGBvzAbGZd49f66vd8UM  tx    validated=True ledger_index=7869053 touches_root=True date=847452542 MATCH
+ 17 rHFd9HgQXaegmSj5oudYEtxspC23xKuJ5z  acct  5 fields MATCH
+ 17 rHFd9HgQXaegmSj5oudYEtxspC23xKuJ5z  tx    validated=True ledger_index=7873743 touches_root=True date=847466731 MATCH
+ 18 rrpwXzihA7G58psfqzLsGydiJwadmzB6zz  acct  5 fields MATCH
+ 18 rrpwXzihA7G58psfqzLsGydiJwadmzB6zz  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 19 rUwA1As5sphVwrpoue3knmgeDk2mYxYEL6  acct  5 fields MATCH
+ 19 rUwA1As5sphVwrpoue3knmgeDk2mYxYEL6  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MATCH
+ 20 rGeQN2GtC5BKZDpAud8STD5VzgGAhySZjT  acct  5 fields MATCH
+ 20 rGeQN2GtC5BKZDpAud8STD5VzgGAhySZjT  tx    validated=True ledger_index=7805583 touches_root=True date=847260492 MATCH
+ 21 ryn5D7WUTTS1vsmXBH66XquttE3Nhpn7P   acct  5 fields MATCH
+ 21 ryn5D7WUTTS1vsmXBH66XquttE3Nhpn7P   tx    validated=True ledger_index=7873966 touches_root=True date=847467402 MATCH
+ 22 rDfpM1pMG6iPbsAsYGbYmUkJ8Lz3FVR8c9  acct  5 fields MATCH
+ 22 rDfpM1pMG6iPbsAsYGbYmUkJ8Lz3FVR8c9  tx    validated=True ledger_index=7821165 touches_root=True date=847307642 MATCH
+ 23 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  acct  5 fields MATCH
+ 23 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  tx    validated=True ledger_index=7815477 touches_root=True date=847290441 MATCH
+ 24 rnpBbdHZjjLn5kz4nuPS263Yp5m5NLM9MW  acct  5 fields MATCH
+ 24 rnpBbdHZjjLn5kz4nuPS263Yp5m5NLM9MW  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 25 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  acct  5 fields MATCH
+ 25 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  tx    validated=True ledger_index=7830365 touches_root=True date=847335492 MATCH
+ 26 r9GoccJ4Q78YEtpqTESTDUWiGz2bmTaXDJ  acct  5 fields MATCH
+ 26 r9GoccJ4Q78YEtpqTESTDUWiGz2bmTaXDJ  tx    validated=True ledger_index=7811753 touches_root=True date=847279170 MATCH
+ 27 raR6eegsmjxzQWJViPKAMrNrZKSf9SrN81  acct  5 fields MATCH
+ 27 raR6eegsmjxzQWJViPKAMrNrZKSf9SrN81  tx    validated=True ledger_index=7874003 touches_root=True date=847467512 MATCH
+ 28 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  acct  5 fields MATCH
+ 28 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  tx    validated=True ledger_index=7873978 touches_root=True date=847467440 MATCH
+ 29 r3ZntGSWWgJSS2K3Tsd4nyAZgTzcqEzNr8  acct  5 fields MATCH
+ 29 r3ZntGSWWgJSS2K3Tsd4nyAZgTzcqEzNr8  tx    validated=True ledger_index=7818439 touches_root=True date=847299401 MATCH
+ 30 rs4russanrQAcF2Qe5KQiUR9QmzBuNy18n  acct  5 fields MATCH
+ 30 rs4russanrQAcF2Qe5KQiUR9QmzBuNy18n  tx    validated=True ledger_index=7813911 touches_root=True date=847285692 MATCH
+ 31 rhNB5awEHeS1DrduuZDzQC2LdaSsVNj6p1  acct  5 fields MATCH
+ 31 rhNB5awEHeS1DrduuZDzQC2LdaSsVNj6p1  tx    validated=True ledger_index=7873959 touches_root=True date=847467381 MATCH
+ 32 rDR9sYQA24WwpfZh8PAFQnFmEDGRSTzdb8  acct  5 fields MATCH
+ 32 rDR9sYQA24WwpfZh8PAFQnFmEDGRSTzdb8  tx    validated=True ledger_index=7810325 touches_root=True date=847274840 MATCH
+ 33 rUWStamgRGQrJiV2qSdG58an6QhrPoT4FA  acct  5 fields MATCH
+ 33 rUWStamgRGQrJiV2qSdG58an6QhrPoT4FA  tx    validated=True ledger_index=7873916 touches_root=True date=847467252 MATCH
+ 34 rKmRKpFJwBWQcqAWxd9YDFFWa2ifE5nsii  acct  5 fields MATCH
+ 34 rKmRKpFJwBWQcqAWxd9YDFFWa2ifE5nsii  tx    validated=True ledger_index=7840265 touches_root=True date=847365443 MATCH
+ 35 rhfpJbpMiaZR9MHw7uHB4jJv435fd3UScu  acct  5 fields MATCH
+ 35 rhfpJbpMiaZR9MHw7uHB4jJv435fd3UScu  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 36 rMXDbUkyQeRzaHdoyiYgRaiJNeqGrChP2g  acct  5 fields MATCH
+ 36 rMXDbUkyQeRzaHdoyiYgRaiJNeqGrChP2g  tx    validated=True ledger_index=7844423 touches_root=True date=847378061 MATCH
+ 37 rLrEYZ1eFAWEohVfZQfZoZEBUboRrCUdoo  acct  5 fields MATCH
+ 37 rLrEYZ1eFAWEohVfZQfZoZEBUboRrCUdoo  tx    validated=True ledger_index=7830849 touches_root=True date=847336960 MATCH
+ 38 rpiRkk86mYFhrYGJUksyzyWbDQvFbuCENJ  acct  5 fields MATCH
+ 38 rpiRkk86mYFhrYGJUksyzyWbDQvFbuCENJ  tx    validated=True ledger_index=7855674 touches_root=True date=847412090 MATCH
+ 39 rKCmpYUPw5Vt8kwEg2b8u1dECjv3uWeXa2  acct  5 fields MATCH
+ 39 rKCmpYUPw5Vt8kwEg2b8u1dECjv3uWeXa2  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 40 rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx  acct  5 fields MATCH
+ 40 rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx  tx    validated=True ledger_index=7855483 touches_root=True date=847411511 MATCH
+ 41 rpKAdawTemc8RyWpMr59j9RqWUaVCqvHXy  acct  5 fields MATCH
+ 41 rpKAdawTemc8RyWpMr59j9RqWUaVCqvHXy  tx    validated=True ledger_index=7866924 touches_root=True date=847446110 MATCH
+ 42 rBchq87pZ8RjJU3Zmhu9jrtbgjpZLA7JhQ  acct  5 fields MATCH
+ 42 rBchq87pZ8RjJU3Zmhu9jrtbgjpZLA7JhQ  tx    validated=True ledger_index=7857097 touches_root=True date=847416382 MATCH
+ 43 rPTCS8SJr17SbMVSoro1vHF13iFQAXPN5w  acct  5 fields MATCH
+ 43 rPTCS8SJr17SbMVSoro1vHF13iFQAXPN5w  tx    validated=True ledger_index=7867427 touches_root=True date=847447630 MATCH
+ 44 rKF7zToDECjwtYZAM3JLrdQDto9fvTbQSf  acct  5 fields MATCH
+ 44 rKF7zToDECjwtYZAM3JLrdQDto9fvTbQSf  tx    validated=True ledger_index=7855522 touches_root=True date=847411630 MATCH
+ 45 r9XbKMrRpxg3FHqzNNmhvAxy5QtNzYDLHs  acct  5 fields MATCH
+ 45 r9XbKMrRpxg3FHqzNNmhvAxy5QtNzYDLHs  tx    validated=True ledger_index=7873990 touches_root=True date=847467472 MATCH
+ 46 rxGvi692zyX2RJ2hBfY4CfywDy4Qe1wDh   acct  5 fields MATCH
+ 46 rxGvi692zyX2RJ2hBfY4CfywDy4Qe1wDh   tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 47 rKjozZiA9Yi97eHefiKZppxCcX3wEDkf4u  acct  5 fields MATCH
+ 47 rKjozZiA9Yi97eHefiKZppxCcX3wEDkf4u  tx    validated=True ledger_index=7872334 touches_root=True date=847462462 MATCH
+ 48 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  acct  5 fields MATCH
+ 48 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  tx    validated=True ledger_index=7802686 touches_root=True date=847251731 MATCH
+ 49 rhe1nQWD3ND4ck2yHcBfsNBUBcPNo4jmWq  acct  5 fields MATCH
+ 49 rhe1nQWD3ND4ck2yHcBfsNBUBcPNo4jmWq  tx    validated=True ledger_index=7873897 touches_root=True date=847467193 MATCH
+ 50 rM9uA5Fb2GWicqMDANmw1NsPX7f6oPwPmw  acct  5 fields MATCH
+ 50 rM9uA5Fb2GWicqMDANmw1NsPX7f6oPwPmw  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 51 rGgwsUN5p5Tp5sjKPCWMj3u4SCVpZtpwaF  acct  5 fields MATCH
+ 51 rGgwsUN5p5Tp5sjKPCWMj3u4SCVpZtpwaF  tx    validated=True ledger_index=7864300 touches_root=True date=847438182 MATCH
+ 52 rKToaDhyUGUsATPkSgksWfyghXUvgjYjWW  acct  5 fields MATCH
+ 52 rKToaDhyUGUsATPkSgksWfyghXUvgjYjWW  tx    validated=True ledger_index=7873408 touches_root=True date=847465712 MATCH
+ 53 r4STs24kEQhsKb8s5MVfhDMH5VJLS4Yz2m  acct  5 fields MATCH
+ 53 r4STs24kEQhsKb8s5MVfhDMH5VJLS4Yz2m  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 54 rpVwVJrNFQQLkzhkn7EPsYSMk3X4S4Hf32  acct  5 fields MATCH
+ 54 rpVwVJrNFQQLkzhkn7EPsYSMk3X4S4Hf32  tx    validated=True ledger_index=7873978 touches_root=True date=847467440 MATCH
+ 55 r4RPpeS2kUE8BjY9LvKbptW8PQVHhVWghS  acct  5 fields MATCH
+ 55 r4RPpeS2kUE8BjY9LvKbptW8PQVHhVWghS  tx    validated=True ledger_index=7870145 touches_root=True date=847455850 MATCH
+ 56 rBCJAc11UibtTD36XpgXzdxYqEZ4WUcPGC  acct  5 fields MATCH
+ 56 rBCJAc11UibtTD36XpgXzdxYqEZ4WUcPGC  tx    validated=True ledger_index=7871636 touches_root=True date=847460351 MATCH
+ 57 rhhG98SjMr69K6Ap22voYSRWohurwcB2w1  acct  5 fields MATCH
+ 57 rhhG98SjMr69K6Ap22voYSRWohurwcB2w1  tx    validated=True ledger_index=7827469 touches_root=True date=847326740 MATCH
+ 58 rwaaE1PvSUxkNejc2Vz6m6Dyt8TBDao7NT  acct  5 fields MATCH
+ 58 rwaaE1PvSUxkNejc2Vz6m6Dyt8TBDao7NT  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MATCH
+ 59 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  acct  5 fields MATCH
+ 59 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  tx    validated=True ledger_index=7852478 touches_root=True date=847402422 MATCH
+ 60 rsjRhGMM68Dp8Dzgufuq2FoJPEs53mfXJe  acct  5 fields MATCH
+ 60 rsjRhGMM68Dp8Dzgufuq2FoJPEs53mfXJe  tx    validated=True ledger_index=7873990 touches_root=True date=847467472 MATCH
+ 61 rEP9r3NjyM8zEbtyJ3eaQg1L2Soc8hts1m  acct  5 fields MATCH
+ 61 rEP9r3NjyM8zEbtyJ3eaQg1L2Soc8hts1m  tx    validated=True ledger_index=7840258 touches_root=True date=847365422 MATCH
+ 62 rwZnndCAFqNzKCjusd3yZPqXnXfrL2TBub  acct  5 fields MATCH
+ 62 rwZnndCAFqNzKCjusd3yZPqXnXfrL2TBub  tx    validated=True ledger_index=7873936 touches_root=True date=847467312 MATCH
+ 63 rEZWzy9DQFA282YP3euJFwUchqiZ9KHKRH  acct  5 fields MATCH
+ 63 rEZWzy9DQFA282YP3euJFwUchqiZ9KHKRH  tx    validated=True ledger_index=7814978 touches_root=True date=847288933 MATCH
+ 64 rMeBxxaweBaMCKe9FLdwvLFEXpsSgX7r32  acct  5 fields MATCH
+ 64 rMeBxxaweBaMCKe9FLdwvLFEXpsSgX7r32  tx    validated=True ledger_index=7802339 touches_root=True date=847250681 MATCH
+ 65 rs5hbB6HCiYSonfz5Dtxi6yKQupZLMwcZQ  acct  5 fields MATCH
+ 65 rs5hbB6HCiYSonfz5Dtxi6yKQupZLMwcZQ  tx    validated=True ledger_index=7856663 touches_root=True date=847415072 MATCH
+ 66 rHVW82cQsJbDnzQh2RPbZKTn6qm759TVas  acct  5 fields MATCH
+ 66 rHVW82cQsJbDnzQh2RPbZKTn6qm759TVas  tx    validated=True ledger_index=7855018 touches_root=True date=847410103 MATCH
+ 67 r3p5EKZcpN5mC38gWeFGmAU7aqFRhuMY8W  acct  5 fields MATCH
+ 67 r3p5EKZcpN5mC38gWeFGmAU7aqFRhuMY8W  tx    validated=True ledger_index=7839429 touches_root=True date=847362920 MATCH
+ 68 rKvNwvGVFRDsw9KTXkWR5s7T5TapCBoZpA  acct  5 fields MATCH
+ 68 rKvNwvGVFRDsw9KTXkWR5s7T5TapCBoZpA  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 69 rBTYXwQofjJraScghrzt9CUHCa1gzUxknC  acct  5 fields MATCH
+ 69 rBTYXwQofjJraScghrzt9CUHCa1gzUxknC  tx    validated=True ledger_index=7855490 touches_root=True date=847411531 MATCH
+ 70 r9B48oEz5JUiWPPaHCB9QvBx8ezFwoFXof  acct  5 fields MATCH
+ 70 r9B48oEz5JUiWPPaHCB9QvBx8ezFwoFXof  tx    validated=True ledger_index=7801007 touches_root=True date=847246650 MATCH
+ 71 r4yGNxYmBgbQCK79xT9jFh1MiUuobYzkot  acct  5 fields MATCH
+ 71 r4yGNxYmBgbQCK79xT9jFh1MiUuobYzkot  tx    validated=True ledger_index=7873890 touches_root=True date=847467172 MATCH
+ 72 rwVfc9o8YTXEsBio5ucEUBEp5aBHtjGma5  acct  5 fields MATCH
+ 72 rwVfc9o8YTXEsBio5ucEUBEp5aBHtjGma5  tx    validated=True ledger_index=7873986 touches_root=True date=847467462 MATCH
+ 73 rsS2Y6CK9dz9dVFjJvRyD2gBdoLPqjaXRZ  acct  5 fields MATCH
+ 73 rsS2Y6CK9dz9dVFjJvRyD2gBdoLPqjaXRZ  tx    validated=True ledger_index=7856641 touches_root=True date=847415010 MATCH
+ 74 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  acct  5 fields MATCH
+ 74 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  tx    validated=True ledger_index=7854450 touches_root=True date=847408390 MATCH
+ 75 rDTaftFFy79qX36x676L9BfsNRoJzhFZGo  acct  5 fields MATCH
+ 75 rDTaftFFy79qX36x676L9BfsNRoJzhFZGo  tx    validated=True ledger_index=7856648 touches_root=True date=847415031 MATCH
+ 76 rayoQhgacV3Abe84vJ4dUxPVGAMTCcDXuZ  acct  5 fields MATCH
+ 76 rayoQhgacV3Abe84vJ4dUxPVGAMTCcDXuZ  tx    validated=True ledger_index=7873966 touches_root=True date=847467402 MATCH
+ 77 rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7  acct  5 fields MATCH
+ 77 rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7  tx    validated=True ledger_index=7873743 touches_root=True date=847466731 MATCH
+ 78 rMGk5bK7Adw7aDocRRdjxaarzRvieKjnrh  acct  5 fields MATCH
+ 78 rMGk5bK7Adw7aDocRRdjxaarzRvieKjnrh  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MATCH
+ 79 rwQRffqrs8e97ewBYqvnmaL6KEw7DPwgqd  acct  5 fields MATCH
+ 79 rwQRffqrs8e97ewBYqvnmaL6KEw7DPwgqd  tx    validated=True ledger_index=7873139 touches_root=True date=847464900 MATCH
+ 80 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  acct  5 fields MATCH
+ 80 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 81 rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo  acct  5 fields MATCH
+ 81 rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo  tx    validated=True ledger_index=7857067 touches_root=True date=847416292 MATCH
+ 82 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  acct  5 fields MATCH
+ 82 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  tx    validated=True ledger_index=7806359 touches_root=True date=847262840 MATCH
+ 83 raiQWaAwUbcmHxBwDYsvdrjcY6wL5crvrw  acct  5 fields MATCH
+ 83 raiQWaAwUbcmHxBwDYsvdrjcY6wL5crvrw  tx    validated=True ledger_index=7854916 touches_root=True date=847409800 MATCH
+ 84 rfsgpVrWaZWgepPp9ViDzM7CnD3VdNYcWC  acct  5 fields MATCH
+ 84 rfsgpVrWaZWgepPp9ViDzM7CnD3VdNYcWC  tx    validated=True ledger_index=7837177 touches_root=True date=847356110 MATCH
+ 85 rHxTQAsD6k2JkQMaHxht8iTKdbHTcxEEWs  acct  5 fields MATCH
+ 85 rHxTQAsD6k2JkQMaHxht8iTKdbHTcxEEWs  tx    validated=True ledger_index=7823208 touches_root=True date=847313831 MATCH
+ 86 rpHvzMCKZ7JrzGfRseXohC3RsMWqcnEKkA  acct  5 fields MATCH
+ 86 rpHvzMCKZ7JrzGfRseXohC3RsMWqcnEKkA  tx    validated=True ledger_index=7856657 touches_root=True date=847415060 MATCH
+ 87 rhiGmYja4kFgQGmiYEE93dGuNgRK6UEGuk  acct  5 fields MATCH
+ 87 rhiGmYja4kFgQGmiYEE93dGuNgRK6UEGuk  tx    validated=True ledger_index=7873959 touches_root=True date=847467381 MATCH
+ 88 r9MqpdMwnzEaLwdTHpBFrah4MpAJn6op2m  acct  5 fields MATCH
+ 88 r9MqpdMwnzEaLwdTHpBFrah4MpAJn6op2m  tx    validated=True ledger_index=7811726 touches_root=True date=847279090 MATCH
+ 89 r3F4NYif2Lt4qWCXQxELrTuaeenGmgpXPc  acct  5 fields MATCH
+ 89 r3F4NYif2Lt4qWCXQxELrTuaeenGmgpXPc  tx    validated=True ledger_index=7873689 touches_root=True date=847466563 MATCH
+SUMMARY {"accounts": 89, "date_checked": 89, "fields_mismatch": 0, "fields_ok": 445, "retries": 0, "retries_by_error": {}, "rpc_calls": 179, "skipped": 0, "tx_checked": 89, "tx_mismatch": 0, "tx_ok": 89, "tx_out_of_range": 0, "tx_skipped": 0}
+RESULT: all match -> exit 0
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 89 --seed 1 --in-range-only --negative
+2026-11-08T16:29:59Z crosscheck_dormancy live
+source complete_ledgers [(7800054, 7875022)]
+snapshot ledger 7874004 793B89EB45C4625A49391C233FA64A6ED3D346A7250FEBDABBE75C03332671E0 mode NEGATIVE seed 1 count 89
+--in-range-only: 89 AccountRoots with PreviousTxnLgrSeq inside the range
+ #   account                             field              expected -> got   result
+  1 rMHJoxVH8ULrJwXftNB3H9KFDX2kUC64To  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  1 rMHJoxVH8ULrJwXftNB3H9KFDX2kUC64To  tx    validated=True ledger_index=7874003 touches_root=True date=847467512 MISMATCH validated,ledger_index,touches_root,date
+  2 rHv6jSGsuZnfqBHGnpWkMueRbnXXNdZJG3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  2 rHv6jSGsuZnfqBHGnpWkMueRbnXXNdZJG3  tx    validated=True ledger_index=7873374 touches_root=True date=847465611 MISMATCH validated,ledger_index,touches_root,date
+  3 rNwJ7wxnMyWnFNWLawetoceaed7VyBZjBD  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  3 rNwJ7wxnMyWnFNWLawetoceaed7VyBZjBD  tx    validated=True ledger_index=7857881 touches_root=True date=847418752 MISMATCH validated,ledger_index,touches_root,date
+  4 r9k51cJFVaYRST5vMUsdokiYcwdpQdUJGR  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  4 r9k51cJFVaYRST5vMUsdokiYcwdpQdUJGR  tx    validated=True ledger_index=7873408 touches_root=True date=847465712 MISMATCH validated,ledger_index,touches_root,date
+  5 r4yCEJFRCguHJpX5HGw2nVMTw3RtzT2mb1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  5 r4yCEJFRCguHJpX5HGw2nVMTw3RtzT2mb1  tx    validated=True ledger_index=7863939 touches_root=True date=847437083 MISMATCH validated,ledger_index,touches_root,date
+  6 rp5pMxGJKSBCy6BEYBmXiNsmeGywJRVTvM  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  6 rp5pMxGJKSBCy6BEYBmXiNsmeGywJRVTvM  tx    validated=True ledger_index=7836319 touches_root=True date=847353512 MISMATCH validated,ledger_index,touches_root,date
+  7 rpDA7VFQezSGRv1VLLd2ckRK6RARDcEKHn  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  7 rpDA7VFQezSGRv1VLLd2ckRK6RARDcEKHn  tx    validated=True ledger_index=7839391 touches_root=True date=847362801 MISMATCH validated,ledger_index,touches_root,date
+  8 rN1LbCQk4mfPGibNNNuFvUKTuNVkPyQkqV  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  8 rN1LbCQk4mfPGibNNNuFvUKTuNVkPyQkqV  tx    validated=True ledger_index=7803117 touches_root=True date=847253032 MISMATCH validated,ledger_index,touches_root,date
+  9 rQLhfWHGmEE6aqhAXc3RRifQZj1QUdnwUP  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  9 rQLhfWHGmEE6aqhAXc3RRifQZj1QUdnwUP  tx    validated=True ledger_index=7843944 touches_root=True date=847376611 MISMATCH validated,ledger_index,touches_root,date
+ 10 rsSYAkLuAquosKCTC5TMdaeWoUXYGNAQvx  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 10 rsSYAkLuAquosKCTC5TMdaeWoUXYGNAQvx  tx    validated=True ledger_index=7817864 touches_root=True date=847297661 MISMATCH validated,ledger_index,touches_root,date
+ 11 r33kyxcTytBLvs6RPCDzMfxGGBTL9T3vFC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 11 r33kyxcTytBLvs6RPCDzMfxGGBTL9T3vFC  tx    validated=True ledger_index=7871145 touches_root=True date=847458870 MISMATCH validated,ledger_index,touches_root,date
+ 12 rN74pE5MFZGtD64i1EcX34eenzQeM8gfCJ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 12 rN74pE5MFZGtD64i1EcX34eenzQeM8gfCJ  tx    validated=True ledger_index=7873890 touches_root=True date=847467172 MISMATCH validated,ledger_index,touches_root,date
+ 13 ra6yaRUKpZRA1qRj72MrgMuUTFSADHjxFi  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 13 ra6yaRUKpZRA1qRj72MrgMuUTFSADHjxFi  tx    validated=True ledger_index=7873986 touches_root=True date=847467462 MISMATCH validated,ledger_index,touches_root,date
+ 14 rPExxzu9ULk8yuGDkfAJb4xYgPSgSesnSk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 14 rPExxzu9ULk8yuGDkfAJb4xYgPSgSesnSk  tx    validated=True ledger_index=7855498 touches_root=True date=847411553 MISMATCH validated,ledger_index,touches_root,date
+ 15 rKeFPFyWHT3WuwNiXFmv3q2vep65veaggK  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 15 rKeFPFyWHT3WuwNiXFmv3q2vep65veaggK  tx    validated=True ledger_index=7873843 touches_root=True date=847467031 MISMATCH validated,ledger_index,touches_root,date
+ 16 r39NNaxioaRJdcrGBvzAbGZd49f66vd8UM  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 16 r39NNaxioaRJdcrGBvzAbGZd49f66vd8UM  tx    validated=True ledger_index=7869053 touches_root=True date=847452542 MISMATCH validated,ledger_index,touches_root,date
+ 17 rHFd9HgQXaegmSj5oudYEtxspC23xKuJ5z  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 17 rHFd9HgQXaegmSj5oudYEtxspC23xKuJ5z  tx    validated=True ledger_index=7873743 touches_root=True date=847466731 MISMATCH validated,ledger_index,touches_root,date
+ 18 rrpwXzihA7G58psfqzLsGydiJwadmzB6zz  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 18 rrpwXzihA7G58psfqzLsGydiJwadmzB6zz  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MISMATCH validated,ledger_index,touches_root,date
+ 19 rUwA1As5sphVwrpoue3knmgeDk2mYxYEL6  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 19 rUwA1As5sphVwrpoue3knmgeDk2mYxYEL6  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MISMATCH validated,ledger_index,touches_root,date
+ 20 rGeQN2GtC5BKZDpAud8STD5VzgGAhySZjT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 20 rGeQN2GtC5BKZDpAud8STD5VzgGAhySZjT  tx    validated=True ledger_index=7805583 touches_root=True date=847260492 MISMATCH validated,ledger_index,touches_root,date
+ 21 ryn5D7WUTTS1vsmXBH66XquttE3Nhpn7P   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 21 ryn5D7WUTTS1vsmXBH66XquttE3Nhpn7P   tx    validated=True ledger_index=7873966 touches_root=True date=847467402 MISMATCH validated,ledger_index,touches_root,date
+ 22 rDfpM1pMG6iPbsAsYGbYmUkJ8Lz3FVR8c9  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 22 rDfpM1pMG6iPbsAsYGbYmUkJ8Lz3FVR8c9  tx    validated=True ledger_index=7821165 touches_root=True date=847307642 MISMATCH validated,ledger_index,touches_root,date
+ 23 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 23 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  tx    validated=True ledger_index=7815477 touches_root=True date=847290441 MISMATCH validated,ledger_index,touches_root,date
+ 24 rnpBbdHZjjLn5kz4nuPS263Yp5m5NLM9MW  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 24 rnpBbdHZjjLn5kz4nuPS263Yp5m5NLM9MW  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MISMATCH validated,ledger_index,touches_root,date
+ 25 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 25 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  tx    validated=True ledger_index=7830365 touches_root=True date=847335492 MISMATCH validated,ledger_index,touches_root,date
+ 26 r9GoccJ4Q78YEtpqTESTDUWiGz2bmTaXDJ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 26 r9GoccJ4Q78YEtpqTESTDUWiGz2bmTaXDJ  tx    validated=True ledger_index=7811753 touches_root=True date=847279170 MISMATCH validated,ledger_index,touches_root,date
+ 27 raR6eegsmjxzQWJViPKAMrNrZKSf9SrN81  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 27 raR6eegsmjxzQWJViPKAMrNrZKSf9SrN81  tx    validated=True ledger_index=7874003 touches_root=True date=847467512 MISMATCH validated,ledger_index,touches_root,date
+ 28 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 28 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  tx    validated=True ledger_index=7873978 touches_root=True date=847467440 MISMATCH validated,ledger_index,touches_root,date
+ 29 r3ZntGSWWgJSS2K3Tsd4nyAZgTzcqEzNr8  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 29 r3ZntGSWWgJSS2K3Tsd4nyAZgTzcqEzNr8  tx    validated=True ledger_index=7818439 touches_root=True date=847299401 MISMATCH validated,ledger_index,touches_root,date
+ 30 rs4russanrQAcF2Qe5KQiUR9QmzBuNy18n  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 30 rs4russanrQAcF2Qe5KQiUR9QmzBuNy18n  tx    validated=True ledger_index=7813911 touches_root=True date=847285692 MISMATCH validated,ledger_index,touches_root,date
+ 31 rhNB5awEHeS1DrduuZDzQC2LdaSsVNj6p1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 31 rhNB5awEHeS1DrduuZDzQC2LdaSsVNj6p1  tx    validated=True ledger_index=7873959 touches_root=True date=847467381 MISMATCH validated,ledger_index,touches_root,date
+ 32 rDR9sYQA24WwpfZh8PAFQnFmEDGRSTzdb8  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 32 rDR9sYQA24WwpfZh8PAFQnFmEDGRSTzdb8  tx    validated=True ledger_index=7810325 touches_root=True date=847274840 MISMATCH validated,ledger_index,touches_root,date
+ 33 rUWStamgRGQrJiV2qSdG58an6QhrPoT4FA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 33 rUWStamgRGQrJiV2qSdG58an6QhrPoT4FA  tx    validated=True ledger_index=7873916 touches_root=True date=847467252 MISMATCH validated,ledger_index,touches_root,date
+ 34 rKmRKpFJwBWQcqAWxd9YDFFWa2ifE5nsii  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 34 rKmRKpFJwBWQcqAWxd9YDFFWa2ifE5nsii  tx    validated=True ledger_index=7840265 touches_root=True date=847365443 MISMATCH validated,ledger_index,touches_root,date
+ 35 rhfpJbpMiaZR9MHw7uHB4jJv435fd3UScu  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 35 rhfpJbpMiaZR9MHw7uHB4jJv435fd3UScu  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MISMATCH validated,ledger_index,touches_root,date
+ 36 rMXDbUkyQeRzaHdoyiYgRaiJNeqGrChP2g  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 36 rMXDbUkyQeRzaHdoyiYgRaiJNeqGrChP2g  tx    validated=True ledger_index=7844423 touches_root=True date=847378061 MISMATCH validated,ledger_index,touches_root,date
+ 37 rLrEYZ1eFAWEohVfZQfZoZEBUboRrCUdoo  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 37 rLrEYZ1eFAWEohVfZQfZoZEBUboRrCUdoo  tx    validated=True ledger_index=7830849 touches_root=True date=847336960 MISMATCH validated,ledger_index,touches_root,date
+ 38 rpiRkk86mYFhrYGJUksyzyWbDQvFbuCENJ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 38 rpiRkk86mYFhrYGJUksyzyWbDQvFbuCENJ  tx    validated=True ledger_index=7855674 touches_root=True date=847412090 MISMATCH validated,ledger_index,touches_root,date
+ 39 rKCmpYUPw5Vt8kwEg2b8u1dECjv3uWeXa2  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 39 rKCmpYUPw5Vt8kwEg2b8u1dECjv3uWeXa2  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MISMATCH validated,ledger_index,touches_root,date
+ 40 rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 40 rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx  tx    validated=True ledger_index=7855483 touches_root=True date=847411511 MISMATCH validated,ledger_index,touches_root,date
+ 41 rpKAdawTemc8RyWpMr59j9RqWUaVCqvHXy  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 41 rpKAdawTemc8RyWpMr59j9RqWUaVCqvHXy  tx    validated=True ledger_index=7866924 touches_root=True date=847446110 MISMATCH validated,ledger_index,touches_root,date
+ 42 rBchq87pZ8RjJU3Zmhu9jrtbgjpZLA7JhQ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 42 rBchq87pZ8RjJU3Zmhu9jrtbgjpZLA7JhQ  tx    validated=True ledger_index=7857097 touches_root=True date=847416382 MISMATCH validated,ledger_index,touches_root,date
+ 43 rPTCS8SJr17SbMVSoro1vHF13iFQAXPN5w  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 43 rPTCS8SJr17SbMVSoro1vHF13iFQAXPN5w  tx    validated=True ledger_index=7867427 touches_root=True date=847447630 MISMATCH validated,ledger_index,touches_root,date
+ 44 rKF7zToDECjwtYZAM3JLrdQDto9fvTbQSf  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 44 rKF7zToDECjwtYZAM3JLrdQDto9fvTbQSf  tx    validated=True ledger_index=7855522 touches_root=True date=847411630 MISMATCH validated,ledger_index,touches_root,date
+ 45 r9XbKMrRpxg3FHqzNNmhvAxy5QtNzYDLHs  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 45 r9XbKMrRpxg3FHqzNNmhvAxy5QtNzYDLHs  tx    validated=True ledger_index=7873990 touches_root=True date=847467472 MISMATCH validated,ledger_index,touches_root,date
+ 46 rxGvi692zyX2RJ2hBfY4CfywDy4Qe1wDh   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 46 rxGvi692zyX2RJ2hBfY4CfywDy4Qe1wDh   tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MISMATCH validated,ledger_index,touches_root,date
+ 47 rKjozZiA9Yi97eHefiKZppxCcX3wEDkf4u  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 47 rKjozZiA9Yi97eHefiKZppxCcX3wEDkf4u  tx    validated=True ledger_index=7872334 touches_root=True date=847462462 MISMATCH validated,ledger_index,touches_root,date
+ 48 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 48 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  tx    validated=True ledger_index=7802686 touches_root=True date=847251731 MISMATCH validated,ledger_index,touches_root,date
+ 49 rhe1nQWD3ND4ck2yHcBfsNBUBcPNo4jmWq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 49 rhe1nQWD3ND4ck2yHcBfsNBUBcPNo4jmWq  tx    validated=True ledger_index=7873897 touches_root=True date=847467193 MISMATCH validated,ledger_index,touches_root,date
+ 50 rM9uA5Fb2GWicqMDANmw1NsPX7f6oPwPmw  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 50 rM9uA5Fb2GWicqMDANmw1NsPX7f6oPwPmw  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MISMATCH validated,ledger_index,touches_root,date
+ 51 rGgwsUN5p5Tp5sjKPCWMj3u4SCVpZtpwaF  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 51 rGgwsUN5p5Tp5sjKPCWMj3u4SCVpZtpwaF  tx    validated=True ledger_index=7864300 touches_root=True date=847438182 MISMATCH validated,ledger_index,touches_root,date
+ 52 rKToaDhyUGUsATPkSgksWfyghXUvgjYjWW  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 52 rKToaDhyUGUsATPkSgksWfyghXUvgjYjWW  tx    validated=True ledger_index=7873408 touches_root=True date=847465712 MISMATCH validated,ledger_index,touches_root,date
+ 53 r4STs24kEQhsKb8s5MVfhDMH5VJLS4Yz2m  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 53 r4STs24kEQhsKb8s5MVfhDMH5VJLS4Yz2m  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MISMATCH validated,ledger_index,touches_root,date
+ 54 rpVwVJrNFQQLkzhkn7EPsYSMk3X4S4Hf32  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 54 rpVwVJrNFQQLkzhkn7EPsYSMk3X4S4Hf32  tx    validated=True ledger_index=7873978 touches_root=True date=847467440 MISMATCH validated,ledger_index,touches_root,date
+ 55 r4RPpeS2kUE8BjY9LvKbptW8PQVHhVWghS  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 55 r4RPpeS2kUE8BjY9LvKbptW8PQVHhVWghS  tx    validated=True ledger_index=7870145 touches_root=True date=847455850 MISMATCH validated,ledger_index,touches_root,date
+ 56 rBCJAc11UibtTD36XpgXzdxYqEZ4WUcPGC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 56 rBCJAc11UibtTD36XpgXzdxYqEZ4WUcPGC  tx    validated=True ledger_index=7871636 touches_root=True date=847460351 MISMATCH validated,ledger_index,touches_root,date
+ 57 rhhG98SjMr69K6Ap22voYSRWohurwcB2w1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 57 rhhG98SjMr69K6Ap22voYSRWohurwcB2w1  tx    validated=True ledger_index=7827469 touches_root=True date=847326740 MISMATCH validated,ledger_index,touches_root,date
+ 58 rwaaE1PvSUxkNejc2Vz6m6Dyt8TBDao7NT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 58 rwaaE1PvSUxkNejc2Vz6m6Dyt8TBDao7NT  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MISMATCH validated,ledger_index,touches_root,date
+ 59 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 59 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  tx    validated=True ledger_index=7852478 touches_root=True date=847402422 MISMATCH validated,ledger_index,touches_root,date
+ 60 rsjRhGMM68Dp8Dzgufuq2FoJPEs53mfXJe  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 60 rsjRhGMM68Dp8Dzgufuq2FoJPEs53mfXJe  tx    validated=True ledger_index=7873990 touches_root=True date=847467472 MISMATCH validated,ledger_index,touches_root,date
+ 61 rEP9r3NjyM8zEbtyJ3eaQg1L2Soc8hts1m  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 61 rEP9r3NjyM8zEbtyJ3eaQg1L2Soc8hts1m  tx    validated=True ledger_index=7840258 touches_root=True date=847365422 MISMATCH validated,ledger_index,touches_root,date
+ 62 rwZnndCAFqNzKCjusd3yZPqXnXfrL2TBub  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 62 rwZnndCAFqNzKCjusd3yZPqXnXfrL2TBub  tx    validated=True ledger_index=7873936 touches_root=True date=847467312 MISMATCH validated,ledger_index,touches_root,date
+ 63 rEZWzy9DQFA282YP3euJFwUchqiZ9KHKRH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 63 rEZWzy9DQFA282YP3euJFwUchqiZ9KHKRH  tx    validated=True ledger_index=7814978 touches_root=True date=847288933 MISMATCH validated,ledger_index,touches_root,date
+ 64 rMeBxxaweBaMCKe9FLdwvLFEXpsSgX7r32  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 64 rMeBxxaweBaMCKe9FLdwvLFEXpsSgX7r32  tx    validated=True ledger_index=7802339 touches_root=True date=847250681 MISMATCH validated,ledger_index,touches_root,date
+ 65 rs5hbB6HCiYSonfz5Dtxi6yKQupZLMwcZQ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 65 rs5hbB6HCiYSonfz5Dtxi6yKQupZLMwcZQ  tx    validated=True ledger_index=7856663 touches_root=True date=847415072 MISMATCH validated,ledger_index,touches_root,date
+ 66 rHVW82cQsJbDnzQh2RPbZKTn6qm759TVas  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 66 rHVW82cQsJbDnzQh2RPbZKTn6qm759TVas  tx    validated=True ledger_index=7855018 touches_root=True date=847410103 MISMATCH validated,ledger_index,touches_root,date
+ 67 r3p5EKZcpN5mC38gWeFGmAU7aqFRhuMY8W  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 67 r3p5EKZcpN5mC38gWeFGmAU7aqFRhuMY8W  tx    validated=True ledger_index=7839429 touches_root=True date=847362920 MISMATCH validated,ledger_index,touches_root,date
+ 68 rKvNwvGVFRDsw9KTXkWR5s7T5TapCBoZpA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 68 rKvNwvGVFRDsw9KTXkWR5s7T5TapCBoZpA  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MISMATCH validated,ledger_index,touches_root,date
+ 69 rBTYXwQofjJraScghrzt9CUHCa1gzUxknC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 69 rBTYXwQofjJraScghrzt9CUHCa1gzUxknC  tx    validated=True ledger_index=7855490 touches_root=True date=847411531 MISMATCH validated,ledger_index,touches_root,date
+ 70 r9B48oEz5JUiWPPaHCB9QvBx8ezFwoFXof  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 70 r9B48oEz5JUiWPPaHCB9QvBx8ezFwoFXof  tx    validated=True ledger_index=7801007 touches_root=True date=847246650 MISMATCH validated,ledger_index,touches_root,date
+ 71 r4yGNxYmBgbQCK79xT9jFh1MiUuobYzkot  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 71 r4yGNxYmBgbQCK79xT9jFh1MiUuobYzkot  tx    validated=True ledger_index=7873890 touches_root=True date=847467172 MISMATCH validated,ledger_index,touches_root,date
+ 72 rwVfc9o8YTXEsBio5ucEUBEp5aBHtjGma5  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 72 rwVfc9o8YTXEsBio5ucEUBEp5aBHtjGma5  tx    validated=True ledger_index=7873986 touches_root=True date=847467462 MISMATCH validated,ledger_index,touches_root,date
+ 73 rsS2Y6CK9dz9dVFjJvRyD2gBdoLPqjaXRZ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 73 rsS2Y6CK9dz9dVFjJvRyD2gBdoLPqjaXRZ  tx    validated=True ledger_index=7856641 touches_root=True date=847415010 MISMATCH validated,ledger_index,touches_root,date
+ 74 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 74 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  tx    validated=True ledger_index=7854450 touches_root=True date=847408390 MISMATCH validated,ledger_index,touches_root,date
+ 75 rDTaftFFy79qX36x676L9BfsNRoJzhFZGo  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 75 rDTaftFFy79qX36x676L9BfsNRoJzhFZGo  tx    validated=True ledger_index=7856648 touches_root=True date=847415031 MISMATCH validated,ledger_index,touches_root,date
+ 76 rayoQhgacV3Abe84vJ4dUxPVGAMTCcDXuZ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 76 rayoQhgacV3Abe84vJ4dUxPVGAMTCcDXuZ  tx    validated=True ledger_index=7873966 touches_root=True date=847467402 MISMATCH validated,ledger_index,touches_root,date
+ 77 rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 77 rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7  tx    validated=True ledger_index=7873743 touches_root=True date=847466731 MISMATCH validated,ledger_index,touches_root,date
+ 78 rMGk5bK7Adw7aDocRRdjxaarzRvieKjnrh  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 78 rMGk5bK7Adw7aDocRRdjxaarzRvieKjnrh  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MISMATCH validated,ledger_index,touches_root,date
+ 79 rwQRffqrs8e97ewBYqvnmaL6KEw7DPwgqd  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 79 rwQRffqrs8e97ewBYqvnmaL6KEw7DPwgqd  tx    validated=True ledger_index=7873139 touches_root=True date=847464900 MISMATCH validated,ledger_index,touches_root,date
+ 80 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 80 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MISMATCH validated,ledger_index,touches_root,date
+ 81 rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 81 rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo  tx    validated=True ledger_index=7857067 touches_root=True date=847416292 MISMATCH validated,ledger_index,touches_root,date
+ 82 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 82 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  tx    validated=True ledger_index=7806359 touches_root=True date=847262840 MISMATCH validated,ledger_index,touches_root,date
+ 83 raiQWaAwUbcmHxBwDYsvdrjcY6wL5crvrw  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 83 raiQWaAwUbcmHxBwDYsvdrjcY6wL5crvrw  tx    validated=True ledger_index=7854916 touches_root=True date=847409800 MISMATCH validated,ledger_index,touches_root,date
+ 84 rfsgpVrWaZWgepPp9ViDzM7CnD3VdNYcWC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 84 rfsgpVrWaZWgepPp9ViDzM7CnD3VdNYcWC  tx    validated=True ledger_index=7837177 touches_root=True date=847356110 MISMATCH validated,ledger_index,touches_root,date
+ 85 rHxTQAsD6k2JkQMaHxht8iTKdbHTcxEEWs  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 85 rHxTQAsD6k2JkQMaHxht8iTKdbHTcxEEWs  tx    validated=True ledger_index=7823208 touches_root=True date=847313831 MISMATCH validated,ledger_index,touches_root,date
+ 86 rpHvzMCKZ7JrzGfRseXohC3RsMWqcnEKkA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 86 rpHvzMCKZ7JrzGfRseXohC3RsMWqcnEKkA  tx    validated=True ledger_index=7856657 touches_root=True date=847415060 MISMATCH validated,ledger_index,touches_root,date
+ 87 rhiGmYja4kFgQGmiYEE93dGuNgRK6UEGuk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 87 rhiGmYja4kFgQGmiYEE93dGuNgRK6UEGuk  tx    validated=True ledger_index=7873959 touches_root=True date=847467381 MISMATCH validated,ledger_index,touches_root,date
+ 88 r9MqpdMwnzEaLwdTHpBFrah4MpAJn6op2m  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 88 r9MqpdMwnzEaLwdTHpBFrah4MpAJn6op2m  tx    validated=True ledger_index=7811726 touches_root=True date=847279090 MISMATCH validated,ledger_index,touches_root,date
+ 89 r3F4NYif2Lt4qWCXQxELrTuaeenGmgpXPc  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 89 r3F4NYif2Lt4qWCXQxELrTuaeenGmgpXPc  tx    validated=True ledger_index=7873689 touches_root=True date=847466563 MISMATCH validated,ledger_index,touches_root,date
+SUMMARY {"accounts": 89, "date_checked": 89, "fields_mismatch": 445, "fields_ok": 0, "retries": 0, "retries_by_error": {}, "rpc_calls": 179, "skipped": 0, "tx_checked": 89, "tx_mismatch": 89, "tx_ok": 0, "tx_out_of_range": 0, "tx_skipped": 0}
+RESULT: negative control PASS: field mismatches 445/445, tx mismatches 89/89, OK lines 0 -> exit 1
+(exit 1)
+$ sha256sum data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl; wc -l data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl
+9d05fab146dd16b277ef7963165dbd546ae334745935a11ec6ad274afbf57459  data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl
+179 data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 89 --seed 1 --in-range-only --offline data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl
+2026-11-08T16:32:45Z crosscheck_dormancy offline crosscheck-A-inrange89-seed1.jsonl
+source complete_ledgers [(7800054, 7874973)]
+snapshot ledger 7874004 793B89EB45C4625A49391C233FA64A6ED3D346A7250FEBDABBE75C03332671E0 mode positive seed 1 count 89
+--in-range-only: 89 AccountRoots with PreviousTxnLgrSeq inside the range
+ #   account                             field              expected -> got   result
+  1 rMHJoxVH8ULrJwXftNB3H9KFDX2kUC64To  acct  5 fields MATCH
+  1 rMHJoxVH8ULrJwXftNB3H9KFDX2kUC64To  tx    validated=True ledger_index=7874003 touches_root=True date=847467512 MATCH
+  2 rHv6jSGsuZnfqBHGnpWkMueRbnXXNdZJG3  acct  5 fields MATCH
+  2 rHv6jSGsuZnfqBHGnpWkMueRbnXXNdZJG3  tx    validated=True ledger_index=7873374 touches_root=True date=847465611 MATCH
+  3 rNwJ7wxnMyWnFNWLawetoceaed7VyBZjBD  acct  5 fields MATCH
+  3 rNwJ7wxnMyWnFNWLawetoceaed7VyBZjBD  tx    validated=True ledger_index=7857881 touches_root=True date=847418752 MATCH
+  4 r9k51cJFVaYRST5vMUsdokiYcwdpQdUJGR  acct  5 fields MATCH
+  4 r9k51cJFVaYRST5vMUsdokiYcwdpQdUJGR  tx    validated=True ledger_index=7873408 touches_root=True date=847465712 MATCH
+  5 r4yCEJFRCguHJpX5HGw2nVMTw3RtzT2mb1  acct  5 fields MATCH
+  5 r4yCEJFRCguHJpX5HGw2nVMTw3RtzT2mb1  tx    validated=True ledger_index=7863939 touches_root=True date=847437083 MATCH
+  6 rp5pMxGJKSBCy6BEYBmXiNsmeGywJRVTvM  acct  5 fields MATCH
+  6 rp5pMxGJKSBCy6BEYBmXiNsmeGywJRVTvM  tx    validated=True ledger_index=7836319 touches_root=True date=847353512 MATCH
+  7 rpDA7VFQezSGRv1VLLd2ckRK6RARDcEKHn  acct  5 fields MATCH
+  7 rpDA7VFQezSGRv1VLLd2ckRK6RARDcEKHn  tx    validated=True ledger_index=7839391 touches_root=True date=847362801 MATCH
+  8 rN1LbCQk4mfPGibNNNuFvUKTuNVkPyQkqV  acct  5 fields MATCH
+  8 rN1LbCQk4mfPGibNNNuFvUKTuNVkPyQkqV  tx    validated=True ledger_index=7803117 touches_root=True date=847253032 MATCH
+  9 rQLhfWHGmEE6aqhAXc3RRifQZj1QUdnwUP  acct  5 fields MATCH
+  9 rQLhfWHGmEE6aqhAXc3RRifQZj1QUdnwUP  tx    validated=True ledger_index=7843944 touches_root=True date=847376611 MATCH
+ 10 rsSYAkLuAquosKCTC5TMdaeWoUXYGNAQvx  acct  5 fields MATCH
+ 10 rsSYAkLuAquosKCTC5TMdaeWoUXYGNAQvx  tx    validated=True ledger_index=7817864 touches_root=True date=847297661 MATCH
+ 11 r33kyxcTytBLvs6RPCDzMfxGGBTL9T3vFC  acct  5 fields MATCH
+ 11 r33kyxcTytBLvs6RPCDzMfxGGBTL9T3vFC  tx    validated=True ledger_index=7871145 touches_root=True date=847458870 MATCH
+ 12 rN74pE5MFZGtD64i1EcX34eenzQeM8gfCJ  acct  5 fields MATCH
+ 12 rN74pE5MFZGtD64i1EcX34eenzQeM8gfCJ  tx    validated=True ledger_index=7873890 touches_root=True date=847467172 MATCH
+ 13 ra6yaRUKpZRA1qRj72MrgMuUTFSADHjxFi  acct  5 fields MATCH
+ 13 ra6yaRUKpZRA1qRj72MrgMuUTFSADHjxFi  tx    validated=True ledger_index=7873986 touches_root=True date=847467462 MATCH
+ 14 rPExxzu9ULk8yuGDkfAJb4xYgPSgSesnSk  acct  5 fields MATCH
+ 14 rPExxzu9ULk8yuGDkfAJb4xYgPSgSesnSk  tx    validated=True ledger_index=7855498 touches_root=True date=847411553 MATCH
+ 15 rKeFPFyWHT3WuwNiXFmv3q2vep65veaggK  acct  5 fields MATCH
+ 15 rKeFPFyWHT3WuwNiXFmv3q2vep65veaggK  tx    validated=True ledger_index=7873843 touches_root=True date=847467031 MATCH
+ 16 r39NNaxioaRJdcrGBvzAbGZd49f66vd8UM  acct  5 fields MATCH
+ 16 r39NNaxioaRJdcrGBvzAbGZd49f66vd8UM  tx    validated=True ledger_index=7869053 touches_root=True date=847452542 MATCH
+ 17 rHFd9HgQXaegmSj5oudYEtxspC23xKuJ5z  acct  5 fields MATCH
+ 17 rHFd9HgQXaegmSj5oudYEtxspC23xKuJ5z  tx    validated=True ledger_index=7873743 touches_root=True date=847466731 MATCH
+ 18 rrpwXzihA7G58psfqzLsGydiJwadmzB6zz  acct  5 fields MATCH
+ 18 rrpwXzihA7G58psfqzLsGydiJwadmzB6zz  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 19 rUwA1As5sphVwrpoue3knmgeDk2mYxYEL6  acct  5 fields MATCH
+ 19 rUwA1As5sphVwrpoue3knmgeDk2mYxYEL6  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MATCH
+ 20 rGeQN2GtC5BKZDpAud8STD5VzgGAhySZjT  acct  5 fields MATCH
+ 20 rGeQN2GtC5BKZDpAud8STD5VzgGAhySZjT  tx    validated=True ledger_index=7805583 touches_root=True date=847260492 MATCH
+ 21 ryn5D7WUTTS1vsmXBH66XquttE3Nhpn7P   acct  5 fields MATCH
+ 21 ryn5D7WUTTS1vsmXBH66XquttE3Nhpn7P   tx    validated=True ledger_index=7873966 touches_root=True date=847467402 MATCH
+ 22 rDfpM1pMG6iPbsAsYGbYmUkJ8Lz3FVR8c9  acct  5 fields MATCH
+ 22 rDfpM1pMG6iPbsAsYGbYmUkJ8Lz3FVR8c9  tx    validated=True ledger_index=7821165 touches_root=True date=847307642 MATCH
+ 23 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  acct  5 fields MATCH
+ 23 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  tx    validated=True ledger_index=7815477 touches_root=True date=847290441 MATCH
+ 24 rnpBbdHZjjLn5kz4nuPS263Yp5m5NLM9MW  acct  5 fields MATCH
+ 24 rnpBbdHZjjLn5kz4nuPS263Yp5m5NLM9MW  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 25 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  acct  5 fields MATCH
+ 25 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  tx    validated=True ledger_index=7830365 touches_root=True date=847335492 MATCH
+ 26 r9GoccJ4Q78YEtpqTESTDUWiGz2bmTaXDJ  acct  5 fields MATCH
+ 26 r9GoccJ4Q78YEtpqTESTDUWiGz2bmTaXDJ  tx    validated=True ledger_index=7811753 touches_root=True date=847279170 MATCH
+ 27 raR6eegsmjxzQWJViPKAMrNrZKSf9SrN81  acct  5 fields MATCH
+ 27 raR6eegsmjxzQWJViPKAMrNrZKSf9SrN81  tx    validated=True ledger_index=7874003 touches_root=True date=847467512 MATCH
+ 28 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  acct  5 fields MATCH
+ 28 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  tx    validated=True ledger_index=7873978 touches_root=True date=847467440 MATCH
+ 29 r3ZntGSWWgJSS2K3Tsd4nyAZgTzcqEzNr8  acct  5 fields MATCH
+ 29 r3ZntGSWWgJSS2K3Tsd4nyAZgTzcqEzNr8  tx    validated=True ledger_index=7818439 touches_root=True date=847299401 MATCH
+ 30 rs4russanrQAcF2Qe5KQiUR9QmzBuNy18n  acct  5 fields MATCH
+ 30 rs4russanrQAcF2Qe5KQiUR9QmzBuNy18n  tx    validated=True ledger_index=7813911 touches_root=True date=847285692 MATCH
+ 31 rhNB5awEHeS1DrduuZDzQC2LdaSsVNj6p1  acct  5 fields MATCH
+ 31 rhNB5awEHeS1DrduuZDzQC2LdaSsVNj6p1  tx    validated=True ledger_index=7873959 touches_root=True date=847467381 MATCH
+ 32 rDR9sYQA24WwpfZh8PAFQnFmEDGRSTzdb8  acct  5 fields MATCH
+ 32 rDR9sYQA24WwpfZh8PAFQnFmEDGRSTzdb8  tx    validated=True ledger_index=7810325 touches_root=True date=847274840 MATCH
+ 33 rUWStamgRGQrJiV2qSdG58an6QhrPoT4FA  acct  5 fields MATCH
+ 33 rUWStamgRGQrJiV2qSdG58an6QhrPoT4FA  tx    validated=True ledger_index=7873916 touches_root=True date=847467252 MATCH
+ 34 rKmRKpFJwBWQcqAWxd9YDFFWa2ifE5nsii  acct  5 fields MATCH
+ 34 rKmRKpFJwBWQcqAWxd9YDFFWa2ifE5nsii  tx    validated=True ledger_index=7840265 touches_root=True date=847365443 MATCH
+ 35 rhfpJbpMiaZR9MHw7uHB4jJv435fd3UScu  acct  5 fields MATCH
+ 35 rhfpJbpMiaZR9MHw7uHB4jJv435fd3UScu  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 36 rMXDbUkyQeRzaHdoyiYgRaiJNeqGrChP2g  acct  5 fields MATCH
+ 36 rMXDbUkyQeRzaHdoyiYgRaiJNeqGrChP2g  tx    validated=True ledger_index=7844423 touches_root=True date=847378061 MATCH
+ 37 rLrEYZ1eFAWEohVfZQfZoZEBUboRrCUdoo  acct  5 fields MATCH
+ 37 rLrEYZ1eFAWEohVfZQfZoZEBUboRrCUdoo  tx    validated=True ledger_index=7830849 touches_root=True date=847336960 MATCH
+ 38 rpiRkk86mYFhrYGJUksyzyWbDQvFbuCENJ  acct  5 fields MATCH
+ 38 rpiRkk86mYFhrYGJUksyzyWbDQvFbuCENJ  tx    validated=True ledger_index=7855674 touches_root=True date=847412090 MATCH
+ 39 rKCmpYUPw5Vt8kwEg2b8u1dECjv3uWeXa2  acct  5 fields MATCH
+ 39 rKCmpYUPw5Vt8kwEg2b8u1dECjv3uWeXa2  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 40 rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx  acct  5 fields MATCH
+ 40 rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx  tx    validated=True ledger_index=7855483 touches_root=True date=847411511 MATCH
+ 41 rpKAdawTemc8RyWpMr59j9RqWUaVCqvHXy  acct  5 fields MATCH
+ 41 rpKAdawTemc8RyWpMr59j9RqWUaVCqvHXy  tx    validated=True ledger_index=7866924 touches_root=True date=847446110 MATCH
+ 42 rBchq87pZ8RjJU3Zmhu9jrtbgjpZLA7JhQ  acct  5 fields MATCH
+ 42 rBchq87pZ8RjJU3Zmhu9jrtbgjpZLA7JhQ  tx    validated=True ledger_index=7857097 touches_root=True date=847416382 MATCH
+ 43 rPTCS8SJr17SbMVSoro1vHF13iFQAXPN5w  acct  5 fields MATCH
+ 43 rPTCS8SJr17SbMVSoro1vHF13iFQAXPN5w  tx    validated=True ledger_index=7867427 touches_root=True date=847447630 MATCH
+ 44 rKF7zToDECjwtYZAM3JLrdQDto9fvTbQSf  acct  5 fields MATCH
+ 44 rKF7zToDECjwtYZAM3JLrdQDto9fvTbQSf  tx    validated=True ledger_index=7855522 touches_root=True date=847411630 MATCH
+ 45 r9XbKMrRpxg3FHqzNNmhvAxy5QtNzYDLHs  acct  5 fields MATCH
+ 45 r9XbKMrRpxg3FHqzNNmhvAxy5QtNzYDLHs  tx    validated=True ledger_index=7873990 touches_root=True date=847467472 MATCH
+ 46 rxGvi692zyX2RJ2hBfY4CfywDy4Qe1wDh   acct  5 fields MATCH
+ 46 rxGvi692zyX2RJ2hBfY4CfywDy4Qe1wDh   tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 47 rKjozZiA9Yi97eHefiKZppxCcX3wEDkf4u  acct  5 fields MATCH
+ 47 rKjozZiA9Yi97eHefiKZppxCcX3wEDkf4u  tx    validated=True ledger_index=7872334 touches_root=True date=847462462 MATCH
+ 48 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  acct  5 fields MATCH
+ 48 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  tx    validated=True ledger_index=7802686 touches_root=True date=847251731 MATCH
+ 49 rhe1nQWD3ND4ck2yHcBfsNBUBcPNo4jmWq  acct  5 fields MATCH
+ 49 rhe1nQWD3ND4ck2yHcBfsNBUBcPNo4jmWq  tx    validated=True ledger_index=7873897 touches_root=True date=847467193 MATCH
+ 50 rM9uA5Fb2GWicqMDANmw1NsPX7f6oPwPmw  acct  5 fields MATCH
+ 50 rM9uA5Fb2GWicqMDANmw1NsPX7f6oPwPmw  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 51 rGgwsUN5p5Tp5sjKPCWMj3u4SCVpZtpwaF  acct  5 fields MATCH
+ 51 rGgwsUN5p5Tp5sjKPCWMj3u4SCVpZtpwaF  tx    validated=True ledger_index=7864300 touches_root=True date=847438182 MATCH
+ 52 rKToaDhyUGUsATPkSgksWfyghXUvgjYjWW  acct  5 fields MATCH
+ 52 rKToaDhyUGUsATPkSgksWfyghXUvgjYjWW  tx    validated=True ledger_index=7873408 touches_root=True date=847465712 MATCH
+ 53 r4STs24kEQhsKb8s5MVfhDMH5VJLS4Yz2m  acct  5 fields MATCH
+ 53 r4STs24kEQhsKb8s5MVfhDMH5VJLS4Yz2m  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 54 rpVwVJrNFQQLkzhkn7EPsYSMk3X4S4Hf32  acct  5 fields MATCH
+ 54 rpVwVJrNFQQLkzhkn7EPsYSMk3X4S4Hf32  tx    validated=True ledger_index=7873978 touches_root=True date=847467440 MATCH
+ 55 r4RPpeS2kUE8BjY9LvKbptW8PQVHhVWghS  acct  5 fields MATCH
+ 55 r4RPpeS2kUE8BjY9LvKbptW8PQVHhVWghS  tx    validated=True ledger_index=7870145 touches_root=True date=847455850 MATCH
+ 56 rBCJAc11UibtTD36XpgXzdxYqEZ4WUcPGC  acct  5 fields MATCH
+ 56 rBCJAc11UibtTD36XpgXzdxYqEZ4WUcPGC  tx    validated=True ledger_index=7871636 touches_root=True date=847460351 MATCH
+ 57 rhhG98SjMr69K6Ap22voYSRWohurwcB2w1  acct  5 fields MATCH
+ 57 rhhG98SjMr69K6Ap22voYSRWohurwcB2w1  tx    validated=True ledger_index=7827469 touches_root=True date=847326740 MATCH
+ 58 rwaaE1PvSUxkNejc2Vz6m6Dyt8TBDao7NT  acct  5 fields MATCH
+ 58 rwaaE1PvSUxkNejc2Vz6m6Dyt8TBDao7NT  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MATCH
+ 59 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  acct  5 fields MATCH
+ 59 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  tx    validated=True ledger_index=7852478 touches_root=True date=847402422 MATCH
+ 60 rsjRhGMM68Dp8Dzgufuq2FoJPEs53mfXJe  acct  5 fields MATCH
+ 60 rsjRhGMM68Dp8Dzgufuq2FoJPEs53mfXJe  tx    validated=True ledger_index=7873990 touches_root=True date=847467472 MATCH
+ 61 rEP9r3NjyM8zEbtyJ3eaQg1L2Soc8hts1m  acct  5 fields MATCH
+ 61 rEP9r3NjyM8zEbtyJ3eaQg1L2Soc8hts1m  tx    validated=True ledger_index=7840258 touches_root=True date=847365422 MATCH
+ 62 rwZnndCAFqNzKCjusd3yZPqXnXfrL2TBub  acct  5 fields MATCH
+ 62 rwZnndCAFqNzKCjusd3yZPqXnXfrL2TBub  tx    validated=True ledger_index=7873936 touches_root=True date=847467312 MATCH
+ 63 rEZWzy9DQFA282YP3euJFwUchqiZ9KHKRH  acct  5 fields MATCH
+ 63 rEZWzy9DQFA282YP3euJFwUchqiZ9KHKRH  tx    validated=True ledger_index=7814978 touches_root=True date=847288933 MATCH
+ 64 rMeBxxaweBaMCKe9FLdwvLFEXpsSgX7r32  acct  5 fields MATCH
+ 64 rMeBxxaweBaMCKe9FLdwvLFEXpsSgX7r32  tx    validated=True ledger_index=7802339 touches_root=True date=847250681 MATCH
+ 65 rs5hbB6HCiYSonfz5Dtxi6yKQupZLMwcZQ  acct  5 fields MATCH
+ 65 rs5hbB6HCiYSonfz5Dtxi6yKQupZLMwcZQ  tx    validated=True ledger_index=7856663 touches_root=True date=847415072 MATCH
+ 66 rHVW82cQsJbDnzQh2RPbZKTn6qm759TVas  acct  5 fields MATCH
+ 66 rHVW82cQsJbDnzQh2RPbZKTn6qm759TVas  tx    validated=True ledger_index=7855018 touches_root=True date=847410103 MATCH
+ 67 r3p5EKZcpN5mC38gWeFGmAU7aqFRhuMY8W  acct  5 fields MATCH
+ 67 r3p5EKZcpN5mC38gWeFGmAU7aqFRhuMY8W  tx    validated=True ledger_index=7839429 touches_root=True date=847362920 MATCH
+ 68 rKvNwvGVFRDsw9KTXkWR5s7T5TapCBoZpA  acct  5 fields MATCH
+ 68 rKvNwvGVFRDsw9KTXkWR5s7T5TapCBoZpA  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 69 rBTYXwQofjJraScghrzt9CUHCa1gzUxknC  acct  5 fields MATCH
+ 69 rBTYXwQofjJraScghrzt9CUHCa1gzUxknC  tx    validated=True ledger_index=7855490 touches_root=True date=847411531 MATCH
+ 70 r9B48oEz5JUiWPPaHCB9QvBx8ezFwoFXof  acct  5 fields MATCH
+ 70 r9B48oEz5JUiWPPaHCB9QvBx8ezFwoFXof  tx    validated=True ledger_index=7801007 touches_root=True date=847246650 MATCH
+ 71 r4yGNxYmBgbQCK79xT9jFh1MiUuobYzkot  acct  5 fields MATCH
+ 71 r4yGNxYmBgbQCK79xT9jFh1MiUuobYzkot  tx    validated=True ledger_index=7873890 touches_root=True date=847467172 MATCH
+ 72 rwVfc9o8YTXEsBio5ucEUBEp5aBHtjGma5  acct  5 fields MATCH
+ 72 rwVfc9o8YTXEsBio5ucEUBEp5aBHtjGma5  tx    validated=True ledger_index=7873986 touches_root=True date=847467462 MATCH
+ 73 rsS2Y6CK9dz9dVFjJvRyD2gBdoLPqjaXRZ  acct  5 fields MATCH
+ 73 rsS2Y6CK9dz9dVFjJvRyD2gBdoLPqjaXRZ  tx    validated=True ledger_index=7856641 touches_root=True date=847415010 MATCH
+ 74 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  acct  5 fields MATCH
+ 74 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  tx    validated=True ledger_index=7854450 touches_root=True date=847408390 MATCH
+ 75 rDTaftFFy79qX36x676L9BfsNRoJzhFZGo  acct  5 fields MATCH
+ 75 rDTaftFFy79qX36x676L9BfsNRoJzhFZGo  tx    validated=True ledger_index=7856648 touches_root=True date=847415031 MATCH
+ 76 rayoQhgacV3Abe84vJ4dUxPVGAMTCcDXuZ  acct  5 fields MATCH
+ 76 rayoQhgacV3Abe84vJ4dUxPVGAMTCcDXuZ  tx    validated=True ledger_index=7873966 touches_root=True date=847467402 MATCH
+ 77 rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7  acct  5 fields MATCH
+ 77 rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7  tx    validated=True ledger_index=7873743 touches_root=True date=847466731 MATCH
+ 78 rMGk5bK7Adw7aDocRRdjxaarzRvieKjnrh  acct  5 fields MATCH
+ 78 rMGk5bK7Adw7aDocRRdjxaarzRvieKjnrh  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MATCH
+ 79 rwQRffqrs8e97ewBYqvnmaL6KEw7DPwgqd  acct  5 fields MATCH
+ 79 rwQRffqrs8e97ewBYqvnmaL6KEw7DPwgqd  tx    validated=True ledger_index=7873139 touches_root=True date=847464900 MATCH
+ 80 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  acct  5 fields MATCH
+ 80 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 81 rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo  acct  5 fields MATCH
+ 81 rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo  tx    validated=True ledger_index=7857067 touches_root=True date=847416292 MATCH
+ 82 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  acct  5 fields MATCH
+ 82 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  tx    validated=True ledger_index=7806359 touches_root=True date=847262840 MATCH
+ 83 raiQWaAwUbcmHxBwDYsvdrjcY6wL5crvrw  acct  5 fields MATCH
+ 83 raiQWaAwUbcmHxBwDYsvdrjcY6wL5crvrw  tx    validated=True ledger_index=7854916 touches_root=True date=847409800 MATCH
+ 84 rfsgpVrWaZWgepPp9ViDzM7CnD3VdNYcWC  acct  5 fields MATCH
+ 84 rfsgpVrWaZWgepPp9ViDzM7CnD3VdNYcWC  tx    validated=True ledger_index=7837177 touches_root=True date=847356110 MATCH
+ 85 rHxTQAsD6k2JkQMaHxht8iTKdbHTcxEEWs  acct  5 fields MATCH
+ 85 rHxTQAsD6k2JkQMaHxht8iTKdbHTcxEEWs  tx    validated=True ledger_index=7823208 touches_root=True date=847313831 MATCH
+ 86 rpHvzMCKZ7JrzGfRseXohC3RsMWqcnEKkA  acct  5 fields MATCH
+ 86 rpHvzMCKZ7JrzGfRseXohC3RsMWqcnEKkA  tx    validated=True ledger_index=7856657 touches_root=True date=847415060 MATCH
+ 87 rhiGmYja4kFgQGmiYEE93dGuNgRK6UEGuk  acct  5 fields MATCH
+ 87 rhiGmYja4kFgQGmiYEE93dGuNgRK6UEGuk  tx    validated=True ledger_index=7873959 touches_root=True date=847467381 MATCH
+ 88 r9MqpdMwnzEaLwdTHpBFrah4MpAJn6op2m  acct  5 fields MATCH
+ 88 r9MqpdMwnzEaLwdTHpBFrah4MpAJn6op2m  tx    validated=True ledger_index=7811726 touches_root=True date=847279090 MATCH
+ 89 r3F4NYif2Lt4qWCXQxELrTuaeenGmgpXPc  acct  5 fields MATCH
+ 89 r3F4NYif2Lt4qWCXQxELrTuaeenGmgpXPc  tx    validated=True ledger_index=7873689 touches_root=True date=847466563 MATCH
+SUMMARY {"accounts": 89, "date_checked": 89, "fields_mismatch": 0, "fields_ok": 445, "retries": 0, "retries_by_error": {}, "rpc_calls": 179, "skipped": 0, "tx_checked": 89, "tx_mismatch": 0, "tx_ok": 89, "tx_out_of_range": 0, "tx_skipped": 0}
+RESULT: all match -> exit 0
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 89 --seed 1 --in-range-only --negative --offline data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl
+2026-11-08T16:32:45Z crosscheck_dormancy offline crosscheck-A-inrange89-seed1.jsonl
+source complete_ledgers [(7800054, 7874973)]
+snapshot ledger 7874004 793B89EB45C4625A49391C233FA64A6ED3D346A7250FEBDABBE75C03332671E0 mode NEGATIVE seed 1 count 89
+--in-range-only: 89 AccountRoots with PreviousTxnLgrSeq inside the range
+ #   account                             field              expected -> got   result
+  1 rMHJoxVH8ULrJwXftNB3H9KFDX2kUC64To  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  1 rMHJoxVH8ULrJwXftNB3H9KFDX2kUC64To  tx    validated=True ledger_index=7874003 touches_root=True date=847467512 MISMATCH validated,ledger_index,touches_root,date
+  2 rHv6jSGsuZnfqBHGnpWkMueRbnXXNdZJG3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  2 rHv6jSGsuZnfqBHGnpWkMueRbnXXNdZJG3  tx    validated=True ledger_index=7873374 touches_root=True date=847465611 MISMATCH validated,ledger_index,touches_root,date
+  3 rNwJ7wxnMyWnFNWLawetoceaed7VyBZjBD  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  3 rNwJ7wxnMyWnFNWLawetoceaed7VyBZjBD  tx    validated=True ledger_index=7857881 touches_root=True date=847418752 MISMATCH validated,ledger_index,touches_root,date
+  4 r9k51cJFVaYRST5vMUsdokiYcwdpQdUJGR  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  4 r9k51cJFVaYRST5vMUsdokiYcwdpQdUJGR  tx    validated=True ledger_index=7873408 touches_root=True date=847465712 MISMATCH validated,ledger_index,touches_root,date
+  5 r4yCEJFRCguHJpX5HGw2nVMTw3RtzT2mb1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  5 r4yCEJFRCguHJpX5HGw2nVMTw3RtzT2mb1  tx    validated=True ledger_index=7863939 touches_root=True date=847437083 MISMATCH validated,ledger_index,touches_root,date
+  6 rp5pMxGJKSBCy6BEYBmXiNsmeGywJRVTvM  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  6 rp5pMxGJKSBCy6BEYBmXiNsmeGywJRVTvM  tx    validated=True ledger_index=7836319 touches_root=True date=847353512 MISMATCH validated,ledger_index,touches_root,date
+  7 rpDA7VFQezSGRv1VLLd2ckRK6RARDcEKHn  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  7 rpDA7VFQezSGRv1VLLd2ckRK6RARDcEKHn  tx    validated=True ledger_index=7839391 touches_root=True date=847362801 MISMATCH validated,ledger_index,touches_root,date
+  8 rN1LbCQk4mfPGibNNNuFvUKTuNVkPyQkqV  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  8 rN1LbCQk4mfPGibNNNuFvUKTuNVkPyQkqV  tx    validated=True ledger_index=7803117 touches_root=True date=847253032 MISMATCH validated,ledger_index,touches_root,date
+  9 rQLhfWHGmEE6aqhAXc3RRifQZj1QUdnwUP  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  9 rQLhfWHGmEE6aqhAXc3RRifQZj1QUdnwUP  tx    validated=True ledger_index=7843944 touches_root=True date=847376611 MISMATCH validated,ledger_index,touches_root,date
+ 10 rsSYAkLuAquosKCTC5TMdaeWoUXYGNAQvx  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 10 rsSYAkLuAquosKCTC5TMdaeWoUXYGNAQvx  tx    validated=True ledger_index=7817864 touches_root=True date=847297661 MISMATCH validated,ledger_index,touches_root,date
+ 11 r33kyxcTytBLvs6RPCDzMfxGGBTL9T3vFC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 11 r33kyxcTytBLvs6RPCDzMfxGGBTL9T3vFC  tx    validated=True ledger_index=7871145 touches_root=True date=847458870 MISMATCH validated,ledger_index,touches_root,date
+ 12 rN74pE5MFZGtD64i1EcX34eenzQeM8gfCJ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 12 rN74pE5MFZGtD64i1EcX34eenzQeM8gfCJ  tx    validated=True ledger_index=7873890 touches_root=True date=847467172 MISMATCH validated,ledger_index,touches_root,date
+ 13 ra6yaRUKpZRA1qRj72MrgMuUTFSADHjxFi  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 13 ra6yaRUKpZRA1qRj72MrgMuUTFSADHjxFi  tx    validated=True ledger_index=7873986 touches_root=True date=847467462 MISMATCH validated,ledger_index,touches_root,date
+ 14 rPExxzu9ULk8yuGDkfAJb4xYgPSgSesnSk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 14 rPExxzu9ULk8yuGDkfAJb4xYgPSgSesnSk  tx    validated=True ledger_index=7855498 touches_root=True date=847411553 MISMATCH validated,ledger_index,touches_root,date
+ 15 rKeFPFyWHT3WuwNiXFmv3q2vep65veaggK  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 15 rKeFPFyWHT3WuwNiXFmv3q2vep65veaggK  tx    validated=True ledger_index=7873843 touches_root=True date=847467031 MISMATCH validated,ledger_index,touches_root,date
+ 16 r39NNaxioaRJdcrGBvzAbGZd49f66vd8UM  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 16 r39NNaxioaRJdcrGBvzAbGZd49f66vd8UM  tx    validated=True ledger_index=7869053 touches_root=True date=847452542 MISMATCH validated,ledger_index,touches_root,date
+ 17 rHFd9HgQXaegmSj5oudYEtxspC23xKuJ5z  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 17 rHFd9HgQXaegmSj5oudYEtxspC23xKuJ5z  tx    validated=True ledger_index=7873743 touches_root=True date=847466731 MISMATCH validated,ledger_index,touches_root,date
+ 18 rrpwXzihA7G58psfqzLsGydiJwadmzB6zz  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 18 rrpwXzihA7G58psfqzLsGydiJwadmzB6zz  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MISMATCH validated,ledger_index,touches_root,date
+ 19 rUwA1As5sphVwrpoue3knmgeDk2mYxYEL6  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 19 rUwA1As5sphVwrpoue3knmgeDk2mYxYEL6  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MISMATCH validated,ledger_index,touches_root,date
+ 20 rGeQN2GtC5BKZDpAud8STD5VzgGAhySZjT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 20 rGeQN2GtC5BKZDpAud8STD5VzgGAhySZjT  tx    validated=True ledger_index=7805583 touches_root=True date=847260492 MISMATCH validated,ledger_index,touches_root,date
+ 21 ryn5D7WUTTS1vsmXBH66XquttE3Nhpn7P   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 21 ryn5D7WUTTS1vsmXBH66XquttE3Nhpn7P   tx    validated=True ledger_index=7873966 touches_root=True date=847467402 MISMATCH validated,ledger_index,touches_root,date
+ 22 rDfpM1pMG6iPbsAsYGbYmUkJ8Lz3FVR8c9  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 22 rDfpM1pMG6iPbsAsYGbYmUkJ8Lz3FVR8c9  tx    validated=True ledger_index=7821165 touches_root=True date=847307642 MISMATCH validated,ledger_index,touches_root,date
+ 23 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 23 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  tx    validated=True ledger_index=7815477 touches_root=True date=847290441 MISMATCH validated,ledger_index,touches_root,date
+ 24 rnpBbdHZjjLn5kz4nuPS263Yp5m5NLM9MW  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 24 rnpBbdHZjjLn5kz4nuPS263Yp5m5NLM9MW  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MISMATCH validated,ledger_index,touches_root,date
+ 25 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 25 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  tx    validated=True ledger_index=7830365 touches_root=True date=847335492 MISMATCH validated,ledger_index,touches_root,date
+ 26 r9GoccJ4Q78YEtpqTESTDUWiGz2bmTaXDJ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 26 r9GoccJ4Q78YEtpqTESTDUWiGz2bmTaXDJ  tx    validated=True ledger_index=7811753 touches_root=True date=847279170 MISMATCH validated,ledger_index,touches_root,date
+ 27 raR6eegsmjxzQWJViPKAMrNrZKSf9SrN81  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 27 raR6eegsmjxzQWJViPKAMrNrZKSf9SrN81  tx    validated=True ledger_index=7874003 touches_root=True date=847467512 MISMATCH validated,ledger_index,touches_root,date
+ 28 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 28 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  tx    validated=True ledger_index=7873978 touches_root=True date=847467440 MISMATCH validated,ledger_index,touches_root,date
+ 29 r3ZntGSWWgJSS2K3Tsd4nyAZgTzcqEzNr8  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 29 r3ZntGSWWgJSS2K3Tsd4nyAZgTzcqEzNr8  tx    validated=True ledger_index=7818439 touches_root=True date=847299401 MISMATCH validated,ledger_index,touches_root,date
+ 30 rs4russanrQAcF2Qe5KQiUR9QmzBuNy18n  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 30 rs4russanrQAcF2Qe5KQiUR9QmzBuNy18n  tx    validated=True ledger_index=7813911 touches_root=True date=847285692 MISMATCH validated,ledger_index,touches_root,date
+ 31 rhNB5awEHeS1DrduuZDzQC2LdaSsVNj6p1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 31 rhNB5awEHeS1DrduuZDzQC2LdaSsVNj6p1  tx    validated=True ledger_index=7873959 touches_root=True date=847467381 MISMATCH validated,ledger_index,touches_root,date
+ 32 rDR9sYQA24WwpfZh8PAFQnFmEDGRSTzdb8  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 32 rDR9sYQA24WwpfZh8PAFQnFmEDGRSTzdb8  tx    validated=True ledger_index=7810325 touches_root=True date=847274840 MISMATCH validated,ledger_index,touches_root,date
+ 33 rUWStamgRGQrJiV2qSdG58an6QhrPoT4FA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 33 rUWStamgRGQrJiV2qSdG58an6QhrPoT4FA  tx    validated=True ledger_index=7873916 touches_root=True date=847467252 MISMATCH validated,ledger_index,touches_root,date
+ 34 rKmRKpFJwBWQcqAWxd9YDFFWa2ifE5nsii  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 34 rKmRKpFJwBWQcqAWxd9YDFFWa2ifE5nsii  tx    validated=True ledger_index=7840265 touches_root=True date=847365443 MISMATCH validated,ledger_index,touches_root,date
+ 35 rhfpJbpMiaZR9MHw7uHB4jJv435fd3UScu  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 35 rhfpJbpMiaZR9MHw7uHB4jJv435fd3UScu  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MISMATCH validated,ledger_index,touches_root,date
+ 36 rMXDbUkyQeRzaHdoyiYgRaiJNeqGrChP2g  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 36 rMXDbUkyQeRzaHdoyiYgRaiJNeqGrChP2g  tx    validated=True ledger_index=7844423 touches_root=True date=847378061 MISMATCH validated,ledger_index,touches_root,date
+ 37 rLrEYZ1eFAWEohVfZQfZoZEBUboRrCUdoo  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 37 rLrEYZ1eFAWEohVfZQfZoZEBUboRrCUdoo  tx    validated=True ledger_index=7830849 touches_root=True date=847336960 MISMATCH validated,ledger_index,touches_root,date
+ 38 rpiRkk86mYFhrYGJUksyzyWbDQvFbuCENJ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 38 rpiRkk86mYFhrYGJUksyzyWbDQvFbuCENJ  tx    validated=True ledger_index=7855674 touches_root=True date=847412090 MISMATCH validated,ledger_index,touches_root,date
+ 39 rKCmpYUPw5Vt8kwEg2b8u1dECjv3uWeXa2  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 39 rKCmpYUPw5Vt8kwEg2b8u1dECjv3uWeXa2  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MISMATCH validated,ledger_index,touches_root,date
+ 40 rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 40 rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx  tx    validated=True ledger_index=7855483 touches_root=True date=847411511 MISMATCH validated,ledger_index,touches_root,date
+ 41 rpKAdawTemc8RyWpMr59j9RqWUaVCqvHXy  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 41 rpKAdawTemc8RyWpMr59j9RqWUaVCqvHXy  tx    validated=True ledger_index=7866924 touches_root=True date=847446110 MISMATCH validated,ledger_index,touches_root,date
+ 42 rBchq87pZ8RjJU3Zmhu9jrtbgjpZLA7JhQ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 42 rBchq87pZ8RjJU3Zmhu9jrtbgjpZLA7JhQ  tx    validated=True ledger_index=7857097 touches_root=True date=847416382 MISMATCH validated,ledger_index,touches_root,date
+ 43 rPTCS8SJr17SbMVSoro1vHF13iFQAXPN5w  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 43 rPTCS8SJr17SbMVSoro1vHF13iFQAXPN5w  tx    validated=True ledger_index=7867427 touches_root=True date=847447630 MISMATCH validated,ledger_index,touches_root,date
+ 44 rKF7zToDECjwtYZAM3JLrdQDto9fvTbQSf  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 44 rKF7zToDECjwtYZAM3JLrdQDto9fvTbQSf  tx    validated=True ledger_index=7855522 touches_root=True date=847411630 MISMATCH validated,ledger_index,touches_root,date
+ 45 r9XbKMrRpxg3FHqzNNmhvAxy5QtNzYDLHs  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 45 r9XbKMrRpxg3FHqzNNmhvAxy5QtNzYDLHs  tx    validated=True ledger_index=7873990 touches_root=True date=847467472 MISMATCH validated,ledger_index,touches_root,date
+ 46 rxGvi692zyX2RJ2hBfY4CfywDy4Qe1wDh   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 46 rxGvi692zyX2RJ2hBfY4CfywDy4Qe1wDh   tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MISMATCH validated,ledger_index,touches_root,date
+ 47 rKjozZiA9Yi97eHefiKZppxCcX3wEDkf4u  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 47 rKjozZiA9Yi97eHefiKZppxCcX3wEDkf4u  tx    validated=True ledger_index=7872334 touches_root=True date=847462462 MISMATCH validated,ledger_index,touches_root,date
+ 48 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 48 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  tx    validated=True ledger_index=7802686 touches_root=True date=847251731 MISMATCH validated,ledger_index,touches_root,date
+ 49 rhe1nQWD3ND4ck2yHcBfsNBUBcPNo4jmWq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 49 rhe1nQWD3ND4ck2yHcBfsNBUBcPNo4jmWq  tx    validated=True ledger_index=7873897 touches_root=True date=847467193 MISMATCH validated,ledger_index,touches_root,date
+ 50 rM9uA5Fb2GWicqMDANmw1NsPX7f6oPwPmw  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 50 rM9uA5Fb2GWicqMDANmw1NsPX7f6oPwPmw  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MISMATCH validated,ledger_index,touches_root,date
+ 51 rGgwsUN5p5Tp5sjKPCWMj3u4SCVpZtpwaF  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 51 rGgwsUN5p5Tp5sjKPCWMj3u4SCVpZtpwaF  tx    validated=True ledger_index=7864300 touches_root=True date=847438182 MISMATCH validated,ledger_index,touches_root,date
+ 52 rKToaDhyUGUsATPkSgksWfyghXUvgjYjWW  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 52 rKToaDhyUGUsATPkSgksWfyghXUvgjYjWW  tx    validated=True ledger_index=7873408 touches_root=True date=847465712 MISMATCH validated,ledger_index,touches_root,date
+ 53 r4STs24kEQhsKb8s5MVfhDMH5VJLS4Yz2m  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 53 r4STs24kEQhsKb8s5MVfhDMH5VJLS4Yz2m  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MISMATCH validated,ledger_index,touches_root,date
+ 54 rpVwVJrNFQQLkzhkn7EPsYSMk3X4S4Hf32  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 54 rpVwVJrNFQQLkzhkn7EPsYSMk3X4S4Hf32  tx    validated=True ledger_index=7873978 touches_root=True date=847467440 MISMATCH validated,ledger_index,touches_root,date
+ 55 r4RPpeS2kUE8BjY9LvKbptW8PQVHhVWghS  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 55 r4RPpeS2kUE8BjY9LvKbptW8PQVHhVWghS  tx    validated=True ledger_index=7870145 touches_root=True date=847455850 MISMATCH validated,ledger_index,touches_root,date
+ 56 rBCJAc11UibtTD36XpgXzdxYqEZ4WUcPGC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 56 rBCJAc11UibtTD36XpgXzdxYqEZ4WUcPGC  tx    validated=True ledger_index=7871636 touches_root=True date=847460351 MISMATCH validated,ledger_index,touches_root,date
+ 57 rhhG98SjMr69K6Ap22voYSRWohurwcB2w1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 57 rhhG98SjMr69K6Ap22voYSRWohurwcB2w1  tx    validated=True ledger_index=7827469 touches_root=True date=847326740 MISMATCH validated,ledger_index,touches_root,date
+ 58 rwaaE1PvSUxkNejc2Vz6m6Dyt8TBDao7NT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 58 rwaaE1PvSUxkNejc2Vz6m6Dyt8TBDao7NT  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MISMATCH validated,ledger_index,touches_root,date
+ 59 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 59 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  tx    validated=True ledger_index=7852478 touches_root=True date=847402422 MISMATCH validated,ledger_index,touches_root,date
+ 60 rsjRhGMM68Dp8Dzgufuq2FoJPEs53mfXJe  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 60 rsjRhGMM68Dp8Dzgufuq2FoJPEs53mfXJe  tx    validated=True ledger_index=7873990 touches_root=True date=847467472 MISMATCH validated,ledger_index,touches_root,date
+ 61 rEP9r3NjyM8zEbtyJ3eaQg1L2Soc8hts1m  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 61 rEP9r3NjyM8zEbtyJ3eaQg1L2Soc8hts1m  tx    validated=True ledger_index=7840258 touches_root=True date=847365422 MISMATCH validated,ledger_index,touches_root,date
+ 62 rwZnndCAFqNzKCjusd3yZPqXnXfrL2TBub  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 62 rwZnndCAFqNzKCjusd3yZPqXnXfrL2TBub  tx    validated=True ledger_index=7873936 touches_root=True date=847467312 MISMATCH validated,ledger_index,touches_root,date
+ 63 rEZWzy9DQFA282YP3euJFwUchqiZ9KHKRH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 63 rEZWzy9DQFA282YP3euJFwUchqiZ9KHKRH  tx    validated=True ledger_index=7814978 touches_root=True date=847288933 MISMATCH validated,ledger_index,touches_root,date
+ 64 rMeBxxaweBaMCKe9FLdwvLFEXpsSgX7r32  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 64 rMeBxxaweBaMCKe9FLdwvLFEXpsSgX7r32  tx    validated=True ledger_index=7802339 touches_root=True date=847250681 MISMATCH validated,ledger_index,touches_root,date
+ 65 rs5hbB6HCiYSonfz5Dtxi6yKQupZLMwcZQ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 65 rs5hbB6HCiYSonfz5Dtxi6yKQupZLMwcZQ  tx    validated=True ledger_index=7856663 touches_root=True date=847415072 MISMATCH validated,ledger_index,touches_root,date
+ 66 rHVW82cQsJbDnzQh2RPbZKTn6qm759TVas  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 66 rHVW82cQsJbDnzQh2RPbZKTn6qm759TVas  tx    validated=True ledger_index=7855018 touches_root=True date=847410103 MISMATCH validated,ledger_index,touches_root,date
+ 67 r3p5EKZcpN5mC38gWeFGmAU7aqFRhuMY8W  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 67 r3p5EKZcpN5mC38gWeFGmAU7aqFRhuMY8W  tx    validated=True ledger_index=7839429 touches_root=True date=847362920 MISMATCH validated,ledger_index,touches_root,date
+ 68 rKvNwvGVFRDsw9KTXkWR5s7T5TapCBoZpA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 68 rKvNwvGVFRDsw9KTXkWR5s7T5TapCBoZpA  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MISMATCH validated,ledger_index,touches_root,date
+ 69 rBTYXwQofjJraScghrzt9CUHCa1gzUxknC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 69 rBTYXwQofjJraScghrzt9CUHCa1gzUxknC  tx    validated=True ledger_index=7855490 touches_root=True date=847411531 MISMATCH validated,ledger_index,touches_root,date
+ 70 r9B48oEz5JUiWPPaHCB9QvBx8ezFwoFXof  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 70 r9B48oEz5JUiWPPaHCB9QvBx8ezFwoFXof  tx    validated=True ledger_index=7801007 touches_root=True date=847246650 MISMATCH validated,ledger_index,touches_root,date
+ 71 r4yGNxYmBgbQCK79xT9jFh1MiUuobYzkot  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 71 r4yGNxYmBgbQCK79xT9jFh1MiUuobYzkot  tx    validated=True ledger_index=7873890 touches_root=True date=847467172 MISMATCH validated,ledger_index,touches_root,date
+ 72 rwVfc9o8YTXEsBio5ucEUBEp5aBHtjGma5  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 72 rwVfc9o8YTXEsBio5ucEUBEp5aBHtjGma5  tx    validated=True ledger_index=7873986 touches_root=True date=847467462 MISMATCH validated,ledger_index,touches_root,date
+ 73 rsS2Y6CK9dz9dVFjJvRyD2gBdoLPqjaXRZ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 73 rsS2Y6CK9dz9dVFjJvRyD2gBdoLPqjaXRZ  tx    validated=True ledger_index=7856641 touches_root=True date=847415010 MISMATCH validated,ledger_index,touches_root,date
+ 74 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 74 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  tx    validated=True ledger_index=7854450 touches_root=True date=847408390 MISMATCH validated,ledger_index,touches_root,date
+ 75 rDTaftFFy79qX36x676L9BfsNRoJzhFZGo  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 75 rDTaftFFy79qX36x676L9BfsNRoJzhFZGo  tx    validated=True ledger_index=7856648 touches_root=True date=847415031 MISMATCH validated,ledger_index,touches_root,date
+ 76 rayoQhgacV3Abe84vJ4dUxPVGAMTCcDXuZ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 76 rayoQhgacV3Abe84vJ4dUxPVGAMTCcDXuZ  tx    validated=True ledger_index=7873966 touches_root=True date=847467402 MISMATCH validated,ledger_index,touches_root,date
+ 77 rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 77 rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7  tx    validated=True ledger_index=7873743 touches_root=True date=847466731 MISMATCH validated,ledger_index,touches_root,date
+ 78 rMGk5bK7Adw7aDocRRdjxaarzRvieKjnrh  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 78 rMGk5bK7Adw7aDocRRdjxaarzRvieKjnrh  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MISMATCH validated,ledger_index,touches_root,date
+ 79 rwQRffqrs8e97ewBYqvnmaL6KEw7DPwgqd  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 79 rwQRffqrs8e97ewBYqvnmaL6KEw7DPwgqd  tx    validated=True ledger_index=7873139 touches_root=True date=847464900 MISMATCH validated,ledger_index,touches_root,date
+ 80 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 80 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MISMATCH validated,ledger_index,touches_root,date
+ 81 rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 81 rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo  tx    validated=True ledger_index=7857067 touches_root=True date=847416292 MISMATCH validated,ledger_index,touches_root,date
+ 82 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 82 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  tx    validated=True ledger_index=7806359 touches_root=True date=847262840 MISMATCH validated,ledger_index,touches_root,date
+ 83 raiQWaAwUbcmHxBwDYsvdrjcY6wL5crvrw  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 83 raiQWaAwUbcmHxBwDYsvdrjcY6wL5crvrw  tx    validated=True ledger_index=7854916 touches_root=True date=847409800 MISMATCH validated,ledger_index,touches_root,date
+ 84 rfsgpVrWaZWgepPp9ViDzM7CnD3VdNYcWC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 84 rfsgpVrWaZWgepPp9ViDzM7CnD3VdNYcWC  tx    validated=True ledger_index=7837177 touches_root=True date=847356110 MISMATCH validated,ledger_index,touches_root,date
+ 85 rHxTQAsD6k2JkQMaHxht8iTKdbHTcxEEWs  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 85 rHxTQAsD6k2JkQMaHxht8iTKdbHTcxEEWs  tx    validated=True ledger_index=7823208 touches_root=True date=847313831 MISMATCH validated,ledger_index,touches_root,date
+ 86 rpHvzMCKZ7JrzGfRseXohC3RsMWqcnEKkA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 86 rpHvzMCKZ7JrzGfRseXohC3RsMWqcnEKkA  tx    validated=True ledger_index=7856657 touches_root=True date=847415060 MISMATCH validated,ledger_index,touches_root,date
+ 87 rhiGmYja4kFgQGmiYEE93dGuNgRK6UEGuk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 87 rhiGmYja4kFgQGmiYEE93dGuNgRK6UEGuk  tx    validated=True ledger_index=7873959 touches_root=True date=847467381 MISMATCH validated,ledger_index,touches_root,date
+ 88 r9MqpdMwnzEaLwdTHpBFrah4MpAJn6op2m  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 88 r9MqpdMwnzEaLwdTHpBFrah4MpAJn6op2m  tx    validated=True ledger_index=7811726 touches_root=True date=847279090 MISMATCH validated,ledger_index,touches_root,date
+ 89 r3F4NYif2Lt4qWCXQxELrTuaeenGmgpXPc  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 89 r3F4NYif2Lt4qWCXQxELrTuaeenGmgpXPc  tx    validated=True ledger_index=7873689 touches_root=True date=847466563 MISMATCH validated,ledger_index,touches_root,date
+SUMMARY {"accounts": 89, "date_checked": 89, "fields_mismatch": 445, "fields_ok": 0, "retries": 0, "retries_by_error": {}, "rpc_calls": 179, "skipped": 0, "tx_checked": 89, "tx_mismatch": 89, "tx_ok": 0, "tx_out_of_range": 0, "tx_skipped": 0}
+RESULT: negative control PASS: field mismatches 445/445, tx mismatches 89/89, OK lines 0 -> exit 1
+(exit 1)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 2 --offline data/dormancy/A/crosscheck-A-random-seed1.jsonl > /dev/null 2> scratch-err.txt; tail -1 scratch-err.txt
+__main__.NotRecorded: not in recording: account_info {'account': 'rG4f8oZrSJWeMNAFFV7w5Vr3PuTsEE7mc7', 'ledger_index': 7874004}
+(exit 0)
+NOTE 2026-11-08T16:32:54Z: the '(exit 0)' above is again tail's status, not the crosscheck's. Re-run below with the crosscheck's own exit code captured:
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 2 --offline data/dormancy/A/crosscheck-A-random-seed1.jsonl > /dev/null 2> err; rc=$?; tail -1 err; echo rc=$rc
+__main__.NotRecorded: not in recording: account_info {'account': 'rG4f8oZrSJWeMNAFFV7w5Vr3PuTsEE7mc7', 'ledger_index': 7874004}
+rc=1

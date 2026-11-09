@@ -1,0 +1,33 @@
+$ date -u; git rev-parse HEAD (+ uncommitted dormancy/resume_drill_dormancy.sh)
+2026-11-08T17:14:27Z
+cfffb495efd7a4bfd2fc35e09db4bb924ac51893
+$ dormancy/resume_drill_dormancy.sh dormancy/data/A/snapshot-7874004.jsonl.gz data/dormancy/drill-1
+== reference run (input snapshot-7874004.jsonl.gz)
+reference: rc 0, headers 72
+== drill run: SIGTERM after 15s
+after SIGTERM: rc 4, headers 11, last byte is newline: yes
+== resume 1, SIGKILL after 15s
+dormancy/resume_drill_dormancy.sh: line 52: 2742896 Killed                  "${fetch[@]}" --out "$drl" --log "$work/drill.log" > /dev/null
+after SIGKILL: rc 137, headers 22, last byte is newline: yes
+== inject: first 23 bytes of reference line 23, no newline
+appended '{"close_time": 84736292' -> expect torn_bytes 23
+== resume 2 to the end
+2026-11-08T17:15:54Z source public complete_ledgers [(7800054, 7875929)]
+2026-11-08T17:15:54Z START want 4518 have 0 todo 4518 torn_bytes 0
+2026-11-08T17:16:08Z DONE {"already": 0, "by_source": {"public": 11}, "fetched": 11, "interrupted": true, "lgrNotFound": 0, "pruned": 4446, "torn_bytes": 0}
+2026-11-08T17:16:09Z source public complete_ledgers [(7800054, 7875934)]
+2026-11-08T17:16:09Z START want 4518 have 11 todo 4507 torn_bytes 0
+2026-11-08T17:16:24Z source public complete_ledgers [(7800054, 7875939)]
+2026-11-08T17:16:24Z START want 4518 have 22 todo 4496 torn_bytes 23
+2026-11-08T17:17:27Z DONE {"already": 22, "by_source": {"public": 50}, "fetched": 50, "lgrNotFound": 0, "pruned": 4446, "torn_bytes": 23}
+PASS exit codes SIGTERM 4 / SIGKILL 137 / final 0 (got 4/137/0)
+PASS headers.jsonl identical to the reference (72 lines)
+PASS every seq exactly once
+PASS last resume torn_bytes == 23
+PASS last resume skipped the 22 complete lines
+PASS last resume fetched only the rest (50)
+PASS public complete_ledgers still holds the oldest fetched seq
+sha256 ref   840b522f00e18222bf426470f005bd06ebce8396d417fdc4837c7d662c0ad40c
+sha256 drill 840b522f00e18222bf426470f005bd06ebce8396d417fdc4837c7d662c0ad40c
+RESULT: PASS
+(drill exit 0)

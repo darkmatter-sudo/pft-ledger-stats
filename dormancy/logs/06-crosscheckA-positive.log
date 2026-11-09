@@ -1,0 +1,403 @@
+OS: Ubuntu 22.04.5 LTS | 2026-11-08T16:16:29Z | git e5c4ba561caa50e62b7a7268864085c0ae3ef84a | status: 0 changed tracked files under dormancy/ tests/
+$ sha256sum data/dormancy/A/snapshot-7874004.jsonl.gz data/dormancy/headers.jsonl
+b01275c9238a5a548538f02d3c3b8bf637b9eb14fcc1fb1f623606766b526692  data/dormancy/A/snapshot-7874004.jsonl.gz
+840b522f00e18222bf426470f005bd06ebce8396d417fdc4837c7d662c0ad40c  data/dormancy/headers.jsonl
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 --record data/dormancy/A/crosscheck-A-random-seed1.jsonl
+2026-11-08T16:16:29Z crosscheck_dormancy live
+source complete_ledgers [(7800054, 7874754)]
+snapshot ledger 7874004 793B89EB45C4625A49391C233FA64A6ED3D346A7250FEBDABBE75C03332671E0 mode positive seed 1 count 200
+ #   account                             field              expected -> got   result
+  1 r4C8ijMrNFzURiDfAhcV8nNBx5dmPWASvB  acct  5 fields MATCH
+  2 r9iMgX4eaYRaTuR8dfccwoLJXdS8iMM2SB  acct  5 fields MATCH
+  3 raLZyEceAYo7YTzsKSEvtFdQbpYpXtYtJu  acct  5 fields MATCH
+  4 rhXFXsPvwZ5Nqc9QozxUn3hgHWNHzfKqEP  acct  5 fields MATCH
+  5 r4SuLXY75r5tcJrcW6LcBQqK31DkT9JSwL  acct  5 fields MATCH
+  6 rM4RJmyeeFjC2F4mMS76upSzBL1rk9N5ZY  acct  5 fields MATCH
+  7 rsmWrtmSVdqgiw2P8XhTns3gjBGvckYpLE  acct  5 fields MATCH
+  8 r4vhrMChCsaoFsBoCkRTRGUuc1njfr7bmA  acct  5 fields MATCH
+  9 rJuAvFxLBumyHVuQ3gXpWdWu1rGDGCYLck  acct  5 fields MATCH
+ 10 r3ctUDEU53L89t1mWh26BhZxLHS2FDkLX5  acct  5 fields MATCH
+ 11 r4p7uiwUdj5isL38qyTvbwVnSyuTH356B8  acct  5 fields MATCH
+ 12 rw2frPYmuV5LuMVk3xsuVzMKf87dmpsGbB  acct  5 fields MATCH
+ 13 rLrza3xtojfrNP53yMcfodVAn47sQNCXxL  acct  5 fields MATCH
+ 14 rNeSUrc4MXZhZkmp5s4VjWKtMG33xPfEnE  acct  5 fields MATCH
+ 15 rGXX6FpN57wQGf6cwaozLDahK17WTsauS2  acct  5 fields MATCH
+ 16 rJzG4BF6iVAhgCJkpTEfEyZk6TsGwbBxq8  acct  5 fields MATCH
+ 17 rUeJCbSEn6RMUmks4G4PE4Gy3CxbhU3NCB  acct  5 fields MATCH
+ 18 rB9Hee7M1khhXiWKvMu2uGfEHQZGJVvXQt  acct  5 fields MATCH
+ 19 rhEzgDnbgJTf1ubnoyC9ybzH4VopudEFB7  acct  5 fields MATCH
+ 20 rBRPPijmuR4NCQAhg3iHtNAXYJsC2JEn3s  acct  5 fields MATCH
+ 21 rfZFR7a1mV1MkJGgw1pGAaJst6G23eLGAc  acct  5 fields MATCH
+ 22 rPDkQ5UePAYonKVMf1G8p3WsPpZ8xJLsoV  acct  5 fields MATCH
+ 23 rGEfMjpEPfyfSbcNYYDqnSRDsmLS9JWJGP  acct  5 fields MATCH
+ 24 rsW9vLCqoL8AP1N7igXDNzUoZGR3fm4mUP  acct  5 fields MATCH
+ 25 rKCdT8qbitqi2Q2CTpfinr1Jsi4T1VK7ap  acct  5 fields MATCH
+ 26 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  acct  5 fields MATCH
+ 26 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  tx    validated=True ledger_index=7854450 touches_root=True date=847408390 MATCH
+ 27 rHNsPiciJp9US5whCraorx5Xpw7goupDnQ  acct  5 fields MATCH
+ 28 rfnbXZHs6AikhomTWbWFchZdekJ3zMDWZo  acct  5 fields MATCH
+ 29 rEGxQiRqByrWEHz3JbKWDcfn2MSeSfPHB   acct  5 fields MATCH
+ 30 rUUQvwxc9w1rCd6Edeq96i63qWgGixCb4j  acct  5 fields MATCH
+ 31 rh2YbcUmuRPtJLmNua793buY947TeDGkd3  acct  5 fields MATCH
+ 32 rw6ZVXpf1bACjY6jVKQRuNsnWC7ohYrivb  acct  5 fields MATCH
+ 33 rzyvCjFeov8HFWbNJqrzbV5rKW4JGDv16   acct  5 fields MATCH
+ 34 rJoXbqLJtsjA7HSEP1KaGEfcKiS8Vv2zsb  acct  5 fields MATCH
+ 35 rNgW1FEztK3AKzi7PFoXSbsZEvFn2Q69JL  acct  5 fields MATCH
+ 36 rG8vMeFtuxobMMRduhFGwEM2NTR4BDsGkF  acct  5 fields MATCH
+ 37 r3kHGLdTh98noQm4iFk16wSe164retWF6k  acct  5 fields MATCH
+ 38 rJySC99RTzVxFEzksBzGmHdbiUnes82Cxm  acct  5 fields MATCH
+ 39 rp3AWShE32Y6Xaz14BaMXi2NpsUvFJrvQL  acct  5 fields MATCH
+ 40 rP5CT3DYyKUY2KG6Dh6iCm3qaJCzk25bHU  acct  5 fields MATCH
+ 41 rnCm2hgNgYNTKYiBLcWsknNsGt6y5wEb3B  acct  5 fields MATCH
+ 42 rBK9putHxEwcrww6vK5MZdDXRqW8uEiVbD  acct  5 fields MATCH
+ 43 rESzKaZ2EJ48De1GWQ8wXSky9VYiwgvPq8  acct  5 fields MATCH
+ 44 rsAQ5TNp4BpgqXGNuSk8NiM4fLkj7BgiYv  acct  5 fields MATCH
+ 45 rCrLbNEWk1HYEbvzZ8QBC9kCPhVrfrG9f   acct  5 fields MATCH
+ 46 rP8v2SWPJq7KGz5M6zxWsENQzaYEDdg2FV  acct  5 fields MATCH
+ 47 rMytM7DMDP9Tgnc8DBg85UiYcotuS9VVxF  acct  5 fields MATCH
+ 48 rMf6X7kF9erMtKxPnXMHL2DbBZCDBu7dkY  acct  5 fields MATCH
+ 49 rQ32UooSB1Mb4CCJx64mBMw1XwrXk1jH1e  acct  5 fields MATCH
+ 50 rBi462HFWsCqGjrnSJoFMCsN9DJEcR3oRk  acct  5 fields MATCH
+ 51 rKPoW95tMpPHRgAcSxbvjgNUg8LefhiXp3  acct  5 fields MATCH
+ 52 r3WF1k5n5amGKJGjKiMJckeMQ5LhAzRGYn  acct  5 fields MATCH
+ 53 rf3YRJe9hwrKoP677FnTCtCjSEJ3eTGXun  acct  5 fields MATCH
+ 54 r3AxB1vDiVZRsF7zW3krcELQy1VsPcXn6J  acct  5 fields MATCH
+ 55 rUymjDxjMr6D84d1fyBqn1RE2dkwstwkLP  acct  5 fields MATCH
+ 56 rEKjEBS1pyZSZdYMr748s1KmDr9VqJzf7A  acct  5 fields MATCH
+ 57 rKnaQLJpR5Pw3bUUqUYoFocU5cN8b4M6B3  acct  5 fields MATCH
+ 58 rEnqVWwJCziZSawAktWxyfpn1pfLLEq9ub  acct  5 fields MATCH
+ 59 r3oZBZAnCzpkEbmqcVWfNnuKaXPJM7D9cX  acct  5 fields MATCH
+ 60 rHUMhwajiPG9VE4UZPh1AnsriWmngszL7v  acct  5 fields MATCH
+ 61 rE6go4tx5aR36Dv3yM3rzBy7GbmKytYFha  acct  5 fields MATCH
+ 62 rLPruMqQroKwAtidm5oQEZTn4TRRGKKspu  acct  5 fields MATCH
+ 63 rUqQr5RE18S1ovARvimwWVeDH6VsB4goCJ  acct  5 fields MATCH
+ 64 rUn2t3ZM9F5pwwigJwn3kwHoJjkSdZ9Fhz  acct  5 fields MATCH
+ 65 rKkycHfNG95GdBp7Rfp5hvw8mrWRVJVR7u  acct  5 fields MATCH
+ 66 rJ5eLYAwQWbs9KnEgrvmVBQKzMe4CGKMo7  acct  5 fields MATCH
+ 67 rNJqwHgQAeRphgzkx76GQgMEnNi2MFtcFc  acct  5 fields MATCH
+ 68 rpUrELqtXQNS4eLcZk41MK2B75Frit5nA7  acct  5 fields MATCH
+ 69 r4hsZtdMm6hykPdTB8exVeGK2esAkT62yt  acct  5 fields MATCH
+ 70 rqLcig43Hfd8atWZST4aYKSVtsYukjRqE   acct  5 fields MATCH
+ 71 rwaDFQ9HwdQJFpJVDT4F394dtaGLxYpmPx  acct  5 fields MATCH
+ 72 rNxNH5MoAobNfqfEA2yM1KhFh5znoVZzC   acct  5 fields MATCH
+ 73 rEULHeko5wqWc8NxKaj24bDnAeEyoooVxP  acct  5 fields MATCH
+ 74 rhHuHBSpXcp62FSYYWziXzBY5LCLNQ3FTB  acct  5 fields MATCH
+ 75 rhhFnxAjPMdtTsnZJRLHvoNNwND1sGgGEL  acct  5 fields MATCH
+ 76 rKnKyoQJRzRGsU1vE7eX2easCuYvEaxn1i  acct  5 fields MATCH
+ 77 rHJn9davWVN3RfeUc6wS5HBJB44R3bVv9h  acct  5 fields MATCH
+ 78 rULSF7WfYYdJw4dgZrf34WCqN5UNQH3TPf  acct  5 fields MATCH
+ 79 rhBrpvL8ugSVG67VojBVseN59d51rt1dnD  acct  5 fields MATCH
+ 80 rnFyXUhKBStWNbtJE4NwsqywDc5Z6r14ot  acct  5 fields MATCH
+ 81 r41GX8ADuuN72E1eagewctdQDAMSedYgWb  acct  5 fields MATCH
+ 82 rBxsUmyRVxfypYoipwKBskWvuFmqvee1gQ  acct  5 fields MATCH
+ 83 rfayTTVkBgPXF1z6HPHT9Jz7SSpNXjCGDj  acct  5 fields MATCH
+ 84 rKXZgh5wPdnhyKDfhCAFRHy5DpUgqeJqrP  acct  5 fields MATCH
+ 85 rDxG2EXUmQThZJtZcq4cp18obb8gU7oxuR  acct  5 fields MATCH
+ 86 rLoqYLGVCrkrczUjndhfjuX1enbfJnKrfD  acct  5 fields MATCH
+ 87 r9zTXFKZ5RWcZjZ9foQvsC5P7tbCCGfeMs  acct  5 fields MATCH
+ 88 rBHwpx3Er6svdXq43LGe8M646vAj7Krx4p  acct  5 fields MATCH
+ 89 rEoi4LoTFbqZ5jWs9DnDGFbS2Sr4eMiNNw  acct  5 fields MATCH
+ 90 rwhzn42yBTqFKQmop9zj36FkVjmb8s2sVd  acct  5 fields MATCH
+ 91 rx7xh9DEkMYs5LAeqo3AazJJabJ66i4cu   acct  5 fields MATCH
+ 92 rKne3os6hx6yENqtHkeLVdWWoF1rNrjRAo  acct  5 fields MATCH
+ 93 rsrx5g3qmT1EiY1Pdh8tmCNqYqwZMrwBaV  acct  5 fields MATCH
+ 94 rnzKEy2oK787iDTfRgndtQ2HDxHX6u9YE8  acct  5 fields MATCH
+ 95 rhPeyHWcvcKjK2cxwzWAKrvWjreNwErA4p  acct  5 fields MATCH
+ 96 r9baxuBfYJAuYEhCKKAsbB2MUGHSEbjEMR  acct  5 fields MATCH
+ 97 rscwDHv2ZGa5eqMVsokeBdmkxckpMeXVJ3  acct  5 fields MATCH
+ 98 rwhNUV2bWSUT56K2eTzkUusaabAGuKpvEP  acct  5 fields MATCH
+ 99 raLfZSuT69MQdH1zGsjXJFzafZza5P91TF  acct  5 fields MATCH
+100 rBs5wgAf39HoAeaeCZVbB5eifC9zPSmtX4  acct  5 fields MATCH
+101 rPXuEDPRx3YrZknq4AtAo4YeCU2DFUKqn6  acct  5 fields MATCH
+102 r9PGcAmoGisbpF7BKjAaLWQd8t92BNgRGs  acct  5 fields MATCH
+103 rMH6HGSzaBhMC6XXJ8B2qmbStBfst6VPwm  acct  5 fields MATCH
+104 rDytxRKQnnmJWS2yLzphBnQph3o6B2sHcA  acct  5 fields MATCH
+105 rUZmhiCJePAXXAdZm7XE9SHPW7X9skk8EM  acct  5 fields MATCH
+106 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  acct  5 fields MATCH
+106 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  tx    validated=True ledger_index=7802686 touches_root=True date=847251731 MATCH
+107 rpGu8T9KXPkSnzBsGqYZVKw4YLz1TfjUxq  acct  5 fields MATCH
+108 rarFsX5qRgbEySLF6TbpxyaL9ozBUk6yjQ  acct  5 fields MATCH
+109 r3KCo2y7b9CpCMkkBVPwHSQxEnbpKTAjLh  acct  5 fields MATCH
+110 rrhTNZVF5hxjCigTpn4vSkKsGm6VtypAA5  acct  5 fields MATCH
+111 rEKWxE1ABS6iFNFneMKvNAHnZbCpfP5DRS  acct  5 fields MATCH
+112 rfcezHCriqHVsDcVbkqiXHWXUpWNfKfCeQ  acct  5 fields MATCH
+113 rM7s24fKmjzeKTGTZq66tQeY2BVx7wiSkW  acct  5 fields MATCH
+114 r9Ld1jAHoqd6SJPychz7zYq2TTs4UomG63  acct  5 fields MATCH
+115 rh16HgXQGWePhvL6E8YTztx6pDSwFGN5Ax  acct  5 fields MATCH
+116 rwr7SnN2iErFMaFsWLafurL2oX64yk5LCj  acct  5 fields MATCH
+117 rEkJYxNp9W2nQe7F6JGskCWVVAqHDfNG8b  acct  5 fields MATCH
+118 rLgTUZ5d1T8nnbyMfQNHtZxhZo8BZp5oiL  acct  5 fields MATCH
+119 rpi6tHw9Yzm8hwZFTkz7w4PoqK8SfvMARa  acct  5 fields MATCH
+120 rQ9vMsr8Adkg2rNMwHbQmLfCmYr33Jy6xc  acct  5 fields MATCH
+121 ra8xyuBTFwcnuizs7fVh8GLqoGncq5eesi  acct  5 fields MATCH
+122 r4oRomU4F88gpzAXLwpUZqp4PTNRZ6Yuir  acct  5 fields MATCH
+123 rM7HVGNsESt2aq3YfxQahJczfgwBjdYaSq  acct  5 fields MATCH
+124 rQGbQk53tPKCSZqnyu3SB9bQNGTie35DnU  acct  5 fields MATCH
+125 r3E63dj6mVAV2LqvtAyiaz5ivpw7jhaPYZ  acct  5 fields MATCH
+126 rf89JqCBdANHaNzoMYyixrRVYo9aJeCC8j  acct  5 fields MATCH
+127 rELvgp2EfxbELuauibHPtRhNPCfYphkzST  acct  5 fields MATCH
+128 rhhyStSBKzSu3fEq69FLse5Md1QytL6wqb  acct  5 fields MATCH
+129 r9MZRC1zRrpUjGW1Aq6FsTCQzSjzqkwjnj  acct  5 fields MATCH
+130 rHdfC5fU6HbGgCUbe3CFaWHv9MGzxnx8pc  acct  5 fields MATCH
+131 rNQC32vtqT8Quxxs8zh8Vx8RDMFaUuVH3j  acct  5 fields MATCH
+132 rJfHnKsbZwkgS5BZzsn8jiDiDLygbixW5M  acct  5 fields MATCH
+133 rK9hX9JihYevHvpC4UA9SDRJCMxYHrMW8n  acct  5 fields MATCH
+134 rHgqZnD6nbUXVicswL2uhjmLW54agMKFLj  acct  5 fields MATCH
+135 rEjZfeBSDkzFufxFXJyi7TaaQnyjv4MRKx  acct  5 fields MATCH
+136 rJqG3Hbu98NaCLqjiExG4xpzeGzfUyDoWc  acct  5 fields MATCH
+137 rPUz2ba7pMNzWK8KMBxogDzKcKfSHmNsYP  acct  5 fields MATCH
+138 r4nGUzgupBcttGSuZgBvErXswrP61K8tDv  acct  5 fields MATCH
+139 rEwBFMhMvZwYGJHXj6zykByGfxCN8qRwb6  acct  5 fields MATCH
+140 rs2YK1v3kUNWZRm37DsA2Nr8SJsLkKf6DS  acct  5 fields MATCH
+141 rJAvbJoS9R6iMbyorr1vTSuK66T3o8zgJB  acct  5 fields MATCH
+142 r3JxciUe62jJpijRAQC4K3n3gZauazEdsU  acct  5 fields MATCH
+143 rKCQ9cv2nHaMWEPTbxsnWaZkDRUHXT6LJJ  acct  5 fields MATCH
+144 rUzkNM2zLwmvAH21fbWF2n2kJ1QUJJqmob  acct  5 fields MATCH
+145 rMwmxDo1KeLVdQVhfMw8ikHjVzctLzmE56  acct  5 fields MATCH
+146 rG7g7JARhDmvDBtzMe85QsNtPVB4mqHwEv  acct  5 fields MATCH
+147 rPZrgXPbfqem8WXXrWaD8CAuPzYSqx1xEv  acct  5 fields MATCH
+148 rYtcWnr1n5fMCRpP2xwcqRq5cREfxVWkZ   acct  5 fields MATCH
+149 rMQLT9zanykseEoVvpFzky6xecLbLrLfXw  acct  5 fields MATCH
+150 rKCX7TSWMkWEvpZnxNrycc28kxrrz5czVN  acct  5 fields MATCH
+151 rQH4fPiumv81ZqX4Sy9pE53oBZnYj6ZbYS  acct  5 fields MATCH
+152 r4msYP92MmqtwMtwJiyCzeKbqBTgQfJaav  acct  5 fields MATCH
+153 rNcu6j2AhGFjEVyUKBTWTRZA2rt5vVJS7Z  acct  5 fields MATCH
+154 rTWX4kNpRH49JZdEyQ4NRTpJGVKZRBa5d   acct  5 fields MATCH
+155 rBhNyzjc6nFn7ZhgpRqXNqhu4mLomjhZkh  acct  5 fields MATCH
+156 rnQX8qQNioZzmCfrTG6d5d4cwfAuWRhSyB  acct  5 fields MATCH
+157 rtKqrn3xmE3xdctwCJVPW6ak2GnBtH7o5   acct  5 fields MATCH
+158 rJAQ5Q6yhAgAsUFttmgEHfmGt2jjpRDqtJ  acct  5 fields MATCH
+159 rJHuCG8ZFVnoodRhMd61W51RZTPenXnHc4  acct  5 fields MATCH
+160 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  acct  5 fields MATCH
+160 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  tx    validated=True ledger_index=7852478 touches_root=True date=847402422 MATCH
+161 r34eu2THVQ1Me4VroudZnGBBNUb7YtZnoX  acct  5 fields MATCH
+162 rfERM5ydEug8VP59vjBDrmpZPX8zbwTFnz  acct  5 fields MATCH
+163 rh5nmckywGoXQU6TCAXnycUZ8TGghWCbAm  acct  5 fields MATCH
+164 rh799WVkrZ9jC4eEDA7jj5ZS9VuDdc1xwe  acct  5 fields MATCH
+165 rJQ4FDtCRrWPkCF3xed5YXSZp97ybBhqEs  acct  5 fields MATCH
+166 reCnWWR8E7PgAiPYZwa371MgP3AV3Zn5d   acct  5 fields MATCH
+167 rwR132zPfz8gkaNeyXUqxi4RZYYE795pQo  acct  5 fields MATCH
+168 r9xwymFSEwEgsf1woXwNnuBNGGeT3KJtyt  acct  5 fields MATCH
+169 rhRV1gLiKfq354trRUSH4qMmWyVo8Pwnio  acct  5 fields MATCH
+170 rU2J9QGeh5msj84oerSukAmPcKbCdc1V9J  acct  5 fields MATCH
+171 r3BG93JWqM1GQXHdZCTshMgd8fPj2QxLUo  acct  5 fields MATCH
+172 rMWVu7AfCjqR4uVNsAc8BtAUCw3feiTZf4  acct  5 fields MATCH
+173 rGf2t3Wkkmk4HViVFrUe4PRRWQmJiMyM9F  acct  5 fields MATCH
+174 r3kf4FFndY5aT5azSzfg7CW73H1naBSNke  acct  5 fields MATCH
+175 rKqcBKMJ58RAkhgP26zRPKTCoy67QQhs1r  acct  5 fields MATCH
+176 rMSP9PUfmvA9c9vBK8FLP3P74KqZwcnkPB  acct  5 fields MATCH
+177 rB3Pd886aYEJm5zQVkoGCqPWEWHJBR82U   acct  5 fields MATCH
+178 r3jxnGySRxfbPZJtF8Y6dRaqrskgRzJuXx  acct  5 fields MATCH
+179 rN5WxS9NcWTEASh7mMS1TwMrcKvGfCkKT7  acct  5 fields MATCH
+180 raDVzFgLssyMWaAVi9iyCENeRuKsnzjGuh  acct  5 fields MATCH
+181 rBfn4QivYFPRbwHXXcCzg8CAcai54Fas1D  acct  5 fields MATCH
+182 raSgQnUHQ5ax3wtgJzJnpHmP6ETdJidBeF  acct  5 fields MATCH
+183 r3fKf8q5uz2r88f4MmpXf5Hmd7KjcGdz7Y  acct  5 fields MATCH
+184 rEJEK7FAS1Y3jYZGgAYThoZzask6Cdipvp  acct  5 fields MATCH
+185 rU1ePcgTG9z3MDvYNmfA5zpcLYWYwNwUhS  acct  5 fields MATCH
+186 rUX8HN5oUFMnyzYGm8gAh2fn1fk98udze7  acct  5 fields MATCH
+187 rs59YF9XDBT9cmMmhbjiuvcwES8DZpvyVb  acct  5 fields MATCH
+188 rQaSh9AG2tQ8XyUxG9qibtioTdzcfGBJ2q  acct  5 fields MATCH
+189 rwz7iwrZH3x6GuTCFxSWhb2mCVtgneagyu  acct  5 fields MATCH
+190 rNkjWeDGMZEqYfVEM68isPV7tdbUBFWdPy  acct  5 fields MATCH
+191 rBAAaHY7X4ZcLC7zRKb7wMG9PSjceWiYr9  acct  5 fields MATCH
+192 rnCNz9aCLybE4o85YVNwSxzhaDnvQbN1MM  acct  5 fields MATCH
+193 rnKbPdkqjWwhFJNyTMPuwfoqEac788ywvk  acct  5 fields MATCH
+194 rp9hh6vZRoVf913PddGQB7UeHZamVcqPvA  acct  5 fields MATCH
+195 rLdRJC5rmgRu2vciqi37ow5qKTvA1c6HH8  acct  5 fields MATCH
+196 r9psQvXnn1kRSr2VY3LbbyiXG9qfixDrmE  acct  5 fields MATCH
+197 rUoXrFoFG2wTum6VFDWPfACEgShgYqj65c  acct  5 fields MATCH
+198 rHsxfN8nDAivevkEY4FE5AzoGGDC3iDez1  acct  5 fields MATCH
+199 rstFYdYh1ZPRSqLwUrk6yNcPGytH7CjQmm  acct  5 fields MATCH
+200 rnqiizcAHbUF39Uq82XZqnew4x7QpTnmat  acct  5 fields MATCH
+SUMMARY {"accounts": 200, "date_checked": 3, "fields_mismatch": 0, "fields_ok": 1000, "retries": 0, "retries_by_error": {}, "rpc_calls": 204, "skipped": 0, "tx_checked": 3, "tx_mismatch": 0, "tx_ok": 3, "tx_out_of_range": 197, "tx_skipped": 0}
+RESULT: all match -> exit 0
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 --in-range-only --record data/dormancy/A/crosscheck-A-inrange-seed1.jsonl
+2026-11-08T16:19:21Z crosscheck_dormancy live
+source complete_ledgers [(7800054, 7874810)]
+snapshot ledger 7874004 793B89EB45C4625A49391C233FA64A6ED3D346A7250FEBDABBE75C03332671E0 mode positive seed 1 count 200
+--in-range-only: 89 AccountRoots with PreviousTxnLgrSeq inside the range
+ #   account                             field              expected -> got   result
+  1 rMHJoxVH8ULrJwXftNB3H9KFDX2kUC64To  acct  5 fields MATCH
+  1 rMHJoxVH8ULrJwXftNB3H9KFDX2kUC64To  tx    validated=True ledger_index=7874003 touches_root=True date=847467512 MATCH
+  2 rHv6jSGsuZnfqBHGnpWkMueRbnXXNdZJG3  acct  5 fields MATCH
+  2 rHv6jSGsuZnfqBHGnpWkMueRbnXXNdZJG3  tx    validated=True ledger_index=7873374 touches_root=True date=847465611 MATCH
+  3 rNwJ7wxnMyWnFNWLawetoceaed7VyBZjBD  acct  5 fields MATCH
+  3 rNwJ7wxnMyWnFNWLawetoceaed7VyBZjBD  tx    validated=True ledger_index=7857881 touches_root=True date=847418752 MATCH
+  4 r9k51cJFVaYRST5vMUsdokiYcwdpQdUJGR  acct  5 fields MATCH
+  4 r9k51cJFVaYRST5vMUsdokiYcwdpQdUJGR  tx    validated=True ledger_index=7873408 touches_root=True date=847465712 MATCH
+  5 r4yCEJFRCguHJpX5HGw2nVMTw3RtzT2mb1  acct  5 fields MATCH
+  5 r4yCEJFRCguHJpX5HGw2nVMTw3RtzT2mb1  tx    validated=True ledger_index=7863939 touches_root=True date=847437083 MATCH
+  6 rp5pMxGJKSBCy6BEYBmXiNsmeGywJRVTvM  acct  5 fields MATCH
+  6 rp5pMxGJKSBCy6BEYBmXiNsmeGywJRVTvM  tx    validated=True ledger_index=7836319 touches_root=True date=847353512 MATCH
+  7 rpDA7VFQezSGRv1VLLd2ckRK6RARDcEKHn  acct  5 fields MATCH
+  7 rpDA7VFQezSGRv1VLLd2ckRK6RARDcEKHn  tx    validated=True ledger_index=7839391 touches_root=True date=847362801 MATCH
+  8 rN1LbCQk4mfPGibNNNuFvUKTuNVkPyQkqV  acct  5 fields MATCH
+  8 rN1LbCQk4mfPGibNNNuFvUKTuNVkPyQkqV  tx    validated=True ledger_index=7803117 touches_root=True date=847253032 MATCH
+  9 rQLhfWHGmEE6aqhAXc3RRifQZj1QUdnwUP  acct  5 fields MATCH
+  9 rQLhfWHGmEE6aqhAXc3RRifQZj1QUdnwUP  tx    validated=True ledger_index=7843944 touches_root=True date=847376611 MATCH
+ 10 rsSYAkLuAquosKCTC5TMdaeWoUXYGNAQvx  acct  5 fields MATCH
+ 10 rsSYAkLuAquosKCTC5TMdaeWoUXYGNAQvx  tx    validated=True ledger_index=7817864 touches_root=True date=847297661 MATCH
+ 11 r33kyxcTytBLvs6RPCDzMfxGGBTL9T3vFC  acct  5 fields MATCH
+ 11 r33kyxcTytBLvs6RPCDzMfxGGBTL9T3vFC  tx    validated=True ledger_index=7871145 touches_root=True date=847458870 MATCH
+ 12 rN74pE5MFZGtD64i1EcX34eenzQeM8gfCJ  acct  5 fields MATCH
+ 12 rN74pE5MFZGtD64i1EcX34eenzQeM8gfCJ  tx    validated=True ledger_index=7873890 touches_root=True date=847467172 MATCH
+ 13 ra6yaRUKpZRA1qRj72MrgMuUTFSADHjxFi  acct  5 fields MATCH
+ 13 ra6yaRUKpZRA1qRj72MrgMuUTFSADHjxFi  tx    validated=True ledger_index=7873986 touches_root=True date=847467462 MATCH
+ 14 rPExxzu9ULk8yuGDkfAJb4xYgPSgSesnSk  acct  5 fields MATCH
+ 14 rPExxzu9ULk8yuGDkfAJb4xYgPSgSesnSk  tx    validated=True ledger_index=7855498 touches_root=True date=847411553 MATCH
+ 15 rKeFPFyWHT3WuwNiXFmv3q2vep65veaggK  acct  5 fields MATCH
+ 15 rKeFPFyWHT3WuwNiXFmv3q2vep65veaggK  tx    validated=True ledger_index=7873843 touches_root=True date=847467031 MATCH
+ 16 r39NNaxioaRJdcrGBvzAbGZd49f66vd8UM  acct  5 fields MATCH
+ 16 r39NNaxioaRJdcrGBvzAbGZd49f66vd8UM  tx    validated=True ledger_index=7869053 touches_root=True date=847452542 MATCH
+ 17 rHFd9HgQXaegmSj5oudYEtxspC23xKuJ5z  acct  5 fields MATCH
+ 17 rHFd9HgQXaegmSj5oudYEtxspC23xKuJ5z  tx    validated=True ledger_index=7873743 touches_root=True date=847466731 MATCH
+ 18 rrpwXzihA7G58psfqzLsGydiJwadmzB6zz  acct  5 fields MATCH
+ 18 rrpwXzihA7G58psfqzLsGydiJwadmzB6zz  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 19 rUwA1As5sphVwrpoue3knmgeDk2mYxYEL6  acct  5 fields MATCH
+ 19 rUwA1As5sphVwrpoue3knmgeDk2mYxYEL6  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MATCH
+ 20 rGeQN2GtC5BKZDpAud8STD5VzgGAhySZjT  acct  5 fields MATCH
+ 20 rGeQN2GtC5BKZDpAud8STD5VzgGAhySZjT  tx    validated=True ledger_index=7805583 touches_root=True date=847260492 MATCH
+ 21 ryn5D7WUTTS1vsmXBH66XquttE3Nhpn7P   acct  5 fields MATCH
+ 21 ryn5D7WUTTS1vsmXBH66XquttE3Nhpn7P   tx    validated=True ledger_index=7873966 touches_root=True date=847467402 MATCH
+ 22 rDfpM1pMG6iPbsAsYGbYmUkJ8Lz3FVR8c9  acct  5 fields MATCH
+ 22 rDfpM1pMG6iPbsAsYGbYmUkJ8Lz3FVR8c9  tx    validated=True ledger_index=7821165 touches_root=True date=847307642 MATCH
+ 23 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  acct  5 fields MATCH
+ 23 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  tx    validated=True ledger_index=7815477 touches_root=True date=847290441 MATCH
+ 24 rnpBbdHZjjLn5kz4nuPS263Yp5m5NLM9MW  acct  5 fields MATCH
+ 24 rnpBbdHZjjLn5kz4nuPS263Yp5m5NLM9MW  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 25 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  acct  5 fields MATCH
+ 25 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  tx    validated=True ledger_index=7830365 touches_root=True date=847335492 MATCH
+ 26 r9GoccJ4Q78YEtpqTESTDUWiGz2bmTaXDJ  acct  5 fields MATCH
+ 26 r9GoccJ4Q78YEtpqTESTDUWiGz2bmTaXDJ  tx    validated=True ledger_index=7811753 touches_root=True date=847279170 MATCH
+ 27 raR6eegsmjxzQWJViPKAMrNrZKSf9SrN81  acct  5 fields MATCH
+ 27 raR6eegsmjxzQWJViPKAMrNrZKSf9SrN81  tx    validated=True ledger_index=7874003 touches_root=True date=847467512 MATCH
+ 28 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  acct  5 fields MATCH
+ 28 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  tx    validated=True ledger_index=7873978 touches_root=True date=847467440 MATCH
+ 29 r3ZntGSWWgJSS2K3Tsd4nyAZgTzcqEzNr8  acct  5 fields MATCH
+ 29 r3ZntGSWWgJSS2K3Tsd4nyAZgTzcqEzNr8  tx    validated=True ledger_index=7818439 touches_root=True date=847299401 MATCH
+ 30 rs4russanrQAcF2Qe5KQiUR9QmzBuNy18n  acct  5 fields MATCH
+ 30 rs4russanrQAcF2Qe5KQiUR9QmzBuNy18n  tx    validated=True ledger_index=7813911 touches_root=True date=847285692 MATCH
+ 31 rhNB5awEHeS1DrduuZDzQC2LdaSsVNj6p1  acct  5 fields MATCH
+ 31 rhNB5awEHeS1DrduuZDzQC2LdaSsVNj6p1  tx    validated=True ledger_index=7873959 touches_root=True date=847467381 MATCH
+ 32 rDR9sYQA24WwpfZh8PAFQnFmEDGRSTzdb8  acct  5 fields MATCH
+ 32 rDR9sYQA24WwpfZh8PAFQnFmEDGRSTzdb8  tx    validated=True ledger_index=7810325 touches_root=True date=847274840 MATCH
+ 33 rUWStamgRGQrJiV2qSdG58an6QhrPoT4FA  acct  5 fields MATCH
+ 33 rUWStamgRGQrJiV2qSdG58an6QhrPoT4FA  tx    validated=True ledger_index=7873916 touches_root=True date=847467252 MATCH
+ 34 rKmRKpFJwBWQcqAWxd9YDFFWa2ifE5nsii  acct  5 fields MATCH
+ 34 rKmRKpFJwBWQcqAWxd9YDFFWa2ifE5nsii  tx    validated=True ledger_index=7840265 touches_root=True date=847365443 MATCH
+ 35 rhfpJbpMiaZR9MHw7uHB4jJv435fd3UScu  acct  5 fields MATCH
+ 35 rhfpJbpMiaZR9MHw7uHB4jJv435fd3UScu  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 36 rMXDbUkyQeRzaHdoyiYgRaiJNeqGrChP2g  acct  5 fields MATCH
+ 36 rMXDbUkyQeRzaHdoyiYgRaiJNeqGrChP2g  tx    validated=True ledger_index=7844423 touches_root=True date=847378061 MATCH
+ 37 rLrEYZ1eFAWEohVfZQfZoZEBUboRrCUdoo  acct  5 fields MATCH
+ 37 rLrEYZ1eFAWEohVfZQfZoZEBUboRrCUdoo  tx    validated=True ledger_index=7830849 touches_root=True date=847336960 MATCH
+ 38 rpiRkk86mYFhrYGJUksyzyWbDQvFbuCENJ  acct  5 fields MATCH
+ 38 rpiRkk86mYFhrYGJUksyzyWbDQvFbuCENJ  tx    validated=True ledger_index=7855674 touches_root=True date=847412090 MATCH
+ 39 rKCmpYUPw5Vt8kwEg2b8u1dECjv3uWeXa2  acct  5 fields MATCH
+ 39 rKCmpYUPw5Vt8kwEg2b8u1dECjv3uWeXa2  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 40 rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx  acct  5 fields MATCH
+ 40 rPo8GkCA9YMKzuJGTHbj11kdVfPqSJHxNx  tx    validated=True ledger_index=7855483 touches_root=True date=847411511 MATCH
+ 41 rpKAdawTemc8RyWpMr59j9RqWUaVCqvHXy  acct  5 fields MATCH
+ 41 rpKAdawTemc8RyWpMr59j9RqWUaVCqvHXy  tx    validated=True ledger_index=7866924 touches_root=True date=847446110 MATCH
+ 42 rBchq87pZ8RjJU3Zmhu9jrtbgjpZLA7JhQ  acct  5 fields MATCH
+ 42 rBchq87pZ8RjJU3Zmhu9jrtbgjpZLA7JhQ  tx    validated=True ledger_index=7857097 touches_root=True date=847416382 MATCH
+ 43 rPTCS8SJr17SbMVSoro1vHF13iFQAXPN5w  acct  5 fields MATCH
+ 43 rPTCS8SJr17SbMVSoro1vHF13iFQAXPN5w  tx    validated=True ledger_index=7867427 touches_root=True date=847447630 MATCH
+ 44 rKF7zToDECjwtYZAM3JLrdQDto9fvTbQSf  acct  5 fields MATCH
+ 44 rKF7zToDECjwtYZAM3JLrdQDto9fvTbQSf  tx    validated=True ledger_index=7855522 touches_root=True date=847411630 MATCH
+ 45 r9XbKMrRpxg3FHqzNNmhvAxy5QtNzYDLHs  acct  5 fields MATCH
+ 45 r9XbKMrRpxg3FHqzNNmhvAxy5QtNzYDLHs  tx    validated=True ledger_index=7873990 touches_root=True date=847467472 MATCH
+ 46 rxGvi692zyX2RJ2hBfY4CfywDy4Qe1wDh   acct  5 fields MATCH
+ 46 rxGvi692zyX2RJ2hBfY4CfywDy4Qe1wDh   tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 47 rKjozZiA9Yi97eHefiKZppxCcX3wEDkf4u  acct  5 fields MATCH
+ 47 rKjozZiA9Yi97eHefiKZppxCcX3wEDkf4u  tx    validated=True ledger_index=7872334 touches_root=True date=847462462 MATCH
+ 48 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  acct  5 fields MATCH
+ 48 raJZBjWkf5771Vu99zcRpWqE6JLTkqEzYo  tx    validated=True ledger_index=7802686 touches_root=True date=847251731 MATCH
+ 49 rhe1nQWD3ND4ck2yHcBfsNBUBcPNo4jmWq  acct  5 fields MATCH
+ 49 rhe1nQWD3ND4ck2yHcBfsNBUBcPNo4jmWq  tx    validated=True ledger_index=7873897 touches_root=True date=847467193 MATCH
+ 50 rM9uA5Fb2GWicqMDANmw1NsPX7f6oPwPmw  acct  5 fields MATCH
+ 50 rM9uA5Fb2GWicqMDANmw1NsPX7f6oPwPmw  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 51 rGgwsUN5p5Tp5sjKPCWMj3u4SCVpZtpwaF  acct  5 fields MATCH
+ 51 rGgwsUN5p5Tp5sjKPCWMj3u4SCVpZtpwaF  tx    validated=True ledger_index=7864300 touches_root=True date=847438182 MATCH
+ 52 rKToaDhyUGUsATPkSgksWfyghXUvgjYjWW  acct  5 fields MATCH
+ 52 rKToaDhyUGUsATPkSgksWfyghXUvgjYjWW  tx    validated=True ledger_index=7873408 touches_root=True date=847465712 MATCH
+ 53 r4STs24kEQhsKb8s5MVfhDMH5VJLS4Yz2m  acct  5 fields MATCH
+ 53 r4STs24kEQhsKb8s5MVfhDMH5VJLS4Yz2m  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 54 rpVwVJrNFQQLkzhkn7EPsYSMk3X4S4Hf32  acct  5 fields MATCH
+ 54 rpVwVJrNFQQLkzhkn7EPsYSMk3X4S4Hf32  tx    validated=True ledger_index=7873978 touches_root=True date=847467440 MATCH
+ 55 r4RPpeS2kUE8BjY9LvKbptW8PQVHhVWghS  acct  5 fields MATCH
+ 55 r4RPpeS2kUE8BjY9LvKbptW8PQVHhVWghS  tx    validated=True ledger_index=7870145 touches_root=True date=847455850 MATCH
+ 56 rBCJAc11UibtTD36XpgXzdxYqEZ4WUcPGC  acct  5 fields MATCH
+ 56 rBCJAc11UibtTD36XpgXzdxYqEZ4WUcPGC  tx    validated=True ledger_index=7871636 touches_root=True date=847460351 MATCH
+ 57 rhhG98SjMr69K6Ap22voYSRWohurwcB2w1  acct  5 fields MATCH
+ 57 rhhG98SjMr69K6Ap22voYSRWohurwcB2w1  tx    validated=True ledger_index=7827469 touches_root=True date=847326740 MATCH
+ 58 rwaaE1PvSUxkNejc2Vz6m6Dyt8TBDao7NT  acct  5 fields MATCH
+ 58 rwaaE1PvSUxkNejc2Vz6m6Dyt8TBDao7NT  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MATCH
+ 59 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  acct  5 fields MATCH
+ 59 r4XLZKYK63z4zW8ttKzgy8NVW1Noa1pRwj  tx    validated=True ledger_index=7852478 touches_root=True date=847402422 MATCH
+ 60 rsjRhGMM68Dp8Dzgufuq2FoJPEs53mfXJe  acct  5 fields MATCH
+ 60 rsjRhGMM68Dp8Dzgufuq2FoJPEs53mfXJe  tx    validated=True ledger_index=7873990 touches_root=True date=847467472 MATCH
+ 61 rEP9r3NjyM8zEbtyJ3eaQg1L2Soc8hts1m  acct  5 fields MATCH
+ 61 rEP9r3NjyM8zEbtyJ3eaQg1L2Soc8hts1m  tx    validated=True ledger_index=7840258 touches_root=True date=847365422 MATCH
+ 62 rwZnndCAFqNzKCjusd3yZPqXnXfrL2TBub  acct  5 fields MATCH
+ 62 rwZnndCAFqNzKCjusd3yZPqXnXfrL2TBub  tx    validated=True ledger_index=7873936 touches_root=True date=847467312 MATCH
+ 63 rEZWzy9DQFA282YP3euJFwUchqiZ9KHKRH  acct  5 fields MATCH
+ 63 rEZWzy9DQFA282YP3euJFwUchqiZ9KHKRH  tx    validated=True ledger_index=7814978 touches_root=True date=847288933 MATCH
+ 64 rMeBxxaweBaMCKe9FLdwvLFEXpsSgX7r32  acct  5 fields MATCH
+ 64 rMeBxxaweBaMCKe9FLdwvLFEXpsSgX7r32  tx    validated=True ledger_index=7802339 touches_root=True date=847250681 MATCH
+ 65 rs5hbB6HCiYSonfz5Dtxi6yKQupZLMwcZQ  acct  5 fields MATCH
+ 65 rs5hbB6HCiYSonfz5Dtxi6yKQupZLMwcZQ  tx    validated=True ledger_index=7856663 touches_root=True date=847415072 MATCH
+ 66 rHVW82cQsJbDnzQh2RPbZKTn6qm759TVas  acct  5 fields MATCH
+ 66 rHVW82cQsJbDnzQh2RPbZKTn6qm759TVas  tx    validated=True ledger_index=7855018 touches_root=True date=847410103 MATCH
+ 67 r3p5EKZcpN5mC38gWeFGmAU7aqFRhuMY8W  acct  5 fields MATCH
+ 67 r3p5EKZcpN5mC38gWeFGmAU7aqFRhuMY8W  tx    validated=True ledger_index=7839429 touches_root=True date=847362920 MATCH
+ 68 rKvNwvGVFRDsw9KTXkWR5s7T5TapCBoZpA  acct  5 fields MATCH
+ 68 rKvNwvGVFRDsw9KTXkWR5s7T5TapCBoZpA  tx    validated=True ledger_index=7873924 touches_root=True date=847467280 MATCH
+ 69 rBTYXwQofjJraScghrzt9CUHCa1gzUxknC  acct  5 fields MATCH
+ 69 rBTYXwQofjJraScghrzt9CUHCa1gzUxknC  tx    validated=True ledger_index=7855490 touches_root=True date=847411531 MATCH
+ 70 r9B48oEz5JUiWPPaHCB9QvBx8ezFwoFXof  acct  5 fields MATCH
+ 70 r9B48oEz5JUiWPPaHCB9QvBx8ezFwoFXof  tx    validated=True ledger_index=7801007 touches_root=True date=847246650 MATCH
+ 71 r4yGNxYmBgbQCK79xT9jFh1MiUuobYzkot  acct  5 fields MATCH
+ 71 r4yGNxYmBgbQCK79xT9jFh1MiUuobYzkot  tx    validated=True ledger_index=7873890 touches_root=True date=847467172 MATCH
+ 72 rwVfc9o8YTXEsBio5ucEUBEp5aBHtjGma5  acct  5 fields MATCH
+ 72 rwVfc9o8YTXEsBio5ucEUBEp5aBHtjGma5  tx    validated=True ledger_index=7873986 touches_root=True date=847467462 MATCH
+ 73 rsS2Y6CK9dz9dVFjJvRyD2gBdoLPqjaXRZ  acct  5 fields MATCH
+ 73 rsS2Y6CK9dz9dVFjJvRyD2gBdoLPqjaXRZ  tx    validated=True ledger_index=7856641 touches_root=True date=847415010 MATCH
+ 74 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  acct  5 fields MATCH
+ 74 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  tx    validated=True ledger_index=7854450 touches_root=True date=847408390 MATCH
+ 75 rDTaftFFy79qX36x676L9BfsNRoJzhFZGo  acct  5 fields MATCH
+ 75 rDTaftFFy79qX36x676L9BfsNRoJzhFZGo  tx    validated=True ledger_index=7856648 touches_root=True date=847415031 MATCH
+ 76 rayoQhgacV3Abe84vJ4dUxPVGAMTCcDXuZ  acct  5 fields MATCH
+ 76 rayoQhgacV3Abe84vJ4dUxPVGAMTCcDXuZ  tx    validated=True ledger_index=7873966 touches_root=True date=847467402 MATCH
+ 77 rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7  acct  5 fields MATCH
+ 77 rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7  tx    validated=True ledger_index=7873743 touches_root=True date=847466731 MATCH
+ 78 rMGk5bK7Adw7aDocRRdjxaarzRvieKjnrh  acct  5 fields MATCH
+ 78 rMGk5bK7Adw7aDocRRdjxaarzRvieKjnrh  tx    validated=True ledger_index=7873969 touches_root=True date=847467411 MATCH
+ 79 rwQRffqrs8e97ewBYqvnmaL6KEw7DPwgqd  acct  5 fields MATCH
+ 79 rwQRffqrs8e97ewBYqvnmaL6KEw7DPwgqd  tx    validated=True ledger_index=7873139 touches_root=True date=847464900 MATCH
+ 80 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  acct  5 fields MATCH
+ 80 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  tx    validated=True ledger_index=7873994 touches_root=True date=847467490 MATCH
+ 81 rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo  acct  5 fields MATCH
+ 81 rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo  tx    validated=True ledger_index=7857067 touches_root=True date=847416292 MATCH
+ 82 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  acct  5 fields MATCH
+ 82 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  tx    validated=True ledger_index=7806359 touches_root=True date=847262840 MATCH
+ 83 raiQWaAwUbcmHxBwDYsvdrjcY6wL5crvrw  acct  5 fields MATCH
+ 83 raiQWaAwUbcmHxBwDYsvdrjcY6wL5crvrw  tx    validated=True ledger_index=7854916 touches_root=True date=847409800 MATCH
+ 84 rfsgpVrWaZWgepPp9ViDzM7CnD3VdNYcWC  acct  5 fields MATCH
+ 84 rfsgpVrWaZWgepPp9ViDzM7CnD3VdNYcWC  tx    validated=True ledger_index=7837177 touches_root=True date=847356110 MATCH
+ 85 rHxTQAsD6k2JkQMaHxht8iTKdbHTcxEEWs  acct  5 fields MATCH
+ 85 rHxTQAsD6k2JkQMaHxht8iTKdbHTcxEEWs  tx    validated=True ledger_index=7823208 touches_root=True date=847313831 MATCH
+ 86 rpHvzMCKZ7JrzGfRseXohC3RsMWqcnEKkA  acct  5 fields MATCH
+ 86 rpHvzMCKZ7JrzGfRseXohC3RsMWqcnEKkA  tx    validated=True ledger_index=7856657 touches_root=True date=847415060 MATCH
+ 87 rhiGmYja4kFgQGmiYEE93dGuNgRK6UEGuk  acct  5 fields MATCH
+ 87 rhiGmYja4kFgQGmiYEE93dGuNgRK6UEGuk  tx    validated=True ledger_index=7873959 touches_root=True date=847467381 MATCH
+ 88 r9MqpdMwnzEaLwdTHpBFrah4MpAJn6op2m  acct  5 fields MATCH
+ 88 r9MqpdMwnzEaLwdTHpBFrah4MpAJn6op2m  tx    validated=True ledger_index=7811726 touches_root=True date=847279090 MATCH
+ 89 r3F4NYif2Lt4qWCXQxELrTuaeenGmgpXPc  acct  5 fields MATCH
+ 89 r3F4NYif2Lt4qWCXQxELrTuaeenGmgpXPc  tx    validated=True ledger_index=7873689 touches_root=True date=847466563 MATCH
+SUMMARY {"accounts": 89, "date_checked": 89, "fields_mismatch": 0, "fields_ok": 445, "retries": 0, "retries_by_error": {}, "rpc_calls": 179, "skipped": 0, "tx_checked": 89, "tx_mismatch": 0, "tx_ok": 89, "tx_out_of_range": 0, "tx_skipped": 0}
+RESULT: only 89/200 accounts checked -> exit 2
+(exit 2)

@@ -1,0 +1,4 @@
+2026-11-09T15:38:54Z source public complete_ledgers [(7850054, 7902547)]
+2026-11-09T15:38:55Z source local complete_ledgers [(7901830, 7902547)]
+2026-11-09T15:38:55Z START want 4562 have 72 todo 4490 torn_bytes 0
+2026-11-09T15:39:35Z DONE {"already": 72, "by_source": {"public": 44}, "fetched": 44, "lgrNotFound": 0, "pruned": 4446, "torn_bytes": 0}

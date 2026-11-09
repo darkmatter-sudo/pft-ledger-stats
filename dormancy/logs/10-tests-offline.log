@@ -1,0 +1,55 @@
+OS: Ubuntu 22.04.5 LTS | 2026-11-08T16:33:49Z | git 4629356c6af180f4ebdc2817d342fee5bb3228a5 | changed tracked files under dormancy/ tests/: 0
+$ .venv/bin/ruff check . && .venv/bin/ruff format --check dormancy tests/test_dormancy.py tests/test_crosscheck_dormancy.py
+All checks passed!
+6 files already formatted
+(exit 0)
+$ .venv/bin/python -m pytest -q tests/test_dormancy.py tests/test_crosscheck_dormancy.py
+................................................                         [100%]
+48 passed in 0.68s
+(exit 0)
+$ .venv/bin/python -m pytest -q
+........................................................................ [ 11%]
+........................................................................ [ 22%]
+........................................................................ [ 33%]
+........................................................................ [ 45%]
+........................................................................ [ 56%]
+........................................................................ [ 67%]
+........................................................................ [ 79%]
+........................................................................ [ 90%]
+.............................................................            [100%]
+637 passed in 30.09s
+(exit 0)
+$ sha256sum data/dormancy/A/crosscheck-A-random-seed1.jsonl data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl; wc -l data/dormancy/A/crosscheck-A-random-seed1.jsonl data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl
+6bf24805d0e9f61b3d54f2bb7a3c4862851ad3a4172af0e668a91d29c71e6ec3  data/dormancy/A/crosscheck-A-random-seed1.jsonl
+9d05fab146dd16b277ef7963165dbd546ae334745935a11ec6ad274afbf57459  data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl
+   204 data/dormancy/A/crosscheck-A-random-seed1.jsonl
+   179 data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl
+   383 total
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 --offline data/dormancy/A/crosscheck-A-random-seed1.jsonl | tail -2
+SUMMARY {"accounts": 200, "date_checked": 3, "fields_mismatch": 0, "fields_ok": 1000, "retries": 0, "retries_by_error": {}, "rpc_calls": 204, "skipped": 0, "tx_checked": 3, "tx_mismatch": 0, "tx_ok": 3, "tx_out_of_range": 197, "tx_skipped": 0}
+RESULT: all match -> exit 0
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 --negative --offline data/dormancy/A/crosscheck-A-random-seed1.jsonl | tail -2
+SUMMARY {"accounts": 200, "date_checked": 3, "fields_mismatch": 1000, "fields_ok": 0, "retries": 0, "retries_by_error": {}, "rpc_calls": 204, "skipped": 0, "tx_checked": 3, "tx_mismatch": 3, "tx_ok": 0, "tx_out_of_range": 197, "tx_skipped": 0}
+RESULT: negative control PASS: field mismatches 1000/1000, tx mismatches 3/3, OK lines 0 -> exit 1
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 89 --seed 1 --in-range-only --offline data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl | tail -2
+SUMMARY {"accounts": 89, "date_checked": 89, "fields_mismatch": 0, "fields_ok": 445, "retries": 0, "retries_by_error": {}, "rpc_calls": 179, "skipped": 0, "tx_checked": 89, "tx_mismatch": 0, "tx_ok": 89, "tx_out_of_range": 0, "tx_skipped": 0}
+RESULT: all match -> exit 0
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 89 --seed 1 --in-range-only --negative --offline data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl | tail -2
+SUMMARY {"accounts": 89, "date_checked": 89, "fields_mismatch": 445, "fields_ok": 0, "retries": 0, "retries_by_error": {}, "rpc_calls": 179, "skipped": 0, "tx_checked": 89, "tx_mismatch": 89, "tx_ok": 0, "tx_out_of_range": 0, "tx_skipped": 0}
+RESULT: negative control PASS: field mismatches 445/445, tx mismatches 89/89, OK lines 0 -> exit 1
+(exit 0)
+# exit codes below are the crosscheck's own (no pipe):
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 --offline data/dormancy/A/crosscheck-A-random-seed1.jsonl > /dev/null
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 --negative --offline data/dormancy/A/crosscheck-A-random-seed1.jsonl > /dev/null
+(exit 1)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 89 --seed 1 --in-range-only --offline data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl > /dev/null
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 89 --seed 1 --in-range-only --negative --offline data/dormancy/A/crosscheck-A-inrange89-seed1.jsonl > /dev/null
+(exit 1)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 2 --offline data/dormancy/A/crosscheck-A-random-seed1.jsonl > /dev/null
+(exit 3)

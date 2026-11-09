@@ -1,0 +1,534 @@
+{
+ "snapshots": [
+  {
+   "accounts": 4573,
+   "balance_drops": 99999999967938708,
+   "buckets": {
+    "1d-7d": {
+     "accounts": 114,
+     "accounts_max": 114,
+     "accounts_min": 114,
+     "balance_drops": 8427603897249,
+     "by_kind": {
+      "before": 0,
+      "exact": 65,
+      "interp": 49
+     },
+     "gini": 0.95781,
+     "owner_count": 29,
+     "reserve_drops": 1198000000,
+     "top_share": 0.998457
+    },
+    "1h-1d": {
+     "accounts": 25,
+     "accounts_max": 25,
+     "accounts_min": 25,
+     "balance_drops": 11182919253863,
+     "by_kind": {
+      "before": 0,
+      "exact": 25,
+      "interp": 0
+     },
+     "gini": 0.771837,
+     "owner_count": 37,
+     "reserve_drops": 324000000,
+     "top_share": 0.979313
+    },
+    "7d-14d": {
+     "accounts": 109,
+     "accounts_max": 140,
+     "accounts_min": 40,
+     "balance_drops": 1694039681714,
+     "by_kind": {
+      "before": 0,
+      "exact": 40,
+      "interp": 69
+     },
+     "gini": 0.98952,
+     "owner_count": 9,
+     "reserve_drops": 1108000000,
+     "top_share": 0.999128
+    },
+    "<1h": {
+     "accounts": 37,
+     "accounts_max": 37,
+     "accounts_min": 37,
+     "balance_drops": 488260440842408,
+     "by_kind": {
+      "before": 0,
+      "exact": 37,
+      "interp": 0
+     },
+     "gini": 0.972947,
+     "owner_count": 43,
+     "reserve_drops": 456000000,
+     "top_share": 0.999994
+    },
+    ">=14d": {
+     "accounts": 4288,
+     "accounts_max": 4357,
+     "accounts_min": 4257,
+     "balance_drops": 99490434964263474,
+     "by_kind": {
+      "before": 4220,
+      "exact": 34,
+      "interp": 34
+     },
+     "gini": 0.999699,
+     "owner_count": 239,
+     "reserve_drops": 43357999768,
+     "top_share": 0.997459
+    }
+   },
+   "checks": [
+    {
+     "detail": "5106 vs 5106",
+     "name": "objects_paged",
+     "ok": true
+    },
+    {
+     "detail": "4573 vs 4573",
+     "name": "accounts_in_buckets",
+     "ok": true
+    },
+    {
+     "detail": "99999999967938708 vs 99999999967938708",
+     "name": "balance_in_buckets",
+     "ok": true
+    },
+    {
+     "detail": "sum of bucket reserves = sum of account reserves",
+     "name": "reserve_in_buckets",
+     "ok": true
+    },
+    {
+     "detail": "owner counts",
+     "name": "owner_count_in_buckets",
+     "ok": true
+    },
+    {
+     "detail": "balances 99999999967938708 + escrow 0 + paychan 0 vs 99999999967938708",
+     "name": "total_coins",
+     "ok": true
+    },
+    {
+     "detail": "every account has a bucket",
+     "name": "no_unbucketed",
+     "ok": true
+    },
+    {
+     "detail": "min <= point <= max per bucket",
+     "name": "bounds_hold",
+     "ok": true
+    }
+   ],
+   "close_time": "2026-11-08T15:38:40Z",
+   "escrow_drops": 0,
+   "file": "snapshot-7874004.jsonl.gz",
+   "gini_all": 0.999702,
+   "ledger_hash": "793B89EB45C4625A49391C233FA64A6ED3D346A7250FEBDABBE75C03332671E0",
+   "ledger_index": 7874004,
+   "objects": 5106,
+   "owner_count": {
+    "1d-7d|0": 106,
+    "1d-7d|1": 3,
+    "1d-7d|2-5": 3,
+    "1d-7d|6-20": 2,
+    "1h-1d|0": 12,
+    "1h-1d|1": 7,
+    "1h-1d|2-5": 4,
+    "1h-1d|6-20": 2,
+    "7d-14d|0": 107,
+    "7d-14d|1": 1,
+    "7d-14d|6-20": 1,
+    "<1h|0": 4,
+    "<1h|1": 26,
+    "<1h|2-5": 7,
+    ">=14d|0": 4193,
+    ">=14d|1": 73,
+    ">=14d|2-5": 13,
+    ">=14d|6-20": 8,
+    ">=14d|>20": 1
+   },
+   "paychan_drops": 0,
+   "reserve_base": 10000000,
+   "reserve_inc": 2000000,
+   "timemap": {
+    "before_age_floor_days": 18.269,
+    "interp_bound_max_s": 547019,
+    "interp_bound_median_s": 547019,
+    "kinds": {
+     "before": 4220,
+     "exact": 201,
+     "interp": 152
+    },
+    "oldest_header": 7352333,
+    "oldest_header_time": "2026-10-21T09:11:50Z"
+   },
+   "top": [
+    {
+     "account": "r4vhrMChCsaoFsBoCkRTRGUuc1njfr7bmA",
+     "balance_drops": 96999999999999880,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7",
+     "balance_drops": 488172345807986,
+     "bucket": "<1h",
+     "kind": "exact",
+     "owner_count": 1
+    },
+    {
+     "account": "rD9LaW5h5AeGoHsPARWNegfZs3XpeNrv9w",
+     "balance_drops": 250000000000000,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rJNBxuus1TjCq3pikYUsKUXXwyBsJqQAt9",
+     "balance_drops": 250000000000000,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rs3YdBLJHFGhcPKtbMwQgkbrpo1YjyajTP",
+     "balance_drops": 250000000000000,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rscWPz4aA4GtQKH5tYvVFwteiSSjTjounC",
+     "balance_drops": 250000000000000,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rBDbRYd8H7gB6mdNTRssgNvsw8Z6c4riDb",
+     "balance_drops": 249952699999892,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rhczhWeG3eSohzcH5jw8m8Ynca9cgH4eZm",
+     "balance_drops": 249714196430448,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rKddMw1hqMGwfgJvzjbWQHtBQT8hDcZNCP",
+     "balance_drops": 248880686825979,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rJNwqDPKSkbqDPNoNxbW6C3KCS84ZaQc96",
+     "balance_drops": 246963444567100,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    }
+   ],
+   "top_share_all": 0.994837,
+   "total_coins": 99999999967938708
+  },
+  {
+   "accounts": 4586,
+   "balance_drops": 99999999967839710,
+   "buckets": {
+    "1d-7d": {
+     "accounts": 112,
+     "accounts_max": 112,
+     "accounts_min": 112,
+     "balance_drops": 7540070200925,
+     "by_kind": {
+      "before": 0,
+      "exact": 63,
+      "interp": 49
+     },
+     "gini": 0.959638,
+     "owner_count": 27,
+     "reserve_drops": 1174000000,
+     "top_share": 0.997088
+    },
+    "1h-1d": {
+     "accounts": 26,
+     "accounts_max": 26,
+     "accounts_min": 26,
+     "balance_drops": 10848711340758,
+     "by_kind": {
+      "before": 0,
+      "exact": 26,
+      "interp": 0
+     },
+     "gini": 0.798531,
+     "owner_count": 36,
+     "reserve_drops": 332000000,
+     "top_share": 0.995317
+    },
+    "7d-14d": {
+     "accounts": 109,
+     "accounts_max": 157,
+     "accounts_min": 57,
+     "balance_drops": 2906258691062,
+     "by_kind": {
+      "before": 0,
+      "exact": 57,
+      "interp": 52
+     },
+     "gini": 0.982275,
+     "owner_count": 13,
+     "reserve_drops": 1116000000,
+     "top_share": 0.999492
+    },
+    "<1h": {
+     "accounts": 34,
+     "accounts_max": 34,
+     "accounts_min": 34,
+     "balance_drops": 488266151343647,
+     "by_kind": {
+      "before": 0,
+      "exact": 34,
+      "interp": 0
+     },
+     "gini": 0.970559,
+     "owner_count": 36,
+     "reserve_drops": 412000000,
+     "top_share": 0.999995
+    },
+    ">=14d": {
+     "accounts": 4305,
+     "accounts_max": 4357,
+     "accounts_min": 4257,
+     "balance_drops": 99490438776263318,
+     "by_kind": {
+      "before": 4220,
+      "exact": 34,
+      "interp": 51
+     },
+     "gini": 0.999701,
+     "owner_count": 239,
+     "reserve_drops": 43527999768,
+     "top_share": 0.997459
+    }
+   },
+   "checks": [
+    {
+     "detail": "5113 vs 5113",
+     "name": "objects_paged",
+     "ok": true
+    },
+    {
+     "detail": "4586 vs 4586",
+     "name": "accounts_in_buckets",
+     "ok": true
+    },
+    {
+     "detail": "99999999967839710 vs 99999999967839710",
+     "name": "balance_in_buckets",
+     "ok": true
+    },
+    {
+     "detail": "sum of bucket reserves = sum of account reserves",
+     "name": "reserve_in_buckets",
+     "ok": true
+    },
+    {
+     "detail": "owner counts",
+     "name": "owner_count_in_buckets",
+     "ok": true
+    },
+    {
+     "detail": "balances 99999999967839710 + escrow 0 + paychan 0 vs 99999999967839710",
+     "name": "total_coins",
+     "ok": true
+    },
+    {
+     "detail": "every account has a bucket",
+     "name": "no_unbucketed",
+     "ok": true
+    },
+    {
+     "detail": "min <= point <= max per bucket",
+     "name": "bounds_hold",
+     "ok": true
+    }
+   ],
+   "close_time": "2026-11-09T15:38:50Z",
+   "escrow_drops": 0,
+   "file": "snapshot-7902546.jsonl.gz",
+   "gini_all": 0.999702,
+   "ledger_hash": "1985DB3870F2BDB5C2485A8A963E60A01E50B82834F8D639EBCDDB2C8594D5DD",
+   "ledger_index": 7902546,
+   "objects": 5113,
+   "owner_count": {
+    "1d-7d|0": 103,
+    "1d-7d|1": 5,
+    "1d-7d|2-5": 2,
+    "1d-7d|6-20": 2,
+    "1h-1d|0": 14,
+    "1h-1d|1": 6,
+    "1h-1d|2-5": 4,
+    "1h-1d|6-20": 2,
+    "7d-14d|0": 106,
+    "7d-14d|1": 1,
+    "7d-14d|2-5": 1,
+    "7d-14d|6-20": 1,
+    "<1h|0": 4,
+    "<1h|1": 24,
+    "<1h|2-5": 6,
+    ">=14d|0": 4210,
+    ">=14d|1": 73,
+    ">=14d|2-5": 13,
+    ">=14d|6-20": 8,
+    ">=14d|>20": 1
+   },
+   "paychan_drops": 0,
+   "reserve_base": 10000000,
+   "reserve_inc": 2000000,
+   "timemap": {
+    "before_age_floor_days": 19.269,
+    "interp_bound_max_s": 547019,
+    "interp_bound_median_s": 547019,
+    "kinds": {
+     "before": 4220,
+     "exact": 214,
+     "interp": 152
+    },
+    "oldest_header": 7352333,
+    "oldest_header_time": "2026-10-21T09:11:50Z"
+   },
+   "top": [
+    {
+     "account": "r4vhrMChCsaoFsBoCkRTRGUuc1njfr7bmA",
+     "balance_drops": 96999999999999880,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rwdm72S9YVKkZjeADKU2bbUMuY4vPnSfH7",
+     "balance_drops": 488142996557313,
+     "bucket": "<1h",
+     "kind": "exact",
+     "owner_count": 1
+    },
+    {
+     "account": "rD9LaW5h5AeGoHsPARWNegfZs3XpeNrv9w",
+     "balance_drops": 250000000000000,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rJNBxuus1TjCq3pikYUsKUXXwyBsJqQAt9",
+     "balance_drops": 250000000000000,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rs3YdBLJHFGhcPKtbMwQgkbrpo1YjyajTP",
+     "balance_drops": 250000000000000,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rscWPz4aA4GtQKH5tYvVFwteiSSjTjounC",
+     "balance_drops": 250000000000000,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rBDbRYd8H7gB6mdNTRssgNvsw8Z6c4riDb",
+     "balance_drops": 249952699999892,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rhczhWeG3eSohzcH5jw8m8Ynca9cgH4eZm",
+     "balance_drops": 249714196430448,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rKddMw1hqMGwfgJvzjbWQHtBQT8hDcZNCP",
+     "balance_drops": 248880686825979,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    },
+    {
+     "account": "rJNwqDPKSkbqDPNoNxbW6C3KCS84ZaQc96",
+     "balance_drops": 246963444567100,
+     "bucket": ">=14d",
+     "kind": "before",
+     "owner_count": 0
+    }
+   ],
+   "top_share_all": 0.994837,
+   "total_coins": 99999999967839710
+  }
+ ],
+ "timemap_sources": {
+  "anchors": 146,
+  "fetched_headers": 116,
+  "merged": 236
+ },
+ "top_n": 10,
+ "transitions": {
+  "checks": [
+   {
+    "detail": "4573 - 0 + 13 vs 4586",
+    "name": "accounts_conserved",
+    "ok": true
+   },
+   {
+    "detail": "every A account has exactly one A->B cell",
+    "name": "matrix_covers_a",
+    "ok": true
+   },
+   {
+    "detail": "47 + 4526 + 0 vs 4573",
+    "name": "touched_plus_untouched",
+    "ok": true
+   },
+   {
+    "detail": "0 problems",
+    "name": "invariants",
+    "ok": true
+   }
+  ],
+  "created": 13,
+  "deleted": 0,
+  "matrix": {
+   "1d-7d|1d-7d": 97,
+   "1d-7d|7d-14d": 17,
+   "1h-1d|1d-7d": 13,
+   "1h-1d|1h-1d": 11,
+   "1h-1d|<1h": 1,
+   "7d-14d|7d-14d": 92,
+   "7d-14d|>=14d": 17,
+   "<1h|1d-7d": 2,
+   "<1h|1h-1d": 15,
+   "<1h|<1h": 20,
+   ">=14d|>=14d": 4288,
+   "created|<1h": 13
+  },
+  "problems": [],
+  "touched": 47,
+  "untouched": 4526
+ }
+}

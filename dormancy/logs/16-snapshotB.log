@@ -1,0 +1,914 @@
+Linux <host> 5.15.0-202-generic #212-Ubuntu SMP Thu Oct 15 16:49:38 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+# dormancy run 16 - 2026-11-09T15:38:49Z | python 3.10.12 | HEAD 645c9e751af906dbdedabcdacc7881c00e969767
+$ git status --short -- dormancy state tests
+?? dormancy/data/
+?? dormancy/report/
+(exit 0)
+$ mkdir -p data/dormancy/B
+(exit 0)
+$ .venv/bin/python -u state/snapshot.py --out data/dormancy/B --log data/dormancy/B/snapshot.log
+2026-11-09T15:38:50Z START ledger 7902546 1985DB3870F2BDB5C2485A8A963E60A01E50B82834F8D639EBCDDB2C8594D5DD total_coins 99999999967839710 close 2026-11-09T15:38:50Z limit 2048 | host python 3.10.12
+2026-11-09T15:38:51Z page 0 +2048 objects (total 2048) marker 64FA7CA4FD9A6B0C
+2026-11-09T15:38:52Z page 1 +2048 objects (total 4096) marker CC993783D3D06836
+2026-11-09T15:38:53Z page 2 +1017 objects (total 5113) marker -
+2026-11-09T15:38:53Z DONE 5113 objects in 3 pages, 5 RPC calls this run -> snapshot-7902546.jsonl.gz
+(exit 0)
+$ cat data/dormancy/B/snapshot.log
+2026-11-09T15:38:50Z START ledger 7902546 1985DB3870F2BDB5C2485A8A963E60A01E50B82834F8D639EBCDDB2C8594D5DD total_coins 99999999967839710 close 2026-11-09T15:38:50Z limit 2048 | host python 3.10.12
+2026-11-09T15:38:51Z page 0 +2048 objects (total 2048) marker 64FA7CA4FD9A6B0C
+2026-11-09T15:38:52Z page 1 +2048 objects (total 4096) marker CC993783D3D06836
+2026-11-09T15:38:53Z page 2 +1017 objects (total 5113) marker -
+2026-11-09T15:38:53Z DONE 5113 objects in 3 pages, 5 RPC calls this run -> snapshot-7902546.jsonl.gz
+(exit 0)
+$ cat data/dormancy/B/state.json
+{
+ "account_hash": "7D2045B841AE9E9CF68EF7A2A6159108B52E7C40DB21AAE46511457961D57229",
+ "close_time": 847553930,
+ "close_time_iso": "2026-11-09T15:38:50Z",
+ "ledger_hash": "1985DB3870F2BDB5C2485A8A963E60A01E50B82834F8D639EBCDDB2C8594D5DD",
+ "ledger_index": 7902546,
+ "server_state_reserve_base": 10000000,
+ "server_state_reserve_inc": 2000000,
+ "server_state_validated_seq": 7902546,
+ "total_coins": 99999999967839710
+}
+(exit 0)
+$ sha256sum data/dormancy/A/snapshot-7874004.jsonl.gz data/dormancy/B/snapshot-7902546.jsonl.gz
+b01275c9238a5a548538f02d3c3b8bf637b9eb14fcc1fb1f623606766b526692  data/dormancy/A/snapshot-7874004.jsonl.gz
+92855b44d084349031d44584e50ba5174a3a80bd45f346a03fb2cea5b50da1cf  data/dormancy/B/snapshot-7902546.jsonl.gz
+(exit 0)
+$ wc -l data/dormancy/headers.jsonl
+72 data/dormancy/headers.jsonl
+(exit 0)
+$ .venv/bin/python -u dormancy/headers_dormancy.py data/dormancy/A/snapshot-7874004.jsonl.gz data/dormancy/B/snapshot-7902546.jsonl.gz --out data/dormancy/headers.jsonl --log data/dormancy/headers-B.log
+2026-11-09T15:38:54Z source public complete_ledgers [(7850054, 7902547)]
+2026-11-09T15:38:55Z source local complete_ledgers [(7901830, 7902547)]
+2026-11-09T15:38:55Z START want 4562 have 72 todo 4490 torn_bytes 0
+2026-11-09T15:39:35Z DONE {"already": 72, "by_source": {"public": 44}, "fetched": 44, "lgrNotFound": 0, "pruned": 4446, "torn_bytes": 0}
+(exit 0)
+$ wc -l data/dormancy/headers.jsonl; sha256sum data/dormancy/headers.jsonl
+116 data/dormancy/headers.jsonl
+b4d934e7f3c2bf1a675f4b6ae7b5599ae0222b253c400860dfb2f14e144a811d  data/dormancy/headers.jsonl
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/B/snapshot-7902546.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 --record data/dormancy/B/crosscheck-B-random-seed1.jsonl
+2026-11-09T15:39:35Z crosscheck_dormancy live
+source complete_ledgers [(7850054, 7902560)]
+snapshot ledger 7902546 1985DB3870F2BDB5C2485A8A963E60A01E50B82834F8D639EBCDDB2C8594D5DD mode positive seed 1 count 200
+ #   account                             field              expected -> got   result
+  1 rwgmnMc8TLdzeK22y1xHEraz3gunDX85L9  acct  5 fields MATCH
+  2 rwscFo6ECHYTyRmCaXeEqDD3395mMuFcS6  acct  5 fields MATCH
+  3 r4SuLXY75r5tcJrcW6LcBQqK31DkT9JSwL  acct  5 fields MATCH
+  4 rn4WeEWSHf5zHjvjuncLH8Js8TyAYutvN2  acct  5 fields MATCH
+  5 rnFEZF8Nv2arud74wzNLzNGBQGvyhmAzXr  acct  5 fields MATCH
+  6 rL1dpaS43fYTAGJUbW5GrjTZ8TumAsptHq  acct  5 fields MATCH
+  7 rP9UTujuwtK2FQqpBjA7DtYz2VYMs8EeBm  acct  5 fields MATCH
+  8 rKCdT8qbitqi2Q2CTpfinr1Jsi4T1VK7ap  acct  5 fields MATCH
+  9 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  acct  5 fields MATCH
+  9 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  tx    validated=True ledger_index=7854450 touches_root=True date=847408390 MATCH
+ 10 rn6dU8B2yCwyiwPMhZbqCw6mCk8dgF97Pb  acct  5 fields MATCH
+ 11 rQLbvDPukUU8skZ2bNUfVjYjsjVkkLmku8  acct  5 fields MATCH
+ 12 rJNWRxnt4PsCccWXZiRhzwAaRUBvMdF4vf  acct  5 fields MATCH
+ 13 raLr93Dp1acCm7D3GcZFDGx8hjJtSAXbBi  acct  5 fields MATCH
+ 14 r3wiRVgPF5rLAWtbRDVT8LFX2Dftd71Y5t  acct  5 fields MATCH
+ 15 rK9cbG8F9M4w5Qv4t5UmdFen5v1QrjAx1D  acct  5 fields MATCH
+ 16 rBFgSXA5CB9ME9xhkLESV5FQ919PMahoy1  acct  5 fields MATCH
+ 17 rP91nMQLadXBDgfQCikRzFPRoENPcvVpkd  acct  5 fields MATCH
+ 18 rKne3os6hx6yENqtHkeLVdWWoF1rNrjRAo  acct  5 fields MATCH
+ 19 r3HGjq7G4TBSnGL1Xnszh7qbZhAFZusbeR  acct  5 fields MATCH
+ 20 rUM7yBizNFb3wueNg277PeCGBaAqGJJbwH  acct  5 fields MATCH
+ 21 rhJvL92huryU2SzzDMH44XtXuTqCJ6ma3L  acct  5 fields MATCH
+ 22 rwGWM112GkDiEyX14ktUwH1wcjhWzRHRx7  acct  5 fields MATCH
+ 23 rnGqBUAUanqcy9VZLapy9hPbuKRnBhBPr7  acct  5 fields MATCH
+ 24 rK1ynDvJJz2YZLmTgppb8drPS6wFNVCHxY  acct  5 fields MATCH
+ 25 rP6vWfrXDv53aQihxxcb6yxmPoYxio6i8o  acct  5 fields MATCH
+ 26 rQn2MnSEEs7gLsMuwLfdE5gw6cWUQLQ9Yc  acct  5 fields MATCH
+ 27 r32rmEpwcEAjUVquoB2t8SECyBjw61mrb7  acct  5 fields MATCH
+ 28 rGfr9SLsvLndA7m1aPHKFpaV8YNd7FvrzM  acct  5 fields MATCH
+ 29 rJHuCG8ZFVnoodRhMd61W51RZTPenXnHc4  acct  5 fields MATCH
+ 30 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  acct  5 fields MATCH
+ 31 rPbTY4Pp1VstHGxzXzLoq4JfBR5TvhK286  acct  5 fields MATCH
+ 32 rGCj3D91CxN5kMqndF4V3wgRyFEYrbbZBU  acct  5 fields MATCH
+ 33 rHyVeAPQRw2GgZvVR6FPmVttiKMMfUdBCN  acct  5 fields MATCH
+ 34 rKATTGnGLyG2konCR2bh5SjUGQrmZMSSfE  acct  5 fields MATCH
+ 35 ramV89br68AuHpf9nrhR2r2b1a8HD9VAN8  acct  5 fields MATCH
+ 36 rPb4xerhbyPJrgwSoUTjs7cmrsKWt4c4Cm  acct  5 fields MATCH
+ 37 rBftJFRicermxHDX8BrteKgQrbxUmwRKG9  acct  5 fields MATCH
+ 38 rJ1NxYs5ttN22dStqUwuyKizmYATv5wKJY  acct  5 fields MATCH
+ 39 rHvDyc9vvyURyQrGhgMAVSRusqdkvgrwTx  acct  5 fields MATCH
+ 40 rpWrjdkyoBcaYHs6CdFxpk6e91fuz4BhhE  acct  5 fields MATCH
+ 40 rpWrjdkyoBcaYHs6CdFxpk6e91fuz4BhhE  tx    validated=True ledger_index=7902448 touches_root=True date=847553632 MATCH
+ 41 r44CK7zpLwfL8hqJR3Ptzq1FfDHzJZVXZD  acct  5 fields MATCH
+ 42 rLgTUZ5d1T8nnbyMfQNHtZxhZo8BZp5oiL  acct  5 fields MATCH
+ 43 rpbXjFvg8oUXFYLVmWtvxMRxKjzWLh4Jko  acct  5 fields MATCH
+ 44 rEPo9tj7Cbz8uf6kwSzmQvEjxJMpfPx3sC  acct  5 fields MATCH
+ 45 rHAWopH8FQDRVXQAN8RkkxTdvoJLdyH5V1  acct  5 fields MATCH
+ 46 rBNAcGYTTSxkcCZXwbYeVAXzGzv4JgtCG3  acct  5 fields MATCH
+ 47 rBE6jvZuycu7WZhjNz8jB3aN7KMJxY41xd  acct  5 fields MATCH
+ 48 rUZmhiCJePAXXAdZm7XE9SHPW7X9skk8EM  acct  5 fields MATCH
+ 49 r9xJUWy7Au9nZ5cpqUb4B5Ty7MYNg1TsfX  acct  5 fields MATCH
+ 50 rJAQ5Q6yhAgAsUFttmgEHfmGt2jjpRDqtJ  acct  5 fields MATCH
+ 51 rJCY1wJcPUmZQubuwW6FCmgM86tvb7WYfj  acct  5 fields MATCH
+ 52 rMn5Zt7jYmi1i17TQ9DiWCQLqdFJNbTdYK  acct  5 fields MATCH
+ 53 r95disaSniBYhiAEREn2pAtMPWGdVCTnNF  acct  5 fields MATCH
+ 54 rpyzVNjFKvw2didgxeEsHqCatX9zv87YFc  acct  5 fields MATCH
+ 55 rap23piP897u2pmC3emZTZfz8UzRJBXBWF  acct  5 fields MATCH
+ 56 rGXX6FpN57wQGf6cwaozLDahK17WTsauS2  acct  5 fields MATCH
+ 57 rELvgp2EfxbELuauibHPtRhNPCfYphkzST  acct  5 fields MATCH
+ 58 rftQT53XLY8MpDDaVoCoh1DDjc1fxWEA2S  acct  5 fields MATCH
+ 59 rP1NUewSAmstoiSdn9YdTiKHSh7a6Ai7yU  acct  5 fields MATCH
+ 60 rEMrwTNtpjgoPgRZ1nTLS6oak5RpU4oQaL  acct  5 fields MATCH
+ 61 rhYseYjDVdJzHmXx4f37TGnNjknqwdSF55  acct  5 fields MATCH
+ 62 rnYC95Kn23MQwJHAj53qe83C3ZxVZFhVcU  acct  5 fields MATCH
+ 63 rsMhDySvitDGa2CF5ze5i3tbviZSB9QW61  acct  5 fields MATCH
+ 64 rLTpThmYz9waMieQmW53ABavP8yYUMXSfq  acct  5 fields MATCH
+ 65 rKpnQDWgRsV9d716BhW5uhRs8kPHQuK7eA  acct  5 fields MATCH
+ 66 rhEKTHJS8DkoXKaS4ZDT68gSxEVbQcPv58  acct  5 fields MATCH
+ 67 raicwKMwJvVJSaipAp9ekJX5WpDeJRqKZ4  acct  5 fields MATCH
+ 68 rpPYrj88wtb7BVH5HWMH7kqrHJu4xDkxWH  acct  5 fields MATCH
+ 69 rpeUa1sr7PCEe1Fnyqh9d7HMWyKbLEDFAD  acct  5 fields MATCH
+ 70 rLoqYLGVCrkrczUjndhfjuX1enbfJnKrfD  acct  5 fields MATCH
+ 71 rsSt98msArxEP4hWJMtZVJLkRYN8jXQkK3  acct  5 fields MATCH
+ 72 rhWb4g9CuxdNiaJ8ixD9JjiEbQFDD9ovbu  acct  5 fields MATCH
+ 73 rwDPA6SHownrnwf8PLYUPSmxsPWKfKxtN9  acct  5 fields MATCH
+ 74 rPQE9hD6EcwtGBVaDFAuCQ5QxdXGsxwNu2  acct  5 fields MATCH
+ 75 rDGnHmMQk2NUD5zrJZTCC1gAncHkWgY4gu  acct  5 fields MATCH
+ 76 rPmAzWERJws8r3ybJnDKPDArY8d6JdMHjT  acct  5 fields MATCH
+ 77 rfHE1vhpAf4ktD3DRQmbkbV8rkFEn7Lu6L  acct  5 fields MATCH
+ 78 rUdtbML3zkUxyPtZ6dYDkGZBHUmBxqpe6c  acct  5 fields MATCH
+ 79 rhRWcR9ms1LhV23uup3XKyvf6VwykE89pd  acct  5 fields MATCH
+ 80 rDjK5P87fEzikrB9zBqbRgM1NhVhAfxJdT  acct  5 fields MATCH
+ 81 r3VJK1T6NYC3bEKBpG7UbsMRmMaXZgwGbf  acct  5 fields MATCH
+ 82 rJedP2DWJj6MTCpe9n23RomgaNTkkYRrff  acct  5 fields MATCH
+ 83 r4vZxJZMiNPZaqgbTS9Qm5TZpnvxuC7msm  acct  5 fields MATCH
+ 84 rp1Tis2X3L4ebEvA1y9Y2RrGfDgQwYi9bk  acct  5 fields MATCH
+ 85 rL2mAp1sFks5ohiDv4FeVqko2LDizyaWmz  acct  5 fields MATCH
+ 86 rDhHEqpsFvwS8NvMGZ2SbiL94Zyuyox2j5  acct  5 fields MATCH
+ 87 rgc5znJ3M2Y1Q7zaVDCUAU9jCCifBsf1X   acct  5 fields MATCH
+ 88 rNG6iQSPcKcSRWUsmQ9KHchLpfCpsJxekE  acct  5 fields MATCH
+ 89 r9Z2d7cFZ36JQABuvStDUJtgek7MVvdyEH  acct  5 fields MATCH
+ 90 r4vjTFEJZ6J5csgC2oVLq9nxWuKjfuTehk  acct  5 fields MATCH
+ 91 rJ29ATS6oXMoofe2ZprEGuEt16rPkQZjyw  acct  5 fields MATCH
+ 92 rKCC8wTnsX6CW1KW6FsY7nNSEd3SYMdvQx  acct  5 fields MATCH
+ 93 rGfSKuMSjeRTxRoWV7G21uHPD4GrSMDEoZ  acct  5 fields MATCH
+ 94 rqLcig43Hfd8atWZST4aYKSVtsYukjRqE   acct  5 fields MATCH
+ 95 rMgfJvKP5MFJuW78Nnja6MN7efQQ6guNjN  acct  5 fields MATCH
+ 96 rLnrtLSQdtmWgTiY3o6NNWKpb43RsvZ1yW  acct  5 fields MATCH
+ 97 rhkhRSvjnKyELCLVzWBz1tkQ4qkqPp5hap  acct  5 fields MATCH
+ 98 rf89JqCBdANHaNzoMYyixrRVYo9aJeCC8j  acct  5 fields MATCH
+ 99 rsrx5g3qmT1EiY1Pdh8tmCNqYqwZMrwBaV  acct  5 fields MATCH
+100 r3dtozArneVDJfbHdjTaBZ7iwmtjGgHaDS  acct  5 fields MATCH
+101 r386eHWf4HNTHm93zEDURowBYc98iUAwND  acct  5 fields MATCH
+102 r4C8ijMrNFzURiDfAhcV8nNBx5dmPWASvB  acct  5 fields MATCH
+103 r451NLCL65jrk6qMNXjTBhx8514saqNS24  acct  5 fields MATCH
+104 rQHcLD25fQ9J5VdNapqKEdCwkrn2eLwpfq  acct  5 fields MATCH
+105 rfMZSS4LtXsCuxQqJktx5zAoieYkqWvFUz  acct  5 fields MATCH
+106 rKn563KbinhFL3J6J29JeZdeZn3F6aj5fT  acct  5 fields MATCH
+107 rLhmemPj8ypbR3HVEdpwvAmHw8KGnHttwT  acct  5 fields MATCH
+108 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  acct  5 fields MATCH
+108 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  tx    validated=True ledger_index=7902540 touches_root=True date=847553911 MATCH
+109 rKnaQLJpR5Pw3bUUqUYoFocU5cN8b4M6B3  acct  5 fields MATCH
+110 rPGsnK4NAqeRwZ8AKgAmdWbsjPsFy9MLqD  acct  5 fields MATCH
+111 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  acct  5 fields MATCH
+112 rMB9iSTkRKSZgn6qMBAPjCSjDofLER9EMS  acct  5 fields MATCH
+113 rBEvZHQT6ifjQ7vw1EYfWucj2CieucvGBM  acct  5 fields MATCH
+114 rLREiSfrRvE5W6LwyVre1RD6xSwWBdjRky  acct  5 fields MATCH
+115 r9Ld1jAHoqd6SJPychz7zYq2TTs4UomG63  acct  5 fields MATCH
+116 rD4X9s5yNgxMK5cBUBkxzwXvEg5KvmJGPi  acct  5 fields MATCH
+117 ra452GpYZ5fwtiy2ZnLx9Y8S9LZsRMsfmb  acct  5 fields MATCH
+118 rBRTZfXrzckhP2MRmsh2LVQVwZiYpCFaWN  acct  5 fields MATCH
+119 rs3S1uiSo8mtpaqAVUNHXG35NvWYJrsmek  acct  5 fields MATCH
+120 rLgS9NUye9R7mSmRe6N9UWPyA7BEvC6gX1  acct  5 fields MATCH
+121 r44j9CkaXf99XP29FfZ1P4L1VM6krhWjnH  acct  5 fields MATCH
+122 r9FJYSPAsVMPY5AdGhhJn6SdQT883nhUTP  acct  5 fields MATCH
+123 r9pxKbYtmzKvrcY7FSrg62h1NPPsQxFKTR  acct  5 fields MATCH
+124 r3fKf8q5uz2r88f4MmpXf5Hmd7KjcGdz7Y  acct  5 fields MATCH
+125 rpQdJnFg7EyfEuLGCWzMP4H8BTuTf7Fk5R  acct  5 fields MATCH
+126 rDk3CZRowPqBE6HSBb6cCi85ZEf7o6eUZY  acct  5 fields MATCH
+127 rwr7SnN2iErFMaFsWLafurL2oX64yk5LCj  acct  5 fields MATCH
+128 rJhTUuH4zTqXNXt4d9gCXbfWgJZ1te2dyf  acct  5 fields MATCH
+129 rHD8ywzoHFfBJBTvoQS84fZ9eTHgnzzggk  acct  5 fields MATCH
+130 rKkkrA3T16sd7USqUkvGPjTPUfBAiQZC2s  acct  5 fields MATCH
+131 rKnKyoQJRzRGsU1vE7eX2easCuYvEaxn1i  acct  5 fields MATCH
+132 rhSHdEdHiBommoWNFfcdNBtf7Hh225WuG6  acct  5 fields MATCH
+133 r49girBZXUpqwXzDjXzwKxLrogDSmsG8KB  acct  5 fields MATCH
+134 rG3bfaUV8dkqP6kJfQj2WEPLCN7EW4LKN3  acct  5 fields MATCH
+135 rKAPGsAwRYUG7j99deCtbxn9QsSmrTGoTT  acct  5 fields MATCH
+136 rNAtScCvfCuvQuPFucLUi7KSY7hfd8dCz7  acct  5 fields MATCH
+136 rNAtScCvfCuvQuPFucLUi7KSY7hfd8dCz7  tx    validated=True ledger_index=7902520 touches_root=True date=847553851 MATCH
+137 rMY2RWyciSJ7k6MhUimHW7RAnDRZ2UbGpy  acct  5 fields MATCH
+138 rwiEkARGqyXQh5C4q8bKkegL5oZ5eX3A9d  acct  5 fields MATCH
+139 rhSGuEgdRWdQxeWXmXjSdHbp3oEPJoofha  acct  5 fields MATCH
+140 rEFXtuQtgzm62Z7qBei8Fm383utz38Yv2F  acct  5 fields MATCH
+141 rDAgYiMSmmjTP6h2ohMFoUCLCgJpCJDRbH  acct  5 fields MATCH
+142 rMv4wq6bGhazni7idWKXEfLRQEMCpmyKKr  acct  5 fields MATCH
+143 rPUz2ba7pMNzWK8KMBxogDzKcKfSHmNsYP  acct  5 fields MATCH
+144 rGaS1AQnEopKchVoKESRgtmBEi7R3xBubg  acct  5 fields MATCH
+145 r3wVc9bEY6nAi8XDGpgpqi8xJBeZZWhcVC  acct  5 fields MATCH
+146 rUgvkE4e1gn5Fxpz5y3ZTdA9XdvE11UPQL  acct  5 fields MATCH
+147 rEh6DrJxgGvc99CKTQNKnH4iR5yGcApiUB  acct  5 fields MATCH
+148 rhnpsGNvg2vUZLHRXcWjYZv97kkz3usxPP  acct  5 fields MATCH
+149 r3JxciUe62jJpijRAQC4K3n3gZauazEdsU  acct  5 fields MATCH
+150 rUKkypf632vPpJf9rphzY8Bp3Bwh4MSJrq  acct  5 fields MATCH
+151 rJLuayGjmABjRW99d9kcCDC9GBby9bg7Zh  acct  5 fields MATCH
+152 r3xKYADcfG4FyYb6DJWYLS7fR9UcwLy49x  acct  5 fields MATCH
+153 rnHLUUFfQTPzQJJoxoPZbVqFQVz69W8tSE  acct  5 fields MATCH
+154 rBhNyzjc6nFn7ZhgpRqXNqhu4mLomjhZkh  acct  5 fields MATCH
+155 rwjdDQZ3hYaqHnq3W23bSXdmdgtHEwDhq9  acct  5 fields MATCH
+156 rccJNV6PbsJxHck9k1mhADETL769YNFVy   acct  5 fields MATCH
+157 rf3YRJe9hwrKoP677FnTCtCjSEJ3eTGXun  acct  5 fields MATCH
+158 rEjvpJa37XBUEz5m5ERfBPrTdDJiwKPkr3  acct  5 fields MATCH
+159 rhXRVp1rPpbeFN4EqwDENeDyWidHRRrnXA  acct  5 fields MATCH
+160 r4PxaUe3noun9vdmD463SgfNpRXQu6NpWg  acct  5 fields MATCH
+161 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  acct  5 fields MATCH
+161 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  tx    validated=True ledger_index=7874391 touches_root=True date=847468692 MATCH
+162 rwQNGMfM3FHjWW9Pq4urK4d66iypaXKute  acct  5 fields MATCH
+163 rByXJ4rvZDM2oVv38W3jex9t679uvqsawX  acct  5 fields MATCH
+164 rNkjWeDGMZEqYfVEM68isPV7tdbUBFWdPy  acct  5 fields MATCH
+165 riLhojt2dBrguSn1vFQw5UbD927nqnXR6   acct  5 fields MATCH
+166 rKZdmZF8MuvLLRV37j55LbXV9qTWCRSNBq  acct  5 fields MATCH
+167 rPvj8ASok1oS5yE7LveUdymmbT6HE7VnRF  acct  5 fields MATCH
+168 rMjER1KKr8EUbhSY5VvqJRTUJPBoiihxRr  acct  5 fields MATCH
+169 rEEEDmAKwqDrdYHUonvSrP2ENxXmeCUs3k  acct  5 fields MATCH
+170 rM7BdKikh3kewzmuN6uiBhK1bpWhJtA2FY  acct  5 fields MATCH
+171 r98r3ZPGoKypiesJYGXjU4Q4oACssJry7V  acct  5 fields MATCH
+172 ratBy2NriiJDWDtoFUrHiiaotMbXZyDRTd  acct  5 fields MATCH
+173 rstFYdYh1ZPRSqLwUrk6yNcPGytH7CjQmm  acct  5 fields MATCH
+174 rDpWyCef42aSvYmgJZrYk7566wQLA29Tw   acct  5 fields MATCH
+175 rK4vCxLt4qnxDm8zsbDM7RdVEpX2Sobb6G  acct  5 fields MATCH
+176 r9gtD21KqNoWTSrffQJstPUS4Dx8uDMLFf  acct  5 fields MATCH
+177 rGr9HYMLaK9aRaPjtRak5dvUt6CpvMUtft  acct  5 fields MATCH
+178 rGMoavc5pAd68rwXnZiaFFyt5U3rV94rsT  acct  5 fields MATCH
+179 rw4SibmBUKMNJBhktqk2xSMNz3X17d39Cr  acct  5 fields MATCH
+180 rscWPz4aA4GtQKH5tYvVFwteiSSjTjounC  acct  5 fields MATCH
+181 r9mQM9WJQcmnMBUYVhh7h7x14xKBjzXtzk  acct  5 fields MATCH
+182 rHNsPiciJp9US5whCraorx5Xpw7goupDnQ  acct  5 fields MATCH
+183 rhGfddCcu7QDDgC8VjwqdqBff6fwNmh3Na  acct  5 fields MATCH
+184 rfMnQ7CDfa8Cj7BFg6q7VeimyfCmLPxYxE  acct  5 fields MATCH
+185 rnkw3XWraMS7QmuNJigpwtVSHMU6WFLTMP  acct  5 fields MATCH
+186 rBfX15unDjtSwcuuu3ZFvMJ2vtBxMqeucC  acct  5 fields MATCH
+187 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  acct  5 fields MATCH
+188 rfmdkPTQSXnu3qVW7ib85BE6ixkfeXEgMB  acct  5 fields MATCH
+189 rQLbhi9BBVuoJ95TG7FcjzEVfAg2hFJCKA  acct  5 fields MATCH
+190 r9xLagfoQEWSjZs3sVPZcBY8R95VBJTd4j  acct  5 fields MATCH
+191 rKFWm6kS3r9uv6FzFxseCtDA2zpgsSGR6W  acct  5 fields MATCH
+192 rax7VJQEGntyW8GbMmrjbiF1Xmg2f5emyq  acct  5 fields MATCH
+193 rKQa1D2RUVnWaCrcpGRMdLdWitmtND8Xyi  acct  5 fields MATCH
+194 rUBd6HztEaSZQEby7WMLE47LKYxMUpyRgj  acct  5 fields MATCH
+195 rLZgXBTUBVB5ns6KxPGfTSRRU7spNrSaeb  acct  5 fields MATCH
+196 rPBUyNcdKucb34m7V8LRpKPC3a2gbJpM1u  acct  5 fields MATCH
+197 rpFYPXPF2cFdB8RJS5kZPAJRGZrYfLvi7m  acct  5 fields MATCH
+198 r9ric25w29StHDDTZe59SCdJDLwGMGw6R2  acct  5 fields MATCH
+199 rLTqkurBZmPm4PRumuXzzQBfPm6YwrPm3b  acct  5 fields MATCH
+200 rBg9P2v3M4B12h43jKxbLhMsuRUeiRw9m   acct  5 fields MATCH
+SUMMARY {"accounts": 200, "date_checked": 5, "fields_mismatch": 0, "fields_ok": 1000, "retries": 0, "retries_by_error": {}, "rpc_calls": 206, "skipped": 0, "tx_checked": 5, "tx_mismatch": 0, "tx_ok": 5, "tx_out_of_range": 195, "tx_skipped": 0}
+RESULT: all match -> exit 0
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/B/snapshot-7902546.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 --negative
+2026-11-09T15:42:34Z crosscheck_dormancy live
+source complete_ledgers [(7850054, 7902620)]
+snapshot ledger 7902546 1985DB3870F2BDB5C2485A8A963E60A01E50B82834F8D639EBCDDB2C8594D5DD mode NEGATIVE seed 1 count 200
+ #   account                             field              expected -> got   result
+  1 rwgmnMc8TLdzeK22y1xHEraz3gunDX85L9  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  2 rwscFo6ECHYTyRmCaXeEqDD3395mMuFcS6  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  3 r4SuLXY75r5tcJrcW6LcBQqK31DkT9JSwL  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  4 rn4WeEWSHf5zHjvjuncLH8Js8TyAYutvN2  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  5 rnFEZF8Nv2arud74wzNLzNGBQGvyhmAzXr  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  6 rL1dpaS43fYTAGJUbW5GrjTZ8TumAsptHq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  7 rP9UTujuwtK2FQqpBjA7DtYz2VYMs8EeBm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  8 rKCdT8qbitqi2Q2CTpfinr1Jsi4T1VK7ap  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  9 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  9 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  tx    validated=True ledger_index=7854450 touches_root=True date=847408390 MISMATCH validated,ledger_index,touches_root,date
+ 10 rn6dU8B2yCwyiwPMhZbqCw6mCk8dgF97Pb  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 11 rQLbvDPukUU8skZ2bNUfVjYjsjVkkLmku8  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 12 rJNWRxnt4PsCccWXZiRhzwAaRUBvMdF4vf  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 13 raLr93Dp1acCm7D3GcZFDGx8hjJtSAXbBi  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 14 r3wiRVgPF5rLAWtbRDVT8LFX2Dftd71Y5t  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 15 rK9cbG8F9M4w5Qv4t5UmdFen5v1QrjAx1D  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 16 rBFgSXA5CB9ME9xhkLESV5FQ919PMahoy1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 17 rP91nMQLadXBDgfQCikRzFPRoENPcvVpkd  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 18 rKne3os6hx6yENqtHkeLVdWWoF1rNrjRAo  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 19 r3HGjq7G4TBSnGL1Xnszh7qbZhAFZusbeR  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 20 rUM7yBizNFb3wueNg277PeCGBaAqGJJbwH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 21 rhJvL92huryU2SzzDMH44XtXuTqCJ6ma3L  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 22 rwGWM112GkDiEyX14ktUwH1wcjhWzRHRx7  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 23 rnGqBUAUanqcy9VZLapy9hPbuKRnBhBPr7  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 24 rK1ynDvJJz2YZLmTgppb8drPS6wFNVCHxY  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 25 rP6vWfrXDv53aQihxxcb6yxmPoYxio6i8o  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 26 rQn2MnSEEs7gLsMuwLfdE5gw6cWUQLQ9Yc  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 27 r32rmEpwcEAjUVquoB2t8SECyBjw61mrb7  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 28 rGfr9SLsvLndA7m1aPHKFpaV8YNd7FvrzM  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 29 rJHuCG8ZFVnoodRhMd61W51RZTPenXnHc4  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 30 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 31 rPbTY4Pp1VstHGxzXzLoq4JfBR5TvhK286  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 32 rGCj3D91CxN5kMqndF4V3wgRyFEYrbbZBU  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 33 rHyVeAPQRw2GgZvVR6FPmVttiKMMfUdBCN  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 34 rKATTGnGLyG2konCR2bh5SjUGQrmZMSSfE  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 35 ramV89br68AuHpf9nrhR2r2b1a8HD9VAN8  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 36 rPb4xerhbyPJrgwSoUTjs7cmrsKWt4c4Cm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 37 rBftJFRicermxHDX8BrteKgQrbxUmwRKG9  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 38 rJ1NxYs5ttN22dStqUwuyKizmYATv5wKJY  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 39 rHvDyc9vvyURyQrGhgMAVSRusqdkvgrwTx  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 40 rpWrjdkyoBcaYHs6CdFxpk6e91fuz4BhhE  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 40 rpWrjdkyoBcaYHs6CdFxpk6e91fuz4BhhE  tx    validated=True ledger_index=7902448 touches_root=True date=847553632 MISMATCH validated,ledger_index,touches_root,date
+ 41 r44CK7zpLwfL8hqJR3Ptzq1FfDHzJZVXZD  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 42 rLgTUZ5d1T8nnbyMfQNHtZxhZo8BZp5oiL  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 43 rpbXjFvg8oUXFYLVmWtvxMRxKjzWLh4Jko  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 44 rEPo9tj7Cbz8uf6kwSzmQvEjxJMpfPx3sC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 45 rHAWopH8FQDRVXQAN8RkkxTdvoJLdyH5V1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 46 rBNAcGYTTSxkcCZXwbYeVAXzGzv4JgtCG3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 47 rBE6jvZuycu7WZhjNz8jB3aN7KMJxY41xd  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 48 rUZmhiCJePAXXAdZm7XE9SHPW7X9skk8EM  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 49 r9xJUWy7Au9nZ5cpqUb4B5Ty7MYNg1TsfX  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 50 rJAQ5Q6yhAgAsUFttmgEHfmGt2jjpRDqtJ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 51 rJCY1wJcPUmZQubuwW6FCmgM86tvb7WYfj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 52 rMn5Zt7jYmi1i17TQ9DiWCQLqdFJNbTdYK  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 53 r95disaSniBYhiAEREn2pAtMPWGdVCTnNF  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 54 rpyzVNjFKvw2didgxeEsHqCatX9zv87YFc  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 55 rap23piP897u2pmC3emZTZfz8UzRJBXBWF  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 56 rGXX6FpN57wQGf6cwaozLDahK17WTsauS2  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 57 rELvgp2EfxbELuauibHPtRhNPCfYphkzST  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 58 rftQT53XLY8MpDDaVoCoh1DDjc1fxWEA2S  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 59 rP1NUewSAmstoiSdn9YdTiKHSh7a6Ai7yU  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 60 rEMrwTNtpjgoPgRZ1nTLS6oak5RpU4oQaL  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 61 rhYseYjDVdJzHmXx4f37TGnNjknqwdSF55  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 62 rnYC95Kn23MQwJHAj53qe83C3ZxVZFhVcU  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 63 rsMhDySvitDGa2CF5ze5i3tbviZSB9QW61  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 64 rLTpThmYz9waMieQmW53ABavP8yYUMXSfq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 65 rKpnQDWgRsV9d716BhW5uhRs8kPHQuK7eA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 66 rhEKTHJS8DkoXKaS4ZDT68gSxEVbQcPv58  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 67 raicwKMwJvVJSaipAp9ekJX5WpDeJRqKZ4  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 68 rpPYrj88wtb7BVH5HWMH7kqrHJu4xDkxWH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 69 rpeUa1sr7PCEe1Fnyqh9d7HMWyKbLEDFAD  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 70 rLoqYLGVCrkrczUjndhfjuX1enbfJnKrfD  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 71 rsSt98msArxEP4hWJMtZVJLkRYN8jXQkK3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 72 rhWb4g9CuxdNiaJ8ixD9JjiEbQFDD9ovbu  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 73 rwDPA6SHownrnwf8PLYUPSmxsPWKfKxtN9  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 74 rPQE9hD6EcwtGBVaDFAuCQ5QxdXGsxwNu2  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 75 rDGnHmMQk2NUD5zrJZTCC1gAncHkWgY4gu  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 76 rPmAzWERJws8r3ybJnDKPDArY8d6JdMHjT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 77 rfHE1vhpAf4ktD3DRQmbkbV8rkFEn7Lu6L  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 78 rUdtbML3zkUxyPtZ6dYDkGZBHUmBxqpe6c  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 79 rhRWcR9ms1LhV23uup3XKyvf6VwykE89pd  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 80 rDjK5P87fEzikrB9zBqbRgM1NhVhAfxJdT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 81 r3VJK1T6NYC3bEKBpG7UbsMRmMaXZgwGbf  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 82 rJedP2DWJj6MTCpe9n23RomgaNTkkYRrff  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 83 r4vZxJZMiNPZaqgbTS9Qm5TZpnvxuC7msm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 84 rp1Tis2X3L4ebEvA1y9Y2RrGfDgQwYi9bk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 85 rL2mAp1sFks5ohiDv4FeVqko2LDizyaWmz  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 86 rDhHEqpsFvwS8NvMGZ2SbiL94Zyuyox2j5  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 87 rgc5znJ3M2Y1Q7zaVDCUAU9jCCifBsf1X   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 88 rNG6iQSPcKcSRWUsmQ9KHchLpfCpsJxekE  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 89 r9Z2d7cFZ36JQABuvStDUJtgek7MVvdyEH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 90 r4vjTFEJZ6J5csgC2oVLq9nxWuKjfuTehk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 91 rJ29ATS6oXMoofe2ZprEGuEt16rPkQZjyw  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 92 rKCC8wTnsX6CW1KW6FsY7nNSEd3SYMdvQx  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 93 rGfSKuMSjeRTxRoWV7G21uHPD4GrSMDEoZ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 94 rqLcig43Hfd8atWZST4aYKSVtsYukjRqE   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 95 rMgfJvKP5MFJuW78Nnja6MN7efQQ6guNjN  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 96 rLnrtLSQdtmWgTiY3o6NNWKpb43RsvZ1yW  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 97 rhkhRSvjnKyELCLVzWBz1tkQ4qkqPp5hap  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 98 rf89JqCBdANHaNzoMYyixrRVYo9aJeCC8j  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 99 rsrx5g3qmT1EiY1Pdh8tmCNqYqwZMrwBaV  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+100 r3dtozArneVDJfbHdjTaBZ7iwmtjGgHaDS  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+101 r386eHWf4HNTHm93zEDURowBYc98iUAwND  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+102 r4C8ijMrNFzURiDfAhcV8nNBx5dmPWASvB  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+103 r451NLCL65jrk6qMNXjTBhx8514saqNS24  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+104 rQHcLD25fQ9J5VdNapqKEdCwkrn2eLwpfq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+105 rfMZSS4LtXsCuxQqJktx5zAoieYkqWvFUz  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+106 rKn563KbinhFL3J6J29JeZdeZn3F6aj5fT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+107 rLhmemPj8ypbR3HVEdpwvAmHw8KGnHttwT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+108 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+108 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  tx    validated=True ledger_index=7902540 touches_root=True date=847553911 MISMATCH validated,ledger_index,touches_root,date
+109 rKnaQLJpR5Pw3bUUqUYoFocU5cN8b4M6B3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+110 rPGsnK4NAqeRwZ8AKgAmdWbsjPsFy9MLqD  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+111 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+112 rMB9iSTkRKSZgn6qMBAPjCSjDofLER9EMS  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+113 rBEvZHQT6ifjQ7vw1EYfWucj2CieucvGBM  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+114 rLREiSfrRvE5W6LwyVre1RD6xSwWBdjRky  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+115 r9Ld1jAHoqd6SJPychz7zYq2TTs4UomG63  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+116 rD4X9s5yNgxMK5cBUBkxzwXvEg5KvmJGPi  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+117 ra452GpYZ5fwtiy2ZnLx9Y8S9LZsRMsfmb  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+118 rBRTZfXrzckhP2MRmsh2LVQVwZiYpCFaWN  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+119 rs3S1uiSo8mtpaqAVUNHXG35NvWYJrsmek  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+120 rLgS9NUye9R7mSmRe6N9UWPyA7BEvC6gX1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+121 r44j9CkaXf99XP29FfZ1P4L1VM6krhWjnH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+122 r9FJYSPAsVMPY5AdGhhJn6SdQT883nhUTP  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+123 r9pxKbYtmzKvrcY7FSrg62h1NPPsQxFKTR  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+124 r3fKf8q5uz2r88f4MmpXf5Hmd7KjcGdz7Y  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+125 rpQdJnFg7EyfEuLGCWzMP4H8BTuTf7Fk5R  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+126 rDk3CZRowPqBE6HSBb6cCi85ZEf7o6eUZY  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+127 rwr7SnN2iErFMaFsWLafurL2oX64yk5LCj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+128 rJhTUuH4zTqXNXt4d9gCXbfWgJZ1te2dyf  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+129 rHD8ywzoHFfBJBTvoQS84fZ9eTHgnzzggk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+130 rKkkrA3T16sd7USqUkvGPjTPUfBAiQZC2s  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+131 rKnKyoQJRzRGsU1vE7eX2easCuYvEaxn1i  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+132 rhSHdEdHiBommoWNFfcdNBtf7Hh225WuG6  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+133 r49girBZXUpqwXzDjXzwKxLrogDSmsG8KB  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+134 rG3bfaUV8dkqP6kJfQj2WEPLCN7EW4LKN3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+135 rKAPGsAwRYUG7j99deCtbxn9QsSmrTGoTT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+136 rNAtScCvfCuvQuPFucLUi7KSY7hfd8dCz7  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+136 rNAtScCvfCuvQuPFucLUi7KSY7hfd8dCz7  tx    validated=True ledger_index=7902520 touches_root=True date=847553851 MISMATCH validated,ledger_index,touches_root,date
+137 rMY2RWyciSJ7k6MhUimHW7RAnDRZ2UbGpy  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+138 rwiEkARGqyXQh5C4q8bKkegL5oZ5eX3A9d  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+139 rhSGuEgdRWdQxeWXmXjSdHbp3oEPJoofha  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+140 rEFXtuQtgzm62Z7qBei8Fm383utz38Yv2F  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+141 rDAgYiMSmmjTP6h2ohMFoUCLCgJpCJDRbH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+142 rMv4wq6bGhazni7idWKXEfLRQEMCpmyKKr  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+143 rPUz2ba7pMNzWK8KMBxogDzKcKfSHmNsYP  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+144 rGaS1AQnEopKchVoKESRgtmBEi7R3xBubg  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+145 r3wVc9bEY6nAi8XDGpgpqi8xJBeZZWhcVC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+146 rUgvkE4e1gn5Fxpz5y3ZTdA9XdvE11UPQL  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+147 rEh6DrJxgGvc99CKTQNKnH4iR5yGcApiUB  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+148 rhnpsGNvg2vUZLHRXcWjYZv97kkz3usxPP  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+149 r3JxciUe62jJpijRAQC4K3n3gZauazEdsU  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+150 rUKkypf632vPpJf9rphzY8Bp3Bwh4MSJrq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+151 rJLuayGjmABjRW99d9kcCDC9GBby9bg7Zh  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+152 r3xKYADcfG4FyYb6DJWYLS7fR9UcwLy49x  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+153 rnHLUUFfQTPzQJJoxoPZbVqFQVz69W8tSE  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+154 rBhNyzjc6nFn7ZhgpRqXNqhu4mLomjhZkh  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+155 rwjdDQZ3hYaqHnq3W23bSXdmdgtHEwDhq9  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+156 rccJNV6PbsJxHck9k1mhADETL769YNFVy   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+157 rf3YRJe9hwrKoP677FnTCtCjSEJ3eTGXun  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+158 rEjvpJa37XBUEz5m5ERfBPrTdDJiwKPkr3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+159 rhXRVp1rPpbeFN4EqwDENeDyWidHRRrnXA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+160 r4PxaUe3noun9vdmD463SgfNpRXQu6NpWg  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+161 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+161 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  tx    validated=True ledger_index=7874391 touches_root=True date=847468692 MISMATCH validated,ledger_index,touches_root,date
+162 rwQNGMfM3FHjWW9Pq4urK4d66iypaXKute  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+163 rByXJ4rvZDM2oVv38W3jex9t679uvqsawX  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+164 rNkjWeDGMZEqYfVEM68isPV7tdbUBFWdPy  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+165 riLhojt2dBrguSn1vFQw5UbD927nqnXR6   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+166 rKZdmZF8MuvLLRV37j55LbXV9qTWCRSNBq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+167 rPvj8ASok1oS5yE7LveUdymmbT6HE7VnRF  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+168 rMjER1KKr8EUbhSY5VvqJRTUJPBoiihxRr  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+169 rEEEDmAKwqDrdYHUonvSrP2ENxXmeCUs3k  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+170 rM7BdKikh3kewzmuN6uiBhK1bpWhJtA2FY  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+171 r98r3ZPGoKypiesJYGXjU4Q4oACssJry7V  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+172 ratBy2NriiJDWDtoFUrHiiaotMbXZyDRTd  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+173 rstFYdYh1ZPRSqLwUrk6yNcPGytH7CjQmm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+174 rDpWyCef42aSvYmgJZrYk7566wQLA29Tw   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+175 rK4vCxLt4qnxDm8zsbDM7RdVEpX2Sobb6G  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+176 r9gtD21KqNoWTSrffQJstPUS4Dx8uDMLFf  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+177 rGr9HYMLaK9aRaPjtRak5dvUt6CpvMUtft  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+178 rGMoavc5pAd68rwXnZiaFFyt5U3rV94rsT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+179 rw4SibmBUKMNJBhktqk2xSMNz3X17d39Cr  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+180 rscWPz4aA4GtQKH5tYvVFwteiSSjTjounC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+181 r9mQM9WJQcmnMBUYVhh7h7x14xKBjzXtzk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+182 rHNsPiciJp9US5whCraorx5Xpw7goupDnQ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+183 rhGfddCcu7QDDgC8VjwqdqBff6fwNmh3Na  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+184 rfMnQ7CDfa8Cj7BFg6q7VeimyfCmLPxYxE  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+185 rnkw3XWraMS7QmuNJigpwtVSHMU6WFLTMP  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+186 rBfX15unDjtSwcuuu3ZFvMJ2vtBxMqeucC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+187 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+188 rfmdkPTQSXnu3qVW7ib85BE6ixkfeXEgMB  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+189 rQLbhi9BBVuoJ95TG7FcjzEVfAg2hFJCKA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+190 r9xLagfoQEWSjZs3sVPZcBY8R95VBJTd4j  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+191 rKFWm6kS3r9uv6FzFxseCtDA2zpgsSGR6W  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+192 rax7VJQEGntyW8GbMmrjbiF1Xmg2f5emyq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+193 rKQa1D2RUVnWaCrcpGRMdLdWitmtND8Xyi  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+194 rUBd6HztEaSZQEby7WMLE47LKYxMUpyRgj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+195 rLZgXBTUBVB5ns6KxPGfTSRRU7spNrSaeb  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+196 rPBUyNcdKucb34m7V8LRpKPC3a2gbJpM1u  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+197 rpFYPXPF2cFdB8RJS5kZPAJRGZrYfLvi7m  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+198 r9ric25w29StHDDTZe59SCdJDLwGMGw6R2  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+199 rLTqkurBZmPm4PRumuXzzQBfPm6YwrPm3b  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+200 rBg9P2v3M4B12h43jKxbLhMsuRUeiRw9m   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+SUMMARY {"accounts": 200, "date_checked": 5, "fields_mismatch": 1000, "fields_ok": 0, "retries": 0, "retries_by_error": {}, "rpc_calls": 206, "skipped": 0, "tx_checked": 5, "tx_mismatch": 5, "tx_ok": 0, "tx_out_of_range": 195, "tx_skipped": 0}
+RESULT: negative control PASS: field mismatches 1000/1000, tx mismatches 5/5, OK lines 0 -> exit 1
+(exit 1)
+$ sha256sum data/dormancy/B/crosscheck-B-random-seed1.jsonl; wc -l data/dormancy/B/crosscheck-B-random-seed1.jsonl
+efe9661e8311761bf8665ce0c4ff66cdfd2d950c1e9165b80ed9d19af42c27b0  data/dormancy/B/crosscheck-B-random-seed1.jsonl
+206 data/dormancy/B/crosscheck-B-random-seed1.jsonl
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/B/snapshot-7902546.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 --offline data/dormancy/B/crosscheck-B-random-seed1.jsonl
+2026-11-09T15:45:29Z crosscheck_dormancy offline crosscheck-B-random-seed1.jsonl
+source complete_ledgers [(7850054, 7902560)]
+snapshot ledger 7902546 1985DB3870F2BDB5C2485A8A963E60A01E50B82834F8D639EBCDDB2C8594D5DD mode positive seed 1 count 200
+ #   account                             field              expected -> got   result
+  1 rwgmnMc8TLdzeK22y1xHEraz3gunDX85L9  acct  5 fields MATCH
+  2 rwscFo6ECHYTyRmCaXeEqDD3395mMuFcS6  acct  5 fields MATCH
+  3 r4SuLXY75r5tcJrcW6LcBQqK31DkT9JSwL  acct  5 fields MATCH
+  4 rn4WeEWSHf5zHjvjuncLH8Js8TyAYutvN2  acct  5 fields MATCH
+  5 rnFEZF8Nv2arud74wzNLzNGBQGvyhmAzXr  acct  5 fields MATCH
+  6 rL1dpaS43fYTAGJUbW5GrjTZ8TumAsptHq  acct  5 fields MATCH
+  7 rP9UTujuwtK2FQqpBjA7DtYz2VYMs8EeBm  acct  5 fields MATCH
+  8 rKCdT8qbitqi2Q2CTpfinr1Jsi4T1VK7ap  acct  5 fields MATCH
+  9 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  acct  5 fields MATCH
+  9 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  tx    validated=True ledger_index=7854450 touches_root=True date=847408390 MATCH
+ 10 rn6dU8B2yCwyiwPMhZbqCw6mCk8dgF97Pb  acct  5 fields MATCH
+ 11 rQLbvDPukUU8skZ2bNUfVjYjsjVkkLmku8  acct  5 fields MATCH
+ 12 rJNWRxnt4PsCccWXZiRhzwAaRUBvMdF4vf  acct  5 fields MATCH
+ 13 raLr93Dp1acCm7D3GcZFDGx8hjJtSAXbBi  acct  5 fields MATCH
+ 14 r3wiRVgPF5rLAWtbRDVT8LFX2Dftd71Y5t  acct  5 fields MATCH
+ 15 rK9cbG8F9M4w5Qv4t5UmdFen5v1QrjAx1D  acct  5 fields MATCH
+ 16 rBFgSXA5CB9ME9xhkLESV5FQ919PMahoy1  acct  5 fields MATCH
+ 17 rP91nMQLadXBDgfQCikRzFPRoENPcvVpkd  acct  5 fields MATCH
+ 18 rKne3os6hx6yENqtHkeLVdWWoF1rNrjRAo  acct  5 fields MATCH
+ 19 r3HGjq7G4TBSnGL1Xnszh7qbZhAFZusbeR  acct  5 fields MATCH
+ 20 rUM7yBizNFb3wueNg277PeCGBaAqGJJbwH  acct  5 fields MATCH
+ 21 rhJvL92huryU2SzzDMH44XtXuTqCJ6ma3L  acct  5 fields MATCH
+ 22 rwGWM112GkDiEyX14ktUwH1wcjhWzRHRx7  acct  5 fields MATCH
+ 23 rnGqBUAUanqcy9VZLapy9hPbuKRnBhBPr7  acct  5 fields MATCH
+ 24 rK1ynDvJJz2YZLmTgppb8drPS6wFNVCHxY  acct  5 fields MATCH
+ 25 rP6vWfrXDv53aQihxxcb6yxmPoYxio6i8o  acct  5 fields MATCH
+ 26 rQn2MnSEEs7gLsMuwLfdE5gw6cWUQLQ9Yc  acct  5 fields MATCH
+ 27 r32rmEpwcEAjUVquoB2t8SECyBjw61mrb7  acct  5 fields MATCH
+ 28 rGfr9SLsvLndA7m1aPHKFpaV8YNd7FvrzM  acct  5 fields MATCH
+ 29 rJHuCG8ZFVnoodRhMd61W51RZTPenXnHc4  acct  5 fields MATCH
+ 30 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  acct  5 fields MATCH
+ 31 rPbTY4Pp1VstHGxzXzLoq4JfBR5TvhK286  acct  5 fields MATCH
+ 32 rGCj3D91CxN5kMqndF4V3wgRyFEYrbbZBU  acct  5 fields MATCH
+ 33 rHyVeAPQRw2GgZvVR6FPmVttiKMMfUdBCN  acct  5 fields MATCH
+ 34 rKATTGnGLyG2konCR2bh5SjUGQrmZMSSfE  acct  5 fields MATCH
+ 35 ramV89br68AuHpf9nrhR2r2b1a8HD9VAN8  acct  5 fields MATCH
+ 36 rPb4xerhbyPJrgwSoUTjs7cmrsKWt4c4Cm  acct  5 fields MATCH
+ 37 rBftJFRicermxHDX8BrteKgQrbxUmwRKG9  acct  5 fields MATCH
+ 38 rJ1NxYs5ttN22dStqUwuyKizmYATv5wKJY  acct  5 fields MATCH
+ 39 rHvDyc9vvyURyQrGhgMAVSRusqdkvgrwTx  acct  5 fields MATCH
+ 40 rpWrjdkyoBcaYHs6CdFxpk6e91fuz4BhhE  acct  5 fields MATCH
+ 40 rpWrjdkyoBcaYHs6CdFxpk6e91fuz4BhhE  tx    validated=True ledger_index=7902448 touches_root=True date=847553632 MATCH
+ 41 r44CK7zpLwfL8hqJR3Ptzq1FfDHzJZVXZD  acct  5 fields MATCH
+ 42 rLgTUZ5d1T8nnbyMfQNHtZxhZo8BZp5oiL  acct  5 fields MATCH
+ 43 rpbXjFvg8oUXFYLVmWtvxMRxKjzWLh4Jko  acct  5 fields MATCH
+ 44 rEPo9tj7Cbz8uf6kwSzmQvEjxJMpfPx3sC  acct  5 fields MATCH
+ 45 rHAWopH8FQDRVXQAN8RkkxTdvoJLdyH5V1  acct  5 fields MATCH
+ 46 rBNAcGYTTSxkcCZXwbYeVAXzGzv4JgtCG3  acct  5 fields MATCH
+ 47 rBE6jvZuycu7WZhjNz8jB3aN7KMJxY41xd  acct  5 fields MATCH
+ 48 rUZmhiCJePAXXAdZm7XE9SHPW7X9skk8EM  acct  5 fields MATCH
+ 49 r9xJUWy7Au9nZ5cpqUb4B5Ty7MYNg1TsfX  acct  5 fields MATCH
+ 50 rJAQ5Q6yhAgAsUFttmgEHfmGt2jjpRDqtJ  acct  5 fields MATCH
+ 51 rJCY1wJcPUmZQubuwW6FCmgM86tvb7WYfj  acct  5 fields MATCH
+ 52 rMn5Zt7jYmi1i17TQ9DiWCQLqdFJNbTdYK  acct  5 fields MATCH
+ 53 r95disaSniBYhiAEREn2pAtMPWGdVCTnNF  acct  5 fields MATCH
+ 54 rpyzVNjFKvw2didgxeEsHqCatX9zv87YFc  acct  5 fields MATCH
+ 55 rap23piP897u2pmC3emZTZfz8UzRJBXBWF  acct  5 fields MATCH
+ 56 rGXX6FpN57wQGf6cwaozLDahK17WTsauS2  acct  5 fields MATCH
+ 57 rELvgp2EfxbELuauibHPtRhNPCfYphkzST  acct  5 fields MATCH
+ 58 rftQT53XLY8MpDDaVoCoh1DDjc1fxWEA2S  acct  5 fields MATCH
+ 59 rP1NUewSAmstoiSdn9YdTiKHSh7a6Ai7yU  acct  5 fields MATCH
+ 60 rEMrwTNtpjgoPgRZ1nTLS6oak5RpU4oQaL  acct  5 fields MATCH
+ 61 rhYseYjDVdJzHmXx4f37TGnNjknqwdSF55  acct  5 fields MATCH
+ 62 rnYC95Kn23MQwJHAj53qe83C3ZxVZFhVcU  acct  5 fields MATCH
+ 63 rsMhDySvitDGa2CF5ze5i3tbviZSB9QW61  acct  5 fields MATCH
+ 64 rLTpThmYz9waMieQmW53ABavP8yYUMXSfq  acct  5 fields MATCH
+ 65 rKpnQDWgRsV9d716BhW5uhRs8kPHQuK7eA  acct  5 fields MATCH
+ 66 rhEKTHJS8DkoXKaS4ZDT68gSxEVbQcPv58  acct  5 fields MATCH
+ 67 raicwKMwJvVJSaipAp9ekJX5WpDeJRqKZ4  acct  5 fields MATCH
+ 68 rpPYrj88wtb7BVH5HWMH7kqrHJu4xDkxWH  acct  5 fields MATCH
+ 69 rpeUa1sr7PCEe1Fnyqh9d7HMWyKbLEDFAD  acct  5 fields MATCH
+ 70 rLoqYLGVCrkrczUjndhfjuX1enbfJnKrfD  acct  5 fields MATCH
+ 71 rsSt98msArxEP4hWJMtZVJLkRYN8jXQkK3  acct  5 fields MATCH
+ 72 rhWb4g9CuxdNiaJ8ixD9JjiEbQFDD9ovbu  acct  5 fields MATCH
+ 73 rwDPA6SHownrnwf8PLYUPSmxsPWKfKxtN9  acct  5 fields MATCH
+ 74 rPQE9hD6EcwtGBVaDFAuCQ5QxdXGsxwNu2  acct  5 fields MATCH
+ 75 rDGnHmMQk2NUD5zrJZTCC1gAncHkWgY4gu  acct  5 fields MATCH
+ 76 rPmAzWERJws8r3ybJnDKPDArY8d6JdMHjT  acct  5 fields MATCH
+ 77 rfHE1vhpAf4ktD3DRQmbkbV8rkFEn7Lu6L  acct  5 fields MATCH
+ 78 rUdtbML3zkUxyPtZ6dYDkGZBHUmBxqpe6c  acct  5 fields MATCH
+ 79 rhRWcR9ms1LhV23uup3XKyvf6VwykE89pd  acct  5 fields MATCH
+ 80 rDjK5P87fEzikrB9zBqbRgM1NhVhAfxJdT  acct  5 fields MATCH
+ 81 r3VJK1T6NYC3bEKBpG7UbsMRmMaXZgwGbf  acct  5 fields MATCH
+ 82 rJedP2DWJj6MTCpe9n23RomgaNTkkYRrff  acct  5 fields MATCH
+ 83 r4vZxJZMiNPZaqgbTS9Qm5TZpnvxuC7msm  acct  5 fields MATCH
+ 84 rp1Tis2X3L4ebEvA1y9Y2RrGfDgQwYi9bk  acct  5 fields MATCH
+ 85 rL2mAp1sFks5ohiDv4FeVqko2LDizyaWmz  acct  5 fields MATCH
+ 86 rDhHEqpsFvwS8NvMGZ2SbiL94Zyuyox2j5  acct  5 fields MATCH
+ 87 rgc5znJ3M2Y1Q7zaVDCUAU9jCCifBsf1X   acct  5 fields MATCH
+ 88 rNG6iQSPcKcSRWUsmQ9KHchLpfCpsJxekE  acct  5 fields MATCH
+ 89 r9Z2d7cFZ36JQABuvStDUJtgek7MVvdyEH  acct  5 fields MATCH
+ 90 r4vjTFEJZ6J5csgC2oVLq9nxWuKjfuTehk  acct  5 fields MATCH
+ 91 rJ29ATS6oXMoofe2ZprEGuEt16rPkQZjyw  acct  5 fields MATCH
+ 92 rKCC8wTnsX6CW1KW6FsY7nNSEd3SYMdvQx  acct  5 fields MATCH
+ 93 rGfSKuMSjeRTxRoWV7G21uHPD4GrSMDEoZ  acct  5 fields MATCH
+ 94 rqLcig43Hfd8atWZST4aYKSVtsYukjRqE   acct  5 fields MATCH
+ 95 rMgfJvKP5MFJuW78Nnja6MN7efQQ6guNjN  acct  5 fields MATCH
+ 96 rLnrtLSQdtmWgTiY3o6NNWKpb43RsvZ1yW  acct  5 fields MATCH
+ 97 rhkhRSvjnKyELCLVzWBz1tkQ4qkqPp5hap  acct  5 fields MATCH
+ 98 rf89JqCBdANHaNzoMYyixrRVYo9aJeCC8j  acct  5 fields MATCH
+ 99 rsrx5g3qmT1EiY1Pdh8tmCNqYqwZMrwBaV  acct  5 fields MATCH
+100 r3dtozArneVDJfbHdjTaBZ7iwmtjGgHaDS  acct  5 fields MATCH
+101 r386eHWf4HNTHm93zEDURowBYc98iUAwND  acct  5 fields MATCH
+102 r4C8ijMrNFzURiDfAhcV8nNBx5dmPWASvB  acct  5 fields MATCH
+103 r451NLCL65jrk6qMNXjTBhx8514saqNS24  acct  5 fields MATCH
+104 rQHcLD25fQ9J5VdNapqKEdCwkrn2eLwpfq  acct  5 fields MATCH
+105 rfMZSS4LtXsCuxQqJktx5zAoieYkqWvFUz  acct  5 fields MATCH
+106 rKn563KbinhFL3J6J29JeZdeZn3F6aj5fT  acct  5 fields MATCH
+107 rLhmemPj8ypbR3HVEdpwvAmHw8KGnHttwT  acct  5 fields MATCH
+108 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  acct  5 fields MATCH
+108 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  tx    validated=True ledger_index=7902540 touches_root=True date=847553911 MATCH
+109 rKnaQLJpR5Pw3bUUqUYoFocU5cN8b4M6B3  acct  5 fields MATCH
+110 rPGsnK4NAqeRwZ8AKgAmdWbsjPsFy9MLqD  acct  5 fields MATCH
+111 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  acct  5 fields MATCH
+112 rMB9iSTkRKSZgn6qMBAPjCSjDofLER9EMS  acct  5 fields MATCH
+113 rBEvZHQT6ifjQ7vw1EYfWucj2CieucvGBM  acct  5 fields MATCH
+114 rLREiSfrRvE5W6LwyVre1RD6xSwWBdjRky  acct  5 fields MATCH
+115 r9Ld1jAHoqd6SJPychz7zYq2TTs4UomG63  acct  5 fields MATCH
+116 rD4X9s5yNgxMK5cBUBkxzwXvEg5KvmJGPi  acct  5 fields MATCH
+117 ra452GpYZ5fwtiy2ZnLx9Y8S9LZsRMsfmb  acct  5 fields MATCH
+118 rBRTZfXrzckhP2MRmsh2LVQVwZiYpCFaWN  acct  5 fields MATCH
+119 rs3S1uiSo8mtpaqAVUNHXG35NvWYJrsmek  acct  5 fields MATCH
+120 rLgS9NUye9R7mSmRe6N9UWPyA7BEvC6gX1  acct  5 fields MATCH
+121 r44j9CkaXf99XP29FfZ1P4L1VM6krhWjnH  acct  5 fields MATCH
+122 r9FJYSPAsVMPY5AdGhhJn6SdQT883nhUTP  acct  5 fields MATCH
+123 r9pxKbYtmzKvrcY7FSrg62h1NPPsQxFKTR  acct  5 fields MATCH
+124 r3fKf8q5uz2r88f4MmpXf5Hmd7KjcGdz7Y  acct  5 fields MATCH
+125 rpQdJnFg7EyfEuLGCWzMP4H8BTuTf7Fk5R  acct  5 fields MATCH
+126 rDk3CZRowPqBE6HSBb6cCi85ZEf7o6eUZY  acct  5 fields MATCH
+127 rwr7SnN2iErFMaFsWLafurL2oX64yk5LCj  acct  5 fields MATCH
+128 rJhTUuH4zTqXNXt4d9gCXbfWgJZ1te2dyf  acct  5 fields MATCH
+129 rHD8ywzoHFfBJBTvoQS84fZ9eTHgnzzggk  acct  5 fields MATCH
+130 rKkkrA3T16sd7USqUkvGPjTPUfBAiQZC2s  acct  5 fields MATCH
+131 rKnKyoQJRzRGsU1vE7eX2easCuYvEaxn1i  acct  5 fields MATCH
+132 rhSHdEdHiBommoWNFfcdNBtf7Hh225WuG6  acct  5 fields MATCH
+133 r49girBZXUpqwXzDjXzwKxLrogDSmsG8KB  acct  5 fields MATCH
+134 rG3bfaUV8dkqP6kJfQj2WEPLCN7EW4LKN3  acct  5 fields MATCH
+135 rKAPGsAwRYUG7j99deCtbxn9QsSmrTGoTT  acct  5 fields MATCH
+136 rNAtScCvfCuvQuPFucLUi7KSY7hfd8dCz7  acct  5 fields MATCH
+136 rNAtScCvfCuvQuPFucLUi7KSY7hfd8dCz7  tx    validated=True ledger_index=7902520 touches_root=True date=847553851 MATCH
+137 rMY2RWyciSJ7k6MhUimHW7RAnDRZ2UbGpy  acct  5 fields MATCH
+138 rwiEkARGqyXQh5C4q8bKkegL5oZ5eX3A9d  acct  5 fields MATCH
+139 rhSGuEgdRWdQxeWXmXjSdHbp3oEPJoofha  acct  5 fields MATCH
+140 rEFXtuQtgzm62Z7qBei8Fm383utz38Yv2F  acct  5 fields MATCH
+141 rDAgYiMSmmjTP6h2ohMFoUCLCgJpCJDRbH  acct  5 fields MATCH
+142 rMv4wq6bGhazni7idWKXEfLRQEMCpmyKKr  acct  5 fields MATCH
+143 rPUz2ba7pMNzWK8KMBxogDzKcKfSHmNsYP  acct  5 fields MATCH
+144 rGaS1AQnEopKchVoKESRgtmBEi7R3xBubg  acct  5 fields MATCH
+145 r3wVc9bEY6nAi8XDGpgpqi8xJBeZZWhcVC  acct  5 fields MATCH
+146 rUgvkE4e1gn5Fxpz5y3ZTdA9XdvE11UPQL  acct  5 fields MATCH
+147 rEh6DrJxgGvc99CKTQNKnH4iR5yGcApiUB  acct  5 fields MATCH
+148 rhnpsGNvg2vUZLHRXcWjYZv97kkz3usxPP  acct  5 fields MATCH
+149 r3JxciUe62jJpijRAQC4K3n3gZauazEdsU  acct  5 fields MATCH
+150 rUKkypf632vPpJf9rphzY8Bp3Bwh4MSJrq  acct  5 fields MATCH
+151 rJLuayGjmABjRW99d9kcCDC9GBby9bg7Zh  acct  5 fields MATCH
+152 r3xKYADcfG4FyYb6DJWYLS7fR9UcwLy49x  acct  5 fields MATCH
+153 rnHLUUFfQTPzQJJoxoPZbVqFQVz69W8tSE  acct  5 fields MATCH
+154 rBhNyzjc6nFn7ZhgpRqXNqhu4mLomjhZkh  acct  5 fields MATCH
+155 rwjdDQZ3hYaqHnq3W23bSXdmdgtHEwDhq9  acct  5 fields MATCH
+156 rccJNV6PbsJxHck9k1mhADETL769YNFVy   acct  5 fields MATCH
+157 rf3YRJe9hwrKoP677FnTCtCjSEJ3eTGXun  acct  5 fields MATCH
+158 rEjvpJa37XBUEz5m5ERfBPrTdDJiwKPkr3  acct  5 fields MATCH
+159 rhXRVp1rPpbeFN4EqwDENeDyWidHRRrnXA  acct  5 fields MATCH
+160 r4PxaUe3noun9vdmD463SgfNpRXQu6NpWg  acct  5 fields MATCH
+161 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  acct  5 fields MATCH
+161 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  tx    validated=True ledger_index=7874391 touches_root=True date=847468692 MATCH
+162 rwQNGMfM3FHjWW9Pq4urK4d66iypaXKute  acct  5 fields MATCH
+163 rByXJ4rvZDM2oVv38W3jex9t679uvqsawX  acct  5 fields MATCH
+164 rNkjWeDGMZEqYfVEM68isPV7tdbUBFWdPy  acct  5 fields MATCH
+165 riLhojt2dBrguSn1vFQw5UbD927nqnXR6   acct  5 fields MATCH
+166 rKZdmZF8MuvLLRV37j55LbXV9qTWCRSNBq  acct  5 fields MATCH
+167 rPvj8ASok1oS5yE7LveUdymmbT6HE7VnRF  acct  5 fields MATCH
+168 rMjER1KKr8EUbhSY5VvqJRTUJPBoiihxRr  acct  5 fields MATCH
+169 rEEEDmAKwqDrdYHUonvSrP2ENxXmeCUs3k  acct  5 fields MATCH
+170 rM7BdKikh3kewzmuN6uiBhK1bpWhJtA2FY  acct  5 fields MATCH
+171 r98r3ZPGoKypiesJYGXjU4Q4oACssJry7V  acct  5 fields MATCH
+172 ratBy2NriiJDWDtoFUrHiiaotMbXZyDRTd  acct  5 fields MATCH
+173 rstFYdYh1ZPRSqLwUrk6yNcPGytH7CjQmm  acct  5 fields MATCH
+174 rDpWyCef42aSvYmgJZrYk7566wQLA29Tw   acct  5 fields MATCH
+175 rK4vCxLt4qnxDm8zsbDM7RdVEpX2Sobb6G  acct  5 fields MATCH
+176 r9gtD21KqNoWTSrffQJstPUS4Dx8uDMLFf  acct  5 fields MATCH
+177 rGr9HYMLaK9aRaPjtRak5dvUt6CpvMUtft  acct  5 fields MATCH
+178 rGMoavc5pAd68rwXnZiaFFyt5U3rV94rsT  acct  5 fields MATCH
+179 rw4SibmBUKMNJBhktqk2xSMNz3X17d39Cr  acct  5 fields MATCH
+180 rscWPz4aA4GtQKH5tYvVFwteiSSjTjounC  acct  5 fields MATCH
+181 r9mQM9WJQcmnMBUYVhh7h7x14xKBjzXtzk  acct  5 fields MATCH
+182 rHNsPiciJp9US5whCraorx5Xpw7goupDnQ  acct  5 fields MATCH
+183 rhGfddCcu7QDDgC8VjwqdqBff6fwNmh3Na  acct  5 fields MATCH
+184 rfMnQ7CDfa8Cj7BFg6q7VeimyfCmLPxYxE  acct  5 fields MATCH
+185 rnkw3XWraMS7QmuNJigpwtVSHMU6WFLTMP  acct  5 fields MATCH
+186 rBfX15unDjtSwcuuu3ZFvMJ2vtBxMqeucC  acct  5 fields MATCH
+187 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  acct  5 fields MATCH
+188 rfmdkPTQSXnu3qVW7ib85BE6ixkfeXEgMB  acct  5 fields MATCH
+189 rQLbhi9BBVuoJ95TG7FcjzEVfAg2hFJCKA  acct  5 fields MATCH
+190 r9xLagfoQEWSjZs3sVPZcBY8R95VBJTd4j  acct  5 fields MATCH
+191 rKFWm6kS3r9uv6FzFxseCtDA2zpgsSGR6W  acct  5 fields MATCH
+192 rax7VJQEGntyW8GbMmrjbiF1Xmg2f5emyq  acct  5 fields MATCH
+193 rKQa1D2RUVnWaCrcpGRMdLdWitmtND8Xyi  acct  5 fields MATCH
+194 rUBd6HztEaSZQEby7WMLE47LKYxMUpyRgj  acct  5 fields MATCH
+195 rLZgXBTUBVB5ns6KxPGfTSRRU7spNrSaeb  acct  5 fields MATCH
+196 rPBUyNcdKucb34m7V8LRpKPC3a2gbJpM1u  acct  5 fields MATCH
+197 rpFYPXPF2cFdB8RJS5kZPAJRGZrYfLvi7m  acct  5 fields MATCH
+198 r9ric25w29StHDDTZe59SCdJDLwGMGw6R2  acct  5 fields MATCH
+199 rLTqkurBZmPm4PRumuXzzQBfPm6YwrPm3b  acct  5 fields MATCH
+200 rBg9P2v3M4B12h43jKxbLhMsuRUeiRw9m   acct  5 fields MATCH
+SUMMARY {"accounts": 200, "date_checked": 5, "fields_mismatch": 0, "fields_ok": 1000, "retries": 0, "retries_by_error": {}, "rpc_calls": 206, "skipped": 0, "tx_checked": 5, "tx_mismatch": 0, "tx_ok": 5, "tx_out_of_range": 195, "tx_skipped": 0}
+RESULT: all match -> exit 0
+(exit 0)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/B/snapshot-7902546.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 1 --negative --offline data/dormancy/B/crosscheck-B-random-seed1.jsonl
+2026-11-09T15:45:29Z crosscheck_dormancy offline crosscheck-B-random-seed1.jsonl
+source complete_ledgers [(7850054, 7902560)]
+snapshot ledger 7902546 1985DB3870F2BDB5C2485A8A963E60A01E50B82834F8D639EBCDDB2C8594D5DD mode NEGATIVE seed 1 count 200
+ #   account                             field              expected -> got   result
+  1 rwgmnMc8TLdzeK22y1xHEraz3gunDX85L9  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  2 rwscFo6ECHYTyRmCaXeEqDD3395mMuFcS6  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  3 r4SuLXY75r5tcJrcW6LcBQqK31DkT9JSwL  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  4 rn4WeEWSHf5zHjvjuncLH8Js8TyAYutvN2  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  5 rnFEZF8Nv2arud74wzNLzNGBQGvyhmAzXr  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  6 rL1dpaS43fYTAGJUbW5GrjTZ8TumAsptHq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  7 rP9UTujuwtK2FQqpBjA7DtYz2VYMs8EeBm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  8 rKCdT8qbitqi2Q2CTpfinr1Jsi4T1VK7ap  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  9 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+  9 rn7iDW3pq3myXDdYiVGRZhanj16wZ9X1jm  tx    validated=True ledger_index=7854450 touches_root=True date=847408390 MISMATCH validated,ledger_index,touches_root,date
+ 10 rn6dU8B2yCwyiwPMhZbqCw6mCk8dgF97Pb  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 11 rQLbvDPukUU8skZ2bNUfVjYjsjVkkLmku8  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 12 rJNWRxnt4PsCccWXZiRhzwAaRUBvMdF4vf  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 13 raLr93Dp1acCm7D3GcZFDGx8hjJtSAXbBi  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 14 r3wiRVgPF5rLAWtbRDVT8LFX2Dftd71Y5t  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 15 rK9cbG8F9M4w5Qv4t5UmdFen5v1QrjAx1D  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 16 rBFgSXA5CB9ME9xhkLESV5FQ919PMahoy1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 17 rP91nMQLadXBDgfQCikRzFPRoENPcvVpkd  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 18 rKne3os6hx6yENqtHkeLVdWWoF1rNrjRAo  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 19 r3HGjq7G4TBSnGL1Xnszh7qbZhAFZusbeR  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 20 rUM7yBizNFb3wueNg277PeCGBaAqGJJbwH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 21 rhJvL92huryU2SzzDMH44XtXuTqCJ6ma3L  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 22 rwGWM112GkDiEyX14ktUwH1wcjhWzRHRx7  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 23 rnGqBUAUanqcy9VZLapy9hPbuKRnBhBPr7  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 24 rK1ynDvJJz2YZLmTgppb8drPS6wFNVCHxY  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 25 rP6vWfrXDv53aQihxxcb6yxmPoYxio6i8o  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 26 rQn2MnSEEs7gLsMuwLfdE5gw6cWUQLQ9Yc  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 27 r32rmEpwcEAjUVquoB2t8SECyBjw61mrb7  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 28 rGfr9SLsvLndA7m1aPHKFpaV8YNd7FvrzM  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 29 rJHuCG8ZFVnoodRhMd61W51RZTPenXnHc4  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 30 rfzpvNAuuo5gr84LvY93Wkg8ScFE3uZBHN  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 31 rPbTY4Pp1VstHGxzXzLoq4JfBR5TvhK286  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 32 rGCj3D91CxN5kMqndF4V3wgRyFEYrbbZBU  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 33 rHyVeAPQRw2GgZvVR6FPmVttiKMMfUdBCN  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 34 rKATTGnGLyG2konCR2bh5SjUGQrmZMSSfE  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 35 ramV89br68AuHpf9nrhR2r2b1a8HD9VAN8  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 36 rPb4xerhbyPJrgwSoUTjs7cmrsKWt4c4Cm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 37 rBftJFRicermxHDX8BrteKgQrbxUmwRKG9  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 38 rJ1NxYs5ttN22dStqUwuyKizmYATv5wKJY  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 39 rHvDyc9vvyURyQrGhgMAVSRusqdkvgrwTx  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 40 rpWrjdkyoBcaYHs6CdFxpk6e91fuz4BhhE  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 40 rpWrjdkyoBcaYHs6CdFxpk6e91fuz4BhhE  tx    validated=True ledger_index=7902448 touches_root=True date=847553632 MISMATCH validated,ledger_index,touches_root,date
+ 41 r44CK7zpLwfL8hqJR3Ptzq1FfDHzJZVXZD  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 42 rLgTUZ5d1T8nnbyMfQNHtZxhZo8BZp5oiL  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 43 rpbXjFvg8oUXFYLVmWtvxMRxKjzWLh4Jko  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 44 rEPo9tj7Cbz8uf6kwSzmQvEjxJMpfPx3sC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 45 rHAWopH8FQDRVXQAN8RkkxTdvoJLdyH5V1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 46 rBNAcGYTTSxkcCZXwbYeVAXzGzv4JgtCG3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 47 rBE6jvZuycu7WZhjNz8jB3aN7KMJxY41xd  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 48 rUZmhiCJePAXXAdZm7XE9SHPW7X9skk8EM  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 49 r9xJUWy7Au9nZ5cpqUb4B5Ty7MYNg1TsfX  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 50 rJAQ5Q6yhAgAsUFttmgEHfmGt2jjpRDqtJ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 51 rJCY1wJcPUmZQubuwW6FCmgM86tvb7WYfj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 52 rMn5Zt7jYmi1i17TQ9DiWCQLqdFJNbTdYK  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 53 r95disaSniBYhiAEREn2pAtMPWGdVCTnNF  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 54 rpyzVNjFKvw2didgxeEsHqCatX9zv87YFc  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 55 rap23piP897u2pmC3emZTZfz8UzRJBXBWF  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 56 rGXX6FpN57wQGf6cwaozLDahK17WTsauS2  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 57 rELvgp2EfxbELuauibHPtRhNPCfYphkzST  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 58 rftQT53XLY8MpDDaVoCoh1DDjc1fxWEA2S  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 59 rP1NUewSAmstoiSdn9YdTiKHSh7a6Ai7yU  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 60 rEMrwTNtpjgoPgRZ1nTLS6oak5RpU4oQaL  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 61 rhYseYjDVdJzHmXx4f37TGnNjknqwdSF55  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 62 rnYC95Kn23MQwJHAj53qe83C3ZxVZFhVcU  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 63 rsMhDySvitDGa2CF5ze5i3tbviZSB9QW61  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 64 rLTpThmYz9waMieQmW53ABavP8yYUMXSfq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 65 rKpnQDWgRsV9d716BhW5uhRs8kPHQuK7eA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 66 rhEKTHJS8DkoXKaS4ZDT68gSxEVbQcPv58  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 67 raicwKMwJvVJSaipAp9ekJX5WpDeJRqKZ4  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 68 rpPYrj88wtb7BVH5HWMH7kqrHJu4xDkxWH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 69 rpeUa1sr7PCEe1Fnyqh9d7HMWyKbLEDFAD  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 70 rLoqYLGVCrkrczUjndhfjuX1enbfJnKrfD  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 71 rsSt98msArxEP4hWJMtZVJLkRYN8jXQkK3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 72 rhWb4g9CuxdNiaJ8ixD9JjiEbQFDD9ovbu  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 73 rwDPA6SHownrnwf8PLYUPSmxsPWKfKxtN9  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 74 rPQE9hD6EcwtGBVaDFAuCQ5QxdXGsxwNu2  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 75 rDGnHmMQk2NUD5zrJZTCC1gAncHkWgY4gu  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 76 rPmAzWERJws8r3ybJnDKPDArY8d6JdMHjT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 77 rfHE1vhpAf4ktD3DRQmbkbV8rkFEn7Lu6L  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 78 rUdtbML3zkUxyPtZ6dYDkGZBHUmBxqpe6c  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 79 rhRWcR9ms1LhV23uup3XKyvf6VwykE89pd  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 80 rDjK5P87fEzikrB9zBqbRgM1NhVhAfxJdT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 81 r3VJK1T6NYC3bEKBpG7UbsMRmMaXZgwGbf  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 82 rJedP2DWJj6MTCpe9n23RomgaNTkkYRrff  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 83 r4vZxJZMiNPZaqgbTS9Qm5TZpnvxuC7msm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 84 rp1Tis2X3L4ebEvA1y9Y2RrGfDgQwYi9bk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 85 rL2mAp1sFks5ohiDv4FeVqko2LDizyaWmz  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 86 rDhHEqpsFvwS8NvMGZ2SbiL94Zyuyox2j5  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 87 rgc5znJ3M2Y1Q7zaVDCUAU9jCCifBsf1X   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 88 rNG6iQSPcKcSRWUsmQ9KHchLpfCpsJxekE  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 89 r9Z2d7cFZ36JQABuvStDUJtgek7MVvdyEH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 90 r4vjTFEJZ6J5csgC2oVLq9nxWuKjfuTehk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 91 rJ29ATS6oXMoofe2ZprEGuEt16rPkQZjyw  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 92 rKCC8wTnsX6CW1KW6FsY7nNSEd3SYMdvQx  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 93 rGfSKuMSjeRTxRoWV7G21uHPD4GrSMDEoZ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 94 rqLcig43Hfd8atWZST4aYKSVtsYukjRqE   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 95 rMgfJvKP5MFJuW78Nnja6MN7efQQ6guNjN  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 96 rLnrtLSQdtmWgTiY3o6NNWKpb43RsvZ1yW  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 97 rhkhRSvjnKyELCLVzWBz1tkQ4qkqPp5hap  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 98 rf89JqCBdANHaNzoMYyixrRVYo9aJeCC8j  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+ 99 rsrx5g3qmT1EiY1Pdh8tmCNqYqwZMrwBaV  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+100 r3dtozArneVDJfbHdjTaBZ7iwmtjGgHaDS  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+101 r386eHWf4HNTHm93zEDURowBYc98iUAwND  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+102 r4C8ijMrNFzURiDfAhcV8nNBx5dmPWASvB  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+103 r451NLCL65jrk6qMNXjTBhx8514saqNS24  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+104 rQHcLD25fQ9J5VdNapqKEdCwkrn2eLwpfq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+105 rfMZSS4LtXsCuxQqJktx5zAoieYkqWvFUz  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+106 rKn563KbinhFL3J6J29JeZdeZn3F6aj5fT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+107 rLhmemPj8ypbR3HVEdpwvAmHw8KGnHttwT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+108 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+108 rwGQ3KBiC9VYxxEDMFy7VS6tP5VTMgZ7Mg  tx    validated=True ledger_index=7902540 touches_root=True date=847553911 MISMATCH validated,ledger_index,touches_root,date
+109 rKnaQLJpR5Pw3bUUqUYoFocU5cN8b4M6B3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+110 rPGsnK4NAqeRwZ8AKgAmdWbsjPsFy9MLqD  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+111 rGGw3c88wtU8YYPPntNQgf2CsPGrhAVXsS  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+112 rMB9iSTkRKSZgn6qMBAPjCSjDofLER9EMS  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+113 rBEvZHQT6ifjQ7vw1EYfWucj2CieucvGBM  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+114 rLREiSfrRvE5W6LwyVre1RD6xSwWBdjRky  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+115 r9Ld1jAHoqd6SJPychz7zYq2TTs4UomG63  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+116 rD4X9s5yNgxMK5cBUBkxzwXvEg5KvmJGPi  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+117 ra452GpYZ5fwtiy2ZnLx9Y8S9LZsRMsfmb  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+118 rBRTZfXrzckhP2MRmsh2LVQVwZiYpCFaWN  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+119 rs3S1uiSo8mtpaqAVUNHXG35NvWYJrsmek  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+120 rLgS9NUye9R7mSmRe6N9UWPyA7BEvC6gX1  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+121 r44j9CkaXf99XP29FfZ1P4L1VM6krhWjnH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+122 r9FJYSPAsVMPY5AdGhhJn6SdQT883nhUTP  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+123 r9pxKbYtmzKvrcY7FSrg62h1NPPsQxFKTR  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+124 r3fKf8q5uz2r88f4MmpXf5Hmd7KjcGdz7Y  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+125 rpQdJnFg7EyfEuLGCWzMP4H8BTuTf7Fk5R  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+126 rDk3CZRowPqBE6HSBb6cCi85ZEf7o6eUZY  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+127 rwr7SnN2iErFMaFsWLafurL2oX64yk5LCj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+128 rJhTUuH4zTqXNXt4d9gCXbfWgJZ1te2dyf  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+129 rHD8ywzoHFfBJBTvoQS84fZ9eTHgnzzggk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+130 rKkkrA3T16sd7USqUkvGPjTPUfBAiQZC2s  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+131 rKnKyoQJRzRGsU1vE7eX2easCuYvEaxn1i  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+132 rhSHdEdHiBommoWNFfcdNBtf7Hh225WuG6  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+133 r49girBZXUpqwXzDjXzwKxLrogDSmsG8KB  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+134 rG3bfaUV8dkqP6kJfQj2WEPLCN7EW4LKN3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+135 rKAPGsAwRYUG7j99deCtbxn9QsSmrTGoTT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+136 rNAtScCvfCuvQuPFucLUi7KSY7hfd8dCz7  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+136 rNAtScCvfCuvQuPFucLUi7KSY7hfd8dCz7  tx    validated=True ledger_index=7902520 touches_root=True date=847553851 MISMATCH validated,ledger_index,touches_root,date
+137 rMY2RWyciSJ7k6MhUimHW7RAnDRZ2UbGpy  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+138 rwiEkARGqyXQh5C4q8bKkegL5oZ5eX3A9d  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+139 rhSGuEgdRWdQxeWXmXjSdHbp3oEPJoofha  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+140 rEFXtuQtgzm62Z7qBei8Fm383utz38Yv2F  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+141 rDAgYiMSmmjTP6h2ohMFoUCLCgJpCJDRbH  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+142 rMv4wq6bGhazni7idWKXEfLRQEMCpmyKKr  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+143 rPUz2ba7pMNzWK8KMBxogDzKcKfSHmNsYP  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+144 rGaS1AQnEopKchVoKESRgtmBEi7R3xBubg  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+145 r3wVc9bEY6nAi8XDGpgpqi8xJBeZZWhcVC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+146 rUgvkE4e1gn5Fxpz5y3ZTdA9XdvE11UPQL  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+147 rEh6DrJxgGvc99CKTQNKnH4iR5yGcApiUB  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+148 rhnpsGNvg2vUZLHRXcWjYZv97kkz3usxPP  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+149 r3JxciUe62jJpijRAQC4K3n3gZauazEdsU  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+150 rUKkypf632vPpJf9rphzY8Bp3Bwh4MSJrq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+151 rJLuayGjmABjRW99d9kcCDC9GBby9bg7Zh  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+152 r3xKYADcfG4FyYb6DJWYLS7fR9UcwLy49x  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+153 rnHLUUFfQTPzQJJoxoPZbVqFQVz69W8tSE  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+154 rBhNyzjc6nFn7ZhgpRqXNqhu4mLomjhZkh  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+155 rwjdDQZ3hYaqHnq3W23bSXdmdgtHEwDhq9  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+156 rccJNV6PbsJxHck9k1mhADETL769YNFVy   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+157 rf3YRJe9hwrKoP677FnTCtCjSEJ3eTGXun  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+158 rEjvpJa37XBUEz5m5ERfBPrTdDJiwKPkr3  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+159 rhXRVp1rPpbeFN4EqwDENeDyWidHRRrnXA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+160 r4PxaUe3noun9vdmD463SgfNpRXQu6NpWg  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+161 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+161 r49Bvpbjg1vUzcNtLUWyM9BS85je47p2Aj  tx    validated=True ledger_index=7874391 touches_root=True date=847468692 MISMATCH validated,ledger_index,touches_root,date
+162 rwQNGMfM3FHjWW9Pq4urK4d66iypaXKute  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+163 rByXJ4rvZDM2oVv38W3jex9t679uvqsawX  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+164 rNkjWeDGMZEqYfVEM68isPV7tdbUBFWdPy  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+165 riLhojt2dBrguSn1vFQw5UbD927nqnXR6   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+166 rKZdmZF8MuvLLRV37j55LbXV9qTWCRSNBq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+167 rPvj8ASok1oS5yE7LveUdymmbT6HE7VnRF  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+168 rMjER1KKr8EUbhSY5VvqJRTUJPBoiihxRr  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+169 rEEEDmAKwqDrdYHUonvSrP2ENxXmeCUs3k  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+170 rM7BdKikh3kewzmuN6uiBhK1bpWhJtA2FY  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+171 r98r3ZPGoKypiesJYGXjU4Q4oACssJry7V  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+172 ratBy2NriiJDWDtoFUrHiiaotMbXZyDRTd  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+173 rstFYdYh1ZPRSqLwUrk6yNcPGytH7CjQmm  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+174 rDpWyCef42aSvYmgJZrYk7566wQLA29Tw   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+175 rK4vCxLt4qnxDm8zsbDM7RdVEpX2Sobb6G  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+176 r9gtD21KqNoWTSrffQJstPUS4Dx8uDMLFf  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+177 rGr9HYMLaK9aRaPjtRak5dvUt6CpvMUtft  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+178 rGMoavc5pAd68rwXnZiaFFyt5U3rV94rsT  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+179 rw4SibmBUKMNJBhktqk2xSMNz3X17d39Cr  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+180 rscWPz4aA4GtQKH5tYvVFwteiSSjTjounC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+181 r9mQM9WJQcmnMBUYVhh7h7x14xKBjzXtzk  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+182 rHNsPiciJp9US5whCraorx5Xpw7goupDnQ  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+183 rhGfddCcu7QDDgC8VjwqdqBff6fwNmh3Na  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+184 rfMnQ7CDfa8Cj7BFg6q7VeimyfCmLPxYxE  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+185 rnkw3XWraMS7QmuNJigpwtVSHMU6WFLTMP  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+186 rBfX15unDjtSwcuuu3ZFvMJ2vtBxMqeucC  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+187 r3HY6pRwkPaqmM5z62xXnVFpoBgHZEv1NG  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+188 rfmdkPTQSXnu3qVW7ib85BE6ixkfeXEgMB  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+189 rQLbhi9BBVuoJ95TG7FcjzEVfAg2hFJCKA  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+190 r9xLagfoQEWSjZs3sVPZcBY8R95VBJTd4j  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+191 rKFWm6kS3r9uv6FzFxseCtDA2zpgsSGR6W  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+192 rax7VJQEGntyW8GbMmrjbiF1Xmg2f5emyq  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+193 rKQa1D2RUVnWaCrcpGRMdLdWitmtND8Xyi  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+194 rUBd6HztEaSZQEby7WMLE47LKYxMUpyRgj  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+195 rLZgXBTUBVB5ns6KxPGfTSRRU7spNrSaeb  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+196 rPBUyNcdKucb34m7V8LRpKPC3a2gbJpM1u  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+197 rpFYPXPF2cFdB8RJS5kZPAJRGZrYfLvi7m  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+198 r9ric25w29StHDDTZe59SCdJDLwGMGw6R2  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+199 rLTqkurBZmPm4PRumuXzzQBfPm6YwrPm3b  acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+200 rBg9P2v3M4B12h43jKxbLhMsuRUeiRw9m   acct  5 fields MISMATCH Balance,OwnerCount,Sequence,PreviousTxnID,PreviousTxnLgrSeq
+SUMMARY {"accounts": 200, "date_checked": 5, "fields_mismatch": 1000, "fields_ok": 0, "retries": 0, "retries_by_error": {}, "rpc_calls": 206, "skipped": 0, "tx_checked": 5, "tx_mismatch": 5, "tx_ok": 0, "tx_out_of_range": 195, "tx_skipped": 0}
+RESULT: negative control PASS: field mismatches 1000/1000, tx mismatches 5/5, OK lines 0 -> exit 1
+(exit 1)
+$ .venv/bin/python -u dormancy/crosscheck_dormancy.py data/dormancy/B/snapshot-7902546.jsonl.gz --headers data/dormancy/headers.jsonl --count 200 --seed 2 --offline data/dormancy/B/crosscheck-B-random-seed1.jsonl > /dev/null 2> data/dormancy/B/seed2.err
+(exit 3)
+$ tail -2 data/dormancy/B/seed2.err
+(exit 0)
+# end 2026-11-09T15:45:30Z

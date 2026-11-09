@@ -1,7 +1,8 @@
 # dormancy/ — account dormancy and last-activity analyzer
 
-**Status: in progress.** Snapshot A is taken; snapshot B and the report follow about 24 h later.
-This README describes the method as built so far.
+**Status: done.** Snapshots A (ledger 7874004, 2026-11-08T15:38:40Z) and B (ledger 7902546,
+2026-11-09T15:38:50Z, 24 h 00 min 10 s later) are committed with the report: [`report/REPORT.md`](report/REPORT.md).
+Results, checks and how to re-run everything offline are at the end of this file.
 
 Read-only. For every account on the Post Fiat testnet ledger, it measures how long ago the account
 last changed. It then reports how much PFT, how much reserve and how many owned objects sit in each
@@ -106,3 +107,66 @@ seq exactly once. The last resume must report `torn_bytes` equal to the injected
 every complete line. Exit codes must be 4 / 137 / 0, and the public `complete_ledgers` must
 still hold the oldest fetched seq. The drill uses public RPC only (`server_info`, `ledger`),
 and `TERM_AFTER`, `KILL_AFTER`, `ITEM_DELAY` and `CUT` tune the timing.
+
+## Snapshot source
+
+Both snapshots were paged by `state/snapshot.py` (unchanged) from this box's own node: it pins the
+validated ledger on start and only that node serves `ledger_data` for a whole recent ledger. The
+public RPC (`rpc.testnet.postfiat.org`) is the second, independent source: `headers_dormancy.py`
+asks it first for close times (own node second), and `crosscheck_dormancy.py` checks the snapshot
+against it at the same ledger. `snapshot.py` itself has no public-RPC paging mode.
+
+## Results (A = ledger 7874004, B = ledger 7902546)
+
+Full tables and charts: [`report/REPORT.md`](report/REPORT.md); every figure: `report/dormancy.json`.
+
+- Accounts: A 4573, B 4586. A→B: 47 touched (new `PreviousTxnID`), 4526 untouched, 13 created,
+  0 deleted; no account in the `>=14d` bucket at A was active again by B.
+- Time sources (B): exact 214, interp 152 (bound width up to 151.95 h), before 4220. 4220 of
+  4586 accounts last changed before the oldest header any source or committed file holds
+  (ledger 7352333, 2026-10-21T09:11:50Z), so they are `>=14d` by their upper bound alone.
+- `7d-14d` is the only bucket whose count depends on interpolation: A [40, 140], B [57, 157].
+  The `>=14d` bucket is [4257, 4357] in both snapshots.
+- Concentration: Gini 0.999702 and top-10 share 0.994837 for all accounts at A and at B. They
+  differ only past the 6th decimal (recomputed independently: A 0.999701531 / 0.994836834,
+  B 0.999702366 / 0.994836541); one account holds 96,999,999,999.999880 PFT.
+- Reconciliation, both snapshots, exact integers: objects 5106/5113 paged = in file, every
+  account in exactly one bucket, bucket balances = total_coins (A 99999999967938708, B
+  99999999967839710 drops; escrow 0, paychan 0), bucket reserves and OwnerCounts = account sums,
+  min <= point <= max per bucket. Transition checks: 4573 - 0 + 13 = 4586, every A account in one
+  cell, 47 + 4526 + 0 = 4573, 0 invariant problems.
+
+## Checks
+
+| check | A | B | log |
+|---|---|---|---|
+| random crosscheck, 200 accounts, seed 1 | 1000/1000 fields OK, 3 tx OK | 1000/1000 fields OK, 5/5 tx OK | `06` / `16` |
+| same, `--negative` | 1000/1000 fields + 3/3 tx MISMATCH, exit 1 | 1000/1000 + 5/5 MISMATCH, exit 1 | `07` / `16` |
+| same, `--offline` from the recording | same verdicts, exit 0; negative exit 1 | same verdicts, exit 0; negative exit 1 | `08` / `16` |
+| in-range crosscheck (every held account, tx + date check) | 89/89: 445 fields, 89 tx, 89 dates OK | 75/75: 375 fields, 75 tx, 75 dates OK | `09` / `17` |
+| in-range `--negative` (live and offline) | 445/445 + 89/89 MISMATCH | 375/375 + 75/75 MISMATCH | `09` / `17` |
+| `--offline` with an unrecorded seed (2) | rc 1 (before the exit-3 fix, log 08/09 NOTE) | exit 3 | `09` / `16` |
+| reconciliation + transitions | 8/8 OK | 8/8 OK, transitions 4/4 OK | `17` |
+| header fetcher resume drill (SIGTERM/SIGKILL + injected 23-byte torn tail) | PASS 7/7, rc 4/137/0 | | `13` |
+| mutation harness | control 76 passed, 39/39 CAUGHT | | `14` |
+| tests / lint | dormancy 76 passed, full repo suite 665 passed, ruff check + format, shellcheck clean | | `17` |
+
+The live SIGKILL in the drill landed between two writes (no torn line of its own); the torn
+tail is the injected one, every run. Log 05 is superseded (code changed after it); logs 08/09
+carry NOTE lines where a printed `(exit 0)` was `tail`'s status, not the tool's. In published
+logs the home directory is shown as `~` and the user name as `<user>`.
+
+## Reproduce offline
+
+Logs ran against a scratch copy under `data/dormancy/` (gitignored); the committed copies are
+the same bytes under `dormancy/data/` (`SHA256SUMS`, row counts in `ROWS.txt`).
+
+```
+cd dormancy/data && sha256sum -c SHA256SUMS && cd ../..
+.venv/bin/python dormancy/analyze_dormancy.py --snap dormancy/data/A/snapshot-7874004.jsonl.gz \
+  --snap dormancy/data/B/snapshot-7902546.jsonl.gz --anchors dormancy/data/anchors.csv \
+  --headers dormancy/data/headers.jsonl --out /some/dir --charts   # byte-identical to report/
+.venv/bin/python dormancy/crosscheck_dormancy.py dormancy/data/B/snapshot-7902546.jsonl.gz \
+  --headers dormancy/data/headers.jsonl --count 200 --seed 1 --offline dormancy/data/B/crosscheck-B-random-seed1.jsonl
+.venv/bin/python -m pytest -q tests/test_dormancy.py tests/test_crosscheck_dormancy.py tests/test_analyze_dormancy.py
+```
