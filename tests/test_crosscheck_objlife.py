@@ -180,3 +180,98 @@ def test_snapshot_row_count_checked(tmp_path):
     except ValueError:
         return
     raise AssertionError("row count mismatch not detected")
+
+
+# ---- sampled tx mode -------------------------------------------------------------------------
+
+TXS = [
+    {"ledger_index": 120, "tx_index": 0, "tx": {"hash": "C1" * 32},
+     "meta": {"TransactionIndex": 0, "TransactionResult": "tesSUCCESS",
+              "AffectedNodes": [{"DeletedNode": {"LedgerEntryType": "Offer", "LedgerIndex": "01" * 32}}]}},
+    {"ledger_index": 130, "tx_index": 2, "tx": {"hash": "C2" * 32},
+     "meta": {"TransactionIndex": 2, "TransactionResult": "tesSUCCESS",
+              "AffectedNodes": [{"CreatedNode": {"LedgerEntryType": "Escrow", "LedgerIndex": "03" * 32}}]}},
+]  # fmt: skip
+
+
+class TxFake:
+    def __init__(self, txs=TXS, rng="50-200", fail=None):
+        self.by = {x["tx"]["hash"]: x for x in txs}
+        self.rng, self.fail, self.calls = rng, fail or {}, []
+
+    def call(self, method, params=None):
+        self.calls.append(method)
+        q = self.fail.get(method)
+        if q:
+            raise q.pop(0)
+        if method == "server_info":
+            return {"info": {"complete_ledgers": self.rng}}
+        if method == "tx":
+            x = self.by.get(params["transaction"])
+            if x is None:
+                raise LookupError("txnNotFound")
+            return {"ledger_index": x["ledger_index"], "validated": True, "meta": x["meta"]}
+        raise AssertionError(method)
+
+
+def go_txs(tmp_path, rpc, local=TXS, hashes=None, **kw):
+    d = tmp_path / "tx"
+    d.mkdir(exist_ok=True)
+    (d / "obj-tx.jsonl").write_text("".join(json.dumps(x) + "\n" for x in local))
+    an = tmp_path / "analysis.json"
+    an.write_text(json.dumps({"sampled_txs": {"hashes": hashes or [x["tx"]["hash"] for x in TXS]}}))
+    lines = []
+    rc = X.run_txs(rpc, str(an), str(d), args(**kw), out=lines.append, sleep=lambda s: None)
+    return rc, lines
+
+
+def test_txs_all_match(tmp_path):
+    rc, lines = go_txs(tmp_path, TxFake())
+    assert rc == 0 and verdicts(lines) == ["MATCH tx:" + "C1" * 32, "MATCH tx:" + "C2" * 32]
+
+
+def test_txs_negative_every_line_mismatches(tmp_path):
+    rc, lines = go_txs(tmp_path, TxFake(), negative=True)
+    v = verdicts(lines)
+    assert rc == 1 and len(v) == 2 and all(x.startswith("MISMATCH") for x in v)
+    assert "diff=['TransactionIndex', 'ledger_index']" in lines[1]
+
+
+def test_txs_meta_difference(tmp_path):
+    other = json.loads(json.dumps(TXS))
+    other[1]["meta"]["AffectedNodes"][0]["CreatedNode"]["LedgerIndex"] = "04" * 32
+    rc, lines = go_txs(tmp_path, TxFake(txs=other))
+    assert rc == 1 and "diff=['AffectedNodes']" in [x for x in lines if "C2C2" in x][0]
+
+
+def test_txs_not_found_is_mismatch(tmp_path):
+    rc, lines = go_txs(tmp_path, TxFake(txs=TXS[:1]))
+    assert rc == 1 and any(x.startswith("MISMATCH tx:" + "C2" * 32 + " error=txnNotFound") for x in lines)
+
+
+def test_txs_outside_retention_not_checkable(tmp_path):
+    rc, lines = go_txs(tmp_path, TxFake(rng="125-200"))
+    assert rc == 0 and any(x.startswith("NOT_CHECKABLE tx:" + "C1" * 32) for x in lines)
+    assert lines[-1].endswith("checked=1 match=1 mismatch=0 not_checkable=1 gave_up=0")
+    rc, lines = go_txs(tmp_path, TxFake(rng="140-200"))
+    assert rc == 2  # nothing checkable is never a pass
+
+
+def test_txs_retry_then_gave_up(tmp_path):
+    rc, lines = go_txs(tmp_path, TxFake(fail={"tx": [H.Transient("http 503")] * 3}))
+    assert rc == 2 and any(x.startswith("RETRY tx try 1/3") for x in lines)
+    assert any(x.startswith("GAVE_UP tx") for x in lines)
+
+
+def test_txs_local_copy_missing(tmp_path):
+    rc, lines = go_txs(tmp_path, TxFake(), local=TXS[:1])
+    assert rc == 2 and lines[0].startswith("LOCAL_MISSING 1")
+
+
+def test_txs_record_offline(tmp_path):
+    rec = tmp_path / "rec.jsonl"
+    r = X.Recorder(TxFake(), str(rec))
+    rc1, l1 = go_txs(tmp_path, r)
+    r.fh.close()
+    rc2, l2 = go_txs(tmp_path, X.Replay(str(rec)))
+    assert rc1 == rc2 == 0 and verdicts(l1) == verdicts(l2)

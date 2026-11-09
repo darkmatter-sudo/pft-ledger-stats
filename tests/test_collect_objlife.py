@@ -234,3 +234,13 @@ def test_typecount_resume_skips_done_types(tmp_path):
     rpc2 = FakeRpc(objs())
     assert run_snapshot(tmp_path, rpc2) == 0
     assert rpc2.count == 0  # snapshot complete and all type counts recorded: no RPC at all
+
+
+def test_typecount_from_another_ledger_refused(tmp_path):
+    assert run_snapshot(tmp_path, FakeRpc(objs())) == 0
+    (tmp_path / "out" / "DONE").unlink()
+    tc = tmp_path / "out" / "typecount.json"
+    doc = json.loads(tc.read_text())
+    tc.write_text(json.dumps(dict(doc, ledger_hash="H9")))  # left over from another ledger
+    with pytest.raises(ValueError, match="another ledger"):
+        run_snapshot(tmp_path, FakeRpc(objs()))

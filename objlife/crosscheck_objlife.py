@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Cross-check an objlife snapshot against an independent RPC (default: the public testnet RPC).
 
-Read-only (server_info, ledger, ledger_data, ledger_entry). For snapshot ledger L it checks:
+Read-only (server_info, ledger, ledger_data, ledger_entry, tx). For snapshot ledger L it checks:
 
   header    `ledger L`: ledger_hash, account_hash, close_time equal the snapshot header
   set:<T>   for every deferred type T: `ledger_data type=<rpc> ledger_index=L` (paged) returns
@@ -26,6 +26,13 @@ A working check reports every line MISMATCH and exits 1.
 --record F writes every final answer; --offline F replays them with no network and gives the
 same verdicts. A call missing from the recording stops the run with exit 3.
 
+Sampled tx mode (--txs ANALYSIS.json --txdir DIR): the tx hashes analyze_objlife.py sampled
+(fixed seed) are fetched with `tx` and compared with the watcher's local copy in DIR/obj-tx.jsonl:
+ledger_index, validated, TransactionIndex, TransactionResult and the full AffectedNodes list.
+A tx whose ledger is outside the source's complete_ledgers is NOT_CHECKABLE (listed, never a
+MATCH); if none is checkable the run exits 2. --negative expects TransactionIndex + 1 and
+ledger_index + 1, so every tx line must MISMATCH (a txnNotFound is a MISMATCH in both modes).
+
 Exit 0 all MATCH, 1 any MISMATCH, 2 out of range / gave up, 3 offline recording incomplete.
 """
 
@@ -41,7 +48,7 @@ sys.path.insert(0, os.path.join(HERE, "..", "dormancy"))
 
 import headers_dormancy as H  # noqa: E402
 
-READ_ONLY = {"server_info", "ledger", "ledger_data", "ledger_entry"}
+READ_ONLY = {"server_info", "ledger", "ledger_data", "ledger_entry", "tx"}
 
 
 class Recorder:
@@ -263,9 +270,78 @@ def run(rpc, snap_path, args, out=print, sleep=time.sleep):
     return 2 if gave_up else 0
 
 
+def run_txs(rpc, analysis_path, txdir, args, out=print, sleep=time.sleep):
+    with open(analysis_path) as fh:
+        hashes = json.load(fh)["sampled_txs"]["hashes"]
+    local = {}
+    with open(os.path.join(txdir, "obj-tx.jsonl")) as fh:
+        for line in fh:
+            x = json.loads(line)
+            if x["tx"]["hash"] in hashes:
+                local[x["tx"]["hash"]] = x
+    missing = sorted(set(hashes) - set(local))
+    if missing:
+        out(f"LOCAL_MISSING {len(missing)} sampled hashes not in {txdir}/obj-tx.jsonl: {missing[:3]}")
+        return 2
+    try:
+        info = ask(rpc, "server_info", {}, args, out, sleep=sleep)
+    except GaveUp:
+        return 2
+    rng = info["info"].get("complete_ledgers", "empty")
+    ranges = H.parse_ranges(rng)
+    out(f"SOURCE complete_ledgers {rng} | sampled txs {len(hashes)} | negative={args.negative}")
+    results, gave_up, uncheckable = [], 0, 0
+    for h in hashes:
+        x = local[h]
+        if not any(lo <= x["ledger_index"] <= hi for lo, hi in ranges):
+            uncheckable += 1
+            out(f"NOT_CHECKABLE tx:{h} ledger {x['ledger_index']} outside source complete_ledgers")
+            continue
+        exp = {
+            "ledger_index": x["ledger_index"] + (1 if args.negative else 0),
+            "validated": True,
+            "TransactionIndex": x["meta"]["TransactionIndex"] + (1 if args.negative else 0),
+            "TransactionResult": x["meta"].get("TransactionResult"),
+            "AffectedNodes": x["meta"]["AffectedNodes"],
+        }
+        try:
+            r = ask(rpc, "tx", {"transaction": h, "binary": False}, args, out, sleep=sleep)
+        except GaveUp:
+            gave_up += 1
+            continue
+        except LookupError as e:
+            results.append(False)
+            out(f"MISMATCH tx:{h} error={e}")
+            continue
+        meta = r.get("meta") or {}
+        got = {
+            "ledger_index": int(r.get("ledger_index", -1)),
+            "validated": r.get("validated") is True,
+            "TransactionIndex": meta.get("TransactionIndex"),
+            "TransactionResult": meta.get("TransactionResult"),
+            "AffectedNodes": meta.get("AffectedNodes"),
+        }
+        diff = sorted(k for k in exp if exp[k] != got[k])
+        results.append(not diff)
+        out(
+            f"{'MISMATCH' if diff else 'MATCH'} tx:{h} ledger {x['ledger_index']} "
+            f"nodes={len(exp['AffectedNodes'])} diff={diff}"
+        )
+    n_bad = results.count(False)
+    out(
+        f"SUMMARY txs={len(hashes)} checked={len(results)} match={results.count(True)} mismatch={n_bad} "
+        f"not_checkable={uncheckable} gave_up={gave_up}"
+    )
+    if n_bad:
+        return 1
+    return 2 if gave_up or not results else 0
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("snapshot", help="objlife-<ledger>.jsonl")
+    p.add_argument("snapshot", nargs="?", help="objlife-<ledger>.jsonl (not with --txs)")
+    p.add_argument("--txs", default=None, help="analysis.json: check its sampled tx hashes instead")
+    p.add_argument("--txdir", default=None, help="watch_objlife.py directory (with --txs)")
     p.add_argument("--rpc", default="https://rpc.testnet.postfiat.org")
     p.add_argument("--retries", type=int, default=5)
     p.add_argument("--backoff", type=float, default=1.0)
@@ -277,6 +353,8 @@ def main(argv=None):
     g.add_argument("--record", default=None)
     g.add_argument("--offline", default=None)
     args = p.parse_args(argv)
+    if bool(args.snapshot) == bool(args.txs) or bool(args.txs) != bool(args.txdir):
+        p.error("give a snapshot, or --txs with --txdir")
     if args.offline:
         rpc = Replay(args.offline)
     else:
@@ -284,7 +362,10 @@ def main(argv=None):
         if args.record:
             rpc = Recorder(rpc, args.record)
     try:
-        return run(rpc, args.snapshot, args, sleep=(lambda s: None) if args.offline else time.sleep)
+        sleep = (lambda s: None) if args.offline else time.sleep
+        if args.txs:
+            return run_txs(rpc, args.txs, args.txdir, args, sleep=sleep)
+        return run(rpc, args.snapshot, args, sleep=sleep)
     except NotRecorded as e:
         print(f"OFFLINE_INCOMPLETE {e}")
         return 3
