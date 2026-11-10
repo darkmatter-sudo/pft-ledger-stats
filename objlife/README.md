@@ -1,13 +1,13 @@
 # objlife/ — deferred ledger object census and lifecycle (Escrow, Check, PayChannel, Offer, Ticket, …)
 
-**Status: in progress.** Snapshot A is committed (ledger 7907362, 2026-11-09T19:41Z). The A->B
-transaction watcher runs from ledger A+1; snapshot B (≥ 24 h after A, ~2026-11-10T19:41Z), the
-A->B run of the analyzer, the B crosschecks and REPORT.md follow. Analyzer, sampled-tx crosscheck
-and mutation harness are in place and tested on fixtures.
+**Status: complete.** Snapshot A (ledger 7907362, 2026-11-09T19:41Z), snapshot B (ledger 7935917,
+2026-11-10T19:42Z), the A->B watcher data, the analysis and all crosschecks are committed. Results:
+[REPORT.md](REPORT.md) (0 deferred-object txs in the 24 h window; 48 unchanged objects; R1-R5 PASS;
+public RPC 64/64 on A and B and 200/200 on sampled window ledgers).
 
 Read-only. Nothing is signed or submitted. The only RPC methods sent are `server_state`,
-`server_info`, `ledger` and `ledger_data` (local node), plus `ledger_entry` and `tx` (public RPC
-crosscheck).
+`server_info`, `ledger` and `ledger_data` (local node), plus `ledger_entry`, `tx` and `ledger` (public
+RPC crosscheck).
 
 ## Which types count as deferred
 
@@ -116,6 +116,28 @@ AffectedNodes list with the watcher's copy. A tx outside the public RPC's `compl
 `NOT_CHECKABLE` (listed, never a MATCH; none checkable = exit 2). `--negative` expects
 TransactionIndex + 1 and ledger_index + 1, so every tx line must MISMATCH.
 
+Window ledger check: `crosscheck_objlife.py --ledgers DIR --types types.json --from A --to B`
+re-fetches `--sample K` window ledgers that had transactions and `--empty E` that had none (order by
+sha256 of `--seed` + ledger, so the pick is fixed) from the public RPC with `ledger transactions=true
+expand=true` and compares ledger_hash, close_time, txn_count and the sorted hashes of the txs that
+touch a deferred type with `ledgers.csv` and `obj-tx.jsonl`. It checks the watcher's negative claims
+too (a ledger where it kept nothing), which the `--txs` mode cannot. A gap in `ledgers.csv` stops it
+before any call (exit 2); a ledger outside `complete_ledgers` is NOT_CHECKABLE; `--negative` expects
+txn_count + 1 and close_time + 1 so every line MISMATCHes; `--record`/`--offline` as above. Tests:
+`test_ledgers_*` in `tests/test_crosscheck_objlife.py` (only deferred types counted, a deferred tx
+the watcher missed, each compared field failing alone, retention, local gap and window bounds,
+seeded busy/idle split, give-up, record/offline).
+
+```bash
+python3 -I objlife/crosscheck_objlife.py --ledgers objlife/data/tx --types objlife/data/types.json \
+  --from 7907362 --to 7935917 --sample 160 --empty 40 --seed objlife-window \
+  --record objlife/data/crosscheck-window.jsonl
+```
+
+Charts: `objlife/charts_objlife.py --analysis objlife/data/analysis.json --ledgers
+objlife/data/tx/ledgers.csv --a 7907362 --b 7935917 --out objlife` writes `chart-window.png` and
+`chart-census.png` and prints every plotted number as a `CHART` line (`logs/22-charts.log`).
+
 ### Owner reserve (postfiatd 32723c15)
 
 Every deferred object adds exactly 1 to its owner's OwnerCount when created, so the reserve tied up
@@ -149,14 +171,18 @@ problem gives NOT_CHECKABLE.
 `objlife/mutants_objlife.py` (harness from `dormancy/mutants_dormancy.py`) runs the unmutated
 control from a temp copy first, then each mutant in its own temp copy with a per-run timeout that
 kills the process group; CAUGHT needs a failed test (names printed), anything else is BROKEN.
-59 mutants over the collector, watcher, analyzer and crosscheck.
+70 mutants over the collector, watcher, analyzer and crosscheck (X11-X21 cover the window ledger mode).
 
-Recorded at 6592338de939113870d1c4964c752f77a29f8415: `logs/09-tests.log` (89 PASSED lines, objlife
-suites with `POSTFIATD_SRC` set, 0 skipped) and `logs/10-mutants.log` (control passed, 59 CAUGHT of
-59, 0 survived, 0 not applied, 0 equivalent). The first dev pass (not published as a recorded run)
-left 2 survivors, both real test gaps, closed before the commit: C3 (a `typecount.json` left from
-another ledger was trusted; new `test_typecount_from_another_ledger_refused`) and A17 (the
-created-object default rule in the node checks; new `test_r4_created_then_deleted_with_non_default_field`).
+Current record, at 1e85f3ed74eaef1eccae9c7407d15ef079e6cb84: `logs/20-tests.log` (98 PASSED lines,
+`POSTFIATD_SRC` set, 0 skipped) and `logs/21-mutants.log` (control passed, 70 CAUGHT of 70, 0 survived,
+0 not applied, 0 equivalent; the harness copies run without `POSTFIATD_SRC`, so the one source-parse
+test is skipped there, as in log 10). A dev pass before the record also gave 70/70.
+
+Earlier record at 6592338de939113870d1c4964c752f77a29f8415: `logs/09-tests.log` (89 PASSED) and
+`logs/10-mutants.log` (59 CAUGHT of 59). Its first dev pass (not published) left 2 survivors, both
+real test gaps, closed before that commit: C3 (a `typecount.json` left from another ledger was
+trusted; new `test_typecount_from_another_ledger_refused`) and A17 (the created-object default rule
+in the node checks; new `test_r4_created_then_deleted_with_non_default_field`).
 `logs/08-tests-superseded.log` is an earlier recorded run of the same commit with `$SRC` unset (one
 test skipped, and its exit line was sed's); see the note at its end.
 

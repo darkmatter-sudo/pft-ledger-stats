@@ -1,0 +1,118 @@
+OS: Ubuntu 22.04.5 LTS
+date: 2026-11-10T19:58:57Z  commit: 1e85f3ed74eaef1eccae9c7407d15ef079e6cb84
+$ git -C $SRC rev-parse HEAD
+32723c15e686a2088f2c83017a6ff909d93822cd
+(exit 0)
+$ sha256sum objlife/*.py tests/test_*objlife*.py
+4f49881e1f7ef34737a22601ee15994fad57f52a92ad9f5d424b46cec9439300  objlife/analyze_objlife.py
+dbf1ddba9921df82a44d1baa777cfb96fee7eb068cc6d066bd6678c59c062295  objlife/collect_objlife.py
+0a6b2e6ae854e926c62b542ba0246bc5574ba0adc29adb68ecf9e9f582dddd60  objlife/crosscheck_objlife.py
+a958196ecfb52bdbd2dfa7d4349ad29830f3070bda31509b98ae735526e32cbb  objlife/mutants_objlife.py
+7aba61f781c0f2c8f5c4965f67dbbd5a25ba2683f2586b24504ec16a36ca8b14  objlife/watch_objlife.py
+9d9bcc47162c70173601c8bdbead9110e9e32d7f898f13ae6534a134f656aee3  tests/test_analyze_objlife.py
+ba927587238196b1939a6b6fda2b60dd5bdb491855971aa65f543e3ccd6781ab  tests/test_collect_objlife.py
+6ce4fe2634b910613645c86a2dfa9a44e9666d9ee8278764ce2959e26935d8fc  tests/test_crosscheck_objlife.py
+7539cfebc845d85bc9cdbec425267cac72a61afc1d4f4920a90c520b1dd8960c  tests/test_watch_objlife.py
+(exit 0)
+$ set -o pipefail; POSTFIATD_SRC=$SRC TMPDIR=$HOME/.cache .venv/bin/python -m pytest -q -rA -p no:cacheprovider tests/test_collect_objlife.py tests/test_watch_objlife.py tests/test_analyze_objlife.py tests/test_crosscheck_objlife.py 2>&1 | sed -n '/short test summary/,$p'
+=========================== short test summary info ============================
+PASSED tests/test_collect_objlife.py::test_parse_macro_lines_codes_fields
+PASSED tests/test_collect_objlife.py::test_classify_rule
+PASSED tests/test_collect_objlife.py::test_types_on_real_macro_if_present
+PASSED tests/test_collect_objlife.py::test_build_sorts_counts_and_header
+PASSED tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc0]
+PASSED tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc1]
+PASSED tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc2]
+PASSED tests/test_collect_objlife.py::test_build_refuses_count_disagreement[tc3]
+PASSED tests/test_collect_objlife.py::test_write_lines_deterministic
+PASSED tests/test_collect_objlife.py::test_snapshot_end_to_end_and_resume_with_torn_tail
+PASSED tests/test_collect_objlife.py::test_snapshot_refuses_other_ledger_hash_on_type_filter
+PASSED tests/test_collect_objlife.py::test_typecount_resume_skips_done_types
+PASSED tests/test_collect_objlife.py::test_typecount_from_another_ledger_refused
+PASSED tests/test_watch_objlife.py::test_filter_keeps_only_deferred_types_sorted
+PASSED tests/test_watch_objlife.py::test_window_then_resume_after_torn_tail_and_orphans
+PASSED tests/test_watch_objlife.py::test_drop_orphan_lines
+PASSED tests/test_analyze_objlife.py::test_census_values_by_hand
+PASSED tests/test_analyze_objlife.py::test_concentration_by_hand
+PASSED tests/test_analyze_objlife.py::test_gini_off_centre
+PASSED tests/test_analyze_objlife.py::test_deadlines_and_age_by_hand
+PASSED tests/test_analyze_objlife.py::test_deadline_bucket_edges[-1-expired]
+PASSED tests/test_analyze_objlife.py::test_deadline_bucket_edges[0-expired]
+PASSED tests/test_analyze_objlife.py::test_deadline_bucket_edges[1-<1h]
+PASSED tests/test_analyze_objlife.py::test_deadline_bucket_edges[3599-<1h]
+PASSED tests/test_analyze_objlife.py::test_deadline_bucket_edges[3600-1h-24h]
+PASSED tests/test_analyze_objlife.py::test_deadline_bucket_edges[86399-1h-24h]
+PASSED tests/test_analyze_objlife.py::test_deadline_bucket_edges[86400-1d-7d]
+PASSED tests/test_analyze_objlife.py::test_deadline_bucket_edges[604800-7d-30d]
+PASSED tests/test_analyze_objlife.py::test_deadline_bucket_edges[2591999-7d-30d]
+PASSED tests/test_analyze_objlife.py::test_deadline_bucket_edges[2592000->30d]
+PASSED tests/test_analyze_objlife.py::test_earliest_deadline_wins
+PASSED tests/test_analyze_objlife.py::test_age_bucket_edges
+PASSED tests/test_analyze_objlife.py::test_credential_owner_follows_accepted_flag
+PASSED tests/test_analyze_objlife.py::test_clean_window_passes
+PASSED tests/test_analyze_objlife.py::test_txs_after_b_are_ignored
+PASSED tests/test_analyze_objlife.py::test_replay_order_is_ledger_then_tx_index
+PASSED tests/test_analyze_objlife.py::test_r2_only_field_diff
+PASSED tests/test_analyze_objlife.py::test_r2_created_default_rule
+PASSED tests/test_analyze_objlife.py::test_r4_only_previous_fields_disagree
+PASSED tests/test_analyze_objlife.py::test_r4_only_deleted_final_fields_disagree
+PASSED tests/test_analyze_objlife.py::test_r5_only_wrong_previous_txn_id
+PASSED tests/test_analyze_objlife.py::test_r5_only_old_object_rethreaded
+PASSED tests/test_analyze_objlife.py::test_r1_r3_missing_create
+PASSED tests/test_analyze_objlife.py::test_r3_with_r4_create_of_live
+PASSED tests/test_analyze_objlife.py::test_r4_modify_and_delete_of_absent
+PASSED tests/test_analyze_objlife.py::test_r1_unexpected_left_over
+PASSED tests/test_analyze_objlife.py::test_incomplete_window_not_checkable[kw0-1 ledgers missing]
+PASSED tests/test_analyze_objlife.py::test_incomplete_window_not_checkable[kw1-two ledgers.csv rows]
+PASSED tests/test_analyze_objlife.py::test_incomplete_window_not_checkable[kw2-1 gap ledgers in range]
+PASSED tests/test_analyze_objlife.py::test_incomplete_window_not_checkable[kw3-ledger 102: obj_tx_count 1 != 2]
+PASSED tests/test_analyze_objlife.py::test_duplicate_tx_hash_not_checkable
+PASSED tests/test_analyze_objlife.py::test_gap_outside_range_is_ignored
+PASSED tests/test_analyze_objlife.py::test_bad_inputs_exit_2
+PASSED tests/test_analyze_objlife.py::test_duplicate_index_refused
+PASSED tests/test_analyze_objlife.py::test_cli_writes_json_and_transitions
+PASSED tests/test_analyze_objlife.py::test_cli_failure_prints_residuals
+PASSED tests/test_analyze_objlife.py::test_object_threaded_after_its_snapshot_refused
+PASSED tests/test_analyze_objlife.py::test_expiry_boundaries[obj0-True]
+PASSED tests/test_analyze_objlife.py::test_expiry_boundaries[obj1-False]
+PASSED tests/test_analyze_objlife.py::test_expiry_boundaries[obj2-True]
+PASSED tests/test_analyze_objlife.py::test_expiry_boundaries[obj3-False]
+PASSED tests/test_analyze_objlife.py::test_expiry_boundaries[obj4-True]
+PASSED tests/test_analyze_objlife.py::test_expiry_boundaries[obj5-False]
+PASSED tests/test_analyze_objlife.py::test_expiry_boundaries[obj6-True]
+PASSED tests/test_analyze_objlife.py::test_escrow_finishable_strictly_after
+PASSED tests/test_analyze_objlife.py::test_iou_sums_are_exact_decimals
+PASSED tests/test_analyze_objlife.py::test_owner_fields
+PASSED tests/test_analyze_objlife.py::test_top5_share_counts_five_owners
+PASSED tests/test_analyze_objlife.py::test_same_ledger_order_by_tx_index
+PASSED tests/test_analyze_objlife.py::test_r4_created_then_deleted_with_non_default_field
+PASSED tests/test_crosscheck_objlife.py::test_all_match
+PASSED tests/test_crosscheck_objlife.py::test_negative_mismatches_every_check_including_empty_and_absent
+PASSED tests/test_crosscheck_objlife.py::test_missing_and_extra_objects
+PASSED tests/test_crosscheck_objlife.py::test_field_difference
+PASSED tests/test_crosscheck_objlife.py::test_present_absent_probe_is_mismatch
+PASSED tests/test_crosscheck_objlife.py::test_out_of_range_stops_after_server_info
+PASSED tests/test_crosscheck_objlife.py::test_backoff_logged_then_success
+PASSED tests/test_crosscheck_objlife.py::test_gave_up_is_exit_2_not_match
+PASSED tests/test_crosscheck_objlife.py::test_other_lookup_error_not_retried
+PASSED tests/test_crosscheck_objlife.py::test_record_offline_same_verdicts_and_incomplete
+PASSED tests/test_crosscheck_objlife.py::test_snapshot_row_count_checked
+PASSED tests/test_crosscheck_objlife.py::test_txs_all_match
+PASSED tests/test_crosscheck_objlife.py::test_txs_negative_every_line_mismatches
+PASSED tests/test_crosscheck_objlife.py::test_txs_meta_difference
+PASSED tests/test_crosscheck_objlife.py::test_txs_not_found_is_mismatch
+PASSED tests/test_crosscheck_objlife.py::test_txs_outside_retention_not_checkable
+PASSED tests/test_crosscheck_objlife.py::test_txs_retry_then_gave_up
+PASSED tests/test_crosscheck_objlife.py::test_txs_local_copy_missing
+PASSED tests/test_crosscheck_objlife.py::test_txs_record_offline
+PASSED tests/test_crosscheck_objlife.py::test_ledgers_all_match_and_only_deferred_types_counted
+PASSED tests/test_crosscheck_objlife.py::test_ledgers_negative_every_line_mismatches
+PASSED tests/test_crosscheck_objlife.py::test_ledgers_deferred_tx_missed_by_watcher
+PASSED tests/test_crosscheck_objlife.py::test_ledgers_isolated_hash_close_count_differences
+PASSED tests/test_crosscheck_objlife.py::test_ledgers_outside_retention_not_checkable
+PASSED tests/test_crosscheck_objlife.py::test_ledgers_local_gap_refused_and_rows_outside_window_ignored
+PASSED tests/test_crosscheck_objlife.py::test_ledgers_pick_is_seeded_and_split_busy_idle
+PASSED tests/test_crosscheck_objlife.py::test_ledgers_retry_then_gave_up
+PASSED tests/test_crosscheck_objlife.py::test_ledgers_record_offline
+98 passed in 1.21s
+(exit 0)

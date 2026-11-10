@@ -1,0 +1,38 @@
+commit: 1e85f3ed74eaef1eccae9c7407d15ef079e6cb84 (charts_objlife.py sha256 dde67c2b5468cc3eaed5f488f3b99ea9831a9578b4c7a72884998a3ffed754b6, added in the next commit)
+2026-11-10T20:00:12Z
+$ .venv/bin/python -I objlife/charts_objlife.py --analysis objlife/data/analysis.json --ledgers objlife/data/tx/ledgers.csv --a 7907362 --b 7935917 --out objlife
+CHART window 2026-11-09T19Z ledgers=365 txs=129 deferred_txs=0
+CHART window 2026-11-09T20Z ledgers=1192 txs=397 deferred_txs=0
+CHART window 2026-11-09T21Z ledgers=1190 txs=418 deferred_txs=0
+CHART window 2026-11-09T22Z ledgers=1190 txs=366 deferred_txs=0
+CHART window 2026-11-09T23Z ledgers=1191 txs=392 deferred_txs=0
+CHART window 2026-11-10T00Z ledgers=1191 txs=398 deferred_txs=0
+CHART window 2026-11-10T01Z ledgers=1190 txs=414 deferred_txs=0
+CHART window 2026-11-10T02Z ledgers=1183 txs=407 deferred_txs=0
+CHART window 2026-11-10T03Z ledgers=1190 txs=415 deferred_txs=0
+CHART window 2026-11-10T04Z ledgers=1188 txs=363 deferred_txs=0
+CHART window 2026-11-10T05Z ledgers=1190 txs=422 deferred_txs=0
+CHART window 2026-11-10T06Z ledgers=1188 txs=411 deferred_txs=0
+CHART window 2026-11-10T07Z ledgers=1190 txs=386 deferred_txs=0
+CHART window 2026-11-10T08Z ledgers=1188 txs=393 deferred_txs=0
+CHART window 2026-11-10T09Z ledgers=1188 txs=413 deferred_txs=0
+CHART window 2026-11-10T10Z ledgers=1190 txs=413 deferred_txs=0
+CHART window 2026-11-10T11Z ledgers=1183 txs=415 deferred_txs=0
+CHART window 2026-11-10T12Z ledgers=1191 txs=405 deferred_txs=0
+CHART window 2026-11-10T13Z ledgers=1189 txs=394 deferred_txs=0
+CHART window 2026-11-10T14Z ledgers=1191 txs=402 deferred_txs=0
+CHART window 2026-11-10T15Z ledgers=1188 txs=405 deferred_txs=0
+CHART window 2026-11-10T16Z ledgers=1192 txs=427 deferred_txs=0
+CHART window 2026-11-10T17Z ledgers=1190 txs=409 deferred_txs=0
+CHART window 2026-11-10T18Z ledgers=1191 txs=415 deferred_txs=0
+CHART window 2026-11-10T19Z ledgers=836 txs=304 deferred_txs=0
+CHART census NFTokenOffer A=45 B=45
+CHART census Offer A=3 B=3
+CHART census Check A=0 B=0
+CHART census Credential A=0 B=0
+CHART census DepositPreauth A=0 B=0
+CHART census Escrow A=0 B=0
+CHART census PayChannel A=0 B=0
+CHART census Ticket A=0 B=0
+CHART wrote chart-window.png chart-census.png
+rc=0
