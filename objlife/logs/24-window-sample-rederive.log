@@ -1,0 +1,30 @@
+$ git clone -q https://github.com/darkmatter-sudo/pft-ledger-stats.git && git checkout -q de216849a3c0d7132eefe8fb3444769a78634882
+de216849a3c0d7132eefe8fb3444769a78634882
+2026-11-10T20:39:09Z
+$ sha256sum objlife/crosscheck_objlife.py objlife/data/tx/ledgers.csv objlife/logs/18-crosscheck-window.log
+0a6b2e6ae854e926c62b542ba0246bc5574ba0adc29adb68ecf9e9f582dddd60  objlife/crosscheck_objlife.py
+7e2c9db19ba0dfee097caf7348feca7081c4a6c5176ef1442029a33977f9825e  objlife/data/tx/ledgers.csv
+81a98b0b248eeeabeac16dd3406698cb06b13abe6d88267d8e14909c3f177dc7  objlife/logs/18-crosscheck-window.log
+$ python3 repick.py   # (script body below)
+     1	# Offline re-derivation of the --ledgers window sample: no network, uses crosscheck_objlife.pick()
+     2	import csv, sys
+     3	sys.path.insert(0, "objlife")
+     4	from crosscheck_objlife import pick
+     5	lo, hi, k_busy, k_idle, seed = 7907362, 7935917, 160, 40, "objlife-window"
+     6	rows = [r for r in csv.DictReader(open("objlife/data/tx/ledgers.csv")) if lo < int(r["ledger_index"]) <= hi]
+     7	busy = [r for r in rows if int(r["txn_count"]) > 0]
+     8	idle = [r for r in rows if int(r["txn_count"]) == 0]
+     9	pb, pi = pick(busy, k_busy, seed), pick(idle, k_idle, seed)
+    10	print(f"window {lo + 1}-{hi}: {len(rows)} ledgers, {len(busy)} with txs, {len(idle)} without")
+    11	print(f"picked busy={len(pb)} idle={len(pi)} total={len(pb) + len(pi)} (seed={seed!r})")
+    12	for r in sorted(pb + pi, key=lambda r: int(r["ledger_index"])):
+    13	    print(r["ledger_index"], "busy" if int(r["txn_count"]) else "idle")
+rc=0
+window 7907363-7935917: 28555 ledgers, 5592 with txs, 22963 without
+picked busy=160 idle=40 total=200 (seed='objlife-window')
+$ diff <(re-derived 200 indices) <(MATCH ledger indices in logs/18)
+IDENTICAL 200 indices
+log18 txs>0: 160  txs=0: 40
+$ seed sensitivity: same selection with --seed other?
+8 of 200 indices shared with seed "other"
+2026-11-10T20:39:10Z
