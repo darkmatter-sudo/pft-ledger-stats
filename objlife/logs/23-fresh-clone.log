@@ -1,0 +1,127 @@
+OS: Ubuntu 22.04.5 LTS | python 3.10.12 | date: 2026-11-10T20:03:21Z
+# $PY = the repo .venv python (pytest, matplotlib); $SRC = postfiatd source checkout; <work> = a fresh mktemp -d
+$ git -c credential.helper= clone -q https://github.com/darkmatter-sudo/pft-ledger-stats.git clone
+(exit 0)
+$ git checkout -q c31863eb7a86a5ea6bf65f2fd8879242a7209570 && git rev-parse HEAD
+c31863eb7a86a5ea6bf65f2fd8879242a7209570
+$ sha256sum objlife/*.py objlife/REPORT.md objlife/README.md objlife/*.png tests/test_*objlife*.py
+4f49881e1f7ef34737a22601ee15994fad57f52a92ad9f5d424b46cec9439300  objlife/analyze_objlife.py
+dde67c2b5468cc3eaed5f488f3b99ea9831a9578b4c7a72884998a3ffed754b6  objlife/charts_objlife.py
+dbf1ddba9921df82a44d1baa777cfb96fee7eb068cc6d066bd6678c59c062295  objlife/collect_objlife.py
+0a6b2e6ae854e926c62b542ba0246bc5574ba0adc29adb68ecf9e9f582dddd60  objlife/crosscheck_objlife.py
+a958196ecfb52bdbd2dfa7d4349ad29830f3070bda31509b98ae735526e32cbb  objlife/mutants_objlife.py
+7aba61f781c0f2c8f5c4965f67dbbd5a25ba2683f2586b24504ec16a36ca8b14  objlife/watch_objlife.py
+232245543328b2d281347bb40f8c0f4be36a8dafe27a9d8ec45b2dbdd6ac57be  objlife/REPORT.md
+3a1273b1ce9da236df32e13f90eabb311534828285462b9b486c966746d1c7c3  objlife/README.md
+ac0eb33776cd77d0e27867c1ea03bec95281fac066ce30bf09ffc46d648abbc2  objlife/chart-census.png
+1c20ebd24daf9f5b4ca2d6d5057f8c9d43aa744f0d8c814ad62b6d640ac91745  objlife/chart-window.png
+9d9bcc47162c70173601c8bdbead9110e9e32d7f898f13ae6534a134f656aee3  tests/test_analyze_objlife.py
+ba927587238196b1939a6b6fda2b60dd5bdb491855971aa65f543e3ccd6781ab  tests/test_collect_objlife.py
+6ce4fe2634b910613645c86a2dfa9a44e9666d9ee8278764ce2959e26935d8fc  tests/test_crosscheck_objlife.py
+7539cfebc845d85bc9cdbec425267cac72a61afc1d4f4920a90c520b1dd8960c  tests/test_watch_objlife.py
+$ (cd objlife/data && sha256sum -c SHA256SUMS)
+A/DONE: OK
+A/crosscheck-A-negative.jsonl: OK
+A/crosscheck-A.jsonl: OK
+A/objlife-7907362.jsonl: OK
+A/snapshot-7907362.jsonl.gz: OK
+A/snapshot.log: OK
+A/state.json: OK
+A/typecount.json: OK
+B/DONE: OK
+B/crosscheck-B-negative.jsonl: OK
+B/crosscheck-B.jsonl: OK
+B/objlife-7935917.jsonl: OK
+B/snapshot-7935917.jsonl.gz: OK
+B/snapshot.log: OK
+B/state.json: OK
+B/typecount.json: OK
+analysis.json: OK
+crosscheck-window.jsonl: OK
+transitions.csv: OK
+tx/collect.log: OK
+tx/ledgers.csv: OK
+tx/obj-tx.jsonl: OK
+tx/state.json: OK
+types.json: OK
+(exit 0)
+$ cat objlife/data/ROWS.txt
+2 A/DONE
+215 A/crosscheck-A-negative.jsonl
+215 A/crosscheck-A.jsonl
+49 A/objlife-7907362.jsonl
+5118 A/snapshot-7907362.jsonl.gz
+14 A/snapshot.log
+11 A/state.json
+1 A/typecount.json
+2 B/DONE
+223 B/crosscheck-B-negative.jsonl
+223 B/crosscheck-B.jsonl
+49 B/objlife-7935917.jsonl
+5137 B/snapshot-7935917.jsonl.gz
+14 B/snapshot.log
+11 B/state.json
+1 B/typecount.json
+476 analysis.json
+201 crosscheck-window.jsonl
+1 transitions.csv
+27 tx/collect.log
+28705 tx/ledgers.csv
+0 tx/obj-tx.jsonl
+7 tx/state.json
+663 types.json
+$ python3 -I objlife/analyze_objlife.py --a objlife/data/A/objlife-7907362.jsonl --b objlife/data/B/objlife-7935917.jsonl --tx objlife/data/tx --types objlife/data/types.json --json ../rerun-analysis.json --transitions ../rerun-transitions.csv --sample 20 --seed 7
+A ledger 7907362 2026-11-09T19:41:32Z: 48 deferred objects {'NFTokenOffer': 45, 'Offer': 3} reserve 96000000 drops, expired_not_removed 0
+B ledger 7935917 2026-11-10T19:42:02Z: 48 deferred objects {'NFTokenOffer': 45, 'Offer': 3} reserve 96000000 drops, expired_not_removed 0
+window 28555 ledgers / 86430 s, 0 deferred txs
+R1_index_set OK residuals=0
+R2_fields OK residuals=0
+R3_counts OK residuals=0
+R4_node_consistency OK residuals=0
+R5_threading OK residuals=0
+RECONCILIATION PASS
+(exit 0)
+$ cmp ../rerun-analysis.json objlife/data/analysis.json && cmp ../rerun-transitions.csv objlife/data/transitions.csv && echo identical
+identical
+$ $PY -I objlife/charts_objlife.py --analysis objlife/data/analysis.json --ledgers objlife/data/tx/ledgers.csv --a 7907362 --b 7935917 --out ../charts > ../charts.out; echo rc=$?
+rc=0
+$ diff <(grep ^CHART ../charts.out) <(grep ^CHART objlife/logs/22-charts.log) && echo 'CHART lines identical'; for f in chart-window.png chart-census.png; do cmp ../charts/$f objlife/$f && echo "identical $f"; done
+CHART lines identical
+identical chart-window.png
+identical chart-census.png
+$ python3 -I objlife/crosscheck_objlife.py objlife/data/A/objlife-7907362.jsonl --offline objlife/data/A/crosscheck-A.jsonl | tail -1
+SUMMARY checks=64 match=64 mismatch=0 gave_up=0
+rc=0
+$ python3 -I objlife/crosscheck_objlife.py objlife/data/A/objlife-7907362.jsonl --offline objlife/data/A/crosscheck-A.jsonl --negative | tail -1
+SUMMARY checks=64 match=0 mismatch=64 gave_up=0
+rc=1
+$ python3 -I objlife/crosscheck_objlife.py objlife/data/B/objlife-7935917.jsonl --offline objlife/data/B/crosscheck-B.jsonl | tail -1
+SUMMARY checks=64 match=64 mismatch=0 gave_up=0
+rc=0
+$ python3 -I objlife/crosscheck_objlife.py objlife/data/B/objlife-7935917.jsonl --offline objlife/data/B/crosscheck-B.jsonl --negative | tail -1
+SUMMARY checks=64 match=0 mismatch=64 gave_up=0
+rc=1
+$ python3 -I objlife/crosscheck_objlife.py objlife/data/B/objlife-7935917.jsonl --negative --offline objlife/data/B/crosscheck-B-negative.jsonl | tail -1
+SUMMARY checks=64 match=0 mismatch=64 gave_up=0
+rc=1
+$ python3 -I objlife/crosscheck_objlife.py --ledgers objlife/data/tx --types objlife/data/types.json --from 7907362 --to 7935917 --sample 160 --empty 40 --seed objlife-window --offline objlife/data/crosscheck-window.jsonl | tail -1
+SUMMARY ledgers=200 checked=200 match=200 mismatch=0 not_checkable=0 gave_up=0
+rc=0
+$ python3 -I objlife/crosscheck_objlife.py --ledgers objlife/data/tx --types objlife/data/types.json --from 7907362 --to 7935917 --sample 160 --empty 40 --seed objlife-window --offline objlife/data/crosscheck-window.jsonl --negative | tail -1
+SUMMARY ledgers=200 checked=200 match=0 mismatch=200 not_checkable=0 gave_up=0
+rc=1
+$ diff <(grep -E "^(MATCH|MISMATCH)" ../x.out | wc -l) <(echo 200) && grep -c "^MISMATCH" ../x.out
+200
+$ git -C $SRC rev-parse HEAD
+32723c15e686a2088f2c83017a6ff909d93822cd
+$ POSTFIATD_SRC=$SRC TMPDIR=$HOME/.cache $PY -m pytest -q -p no:cacheprovider tests/test_collect_objlife.py tests/test_watch_objlife.py tests/test_analyze_objlife.py tests/test_crosscheck_objlife.py 2>&1 | tail -1
+98 passed in 1.26s
+$ TMPDIR=$HOME/.cache timeout 1500 $PY -u objlife/mutants_objlife.py --timeout 120 > ../mut.out 2>&1; echo rc=$?; grep -vc "^CAUGHT" ../mut.out; grep -E "^(CONTROL|MUTANTS|RESULT|SURVIVED|BROKEN|NOT APPLIED|TIMEOUT)" ../mut.out
+rc=0
+3
+CONTROL unmutated copy: rc=0 97 passed, 1 skipped in 1.53s
+MUTANTS 70 caught=70 CAUGHT=70
+RESULT: PASS (0 not caught)
+$ git status --short | wc -l
+0
+date: 2026-11-10T20:06:21Z
