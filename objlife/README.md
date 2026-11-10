@@ -166,6 +166,15 @@ fails and the others pass (R2, R4, R5), R1 with R3 for a lost create, R3 with R4
 live object (R3 can't fail alone: with R4 passing it is the per-type sum of R1); every completeness
 problem gives NOT_CHECKABLE.
 
+## Data files
+
+`objlife/data/SHA256SUMS` holds the sha256 of every file under `objlife/data/` (check with
+`cd objlife/data && sha256sum -c SHA256SUMS`); `objlife/data/ROWS.txt` holds their line counts
+(`wc -l`, decompressed for `.gz`), header lines included: `objlife-<L>.jsonl` = 1 header + 48 objects,
+`ledgers.csv` = 1 header + 28704 ledgers (28555 in the window A+1..B, then 149 after B until the
+watcher was stopped at 19:49:38Z, `logs/15-watcher-stop.log`), `crosscheck-window.jsonl` = 1
+`server_info` + 200 `ledger` answers, `obj-tx.jsonl` = 0 (no deferred-object tx in the window).
+
 ## Mutation check
 
 `objlife/mutants_objlife.py` (harness from `dormancy/mutants_dormancy.py`) runs the unmutated
