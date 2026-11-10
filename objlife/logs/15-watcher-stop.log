@@ -1,0 +1,10 @@
+2026-11-10T19:49:38Z
+$ sudo systemctl stop objlife-watch
+rc=0
+2026-11-10T19:09:40Z PROGRESS last=7935273 lag=0 ledgers=27911 obj_tx=0 gaps=0 requests=75752
+2026-11-10T19:49:38Z STOP (signal) requests this run=77939
+2026-11-10T19:49:38Z SUMMARY window 2026-11-09T20:09:23Z -> 2026-11-10T21:09:23Z ledgers 7907363-7936066 fetched=28704 obj_tx=0 gaps=0
+7936066,56AAD0A1076E4D456DB540A9E3E7F94810BF4D4916B2361DD52827280251C4E6,847655372,2026-11-10T19:49:32Z,0,0,2026-11-10T19:49:36Z
+  28705 data/objlife/tx/ledgers.csv
+      0 data/objlife/tx/obj-tx.jsonl
+  28705 total

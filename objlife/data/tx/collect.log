@@ -1,0 +1,27 @@
+2026-11-09T20:09:23Z node: build 1.0.9 state full complete_ledgers 7906950-7907915
+2026-11-09T20:09:23Z WINDOW START 2026-11-09T20:09:23Z -> 2026-11-10T21:09:23Z at ledger 7907363, stop_at None, rate <= 1.0 req/s
+2026-11-09T21:09:24Z PROGRESS last=7909107 lag=0 ledgers=1745 obj_tx=0 gaps=0 requests=3360
+2026-11-09T22:09:24Z PROGRESS last=7910295 lag=1 ledgers=2933 obj_tx=0 gaps=0 requests=6674
+2026-11-09T23:09:24Z PROGRESS last=7911486 lag=1 ledgers=4124 obj_tx=0 gaps=0 requests=9973
+2026-11-10T00:09:26Z PROGRESS last=7912677 lag=0 ledgers=5315 obj_tx=0 gaps=0 requests=13289
+2026-11-10T01:09:26Z PROGRESS last=7913869 lag=0 ledgers=6507 obj_tx=0 gaps=0 requests=16583
+2026-11-10T02:09:27Z PROGRESS last=7915059 lag=0 ledgers=7697 obj_tx=0 gaps=0 requests=19913
+2026-11-10T03:09:27Z PROGRESS last=7916242 lag=0 ledgers=8880 obj_tx=0 gaps=0 requests=23232
+2026-11-10T04:09:29Z PROGRESS last=7917431 lag=0 ledgers=10069 obj_tx=0 gaps=0 requests=26527
+2026-11-10T05:09:29Z PROGRESS last=7918619 lag=0 ledgers=11257 obj_tx=0 gaps=0 requests=29874
+2026-11-10T06:09:30Z PROGRESS last=7919812 lag=0 ledgers=12450 obj_tx=0 gaps=0 requests=33210
+2026-11-10T07:09:30Z PROGRESS last=7920999 lag=0 ledgers=13637 obj_tx=0 gaps=0 requests=36585
+2026-11-10T08:09:32Z PROGRESS last=7922189 lag=0 ledgers=14827 obj_tx=0 gaps=0 requests=39919
+2026-11-10T09:09:32Z PROGRESS last=7923376 lag=1 ledgers=16014 obj_tx=0 gaps=0 requests=43193
+2026-11-10T10:09:33Z PROGRESS last=7924565 lag=0 ledgers=17203 obj_tx=0 gaps=0 requests=46417
+2026-11-10T11:09:34Z PROGRESS last=7925757 lag=0 ledgers=18395 obj_tx=0 gaps=0 requests=49461
+2026-11-10T12:09:34Z PROGRESS last=7926940 lag=0 ledgers=19578 obj_tx=0 gaps=0 requests=52560
+2026-11-10T13:09:35Z PROGRESS last=7928130 lag=0 ledgers=20768 obj_tx=0 gaps=0 requests=55886
+2026-11-10T14:09:37Z PROGRESS last=7929320 lag=0 ledgers=21958 obj_tx=0 gaps=0 requests=59165
+2026-11-10T15:09:38Z PROGRESS last=7930511 lag=0 ledgers=23149 obj_tx=0 gaps=0 requests=62489
+2026-11-10T16:09:40Z PROGRESS last=7931700 lag=0 ledgers=24338 obj_tx=0 gaps=0 requests=65821
+2026-11-10T17:09:40Z PROGRESS last=7932891 lag=1 ledgers=25529 obj_tx=0 gaps=0 requests=69172
+2026-11-10T18:09:40Z PROGRESS last=7934083 lag=1 ledgers=26721 obj_tx=0 gaps=0 requests=72440
+2026-11-10T19:09:40Z PROGRESS last=7935273 lag=0 ledgers=27911 obj_tx=0 gaps=0 requests=75752
+2026-11-10T19:49:38Z STOP (signal) requests this run=77939
+2026-11-10T19:49:38Z SUMMARY window 2026-11-09T20:09:23Z -> 2026-11-10T21:09:23Z ledgers 7907363-7936066 fetched=28704 obj_tx=0 gaps=0

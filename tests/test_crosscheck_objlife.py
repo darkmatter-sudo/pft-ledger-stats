@@ -275,3 +275,162 @@ def test_txs_record_offline(tmp_path):
     r.fh.close()
     rc2, l2 = go_txs(tmp_path, X.Replay(str(rec)))
     assert rc1 == rc2 == 0 and verdicts(l1) == verdicts(l2)
+
+
+# ---- window ledger mode ----------------------------------------------------------------------
+
+TYPES = {"entries": [{"name": "Offer", "deferred": True}, {"name": "Escrow", "deferred": True},
+                     {"name": "AccountRoot", "deferred": False}]}  # fmt: skip
+
+
+def ptx(h, *types):
+    return {
+        "hash": h,
+        "metaData": {"AffectedNodes": [{"ModifiedNode": {"LedgerEntryType": t}} for t in types]},
+    }
+
+
+# window A=100 .. B=106; 101 and 105 empty; 103 has one deferred (Offer) tx; 104 touches only AccountRoot
+LEDGERS = {
+    101: [],
+    102: [ptx("D2" * 32, "AccountRoot")],
+    103: [ptx("D3" * 32, "AccountRoot"), ptx("E3" * 32, "Offer", "AccountRoot")],
+    104: [ptx("D4" * 32, "AccountRoot")],
+    105: [],
+    106: [ptx("D6" * 32, "AccountRoot", "AccountRoot")],
+}
+LOCAL_OBJ = [{"ledger_index": 103, "tx": {"hash": "E3" * 32}}]
+
+
+class LFake:
+    def __init__(self, ledgers=LEDGERS, rng="50-200", fail=None, hashes=None, closes=None):
+        self.ledgers, self.rng, self.fail, self.calls = ledgers, rng, fail or {}, []
+        self.hashes, self.closes = hashes or {}, closes or {}
+
+    def call(self, method, params=None):
+        self.calls.append((method, params))
+        q = self.fail.get(method)
+        if q:
+            raise q.pop(0)
+        if method == "server_info":
+            return {"info": {"complete_ledgers": self.rng}}
+        if method == "ledger":
+            L = params["ledger_index"]
+            assert params["transactions"] is True and params["expand"] is True
+            h, ct = self.hashes.get(L, f"{L:064X}"), self.closes.get(L, L * 4)
+            return {"ledger": {"ledger_hash": h, "close_time": ct, "transactions": self.ledgers[L]}}
+        raise AssertionError(method)
+
+
+def go_ledgers(tmp_path, rpc, rows=None, local=LOCAL_OBJ, lo=100, hi=106, **kw):
+    d = tmp_path / "tx"
+    d.mkdir(exist_ok=True)
+    rows = rows if rows is not None else [(L, len(t)) for L, t in sorted(LEDGERS.items())] + [(107, 3)]
+    (d / "ledgers.csv").write_text(
+        "ledger_index,ledger_hash,close_time,close_time_iso,txn_count,obj_tx_count,fetched_utc\n"
+        + "".join(f"{L},{L:064X},{L * 4},x,{n},0,x\n" for L, n in rows)
+    )
+    (d / "obj-tx.jsonl").write_text("".join(json.dumps(x) + "\n" for x in local))
+    t = tmp_path / "types.json"
+    t.write_text(json.dumps(TYPES))
+    kw = dict(dict(sample=10, empty=10), **kw)
+    lines = []
+    rc = X.run_ledgers(rpc, str(d), str(t), lo, hi, args(**kw), out=lines.append, sleep=lambda s: None)
+    return rc, lines
+
+
+def lverdicts(lines):
+    return [x for x in lines if x.startswith(("MATCH", "MISMATCH"))]
+
+
+def test_ledgers_all_match_and_only_deferred_types_counted(tmp_path):
+    rc, lines = go_ledgers(tmp_path, LFake())
+    v = lverdicts(lines)
+    assert rc == 0 and len(v) == 6 and all(x.startswith("MATCH") for x in v)
+    assert "MATCH ledger:103 txs=2 deferred=1 diff=[]" in v
+    assert "MATCH ledger:104 txs=1 deferred=0 diff=[]" in v  # AccountRoot is not deferred
+    assert "window 101-106 (6 ledgers, 4 with txs) | sampled 6" in lines[0]
+    assert lines[-1] == "SUMMARY ledgers=6 checked=6 match=6 mismatch=0 not_checkable=0 gave_up=0"
+
+
+def test_ledgers_negative_every_line_mismatches(tmp_path):
+    rc, lines = go_ledgers(tmp_path, LFake(), negative=True)
+    v = lverdicts(lines)
+    assert rc == 1 and len(v) == 6 and all(x.endswith("diff=['close_time', 'txn_count']") for x in v)
+
+
+def test_ledgers_deferred_tx_missed_by_watcher(tmp_path):
+    rc, lines = go_ledgers(tmp_path, LFake(), local=[])
+    assert rc == 1 and lverdicts(lines) == [
+        x if "ledger:103" not in x else "MISMATCH ledger:103 txs=2 deferred=1 diff=['deferred_txs']"
+        for x in lverdicts(go_ledgers(tmp_path, LFake())[1])
+    ]
+
+
+def test_ledgers_isolated_hash_close_count_differences(tmp_path):
+    rc, lines = go_ledgers(tmp_path, LFake(hashes={102: "FF" * 32}))
+    assert rc == 1 and [x for x in lverdicts(lines) if x.startswith("MISMATCH")] == [
+        "MISMATCH ledger:102 txs=1 deferred=0 diff=['ledger_hash']"
+    ]
+    rc, lines = go_ledgers(tmp_path, LFake(closes={105: 1}))
+    assert rc == 1 and [x for x in lverdicts(lines) if x.startswith("MISMATCH")] == [
+        "MISMATCH ledger:105 txs=0 deferred=0 diff=['close_time']"
+    ]
+    more = {**LEDGERS, 106: LEDGERS[106] + [ptx("D7" * 32, "AccountRoot")]}
+    rc, lines = go_ledgers(tmp_path, LFake(ledgers=more))
+    assert rc == 1 and [x for x in lverdicts(lines) if x.startswith("MISMATCH")] == [
+        "MISMATCH ledger:106 txs=2 deferred=0 diff=['txn_count']"
+    ]
+
+
+def test_ledgers_outside_retention_not_checkable(tmp_path):
+    rc, lines = go_ledgers(tmp_path, LFake(rng="104-200"))
+    assert rc == 0 and sum(x.startswith("NOT_CHECKABLE ledger:") for x in lines) == 3
+    assert lines[-1].endswith("checked=3 match=3 mismatch=0 not_checkable=3 gave_up=0")
+    rpc = LFake(rng="150-200")
+    rc, lines = go_ledgers(tmp_path, rpc)
+    assert rc == 2  # nothing checkable is never a pass
+    assert [c[0] for c in rpc.calls] == ["server_info"]
+
+
+def test_ledgers_local_gap_refused_and_rows_outside_window_ignored(tmp_path):
+    rows = [(L, len(t)) for L, t in sorted(LEDGERS.items()) if L != 104]
+    rpc = LFake()
+    rc, lines = go_ledgers(tmp_path, rpc, rows=rows)
+    assert (
+        rc == 2
+        and lines == ["LOCAL_INCOMPLETE ledgers.csv has 5 of 6 ledgers in 101-106"]
+        and rpc.calls == []
+    )
+    rc, lines = go_ledgers(
+        tmp_path, LFake(), rows=[(100, 9)] + [(L, len(t)) for L, t in sorted(LEDGERS.items())]
+    )
+    assert rc == 0 and len(lverdicts(lines)) == 6  # A itself and B+1 are not window ledgers
+
+
+def test_ledgers_pick_is_seeded_and_split_busy_idle(tmp_path):
+    rows = [{"ledger_index": str(i)} for i in range(1000)]
+    a, b, c = X.pick(rows, 5, "1"), X.pick(rows, 5, "1"), X.pick(rows, 5, "2")
+    assert a == b and a != c and len(a) == 5
+    assert [r["ledger_index"] for r in a] == sorted((r["ledger_index"] for r in a), key=int)
+    rc, lines = go_ledgers(tmp_path, LFake(), sample=2, empty=1)
+    v = lverdicts(lines)
+    idle = [x for x in v if " txs=0 " in x]
+    assert rc == 0 and len(v) == 3 and len(idle) == 1
+    rc2, lines2 = go_ledgers(tmp_path, LFake(), sample=2, empty=1)
+    assert lverdicts(lines2) == v
+
+
+def test_ledgers_retry_then_gave_up(tmp_path):
+    rc, lines = go_ledgers(tmp_path, LFake(fail={"ledger": [H.Transient("http 503")] * 3}))
+    assert rc == 2 and any(x.startswith("RETRY ledger try 1/3") for x in lines)
+    assert any(x.startswith("GAVE_UP ledger") for x in lines) and "gave_up=1" in lines[-1]
+
+
+def test_ledgers_record_offline(tmp_path):
+    rec = tmp_path / "rec.jsonl"
+    r = X.Recorder(LFake(), str(rec))
+    rc1, l1 = go_ledgers(tmp_path, r)
+    r.fh.close()
+    rc2, l2 = go_ledgers(tmp_path, X.Replay(str(rec)))
+    assert rc1 == rc2 == 0 and lverdicts(l1) == lverdicts(l2)

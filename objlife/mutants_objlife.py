@@ -339,6 +339,73 @@ MUTANTS = [
         '            out(f"MISMATCH tx:{h} error={e}")\n',
         '            out(f"MATCH tx:{h} error={e}")\n',
     ),
+    # crosscheck: window ledger mode
+    (
+        "X11 deferred filter counts every type",
+        XC,
+        '        if any(v.get("LedgerEntryType") in deferred for v in nodes):\n',
+        "        if nodes:\n",
+    ),
+    (
+        "X12 negative leaves close_time",
+        XC,
+        '            "close_time": int(r["close_time"]) + (1 if args.negative else 0),\n',
+        '            "close_time": int(r["close_time"]),\n',
+    ),
+    (
+        "X13 negative leaves txn_count",
+        XC,
+        '            "txn_count": int(r["txn_count"]) + (1 if args.negative else 0),\n',
+        '            "txn_count": int(r["txn_count"]),\n',
+    ),
+    (
+        "X14 deferred tx hashes not compared",
+        XC,
+        '            "deferred_txs": deferred_hashes(txs, deferred),\n',
+        '            "deferred_txs": sorted(local.get(seq, [])),\n',
+    ),
+    (
+        "X15 ledger retention ignored",
+        XC,
+        "        if not any(lo <= seq <= hi for lo, hi in ranges):\n",
+        "        if False:\n",
+    ),
+    (
+        "X16 local ledgers.csv gap accepted",
+        XC,
+        "    if sorted(rows) != list(range(lo_seq + 1, hi_seq + 1)):\n",
+        "    if not rows:\n",
+    ),
+    (
+        "X17 window includes ledger A",
+        XC,
+        '            if lo_seq < int(r["ledger_index"]) <= hi_seq:\n',
+        '            if lo_seq <= int(r["ledger_index"]) <= hi_seq:\n',
+    ),
+    (
+        "X18 pick ignores seed",
+        XC,
+        """hashlib.sha256(f"{seed}:{r['ledger_index']}".encode())""",
+        """hashlib.sha256(f"fixed:{r['ledger_index']}".encode())""",
+    ),
+    (
+        "X19 idle ledgers never sampled",
+        XC,
+        "pick(idle, args.empty, args.seed)",
+        "pick(idle, 0, args.seed)",
+    ),
+    (
+        "X20 ledger hash not compared",
+        XC,
+        '            "ledger_hash": led["ledger_hash"],\n',
+        '            "ledger_hash": r["ledger_hash"],\n',
+    ),
+    (
+        "X21 nothing checkable passes (ledgers)",
+        XC,
+        "    return 2 if gave_up or len(results) == 0 else 0\n",
+        "    return 2 if gave_up else 0\n",
+    ),
 ]
 
 TESTS = ["tests/" + p.name for p in sorted(Path("tests").glob("test_*objlife*.py"))]

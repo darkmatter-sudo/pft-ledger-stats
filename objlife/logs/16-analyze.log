@@ -1,0 +1,12 @@
+2026-11-10T19:49:48Z
+$ python3 -I objlife/analyze_objlife.py --a objlife/data/A/objlife-7907362.jsonl --b objlife/data/B/objlife-7935917.jsonl --tx objlife/data/tx --types objlife/data/types.json --json objlife/data/analysis.json --transitions objlife/data/transitions.csv --sample 20 --seed 7
+A ledger 7907362 2026-11-09T19:41:32Z: 48 deferred objects {'NFTokenOffer': 45, 'Offer': 3} reserve 96000000 drops, expired_not_removed 0
+B ledger 7935917 2026-11-10T19:42:02Z: 48 deferred objects {'NFTokenOffer': 45, 'Offer': 3} reserve 96000000 drops, expired_not_removed 0
+window 28555 ledgers / 86430 s, 0 deferred txs
+R1_index_set OK residuals=0
+R2_fields OK residuals=0
+R3_counts OK residuals=0
+R4_node_consistency OK residuals=0
+R5_threading OK residuals=0
+RECONCILIATION PASS
+rc=0

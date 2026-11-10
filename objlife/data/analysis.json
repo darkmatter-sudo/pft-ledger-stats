@@ -1,0 +1,476 @@
+{
+ "A": {
+  "age_ledgers": {
+   "Check": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   },
+   "Credential": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   },
+   "DepositPreauth": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   },
+   "Escrow": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   },
+   "NFTokenOffer": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 45
+   },
+   "Offer": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 3
+   },
+   "PayChannel": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   },
+   "Ticket": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   }
+  },
+  "close_time_iso": "2026-11-09T19:41:32Z",
+  "counts": {
+   "Check": 0,
+   "Credential": 0,
+   "DepositPreauth": 0,
+   "Escrow": 0,
+   "NFTokenOffer": 45,
+   "Offer": 3,
+   "PayChannel": 0,
+   "Ticket": 0
+  },
+  "deadlines": {
+   "Check": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   },
+   "Credential": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   },
+   "DepositPreauth": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   },
+   "Escrow": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   },
+   "NFTokenOffer": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 45
+   },
+   "Offer": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 3
+   },
+   "PayChannel": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   },
+   "Ticket": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   }
+  },
+  "escrow_finishable": 0,
+  "expired_not_removed": 0,
+  "ledger_hash": "3A1D806007BF4538AB0BEB302B8F4BD785EA2B0CFCA84FA3EFAB83BC1825D612",
+  "ledger_index": 7907362,
+  "owners": {
+   "ALL": {
+    "gini": "17/48",
+    "gini_float": 0.354167,
+    "objects": 48,
+    "owners": 2,
+    "top1_objects": 41,
+    "top1_share": "41/48",
+    "top5_share": "1"
+   },
+   "NFTokenOffer": {
+    "gini": "37/90",
+    "gini_float": 0.411111,
+    "objects": 45,
+    "owners": 2,
+    "top1_objects": 41,
+    "top1_share": "41/45",
+    "top5_share": "1"
+   },
+   "Offer": {
+    "gini": "0",
+    "gini_float": 0.0,
+    "objects": 3,
+    "owners": 1,
+    "top1_objects": 3,
+    "top1_share": "1",
+    "top5_share": "1"
+   }
+  },
+  "reserve": {
+   "drops": "96000000",
+   "owner_count_units": 48,
+   "reserve_inc_drops": 2000000
+  },
+  "total": 48,
+  "value": {
+   "iou": {
+    "Offer.TakerGets": {
+     "DLK/rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": "50000"
+    },
+    "Offer.TakerPays": {
+     "DLK/rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": "10100000"
+    }
+   },
+   "native_drops": {
+    "NFTokenOffer.buy.Amount": "205000000",
+    "NFTokenOffer.sell.Amount": "200000000",
+    "Offer.TakerGets": "110000000",
+    "Offer.TakerPays": "10000000"
+   }
+  }
+ },
+ "B": {
+  "age_ledgers": {
+   "Check": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   },
+   "Credential": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   },
+   "DepositPreauth": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   },
+   "Escrow": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   },
+   "NFTokenOffer": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 45
+   },
+   "Offer": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 3
+   },
+   "PayChannel": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   },
+   "Ticket": {
+    "100k-1M": 0,
+    "1k-100k": 0,
+    "<1k": 0,
+    ">=1M": 0
+   }
+  },
+  "close_time_iso": "2026-11-10T19:42:02Z",
+  "counts": {
+   "Check": 0,
+   "Credential": 0,
+   "DepositPreauth": 0,
+   "Escrow": 0,
+   "NFTokenOffer": 45,
+   "Offer": 3,
+   "PayChannel": 0,
+   "Ticket": 0
+  },
+  "deadlines": {
+   "Check": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   },
+   "Credential": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   },
+   "DepositPreauth": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   },
+   "Escrow": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   },
+   "NFTokenOffer": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 45
+   },
+   "Offer": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 3
+   },
+   "PayChannel": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   },
+   "Ticket": {
+    "1d-7d": 0,
+    "1h-24h": 0,
+    "7d-30d": 0,
+    "<1h": 0,
+    ">30d": 0,
+    "expired": 0,
+    "none": 0
+   }
+  },
+  "escrow_finishable": 0,
+  "expired_not_removed": 0,
+  "ledger_hash": "49C83DB334D878CA01F1CAAC91F13296931624021D8B50C8ED3B189419279667",
+  "ledger_index": 7935917,
+  "owners": {
+   "ALL": {
+    "gini": "17/48",
+    "gini_float": 0.354167,
+    "objects": 48,
+    "owners": 2,
+    "top1_objects": 41,
+    "top1_share": "41/48",
+    "top5_share": "1"
+   },
+   "NFTokenOffer": {
+    "gini": "37/90",
+    "gini_float": 0.411111,
+    "objects": 45,
+    "owners": 2,
+    "top1_objects": 41,
+    "top1_share": "41/45",
+    "top5_share": "1"
+   },
+   "Offer": {
+    "gini": "0",
+    "gini_float": 0.0,
+    "objects": 3,
+    "owners": 1,
+    "top1_objects": 3,
+    "top1_share": "1",
+    "top5_share": "1"
+   }
+  },
+  "reserve": {
+   "drops": "96000000",
+   "owner_count_units": 48,
+   "reserve_inc_drops": 2000000
+  },
+  "total": 48,
+  "value": {
+   "iou": {
+    "Offer.TakerGets": {
+     "DLK/rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": "50000"
+    },
+    "Offer.TakerPays": {
+     "DLK/rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": "10100000"
+    }
+   },
+   "native_drops": {
+    "NFTokenOffer.buy.Amount": "205000000",
+    "NFTokenOffer.sell.Amount": "200000000",
+    "Offer.TakerGets": "110000000",
+    "Offer.TakerPays": "10000000"
+   }
+  }
+ },
+ "caused_by": [],
+ "format": "pft-objlife-analysis/1",
+ "nodes_replayed": 0,
+ "reconciliation": {
+  "checks": {
+   "R1_index_set": {
+    "ok": true,
+    "residuals": []
+   },
+   "R2_fields": {
+    "ok": true,
+    "residuals": []
+   },
+   "R3_counts": {
+    "ok": true,
+    "residuals": []
+   },
+   "R4_node_consistency": {
+    "ok": true,
+    "residuals": []
+   },
+   "R5_threading": {
+    "ok": true,
+    "residuals": []
+   }
+  },
+  "failed": [],
+  "status": "PASS"
+ },
+ "sampled_txs": {
+  "hashes": [],
+  "k": 20,
+  "seed": 7
+ },
+ "transitions": {
+  "Check": {
+   "created": 0,
+   "deleted": 0,
+   "modified": 0,
+   "unchanged": 0
+  },
+  "Credential": {
+   "created": 0,
+   "deleted": 0,
+   "modified": 0,
+   "unchanged": 0
+  },
+  "DepositPreauth": {
+   "created": 0,
+   "deleted": 0,
+   "modified": 0,
+   "unchanged": 0
+  },
+  "Escrow": {
+   "created": 0,
+   "deleted": 0,
+   "modified": 0,
+   "unchanged": 0
+  },
+  "NFTokenOffer": {
+   "created": 0,
+   "deleted": 0,
+   "modified": 0,
+   "unchanged": 45
+  },
+  "Offer": {
+   "created": 0,
+   "deleted": 0,
+   "modified": 0,
+   "unchanged": 3
+  },
+  "PayChannel": {
+   "created": 0,
+   "deleted": 0,
+   "modified": 0,
+   "unchanged": 0
+  },
+  "Ticket": {
+   "created": 0,
+   "deleted": 0,
+   "modified": 0,
+   "unchanged": 0
+  }
+ },
+ "window": {
+  "completeness_problems": [],
+  "deferred_txs": 0,
+  "ledgers": 28555,
+  "seconds": 86430
+ }
+}

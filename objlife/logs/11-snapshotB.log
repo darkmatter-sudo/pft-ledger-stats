@@ -1,0 +1,17 @@
+$ date -u; python3 -I objlife/collect_objlife.py snapshot --types objlife/data/types.json --out data/objlife/B --log data/objlife/B/snapshot.log
+2026-11-10T19:42:03Z
+2026-11-10T19:42:04Z START ledger 7935917 49C83DB334D878CA01F1CAAC91F13296931624021D8B50C8ED3B189419279667 total_coins 99999999967725994 close 2026-11-10T19:42:02Z limit 2048 | host python 3.10.12
+2026-11-10T19:42:06Z page 0 +2048 objects (total 2048) marker 6498BAF4FF0F577F
+2026-11-10T19:42:06Z page 1 +2048 objects (total 4096) marker CB869EB0439DC3EF
+2026-11-10T19:42:07Z page 2 +1040 objects (total 5136) marker -
+2026-11-10T19:42:07Z DONE 5136 objects in 3 pages, 5 RPC calls this run -> snapshot-7935917.jsonl.gz
+2026-11-10T19:42:09Z typecount nft_offer 45
+2026-11-10T19:42:10Z typecount check 0
+2026-11-10T19:42:12Z typecount ticket 0
+2026-11-10T19:42:13Z typecount offer 3
+2026-11-10T19:42:15Z typecount deposit_preauth 0
+2026-11-10T19:42:16Z typecount escrow 0
+2026-11-10T19:42:18Z typecount payment_channel 0
+2026-11-10T19:42:19Z typecount credential 0
+2026-11-10T19:42:19Z OBJLIFE objlife-7935917.jsonl rows 48 sha256 3cffd68920f3ee8746be302a719a78186c564a01194b50b20f89ee8af7926f63 | Check=0/0 Credential=0/0 DepositPreauth=0/0 Escrow=0/0 NFTokenOffer=45/45 Offer=3/3 PayChannel=0/0 Ticket=0/0
+exit 0

@@ -1,0 +1,5 @@
+2026-11-10T19:49:56Z
+$ python3 -I objlife/crosscheck_objlife.py --txs objlife/data/analysis.json --txdir objlife/data/tx
+SOURCE complete_ledgers 7850054-7936073 | sampled txs 0 | negative=False
+SUMMARY txs=0 checked=0 match=0 mismatch=0 not_checkable=0 gave_up=0
+rc=2
