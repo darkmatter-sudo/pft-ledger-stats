@@ -1,0 +1,211 @@
+{
+ "A": {
+  "amm": {
+   "amm_info_errors": [
+    "actNotFound"
+   ],
+   "amm_info_found": 0,
+   "amm_info_queries": 1,
+   "amm_objects_full_tree": 0,
+   "amm_objects_type_filter": 0,
+   "lp_token_lines": 0,
+   "result": "none (query-backed)"
+  },
+  "census": [
+   {
+    "amm_node": 0,
+    "currency": "DLK",
+    "currency_name": "DLK",
+    "deep_frozen": 0,
+    "hhi": "2500.00",
+    "holder_froze": 0,
+    "holder_side_no_ripple": 0,
+    "holders": 4,
+    "issuer": "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE",
+    "issuer_authorized": 0,
+    "issuer_froze": 0,
+    "issuer_side_no_ripple": 4,
+    "lines": 4,
+    "obligations": "4000000",
+    "over_limit": [],
+    "top10_share": "1.000000",
+    "top1_share": "0.250000",
+    "top_holders": [
+     {
+      "amount": "1000000",
+      "holder": "rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD"
+     },
+     {
+      "amount": "1000000",
+      "holder": "rPBh3iymyev6Fwoec5EgRmK3ZejsdfTrvs"
+     },
+     {
+      "amount": "1000000",
+      "holder": "rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i"
+     },
+     {
+      "amount": "1000000",
+      "holder": "rseiw26mUFAQ1JKF3X61fskvVmL7vtfF9k"
+     }
+    ],
+    "zero_lines": 0
+   }
+  ],
+  "close_time_iso": "2026-11-15T03:10:51Z",
+  "gateway_reconciliation": [
+   {
+    "account": "rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD",
+    "expected": {
+     "assets": {
+      "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": [
+       {
+        "currency": "DLK",
+        "value": "1000000"
+       }
+      ]
+     }
+    },
+    "gateway_balances": {
+     "assets": {
+      "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": [
+       {
+        "currency": "DLK",
+        "value": "1000000"
+       }
+      ]
+     }
+    },
+    "match": true
+   },
+   {
+    "account": "rPBh3iymyev6Fwoec5EgRmK3ZejsdfTrvs",
+    "expected": {
+     "assets": {
+      "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": [
+       {
+        "currency": "DLK",
+        "value": "1000000"
+       }
+      ]
+     }
+    },
+    "gateway_balances": {
+     "assets": {
+      "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": [
+       {
+        "currency": "DLK",
+        "value": "1000000"
+       }
+      ]
+     }
+    },
+    "match": true
+   },
+   {
+    "account": "rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i",
+    "expected": {
+     "assets": {
+      "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": [
+       {
+        "currency": "DLK",
+        "value": "1000000"
+       }
+      ]
+     }
+    },
+    "gateway_balances": {
+     "assets": {
+      "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": [
+       {
+        "currency": "DLK",
+        "value": "1000000"
+       }
+      ]
+     }
+    },
+    "match": true
+   },
+   {
+    "account": "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE",
+    "expected": {
+     "obligations": {
+      "DLK": "4000000"
+     }
+    },
+    "gateway_balances": {
+     "obligations": {
+      "DLK": "4000000"
+     }
+    },
+    "match": true
+   },
+   {
+    "account": "rseiw26mUFAQ1JKF3X61fskvVmL7vtfF9k",
+    "expected": {
+     "assets": {
+      "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": [
+       {
+        "currency": "DLK",
+        "value": "1000000"
+       }
+      ]
+     }
+    },
+    "gateway_balances": {
+     "assets": {
+      "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": [
+       {
+        "currency": "DLK",
+        "value": "1000000"
+       }
+      ]
+     }
+    },
+    "match": true
+   }
+  ],
+  "issuer_settings": {
+   "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE": {
+    "Flags": 0,
+    "flags": []
+   }
+  },
+  "ledger_hash": "C1CBCB112C2D435997310687C6090A422A913FCCEE085AA8DFF95FFA19EFA49E",
+  "ledger_index": 8059029,
+  "mismatches": [],
+  "object_counts": {
+   "filtered": {
+    "AMM": {
+     "full_tree": 0,
+     "index_sets_equal": true,
+     "pages": 3,
+     "rpc_type": "amm",
+     "type_filter": 0
+    },
+    "RippleState": {
+     "full_tree": 4,
+     "index_sets_equal": true,
+     "pages": 3,
+     "rpc_type": "state",
+     "type_filter": 4
+    }
+   },
+   "full_tree_by_type": {
+    "AccountRoot": 4669,
+    "Amendments": 1,
+    "DirectoryNode": 52,
+    "FeeSettings": 1,
+    "LedgerHashes": 124,
+    "NFTokenOffer": 45,
+    "NFTokenPage": 299,
+    "NegativeUNL": 1,
+    "Offer": 3,
+    "RippleState": 4
+   },
+   "full_tree_objects": 5199
+  },
+  "rippling_through": [],
+  "trust_lines": 4
+ },
+ "format": "pft-issued-report/1"
+}

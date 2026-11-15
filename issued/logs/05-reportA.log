@@ -1,0 +1,19 @@
+# task_46c5 run 05 report A + offline rebuild cmp  2026-11-15T03:27:27Z
+# repo HEAD 476284ecda3a7db10ba8fa482f9eb41b74b3f395
+# sha256 f535fe5f3c5716d80b36161cb2ab3f468a1ec82fdf97b1f27a837d481df5c8c6  issued/collect_issued.py
+# sha256 3c186bbba71f8f36ab84cdde0d9f94f0d0793bf56b7062d109bd91d88cc566c0  issued/analyze_issued.py
+# sha256 8593fd9266d14106bc2e8b49997f6894310b103311deae534c837fd4671d4347  issued/crosscheck_issued.py
+$ python3 -I issued/analyze_issued.py report --a issued/data/A --out issued/report
+REPORT issued/report/REPORT.md mismatches=0
+exit=0
+$ python3 -I issued/analyze_issued.py report --a issued/data/A --out $R/rebuild
+REPORT $SCRATCH/rebuild/REPORT.md mismatches=0
+exit=0
+$ cmp issued/report/report.json $R/rebuild/report.json
+exit=0
+$ cmp issued/report/REPORT.md $R/rebuild/REPORT.md
+exit=0
+$ sha256sum issued/report/report.json issued/report/REPORT.md
+fbe1796c0d673a3fd9f6a97d2c1f84498b7a434d10e424810e49708cbb82de38  issued/report/report.json
+8bb7aca67075308084bd92b62ce0d14dabae4385719da9b88335fb25ddc0f6d7  issued/report/REPORT.md
+exit=0

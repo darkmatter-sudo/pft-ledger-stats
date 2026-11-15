@@ -1,0 +1,61 @@
+# task_46c5 run 04 mutation run  2026-11-15T03:23:50Z
+# repo HEAD 476284ecda3a7db10ba8fa482f9eb41b74b3f395
+# sha256 3c186bbba71f8f36ab84cdde0d9f94f0d0793bf56b7062d109bd91d88cc566c0  issued/analyze_issued.py
+# sha256 f535fe5f3c5716d80b36161cb2ab3f468a1ec82fdf97b1f27a837d481df5c8c6  issued/collect_issued.py
+# sha256 8593fd9266d14106bc2e8b49997f6894310b103311deae534c837fd4671d4347  issued/crosscheck_issued.py
+# sha256 08b60c968e23226d1f698993cbcb8b2e063ed915b3882e45b2a25fabfbbbcb18  issued/mutants_issued.py
+# sha256 68c4892fe136cdfb6bed80ddf685fc35e31a4dc62cae11f3607ab1a6b3bb949e  tests/fixture_issued.py
+# sha256 688c684e05dcc60c371649e2b5002bd872c24cc96c64df10cb9df4128f0c2e7b  tests/test_issued_analyze.py
+# sha256 f0d8553c0ebb490670181d85fd8f152b6942a6bde4c3752048239ff39f2b22e8  tests/test_issued_collect.py
+# sha256 f0b1c8080ecdf027381fca5ca58b6727dd987779d62fb459fdcc5c783447e4ab  tests/test_issued_crosscheck.py
+$ TMPDIR=$HOME/.cache python3 issued/mutants_issued.py --timeout 120
+TESTS tests/test_issued_analyze.py tests/test_issued_collect.py tests/test_issued_crosscheck.py
+CONTROL unmutated copy: rc=0 40 passed in 2.75s
+CAUGHT C1 write method allowed: 1 failed, 39 passed in 2.98s | test_write_methods_refused (3.6s)
+CAUGHT C2 one try fewer: 1 failed, 39 passed in 1.84s | test_gave_up_after_retries (2.4s)
+CAUGHT C3 definite errors retried: 12 failed, 11 passed, 17 errors in 2.68s | test_b_not_after_a_refused, test_balance_equal_to_limit_is_not_over_limit, test_diff_hand_computed, test_gateway_mismatch_listed ... (3.3s)
+CAUGHT C4 constant backoff: 1 failed, 39 passed in 5.03s | test_retry_logged_then_success (5.9s)
+CAUGHT C5 ledger pin not enforced: 1 failed, 39 passed in 4.99s | test_ledger_hash_pin_enforced (5.5s)
+CAUGHT C6 existing snapshot overwritten: 1 failed, 39 passed in 4.55s | test_existing_snapshot_not_overwritten (5.2s)
+CAUGHT C7 index sets not compared: 1 failed, 39 passed in 3.35s | test_type_filter_difference_refused_no_manifest (4.1s)
+CAUGHT C8 differing sets accepted: 1 failed, 39 passed in 3.86s | test_type_filter_difference_refused_no_manifest (4.7s)
+CAUGHT C9 amm_info for every party: 2 failed, 38 passed in 4.41s | test_amm_none_is_query_backed, test_snapshot_files_and_manifest (5.2s)
+CAUGHT C10 sync state not checked: 1 failed, 39 passed in 4.50s | test_unsynced_node_refused (5.4s)
+CAUGHT A1 positive balance: wrong issuer: 10 failed, 30 passed in 7.43s | test_census_hand_computed, test_diff_hand_computed, test_gateway_mismatch_listed, test_gateway_reconciliation_exact ... (8.1s)
+CAUGHT A2 negative balance: sign kept: 10 failed, 30 passed in 2.47s | test_balance_equal_to_limit_is_not_over_limit, test_census_hand_computed, test_diff_hand_computed, test_gateway_mismatch_listed ... (3.1s)
+CAUGHT A3 zero line: low-limit holder flipped: 3 failed, 37 passed in 2.16s | test_census_hand_computed, test_diff_hand_computed, test_zero_and_ambiguous_lines (2.7s)
+CAUGHT A4 zero line: high-limit holder dropped: 1 failed, 39 passed in 2.53s | test_zero_line_high_side_limit_is_holder (3.1s)
+CAUGHT A5 view balance from low side only: 13 failed, 27 passed in 2.29s | test_diff_hand_computed, test_gateway_mismatch_listed, test_gateway_reconciliation_exact, test_lp_token_line_means_pools_present ... (2.8s)
+CAUGHT A6 zero balances count as holders: 2 failed, 38 passed in 13.37s | test_census_hand_computed, test_diff_hand_computed (14.0s)
+CAUGHT A7 over-limit uses >=: 1 failed, 39 passed in 3.04s | test_balance_equal_to_limit_is_not_over_limit (3.9s)
+CAUGHT A8 issuer freeze read from holder side: 2 failed, 38 passed in 3.33s | test_census_hand_computed, test_hex_currency_and_holder_freeze (3.9s)
+CAUGHT A9 holder freeze read from issuer side: 2 failed, 38 passed in 5.27s | test_census_hand_computed, test_hex_currency_and_holder_freeze (6.1s)
+CAUGHT A10 issuer NoRipple from holder side: 2 failed, 38 passed in 4.03s | test_census_hand_computed, test_hex_currency_and_holder_freeze (4.7s)
+CAUGHT A11 top holders ascending: 1 failed, 39 passed in 2.19s | test_census_hand_computed (2.8s)
+CAUGHT A12 HHI without squares: 1 failed, 39 passed in 2.26s | test_census_hand_computed (2.8s)
+CAUGHT A13 rippling threshold 1: 1 failed, 39 passed in 2.33s | test_rippling_through (3.0s)
+CAUGHT A14 frozen lines counted as obligations: 6 failed, 34 passed in 2.02s | test_diff_hand_computed, test_gateway_mismatch_listed, test_gateway_reconciliation_exact, test_lp_token_line_means_pools_present ... (2.5s)
+CAUGHT A15 gateway mismatch not listed: 3 failed, 37 passed in 2.28s | test_gateway_mismatch_listed, test_gateway_missing_frozen_is_mismatch, test_report_deterministic_and_exit_codes (3.0s)
+CAUGHT A16 census obligations not reconciled: 2 failed, 38 passed in 2.18s | test_gateway_mismatch_listed, test_gateway_missing_frozen_is_mismatch (2.7s)
+CAUGHT A17 object-count disagreement ignored: 1 failed, 39 passed in 1.71s | test_object_count_disagreement_listed (2.5s)
+CAUGHT A18 LP-token lines not detected: 1 failed, 39 passed in 2.85s | test_lp_token_line_means_pools_present (3.4s)
+CAUGHT A19 manifest not verified: 1 failed, 39 passed in 4.10s | test_manifest_tamper_refused (4.7s)
+CAUGHT A20 B before A accepted: 1 failed, 39 passed in 9.35s | test_b_not_after_a_refused (9.8s)
+CAUGHT A21 hex currency not decoded: 2 failed, 38 passed in 4.35s | test_currency_names, test_hex_currency_and_holder_freeze (5.0s)
+CAUGHT A22 exit 0 despite mismatches: 1 failed, 39 passed in 3.74s | test_report_deterministic_and_exit_codes (4.4s)
+CAUGHT A23 transfer fee off by 10x: 1 failed, 39 passed in 2.48s | test_issuer_settings (3.0s)
+CAUGHT A24 changed lines not diffed: 1 failed, 39 passed in 4.36s | test_diff_hand_computed (5.0s)
+CAUGHT A25 top10 = top1: 1 failed, 39 passed in 3.96s | test_census_hand_computed (4.8s)
+CAUGHT X1 out-of-range ledger accepted: 1 failed, 39 passed in 3.55s | test_out_of_public_range_gives_up (4.1s)
+CAUGHT X2 lgrNotFound never retried: 1 failed, 39 passed in 3.44s | test_lgrnotfound_inside_range_retried (3.9s)
+CAUGHT X3 header always MATCH: 1 failed, 39 passed in 2.57s | test_negative_control_every_check_mismatches (3.2s)
+CAUGHT X4 extra public objects ignored: 1 failed, 39 passed in 5.03s | test_tampered_public_line_and_extra_line (5.7s)
+CAUGHT X5 objects not compared: 2 failed, 38 passed in 2.88s | test_negative_control_every_check_mismatches, test_tampered_public_line_and_extra_line (3.5s)
+CAUGHT X6 gateway not compared: 1 failed, 39 passed in 2.47s | test_negative_control_every_check_mismatches (3.0s)
+CAUGHT X7 account_lines fields not compared: 3 failed, 37 passed in 2.49s | test_account_lines_balance_sign_checked, test_negative_control_every_check_mismatches, test_tampered_public_line_and_extra_line (3.1s)
+CAUGHT X8 unseeded sample: 3 failed, 37 passed in 2.16s | test_main_exit_codes, test_record_then_offline_replay, test_sample_is_seeded_subset (2.6s)
+CAUGHT X9 exit 0 on mismatch: 1 failed, 39 passed in 5.84s | test_main_exit_codes (6.6s)
+CAUGHT X10 negative control alters nothing in sets: 1 failed, 39 passed in 2.80s | test_negative_control_every_check_mismatches (3.3s)
+MUTANTS 45 caught=45 CAUGHT=45
+RESULT: PASS (0 not caught)
+exit=0

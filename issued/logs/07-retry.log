@@ -1,0 +1,11 @@
+# task_46c5 run 07 retry/backoff demonstration (local node: docker exec into a container name that does not exist; supersedes private run 06, which also listed host containers)  2026-11-15T03:27:40Z
+# repo HEAD 476284ecda3a7db10ba8fa482f9eb41b74b3f395
+# sha256 f535fe5f3c5716d80b36161cb2ab3f468a1ec82fdf97b1f27a837d481df5c8c6  issued/collect_issued.py
+$ python3 -I issued/collect_issued.py snapshot --out $R/retry --container no-such-container --retries 3 --backoff 0.5
+2026-11-15T03:27:40Z RETRY server_state try 1/4 OSError: docker exec rc=1: Error response from daemon: No such container: no-such-container sleep=0.5s
+2026-11-15T03:27:41Z RETRY server_state try 2/4 OSError: docker exec rc=1: Error response from daemon: No such container: no-such-container sleep=1s
+2026-11-15T03:27:42Z RETRY server_state try 3/4 OSError: docker exec rc=1: Error response from daemon: No such container: no-such-container sleep=2s
+2026-11-15T03:27:44Z GAVE_UP server_state gave up after 4 tries (OSError: docker exec rc=1: Error response from daemon: No such container: no-such-container)
+exit=2
+$ ls -A $R/retry
+exit=0
