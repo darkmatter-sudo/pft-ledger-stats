@@ -1,0 +1,57 @@
+# task_46c5 run 01 snapshot A  2026-11-15T03:10:55Z
+# repo HEAD 58a9a22ed56b19e8a14538fa1da35204fd7fe06b
+# sha256 f535fe5f3c5716d80b36161cb2ab3f468a1ec82fdf97b1f27a837d481df5c8c6  issued/collect_issued.py
+$ python3 -I issued/collect_issued.py snapshot --out issued/data/A
+2026-11-15T03:10:55Z PIN ledger_index=8059029 ledger_hash=C1CBCB112C2D435997310687C6090A422A913FCCEE085AA8DFF95FFA19EFA49E close_time_iso=2026-11-15T03:10:51Z
+2026-11-15T03:10:56Z FULL objects=5199 pages=3 types={"AccountRoot":4669,"Amendments":1,"DirectoryNode":52,"FeeSettings":1,"LedgerHashes":124,"NFTokenOffer":45,"NFTokenPage":299,"NegativeUNL":1,"Offer":3,"RippleState":4}
+2026-11-15T03:10:56Z COUNT RippleState full_tree=4 type=state filtered=4 index_sets_equal=True
+2026-11-15T03:10:57Z COUNT AMM full_tree=0 type=amm filtered=0 index_sets_equal=True
+2026-11-15T03:10:58Z GATEWAY_BALANCES accounts=5 with_obligations=1
+2026-11-15T03:10:58Z AMM_INFO queries=1 found=0
+2026-11-15T03:10:58Z FILE header.json rows=1 sha256=0fe809163db2e1fdec4a6d0b87c7e072154cac3b0baf89da52d183c19ced2555
+2026-11-15T03:10:58Z FILE counts.json rows=1 sha256=f0c75b6ac14247cba2a84191f5c74fe0822ff10e208e433ede42f442f400d926
+2026-11-15T03:10:58Z FILE ripplestate.jsonl rows=4 sha256=e11b71092d3831bbccb8d71a800ff2b71331e93c2cfd5c62a5c5d28102ddc22b
+2026-11-15T03:10:58Z FILE accounts.jsonl rows=5 sha256=455d754dbeb95a6d38e8d810f9d22960e3d3d5b7787865757a60bcbdbe237841
+2026-11-15T03:10:58Z FILE amm.jsonl rows=0 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-11-15T03:10:58Z FILE gateway_balances.jsonl rows=5 sha256=17c42df03303f47e2c8a721c473974eb5a6a05b01fb0afe01ad6c7054d516884
+2026-11-15T03:10:58Z FILE amm_info.jsonl rows=1 sha256=65645885785846d05cdc0f836f0862dc5f6834e2d415046d47af3ccac0ec3882
+2026-11-15T03:10:58Z DONE ledger_index=8059029 lines=4 accounts=5 rpc_calls=17 retries=0
+exit=0
+$ cat issued/data/A/MANIFEST.json
+{
+ "files": {
+  "accounts.jsonl": {
+   "rows": 5,
+   "sha256": "455d754dbeb95a6d38e8d810f9d22960e3d3d5b7787865757a60bcbdbe237841"
+  },
+  "amm.jsonl": {
+   "rows": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "amm_info.jsonl": {
+   "rows": 1,
+   "sha256": "65645885785846d05cdc0f836f0862dc5f6834e2d415046d47af3ccac0ec3882"
+  },
+  "counts.json": {
+   "rows": 1,
+   "sha256": "f0c75b6ac14247cba2a84191f5c74fe0822ff10e208e433ede42f442f400d926"
+  },
+  "gateway_balances.jsonl": {
+   "rows": 5,
+   "sha256": "17c42df03303f47e2c8a721c473974eb5a6a05b01fb0afe01ad6c7054d516884"
+  },
+  "header.json": {
+   "rows": 1,
+   "sha256": "0fe809163db2e1fdec4a6d0b87c7e072154cac3b0baf89da52d183c19ced2555"
+  },
+  "ripplestate.jsonl": {
+   "rows": 4,
+   "sha256": "e11b71092d3831bbccb8d71a800ff2b71331e93c2cfd5c62a5c5d28102ddc22b"
+  }
+ },
+ "format": "pft-issued-snapshot/1",
+ "ledger_hash": "C1CBCB112C2D435997310687C6090A422A913FCCEE085AA8DFF95FFA19EFA49E",
+ "ledger_index": 8059029,
+ "retries": 0,
+ "rpc_calls": 17
+}

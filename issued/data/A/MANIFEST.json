@@ -1,0 +1,37 @@
+{
+ "files": {
+  "accounts.jsonl": {
+   "rows": 5,
+   "sha256": "455d754dbeb95a6d38e8d810f9d22960e3d3d5b7787865757a60bcbdbe237841"
+  },
+  "amm.jsonl": {
+   "rows": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "amm_info.jsonl": {
+   "rows": 1,
+   "sha256": "65645885785846d05cdc0f836f0862dc5f6834e2d415046d47af3ccac0ec3882"
+  },
+  "counts.json": {
+   "rows": 1,
+   "sha256": "f0c75b6ac14247cba2a84191f5c74fe0822ff10e208e433ede42f442f400d926"
+  },
+  "gateway_balances.jsonl": {
+   "rows": 5,
+   "sha256": "17c42df03303f47e2c8a721c473974eb5a6a05b01fb0afe01ad6c7054d516884"
+  },
+  "header.json": {
+   "rows": 1,
+   "sha256": "0fe809163db2e1fdec4a6d0b87c7e072154cac3b0baf89da52d183c19ced2555"
+  },
+  "ripplestate.jsonl": {
+   "rows": 4,
+   "sha256": "e11b71092d3831bbccb8d71a800ff2b71331e93c2cfd5c62a5c5d28102ddc22b"
+  }
+ },
+ "format": "pft-issued-snapshot/1",
+ "ledger_hash": "C1CBCB112C2D435997310687C6090A422A913FCCEE085AA8DFF95FFA19EFA49E",
+ "ledger_index": 8059029,
+ "retries": 0,
+ "rpc_calls": 17
+}
