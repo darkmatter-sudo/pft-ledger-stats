@@ -246,3 +246,42 @@ def test_report_deterministic_and_exit_codes(tmp_path):
     F.make_snapshot(tmp_path / "X", F.FakeNode(gateway=gw))
     assert A.main(["report", "--a", str(tmp_path / "X"), "--out", str(tmp_path / "r3")]) == 1
     assert "Mismatches: 1." in (tmp_path / "r3" / "REPORT.md").read_text()
+
+
+def test_zero_line_high_side_limit_is_holder():
+    ln = F.line("A" * 64, "USD", "rG1", "rH9", "0", "0", "25")
+    assert A.classify(ln) == ("rG1", "rH9", A.Decimal(0), False)
+
+
+def test_balance_equal_to_limit_is_not_over_limit(tmp_path):
+    objs = F.objects()
+    for o in objs:
+        if o["index"] == "1" * 64:
+            o["LowLimit"]["value"] = "100"  # H1 holds exactly its limit
+    F.make_snapshot(tmp_path / "A", F.FakeNode(objs=objs))
+    c = by_key(A.census(A.load_snapshot(str(tmp_path / "A"))))
+    assert [r["holder"] for r in c[("rG1", "USD")]["over_limit"]] == ["rH2"]
+
+
+def test_object_count_disagreement_listed(snap):
+    snap["counts"]["filtered"]["AMM"]["index_sets_equal"] = False
+    _, mism = A.reconcile(snap, A.census(snap))
+    assert [(m["check"], m["type"]) for m in mism] == [("object_count", "AMM")]
+    snap["counts"]["filtered"]["AMM"]["index_sets_equal"] = True
+    snap["counts"]["filtered"]["RippleState"]["type_filter"] = 5
+    _, mism = A.reconcile(snap, A.census(snap))
+    assert [(m["check"], m["type"]) for m in mism] == [("object_count", "RippleState")]
+
+
+def test_lp_token_line_means_pools_present(tmp_path):
+    lp = "03" + "AB" * 19
+    objs = F.objects() + [F.line("B" * 64, lp, "rH1", "rG1", "5", "0", "0")]
+    objs.sort(key=lambda o: o["index"])
+    gw = copy.deepcopy(F.GATEWAY)
+    gw["rG1"]["obligations"][lp] = "5"
+    gw["rH1"]["assets"]["rG1"].append({"currency": lp, "value": "5"})
+    F.make_snapshot(tmp_path / "A", F.FakeNode(objs=objs, gateway=gw))
+    snap = A.load_snapshot(str(tmp_path / "A"))
+    m = A.amm_findings(snap)
+    assert (m["lp_token_lines"], m["result"]) == (1, "pools present")
+    assert A.reconcile(snap, A.census(snap))[1] == []

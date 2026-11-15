@@ -6,3 +6,7 @@ select = ["E", "F", "W", "B", "I"]
 
 [lint.isort]
 known-first-party = ["collect_issued", "crosscheck_issued", "analyze_issued", "mutants_issued"]
+
+[lint.per-file-ignores]
+# mutant table rows are exact source lines and cannot be wrapped
+"mutants_issued.py" = ["E501"]
