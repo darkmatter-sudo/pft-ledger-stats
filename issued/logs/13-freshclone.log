@@ -1,0 +1,167 @@
+# task_46c5 run 13 fresh public clone verification  2026-11-16T03:19:04Z
+# pinned SHA bfa866d0b276823a6ca3d5fbec24073e35ea3613
+# runner script (verbatim):
+#   #!/bin/bash
+#   # fresh public clone verification for task_46c5 at a pinned SHA
+#   SHA=$1
+#   SCR=$(mktemp -d -p "$HOME/.cache"); chmod 755 "$SCR"
+#   red() { sed -u -e "s#$SCR#\$CLONE#g" -e "s#$HOME#~#g"; }
+#   x() { echo "\$ $*" | red; eval "$*" 2>&1 | red; rc=${PIPESTATUS[0]}; echo "exit=$rc"; return "$rc"; }
+#   FAILS=0
+#   chk() { x "$@" || FAILS=$((FAILS+1)); }
+#   echo "# task_46c5 run 13 fresh public clone verification  $(date -u +%FT%TZ)"
+#   echo "# pinned SHA $SHA"
+#   echo "# runner script (verbatim):"; sed 's/^/#   /' "$0"
+#   chk git clone -q https://github.com/darkmatter-sudo/pft-ledger-stats.git '$SCR/repo'
+#   cd "$SCR/repo" || exit 1
+#   chk git -c advice.detachedHead=false checkout -q "$SHA"
+#   chk git rev-parse HEAD
+#   chk git status --short
+#   echo "## key-file sha256 (compare with headers of logs 08/09/11/12)"
+#   chk sha256sum issued/collect_issued.py issued/analyze_issued.py issued/crosscheck_issued.py issued/mutants_issued.py tests/fixture_issued.py tests/test_issued_analyze.py tests/test_issued_collect.py tests/test_issued_crosscheck.py
+#   for f in collect analyze crosscheck; do
+#     want=$(command grep -h "issued/${f}_issued.py" issued/logs/12-mutants.log | awk '{print $3}')
+#     got=$(sha256sum "issued/${f}_issued.py" | awk '{print $1}')
+#     echo "HASHCHECK issued/${f}_issued.py clone=$got log12=$want $([ "$got" = "$want" ] && echo MATCH || echo MISMATCH)"
+#     [ "$got" = "$want" ] || FAILS=$((FAILS+1))
+#   done
+#   echo "## snapshot manifests: every file sha256 re-derived"
+#   manifest_check() { (cd "$1" && jq -r '.files|to_entries[]|"\(.value.sha256)  \(.key)"' MANIFEST.json | sha256sum -c --strict; exit "${PIPESTATUS[1]}"); }
+#   for d in A B; do chk manifest_check issued/data/$d; done
+#   echo "## full tests + ruff (both cwds)"
+#   chk TMPDIR='$HOME/.cache' python3 -m pytest -q -p no:cacheprovider tests/test_issued_analyze.py tests/test_issued_collect.py tests/test_issued_crosscheck.py
+#   chk ruff check --no-cache issued tests/test_issued_analyze.py tests/test_issued_collect.py tests/test_issued_crosscheck.py tests/fixture_issued.py
+#   chk "(cd issued && ruff check --no-cache .)"
+#   chk ruff format --no-cache --check issued tests/test_issued_analyze.py tests/test_issued_collect.py tests/test_issued_crosscheck.py tests/fixture_issued.py
+#   echo "## offline crosscheck replay A and B"
+#   for d in A B; do
+#     chk python3 -I issued/crosscheck_issued.py issued/data/$d --sample 20 --offline issued/data/crosscheck/$d-public.json
+#   done
+#   echo "## offline report rebuild + cmp against committed report"
+#   chk python3 -I issued/analyze_issued.py report --a issued/data/A --b issued/data/B --out '$SCR/rebuild'
+#   chk cmp issued/report/report.json '$SCR/rebuild/report.json'
+#   chk cmp issued/report/REPORT.md '$SCR/rebuild/REPORT.md'
+#   chk sha256sum issued/report/report.json issued/report/REPORT.md '$SCR/rebuild/report.json' '$SCR/rebuild/REPORT.md'
+#   cd / && rm -rf "$SCR"
+#   echo "RESULT FAILS=$FAILS"
+#   [ "$FAILS" = 0 ]
+$ git clone -q https://github.com/darkmatter-sudo/pft-ledger-stats.git $SCR/repo
+exit=0
+$ git -c advice.detachedHead=false checkout -q bfa866d0b276823a6ca3d5fbec24073e35ea3613
+exit=0
+$ git rev-parse HEAD
+bfa866d0b276823a6ca3d5fbec24073e35ea3613
+exit=0
+$ git status --short
+exit=0
+## key-file sha256 (compare with headers of logs 08/09/11/12)
+$ sha256sum issued/collect_issued.py issued/analyze_issued.py issued/crosscheck_issued.py issued/mutants_issued.py tests/fixture_issued.py tests/test_issued_analyze.py tests/test_issued_collect.py tests/test_issued_crosscheck.py
+f535fe5f3c5716d80b36161cb2ab3f468a1ec82fdf97b1f27a837d481df5c8c6  issued/collect_issued.py
+3c186bbba71f8f36ab84cdde0d9f94f0d0793bf56b7062d109bd91d88cc566c0  issued/analyze_issued.py
+8593fd9266d14106bc2e8b49997f6894310b103311deae534c837fd4671d4347  issued/crosscheck_issued.py
+08b60c968e23226d1f698993cbcb8b2e063ed915b3882e45b2a25fabfbbbcb18  issued/mutants_issued.py
+68c4892fe136cdfb6bed80ddf685fc35e31a4dc62cae11f3607ab1a6b3bb949e  tests/fixture_issued.py
+688c684e05dcc60c371649e2b5002bd872c24cc96c64df10cb9df4128f0c2e7b  tests/test_issued_analyze.py
+f0d8553c0ebb490670181d85fd8f152b6942a6bde4c3752048239ff39f2b22e8  tests/test_issued_collect.py
+f0b1c8080ecdf027381fca5ca58b6727dd987779d62fb459fdcc5c783447e4ab  tests/test_issued_crosscheck.py
+exit=0
+HASHCHECK issued/collect_issued.py clone=f535fe5f3c5716d80b36161cb2ab3f468a1ec82fdf97b1f27a837d481df5c8c6 log12=f535fe5f3c5716d80b36161cb2ab3f468a1ec82fdf97b1f27a837d481df5c8c6 MATCH
+HASHCHECK issued/analyze_issued.py clone=3c186bbba71f8f36ab84cdde0d9f94f0d0793bf56b7062d109bd91d88cc566c0 log12=3c186bbba71f8f36ab84cdde0d9f94f0d0793bf56b7062d109bd91d88cc566c0 MATCH
+HASHCHECK issued/crosscheck_issued.py clone=8593fd9266d14106bc2e8b49997f6894310b103311deae534c837fd4671d4347 log12=8593fd9266d14106bc2e8b49997f6894310b103311deae534c837fd4671d4347 MATCH
+## snapshot manifests: every file sha256 re-derived
+$ manifest_check issued/data/A
+accounts.jsonl: OK
+amm.jsonl: OK
+amm_info.jsonl: OK
+counts.json: OK
+gateway_balances.jsonl: OK
+header.json: OK
+ripplestate.jsonl: OK
+exit=0
+$ manifest_check issued/data/B
+accounts.jsonl: OK
+amm.jsonl: OK
+amm_info.jsonl: OK
+counts.json: OK
+gateway_balances.jsonl: OK
+header.json: OK
+ripplestate.jsonl: OK
+exit=0
+## full tests + ruff (both cwds)
+$ TMPDIR=$HOME/.cache python3 -m pytest -q -p no:cacheprovider tests/test_issued_analyze.py tests/test_issued_collect.py tests/test_issued_crosscheck.py
+........................................                                 [100%]
+40 passed in 4.25s
+exit=0
+$ ruff check --no-cache issued tests/test_issued_analyze.py tests/test_issued_collect.py tests/test_issued_crosscheck.py tests/fixture_issued.py
+All checks passed!
+exit=0
+$ (cd issued && ruff check --no-cache .)
+All checks passed!
+exit=0
+$ ruff format --no-cache --check issued tests/test_issued_analyze.py tests/test_issued_collect.py tests/test_issued_crosscheck.py tests/fixture_issued.py
+10 files already formatted
+exit=0
+## offline crosscheck replay A and B
+$ python3 -I issued/crosscheck_issued.py issued/data/A --sample 20 --offline issued/data/crosscheck/A-public.json
+2026-11-16T03:19:30Z PUBLIC complete_ledgers=8000054-8059101 ledger=8059029 inside=True
+2026-11-16T03:19:30Z MATCH header.ledger_index got=8059029 want=8059029
+2026-11-16T03:19:30Z MATCH header.ledger_hash got=C1CBCB112C2D435997310687C6090A422A913FCCEE085AA8DFF95FFA19EFA49E want=C1CBCB112C2D435997310687C6090A422A913FCCEE085AA8DFF95FFA19EFA49E
+2026-11-16T03:19:30Z MATCH header.account_hash got=9C04601CB879CAC6EACDD82CC4DB96734BB8CD7D75FFCBBE0DE17C94DFE6E710 want=9C04601CB879CAC6EACDD82CC4DB96734BB8CD7D75FFCBBE0DE17C94DFE6E710
+2026-11-16T03:19:30Z MATCH header.close_time got=848027451 want=848027451
+2026-11-16T03:19:30Z MATCH state.index_set public=4 snapshot=4 missing=0 extra=0
+2026-11-16T03:19:30Z MATCH state.object 1D04148C734CCFB5BE54D1CFD54BD3EBB51C11FECEE8F9A27277FD4060573B65
+2026-11-16T03:19:30Z MATCH state.object 9A85D0925F57CBA0D4999AE84B261D3CB573B969C868F7E5D2613EE241F98E75
+2026-11-16T03:19:30Z MATCH state.object B04BB7E4C1C47920B1BDE6B580057F7272F75EB73B8564B42DDCEC00C0609671
+2026-11-16T03:19:30Z MATCH state.object F634022981586B979A0EC07802E3ADCA39357B3ED247274444E6959F7DBF6FB4
+2026-11-16T03:19:30Z MATCH amm.index_set public=0 snapshot=0 missing=0 extra=0
+2026-11-16T03:19:30Z MATCH gateway_balances rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD
+2026-11-16T03:19:30Z MATCH gateway_balances rPBh3iymyev6Fwoec5EgRmK3ZejsdfTrvs
+2026-11-16T03:19:30Z MATCH gateway_balances rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i
+2026-11-16T03:19:30Z MATCH gateway_balances rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE
+2026-11-16T03:19:30Z MATCH gateway_balances rseiw26mUFAQ1JKF3X61fskvVmL7vtfF9k
+2026-11-16T03:19:30Z SAMPLE seed=ledger_hash k=4 of 4 lines
+2026-11-16T03:19:30Z MATCH account_lines rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i peer=rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE DLK balance=1000000
+2026-11-16T03:19:30Z MATCH account_lines rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD peer=rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE DLK balance=1000000
+2026-11-16T03:19:30Z MATCH account_lines rPBh3iymyev6Fwoec5EgRmK3ZejsdfTrvs peer=rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE DLK balance=1000000
+2026-11-16T03:19:30Z MATCH account_lines rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE peer=rseiw26mUFAQ1JKF3X61fskvVmL7vtfF9k DLK balance=-1000000
+2026-11-16T03:19:30Z RESULT checks=19 match=19 mismatch=0 rpc_calls=53 retries=0
+exit=0
+$ python3 -I issued/crosscheck_issued.py issued/data/B --sample 20 --offline issued/data/crosscheck/B-public.json
+2026-11-16T03:19:30Z PUBLIC complete_ledgers=8000054-8087593 ledger=8087575 inside=True
+2026-11-16T03:19:30Z MATCH header.ledger_index got=8087575 want=8087575
+2026-11-16T03:19:30Z MATCH header.ledger_hash got=C5C7365B71D0EC42B82B39EA9F8AF9EB7584136B27F02DF93A6CAD2F09019F60 want=C5C7365B71D0EC42B82B39EA9F8AF9EB7584136B27F02DF93A6CAD2F09019F60
+2026-11-16T03:19:30Z MATCH header.account_hash got=7582249C173B0E5C0FC3B1E08B115E8CF57B462B79B9709409450FBC6F0229D0 want=7582249C173B0E5C0FC3B1E08B115E8CF57B462B79B9709409450FBC6F0229D0
+2026-11-16T03:19:30Z MATCH header.close_time got=848113861 want=848113861
+2026-11-16T03:19:30Z MATCH state.index_set public=4 snapshot=4 missing=0 extra=0
+2026-11-16T03:19:30Z MATCH state.object 1D04148C734CCFB5BE54D1CFD54BD3EBB51C11FECEE8F9A27277FD4060573B65
+2026-11-16T03:19:30Z MATCH state.object 9A85D0925F57CBA0D4999AE84B261D3CB573B969C868F7E5D2613EE241F98E75
+2026-11-16T03:19:30Z MATCH state.object B04BB7E4C1C47920B1BDE6B580057F7272F75EB73B8564B42DDCEC00C0609671
+2026-11-16T03:19:30Z MATCH state.object F634022981586B979A0EC07802E3ADCA39357B3ED247274444E6959F7DBF6FB4
+2026-11-16T03:19:30Z MATCH amm.index_set public=0 snapshot=0 missing=0 extra=0
+2026-11-16T03:19:30Z MATCH gateway_balances rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD
+2026-11-16T03:19:30Z MATCH gateway_balances rPBh3iymyev6Fwoec5EgRmK3ZejsdfTrvs
+2026-11-16T03:19:30Z MATCH gateway_balances rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i
+2026-11-16T03:19:30Z MATCH gateway_balances rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE
+2026-11-16T03:19:30Z MATCH gateway_balances rseiw26mUFAQ1JKF3X61fskvVmL7vtfF9k
+2026-11-16T03:19:30Z SAMPLE seed=ledger_hash k=4 of 4 lines
+2026-11-16T03:19:30Z MATCH account_lines rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE peer=rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i DLK balance=-1000000
+2026-11-16T03:19:30Z MATCH account_lines rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE peer=rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD DLK balance=-1000000
+2026-11-16T03:19:30Z MATCH account_lines rPBh3iymyev6Fwoec5EgRmK3ZejsdfTrvs peer=rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE DLK balance=1000000
+2026-11-16T03:19:30Z MATCH account_lines rseiw26mUFAQ1JKF3X61fskvVmL7vtfF9k peer=rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE DLK balance=1000000
+2026-11-16T03:19:30Z RESULT checks=19 match=19 mismatch=0 rpc_calls=53 retries=0
+exit=0
+## offline report rebuild + cmp against committed report
+$ python3 -I issued/analyze_issued.py report --a issued/data/A --b issued/data/B --out $SCR/rebuild
+REPORT $CLONE/rebuild/REPORT.md mismatches=0
+exit=0
+$ cmp issued/report/report.json $SCR/rebuild/report.json
+exit=0
+$ cmp issued/report/REPORT.md $SCR/rebuild/REPORT.md
+exit=0
+$ sha256sum issued/report/report.json issued/report/REPORT.md $SCR/rebuild/report.json $SCR/rebuild/REPORT.md
+07b3731b061f61e69be9437ec7ec850c46794c2a1cb0cdaa14a20f87469f38ce  issued/report/report.json
+43acacca2e776166c314beebcd20cb29743e7ae98c272823d783641217ddf5cc  issued/report/REPORT.md
+07b3731b061f61e69be9437ec7ec850c46794c2a1cb0cdaa14a20f87469f38ce  $CLONE/rebuild/report.json
+43acacca2e776166c314beebcd20cb29743e7ae98c272823d783641217ddf5cc  $CLONE/rebuild/REPORT.md
+exit=0
+RESULT FAILS=0
