@@ -1,0 +1,53 @@
+# task_46c5 run 10 crosscheck B offline replay + negative control  2026-11-16T03:12:47Z
+# repo HEAD 9c911485ef9374d0f55b4919728a247384f75fb8
+# sha256 f535fe5f3c5716d80b36161cb2ab3f468a1ec82fdf97b1f27a837d481df5c8c6  issued/collect_issued.py
+# sha256 3c186bbba71f8f36ab84cdde0d9f94f0d0793bf56b7062d109bd91d88cc566c0  issued/analyze_issued.py
+# sha256 8593fd9266d14106bc2e8b49997f6894310b103311deae534c837fd4671d4347  issued/crosscheck_issued.py
+$ python3 -I issued/crosscheck_issued.py issued/data/B --sample 20 --offline issued/data/crosscheck/B-public.json
+2026-11-16T03:12:48Z PUBLIC complete_ledgers=8000054-8087593 ledger=8087575 inside=True
+2026-11-16T03:12:48Z MATCH header.ledger_index got=8087575 want=8087575
+2026-11-16T03:12:48Z MATCH header.ledger_hash got=C5C7365B71D0EC42B82B39EA9F8AF9EB7584136B27F02DF93A6CAD2F09019F60 want=C5C7365B71D0EC42B82B39EA9F8AF9EB7584136B27F02DF93A6CAD2F09019F60
+2026-11-16T03:12:48Z MATCH header.account_hash got=7582249C173B0E5C0FC3B1E08B115E8CF57B462B79B9709409450FBC6F0229D0 want=7582249C173B0E5C0FC3B1E08B115E8CF57B462B79B9709409450FBC6F0229D0
+2026-11-16T03:12:48Z MATCH header.close_time got=848113861 want=848113861
+2026-11-16T03:12:48Z MATCH state.index_set public=4 snapshot=4 missing=0 extra=0
+2026-11-16T03:12:48Z MATCH state.object 1D04148C734CCFB5BE54D1CFD54BD3EBB51C11FECEE8F9A27277FD4060573B65
+2026-11-16T03:12:48Z MATCH state.object 9A85D0925F57CBA0D4999AE84B261D3CB573B969C868F7E5D2613EE241F98E75
+2026-11-16T03:12:48Z MATCH state.object B04BB7E4C1C47920B1BDE6B580057F7272F75EB73B8564B42DDCEC00C0609671
+2026-11-16T03:12:48Z MATCH state.object F634022981586B979A0EC07802E3ADCA39357B3ED247274444E6959F7DBF6FB4
+2026-11-16T03:12:48Z MATCH amm.index_set public=0 snapshot=0 missing=0 extra=0
+2026-11-16T03:12:48Z MATCH gateway_balances rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD
+2026-11-16T03:12:48Z MATCH gateway_balances rPBh3iymyev6Fwoec5EgRmK3ZejsdfTrvs
+2026-11-16T03:12:48Z MATCH gateway_balances rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i
+2026-11-16T03:12:48Z MATCH gateway_balances rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE
+2026-11-16T03:12:48Z MATCH gateway_balances rseiw26mUFAQ1JKF3X61fskvVmL7vtfF9k
+2026-11-16T03:12:48Z SAMPLE seed=ledger_hash k=4 of 4 lines
+2026-11-16T03:12:48Z MATCH account_lines rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE peer=rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i DLK balance=-1000000
+2026-11-16T03:12:48Z MATCH account_lines rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE peer=rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD DLK balance=-1000000
+2026-11-16T03:12:48Z MATCH account_lines rPBh3iymyev6Fwoec5EgRmK3ZejsdfTrvs peer=rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE DLK balance=1000000
+2026-11-16T03:12:48Z MATCH account_lines rseiw26mUFAQ1JKF3X61fskvVmL7vtfF9k peer=rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE DLK balance=1000000
+2026-11-16T03:12:48Z RESULT checks=19 match=19 mismatch=0 rpc_calls=53 retries=0
+exit=0
+$ python3 -I issued/crosscheck_issued.py issued/data/B --sample 20 --offline issued/data/crosscheck/B-public.json --negative
+2026-11-16T03:12:48Z PUBLIC complete_ledgers=8000054-8087593 ledger=8087575 inside=True
+2026-11-16T03:12:48Z MISMATCH header.ledger_index got=8087575 want=8087576
+2026-11-16T03:12:48Z MISMATCH header.ledger_hash got=C5C7365B71D0EC42B82B39EA9F8AF9EB7584136B27F02DF93A6CAD2F09019F60 want=C5C7365B71D0EC42B82B39EA9F8AF9EB7584136B27F02DF93A6CAD2F09019F61
+2026-11-16T03:12:48Z MISMATCH header.account_hash got=7582249C173B0E5C0FC3B1E08B115E8CF57B462B79B9709409450FBC6F0229D0 want=7582249C173B0E5C0FC3B1E08B115E8CF57B462B79B9709409450FBC6F0229D1
+2026-11-16T03:12:48Z MISMATCH header.close_time got=848113861 want=848113862
+2026-11-16T03:12:48Z MISMATCH state.index_set public=4 snapshot=5 missing=1 extra=0
+2026-11-16T03:12:48Z MISMATCH state.object 1D04148C734CCFB5BE54D1CFD54BD3EBB51C11FECEE8F9A27277FD4060573B65
+2026-11-16T03:12:48Z MISMATCH state.object 9A85D0925F57CBA0D4999AE84B261D3CB573B969C868F7E5D2613EE241F98E75
+2026-11-16T03:12:48Z MISMATCH state.object B04BB7E4C1C47920B1BDE6B580057F7272F75EB73B8564B42DDCEC00C0609671
+2026-11-16T03:12:48Z MISMATCH state.object F634022981586B979A0EC07802E3ADCA39357B3ED247274444E6959F7DBF6FB4
+2026-11-16T03:12:48Z MISMATCH amm.index_set public=0 snapshot=1 missing=1 extra=0
+2026-11-16T03:12:48Z MISMATCH gateway_balances rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD
+2026-11-16T03:12:48Z MISMATCH gateway_balances rPBh3iymyev6Fwoec5EgRmK3ZejsdfTrvs
+2026-11-16T03:12:48Z MISMATCH gateway_balances rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i
+2026-11-16T03:12:48Z MISMATCH gateway_balances rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE
+2026-11-16T03:12:48Z MISMATCH gateway_balances rseiw26mUFAQ1JKF3X61fskvVmL7vtfF9k
+2026-11-16T03:12:48Z SAMPLE seed=ledger_hash k=4 of 4 lines
+2026-11-16T03:12:48Z MISMATCH account_lines rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE peer=rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i DLK balance=1000000 got={"account": "rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i", "authorized": false, "balance": "-1000000", "currency": "DLK", "freeze": false, "freeze_peer": false, "limit": "0", "limit_peer": "10000000", "no_ripple": true, "no_ripple_peer": false, "peer_authorized": false} want={"account": "rQhcy7vAFSxG3GhLdUQzQ86oaYTuEm4o7i", "authorized": false, "balance": "1000000", "currency": "DLK", "freeze": false, "freeze_peer": false, "limit": "0", "limit_peer": "10000000", "no_ripple": true, "no_ripple_peer": false, "peer_authorized": false}
+2026-11-16T03:12:48Z MISMATCH account_lines rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE peer=rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD DLK balance=1000000 got={"account": "rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD", "authorized": false, "balance": "-1000000", "currency": "DLK", "freeze": false, "freeze_peer": false, "limit": "0", "limit_peer": "10000000", "no_ripple": true, "no_ripple_peer": false, "peer_authorized": false} want={"account": "rHwVCNbsjyNJnbbUbkx2xjvzfbd5426pxD", "authorized": false, "balance": "1000000", "currency": "DLK", "freeze": false, "freeze_peer": false, "limit": "0", "limit_peer": "10000000", "no_ripple": true, "no_ripple_peer": false, "peer_authorized": false}
+2026-11-16T03:12:48Z MISMATCH account_lines rPBh3iymyev6Fwoec5EgRmK3ZejsdfTrvs peer=rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE DLK balance=-1000000 got={"account": "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE", "authorized": false, "balance": "1000000", "currency": "DLK", "freeze": false, "freeze_peer": false, "limit": "10000000", "limit_peer": "0", "no_ripple": false, "no_ripple_peer": true, "peer_authorized": false} want={"account": "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE", "authorized": false, "balance": "-1000000", "currency": "DLK", "freeze": false, "freeze_peer": false, "limit": "10000000", "limit_peer": "0", "no_ripple": false, "no_ripple_peer": true, "peer_authorized": false}
+2026-11-16T03:12:48Z MISMATCH account_lines rseiw26mUFAQ1JKF3X61fskvVmL7vtfF9k peer=rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE DLK balance=-1000000 got={"account": "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE", "authorized": false, "balance": "1000000", "currency": "DLK", "freeze": false, "freeze_peer": false, "limit": "10000000", "limit_peer": "0", "no_ripple": false, "no_ripple_peer": true, "peer_authorized": false} want={"account": "rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE", "authorized": false, "balance": "-1000000", "currency": "DLK", "freeze": false, "freeze_peer": false, "limit": "10000000", "limit_peer": "0", "no_ripple": false, "no_ripple_peer": true, "peer_authorized": false}
+2026-11-16T03:12:48Z RESULT checks=19 match=0 mismatch=19 rpc_calls=53 retries=0 NEGATIVE
+exit=1

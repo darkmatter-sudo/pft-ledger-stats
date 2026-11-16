@@ -20,3 +20,32 @@ AMM: none (query-backed) (AMM objects full tree 0, type filter 0, LP-token lines
 
 gateway_balances reconciliation: 5/5 accounts exact; object-count checks: AMM full tree 0 = type filter 0 (index sets equal True), RippleState full tree 4 = type filter 4 (index sets equal True).
 Mismatches: 0.
+
+## Snapshot B: ledger 8087575 (2026-11-16T03:11:01Z)
+
+Ledger hash `C5C7365B71D0EC42B82B39EA9F8AF9EB7584136B27F02DF93A6CAD2F09019F60`; trust lines 4; full-tree objects 5219.
+
+| issuer | currency | lines | holders | obligations | top1 | top10 | HHI | zero | over-limit | issuer froze | holder froze | issuer NoRipple | holder NoRipple |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE` | DLK | 4 | 4 | 4000000 | 0.250000 | 1.000000 | 2500.00 | 0 | 0 | 0 | 0 | 4 | 0 |
+
+Issuer settings:
+
+- `rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE`: Flags=0 [none]
+
+Rippling-through accounts (>= 2 lines of one currency, own NoRipple clear): 0
+
+AMM: none (query-backed) (AMM objects full tree 0, type filter 0, LP-token lines 0, amm_info queries 1 found 0, errors ['actNotFound']).
+
+gateway_balances reconciliation: 5/5 accounts exact; object-count checks: AMM full tree 0 = type filter 0 (index sets equal True), RippleState full tree 4 = type filter 4 (index sets equal True).
+Mismatches: 0.
+
+## A -> B: ledger 8059029 -> 8087575 (2026-11-15T03:10:51Z -> 2026-11-16T03:11:01Z, 24.00 h)
+
+Lines added 0, removed 0, changed 0; issuer-setting changes 0.
+
+| issuer | currency | status | obligations A | obligations B | delta | holders A | holders B |
+|---|---|---|---:|---:|---:|---:|---:|
+| `rhaQYQ11ckRQmg9axsE1SBjqgWXPKhgteE` | DLK | kept | 4000000 | 4000000 | 0 | 4 | 4 |
+
+Object-type count changes: AccountRoot 4669 -> 4687, LedgerHashes 124 -> 125, NFTokenPage 299 -> 300

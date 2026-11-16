@@ -1,8 +1,8 @@
 # issued/ — issued-asset (IOU) and trust-line census, Post Fiat testnet
 
-**Status: in progress.** Snapshot A (ledger 8059029, 2026-11-15T03:10:51Z) is committed with its
-public-RPC crosscheck. Snapshot B is due about 24 h later (~2026-11-16T03:11Z); the A->B diff, the B
-crosscheck and the fresh-clone transcript follow then.
+**Status: complete.** Snapshot A (ledger 8059029, 2026-11-15T03:10:51Z) and snapshot B (ledger
+8087575, 2026-11-16T03:11:01Z, 24.00 h later) are committed with their public-RPC crosschecks, the
+A->B diff in `report/`, the mutation run and the fresh-clone verification log.
 
 Read-only. Nothing is signed or submitted. Local node methods: `server_state`, `ledger`,
 `ledger_data`, `gateway_balances`, `amm_info` (admin JSON-RPC through `docker exec`, never exposed).
@@ -106,7 +106,7 @@ line, `USD` from two issuers, a hex currency (`EURO`), an over-limit line, issue
 (DefaultRipple, RequireAuth, TransferRate, Domain). The expected numbers in the tests are computed by
 hand in comments. The collector and crosscheck tests run the real code against a fake node.
 
-## Results so far
+## Results
 
 Snapshot A, ledger 8059029 (`logs/01-snapshotA.log`): 5199 objects in the full tree, 4 RippleState
 (full tree 4 = type filter 4, index sets equal), 0 AMM (0 = 0). One asset: DLK issued by
@@ -123,3 +123,14 @@ Mutation run (`logs/04`): control 40 passed, 45 mutants, 45 caught. Report A and
 `cmp` exit 0 for both files (`logs/05`). Retry path on the real docker exec transport (`logs/07`):
 3 logged RETRY lines with 0.5/1/2 s backoff, then GAVE_UP exit 2 and no files written. The live
 snapshot and crosscheck runs needed 0 retries.
+
+Snapshot B, ledger 8087575 (`logs/08-snapshotB.log`): 5219 objects, 4 RippleState (4 = 4, index sets
+equal), 0 AMM (0 = 0), gateway_balances 5/5 exact, 0 retries. `ripplestate.jsonl`, `accounts.jsonl`
+and `gateway_balances.jsonl` are byte-identical to A (same sha256 in both manifests). Public crosscheck
+of B (`logs/09`): 19 checks, 19 MATCH, 0 retries; offline replay 19 MATCH, negative control 19
+MISMATCH, exit 1 (`logs/10`).
+
+A -> B (`report/REPORT.md`, `logs/11`): lines added 0, removed 0, changed 0; issuer-setting changes 0;
+DLK obligations 4000000 -> 4000000, holders 4 -> 4; AMM none at both ledgers. Object-type count
+changes: AccountRoot 4669 -> 4687, LedgerHashes 124 -> 125, NFTokenPage 299 -> 300. Report A+B and
+offline rebuild: `cmp` exit 0 for both files.
