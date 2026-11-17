@@ -1,0 +1,22 @@
+# task_3e45 run 06 dry pipeline (scratch B-dry snapshot, not the report's B) 2026-11-17T08:19:58Z
+# sha256 174c07f9a0a8761a0ea97a87d40273dee228e54587ca7853bd9b668bef36c9f6  acctflags/analyze_flags.py
+# sha256 49735553464cfca23a85b5c56cb50c447c381460e7f63afdc0c5dbf70acb43a9  acctflags/collect_flags.py
+# sha256 46584dc91e73b8c2d29b1fe9687d5d2bb879d0311fafc2436df6ba287c1a5a16  acctflags/crosscheck_flags.py
+# sha256 8411bcb6bcbc1bb294789868d465a54dd1c21105a5d30f4a4121a09f01fa6417  acctflags/extract_flags.py
+2026-11-17T08:20:01Z PIN ledger_index=8122228 ledger_hash=A63471B9C0A8BDE0B777BD83B3A1DBFE0DAFF2F9B7C258C51CE3EB1AB2C356A3 close_time_iso=2026-11-17T08:19:52Z
+2026-11-17T08:20:12Z FULL objects=5239 pages=3 types={"AccountRoot":4704,"Amendments":1,"DirectoryNode":52,"FeeSettings":1,"LedgerHashes":125,"NFTokenOffer":45,"NFTokenPage":303,"NegativeUNL":1,"Offer":3,"RippleState":4}
+2026-11-17T08:20:14Z COUNT AccountRoot full_tree=4704 type=account filtered=4704 pages=3 index_sets_equal=True
+2026-11-17T08:20:14Z FILE header.json rows=1 sha256=c2683489a023643118b54b075e3089eefd50af564d9b04cf1c317fe90127da3f
+2026-11-17T08:20:14Z FILE counts.json rows=1 sha256=76b09e4918c3f65d3b0be98336171608069f5a902faf15acfd627254a7f636e0
+2026-11-17T08:20:14Z FILE accounts.jsonl rows=4704 sha256=9459caac51f2e907c4cb18f0be667447a1c3aee0e7de74f247275a6d59671a19
+2026-11-17T08:20:14Z FILE depositpreauth.jsonl rows=0 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-11-17T08:20:14Z DONE ledger_index=8122228 accounts=4704 rpc_calls=8 retries=0
+rc=0
+WROTE snapshots.json rows=64 sha256=565ee48d1a3bde65259c2e17499787de254ae24b2a7668da0cbc1019de618b0d
+WROTE A.jsonl rows=4704 sha256=2fac47a8dea0b9e80e497882abd8d0f11cae178bc429c2fc2eb5bb6c00037e7c
+WROTE B.jsonl rows=4704 sha256=2fac47a8dea0b9e80e497882abd8d0f11cae178bc429c2fc2eb5bb6c00037e7c
+WROTE ledgers.jsonl rows=165 sha256=be2eb32154580cf0d3ecfc3e22b67a2483fb2a77f3f2d264c34f98d5b8768cd1
+WROTE txs.jsonl rows=56 sha256=6587ac47fb50abad68b1a1888fe5aebc75085f663624daf451f2f7035a0fd4cd
+rc=0
+RECONCILE mismatches=0 accounts A=4704 B=4704 window_ledgers=165 txs=56 payments=36 failed=0 retried=0 retry_window=100
+rc=0

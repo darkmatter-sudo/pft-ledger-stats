@@ -1,0 +1,48 @@
+# task_3e45 run 08 re-check of run 07's 6 not-caught mutants after test fixes (ids=, 3 new tests, hourly KeyError fix) 2026-11-17T08:59:59Z
+# sha256 fb306ececc7699696ef9fb2b6beabc5ad972c8b8f5a15b6a804338870c748c35  acctflags/analyze_flags.py
+# sha256 21aa654a42fe46fad0736db3edd4c031e0c4697b2362167352f9e6fed62085e6  acctflags/collect_flags.py
+# sha256 46584dc91e73b8c2d29b1fe9687d5d2bb879d0311fafc2436df6ba287c1a5a16  acctflags/crosscheck_flags.py
+# sha256 8411bcb6bcbc1bb294789868d465a54dd1c21105a5d30f4a4121a09f01fa6417  acctflags/extract_flags.py
+# sha256 72f98c7cf25eda8ed1d461cc391c40aede493834737f359b37bcddcca5f0ea06  acctflags/mutants_flags.py
+# sha256 59c2b652eb8bfa0e8d3e399fecdf638f5fee311df891b89ed0dd43c060360866  tests/test_acctflags_analyze.py
+# sha256 6aed45f9026302a5fb77db54ca468d890252d1c8312881d96b6c63e282963a60  tests/test_acctflags_collect.py
+# sha256 98a10f03b3d3c9b6edb82ba0d4f8d4936b740a5ac49a786c6dad871f844089f7  tests/test_acctflags_crosscheck.py
+# sha256 164f210a2e3146283b02f589fe68f35c521c7b39743ac11d0a96b86e38e92ecb  tests/fixture_acctflags.py
+$ for m in X1 X3 X7 A5 A7 A11; do .venv/bin/python acctflags/mutants_flags.py --timeout 240 --only $m; done
+TESTS tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py
+CONTROL unmutated copy: rc=0 64 passed in 65.98s (0:01:05)
+CAUGHT X1 chain gap accepted: 1 failed, 63 passed in 47.08s | test_extract_refuses_damaged_input[fork-] (48.2s)
+MUTANTS 1 caught=1 CAUGHT=1
+RESULT: PASS (0 not caught)
+rc=0
+TESTS tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py
+CONTROL unmutated copy: rc=0 64 passed in 50.64s
+CAUGHT X3 manifest sha not checked: 1 failed, 63 passed in 48.58s | test_extract_refuses_damaged_input[manifest-] (49.5s)
+MUTANTS 1 caught=1 CAUGHT=1
+RESULT: PASS (0 not caught)
+rc=0
+TESTS tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py
+CONTROL unmutated copy: rc=0 64 passed in 43.60s
+CAUGHT X7 duplicate ledger accepted: 1 failed, 63 passed in 45.56s | test_extract_refuses_damaged_input[dup-] (46.5s)
+MUTANTS 1 caught=1 CAUGHT=1
+RESULT: PASS (0 not caught)
+rc=0
+TESTS tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py
+CONTROL unmutated copy: rc=0 64 passed in 47.79s
+CAUGHT A5 created-with flags ignored: 1 failed, 63 passed in 53.60s | test_created_account_with_flag_is_counted (54.7s)
+MUTANTS 1 caught=1 CAUGHT=1
+RESULT: PASS (0 not caught)
+rc=0
+TESTS tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py
+CONTROL unmutated copy: rc=0 64 passed in 46.93s
+CAUGHT A7 retry may precede failure: 1 failed, 63 passed in 40.61s | test_earlier_success_is_not_a_retry (41.5s)
+MUTANTS 1 caught=1 CAUGHT=1
+RESULT: PASS (0 not caught)
+rc=0
+TESTS tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py
+CONTROL unmutated copy: rc=0 64 passed in 45.59s
+CAUGHT A11 window check skipped: 1 failed, 63 passed in 44.77s | test_build_reports_window_gap_as_mismatch (45.8s)
+MUTANTS 1 caught=1 CAUGHT=1
+RESULT: PASS (0 not caught)
+rc=0
+ALLDONE

@@ -1,0 +1,12 @@
+line-length = 110
+target-version = "py310"
+
+[lint]
+select = ["E", "F", "W", "B", "I"]
+
+[lint.isort]
+known-first-party = ["collect_flags", "extract_flags", "crosscheck_flags", "analyze_flags", "mutants_flags"]
+
+[lint.per-file-ignores]
+# mutant table rows are exact source lines and cannot be wrapped
+"mutants_flags.py" = ["E501"]
