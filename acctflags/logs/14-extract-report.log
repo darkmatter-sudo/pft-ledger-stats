@@ -1,0 +1,80 @@
+# task_3e45 run 14 extract + report A->B  2026-11-18T08:14:14Z
+# repo HEAD c178dfb81483a56dddbe5e80dc525dda33c6c813 | git status --short: ''
+# sha256 fb306ececc7699696ef9fb2b6beabc5ad972c8b8f5a15b6a804338870c748c35  acctflags/analyze_flags.py
+# sha256 21aa654a42fe46fad0736db3edd4c031e0c4697b2362167352f9e6fed62085e6  acctflags/collect_flags.py
+# sha256 46584dc91e73b8c2d29b1fe9687d5d2bb879d0311fafc2436df6ba287c1a5a16  acctflags/crosscheck_flags.py
+# sha256 8411bcb6bcbc1bb294789868d465a54dd1c21105a5d30f4a4121a09f01fa6417  acctflags/extract_flags.py
+# sha256 72f98c7cf25eda8ed1d461cc391c40aede493834737f359b37bcddcca5f0ea06  acctflags/mutants_flags.py
+# sha256 a90527af1280cb30aaad6c2c5e5f423812ff84642a5990eb7eccdf56603ecf99  acctflags/report.config.json
+# OS: Ubuntu 22.04.5 LTS | python 3.10.12
+$ tail -1 data/acctflags/tx/ledgers.jsonl | python3 -I -c 'import json,sys; d=json.loads(sys.stdin.read()); print("capture tip", d["ledger_index"], d["close_time_iso"])'
+capture tip 8150646 2026-11-18T08:14:02Z
+rc=0
+$ python3 -I acctflags/extract_flags.py data/acctflags/A data/acctflags/B data/acctflags/tx --out acctflags/data
+WROTE snapshots.json rows=63 sha256=c50d2646af41b1ac9a07c1cf6306c71ceb75df9d5ae67b8e4d8d5ba3aab3f5e1
+WROTE A.jsonl rows=4704 sha256=2fac47a8dea0b9e80e497882abd8d0f11cae178bc429c2fc2eb5bb6c00037e7c
+WROTE B.jsonl rows=4726 sha256=2193343d86f7305cf8926c907dca1b620f8acba4f95245726360ae27f7507f09
+WROTE ledgers.jsonl rows=28542 sha256=a102d2b984a331bf1bbdd15fd187746ecc71ee2a52f0d7804792a15572e7a94c
+WROTE txs.jsonl rows=9948 sha256=f272e298bf7f2ec41164ed983b48811854db06057c7a2fdde333fa0f5ab333a7
+rc=0
+$ cp data/acctflags/xc-A.json acctflags/data/crosscheck-A.json && cp data/acctflags/xc-A-neg.json acctflags/data/crosscheck-A-negative.json && cp data/acctflags/xc-B.json acctflags/data/crosscheck-B.json && cp data/acctflags/xc-B-neg.json acctflags/data/crosscheck-B-negative.json
+rc=0
+$ grep -cE '\br[1-9A-HJ-NP-Za-km-z]{24,34}\b' acctflags/data/* | cat
+acctflags/data/A.jsonl:0
+acctflags/data/B.jsonl:0
+acctflags/data/crosscheck-A-negative.json:0
+acctflags/data/crosscheck-A.json:0
+acctflags/data/crosscheck-B-negative.json:0
+acctflags/data/crosscheck-B.json:0
+acctflags/data/ledgers.jsonl:0
+acctflags/data/snapshots.json:0
+acctflags/data/txs.jsonl:0
+rc=0
+$ .venv/bin/python -I acctflags/analyze_flags.py --data acctflags/data --config acctflags/report.config.json --out acctflags
+RECONCILE mismatches=0 accounts A=4704 B=4726 window_ledgers=28542 txs=9948 payments=7933 failed=13 retried=3 retry_window=100
+rc=0
+$ rm -rf "$HOME/.cache/acctflags-rebuild" && .venv/bin/python -I acctflags/analyze_flags.py --offline --out "$HOME/.cache/acctflags-rebuild"
+RECONCILE mismatches=0 accounts A=4704 B=4726 window_ledgers=28542 txs=9948 payments=7933 failed=13 retried=3 retry_window=100
+rc=0
+$ cmp "$HOME/.cache/acctflags-rebuild/REPORT.md" acctflags/REPORT.md
+rc=0
+$ cmp "$HOME/.cache/acctflags-rebuild/report.json" acctflags/report.json
+rc=0
+$ cmp "$HOME/.cache/acctflags-rebuild/charts/flags.png" acctflags/charts/flags.png
+rc=0
+$ cmp "$HOME/.cache/acctflags-rebuild/charts/payments.png" acctflags/charts/payments.png
+rc=0
+$ sha256sum acctflags/REPORT.md acctflags/report.json acctflags/charts/*.png acctflags/data/*
+c30b4f7cdb63b1253124ccfaad400ad13bae87437b4e3bb0fc0ad8d7f996492c  acctflags/REPORT.md
+d73e0b269c8dd2535b7254f15e3833f796afe34848a9aa01fa73e6fb5ed851c5  acctflags/report.json
+9aa8ebaac4f75ff04e3132474ea1a057511a7a3c7bf06c47c03590202b212b4a  acctflags/charts/flags.png
+b36fba6e66aba0fd0dd494bf495c5c999b23da2a90f866c6d9d5d33b81e6a963  acctflags/charts/payments.png
+2fac47a8dea0b9e80e497882abd8d0f11cae178bc429c2fc2eb5bb6c00037e7c  acctflags/data/A.jsonl
+2193343d86f7305cf8926c907dca1b620f8acba4f95245726360ae27f7507f09  acctflags/data/B.jsonl
+d26a02f751d8b978021bea078c90ce48fd32657796421fbb47d93ab35922fda0  acctflags/data/crosscheck-A-negative.json
+0346646c7360f813770b9db164e2fb2d64870098e254e74cc28d729ed45fab87  acctflags/data/crosscheck-A.json
+d672576f3768d236d5d80e6a2f5d35c067e7ee78661dc7170671bcd2ecf94cba  acctflags/data/crosscheck-B-negative.json
+e61ef2dd80207bde16c1b16fdf12d570d5ebe087af8e35a73559753ff3d0fa87  acctflags/data/crosscheck-B.json
+a102d2b984a331bf1bbdd15fd187746ecc71ee2a52f0d7804792a15572e7a94c  acctflags/data/ledgers.jsonl
+c50d2646af41b1ac9a07c1cf6306c71ceb75df9d5ae67b8e4d8d5ba3aab3f5e1  acctflags/data/snapshots.json
+f272e298bf7f2ec41164ed983b48811854db06057c7a2fdde333fa0f5ab333a7  acctflags/data/txs.jsonl
+rc=0
+$ wc -l acctflags/data/*.jsonl
+    4704 acctflags/data/A.jsonl
+    4726 acctflags/data/B.jsonl
+   28542 acctflags/data/ledgers.jsonl
+    9948 acctflags/data/txs.jsonl
+   47920 total
+rc=0
+$ TMPDIR=$HOME/.cache .venv/bin/python -m pytest -q -p no:cacheprovider tests/test_acctflags_*.py
+................................................................         [100%]
+64 passed in 51.04s
+rc=0
+$ .venv/bin/ruff check acctflags tests/test_acctflags_*.py tests/fixture_acctflags.py
+All checks passed!
+rc=0
+$ (cd acctflags && ../.venv/bin/ruff check . && ../.venv/bin/ruff format --check .)
+All checks passed!
+7 files already formatted
+rc=0
+# end 2026-11-18T08:15:32Z

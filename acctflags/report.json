@@ -1,0 +1,669 @@
+{
+ "census": {
+  "A": {
+   "accounts": 4704,
+   "combinations": {
+    "(none)": 4703,
+    "RequireDestTag": 1
+   },
+   "inbound_any": 1,
+   "per_flag": {
+    "RequireDestTag": 1
+   },
+   "settings": {
+    "Domain": 2,
+    "MessageKey": 149
+   }
+  },
+  "B": {
+   "accounts": 4726,
+   "combinations": {
+    "(none)": 4725,
+    "RequireDestTag": 1
+   },
+   "inbound_any": 1,
+   "per_flag": {
+    "RequireDestTag": 1
+   },
+   "settings": {
+    "Domain": 2,
+    "MessageKey": 149
+   }
+  }
+ },
+ "failures": {
+  "by_code_and_dest_state": [
+   {
+    "count": 1,
+    "dest_state": "missing",
+    "result": "tecNO_DST_INSUF_XRP"
+   },
+   {
+    "count": 12,
+    "dest_state": "no_inbound_flag",
+    "result": "tecUNFUNDED_PAYMENT"
+   }
+  ],
+  "censored": 0,
+  "failed": 13,
+  "fixes": {
+   "other": 3
+  },
+  "hourly": [
+   {
+    "failed": 0,
+    "hour": 0,
+    "ok": 322
+   },
+   {
+    "failed": 3,
+    "hour": 1,
+    "ok": 291
+   },
+   {
+    "failed": 3,
+    "hour": 2,
+    "ok": 322
+   },
+   {
+    "failed": 0,
+    "hour": 3,
+    "ok": 326
+   },
+   {
+    "failed": 0,
+    "hour": 4,
+    "ok": 325
+   },
+   {
+    "failed": 0,
+    "hour": 5,
+    "ok": 335
+   },
+   {
+    "failed": 3,
+    "hour": 6,
+    "ok": 362
+   },
+   {
+    "failed": 0,
+    "hour": 7,
+    "ok": 335
+   },
+   {
+    "failed": 0,
+    "hour": 8,
+    "ok": 330
+   },
+   {
+    "failed": 1,
+    "hour": 9,
+    "ok": 347
+   },
+   {
+    "failed": 0,
+    "hour": 10,
+    "ok": 333
+   },
+   {
+    "failed": 0,
+    "hour": 11,
+    "ok": 337
+   },
+   {
+    "failed": 3,
+    "hour": 12,
+    "ok": 346
+   },
+   {
+    "failed": 0,
+    "hour": 13,
+    "ok": 304
+   },
+   {
+    "failed": 0,
+    "hour": 14,
+    "ok": 348
+   },
+   {
+    "failed": 0,
+    "hour": 15,
+    "ok": 308
+   },
+   {
+    "failed": 0,
+    "hour": 16,
+    "ok": 256
+   },
+   {
+    "failed": 0,
+    "hour": 17,
+    "ok": 305
+   },
+   {
+    "failed": 0,
+    "hour": 18,
+    "ok": 311
+   },
+   {
+    "failed": 0,
+    "hour": 19,
+    "ok": 371
+   },
+   {
+    "failed": 0,
+    "hour": 20,
+    "ok": 342
+   },
+   {
+    "failed": 0,
+    "hour": 21,
+    "ok": 349
+   },
+   {
+    "failed": 0,
+    "hour": 22,
+    "ok": 352
+   },
+   {
+    "failed": 0,
+    "hour": 23,
+    "ok": 360
+   },
+   {
+    "failed": 0,
+    "hour": 24,
+    "ok": 3
+   }
+  ],
+  "listed": [
+   {
+    "censored": false,
+    "dest": "73196c4f7b57",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": null,
+    "ledger": 8123808,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": null,
+    "retry_ledger": null,
+    "sender": "aa80b8a8c237",
+    "tx": 0
+   },
+   {
+    "censored": false,
+    "dest": "73196c4f7b57",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": null,
+    "ledger": 8123811,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": null,
+    "retry_ledger": null,
+    "sender": "aa80b8a8c237",
+    "tx": 0
+   },
+   {
+    "censored": false,
+    "dest": "73196c4f7b57",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": null,
+    "ledger": 8123814,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": null,
+    "retry_ledger": null,
+    "sender": "aa80b8a8c237",
+    "tx": 0
+   },
+   {
+    "censored": false,
+    "dest": "f174fe618217",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": null,
+    "ledger": 8125066,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": null,
+    "retry_ledger": null,
+    "sender": "2652fcf027cc",
+    "tx": 0
+   },
+   {
+    "censored": false,
+    "dest": "f174fe618217",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": null,
+    "ledger": 8125069,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": null,
+    "retry_ledger": null,
+    "sender": "2652fcf027cc",
+    "tx": 0
+   },
+   {
+    "censored": false,
+    "dest": "f174fe618217",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": null,
+    "ledger": 8125073,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": null,
+    "retry_ledger": null,
+    "sender": "2652fcf027cc",
+    "tx": 0
+   },
+   {
+    "censored": false,
+    "dest": "f95c0363295b",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": "other",
+    "ledger": 8129962,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": 98,
+    "retry_ledger": 8130060,
+    "sender": "c0d8bc3bf68b",
+    "tx": 3
+   },
+   {
+    "censored": false,
+    "dest": "f95c0363295b",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": "other",
+    "ledger": 8129965,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": 95,
+    "retry_ledger": 8130060,
+    "sender": "c0d8bc3bf68b",
+    "tx": 0
+   },
+   {
+    "censored": false,
+    "dest": "f95c0363295b",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": "other",
+    "ledger": 8129969,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": 91,
+    "retry_ledger": 8130060,
+    "sender": "c0d8bc3bf68b",
+    "tx": 0
+   },
+   {
+    "censored": false,
+    "dest": "cd0beed4905d",
+    "dest_state": "missing",
+    "dest_tag": false,
+    "fix": null,
+    "ledger": 8133781,
+    "result": "tecNO_DST_INSUF_XRP",
+    "retry_after_ledgers": null,
+    "retry_ledger": null,
+    "sender": "85070b7f2426",
+    "tx": 0
+   },
+   {
+    "censored": false,
+    "dest": "f95c0363295b",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": null,
+    "ledger": 8137503,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": null,
+    "retry_ledger": null,
+    "sender": "2652fcf027cc",
+    "tx": 1
+   },
+   {
+    "censored": false,
+    "dest": "f95c0363295b",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": null,
+    "ledger": 8137506,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": null,
+    "retry_ledger": null,
+    "sender": "2652fcf027cc",
+    "tx": 0
+   },
+   {
+    "censored": false,
+    "dest": "f95c0363295b",
+    "dest_state": "no_inbound_flag",
+    "dest_tag": false,
+    "fix": null,
+    "ledger": 8137510,
+    "result": "tecUNFUNDED_PAYMENT",
+    "retry_after_ledgers": null,
+    "retry_ledger": null,
+    "sender": "2652fcf027cc",
+    "tx": 0
+   }
+  ],
+  "not_retried": 10,
+  "payments": 7933,
+  "results": {
+   "tecNO_DST_INSUF_XRP": 1,
+   "tecUNFUNDED_PAYMENT": 12,
+   "tesSUCCESS": 7920
+  },
+  "retried": 3,
+  "window": 100
+ },
+ "reconcile": {
+  "accounts": {
+   "A": 4704,
+   "B": 4726,
+   "created": 22,
+   "deleted": 0,
+   "expected_B": 4726
+  },
+  "mismatches": [],
+  "preauth": {
+   "A": 0,
+   "B": 0,
+   "created": 0,
+   "deleted": 0,
+   "expected_B": 0
+  },
+  "table": [
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "AMM",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "AllowTrustLineClawback",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "AllowTrustLineLocking",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "DefaultRipple",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "DepositAuth",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "DisableMaster",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "DisallowIncomingCheck",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "DisallowIncomingNFTokenOffer",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "DisallowIncomingPayChan",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "DisallowIncomingTrustline",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "DisallowXRP",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "GlobalFreeze",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "NoFreeze",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "PasswordSpent",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "flag",
+    "name": "RequireAuth",
+    "set_by_tx": 0
+   },
+   {
+    "A": 1,
+    "B": 1,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 1,
+    "kind": "flag",
+    "name": "RequireDestTag",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "setting",
+    "name": "RegularKey",
+    "set_by_tx": 0
+   },
+   {
+    "A": 2,
+    "B": 2,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 2,
+    "kind": "setting",
+    "name": "Domain",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "setting",
+    "name": "EmailHash",
+    "set_by_tx": 0
+   },
+   {
+    "A": 149,
+    "B": 149,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 149,
+    "kind": "setting",
+    "name": "MessageKey",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "setting",
+    "name": "NFTokenMinter",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "setting",
+    "name": "WalletLocator",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "setting",
+    "name": "TransferRate",
+    "set_by_tx": 0
+   },
+   {
+    "A": 0,
+    "B": 0,
+    "cleared_by_tx": 0,
+    "created_with": 0,
+    "deleted_with": 0,
+    "expected_B": 0,
+    "kind": "setting",
+    "name": "TickSize",
+    "set_by_tx": 0
+   }
+  ]
+ },
+ "snapshots": {
+  "A": {
+   "close_time_iso": "2026-11-17T08:11:33Z",
+   "ledger_hash": "C6A516B243A6C6CA43CA6CBACDD6D415AB4C5D34A1876E375D0AA993C3B21BF0",
+   "ledger_index": 8122063,
+   "raw_sha256": {
+    "accounts.jsonl": "e380b7a1d1e3b5861da4dac23d85e4360ea761d7e17d08080b349d30c8640316",
+    "counts.json": "0696ec8f62fe2b9582d6e9b5606a3ae38a2d8bf9d48a2e65fa69225c8864107f",
+    "depositpreauth.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "header.json": "32389d3868710932941f6881762f7ccf3a152e82c4917fa8e433c89af32ebd67"
+   }
+  },
+  "B": {
+   "close_time_iso": "2026-11-18T08:12:01Z",
+   "ledger_hash": "6C196C1753E1FB1615ABAED58CC375BF8C2675B4F4386A60B419B12540D5E8BD",
+   "ledger_index": 8150605,
+   "raw_sha256": {
+    "accounts.jsonl": "5f3ced1e4d7df03c854a0fc582f7ae2d5b5e8b5a610649e51227fc9e4853c519",
+    "counts.json": "bc4f827217791496e534a6384c8f2f17a1884673e49c82978852260973b5c75a",
+    "depositpreauth.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "header.json": "be476a6adc8241e9c488837776be2485232ff502f961eb7693553504f61baa3f"
+   }
+  }
+ },
+ "transactions": 9948,
+ "window_ledgers": 28542
+}

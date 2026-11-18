@@ -1,0 +1,43 @@
+# task_3e45 run 10 snapshot B  2026-11-18T08:12:02Z
+# repo HEAD c178dfb81483a56dddbe5e80dc525dda33c6c813 | git status --short: ''
+# sha256 21aa654a42fe46fad0736db3edd4c031e0c4697b2362167352f9e6fed62085e6  acctflags/collect_flags.py
+# sha256 8411bcb6bcbc1bb294789868d465a54dd1c21105a5d30f4a4121a09f01fa6417  acctflags/extract_flags.py
+# sha256 46584dc91e73b8c2d29b1fe9687d5d2bb879d0311fafc2436df6ba287c1a5a16  acctflags/crosscheck_flags.py
+# OS: Ubuntu 22.04.5 LTS
+$ python3 -I acctflags/collect_flags.py snapshot --out data/acctflags/B --rate 1.5
+2026-11-18T08:12:03Z PIN ledger_index=8150605 ledger_hash=6C196C1753E1FB1615ABAED58CC375BF8C2675B4F4386A60B419B12540D5E8BD close_time_iso=2026-11-18T08:12:01Z
+2026-11-18T08:12:08Z FULL objects=5255 pages=3 types={"AccountRoot":4726,"Amendments":1,"DirectoryNode":52,"FeeSettings":1,"LedgerHashes":126,"NFTokenOffer":45,"NFTokenPage":297,"Offer":3,"RippleState":4}
+2026-11-18T08:12:10Z COUNT AccountRoot full_tree=4726 type=account filtered=4726 pages=3 index_sets_equal=True
+2026-11-18T08:12:10Z FILE header.json rows=1 sha256=be476a6adc8241e9c488837776be2485232ff502f961eb7693553504f61baa3f
+2026-11-18T08:12:10Z FILE counts.json rows=1 sha256=bc4f827217791496e534a6384c8f2f17a1884673e49c82978852260973b5c75a
+2026-11-18T08:12:10Z FILE accounts.jsonl rows=4726 sha256=5f3ced1e4d7df03c854a0fc582f7ae2d5b5e8b5a610649e51227fc9e4853c519
+2026-11-18T08:12:10Z FILE depositpreauth.jsonl rows=0 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-11-18T08:12:10Z DONE ledger_index=8150605 accounts=4726 rpc_calls=8 retries=0
+rc=0
+$ cat data/acctflags/B/MANIFEST.json
+{
+ "files": {
+  "accounts.jsonl": {
+   "rows": 4726,
+   "sha256": "5f3ced1e4d7df03c854a0fc582f7ae2d5b5e8b5a610649e51227fc9e4853c519"
+  },
+  "counts.json": {
+   "rows": 1,
+   "sha256": "bc4f827217791496e534a6384c8f2f17a1884673e49c82978852260973b5c75a"
+  },
+  "depositpreauth.jsonl": {
+   "rows": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "header.json": {
+   "rows": 1,
+   "sha256": "be476a6adc8241e9c488837776be2485232ff502f961eb7693553504f61baa3f"
+  }
+ },
+ "format": "pft-acctflags-snapshot/1",
+ "ledger_hash": "6C196C1753E1FB1615ABAED58CC375BF8C2675B4F4386A60B419B12540D5E8BD",
+ "ledger_index": 8150605,
+ "retries": 0,
+ "rpc_calls": 8
+}
+rc=0

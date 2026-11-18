@@ -1,0 +1,35 @@
+# task_3e45 run 11 crosscheck B (live public RPC, same sample as A)  2026-11-18T08:12:10Z
+# repo HEAD c178dfb81483a56dddbe5e80dc525dda33c6c813 | git status --short: ''
+# sha256 21aa654a42fe46fad0736db3edd4c031e0c4697b2362167352f9e6fed62085e6  acctflags/collect_flags.py
+# sha256 8411bcb6bcbc1bb294789868d465a54dd1c21105a5d30f4a4121a09f01fa6417  acctflags/extract_flags.py
+# sha256 46584dc91e73b8c2d29b1fe9687d5d2bb879d0311fafc2436df6ba287c1a5a16  acctflags/crosscheck_flags.py
+# OS: Ubuntu 22.04.5 LTS
+$ python3 -I acctflags/crosscheck_flags.py data/acctflags/B --sample-file data/acctflags/sample.json --count 24 --record data/acctflags/xc-B.rec.json --summary data/acctflags/xc-B.json
+PUBLIC complete_ledgers=8100054-8150608 ledger=8150605 inside=True
+MATCH header ledger_index=8150605 ledger_hash=6C196C1753E1FB1615ABAED58CC375BF8C2675B4F4386A60B419B12540D5E8BD
+MATCH account id=5ab24d07a22c flags=0x00000000 expected_in_snapshot=True
+MATCH account id=56363fb133d9 flags=0x00000000 expected_in_snapshot=True
+MATCH account id=b646c5e985b2 flags=0x00000000 expected_in_snapshot=True
+MATCH account id=8d6e8c2a0e7c flags=0x00000000 expected_in_snapshot=True
+MATCH account id=6377b0610dbd flags=0x00000000 expected_in_snapshot=True
+MATCH account id=97ca902cf98c flags=0x00000000 expected_in_snapshot=True
+MATCH account id=bb7832626d94 flags=0x00000000 expected_in_snapshot=True
+MATCH account id=24c0c9058a8b flags=0x00000000 expected_in_snapshot=True
+MATCH account id=41f531e01f3a flags=0x00000000 expected_in_snapshot=True
+MATCH account id=ca70da307c9e flags=0x00000000 expected_in_snapshot=True
+MATCH account id=76781474c618 flags=0x00000000 expected_in_snapshot=True
+MATCH account id=ed595a9ae42b flags=0x00000000 expected_in_snapshot=True
+MATCH account id=6380a0bc691f flags=0x00000000 expected_in_snapshot=True
+MATCH account id=269c95e8755b flags=0x00000000 expected_in_snapshot=True
+MATCH account id=1bc3612664c7 flags=0x00000000 expected_in_snapshot=True
+MATCH account id=14638ffdb18f flags=0x00000000 expected_in_snapshot=True
+MATCH account id=d22e88dbb1f0 flags=0x00020000 expected_in_snapshot=True
+MATCH account id=9e1f57527938 flags=0x00000000 expected_in_snapshot=True
+MATCH account id=fc8ed6f28a18 flags=0x00000000 expected_in_snapshot=True
+MATCH account id=6aa36b1da256 flags=0x00000000 expected_in_snapshot=True
+MATCH account id=7b7ac70944ed flags=0x00000000 expected_in_snapshot=True
+MATCH account id=d6d197e0813a flags=0x00000000 expected_in_snapshot=True
+MATCH account id=5023f213ce11 flags=0x00000000 expected_in_snapshot=True
+MATCH account id=c07a2d82a881 flags=0x00000000 expected_in_snapshot=True
+SUMMARY ledger=8150605 accounts=24 checks=25 match=25 mismatch=0 rpc_calls=26 retries=0 negative=False
+rc=0

@@ -22,7 +22,13 @@ It is read-only. The collector talks only to your own node's admin RPC through `
 (`server_info`, `ledger`, `account_info`). Both enforce their allowlist in code; nothing is signed or
 submitted. Published account ids are HMAC-SHA256 pseudonyms (first 12 hex chars) under a private key.
 
-Results: [REPORT.md](REPORT.md).
+Results: [REPORT.md](REPORT.md). Snapshot A ledger 8122063 (2026-11-17T08:11:33Z, 4704 AccountRoots) to
+B ledger 8150605 (2026-11-18T08:12:01Z, 4726): 28542 ledgers and 9948 transactions replayed with
+**0 mismatches**; one account has an inbound-blocking flag (RequireDestTag) at both snapshots; 13 of
+7933 Payments failed (12 tecUNFUNDED_PAYMENT, 1 tecNO_DST_INSUF_XRP), none against a blocking flag, 3
+retried within 100 ledgers; crosscheck 25/25 at A and B, negative control 24/24 mismatch at both.
+Logs: [logs/](logs/) (02-05 snapshot A + crosscheck A, 09 mutants, 10-13 snapshot B + crosscheck B,
+14 extract + report + offline rebuild `cmp`).
 
 ## Files
 
