@@ -1,0 +1,61 @@
+# task_3e45 run 15 submit-day full mutation run on committed HEAD 652b7956086666a9cd696bc7642bfe65c5473c9d 2026-11-18T08:16:44Z
+# git status --short: ''
+# sha256 fb306ececc7699696ef9fb2b6beabc5ad972c8b8f5a15b6a804338870c748c35  acctflags/analyze_flags.py
+# sha256 21aa654a42fe46fad0736db3edd4c031e0c4697b2362167352f9e6fed62085e6  acctflags/collect_flags.py
+# sha256 46584dc91e73b8c2d29b1fe9687d5d2bb879d0311fafc2436df6ba287c1a5a16  acctflags/crosscheck_flags.py
+# sha256 8411bcb6bcbc1bb294789868d465a54dd1c21105a5d30f4a4121a09f01fa6417  acctflags/extract_flags.py
+# sha256 72f98c7cf25eda8ed1d461cc391c40aede493834737f359b37bcddcca5f0ea06  acctflags/mutants_flags.py
+# sha256 59c2b652eb8bfa0e8d3e399fecdf638f5fee311df891b89ed0dd43c060360866  tests/test_acctflags_analyze.py
+# sha256 6aed45f9026302a5fb77db54ca468d890252d1c8312881d96b6c63e282963a60  tests/test_acctflags_collect.py
+# sha256 98a10f03b3d3c9b6edb82ba0d4f8d4936b740a5ac49a786c6dad871f844089f7  tests/test_acctflags_crosscheck.py
+# sha256 164f210a2e3146283b02f589fe68f35c521c7b39743ac11d0a96b86e38e92ecb  tests/fixture_acctflags.py
+$ nice -n 15 .venv/bin/python -u acctflags/mutants_flags.py --timeout 240
+TESTS tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py
+CONTROL unmutated copy: rc=0 64 passed in 70.99s (0:01:10)
+CAUGHT C1 write method allowed: 2 failed, 62 passed in 70.99s (0:01:10) | test_rpc_refuses_write_methods, test_allowlist_blocks_other_methods (72.0s)
+CAUGHT C2 one try fewer: 2 failed, 62 passed in 42.43s | test_main_exit_codes, test_rpc_gives_up_and_definite_error_not_retried (43.4s)
+CAUGHT C3 definite errors retried: 3 failed, 61 passed in 61.53s (0:01:01) | test_capture_pruned_validated_ledger_is_a_break, test_rpc_gives_up_and_definite_error_not_retried, test_all_match_and_absent_account (62.5s)
+CAUGHT C4 constant backoff: 1 failed, 63 passed in 48.05s | test_rpc_retries_transient_with_logged_backoff (49.1s)
+CAUGHT C5 no rate limit: 1 failed, 63 passed in 20.89s | test_rpc_rate_limit_spaces_calls (22.2s)
+CAUGHT C6 rate above 2 req/s accepted: 1 failed, 63 passed in 41.15s | test_rpc_rate_limit_spaces_calls (42.3s)
+CAUGHT C7 ledger_data pin not enforced: 1 failed, 63 passed in 51.97s | test_ledger_data_for_wrong_hash_refused (53.0s)
+CAUGHT C8 type filter difference accepted: 1 failed, 63 passed in 45.49s | test_snapshot_refuses_type_filter_difference (46.4s)
+CAUGHT C9 saved page of other ledger reused: 1 failed, 63 passed in 42.87s | test_snapshot_refuses_page_of_other_ledger (44.0s)
+CAUGHT C10 parent_hash chain not checked: 2 failed, 62 passed in 64.61s (0:01:04) | test_capture_chain_break_stops, test_main_exit_codes (65.9s)
+CAUGHT C11 unexpanded tx accepted: 1 failed, 63 passed in 41.78s | test_capture_refuses_unexpanded_tx_and_wrong_index (43.1s)
+CAUGHT C12 orphan tx lines kept: 1 failed, 63 passed in 45.76s | test_capture_resume_repairs_torn_tail_and_orphans (47.0s)
+CAUGHT C13 torn tail kept: 1 failed, 63 passed in 49.25s | test_capture_resume_repairs_torn_tail_and_orphans (50.3s)
+CAUGHT C14 pruned ledger skipped silently: 1 failed, 63 passed in 76.44s (0:01:16) | test_capture_pruned_validated_ledger_is_a_break (77.6s)
+CAUGHT C15 resume restarts at last ledger: 1 failed, 63 passed in 90.20s (0:01:30) | test_capture_resume_repairs_torn_tail_and_orphans (91.1s)
+CAUGHT C16 unvalidated snapshot ledger accepted: 1 failed, 63 passed in 66.97s (0:01:06) | test_snapshot_rejects_unsynced_and_unvalidated (68.2s)
+CAUGHT X1 chain gap accepted: 1 failed, 63 passed in 75.57s (0:01:15) | test_extract_refuses_damaged_input[fork-] (76.8s)
+CAUGHT X2 txn_count not checked: 1 failed, 63 passed in 62.72s (0:01:02) | test_extract_refuses_damaged_input[count-txn_count] (63.8s)
+CAUGHT X3 manifest sha not checked: 1 failed, 63 passed in 61.01s (0:01:01) | test_extract_refuses_damaged_input[manifest-] (62.0s)
+CAUGHT X4 B hash not checked: 1 failed, 63 passed in 45.84s | test_extract_refuses_wrong_order_and_wrong_b (46.9s)
+CAUGHT X5 before_flags from FinalFields: 6 failed, 58 passed in 44.53s | test_created_account_with_flag_is_counted, test_extract_rows_and_settings, test_reconcile_detects_bad_previousfields_and_unknown_nodes, test_reconcile_exact_terms_zero_mismatch ... (45.6s)
+CAUGHT X6 dest tag presence lost: 3 failed, 61 passed in 41.57s | test_failures_and_fixes_with_window_100, test_report_build_deterministic_and_offline, test_retry_window_is_inclusive_and_enforced (42.5s)
+CAUGHT X7 duplicate ledger accepted: 1 failed, 63 passed in 45.71s | test_extract_refuses_damaged_input[dup-] (46.5s)
+CAUGHT A1 set_by_tx not counted: 4 failed, 60 passed in 50.16s | test_created_account_with_flag_is_counted, test_reconcile_exact_terms_zero_mismatch, test_report_build_deterministic_and_offline, test_report_window_override_and_mismatch_exit (51.8s)
+CAUGHT A2 per-account compare skipped: 1 failed, 63 passed in 54.51s | test_positive_control_tampered_b_fails (55.6s)
+CAUGHT A3 PreviousFields check skipped: 2 failed, 62 passed in 51.32s | test_positive_control_dropped_transaction_fails, test_reconcile_detects_bad_previousfields_and_unknown_nodes (52.6s)
+CAUGHT A4 deleted accounts not removed: 4 failed, 60 passed in 41.71s | test_created_account_with_flag_is_counted, test_reconcile_exact_terms_zero_mismatch, test_report_build_deterministic_and_offline, test_report_window_override_and_mismatch_exit (42.6s)
+CAUGHT A5 created-with flags ignored: 1 failed, 63 passed in 42.30s | test_created_account_with_flag_is_counted (43.5s)
+CAUGHT A6 retry window exclusive: 2 failed, 62 passed in 50.56s | test_not_retried_vs_censored, test_retry_window_is_inclusive_and_enforced (52.1s)
+CAUGHT A7 retry may precede failure: 1 failed, 63 passed in 50.00s | test_earlier_success_is_not_a_retry (51.1s)
+CAUGHT A8 dest tag fix not required: 5 failed, 59 passed in 53.23s | test_earlier_success_is_not_a_retry, test_failures_and_fixes_with_window_100, test_report_build_deterministic_and_offline, test_retry_must_be_later_and_same_pair ... (54.4s)
+CAUGHT A9 preauth pair reversed: 2 failed, 62 passed in 51.72s | test_failures_and_fixes_with_window_100, test_report_build_deterministic_and_offline (52.8s)
+CAUGHT A10 censoring ignored: 2 failed, 62 passed in 46.57s | test_failures_and_fixes_with_window_100, test_not_retried_vs_censored (47.5s)
+CAUGHT A11 window check skipped: 1 failed, 63 passed in 42.33s | test_build_reports_window_gap_as_mismatch (43.3s)
+CAUGHT A12 offline does not block sockets: 1 failed, 63 passed in 47.01s | test_report_build_deterministic_and_offline (48.2s)
+CAUGHT A13 mismatch exit 0: 2 failed, 62 passed in 44.76s | test_build_reports_window_gap_as_mismatch, test_report_window_override_and_mismatch_exit (46.0s)
+CAUGHT A14 config window ignored: 1 failed, 63 passed in 51.12s | test_report_build_deterministic_and_offline (52.3s)
+CAUGHT A15 preauth totals not compared: 1 failed, 63 passed in 54.99s | test_reconcile_detects_preauth_mismatch (56.6s)
+CAUGHT K1 negative control is a no-op: 2 failed, 62 passed in 37.43s | test_main_record_offline_and_not_recorded, test_negative_control_every_account_mismatches (38.4s)
+CAUGHT K2 actNotFound treated as error: 1 failed, 63 passed in 43.24s | test_all_match_and_absent_account (44.5s)
+CAUGHT K3 public range not enforced: 2 failed, 62 passed in 51.15s | test_main_gave_up_exit_2, test_out_of_public_range_gives_up (52.2s)
+CAUGHT K4 header not compared: 1 failed, 63 passed in 49.72s | test_header_mismatch (50.6s)
+CAUGHT K5 settings not compared: 1 failed, 63 passed in 39.51s | test_field_difference_is_mismatch (41.0s)
+MUTANTS 43 caught=43 CAUGHT=43
+RESULT: PASS (0 not caught)
+rc=0
+ALLDONE
