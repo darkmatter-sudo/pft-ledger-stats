@@ -1,0 +1,133 @@
+# task_3e45 run 16 fresh public clone verification  2026-11-18T08:56:03Z
+# pinned SHA b489b27c8a5b61be7dd5ddae421944812467fbbf
+# python 3.10.12, matplotlib 3.10.9, ruff 0.17.1 (repo .venv, outside the clone)
+# runner script (verbatim):
+#   #!/bin/bash
+#   # task_3e45 run 16: fresh public clone verification at a pinned SHA
+#   # usage: bash acctflags-16.sh SHA   (python deps: the existing repo .venv interpreter, outside the clone)
+#   SHA=$1
+#   PY="$HOME/work/pft-ledger-stats/.venv/bin/python"
+#   RUFF="$HOME/work/pft-ledger-stats/.venv/bin/ruff"
+#   SCR=$(mktemp -d -p "$HOME/.cache"); chmod 755 "$SCR"
+#   red() { sed -u -e "s#$SCR#\$CLONE#g" -e "s#$HOME#~#g"; }
+#   x() { echo "\$ $*" | red; eval "$*" </dev/null 2>&1 | red; rc=${PIPESTATUS[0]}; echo "exit=$rc"; return "$rc"; }
+#   FAILS=0
+#   chk() { x "$@" || FAILS=$((FAILS+1)); }
+#   echo "# task_3e45 run 16 fresh public clone verification  $(date -u +%FT%TZ)"
+#   echo "# pinned SHA $SHA"
+#   echo "# python $("$PY" -V 2>&1 | cut -d' ' -f2), matplotlib $("$PY" -c 'import matplotlib; print(matplotlib.__version__)'), $("$RUFF" --version) (repo .venv, outside the clone)"
+#   echo "# runner script (verbatim):"; sed 's/^/#   /' "$0"
+#   chk git clone -q https://github.com/darkmatter-sudo/pft-ledger-stats.git '$SCR/repo'
+#   cd "$SCR/repo" || exit 1
+#   chk git -c advice.detachedHead=false checkout -q "$SHA"
+#   chk git rev-parse HEAD
+#   chk git status --short
+#   echo "## key-file sha256 vs the header of log 15 (submit-day mutation run)"
+#   for f in acctflags/*.py tests/test_acctflags_*.py tests/fixture_acctflags.py; do
+#     want=$(command grep -h "  $f\$" acctflags/logs/15-mutants-submitday.log | awk '{print $3}')
+#     got=$(sha256sum "$f" | awk '{print $1}')
+#     echo "HASHCHECK $f clone=$got log15=$want $([ -n "$want" ] && [ "$got" = "$want" ] && echo MATCH || echo MISMATCH)"
+#     [ -n "$want" ] && [ "$got" = "$want" ] || FAILS=$((FAILS+1))
+#   done
+#   echo "## published data sha256 vs log 14 (extract + report run)"
+#   for f in acctflags/data/* acctflags/REPORT.md acctflags/report.json acctflags/charts/*.png; do
+#     want=$(command grep -h "  $f\$" acctflags/logs/14-extract-report.log | awk '{print $1}')
+#     got=$(sha256sum "$f" | awk '{print $1}')
+#     echo "HASHCHECK $f clone=$got log14=$want $([ -n "$want" ] && [ "$got" = "$want" ] && echo MATCH || echo MISMATCH)"
+#     [ -n "$want" ] && [ "$got" = "$want" ] || FAILS=$((FAILS+1))
+#   done
+#   echo "## full acctflags tests + ruff (both cwds)"
+#   chk TMPDIR='$HOME/.cache' "$PY" -m pytest -q -p no:cacheprovider tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py
+#   chk "$RUFF" check --no-cache acctflags tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py tests/fixture_acctflags.py
+#   chk "(cd acctflags && '$RUFF' check --no-cache . && '$RUFF' format --no-cache --check .)"
+#   echo "## offline report rebuild (sockets blocked) + cmp against the committed report"
+#   chk "$PY" -I acctflags/analyze_flags.py --offline --out '$SCR/rebuild'
+#   for f in REPORT.md report.json charts/flags.png charts/payments.png; do chk cmp "acctflags/$f" "'$SCR/rebuild/$f'"; done
+#   echo "## retry window is a parameter: 100 committed; 90 drops all 3 retries (they came 91-98 ledgers after the failures)"
+#   chk cat acctflags/report.config.json
+#   chk "$PY" -I acctflags/analyze_flags.py --offline --no-charts --retry-window 90 --out '$SCR/w90'
+#   echo "## Payment results in the window for every requested code (0 = none occurred), from txs.jsonl"
+#   chk "python3 -I -c \"import json,collections; c=collections.Counter(d['result'] for d in map(json.loads, open('acctflags/data/txs.jsonl')) if d['type']=='Payment'); [print(k, c.get(k, 0)) for k in ('tesSUCCESS','tecDST_TAG_NEEDED','tecNO_PERMISSION','tecNO_DST','tecNO_DST_INSUF_XRP','tecNO_TARGET','tecUNFUNDED_PAYMENT','tecPATH_DRY','tecPATH_PARTIAL','tecNO_AUTH','tecNO_LINE')]; print('total', sum(c.values()))\""
+#   cd / && rm -rf "$SCR"
+#   echo "RESULT FAILS=$FAILS"
+#   [ "$FAILS" = 0 ]
+$ git clone -q https://github.com/darkmatter-sudo/pft-ledger-stats.git $SCR/repo
+exit=0
+$ git -c advice.detachedHead=false checkout -q b489b27c8a5b61be7dd5ddae421944812467fbbf
+exit=0
+$ git rev-parse HEAD
+b489b27c8a5b61be7dd5ddae421944812467fbbf
+exit=0
+$ git status --short
+exit=0
+## key-file sha256 vs the header of log 15 (submit-day mutation run)
+HASHCHECK acctflags/analyze_flags.py clone=fb306ececc7699696ef9fb2b6beabc5ad972c8b8f5a15b6a804338870c748c35 log15=fb306ececc7699696ef9fb2b6beabc5ad972c8b8f5a15b6a804338870c748c35 MATCH
+HASHCHECK acctflags/collect_flags.py clone=21aa654a42fe46fad0736db3edd4c031e0c4697b2362167352f9e6fed62085e6 log15=21aa654a42fe46fad0736db3edd4c031e0c4697b2362167352f9e6fed62085e6 MATCH
+HASHCHECK acctflags/crosscheck_flags.py clone=46584dc91e73b8c2d29b1fe9687d5d2bb879d0311fafc2436df6ba287c1a5a16 log15=46584dc91e73b8c2d29b1fe9687d5d2bb879d0311fafc2436df6ba287c1a5a16 MATCH
+HASHCHECK acctflags/extract_flags.py clone=8411bcb6bcbc1bb294789868d465a54dd1c21105a5d30f4a4121a09f01fa6417 log15=8411bcb6bcbc1bb294789868d465a54dd1c21105a5d30f4a4121a09f01fa6417 MATCH
+HASHCHECK acctflags/mutants_flags.py clone=72f98c7cf25eda8ed1d461cc391c40aede493834737f359b37bcddcca5f0ea06 log15=72f98c7cf25eda8ed1d461cc391c40aede493834737f359b37bcddcca5f0ea06 MATCH
+HASHCHECK tests/test_acctflags_analyze.py clone=59c2b652eb8bfa0e8d3e399fecdf638f5fee311df891b89ed0dd43c060360866 log15=59c2b652eb8bfa0e8d3e399fecdf638f5fee311df891b89ed0dd43c060360866 MATCH
+HASHCHECK tests/test_acctflags_collect.py clone=6aed45f9026302a5fb77db54ca468d890252d1c8312881d96b6c63e282963a60 log15=6aed45f9026302a5fb77db54ca468d890252d1c8312881d96b6c63e282963a60 MATCH
+HASHCHECK tests/test_acctflags_crosscheck.py clone=98a10f03b3d3c9b6edb82ba0d4f8d4936b740a5ac49a786c6dad871f844089f7 log15=98a10f03b3d3c9b6edb82ba0d4f8d4936b740a5ac49a786c6dad871f844089f7 MATCH
+HASHCHECK tests/fixture_acctflags.py clone=164f210a2e3146283b02f589fe68f35c521c7b39743ac11d0a96b86e38e92ecb log15=164f210a2e3146283b02f589fe68f35c521c7b39743ac11d0a96b86e38e92ecb MATCH
+## published data sha256 vs log 14 (extract + report run)
+HASHCHECK acctflags/data/A.jsonl clone=2fac47a8dea0b9e80e497882abd8d0f11cae178bc429c2fc2eb5bb6c00037e7c log14=2fac47a8dea0b9e80e497882abd8d0f11cae178bc429c2fc2eb5bb6c00037e7c MATCH
+HASHCHECK acctflags/data/B.jsonl clone=2193343d86f7305cf8926c907dca1b620f8acba4f95245726360ae27f7507f09 log14=2193343d86f7305cf8926c907dca1b620f8acba4f95245726360ae27f7507f09 MATCH
+HASHCHECK acctflags/data/crosscheck-A-negative.json clone=d26a02f751d8b978021bea078c90ce48fd32657796421fbb47d93ab35922fda0 log14=d26a02f751d8b978021bea078c90ce48fd32657796421fbb47d93ab35922fda0 MATCH
+HASHCHECK acctflags/data/crosscheck-A.json clone=0346646c7360f813770b9db164e2fb2d64870098e254e74cc28d729ed45fab87 log14=0346646c7360f813770b9db164e2fb2d64870098e254e74cc28d729ed45fab87 MATCH
+HASHCHECK acctflags/data/crosscheck-B-negative.json clone=d672576f3768d236d5d80e6a2f5d35c067e7ee78661dc7170671bcd2ecf94cba log14=d672576f3768d236d5d80e6a2f5d35c067e7ee78661dc7170671bcd2ecf94cba MATCH
+HASHCHECK acctflags/data/crosscheck-B.json clone=e61ef2dd80207bde16c1b16fdf12d570d5ebe087af8e35a73559753ff3d0fa87 log14=e61ef2dd80207bde16c1b16fdf12d570d5ebe087af8e35a73559753ff3d0fa87 MATCH
+HASHCHECK acctflags/data/ledgers.jsonl clone=a102d2b984a331bf1bbdd15fd187746ecc71ee2a52f0d7804792a15572e7a94c log14=a102d2b984a331bf1bbdd15fd187746ecc71ee2a52f0d7804792a15572e7a94c MATCH
+HASHCHECK acctflags/data/snapshots.json clone=c50d2646af41b1ac9a07c1cf6306c71ceb75df9d5ae67b8e4d8d5ba3aab3f5e1 log14=c50d2646af41b1ac9a07c1cf6306c71ceb75df9d5ae67b8e4d8d5ba3aab3f5e1 MATCH
+HASHCHECK acctflags/data/txs.jsonl clone=f272e298bf7f2ec41164ed983b48811854db06057c7a2fdde333fa0f5ab333a7 log14=f272e298bf7f2ec41164ed983b48811854db06057c7a2fdde333fa0f5ab333a7 MATCH
+HASHCHECK acctflags/REPORT.md clone=c30b4f7cdb63b1253124ccfaad400ad13bae87437b4e3bb0fc0ad8d7f996492c log14=c30b4f7cdb63b1253124ccfaad400ad13bae87437b4e3bb0fc0ad8d7f996492c MATCH
+HASHCHECK acctflags/report.json clone=d73e0b269c8dd2535b7254f15e3833f796afe34848a9aa01fa73e6fb5ed851c5 log14=d73e0b269c8dd2535b7254f15e3833f796afe34848a9aa01fa73e6fb5ed851c5 MATCH
+HASHCHECK acctflags/charts/flags.png clone=9aa8ebaac4f75ff04e3132474ea1a057511a7a3c7bf06c47c03590202b212b4a log14=9aa8ebaac4f75ff04e3132474ea1a057511a7a3c7bf06c47c03590202b212b4a MATCH
+HASHCHECK acctflags/charts/payments.png clone=b36fba6e66aba0fd0dd494bf495c5c999b23da2a90f866c6d9d5d33b81e6a963 log14=b36fba6e66aba0fd0dd494bf495c5c999b23da2a90f866c6d9d5d33b81e6a963 MATCH
+## full acctflags tests + ruff (both cwds)
+$ TMPDIR=$HOME/.cache ~/work/pft-ledger-stats/.venv/bin/python -m pytest -q -p no:cacheprovider tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py
+................................................................         [100%]
+64 passed in 44.75s
+exit=0
+$ ~/work/pft-ledger-stats/.venv/bin/ruff check --no-cache acctflags tests/test_acctflags_analyze.py tests/test_acctflags_collect.py tests/test_acctflags_crosscheck.py tests/fixture_acctflags.py
+All checks passed!
+exit=0
+$ (cd acctflags && '~/work/pft-ledger-stats/.venv/bin/ruff' check --no-cache . && '~/work/pft-ledger-stats/.venv/bin/ruff' format --no-cache --check .)
+All checks passed!
+7 files already formatted
+exit=0
+## offline report rebuild (sockets blocked) + cmp against the committed report
+$ ~/work/pft-ledger-stats/.venv/bin/python -I acctflags/analyze_flags.py --offline --out $SCR/rebuild
+RECONCILE mismatches=0 accounts A=4704 B=4726 window_ledgers=28542 txs=9948 payments=7933 failed=13 retried=3 retry_window=100
+exit=0
+$ cmp acctflags/REPORT.md '$CLONE/rebuild/REPORT.md'
+exit=0
+$ cmp acctflags/report.json '$CLONE/rebuild/report.json'
+exit=0
+$ cmp acctflags/charts/flags.png '$CLONE/rebuild/charts/flags.png'
+exit=0
+$ cmp acctflags/charts/payments.png '$CLONE/rebuild/charts/payments.png'
+exit=0
+## retry window is a parameter: 100 committed; 90 drops all 3 retries (they came 91-98 ledgers after the failures)
+$ cat acctflags/report.config.json
+{"retry_window_ledgers": 100}
+exit=0
+$ ~/work/pft-ledger-stats/.venv/bin/python -I acctflags/analyze_flags.py --offline --no-charts --retry-window 90 --out $SCR/w90
+RECONCILE mismatches=0 accounts A=4704 B=4726 window_ledgers=28542 txs=9948 payments=7933 failed=13 retried=0 retry_window=90
+exit=0
+## Payment results in the window for every requested code (0 = none occurred), from txs.jsonl
+$ python3 -I -c "import json,collections; c=collections.Counter(d['result'] for d in map(json.loads, open('acctflags/data/txs.jsonl')) if d['type']=='Payment'); [print(k, c.get(k, 0)) for k in ('tesSUCCESS','tecDST_TAG_NEEDED','tecNO_PERMISSION','tecNO_DST','tecNO_DST_INSUF_XRP','tecNO_TARGET','tecUNFUNDED_PAYMENT','tecPATH_DRY','tecPATH_PARTIAL','tecNO_AUTH','tecNO_LINE')]; print('total', sum(c.values()))"
+tesSUCCESS 7920
+tecDST_TAG_NEEDED 0
+tecNO_PERMISSION 0
+tecNO_DST 0
+tecNO_DST_INSUF_XRP 1
+tecNO_TARGET 0
+tecUNFUNDED_PAYMENT 12
+tecPATH_DRY 0
+tecPATH_PARTIAL 0
+tecNO_AUTH 0
+tecNO_LINE 0
+total 7933
+exit=0
+RESULT FAILS=0
