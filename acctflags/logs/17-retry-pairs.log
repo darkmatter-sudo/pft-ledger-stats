@@ -1,0 +1,41 @@
+# acctflags retry-pair check 2026-11-18T10:08:55Z at commit 6c113bab5c3726bb1af6497fbc823175eebce0fc
+++ sha256sum acctflags/data/txs.jsonl acctflags/data/ledgers.jsonl
+f272e298bf7f2ec41164ed983b48811854db06057c7a2fdde333fa0f5ab333a7  acctflags/data/txs.jsonl
+a102d2b984a331bf1bbdd15fd187746ecc71ee2a52f0d7804792a15572e7a94c  acctflags/data/ledgers.jsonl
+++ python3 -I /tmp/v17/pairs.py acctflags/data/txs.jsonl acctflags/data/ledgers.jsonl
+fail ledger=8123808 tx=0 tecUNFUNDED_PAYMENT sender=aa80b8a8c237 dest=73196c4f7b57 -> retry ledger=8125549 tx=1 elapsed=1741 missing_ledgers_between=0 in_w100=False in_w90=False
+fail ledger=8123811 tx=0 tecUNFUNDED_PAYMENT sender=aa80b8a8c237 dest=73196c4f7b57 -> retry ledger=8125549 tx=1 elapsed=1738 missing_ledgers_between=0 in_w100=False in_w90=False
+fail ledger=8123814 tx=0 tecUNFUNDED_PAYMENT sender=aa80b8a8c237 dest=73196c4f7b57 -> retry ledger=8125549 tx=1 elapsed=1735 missing_ledgers_between=0 in_w100=False in_w90=False
+fail ledger=8125066 tx=0 tecUNFUNDED_PAYMENT sender=2652fcf027cc dest=f174fe618217 -> retry ledger=8128282 tx=1 elapsed=3216 missing_ledgers_between=0 in_w100=False in_w90=False
+fail ledger=8125069 tx=0 tecUNFUNDED_PAYMENT sender=2652fcf027cc dest=f174fe618217 -> retry ledger=8128282 tx=1 elapsed=3213 missing_ledgers_between=0 in_w100=False in_w90=False
+fail ledger=8125073 tx=0 tecUNFUNDED_PAYMENT sender=2652fcf027cc dest=f174fe618217 -> retry ledger=8128282 tx=1 elapsed=3209 missing_ledgers_between=0 in_w100=False in_w90=False
+fail ledger=8129962 tx=3 tecUNFUNDED_PAYMENT sender=c0d8bc3bf68b dest=f95c0363295b -> retry ledger=8130060 tx=0 elapsed=98 missing_ledgers_between=0 in_w100=True in_w90=False
+fail ledger=8129965 tx=0 tecUNFUNDED_PAYMENT sender=c0d8bc3bf68b dest=f95c0363295b -> retry ledger=8130060 tx=0 elapsed=95 missing_ledgers_between=0 in_w100=True in_w90=False
+fail ledger=8129969 tx=0 tecUNFUNDED_PAYMENT sender=c0d8bc3bf68b dest=f95c0363295b -> retry ledger=8130060 tx=0 elapsed=91 missing_ledgers_between=0 in_w100=True in_w90=False
+fail ledger=8137503 tx=1 tecUNFUNDED_PAYMENT sender=2652fcf027cc dest=f95c0363295b -> retry ledger=8139202 tx=0 elapsed=1699 missing_ledgers_between=0 in_w100=False in_w90=False
+fail ledger=8137506 tx=0 tecUNFUNDED_PAYMENT sender=2652fcf027cc dest=f95c0363295b -> retry ledger=8139202 tx=0 elapsed=1696 missing_ledgers_between=0 in_w100=False in_w90=False
+fail ledger=8137510 tx=0 tecUNFUNDED_PAYMENT sender=2652fcf027cc dest=f95c0363295b -> retry ledger=8139202 tx=0 elapsed=1692 missing_ledgers_between=0 in_w100=False in_w90=False
+++ .venv/bin/python -I acctflags/analyze_flags.py --offline --no-charts --retry-window 100 --out /tmp/v17/w100
+RECONCILE mismatches=0 accounts A=4704 B=4726 window_ledgers=28542 txs=9948 payments=7933 failed=13 retried=3 retry_window=100
+++ .venv/bin/python -I acctflags/analyze_flags.py --offline --no-charts --retry-window 90 --out /tmp/v17/w90
+RECONCILE mismatches=0 accounts A=4704 B=4726 window_ledgers=28542 txs=9948 payments=7933 failed=13 retried=0 retry_window=90
+++ .venv/bin/python -I acctflags/analyze_flags.py --offline --no-charts --retry-window 97 --out /tmp/v17/w97
+RECONCILE mismatches=0 accounts A=4704 B=4726 window_ledgers=28542 txs=9948 payments=7933 failed=13 retried=2 retry_window=97
+++ set +x
+## verification-check script used above (pairs.py, read-only over the pinned data files)
+import json, sys
+txs = [json.loads(l) for l in open(sys.argv[1])]
+led = {json.loads(l)["ledger_index"] for l in open(sys.argv[2])}
+pays = [t for t in txs if t["type"] == "Payment"]
+ok = [t for t in pays if t["result"] == "tesSUCCESS"]
+for t in pays:
+    if t["result"] == "tesSUCCESS":
+        continue
+    k = (t["ledger_index"], t["tx_index"])
+    later = [p for p in ok if p["sender"] == t["sender"] and p["destination"] == t["destination"] and (p["ledger_index"], p["tx_index"]) > k]
+    if not later:
+        continue
+    r = min(later, key=lambda p: (p["ledger_index"], p["tx_index"]))
+    gap = sum(1 for i in range(k[0] + 1, r["ledger_index"] + 1) if i not in led)
+    el = r["ledger_index"] - k[0]
+    print(f"fail ledger={k[0]} tx={k[1]} {t['result']} sender={t['sender']} dest={t['destination']} -> retry ledger={r['ledger_index']} tx={r['tx_index']} elapsed={el} missing_ledgers_between={gap} in_w100={el <= 100} in_w90={el <= 90}")
