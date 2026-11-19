@@ -1,0 +1,44 @@
+{
+ "A": {
+  "by_type": {
+   "AccountRoot": 59,
+   "DirectoryNode": 1,
+   "LedgerHashes": 2,
+   "NFTokenPage": 8
+  },
+  "header": {
+   "close_time_iso": "2026-11-19T00:13:33Z",
+   "ledger_hash": "216BE6A70E0BD1596A074C1933A6074A5A1467AC408BEF540C50AD020A6BB4AE",
+   "ledger_index": 8169668,
+   "parent_hash": "FF52C0572DD88EDFEB5D1A994510CFCEE7D188A3C61426224E93D169B4E812E5"
+  },
+  "objects": 70,
+  "raw_sha256": {
+   "accounts.jsonl": "580133525ca78e76932e35882b671f6bc7ad64c53118500b7b3984de525ca292",
+   "counts.json": "923fb0169352387e391ce2b7ded6600eefbb845322c95241a96f4b9221a189e6",
+   "depositpreauth.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "header.json": "76be630ff971e3c8c8a2c5851d06b33f2345b2b3a3b4cc5c87014fdf2d36331d"
+  }
+ },
+ "B": {
+  "by_type": {
+   "AccountRoot": 59,
+   "DirectoryNode": 1,
+   "LedgerHashes": 2,
+   "NFTokenPage": 7
+  },
+  "header": {
+   "close_time_iso": "2026-11-19T00:19:51Z",
+   "ledger_hash": "8BBEDFB1FE9004EED3170D728D0A350FCB20FCAC8DF325FFF0AD4FA5A84709D2",
+   "ledger_index": 8169792,
+   "parent_hash": "A87FF915EC50CA9247BEE366D83055FA7265B85FAD3E4BCC82B22497C4647612"
+  },
+  "objects": 69,
+  "raw_sha256": {
+   "accounts.jsonl": "8ba46529d5f897e72c6be7f07366fe9c4b351740738ecf3f12e0ee909bf38602",
+   "counts.json": "4e254313b4bca2bc9e54f68b9e6899adb1daee0e19c23e4e9bda342f85f18348",
+   "depositpreauth.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "header.json": "894f2d34fbb8099ef3b3efe1989dbc5ad9d5717a0dda31726b7504bf6b894d07"
+  }
+ }
+}

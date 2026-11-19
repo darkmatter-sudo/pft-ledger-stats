@@ -1,0 +1,51 @@
+{
+ "negative_unl_at_A": {
+  "DisabledValidators": [
+   {
+    "DisabledValidator": {
+     "FirstLedgerSequence": 8020992,
+     "PublicKey": "ED2B7028ECA94BB9037B26A9DFFD41B07241E727DFED21FAB049605CCC1F364A29"
+    }
+   }
+  ],
+  "Flags": 0,
+  "LedgerEntryType": "NegativeUNL",
+  "PreviousTxnID": "5E447743F7604C3894E1EE328A048436E6A997EA678775B14C1D39B3F28D4F07",
+  "PreviousTxnLgrSeq": 8020736,
+  "index": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244"
+ },
+ "present_at_B_8150605": false,
+ "source": "acctflags window A=8122063 B=8150605",
+ "unlmodify_8128256": {
+  "TransactionType": "UNLModify",
+  "hash": "ADB68CE04E1D5001DDB6E2214C8F640CEA6565AA828CDA443AC243F8B0B411D2",
+  "ledger_index": 8128256,
+  "metaData": {
+   "AffectedNodes": [
+    {
+     "ModifiedNode": {
+      "FinalFields": {
+       "DisabledValidators": [
+        {
+         "DisabledValidator": {
+          "FirstLedgerSequence": 8020992,
+          "PublicKey": "ED2B7028ECA94BB9037B26A9DFFD41B07241E727DFED21FAB049605CCC1F364A29"
+         }
+        }
+       ],
+       "Flags": 0,
+       "ValidatorToReEnable": "ED2B7028ECA94BB9037B26A9DFFD41B07241E727DFED21FAB049605CCC1F364A29"
+      },
+      "LedgerEntryType": "NegativeUNL",
+      "LedgerIndex": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
+      "PreviousFields": {},
+      "PreviousTxnID": "5E447743F7604C3894E1EE328A048436E6A997EA678775B14C1D39B3F28D4F07",
+      "PreviousTxnLgrSeq": 8020736
+     }
+    }
+   ],
+   "TransactionIndex": 0,
+   "TransactionResult": "tesSUCCESS"
+  }
+ }
+}

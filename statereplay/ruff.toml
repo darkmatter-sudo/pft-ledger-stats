@@ -1,0 +1,12 @@
+line-length = 110
+target-version = "py310"
+
+[lint]
+select = ["E", "F", "W", "B", "I"]
+
+[lint.isort]
+known-first-party = ["collect_flags", "crosscheck_flags", "replay", "extract_replay", "hotspots", "crosscheck_replay", "mutants_replay", "fixture_statereplay"]
+
+[lint.per-file-ignores]
+# mutant table rows are exact source lines and cannot be wrapped
+"mutants_replay.py" = ["E501"]
