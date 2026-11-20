@@ -1,0 +1,137 @@
+# task_45c7 run 16 fresh public clone verification  2026-11-20T00:31:05Z
+# pinned SHA f2049332b5c06d2ff132f46d366e84631bd9d622
+# python 3.10.12, ruff 0.17.1 (repo .venv, outside the clone)
+# runner script (verbatim):
+#   #!/bin/bash
+#   # task_45c7 run 16: fresh public clone verification at a pinned SHA
+#   # usage: bash statereplay-16.sh SHA   (pytest/ruff: the existing repo .venv, outside the clone; statereplay is stdlib-only)
+#   SHA=$1
+#   PY="$HOME/work/pft-ledger-stats/.venv/bin/python"
+#   RUFF="$HOME/work/pft-ledger-stats/.venv/bin/ruff"
+#   SCR=$(mktemp -d -p "$HOME/.cache"); chmod 755 "$SCR"
+#   red() { sed -u -e "s#$SCR#\$CLONE#g" -e "s#$HOME#~#g"; }
+#   x() { echo "\$ $*" | red; eval "$*" </dev/null 2>&1 | red; rc=${PIPESTATUS[0]}; echo "exit=$rc"; return "$rc"; }
+#   FAILS=0
+#   chk() { x "$@" || FAILS=$((FAILS+1)); }
+#   L=task_45c73bdb30e829323874c9510d137c38
+#   echo "# task_45c7 run 16 fresh public clone verification  $(date -u +%FT%TZ)"
+#   echo "# pinned SHA $SHA"
+#   echo "# python $("$PY" -V 2>&1 | cut -d' ' -f2), $("$RUFF" --version) (repo .venv, outside the clone)"
+#   echo "# runner script (verbatim):"; sed 's/^/#   /' "$0"
+#   chk git clone -q https://github.com/darkmatter-sudo/pft-ledger-stats.git '$SCR/repo'
+#   cd "$SCR/repo" || exit 1
+#   chk git -c advice.detachedHead=false checkout -q "$SHA"
+#   chk git rev-parse HEAD
+#   chk git status --short
+#   echo "## key-file sha256 vs the headers of the recorded runs (11 replay, 12 crosscheck, 13a extract/report)"
+#   for f in statereplay/replay.py statereplay/crosscheck_replay.py statereplay/extract_replay.py statereplay/hotspots.py; do
+#     want=$(command grep -h "^# sha256 [0-9a-f]\{64\}  $f\$" statereplay/logs/$L-1[123]*.log | awk '{print $3}' | sort -u)
+#     got=$(sha256sum "$f" | awk '{print $1}')
+#     echo "HASHCHECK $f clone=$got logs=$want $([ -n "$want" ] && [ "$got" = "$want" ] && echo MATCH || echo MISMATCH)"
+#     [ -n "$want" ] && [ "$got" = "$want" ] || FAILS=$((FAILS+1))
+#   done
+#   echo "## published data sha256 vs log 13a"
+#   for f in statereplay/data/*; do
+#     b=$(basename "$f")
+#     want=$(command grep -h "  $b\$" statereplay/logs/$L-13a-extract-report.log | awk '{print $1}' | sort -u)
+#     got=$(sha256sum "$f" | awk '{print $1}')
+#     echo "HASHCHECK $f clone=$got log13a=$want $([ -n "$want" ] && [ "$got" = "$want" ] && echo MATCH || echo MISMATCH)"
+#     [ -n "$want" ] && [ "$got" = "$want" ] || FAILS=$((FAILS+1))
+#   done
+#   chk sha256sum statereplay/*.py statereplay/REPORT.md statereplay/report.json statereplay/README.md tests/test_statereplay_*.py
+#   echo "## full statereplay tests + ruff (both cwds)"
+#   chk TMPDIR='$HOME/.cache' "$PY" -m pytest -q -p no:cacheprovider tests/test_statereplay_*.py
+#   chk "$RUFF" check statereplay tests/test_statereplay_*.py
+#   chk "$RUFF" format --check statereplay tests/test_statereplay_*.py
+#   chk "(cd statereplay && $RUFF check . && $RUFF format --check .)"
+#   echo "## offline rebuild from committed data only (network blocked: unshare -n)"
+#   chk unshare -rn python3 -I statereplay/replay.py --data statereplay/data
+#   chk mkdir -p '$SCR/rebuild'
+#   chk unshare -rn python3 -I statereplay/hotspots.py --data statereplay/data --out '$SCR/rebuild'
+#   chk cmp '$SCR/rebuild/REPORT.md' statereplay/REPORT.md
+#   chk cmp '$SCR/rebuild/report.json' statereplay/report.json
+#   chk sha256sum '$SCR/rebuild/REPORT.md' '$SCR/rebuild/report.json' statereplay/REPORT.md statereplay/report.json
+#   echo "## offline negative control re-check from the committed summaries"
+#   chk "python3 -I -c 'import json; p=json.load(open(\"statereplay/data/crosscheck-B.json\")); n=json.load(open(\"statereplay/data/crosscheck-B-negative.json\")); print({k: p.get(k) for k in (\"mode\",\"checks\",\"match\",\"mismatch\")}, {k: n.get(k) for k in (\"mode\",\"checks\",\"match\",\"mismatch\")})'"
+#   cd "$HOME" && rm -rf "$SCR"
+#   echo "RESULT fails=$FAILS $([ "$FAILS" = 0 ] && echo PASS || echo FAIL)"
+$ git clone -q https://github.com/darkmatter-sudo/pft-ledger-stats.git $SCR/repo
+exit=0
+$ git -c advice.detachedHead=false checkout -q f2049332b5c06d2ff132f46d366e84631bd9d622
+exit=0
+$ git rev-parse HEAD
+f2049332b5c06d2ff132f46d366e84631bd9d622
+exit=0
+$ git status --short
+exit=0
+## key-file sha256 vs the headers of the recorded runs (11 replay, 12 crosscheck, 13a extract/report)
+HASHCHECK statereplay/replay.py clone=b323f85b65303f15253f5d18ba949cdc6aeac51cbdabbad47216b7c56179615d logs=b323f85b65303f15253f5d18ba949cdc6aeac51cbdabbad47216b7c56179615d MATCH
+HASHCHECK statereplay/crosscheck_replay.py clone=52d04a4565085093af62d0cef62472daf9184fcd17b5bb526d5293c8dd87b246 logs=52d04a4565085093af62d0cef62472daf9184fcd17b5bb526d5293c8dd87b246 MATCH
+HASHCHECK statereplay/extract_replay.py clone=27ebb0bababa91a63cc9eeef8aac421690e9ad3703777136b0c3f45ab3171924 logs=27ebb0bababa91a63cc9eeef8aac421690e9ad3703777136b0c3f45ab3171924 MATCH
+HASHCHECK statereplay/hotspots.py clone=82abfd8021a14eee2131567adb581cb4c90131e8c8cdbd8611fc3e8f5be3d1d5 logs=82abfd8021a14eee2131567adb581cb4c90131e8c8cdbd8611fc3e8f5be3d1d5 MATCH
+## published data sha256 vs log 13a
+HASHCHECK statereplay/data/A.jsonl.gz clone=e79d6af8e7f40ac53fe4ab18b0b5030227f59978e867a35917ca3b9d72695843 log13a=e79d6af8e7f40ac53fe4ab18b0b5030227f59978e867a35917ca3b9d72695843 MATCH
+HASHCHECK statereplay/data/B.jsonl.gz clone=80d87132f01bd026bc4b4d8c183b4ff1e4d4b5929c27d6c1b76c07a36d74f98a log13a=80d87132f01bd026bc4b4d8c183b4ff1e4d4b5929c27d6c1b76c07a36d74f98a MATCH
+HASHCHECK statereplay/data/crosscheck-B-negative.json clone=bc1935e14825eefcc5474d7731c4b811c312be6f1ea2e36d65cea88bfe4d49be log13a=bc1935e14825eefcc5474d7731c4b811c312be6f1ea2e36d65cea88bfe4d49be MATCH
+HASHCHECK statereplay/data/crosscheck-B.json clone=3b003fad135144f3fd2bf5f1633dc3a3e25fca3ae98cc077d1845e62e25987aa log13a=3b003fad135144f3fd2bf5f1633dc3a3e25fca3ae98cc077d1845e62e25987aa MATCH
+HASHCHECK statereplay/data/ledgers.jsonl.gz clone=74d0fcbfaccd8a89c6c37300d036adbba31ab89eec8ba392db8991ca8978d5ff log13a=74d0fcbfaccd8a89c6c37300d036adbba31ab89eec8ba392db8991ca8978d5ff MATCH
+HASHCHECK statereplay/data/snapshots.json clone=ee4368a17a5ef19ad20866dc9fbdb115604765939381d2afa5315bba78f09156 log13a=ee4368a17a5ef19ad20866dc9fbdb115604765939381d2afa5315bba78f09156 MATCH
+HASHCHECK statereplay/data/tx.jsonl.gz clone=de38fde4de1bf7d063be886a1e51841936aa9b22fac6bd69ba26c5a92171c7af log13a=de38fde4de1bf7d063be886a1e51841936aa9b22fac6bd69ba26c5a92171c7af MATCH
+$ sha256sum statereplay/crosscheck_replay.py statereplay/extract_replay.py statereplay/hotspots.py statereplay/mutants_replay.py statereplay/replay.py statereplay/REPORT.md statereplay/report.json statereplay/README.md tests/test_statereplay_crosscheck.py tests/test_statereplay_extract.py tests/test_statereplay_hotspots.py tests/test_statereplay_replay.py
+52d04a4565085093af62d0cef62472daf9184fcd17b5bb526d5293c8dd87b246  statereplay/crosscheck_replay.py
+27ebb0bababa91a63cc9eeef8aac421690e9ad3703777136b0c3f45ab3171924  statereplay/extract_replay.py
+82abfd8021a14eee2131567adb581cb4c90131e8c8cdbd8611fc3e8f5be3d1d5  statereplay/hotspots.py
+2eb99964fa0f1c46da51a82d5e2c158ac469234e509fad9c4ccedf8de760f2bb  statereplay/mutants_replay.py
+b323f85b65303f15253f5d18ba949cdc6aeac51cbdabbad47216b7c56179615d  statereplay/replay.py
+ee7ef2fc2c9be275ab4ce1b2bb39066d8ffa5d79e4f58f4bb3b885db309824ee  statereplay/REPORT.md
+d690b695376405213fa3dd2171486dd8caafd4ae5bd92206b7322b0ff7b4bb43  statereplay/report.json
+72bef21d919b32e903a819010dc0986be8f7fce39ffa8cf97c498059de306677  statereplay/README.md
+281941437a9aeaca96481a7185b87f89558fbaea54bade43cae197f95c4b47b1  tests/test_statereplay_crosscheck.py
+2a77c4342265887b1322cfcbccca9370d298a8b5636fc715a26bf8dc9d71f014  tests/test_statereplay_extract.py
+9cb52bdc724269f4c03adf87836cea2388a59c645508ff07290fe51234348401  tests/test_statereplay_hotspots.py
+7445b8ce6917b068745e0445e58f1669fdfaed804f91b1f67fe846dcebbbf237  tests/test_statereplay_replay.py
+exit=0
+## full statereplay tests + ruff (both cwds)
+$ TMPDIR=$HOME/.cache ~/work/pft-ledger-stats/.venv/bin/python -m pytest -q -p no:cacheprovider tests/test_statereplay_crosscheck.py tests/test_statereplay_extract.py tests/test_statereplay_hotspots.py tests/test_statereplay_replay.py
+......................................................................   [100%]
+70 passed in 2.89s
+exit=0
+$ ~/work/pft-ledger-stats/.venv/bin/ruff check statereplay tests/test_statereplay_crosscheck.py tests/test_statereplay_extract.py tests/test_statereplay_hotspots.py tests/test_statereplay_replay.py
+All checks passed!
+exit=0
+$ ~/work/pft-ledger-stats/.venv/bin/ruff format --check statereplay tests/test_statereplay_crosscheck.py tests/test_statereplay_extract.py tests/test_statereplay_hotspots.py tests/test_statereplay_replay.py
+11 files already formatted
+exit=0
+$ (cd statereplay && ~/work/pft-ledger-stats/.venv/bin/ruff check . && ~/work/pft-ledger-stats/.venv/bin/ruff format --check .)
+All checks passed!
+7 files already formatted
+exit=0
+## offline rebuild from committed data only (network blocked: unshare -n)
+$ unshare -rn python3 -I statereplay/replay.py --data statereplay/data
+WINDOW A=8169599 B=8198144 ledgers=28545 transactions=9620 nodes=19252
+DERIVED NegativeUNL ledger=8178176 replaced
+DERIVED NegativeUNL ledger=8179456 erased
+DERIVED NegativeUNL ledger=8180480 replaced
+RESULT objects_replayed=5283 objects_B=5283 diffs=0 EXACT
+exit=0
+$ mkdir -p $SCR/rebuild
+exit=0
+$ unshare -rn python3 -I statereplay/hotspots.py --data statereplay/data --out $SCR/rebuild
+REPLAY EXACT diffs=0 ledgers=28545 transactions=9620 nodes=19252
+WROTE $CLONE/rebuild/REPORT.md $CLONE/rebuild/report.json
+exit=0
+$ cmp $SCR/rebuild/REPORT.md statereplay/REPORT.md
+exit=0
+$ cmp $SCR/rebuild/report.json statereplay/report.json
+exit=0
+$ sha256sum $SCR/rebuild/REPORT.md $SCR/rebuild/report.json statereplay/REPORT.md statereplay/report.json
+ee7ef2fc2c9be275ab4ce1b2bb39066d8ffa5d79e4f58f4bb3b885db309824ee  $CLONE/rebuild/REPORT.md
+d690b695376405213fa3dd2171486dd8caafd4ae5bd92206b7322b0ff7b4bb43  $CLONE/rebuild/report.json
+ee7ef2fc2c9be275ab4ce1b2bb39066d8ffa5d79e4f58f4bb3b885db309824ee  statereplay/REPORT.md
+d690b695376405213fa3dd2171486dd8caafd4ae5bd92206b7322b0ff7b4bb43  statereplay/report.json
+exit=0
+## offline negative control re-check from the committed summaries
+$ python3 -I -c 'import json; p=json.load(open("statereplay/data/crosscheck-B.json")); n=json.load(open("statereplay/data/crosscheck-B-negative.json")); print({k: p.get(k) for k in ("mode","checks","match","mismatch")}, {k: n.get(k) for k in ("mode","checks","match","mismatch")})'
+{'mode': 'positive', 'checks': 90, 'match': 90, 'mismatch': 0} {'mode': 'negative', 'checks': 90, 'match': 0, 'mismatch': 90}
+exit=0
+RESULT fails=0 PASS
