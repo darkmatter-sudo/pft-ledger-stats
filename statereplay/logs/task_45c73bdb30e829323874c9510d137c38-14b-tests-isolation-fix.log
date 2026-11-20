@@ -1,0 +1,28 @@
+# task_45c7 run 14b fix of a pre-existing test-isolation leak found by 14a (acctflags offline test restored only socket.socket, so senders tests later in the same process got 'OSError: --offline: network access refused'), base e6de31875ba912e4260077241a09e364a7eda44e  2026-11-20T00:23:25Z
+$ git diff --stat
+ statereplay/README.md           | 15 +++++++++++++++
+ tests/test_acctflags_analyze.py | 17 ++++++++++-------
+ 2 files changed, 25 insertions(+), 7 deletions(-)
+rc=0
+# fail-before: committed test file
+$ git stash push -q tests/test_acctflags_analyze.py && TMPDIR=$HOME/.cache .venv/bin/python -m pytest -q -p no:cacheprovider tests/test_acctflags_analyze.py tests/test_senders_crosscheck.py 2>&1 | tail -3; git stash pop -q
+ERROR tests/test_senders_crosscheck.py::test_rpc_pruned_into_checked_span_exits_2
+ERROR tests/test_senders_crosscheck.py::test_no_overlap_exits_2 - OSError: --...
+33 passed, 12 errors in 21.60s
+rc=0
+$ cmp tests/test_acctflags_analyze.py ~/.cache/test_acctflags_analyze.fixed.py && echo "fixed test file restored"
+fixed test file restored
+rc=0
+# pass-after: fixed test file
+$ TMPDIR=$HOME/.cache .venv/bin/python -m pytest -q -p no:cacheprovider tests/test_acctflags_analyze.py tests/test_senders_crosscheck.py 2>&1 | tail -2
+.............................................                            [100%]
+45 passed in 27.76s
+rc=0
+$ TMPDIR=$HOME/.cache .venv/bin/python -m pytest -q -p no:cacheprovider 2>&1 | tail -2
+.                                                                        [100%]
+936 passed, 1 skipped in 125.99s (0:02:05)
+rc=0
+$ ruff check tests/test_acctflags_analyze.py && ruff format --check tests/test_acctflags_analyze.py
+All checks passed!
+1 file already formatted
+rc=0

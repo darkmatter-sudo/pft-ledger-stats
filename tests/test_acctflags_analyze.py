@@ -298,13 +298,16 @@ def test_dest_state_missing_and_preauthorized():
 def test_report_build_deterministic_and_offline(pub, tmp_path, monkeypatch):
     out1, out2 = tmp_path / "r1", tmp_path / "r2"
     assert AN.main(["--data", str(pub), "--config", CONFIG, "--out", str(out1)]) == 0
-    real = socket.socket
-    try:
-        assert AN.main(["--data", str(pub), "--config", CONFIG, "--out", str(out2), "--offline"]) == 0
-        with pytest.raises(OSError, match="offline"):
-            socket.create_connection(("example.org", 80))
-    finally:
-        monkeypatch.setattr(socket, "socket", real)
+    # no_network() replaces all three; restore every one, or later tests in the same process lose sockets
+    for name in ("socket", "create_connection", "getaddrinfo"):
+        monkeypatch.setattr(socket, name, getattr(socket, name))
+    assert AN.main(["--data", str(pub), "--config", CONFIG, "--out", str(out2), "--offline"]) == 0
+    with pytest.raises(OSError, match="offline"):
+        socket.create_connection(("example.org", 80))
+    with pytest.raises(OSError, match="offline"):
+        socket.getaddrinfo("example.org", 80)
+    monkeypatch.undo()
+    assert socket.getaddrinfo("localhost", 80)
     for f in ("REPORT.md", "report.json", "charts/flags.png", "charts/payments.png"):
         assert (out1 / f).read_bytes() == (out2 / f).read_bytes(), f
     text = (out1 / "REPORT.md").read_text()

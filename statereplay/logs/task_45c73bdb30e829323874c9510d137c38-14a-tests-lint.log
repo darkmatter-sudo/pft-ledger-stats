@@ -1,0 +1,23 @@
+# task_45c7 run 14a full test suite + ruff, code e6de31875ba912e4260077241a09e364a7eda44e  2026-11-20T00:17:33Z
+$ .venv/bin/python -V; .venv/bin/python -c "import matplotlib,pytest; print(\"matplotlib\", matplotlib.__version__, \"pytest\", pytest.__version__)"
+Python 3.10.12
+matplotlib 3.10.9 pytest 9.1.1
+rc=0
+$ TMPDIR=$HOME/.cache .venv/bin/python -m pytest -q -p no:cacheprovider tests/test_statereplay_*.py
+......................................................................   [100%]
+70 passed in 1.69s
+rc=0
+$ TMPDIR=$HOME/.cache .venv/bin/python -m pytest -q -p no:cacheprovider 2>&1 | tail -3
+ERROR tests/test_senders_crosscheck.py::test_rpc_pruned_into_checked_span_exits_2
+ERROR tests/test_senders_crosscheck.py::test_no_overlap_exits_2 - OSError: --...
+924 passed, 1 skipped, 12 errors in 156.69s (0:02:36)
+rc=0
+$ ruff --version; ruff check statereplay tests/test_statereplay_*.py && ruff format --check statereplay tests/test_statereplay_*.py
+ruff 0.17.1
+All checks passed!
+11 files already formatted
+rc=0
+$ cd statereplay && ruff check . && ruff format --check .
+All checks passed!
+7 files already formatted
+rc=0

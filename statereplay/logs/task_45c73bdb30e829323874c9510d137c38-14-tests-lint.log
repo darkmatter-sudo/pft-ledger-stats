@@ -1,0 +1,20 @@
+# task_45c7 run 14 full test suite + ruff, code e6de31875ba912e4260077241a09e364a7eda44e  2026-11-20T00:14:33Z
+$ TMPDIR=$HOME/.cache python3 -m pytest -q -p no:cacheprovider tests/test_statereplay_*.py
+......................................................................   [100%]
+70 passed in 2.96s
+rc=0
+$ TMPDIR=$HOME/.cache python3 -m pytest -q -p no:cacheprovider 2>&1 | tail -3
+FAILED tests/test_nftflow_stats.py::test_clean_stats - ModuleNotFoundError: N...
+FAILED tests/test_txmix.py::TestEndToEnd::test_report_written - ModuleNotFoun...
+5 failed, 928 passed, 4 skipped in 137.50s (0:02:17)
+rc=0
+$ ruff --version; ruff check statereplay tests/test_statereplay_*.py && ruff format --check statereplay tests/test_statereplay_*.py
+ruff 0.17.1
+All checks passed!
+11 files already formatted
+rc=0
+$ cd statereplay && ruff check . && ruff format --check .
+All checks passed!
+7 files already formatted
+rc=0
+# 2026-11-20T00:17:33Z SUPERSEDED by run 14a: the whole-repo pass used the system python3, which has no matplotlib (the repo README installs it in .venv); the 5 failures are ModuleNotFoundError: matplotlib in nftflow/txmix tests. statereplay is stdlib-only (70 passed above). 14a uses .venv/bin/python.

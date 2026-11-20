@@ -1,0 +1,55 @@
+{
+ "A": {
+  "by_type": {
+   "AccountRoot": 4732,
+   "Amendments": 1,
+   "DirectoryNode": 52,
+   "FeeSettings": 1,
+   "LedgerHashes": 126,
+   "NFTokenOffer": 45,
+   "NFTokenPage": 301,
+   "Offer": 3,
+   "RippleState": 4
+  },
+  "header": {
+   "close_time_iso": "2026-11-19T00:10:03Z",
+   "ledger_hash": "DCCDD8154A93AA9C7F9129E8ACEDD2062A06E477FBBE529AF6A494024D88B739",
+   "ledger_index": 8169599,
+   "parent_hash": "CDF512DE9636EDFDBFBC664B25493E983DFC5A0D7C9DD9C40EF0FB635509D94C"
+  },
+  "objects": 5265,
+  "raw_sha256": {
+   "accounts.jsonl": "f69c1f90dd02aaa30ca8b3c96ed66f845bd5fa0c7fa231e75f6481253aa706e1",
+   "counts.json": "4e254313b4bca2bc9e54f68b9e6899adb1daee0e19c23e4e9bda342f85f18348",
+   "depositpreauth.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "header.json": "583ce97e33804247ece04f38e09b0d689cf161c59c5eb16ac8d3b71dad39129c"
+  }
+ },
+ "B": {
+  "by_type": {
+   "AccountRoot": 4745,
+   "Amendments": 1,
+   "DirectoryNode": 52,
+   "FeeSettings": 1,
+   "LedgerHashes": 127,
+   "NFTokenOffer": 45,
+   "NFTokenPage": 304,
+   "NegativeUNL": 1,
+   "Offer": 3,
+   "RippleState": 4
+  },
+  "header": {
+   "close_time_iso": "2026-11-20T00:10:20Z",
+   "ledger_hash": "10B61CAAB02487766A985DAD87C7A82EE615F25069D86C070417356189B711FC",
+   "ledger_index": 8198144,
+   "parent_hash": "86CB34D9A45C35D2D66B0EE24087E68D9C4DE9BE27FC37C147323084B6273882"
+  },
+  "objects": 5283,
+  "raw_sha256": {
+   "accounts.jsonl": "1aa2c3aaef1d675efca5f64dfdf0feb8fe44788a65d4efcaf4b6770f4b74ea91",
+   "counts.json": "0509e7d237271477fdf2591a12c1b3f49c9eac253bfcfc0bf68b73ac06e8380f",
+   "depositpreauth.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "header.json": "8fb5469e7257f481758d48ff23bfbc36fbd887e356fe04a9aab544109f9eba62"
+  }
+ }
+}

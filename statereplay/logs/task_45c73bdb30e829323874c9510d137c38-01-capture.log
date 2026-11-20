@@ -1,0 +1,34 @@
+# task_45c7 run 01 tx capture  2026-11-19T00:09:40Z
+# repo HEAD 713643a9fb34722f1bebdc8a0c7093eddf6489ca (existing client acctflags/collect_flags.py, unchanged)
+# sha256 21aa654a42fe46fad0736db3edd4c031e0c4697b2362167352f9e6fed62085e6  acctflags/collect_flags.py
+# OS: Ubuntu 22.04.5 LTS | node postfiatd postfiatd version 1.0.9
+$ python3 -I acctflags/collect_flags.py capture --out data/statereplay/tx --start 8169585 --rate 0.5
+2026-11-19T00:09:41Z CAPTURE start=8169585 next=8169585 to=None
+2026-11-19T01:09:42Z PROGRESS ledger=8170777 validated=8170778 rpc_calls=1767 retries=0
+2026-11-19T02:09:44Z PROGRESS ledger=8171967 validated=8171967 rpc_calls=3533 retries=0
+2026-11-19T03:09:48Z PROGRESS ledger=8173161 validated=8173162 rpc_calls=5316 retries=0
+2026-11-19T04:09:51Z PROGRESS ledger=8174351 validated=8174352 rpc_calls=7081 retries=0
+2026-11-19T05:09:52Z PROGRESS ledger=8175541 validated=8175541 rpc_calls=8840 retries=0
+2026-11-19T06:09:55Z PROGRESS ledger=8176731 validated=8176732 rpc_calls=10613 retries=0
+2026-11-19T07:09:55Z PROGRESS ledger=8177920 validated=8177921 rpc_calls=12366 retries=0
+2026-11-19T08:09:56Z PROGRESS ledger=8179113 validated=8179114 rpc_calls=14106 retries=0
+2026-11-19T09:09:57Z PROGRESS ledger=8180299 validated=8180300 rpc_calls=15886 retries=0
+2026-11-19T10:09:57Z PROGRESS ledger=8181489 validated=8181489 rpc_calls=17669 retries=0
+2026-11-19T11:09:58Z PROGRESS ledger=8182676 validated=8182676 rpc_calls=19438 retries=0
+2026-11-19T12:10:02Z PROGRESS ledger=8183868 validated=8183868 rpc_calls=21218 retries=0
+2026-11-19T13:10:05Z PROGRESS ledger=8185058 validated=8185059 rpc_calls=23002 retries=0
+2026-11-19T14:10:06Z PROGRESS ledger=8186247 validated=8186248 rpc_calls=24781 retries=0
+2026-11-19T15:10:07Z PROGRESS ledger=8187440 validated=8187440 rpc_calls=26573 retries=0
+2026-11-19T16:10:08Z PROGRESS ledger=8188629 validated=8188630 rpc_calls=28363 retries=0
+2026-11-19T17:10:10Z PROGRESS ledger=8189818 validated=8189819 rpc_calls=30153 retries=0
+2026-11-19T18:10:11Z PROGRESS ledger=8191009 validated=8191011 rpc_calls=31938 retries=0
+2026-11-19T19:10:12Z PROGRESS ledger=8192200 validated=8192200 rpc_calls=33722 retries=0
+2026-11-19T20:10:13Z PROGRESS ledger=8193385 validated=8193386 rpc_calls=35506 retries=0
+2026-11-19T21:10:14Z PROGRESS ledger=8194571 validated=8194571 rpc_calls=37293 retries=0
+2026-11-19T22:10:15Z PROGRESS ledger=8195761 validated=8195761 rpc_calls=39075 retries=0
+2026-11-19T23:10:15Z PROGRESS ledger=8196949 validated=8196949 rpc_calls=40846 retries=0
+2026-11-20T00:10:18Z PROGRESS ledger=8198139 validated=8198142 rpc_calls=42596 retries=0
+2026-11-20T00:10:49Z RETRY ledger try 1/6 OSError: docker exec rc=143:  sleep=1s
+2026-11-20T00:10:51Z STOPPED last=8198152 rpc_calls=42613 retries=1
+# 2026-11-20T00:11:05Z capture stopped by 'systemctl stop pft-agent-statereplay-capture' after snapshot B 8198144 (run 10); the final RETRY rc=143 is the SIGTERM of that stop reaching the in-flight docker exec, not a node error
+# ledgers.jsonl rows=28568 tx.jsonl rows=28568 first=8169585 last=8198152

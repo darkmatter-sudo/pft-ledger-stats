@@ -1,0 +1,14 @@
+# task_45c7 run 02 snapshot A  2026-11-19T00:10:09Z
+# repo HEAD 713643a9fb34722f1bebdc8a0c7093eddf6489ca
+# sha256 21aa654a42fe46fad0736db3edd4c031e0c4697b2362167352f9e6fed62085e6  acctflags/collect_flags.py
+# OS: Ubuntu 22.04.5 LTS | node postfiatd 1.0.9
+$ python3 -I acctflags/collect_flags.py snapshot --out data/statereplay/A --rate 1.5
+2026-11-19T00:10:11Z PIN ledger_index=8169599 ledger_hash=DCCDD8154A93AA9C7F9129E8ACEDD2062A06E477FBBE529AF6A494024D88B739 close_time_iso=2026-11-19T00:10:03Z
+2026-11-19T00:10:23Z FULL objects=5265 pages=3 types={"AccountRoot":4732,"Amendments":1,"DirectoryNode":52,"FeeSettings":1,"LedgerHashes":126,"NFTokenOffer":45,"NFTokenPage":301,"Offer":3,"RippleState":4}
+2026-11-19T00:10:26Z COUNT AccountRoot full_tree=4732 type=account filtered=4732 pages=3 index_sets_equal=True
+2026-11-19T00:10:27Z FILE header.json rows=1 sha256=583ce97e33804247ece04f38e09b0d689cf161c59c5eb16ac8d3b71dad39129c
+2026-11-19T00:10:27Z FILE counts.json rows=1 sha256=4e254313b4bca2bc9e54f68b9e6899adb1daee0e19c23e4e9bda342f85f18348
+2026-11-19T00:10:27Z FILE accounts.jsonl rows=4732 sha256=f69c1f90dd02aaa30ca8b3c96ed66f845bd5fa0c7fa231e75f6481253aa706e1
+2026-11-19T00:10:27Z FILE depositpreauth.jsonl rows=0 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-11-19T00:10:27Z DONE ledger_index=8169599 accounts=4732 rpc_calls=8 retries=0
+rc=0

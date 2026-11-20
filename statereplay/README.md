@@ -23,6 +23,22 @@ Results: [REPORT.md](REPORT.md) (generated from the committed `data/` only).
 | `data/` | published inputs: `snapshots.json`, `A.jsonl.gz`, `B.jsonl.gz`, `ledgers.jsonl.gz`, `tx.jsonl.gz`, crosscheck summaries |
 | `logs/` | the recorded runs (collection, replay, crosscheck, mutation, fresh clone) |
 
+## Recorded runs (`logs/`)
+
+| log | what it ran |
+|---|---|
+| 01-capture | `collect_flags.py capture` from 8169585 to 8198152 (28568 ledgers, 1 retry: the SIGTERM of the final stop) |
+| 02-snapshotA / 10-snapshotB | full state snapshots A 8169599 and B 8198144 |
+| 03-fixture-snapshots / 04-fixture-extract | the real-capture test fixture `F1F3` |
+| 05-mutants-dev / 06-mutants / 15-mutants | mutation runs: 05 during development (tests edited mid-run, 4 survivors -> tests added), 06 and 15 on committed code |
+| 07-dryrun | every post-window step on a scratch snapshot before the window closed |
+| 11-replay-raw | replay of the raw capture A -> B |
+| 12-crosscheck | public-RPC crosscheck (positive) and the offline negative control |
+| 13-extract-report / 13a | extract `data/`, replay `--data`, `REPORT.md`; 13 is superseded by 13a (logging-helper bug in its last check; outputs identical, checked in 13a) |
+| 14-tests-lint / 14a | tests + ruff; 14 is superseded by 14a (whole-repo pass under the system python, which lacks matplotlib) |
+| 14b-tests-isolation-fix | whole-repo pass: fixes a test-isolation leak in `tests/test_acctflags_analyze.py` found by 14a (fail-before 12 errors, pass-after 936 passed) |
+| 16-fresh-clone | fresh public clone at the pinned commit: hashes, tests, offline rebuild + `cmp` |
+
 Collection uses the existing read-only client `acctflags/collect_flags.py` unchanged: `snapshot` pins one
 validated ledger and pages the full state tree with `ledger_data` (resumable, saved pages), `capture`
 follows every validated ledger with `ledger transactions=true expand=true` and stops on any chain break.

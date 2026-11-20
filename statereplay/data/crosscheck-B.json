@@ -1,0 +1,562 @@
+{
+ "A": 8169599,
+ "B": 8198144,
+ "checks": 90,
+ "ledgers": [
+  {
+   "fields": [],
+   "ledger_index": 8169599,
+   "txs": 2,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8169796,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8170601,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8171509,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8172548,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8172731,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8175627,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8178190,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8179585,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8181219,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8182746,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8183573,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8183782,
+   "txs": 4,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8184068,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8184916,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8185192,
+   "txs": 1,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8186052,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8186639,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8188866,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8189849,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8190208,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8192740,
+   "txs": 1,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8194607,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8197325,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8197839,
+   "txs": 0,
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "ledger_index": 8198144,
+   "txs": 0,
+   "verdict": "MATCH"
+  }
+ ],
+ "match": 90,
+ "mismatch": 0,
+ "mode": "positive",
+ "object_types": {
+  "AccountRoot": 59,
+  "DirectoryNode": 1,
+  "LedgerHashes": 1,
+  "NFTokenOffer": 1,
+  "NFTokenPage": 2
+ },
+ "objects": [
+  {
+   "fields": [],
+   "index": "002C28957ADC70B599EB0B50CABE828C92F6D05E39F84D274DDE1511208D67E3",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "07B28FC0434C0C06BB1A71343634527273EF49F4F63706D77B2C651319D971E3",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "07FDE72F545C6DEED04B693F0D6B0FF07D8FD4C39D2B1B80B7C7594C826F54DB",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "0DD5F865AABB477683B0B94716AA44BC1297B814B4E6B0A0A2498F4B84DC239F",
+   "type": "LedgerHashes",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "0F57DBC4A33F7F34347EE9E278D21CB23D7A0775FCD62B8192232F0FC62A26FF",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "1529108843CC0C49C3477E37D66570CD93A6FCC4F4093D37664787F180FA1735",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "15B9E6F14A49F94DAB9BC33585EE55C242DA207F5D39AA0026729F5A848C5CA0",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "2092F98112A81B8F0714B8076284B218B4B683AC7AC37AA17BEF3846D916A0D5",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "230CDE9740D5F55D608FAB7C5E3067D3D355C9FC87EA309052067DCD67C4D44C",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "26B776E92EF162AD99B130948902367AAE30BA3D8B5C6E1C9D5CAE9D3C94FA6A",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "287E51AED604CAD6C81607E4F738F1021DBD89D5A6BDDCBEF84FABAE84D3F2B0",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "30975717F5A6499BFED62BE352D3E9221219876D248ED6D705165F02875E79AD",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "35825AD8E4DEA30E93B434EE8B3964A502E91D25FCEC17AAA4BAFC4D7F8A5AD5",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "386222AE33E8843AD936BFFBDF3946441D347AB4B3EBA510EE7144AAEED6A2DE",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "38D3C071E29CD9D6317398DE15595820F2C97D460492ADB7D57CC38246A57583",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "3911D229CC412487C19874FD94F1B9E82241ECBFB00228BF4864A4727E8B2C45",
+   "type": "NFTokenOffer",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "3D18028B24813F555B468B534A3BD18AC4EBD6B1DEDD55A252187534FE7C4D15",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "4136F60BEF36F9E246B78B8B9645C1DA007A9EBF4E1946223BF84B4B8C270CC3",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "44B32E0C4BFC9709D209F047B12C7E9BDA9CEBE79F5BCF62B3AEB3E1F6D9C9A2",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "479002A45C4E52FB22C9FEF2208CF5E186114C0CF4CB450B7C46190AA3970B90",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "47BA354F4FF34253C298A0250B642DCF40235846F45C75BD0DCA66AF6357F9A1",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "47DDFFC8C766446C329DABA895AFBF39DDC42EF207861773ECB7F8F01A6A0633",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "4A1B53C069E2C00E6B562D3217A47E5E1F4812CFCD9F174320ED311DEB5DB107",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "4C4F24BCCA0037201950E78AAB3DD467618AE178509BD249465A554EB41CB0D3",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "4FBF1A71484631A904ED1C8241678ADF258D888BEE3678626DE243855B394207",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "5536355789F3531164E0AE36FB3ED7DE80A25B578E9F82B23F2E5244AA9CBC34",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "697D339706BCE7C253F6EBF6E64836FB5AB3B0BA9D8C69891EF8E25E50B4F3E4",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "6B6E53C551E4AE9A2A3F2DD7DA90A1270338B56F0DB599ED5D6A10FB835C0226",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "6D3683D67C3D950DAC6170AD5272DC152BF57639C1D4E2BC14C0AD6A4DAEC81F",
+   "type": "DirectoryNode",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "7758BE1D2C88AF69C6FD4893CA72F0DE50B73AB0C955C612D5DCBCDA6340A685",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "78C5BA19330E230A9FF5C2D3C50283FCCFA1EFC3BCE2A26313A41A9A38D3ED90",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "81C1B43A4416C3B6E2C94AA1CB4B1C588EA5333FFFFFFFFFFFFFFFFFFFFFFFFF",
+   "type": "NFTokenPage",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "82488125D794184892DC20217282807E6A7537F71870F61F639F6619BCAAF30D",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "89DBABFB9E6119D8FDCB8B5D866513BBDD139503E98C59E8212AE956F2949530",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "8C1CF15C6015155C614B11861040279BE29ADA888E9E000C3D2AD4084C2085AB",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "906AE4BB357BEE423B3EB8FBA8FAEE21EBB89ADA725E2EAE5DDE145F8F326D2C",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "93113EA4145E99C8BA41157387B70182BEEC67169202B54E06051BED08CAEE4A",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "9CB4C7245339EB5266A3893293C1A6F5E70A347CC331F7EC3A2D1B7AE5157351",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "A03E95A9F8060B5BFD3EE3F117FDB457C632919EAF34ED4F39A1470A917C854E",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "A40E2F80652945E234AE7AECD246CAE1EDFBE27D3490C0CDD4573DB7CF9CC489",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "A50C6D64EEB3ECA9A1885641A757A36A20CA9AA8F84BDEB9AD9EB9CD043D274F",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "AB0AF54204E7AD431095D0ECB7174E16C23EDA7FE2CC10B62C1BF262A6A2D2DD",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "B150179BB28D91063F4916476FAEB279081D00ECD048945AFBB6753CE995E471",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "B8C930D001BA9CF95099D26C6795016917B0E8D730369A43EDA594E1611372D9",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "BE3A2C80F2B0118DE2D0CCD5B58D7811415AB070CD80C48E517BCB02B024FAEF",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "C7D201E440B8CB9D82FD08520374B4216B2186FA002A7CF2C1BBB1A3D0EBA9FD",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "CB869EB0439DC3EF58D07CC7545C49CBF4983351F4983351BD944ED000000035",
+   "type": "NFTokenPage",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "CC24C0F525E122B25A7962CBA54D4F7478AFEB5BD63A53D9210B286A96A2B9A9",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "CDD1B6794311C48B9E6A1A38906297767CC2336A132C8719B7B2FFF9D2B31C94",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "D21F200806CE2133208BB820BF4A7C5BE918275396A06C096793B4A3F48C6C38",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "D3881AE739612DEBA2BB6556847F5BF68B3202A12FDD9AA24334A6A2126C9CCF",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "D58C7D236BDB82852DCE40C430A77416EE6DBF094940C6116D2DEB9FA023C06F",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "D90AAADDAC4A5EA2F9DE420B819A8F06C242C2312FABAE994C442120735895E9",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "DD626F99139703070CF649A31485E4FEA50850F59B01CCB5FAF2CBFD562642EA",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "DF0510C5E431D156D50A474809D80593100ECB66462D280C059627200E309404",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "DFD07686F1071D13E888809E8A34A5333AE1C846E83D8EE2B62BE6D7CB7FD773",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "E2C8D84E1D51724DB5C8ED52CDB834BA7B81A46466F2783B426E9EA06F750BE6",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "E5EB38724C2D8D993D5BF07B9E9EC82258E90AC3D003813335C45E5013C0D27E",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "E6961C4BB453113031CAE5EFD2F4691C642D71B85522E768DBDFDA00DD65C1F0",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "E7A7FA950A2EAD009E144B9C7630EACCAD45FD379E97C97E2EE26710AC72DBF6",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "EE757708406DE543924E895F48B59748F90E9DD2E24F63D513DD2BAC5C85E7E3",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "F071D7583E29692E2B7C28E25F78AB768B8631D83D00C48EEE377537B07685C4",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "F59F5C0D0365304EAD970EAD462C9F3B1A0403D11D65A2118D999087FC902D98",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  },
+  {
+   "fields": [],
+   "index": "F62E6C47442A3F68245214E622E021096406A5AB81C53D425016F69C79917523",
+   "type": "AccountRoot",
+   "verdict": "MATCH"
+  }
+ ],
+ "public_complete_ledgers": "8100054-8198167",
+ "retries": 0,
+ "rpc_calls": 91
+}

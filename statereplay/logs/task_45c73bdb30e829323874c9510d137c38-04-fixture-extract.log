@@ -1,0 +1,17 @@
+# task_45c7 run 04 real-capture test fixtures  2026-11-19T00:20:27Z
+$ python3 -I statereplay/extract_replay.py data/statereplay/F1 data/statereplay/F3 data/statereplay/tx --out tests/fixtures/statereplay/F1F3 --subset 40
+SNAPSHOT A ledger=8169668 hash=216BE6A70E0BD1596A074C1933A6074A5A1467AC408BEF540C50AD020A6BB4AE objects=70
+SNAPSHOT B ledger=8169792 hash=8BBEDFB1FE9004EED3170D728D0A350FCB20FCAC8DF325FFF0AD4FA5A84709D2 objects=69
+PSEUDONYMIZED addresses=219 free_text=530
+FILE A.jsonl.gz sha256=bf80258e07c1cec3cf52f6746901d13b673f76155617fe616465106eeef9a2dd
+FILE B.jsonl.gz sha256=ee5a5d17acff5303fbcbcd7456f2e080975ae697b01dac51ce709c626ec31515
+FILE ledgers.jsonl.gz sha256=4feb373c6757ff3be9174f1b2fbe2a6b460b07eaf48c297d59523e2c3eb2bf5c
+FILE snapshots.json sha256=3c3e6bf291c1e218966a60d51d23c147099f4b7edb1d02fec25e0b34d7196925
+FILE tx.jsonl.gz sha256=24f7a11231451afe90a9e8a6b93ed1a791fe004cae14d44f4631e099ab0b40c1
+rc=0
+$ python3 -I statereplay/replay.py --data tests/fixtures/statereplay/F1F3
+WINDOW A=8169668 B=8169792 ledgers=124 transactions=39 nodes=78
+RESULT objects_replayed=69 objects_B=69 diffs=0 EXACT
+rc=0
+NUNL fixture: A object 8020736 UNLModify ADB68CE04E1D5001DDB6E2214C8F640CEA6565AA828CDA443AC243F8B0B411D2 present at B False
+rc=0

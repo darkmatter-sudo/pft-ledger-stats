@@ -1,0 +1,51 @@
+# task_45c7 run 13 extract publishable data, replay --data, hotspots report, code e6de31875ba912e4260077241a09e364a7eda44e  2026-11-20T00:13:26Z
+# sha256 27ebb0bababa91a63cc9eeef8aac421690e9ad3703777136b0c3f45ab3171924  statereplay/extract_replay.py
+# sha256 b323f85b65303f15253f5d18ba949cdc6aeac51cbdabbad47216b7c56179615d  statereplay/replay.py
+# sha256 82abfd8021a14eee2131567adb581cb4c90131e8c8cdbd8611fc3e8f5be3d1d5  statereplay/hotspots.py
+$ python3 -I statereplay/extract_replay.py data/statereplay/A data/statereplay/B data/statereplay/tx --out statereplay/data
+SNAPSHOT A ledger=8169599 hash=DCCDD8154A93AA9C7F9129E8ACEDD2062A06E477FBBE529AF6A494024D88B739 objects=5265
+SNAPSHOT B ledger=8198144 hash=10B61CAAB02487766A985DAD87C7A82EE615F25069D86C070417356189B711FC objects=5283
+PSEUDONYMIZED addresses=36801 free_text=59012
+FILE A.jsonl.gz sha256=e79d6af8e7f40ac53fe4ab18b0b5030227f59978e867a35917ca3b9d72695843
+FILE B.jsonl.gz sha256=80d87132f01bd026bc4b4d8c183b4ff1e4d4b5929c27d6c1b76c07a36d74f98a
+FILE crosscheck-B-negative.json sha256=bc1935e14825eefcc5474d7731c4b811c312be6f1ea2e36d65cea88bfe4d49be
+FILE crosscheck-B.json sha256=3b003fad135144f3fd2bf5f1633dc3a3e25fca3ae98cc077d1845e62e25987aa
+FILE ledgers.jsonl.gz sha256=74d0fcbfaccd8a89c6c37300d036adbba31ab89eec8ba392db8991ca8978d5ff
+FILE snapshots.json sha256=ee4368a17a5ef19ad20866dc9fbdb115604765939381d2afa5315bba78f09156
+FILE tx.jsonl.gz sha256=de38fde4de1bf7d063be886a1e51841936aa9b22fac6bd69ba26c5a92171c7af
+rc=0
+$ python3 -I statereplay/replay.py --data statereplay/data
+WINDOW A=8169599 B=8198144 ledgers=28545 transactions=9620 nodes=19252
+DERIVED NegativeUNL ledger=8178176 replaced
+DERIVED NegativeUNL ledger=8179456 erased
+DERIVED NegativeUNL ledger=8180480 replaced
+RESULT objects_replayed=5283 objects_B=5283 diffs=0 EXACT
+rc=0
+$ python3 -I statereplay/hotspots.py --data statereplay/data --out statereplay
+REPLAY EXACT diffs=0 ledgers=28545 transactions=9620 nodes=19252
+WROTE statereplay/REPORT.md statereplay/report.json
+rc=0
+$ mkdir -p ~/.cache/sr13 && python3 -I statereplay/hotspots.py --data statereplay/data --out ~/.cache/sr13 >/dev/null && cmp ~/.cache/sr13/REPORT.md statereplay/REPORT.md && cmp ~/.cache/sr13/report.json statereplay/report.json
+rc=0
+$ cd statereplay/data && sha256sum * && ls -l | awk "NR>1{print \$5, \$9}"
+e79d6af8e7f40ac53fe4ab18b0b5030227f59978e867a35917ca3b9d72695843  A.jsonl.gz
+80d87132f01bd026bc4b4d8c183b4ff1e4d4b5929c27d6c1b76c07a36d74f98a  B.jsonl.gz
+bc1935e14825eefcc5474d7731c4b811c312be6f1ea2e36d65cea88bfe4d49be  crosscheck-B-negative.json
+3b003fad135144f3fd2bf5f1633dc3a3e25fca3ae98cc077d1845e62e25987aa  crosscheck-B.json
+74d0fcbfaccd8a89c6c37300d036adbba31ab89eec8ba392db8991ca8978d5ff  ledgers.jsonl.gz
+ee4368a17a5ef19ad20866dc9fbdb115604765939381d2afa5315bba78f09156  snapshots.json
+de38fde4de1bf7d063be886a1e51841936aa9b22fac6bd69ba26c5a92171c7af  tx.jsonl.gz
+1974715 A.jsonl.gz
+1983297 B.jsonl.gz
+14380 crosscheck-B-negative.json
+12514 crosscheck-B.json
+1465838 ledgers.jsonl.gz
+1794 snapshots.json
+2209500 tx.jsonl.gz
+rc=0
+$ wc -l statereplay/REPORT.md; sha256sum statereplay/REPORT.md statereplay/report.json
+wc: statereplay/REPORT.md: No such file or directory
+sha256sum: statereplay/REPORT.md: No such file or directory
+sha256sum: statereplay/report.json: No such file or directory
+rc=1
+# 2026-11-20T00:14:00Z SUPERSEDED by run 13a: runner bug, the 'cd statereplay/data' inside the logging helper's eval persisted, so the last check ran in the wrong directory (rc=1). Steps above it are unaffected; 13a re-runs every step with each check in a subshell.
