@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Controlled mutation check for statehash/ (lib, replay, collector, report).
+"""Controlled mutation check for statehash/ (lib, replay, collector, report, crosscheck).
 
 Each mutant puts one broken line into a temporary copy of the repo and runs the statehash tests
 (tests/test_statehash_*.py). Verdicts:
@@ -34,6 +34,7 @@ LIB = "statehash/lib_statehash.py"
 REP = "statehash/replay_statehash.py"
 COL = "statehash/collect_statehash.py"
 RPT = "statehash/report_statehash.py"
+XC = "statehash/crosscheck_statehash.py"
 
 MUTANTS = [
     # hashing
@@ -294,6 +295,9 @@ MUTANTS = [
         '    if len({r["index"] for r in rows}) != len(rows):\n',
         "    if False:\n",
     ),
+    # crosscheck
+    ("X1 public fields not compared", XC, '    bad = [k for k, v in own.items() if str(led.get(k, "")).upper() != v]\n', "    bad = []\n"),
+    ("X2 unanswered sample counted as match", XC, '        return {"ledger_index": idx, "ok": False, "error": f"{type(e).__name__}: {e}"}\n', '        return {"ledger_index": idx, "ok": True, "error": f"{type(e).__name__}: {e}"}\n'),
     # report
     ("P1 report root gate off", RPT, '    if root != header["account_hash"]:\n', "    if False:\n"),
     (

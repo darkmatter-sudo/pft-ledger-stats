@@ -5,7 +5,7 @@ target-version = "py310"
 select = ["E", "F", "W", "B", "I"]
 
 [lint.isort]
-known-first-party = ["collect_flags", "lib_hashverify", "collect_statehash", "lib_statehash", "replay_statehash", "report_statehash", "mutants_statehash"]
+known-first-party = ["collect_flags", "lib_hashverify", "collect_statehash", "lib_statehash", "replay_statehash", "report_statehash", "mutants_statehash", "crosscheck_statehash"]
 
 [lint.per-file-ignores]
 # mutant table rows are exact source lines and cannot be wrapped
