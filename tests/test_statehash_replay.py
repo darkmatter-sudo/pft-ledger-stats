@@ -186,3 +186,14 @@ def test_long_skip_list_created_on_256_boundary():
     assert r.map.get(R.SKIP_KEY) is not None and r.map.size == 2
     r.advance_skip_lists(258, b"\xbb" * 32)
     assert r.map.size == 2  # 257 is no boundary: only the short list moves
+
+
+def test_self_consistent_header_with_wrong_parent_is_chain_break():
+    rows = copy.deepcopy(BASE[4])
+    i = 30
+    hdr = bytearray.fromhex(rows[i]["header"])
+    hdr[12] ^= 1  # parent_hash byte; re-hash so HEADER_HASH passes and only the chain is wrong
+    rows[i]["header"] = hdr.hex().upper()
+    rows[i]["ledger_hash"] = L.sha512half(R.PREFIX_LEDGER, bytes(hdr)).hex().upper()
+    e = reason(rows=rows)
+    assert e.reason == "CHAIN_BREAK" and e.ledger == rows[i]["ledger_index"]

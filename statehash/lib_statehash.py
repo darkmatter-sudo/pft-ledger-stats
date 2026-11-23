@@ -170,14 +170,14 @@ class SHAMap:
         self.size -= 1
         for n, _ in path:
             n.hash = None
-        # collapse from the bottom: an inner (not the root) with one leaf and no inner child, or empty
+        # collapse from the bottom: an inner (not the root) left with one leaf and no inner child hands
+        # the leaf up. A non-root inner always holds >= 2 leaves below it before a delete (set() only
+        # creates one to separate two keys), so after one delete it holds >= 1 and never ends up empty.
         for level in range(len(path) - 1, 0, -1):
             n = path[level][0]
             kids = [k for k in n.kids if k is not None]
-            up, up_slot = path[level - 1]
-            if not kids:
-                up.kids[up_slot] = None
-            elif len(kids) == 1 and isinstance(kids[0], Leaf):
+            if len(kids) == 1 and isinstance(kids[0], Leaf):
+                up, up_slot = path[level - 1]
                 up.kids[up_slot] = kids[0]
             else:
                 break
