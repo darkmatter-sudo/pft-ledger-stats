@@ -197,3 +197,41 @@ def test_self_consistent_header_with_wrong_parent_is_chain_break():
     rows[i]["ledger_hash"] = L.sha512half(R.PREFIX_LEDGER, bytes(hdr)).hex().upper()
     e = reason(rows=rows)
     assert e.reason == "CHAIN_BREAK" and e.ledger == rows[i]["ledger_index"]
+
+
+def write_cap(d, rows):
+    os.makedirs(d)
+    with open(os.path.join(d, "ledgers.jsonl"), "w") as fh:
+        for r in rows:
+            fh.write(json.dumps(r) + "\n")
+
+
+def test_progress_mode_checks_roots_without_b(tmp_path, capsys):
+    rows = copy.deepcopy(BASE[4])
+    write_cap(str(tmp_path / "cap"), rows)
+    to = BASE[0]["ledger_index"] + 100
+    assert R.main(["--a", DATA_A, "--cap", str(tmp_path / "cap"), "--to", str(to)]) == 0
+    out = capsys.readouterr().out
+    assert "PROGRESS PASS (no B comparison) per_ledger_roots_matched=100/100" in out
+    i = next(i for i, r in enumerate(rows) if r["transactions"] and 0 < i <= 100)
+    rows[i]["transactions"] = []
+    write_cap(str(tmp_path / "cap2"), rows)
+    assert R.main(["--a", DATA_A, "--cap", str(tmp_path / "cap2"), "--to", str(to)]) == 1
+    assert f"FAIL ROOT_MISMATCH ledger={rows[i]['ledger_index']}" in capsys.readouterr().out
+
+
+def test_cli_full_mode_on_real_window(tmp_path, capsys):
+    ha, items_a, hb, items_b, rows = copy.deepcopy(BASE)
+    write_cap(str(tmp_path / "cap"), rows)
+    os.makedirs(tmp_path / "B")
+    with open(tmp_path / "B" / "header.json", "w") as fh:
+        json.dump(hb, fh)
+    with open(tmp_path / "B" / "state.jsonl", "w") as fh:
+        for k, v in items_b:
+            fh.write(json.dumps({"index": k.hex().upper(), "data": v.hex().upper()}) + "\n")
+    out_json = tmp_path / "r.json"
+    rc = R.main(
+        ["--a", DATA_A, "--b", str(tmp_path / "B"), "--cap", str(tmp_path / "cap"), "--json", str(out_json)]
+    )
+    assert rc == 0 and "RESULT PASS ledgers=158" in capsys.readouterr().out
+    assert json.loads(out_json.read_text())["roots_matched"] == 158

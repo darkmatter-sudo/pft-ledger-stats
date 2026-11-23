@@ -27,6 +27,7 @@ Exit 0 only when every check passes; failures print `FAIL <REASON> ...` and exit
 
 Usage:
   ./replay_statehash.py --a DIR --b DIR --cap DIR [--json out.json]
+  ./replay_statehash.py --a DIR --cap DIR --to N     (progress check during the window: roots only)
 """
 
 import argparse
@@ -318,13 +319,39 @@ def threaded(etype):
 
 def replay(defs, ha, items_a, hb, items_b, cap_rows, on_ledger=None):
     """Returns stats; raises ReplayError on the first failure."""
+    r, stats, prev_hash = walk(defs, ha, items_a, cap_rows, hb["ledger_index"], on_ledger)
+    last = hb["ledger_index"]
+    if prev_hash.hex().upper() != hb["ledger_hash"]:
+        raise ReplayError("ANCHOR_B_HASH", last)
+    target = dict(items_b)
+    diffs = []
+    for k in sorted(set(target) | {key for key, _ in iter_map(r.map)}):
+        s, t = r.map.get(k), target.get(k)
+        if s is None:
+            diffs.append(("MISSING_IN_REPLAY", k.hex().upper()))
+        elif t is None:
+            diffs.append(("EXTRA_IN_REPLAY", k.hex().upper()))
+        elif s != t:
+            diffs.append(("BLOB_MISMATCH", k.hex().upper()))
+    if diffs:
+        raise ReplayError(diffs[0][0], last, index=diffs[0][1], detail=f"diffs={len(diffs)}")
+    root_b = L.root_of({k: L.leaf_hash(k, v) for k, v in items_b}).hex().upper()
+    if root_b != hb["account_hash"] or r.map.root_hash().hex().upper() != root_b:
+        raise ReplayError("ROOT_B", last, detail=f"rebuilt={root_b} header={hb['account_hash']}")
+    stats["root_B"] = root_b
+    stats["objects_B"] = len(target)
+    return stats
+
+
+def walk(defs, ha, items_a, cap_rows, last, on_ledger=None):
+    """Rebuild A and replay A+1 .. last with the per-ledger root check: (replayer, stats, hash of last)."""
     r = Replayer(defs, items_a)
     root_a = r.map.root_hash().hex().upper()
     if root_a != ha["account_hash"]:
         raise ReplayError(
             "ROOT_A", ha["ledger_index"], detail=f"rebuilt={root_a} header={ha['account_hash']}"
         )
-    first, last = ha["ledger_index"] + 1, hb["ledger_index"]
+    first = ha["ledger_index"] + 1
     if last < first:
         raise ReplayError("WINDOW_EMPTY", detail=f"A={first - 1} B={last}")
     by_n = {}
@@ -354,26 +381,7 @@ def replay(defs, ha, items_a, hb, items_b, cap_rows, on_ledger=None):
         if on_ledger:
             on_ledger(n, r, stats)
         prev_hash = lh
-    if prev_hash.hex().upper() != hb["ledger_hash"]:
-        raise ReplayError("ANCHOR_B_HASH", last)
-    target = dict(items_b)
-    diffs = []
-    for k in sorted(set(target) | {key for key, _ in iter_map(r.map)}):
-        s, t = r.map.get(k), target.get(k)
-        if s is None:
-            diffs.append(("MISSING_IN_REPLAY", k.hex().upper()))
-        elif t is None:
-            diffs.append(("EXTRA_IN_REPLAY", k.hex().upper()))
-        elif s != t:
-            diffs.append(("BLOB_MISMATCH", k.hex().upper()))
-    if diffs:
-        raise ReplayError(diffs[0][0], last, index=diffs[0][1], detail=f"diffs={len(diffs)}")
-    root_b = L.root_of({k: L.leaf_hash(k, v) for k, v in items_b}).hex().upper()
-    if root_b != hb["account_hash"] or r.map.root_hash().hex().upper() != root_b:
-        raise ReplayError("ROOT_B", last, detail=f"rebuilt={root_b} header={hb['account_hash']}")
-    stats["root_B"] = root_b
-    stats["objects_B"] = len(target)
-    return stats
+    return r, stats, prev_hash
 
 
 def iter_map(m):
@@ -385,7 +393,8 @@ def iter_map(m):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--a", required=True)
-    ap.add_argument("--b", required=True)
+    ap.add_argument("--b", help="snapshot B (full check); without it --to N is required (progress check)")
+    ap.add_argument("--to", type=int, help="progress check: replay A+1 .. N only, no B comparison")
     ap.add_argument("--cap", required=True)
     ap.add_argument(
         "--defs", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "definitions.json")
@@ -394,8 +403,23 @@ def main(argv=None):
     a = ap.parse_args(argv)
     defs = L.Defs(a.defs)
     ha, items_a = load_snapshot(a.a)
-    hb, items_b = load_snapshot(a.b)
     rows = read_jsonl(os.path.join(a.cap, "ledgers.jsonl"))
+    if not a.b:
+        if a.to is None:
+            ap.error("give --b, or --to N for a progress check")
+        print(f"INPUT A={ha['ledger_index']} to={a.to} capture_rows={len(rows)} definitions={defs.hash}")
+        try:
+            _, st, _ = walk(defs, ha, items_a, rows, a.to)
+        except ReplayError as e:
+            print(f"FAIL {e}")
+            return 1
+        print(
+            f"PROGRESS PASS (no B comparison) per_ledger_roots_matched={st['roots_matched']}"
+            f"/{a.to - ha['ledger_index']} transactions={st['transactions']} nodes={st['nodes']} "
+            f"negative_unl={st.get('negative_unl', [])}"
+        )
+        return 0
+    hb, items_b = load_snapshot(a.b)
     print(
         f"INPUT A={ha['ledger_index']} B={hb['ledger_index']} capture_rows={len(rows)} "
         f"definitions={defs.hash}"
