@@ -1,0 +1,23 @@
+{
+ "account_hash": "D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4",
+ "files": {
+  "header.json": {
+   "rows": 1,
+   "sha256": "785330205522d7b64290081c4517128dcd6c51026575b5bfb68e889ff89c4e2e"
+  },
+  "public-header.json": {
+   "rows": 1,
+   "sha256": "e81653a5acbc9bc23d4e210d096050ab8493c3946f6689b9c4cb23d142f04662"
+  },
+  "state.jsonl": {
+   "rows": 5334,
+   "sha256": "243c8497679bdb94b2bd088daae7849f3856cbe63b4d9cb0508a7894ff58ccc0"
+  }
+ },
+ "format": "pft-statehash-snapshot/1",
+ "ledger_hash": "090151EA6A5C75F58998DD3BBDC6DBFE908F15EAED671B541A70F67632987850",
+ "ledger_index": 8290390,
+ "objects": 5334,
+ "retries": 0,
+ "rpc_calls": 5
+}
