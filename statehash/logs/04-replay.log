@@ -1,0 +1,37 @@
+# 2026-11-24T05:56:01Z replay commit=68dad8d4a8b3c87022eac78d5db07f1ed7e0ea7b (published data only)
+$ python3 -I statehash/replay_statehash.py --a ./statehash/data/A --b ./statehash/data/B --cap ./statehash/data/cap --json ./statehash/data/replay.json
+INPUT A=8290390 B=8319190 capture_rows=28801 definitions=6141F0BEB56770723FA7F03ED01D9C9950C3B6026CCE8E16CCA90E2A2077170A
+ROOTS root_A=D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4 root_B=6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24 per_ledger_roots_matched=28800/28800
+RESULT PASS ledgers=28800 transactions=9776 nodes=19614 objects_B=5351 negative_unl=[]
+rc=0
+$ cat ./statehash/data/replay.json
+{
+ "ledgers": 28800,
+ "nodes": 19614,
+ "objects_B": 5351,
+ "ok": true,
+ "root_A": "D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4",
+ "root_B": "6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24",
+ "roots_matched": 28800,
+ "transactions": 9776
+}
+rc=0
+$ jq -r '"A ledger=\(.ledger_index) own_header ledger_hash=\(.ledger_hash) account_hash=\(.account_hash)"' ./statehash/data/A/header.json
+A ledger=8290390 own_header ledger_hash=090151EA6A5C75F58998DD3BBDC6DBFE908F15EAED671B541A70F67632987850 account_hash=D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4
+rc=0
+$ jq -r '"A ledger=\(.ledger_index) public_rpc ledger_hash=\(.ledger_hash) account_hash=\(.account_hash) validated=\(.validated) source=\(.source)"' ./statehash/data/A/public-header.json
+A ledger=8290390 public_rpc ledger_hash=090151EA6A5C75F58998DD3BBDC6DBFE908F15EAED671B541A70F67632987850 account_hash=D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4 validated=true source=https://rpc.testnet.postfiat.org/
+rc=0
+$ [ 'D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4' = "$(jq -r .account_hash ./statehash/data/A/header.json)" ] && [ 'D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4' = "$(jq -r .account_hash ./statehash/data/A/public-header.json)" ] && [ "$(jq -r .ledger_hash ./statehash/data/A/header.json)" = "$(jq -r .ledger_hash ./statehash/data/A/public-header.json)" ] && [ "$(jq -r .validated ./statehash/data/A/public-header.json)" = true ] && echo 'ROOTMATCH A rebuilt=D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4 = own header = public RPC header'
+ROOTMATCH A rebuilt=D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4 = own header = public RPC header
+rc=0
+$ jq -r '"B ledger=\(.ledger_index) own_header ledger_hash=\(.ledger_hash) account_hash=\(.account_hash)"' ./statehash/data/B/header.json
+B ledger=8319190 own_header ledger_hash=3E0C84002CAEDA4509B84E73F6B7F55949E9B5D0DDAC0E6950C5C88BBC1CE46B account_hash=6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24
+rc=0
+$ jq -r '"B ledger=\(.ledger_index) public_rpc ledger_hash=\(.ledger_hash) account_hash=\(.account_hash) validated=\(.validated) source=\(.source)"' ./statehash/data/B/public-header.json
+B ledger=8319190 public_rpc ledger_hash=3E0C84002CAEDA4509B84E73F6B7F55949E9B5D0DDAC0E6950C5C88BBC1CE46B account_hash=6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24 validated=true source=https://rpc.testnet.postfiat.org/
+rc=0
+$ [ '6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24' = "$(jq -r .account_hash ./statehash/data/B/header.json)" ] && [ '6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24' = "$(jq -r .account_hash ./statehash/data/B/public-header.json)" ] && [ "$(jq -r .ledger_hash ./statehash/data/B/header.json)" = "$(jq -r .ledger_hash ./statehash/data/B/public-header.json)" ] && [ "$(jq -r .validated ./statehash/data/B/public-header.json)" = true ] && echo 'ROOTMATCH B rebuilt=6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24 = own header = public RPC header'
+ROOTMATCH B rebuilt=6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24 = own header = public RPC header
+rc=0
+# end

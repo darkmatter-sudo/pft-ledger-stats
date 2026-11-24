@@ -1,0 +1,15 @@
+# 2026-11-24T06:02:11Z tests commit=77e429580ae92bd42f10490df1dbc927359fd31d
+$ TMPDIR=$HOME/.cache .venv/bin/python -m pytest -q -p no:cacheprovider
+........................................................................ [ 93%]
+...............................................................          [100%]
+998 passed, 1 skipped in 102.46s (0:01:42)
+rc=0
+$ .venv/bin/python -m pytest -q -p no:cacheprovider tests/test_statehash_*.py
+..............................................................           [100%]
+62 passed in 7.34s
+rc=0
+$ ruff check statehash tests/test_statehash_*.py && (cd statehash && ruff check .) && ruff format --check statehash tests/test_statehash_*.py
+All checks passed!
+All checks passed!
+13 files already formatted
+rc=0

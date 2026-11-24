@@ -1,0 +1,26 @@
+2026-11-23T05:42:56Z CAPTURE start=8290390 next=8290390 to=8319190
+2026-11-23T06:42:59Z PROGRESS ledger=8291584 validated=8291585 txs=415 rpc_calls=1789 retries=0
+2026-11-23T07:43:00Z PROGRESS ledger=8292776 validated=8292777 txs=803 rpc_calls=3577 retries=0
+2026-11-23T08:43:02Z PROGRESS ledger=8293967 validated=8293968 txs=1216 rpc_calls=5359 retries=0
+2026-11-23T09:43:03Z PROGRESS ledger=8295158 validated=8295158 txs=1628 rpc_calls=7140 retries=0
+2026-11-23T10:43:03Z PROGRESS ledger=8296348 validated=8296349 txs=2035 rpc_calls=8923 retries=0
+2026-11-23T11:43:07Z PROGRESS ledger=8297541 validated=8297542 txs=2440 rpc_calls=10703 retries=0
+2026-11-23T12:43:09Z PROGRESS ledger=8298733 validated=8298733 txs=2878 rpc_calls=12477 retries=0
+2026-11-23T13:43:09Z PROGRESS ledger=8299916 validated=8299916 txs=3316 rpc_calls=14245 retries=0
+2026-11-23T14:43:12Z PROGRESS ledger=8301110 validated=8301111 txs=3708 rpc_calls=16006 retries=0
+2026-11-23T15:43:12Z PROGRESS ledger=8302298 validated=8302299 txs=4091 rpc_calls=17768 retries=0
+2026-11-23T16:43:14Z PROGRESS ledger=8303492 validated=8303492 txs=4484 rpc_calls=19537 retries=0
+2026-11-23T17:43:15Z PROGRESS ledger=8304679 validated=8304680 txs=4868 rpc_calls=21319 retries=0
+2026-11-23T18:43:16Z PROGRESS ledger=8305868 validated=8305868 txs=5289 rpc_calls=23085 retries=0
+2026-11-23T19:43:16Z PROGRESS ledger=8307054 validated=8307055 txs=5725 rpc_calls=24863 retries=0
+2026-11-23T20:43:19Z PROGRESS ledger=8308245 validated=8308246 txs=6121 rpc_calls=26643 retries=0
+2026-11-23T21:43:20Z PROGRESS ledger=8309428 validated=8309429 txs=6538 rpc_calls=28422 retries=0
+2026-11-23T22:43:21Z PROGRESS ledger=8310616 validated=8310616 txs=6923 rpc_calls=30206 retries=0
+2026-11-23T23:43:22Z PROGRESS ledger=8311806 validated=8311807 txs=7312 rpc_calls=31988 retries=0
+2026-11-24T00:43:24Z PROGRESS ledger=8312998 validated=8312998 txs=7684 rpc_calls=33757 retries=0
+2026-11-24T01:43:27Z PROGRESS ledger=8314189 validated=8314190 txs=8065 rpc_calls=35535 retries=0
+2026-11-24T02:43:29Z PROGRESS ledger=8315380 validated=8315381 txs=8464 rpc_calls=37317 retries=0
+2026-11-24T03:43:31Z PROGRESS ledger=8316568 validated=8316568 txs=8856 rpc_calls=39092 retries=0
+2026-11-24T04:43:33Z PROGRESS ledger=8317759 validated=8317760 txs=9290 rpc_calls=40866 retries=0
+2026-11-24T05:43:35Z PROGRESS ledger=8318950 validated=8318950 txs=9711 rpc_calls=42641 retries=0
+2026-11-24T05:55:38Z STOPPED last=8319190 txs_this_run=9776 rpc_calls=42999 retries=0

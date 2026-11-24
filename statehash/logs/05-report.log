@@ -1,0 +1,55 @@
+# 2026-11-24T05:56:18Z report commit=68dad8d4a8b3c87022eac78d5db07f1ed7e0ea7b
+$ python3 -I statehash/report_statehash.py --offline ./statehash/data --out ./statehash/report
+WROTE structure.json bytes=4626
+WROTE structure.txt bytes=2355
+WROTE structure-types.csv bytes=741
+WROTE structure-fanout.csv bytes=274
+== snapshot A: ledger 8290390 090151EA6A5C75F58998DD3BBDC6DBFE908F15EAED671B541A70F67632987850
+root rebuilt D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4 == header account_hash D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4
+leaves 5334  leaf bytes 2077456  inner nodes 3555
+type               count     bytes    mean   max  depth
+AccountRoot         4793    498854   104.1   151      6
+Amendments             1      2060  2060.0  2060      3
+DirectoryNode         52      9444   181.6  1147     50
+FeeSettings            1        35    35.0    35      3
+LedgerHashes         128   1046784  8178.0  8210      5
+NFTokenOffer          45      6662   148.0   150      5
+NFTokenPage          306    512131  1673.6  3412     50
+NegativeUNL            1        93    93.0    93      3
+Offer                  3       549   183.0   183      4
+RippleState            4       844   211.0   211      4
+fan-out (children: inner nodes) 1:1617 2:1180 3:344 4:108 5:19 6:4 7:12 8:9 9:15 10:34 11:55 12:56 13:50 14:27 15:8 16:17
+leaf depth min 3 p50 4 p99 49 max 50
+AccountRoot proofs (4793): inner nodes p50 4 p99 5 max 6; bytes p50 2185 p99 2697 max 3209
+
+== snapshot B: ledger 8319190 3E0C84002CAEDA4509B84E73F6B7F55949E9B5D0DDAC0E6950C5C88BBC1CE46B
+root rebuilt 6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24 == header account_hash 6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24
+leaves 5351  leaf bytes 2091954  inner nodes 3616
+type               count     bytes    mean   max  depth
+AccountRoot         4809    500516   104.1   151      6
+Amendments             1      2060  2060.0  2060      3
+DirectoryNode         52      9444   181.6  1147     50
+FeeSettings            1        35    35.0    35      3
+LedgerHashes         128   1050368  8206.0  8210      5
+NFTokenOffer          45      6662   148.0   150      5
+NFTokenPage          307    521383  1698.3  3412     50
+NegativeUNL            1        93    93.0    93      3
+Offer                  3       549   183.0   183      4
+RippleState            4       844   211.0   211      4
+fan-out (children: inner nodes) 1:1665 2:1190 3:347 4:107 5:21 6:3 7:13 8:6 9:17 10:34 11:53 12:58 13:52 14:25 15:8 16:17
+leaf depth min 3 p50 4 p99 49 max 50
+AccountRoot proofs (4809): inner nodes p50 4 p99 5 max 6; bytes p50 2185 p99 2697 max 3209
+rc=0
+$ sha256sum ./statehash/report/*
+733970afd824935f7e2fc0b281b06b36d3622c692a72cf3312c90bbfe5f4a7d3  ./statehash/report/structure-fanout.csv
+ddc800189c6e4e88763af43aa8805a260933ac008fc36adaaa425a84120ebf20  ./statehash/report/structure-types.csv
+7d160b02255e65dd1337b8d449a6ed284583c9d0606e27b23a90b13ce88478a6  ./statehash/report/structure.json
+773e35b776ea366fd9ea7285bace19feee173a1c903130504484958a473c459a  ./statehash/report/structure.txt
+rc=0
+$ python3 -I statehash/report_statehash.py --snap A=./statehash/data/A --snap B=./statehash/data/B --out ~/.cache/shrep-TzLp >/dev/null && for f in structure.txt structure.json structure-types.csv structure-fanout.csv; do cmp ./statehash/report/$f ~/.cache/shrep-TzLp/$f && echo "cmp $f exit 0"; done
+cmp structure.txt exit 0
+cmp structure.json exit 0
+cmp structure-types.csv exit 0
+cmp structure-fanout.csv exit 0
+rc=0
+# end

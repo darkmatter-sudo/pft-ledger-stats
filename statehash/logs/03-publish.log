@@ -1,0 +1,31 @@
+# 2026-11-24T05:55:55Z publish commit=68dad8d4a8b3c87022eac78d5db07f1ed7e0ea7b
+$ for f in MANIFEST.json header.json public-header.json; do cp data/statehash/B/$f ./statehash/data/B/$f; done
+rc=0
+$ gzip -n -9 -c data/statehash/B/state.jsonl > ./statehash/data/B/state.jsonl.gz
+rc=0
+$ gzip -n -9 -c data/statehash/cap/ledgers.jsonl > ./statehash/data/cap/ledgers.jsonl.gz && cp data/statehash/cap/state.json ./statehash/data/cap/state.json
+rc=0
+$ sha256sum data/statehash/B/state.jsonl data/statehash/cap/ledgers.jsonl ./statehash/data/B/* ./statehash/data/cap/*
+0adb927ceb43a4bb6b1c7045ea8de910177e1cfd11799a5e2dbbc148c62cf094  data/statehash/B/state.jsonl
+ad98adfc3dc05c9c270c3b0256d3080af0a1c51a3ecbd08f6f243be025899a1e  data/statehash/cap/ledgers.jsonl
+5a26aa231053af6aa67495134dcde9c268c0bdbfabd8660aa31ac6ec361e2822  ./statehash/data/B/MANIFEST.json
+935e7aae532ecbe25b9ca37f73ba142011b54b150650a4c57d11928899ba7c78  ./statehash/data/B/header.json
+bcfec7ba70df9960c6d6ddce7170ac0518baf82556ccea6e7f4432c6d64142c7  ./statehash/data/B/public-header.json
+87e2c6a193a9748c615ccd1efde7f05ef76f462c48256845932044a3de04ef35  ./statehash/data/B/state.jsonl.gz
+e8b161fbe98922f9f9d21c4d50d0fc73e43e151c3bb9eae612fd1228e25c6e8d  ./statehash/data/cap/ledgers.jsonl.gz
+ec20f03365aada0791537d04c75ff42097ee9aad11c579ff9743f4665754eee7  ./statehash/data/cap/state.json
+rc=0
+$ jq -r '.files["state.jsonl"].sha256' ./statehash/data/B/MANIFEST.json
+0adb927ceb43a4bb6b1c7045ea8de910177e1cfd11799a5e2dbbc148c62cf094
+rc=0
+$ [ "$(gzip -dc ./statehash/data/B/state.jsonl.gz | sha256sum | cut -d' ' -f1)" = "$(jq -r '.files["state.jsonl"].sha256' ./statehash/data/B/MANIFEST.json)" ] && echo 'B state.jsonl.gz decompresses to the MANIFEST sha256'
+B state.jsonl.gz decompresses to the MANIFEST sha256
+rc=0
+$ gzip -dc ./statehash/data/cap/ledgers.jsonl.gz | wc -l
+28801
+rc=0
+$ gzip -dc ./statehash/data/cap/ledgers.jsonl.gz | sed -n '1p;$p' | jq -c '{ledger_index, ledger_hash, txs: (.transactions|length)}'
+{"ledger_index":8290390,"ledger_hash":"090151EA6A5C75F58998DD3BBDC6DBFE908F15EAED671B541A70F67632987850","txs":0}
+{"ledger_index":8319190,"ledger_hash":"3E0C84002CAEDA4509B84E73F6B7F55949E9B5D0DDAC0E6950C5C88BBC1CE46B","txs":0}
+rc=0
+# end fails=0

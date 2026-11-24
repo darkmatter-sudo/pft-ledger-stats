@@ -14,7 +14,26 @@ headers commit to. `hashverify/` rebuilds every ledger hash and transaction tree
 3. reports the tree's structure (per-type leaves and bytes, inner nodes and fan-out, leaf depth, per-account
    Merkle-proof size), re-rendered byte-identically `--offline` from the committed data.
 
-Status: work in progress (the A -> B capture window runs until ~2026-11-24T06:00Z).
+## Results (window 2026-11-23T05:42Z -> 2026-11-24T05:55Z)
+
+| check | result | log |
+|---|---|---|
+| snapshot A 8290390 (5334 objects): rebuilt root = own header = public RPC header | `D38E87E4...08B4` | `logs/01-snapshotA.log`, `logs/04-replay.log` |
+| snapshot B 8319190 (5351 objects): rebuilt root = own header = public RPC header | `6B19F199...7F24` | `logs/09-snapshotB.log`, `logs/04-replay.log` |
+| capture 8290390 .. 8319190 (28801 rows, 9776 transactions, 0 retries) | complete chain | `logs/07-window.log`, `logs/08-capture.log`, `logs/03-publish.log` |
+| replay A+1 .. B, root checked after every ledger | 28800/28800 match, replayed tree = B byte-for-byte | `logs/04-replay.log`, `data/replay.json` |
+| structure report A/B, `--offline` re-render | 4 files, `cmp` exit 0 each | `logs/05-report.log`, `report/` |
+| public-RPC crosscheck (64 seeded samples + first + last, A and B headers) | 68/68 match | `logs/06-crosscheck.log`, `data/crosscheck.json` |
+| tests + ruff | full repo 998 passed, 1 skipped; statehash 62 passed; ruff check/format clean | `logs/11-tests.log` |
+| mutation harness | control passed, every mutant caught | `logs/10-mutants.log` |
+
+Reproduce from a fresh clone (no network needed):
+
+```
+python3 -I statehash/replay_statehash.py --a statehash/data/A --b statehash/data/B --cap statehash/data/cap
+python3 -I statehash/report_statehash.py --offline statehash/data --out /tmp/r && \
+  for f in structure.txt structure.json structure-types.csv structure-fanout.csv; do cmp statehash/report/$f /tmp/r/$f; done
+```
 
 ## Files
 

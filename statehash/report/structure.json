@@ -1,0 +1,242 @@
+{
+ "definitions": "6141F0BEB56770723FA7F03ED01D9C9950C3B6026CCE8E16CCA90E2A2077170A",
+ "proof_inner_node_bytes": 512,
+ "snapshots": {
+  "A": {
+   "account_hash": "D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4",
+   "depth": {
+    "max": 50,
+    "min": 3,
+    "p50": 4,
+    "p99": 49
+   },
+   "fanout": {
+    "1": 1617,
+    "10": 34,
+    "11": 55,
+    "12": 56,
+    "13": 50,
+    "14": 27,
+    "15": 8,
+    "16": 17,
+    "2": 1180,
+    "3": 344,
+    "4": 108,
+    "5": 19,
+    "6": 4,
+    "7": 12,
+    "8": 9,
+    "9": 15
+   },
+   "inner_nodes": 3555,
+   "leaf_bytes": 2077456,
+   "leaves": 5334,
+   "ledger_hash": "090151EA6A5C75F58998DD3BBDC6DBFE908F15EAED671B541A70F67632987850",
+   "ledger_index": 8290390,
+   "proof": {
+    "accounts": 4793,
+    "bytes": {
+     "max": 3209,
+     "p50": 2185,
+     "p99": 2697
+    },
+    "inner_nodes": {
+     "max": 6,
+     "p50": 4,
+     "p99": 5
+    }
+   },
+   "root_rebuilt": "D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4",
+   "types": {
+    "AccountRoot": {
+     "bytes": 498854,
+     "count": 4793,
+     "max_bytes": 151,
+     "max_depth": 6,
+     "mean_bytes": 104.1
+    },
+    "Amendments": {
+     "bytes": 2060,
+     "count": 1,
+     "max_bytes": 2060,
+     "max_depth": 3,
+     "mean_bytes": 2060.0
+    },
+    "DirectoryNode": {
+     "bytes": 9444,
+     "count": 52,
+     "max_bytes": 1147,
+     "max_depth": 50,
+     "mean_bytes": 181.6
+    },
+    "FeeSettings": {
+     "bytes": 35,
+     "count": 1,
+     "max_bytes": 35,
+     "max_depth": 3,
+     "mean_bytes": 35.0
+    },
+    "LedgerHashes": {
+     "bytes": 1046784,
+     "count": 128,
+     "max_bytes": 8210,
+     "max_depth": 5,
+     "mean_bytes": 8178.0
+    },
+    "NFTokenOffer": {
+     "bytes": 6662,
+     "count": 45,
+     "max_bytes": 150,
+     "max_depth": 5,
+     "mean_bytes": 148.0
+    },
+    "NFTokenPage": {
+     "bytes": 512131,
+     "count": 306,
+     "max_bytes": 3412,
+     "max_depth": 50,
+     "mean_bytes": 1673.6
+    },
+    "NegativeUNL": {
+     "bytes": 93,
+     "count": 1,
+     "max_bytes": 93,
+     "max_depth": 3,
+     "mean_bytes": 93.0
+    },
+    "Offer": {
+     "bytes": 549,
+     "count": 3,
+     "max_bytes": 183,
+     "max_depth": 4,
+     "mean_bytes": 183.0
+    },
+    "RippleState": {
+     "bytes": 844,
+     "count": 4,
+     "max_bytes": 211,
+     "max_depth": 4,
+     "mean_bytes": 211.0
+    }
+   }
+  },
+  "B": {
+   "account_hash": "6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24",
+   "depth": {
+    "max": 50,
+    "min": 3,
+    "p50": 4,
+    "p99": 49
+   },
+   "fanout": {
+    "1": 1665,
+    "10": 34,
+    "11": 53,
+    "12": 58,
+    "13": 52,
+    "14": 25,
+    "15": 8,
+    "16": 17,
+    "2": 1190,
+    "3": 347,
+    "4": 107,
+    "5": 21,
+    "6": 3,
+    "7": 13,
+    "8": 6,
+    "9": 17
+   },
+   "inner_nodes": 3616,
+   "leaf_bytes": 2091954,
+   "leaves": 5351,
+   "ledger_hash": "3E0C84002CAEDA4509B84E73F6B7F55949E9B5D0DDAC0E6950C5C88BBC1CE46B",
+   "ledger_index": 8319190,
+   "proof": {
+    "accounts": 4809,
+    "bytes": {
+     "max": 3209,
+     "p50": 2185,
+     "p99": 2697
+    },
+    "inner_nodes": {
+     "max": 6,
+     "p50": 4,
+     "p99": 5
+    }
+   },
+   "root_rebuilt": "6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24",
+   "types": {
+    "AccountRoot": {
+     "bytes": 500516,
+     "count": 4809,
+     "max_bytes": 151,
+     "max_depth": 6,
+     "mean_bytes": 104.1
+    },
+    "Amendments": {
+     "bytes": 2060,
+     "count": 1,
+     "max_bytes": 2060,
+     "max_depth": 3,
+     "mean_bytes": 2060.0
+    },
+    "DirectoryNode": {
+     "bytes": 9444,
+     "count": 52,
+     "max_bytes": 1147,
+     "max_depth": 50,
+     "mean_bytes": 181.6
+    },
+    "FeeSettings": {
+     "bytes": 35,
+     "count": 1,
+     "max_bytes": 35,
+     "max_depth": 3,
+     "mean_bytes": 35.0
+    },
+    "LedgerHashes": {
+     "bytes": 1050368,
+     "count": 128,
+     "max_bytes": 8210,
+     "max_depth": 5,
+     "mean_bytes": 8206.0
+    },
+    "NFTokenOffer": {
+     "bytes": 6662,
+     "count": 45,
+     "max_bytes": 150,
+     "max_depth": 5,
+     "mean_bytes": 148.0
+    },
+    "NFTokenPage": {
+     "bytes": 521383,
+     "count": 307,
+     "max_bytes": 3412,
+     "max_depth": 50,
+     "mean_bytes": 1698.3
+    },
+    "NegativeUNL": {
+     "bytes": 93,
+     "count": 1,
+     "max_bytes": 93,
+     "max_depth": 3,
+     "mean_bytes": 93.0
+    },
+    "Offer": {
+     "bytes": 549,
+     "count": 3,
+     "max_bytes": 183,
+     "max_depth": 4,
+     "mean_bytes": 183.0
+    },
+    "RippleState": {
+     "bytes": 844,
+     "count": 4,
+     "max_bytes": 211,
+     "max_depth": 4,
+     "mean_bytes": 211.0
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,8 @@
+# 2026-11-24T05:56:20Z crosscheck commit=68dad8d4a8b3c87022eac78d5db07f1ed7e0ea7b
+$ python3 -I statehash/crosscheck_statehash.py --cap ./statehash/data/cap --a ./statehash/data/A --b ./statehash/data/B --n 64 --json ./statehash/data/crosscheck.json
+CROSSCHECK source=https://rpc.testnet.postfiat.org/ captured=28801 range=8290390-8319190 samples=66
+SNAPSHOT A 8290390 account_hash=D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4 public_match=True
+SNAPSHOT B 8319190 account_hash=6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24 public_match=True
+RESULT PASS matched=68/68 rpc_calls=68 retries=0
+rc=0
+# end
