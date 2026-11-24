@@ -1,0 +1,64 @@
+# 2026-11-24T06:14:40Z fresh clone of https://github.com/darkmatter-sudo/pft-ledger-stats at f16179736363b5058bcb7574b65ac28ccd16136a (scratch dir <W>)
+$ git clone -q https://github.com/darkmatter-sudo/pft-ledger-stats.git c && cd c && git checkout -q f16179736363b5058bcb7574b65ac28ccd16136a && git rev-parse HEAD && git status --short | wc -l
+f16179736363b5058bcb7574b65ac28ccd16136a
+0
+rc=0
+$ sha256sum statehash/*.py statehash/run_window.sh statehash/definitions.json
+8871f465b72454cfab0bbf2b5190a55c83691d9251529e931f2f8657594a9b40  statehash/collect_statehash.py
+bfc08df560f9cfb23e8ba4ddfd0d6258d415b67911f9dc4060a9e904a4330cdd  statehash/crosscheck_statehash.py
+fd5a3e85d013c44ff260123a20ecfb38b59f1e5efca6275264d13fee79e3bd4f  statehash/lib_statehash.py
+4407eecd7a4d8226874fa7b36774d7dc6cee746d17ae918328e922a936349f02  statehash/mutants_statehash.py
+6bb6d3c52e838756bbd4a1cc76db33af456b41d35248fc0d3f1ba559a81e9097  statehash/replay_statehash.py
+e9d7d61220a529c3e0510614029b748f044bcc8d4ebaab342d1fd1ad61c34b85  statehash/report_statehash.py
+01e90a610973267a7425564c97b2e4dd711ab577a5f2a46702bdba30cfd6efe9  statehash/run_window.sh
+04ca4c0081386bcc0017a247be308a263d9d49bb7dbd01c8e70b2a1615c8091c  statehash/definitions.json
+rc=0
+$ grep -o 'sha256(statehash/mutants_statehash.py)=[0-9a-f]*' statehash/logs/10-mutants.log | cut -d= -f2 | tee /dev/stderr | grep -qx "$(sha256sum statehash/mutants_statehash.py | cut -d' ' -f1)" && echo 'mutants_statehash.py sha256 = logs/10-mutants.log header'
+4407eecd7a4d8226874fa7b36774d7dc6cee746d17ae918328e922a936349f02
+mutants_statehash.py sha256 = logs/10-mutants.log header
+rc=0
+$ for s in A B; do m=$(jq -r '.files["state.jsonl"].sha256' statehash/data/$s/MANIFEST.json); g=$(gzip -dc statehash/data/$s/state.jsonl.gz | sha256sum | cut -d' ' -f1); [ "$m" = "$g" ] || exit 1; echo "$s state.jsonl sha256 $g = MANIFEST"; done
+A state.jsonl sha256 243c8497679bdb94b2bd088daae7849f3856cbe63b4d9cb0508a7894ff58ccc0 = MANIFEST
+B state.jsonl sha256 0adb927ceb43a4bb6b1c7045ea8de910177e1cfd11799a5e2dbbc148c62cf094 = MANIFEST
+rc=0
+$ for s in A B; do for f in header.json public-header.json; do m=$(jq -r --arg f $f '.files[$f].sha256' statehash/data/$s/MANIFEST.json); g=$(sha256sum statehash/data/$s/$f | cut -d' ' -f1); [ "$m" = "$g" ] || exit 1; echo "$s $f sha256 $g = MANIFEST"; done; done
+A header.json sha256 785330205522d7b64290081c4517128dcd6c51026575b5bfb68e889ff89c4e2e = MANIFEST
+A public-header.json sha256 e81653a5acbc9bc23d4e210d096050ab8493c3946f6689b9c4cb23d142f04662 = MANIFEST
+B header.json sha256 935e7aae532ecbe25b9ca37f73ba142011b54b150650a4c57d11928899ba7c78 = MANIFEST
+B public-header.json sha256 bcfec7ba70df9960c6d6ddce7170ac0518baf82556ccea6e7f4432c6d64142c7 = MANIFEST
+rc=0
+$ grep -E 'FILE state.jsonl' statehash/logs/01-snapshotA.log statehash/logs/09-snapshotB.log | sed 's/^.*logs.//'
+01-snapshotA.log:2026-11-23T05:42:55Z FILE state.jsonl rows=5334 sha256=243c8497679bdb94b2bd088daae7849f3856cbe63b4d9cb0508a7894ff58ccc0
+09-snapshotB.log:2026-11-24T05:55:42Z FILE state.jsonl rows=5351 sha256=0adb927ceb43a4bb6b1c7045ea8de910177e1cfd11799a5e2dbbc148c62cf094
+rc=0
+$ g=$(sha256sum statehash/data/cap/ledgers.jsonl.gz | cut -d' ' -f1); grep -q "$g  ./statehash/data/cap/ledgers.jsonl.gz" statehash/logs/03-publish.log && echo "cap ledgers.jsonl.gz sha256 $g = logs/03-publish.log"
+cap ledgers.jsonl.gz sha256 e8b161fbe98922f9f9d21c4d50d0fc73e43e151c3bb9eae612fd1228e25c6e8d = logs/03-publish.log
+rc=0
+$ TMPDIR=$TMPDIR ~/work/pft-ledger-stats/.venv/bin/python -m pytest -q -p no:cacheprovider 2>&1 | tail -1
+998 passed, 1 skipped in 109.22s (0:01:49)
+rc=0
+$ TMPDIR=$TMPDIR ~/work/pft-ledger-stats/.venv/bin/python -m pytest -q -p no:cacheprovider tests/test_statehash_*.py 2>&1 | tail -1
+62 passed in 8.07s
+rc=0
+$ ruff check statehash tests/test_statehash_*.py && (cd statehash && ruff check .) && ruff format --check statehash tests/test_statehash_*.py
+All checks passed!
+All checks passed!
+13 files already formatted
+rc=0
+$ python3 -I statehash/replay_statehash.py --a statehash/data/A --b statehash/data/B --cap statehash/data/cap --json ~/.cache/shfresh-qTV2/replay.json && cmp statehash/data/replay.json ~/.cache/shfresh-qTV2/replay.json && echo 'cmp replay.json exit 0'
+INPUT A=8290390 B=8319190 capture_rows=28801 definitions=6141F0BEB56770723FA7F03ED01D9C9950C3B6026CCE8E16CCA90E2A2077170A
+ROOTS root_A=D38E87E4E7A53EF689574E7962540559A490D7E4A3C01E1F0CB79C57F6D608B4 root_B=6B19F199B08B7307D10CB49ED584226B113CF71E1A4C939EC89BE145F1C87F24 per_ledger_roots_matched=28800/28800
+RESULT PASS ledgers=28800 transactions=9776 nodes=19614 objects_B=5351 negative_unl=[]
+cmp replay.json exit 0
+rc=0
+$ python3 -I statehash/report_statehash.py --offline statehash/data --out ~/.cache/shfresh-qTV2/r >/dev/null && for f in structure.txt structure.json structure-types.csv structure-fanout.csv; do cmp statehash/report/$f ~/.cache/shfresh-qTV2/r/$f || exit 1; echo "cmp $f exit 0"; done
+cmp structure.txt exit 0
+cmp structure.json exit 0
+cmp structure-types.csv exit 0
+cmp structure-fanout.csv exit 0
+rc=0
+$ git status --short | wc -l
+0
+rc=0
+# end 2026-11-24T06:17:14Z fails=0
+FRESH PASS
