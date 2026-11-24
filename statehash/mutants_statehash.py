@@ -296,8 +296,18 @@ MUTANTS = [
         "    if False:\n",
     ),
     # crosscheck
-    ("X1 public fields not compared", XC, '    bad = [k for k, v in own.items() if str(led.get(k, "")).upper() != v]\n', "    bad = []\n"),
-    ("X2 unanswered sample counted as match", XC, '        return {"ledger_index": idx, "ok": False, "error": f"{type(e).__name__}: {e}"}\n', '        return {"ledger_index": idx, "ok": True, "error": f"{type(e).__name__}: {e}"}\n'),
+    (
+        "X1 public fields not compared",
+        XC,
+        '    bad = [k for k, v in own.items() if str(led.get(k, "")).upper() != v]\n',
+        "    bad = []\n",
+    ),
+    (
+        "X2 unanswered sample counted as match",
+        XC,
+        '        return {"ledger_index": idx, "ok": False, "error": f"{type(e).__name__}: {e}"}\n',
+        '        return {"ledger_index": idx, "ok": True, "error": f"{type(e).__name__}: {e}"}\n',
+    ),
     # report
     ("P1 report root gate off", RPT, '    if root != header["account_hash"]:\n', "    if False:\n"),
     (
