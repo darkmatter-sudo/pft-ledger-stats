@@ -22,7 +22,8 @@ retried with exponential backoff on 429/5xx/transport errors.
 
 `pack` writes the committed, deterministic subset (gzip mtime 0): bodies needed by the audit are
 kept; bodies of large evidence/raw inputs (which also hold third-party network details) are
-replaced by their canonical content hash, which is what bundle file_hashes covers.
+replaced by their canonical content hash, which is what bundle file_hashes covers; the public
+RPC's server_info is reduced to complete_ledgers (`trimmed`). `sha256` always hashes the raw body.
 """
 
 import argparse
@@ -281,7 +282,15 @@ def pack(cache_path, out_path):
         if row["status"] not in (200, 404) or row.get("retry"):
             continue
         parts = key.split("/", 3)
-        if parts[0] == "round" and parts[2] == "file" and parts[3] not in KEEP_FILES and row["status"] == 200:
+        if key.endswith("/rpc_server_info") and row["status"] == 200:
+            # the audit needs only complete_ledgers; drop the public server's host details
+            info = json.loads(row["body"]).get("result", {}).get("info", {})
+            row["body"] = json.dumps({"result": {"info": {"complete_ledgers": info.get("complete_ledgers")}}})
+            row["trimmed"] = True
+            kept += 1
+        elif (
+            parts[0] == "round" and parts[2] == "file" and parts[3] not in KEEP_FILES and row["status"] == 200
+        ):
             row["content_hash"] = L.content_hash(json.loads(row["body"]))
             row["body"] = None
             trimmed += 1

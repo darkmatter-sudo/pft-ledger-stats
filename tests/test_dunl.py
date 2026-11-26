@@ -427,6 +427,15 @@ def test_pack_deterministic_and_trims(tmp_path):
         },
         {"key": "round/9/file/bundle.json", "status": 200, "body": "{}", "t": "T", "sha256": "s"},
         {"key": "e/vl", "status": 503, "body": "", "t": "T", "sha256": "s"},
+        {
+            "key": "e/rpc_server_info",
+            "status": 200,
+            "t": "T",
+            "sha256": "s",
+            "body": json.dumps(
+                {"result": {"info": {"complete_ledgers": "5-9", "hostid": "H", "ports": [1]}}}
+            ),
+        },
     ]
     src.write_text("".join(json.dumps(r) + "\n" for r in rows))
     C.pack(str(src), str(tmp_path / "a.gz"))
@@ -436,3 +445,5 @@ def test_pack_deterministic_and_trims(tmp_path):
     assert got["round/9/file/raw/x.json"]["body"] is None
     assert got["round/9/file/raw/x.json"]["content_hash"] == L.content_hash({"a": 1, "b": 2})
     assert got["round/9/file/bundle.json"]["body"] == "{}" and "e/vl" not in got
+    info = json.loads(got["e/rpc_server_info"]["body"])["result"]["info"]
+    assert info == {"complete_ledgers": "5-9"} and got["e/rpc_server_info"]["trimmed"]
