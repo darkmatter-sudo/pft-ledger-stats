@@ -1,0 +1,33 @@
+# dunl fresh anonymous clone at f7e3aef18988308b4b1f99f1558c91ea9b93ef0d, Python 3.10.12, 2026-11-26T05:46:14Z
+$ git clone -q https://github.com/darkmatter-sudo/pft-ledger-stats repo
+$ git -c advice.detachedHead=false checkout -q f7e3aef18988308b4b1f99f1558c91ea9b93ef0d
+checked out f7e3aef18988308b4b1f99f1558c91ea9b93ef0d
+$ sha256sum dunl/data/cache.jsonl.gz dunl/data/nodes/validator.json dunl/data/nodes/sentry.json
+d286b3bab99f31a35da72f9de0086d3b61f83f168816d1e2ba1564897900c01b  dunl/data/cache.jsonl.gz
+671361fd8f04ca221ad6727354285f89982cec1686af2d95f81021792725b5e5  dunl/data/nodes/validator.json
+25f20a2166b98a86d86f30eb705ad5acde5000f40b714f203553146e7862d6f3  dunl/data/nodes/sentry.json
+$ python3 -m pytest -q tests/test_dunl.py --basetemp <tmp>/pyt -p no:cacheprovider
+......................................                                   [100%]
+38 passed in 9.38s
+$ ruff check dunl tests/test_dunl.py
+All checks passed!
+$ ruff format --check dunl tests/test_dunl.py
+7 files already formatted
+$ shellcheck dunl/nodes_dunl.sh
+$ python3 -I dunl/audit_dunl.py --cache dunl/data/cache.jsonl.gz --nodes dunl/data/nodes --out <tmp>/report  -> exit 0
+SUMMARY rounds=32 published=31 txs=737 results=234 PASS=178 WARN=56 FAIL=0
+$ (cd <tmp>/report && sha256sum -c <repo>/dunl/report/SHA256SUMS)
+REPORT.md: OK
+charts/churn.svg: OK
+charts/participation.svg: OK
+charts/unl_size.svg: OK
+checks.json: OK
+entry_times.csv: OK
+membership.csv: OK
+participation.csv: OK
+scores.csv: OK
+tenure.csv: OK
+$ cmp <tmp>/report/SHA256SUMS dunl/report/SHA256SUMS
+$ git status --porcelain
+FRESH PASS: f7e3aef18988308b4b1f99f1558c91ea9b93ef0d tests ok, lint ok, audit exit 0, 10 report files byte-identical
+exit=0
