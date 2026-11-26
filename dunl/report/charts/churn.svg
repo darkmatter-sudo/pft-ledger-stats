@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="260" viewBox="0 0 720 260" font-family="system-ui,sans-serif" font-size="11">
+<rect width="720" height="260" fill="#fcfcfb"/>
+<text x="48" y="18" font-size="13" fill="#0b0b0b">UNL additions and removals per round</text>
+<line x1="48" x2="708" y1="226.0" y2="226.0" stroke="#e4e3df"/>
+<text x="42" y="230.0" text-anchor="end" fill="#52514e">0</text>
+<line x1="48" x2="708" y1="187.6" y2="187.6" stroke="#e4e3df"/>
+<text x="42" y="191.6" text-anchor="end" fill="#52514e">1</text>
+<line x1="48" x2="708" y1="149.2" y2="149.2" stroke="#e4e3df"/>
+<text x="42" y="153.2" text-anchor="end" fill="#52514e">2</text>
+<line x1="48" x2="708" y1="110.8" y2="110.8" stroke="#e4e3df"/>
+<text x="42" y="114.8" text-anchor="end" fill="#52514e">3</text>
+<line x1="48" x2="708" y1="72.4" y2="72.4" stroke="#e4e3df"/>
+<text x="42" y="76.4" text-anchor="end" fill="#52514e">4</text>
+<line x1="48" x2="708" y1="34.0" y2="34.0" stroke="#e4e3df"/>
+<text x="42" y="38.0" text-anchor="end" fill="#52514e">5</text>
+<rect x="49.0" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 3: 0</title></rect>
+<rect x="58.6" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 3: 0</title></rect>
+<text x="58.6" y="240" text-anchor="middle" fill="#52514e">3</text>
+<rect x="70.3" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 4: 0</title></rect>
+<rect x="79.9" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 4: 0</title></rect>
+<rect x="91.6" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 5: 0</title></rect>
+<rect x="101.2" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 5: 0</title></rect>
+<text x="101.2" y="240" text-anchor="middle" fill="#52514e">5</text>
+<rect x="112.9" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#2a78d6"><title>added round 6: 2</title></rect>
+<rect x="122.5" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#eb6834"><title>removed round 6: 2</title></rect>
+<rect x="134.2" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#2a78d6"><title>added round 7: 1</title></rect>
+<rect x="143.8" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#eb6834"><title>removed round 7: 1</title></rect>
+<text x="143.8" y="240" text-anchor="middle" fill="#52514e">7</text>
+<rect x="155.5" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#2a78d6"><title>added round 8: 1</title></rect>
+<rect x="165.1" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#eb6834"><title>removed round 8: 1</title></rect>
+<rect x="176.7" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#2a78d6"><title>added round 9: 1</title></rect>
+<rect x="186.4" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#eb6834"><title>removed round 9: 1</title></rect>
+<text x="186.4" y="240" text-anchor="middle" fill="#52514e">9</text>
+<rect x="198.0" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 10: 0</title></rect>
+<rect x="207.7" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 10: 0</title></rect>
+<rect x="219.3" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 11: 0</title></rect>
+<rect x="229.0" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 11: 0</title></rect>
+<text x="229.0" y="240" text-anchor="middle" fill="#52514e">11</text>
+<rect x="240.6" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#2a78d6"><title>added round 12: 1</title></rect>
+<rect x="250.3" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#eb6834"><title>removed round 12: 1</title></rect>
+<rect x="261.9" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 13: 0</title></rect>
+<rect x="271.5" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 13: 0</title></rect>
+<text x="271.5" y="240" text-anchor="middle" fill="#52514e">13</text>
+<rect x="283.2" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 14: 0</title></rect>
+<rect x="292.8" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 14: 0</title></rect>
+<rect x="304.5" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#2a78d6"><title>added round 15: 1</title></rect>
+<rect x="314.1" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#eb6834"><title>removed round 15: 1</title></rect>
+<text x="314.1" y="240" text-anchor="middle" fill="#52514e">15</text>
+<rect x="325.8" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 16: 0</title></rect>
+<rect x="335.4" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 16: 0</title></rect>
+<rect x="347.1" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#2a78d6"><title>added round 17: 2</title></rect>
+<rect x="356.7" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#eb6834"><title>removed round 17: 2</title></rect>
+<text x="356.7" y="240" text-anchor="middle" fill="#52514e">17</text>
+<rect x="368.4" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 18: 0</title></rect>
+<rect x="378.0" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 18: 0</title></rect>
+<rect x="389.6" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#2a78d6"><title>added round 19: 2</title></rect>
+<rect x="399.3" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#eb6834"><title>removed round 19: 2</title></rect>
+<text x="399.3" y="240" text-anchor="middle" fill="#52514e">19</text>
+<rect x="410.9" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#2a78d6"><title>added round 20: 2</title></rect>
+<rect x="420.6" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#eb6834"><title>removed round 20: 2</title></rect>
+<rect x="432.2" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#2a78d6"><title>added round 21: 2</title></rect>
+<rect x="441.9" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#eb6834"><title>removed round 21: 2</title></rect>
+<text x="441.9" y="240" text-anchor="middle" fill="#52514e">21</text>
+<rect x="453.5" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#2a78d6"><title>added round 22: 1</title></rect>
+<rect x="463.2" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#eb6834"><title>removed round 22: 1</title></rect>
+<rect x="474.8" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#2a78d6"><title>added round 23: 2</title></rect>
+<rect x="484.5" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#eb6834"><title>removed round 23: 2</title></rect>
+<text x="484.5" y="240" text-anchor="middle" fill="#52514e">23</text>
+<rect x="496.1" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#2a78d6"><title>added round 24: 1</title></rect>
+<rect x="505.7" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#eb6834"><title>removed round 24: 1</title></rect>
+<rect x="517.4" y="34.0" width="7.6" height="192.0" rx="1.5" fill="#2a78d6"><title>added round 25: 5</title></rect>
+<rect x="527.0" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 25: 0</title></rect>
+<text x="527.0" y="240" text-anchor="middle" fill="#52514e">25</text>
+<rect x="538.7" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 26: 0</title></rect>
+<rect x="548.3" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 26: 0</title></rect>
+<rect x="560.0" y="110.8" width="7.6" height="115.2" rx="1.5" fill="#2a78d6"><title>added round 27: 3</title></rect>
+<rect x="569.6" y="110.8" width="7.6" height="115.2" rx="1.5" fill="#eb6834"><title>removed round 27: 3</title></rect>
+<text x="569.6" y="240" text-anchor="middle" fill="#52514e">27</text>
+<rect x="581.3" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#2a78d6"><title>added round 28: 2</title></rect>
+<rect x="590.9" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#eb6834"><title>removed round 28: 2</title></rect>
+<rect x="602.5" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#2a78d6"><title>added round 29: 2</title></rect>
+<rect x="612.2" y="149.2" width="7.6" height="76.8" rx="1.5" fill="#eb6834"><title>removed round 29: 2</title></rect>
+<text x="612.2" y="240" text-anchor="middle" fill="#52514e">29</text>
+<rect x="623.8" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#2a78d6"><title>added round 30: 1</title></rect>
+<rect x="633.5" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#eb6834"><title>removed round 30: 1</title></rect>
+<rect x="645.1" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#2a78d6"><title>added round 31: 0</title></rect>
+<rect x="654.8" y="226.0" width="7.6" height="0.0" rx="1.5" fill="#eb6834"><title>removed round 31: 0</title></rect>
+<text x="654.8" y="240" text-anchor="middle" fill="#52514e">31</text>
+<rect x="666.4" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#2a78d6"><title>added round 32: 1</title></rect>
+<rect x="676.1" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#eb6834"><title>removed round 32: 1</title></rect>
+<rect x="687.7" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#2a78d6"><title>added round 33: 1</title></rect>
+<rect x="697.4" y="187.6" width="7.6" height="38.4" rx="1.5" fill="#eb6834"><title>removed round 33: 1</title></rect>
+<text x="697.4" y="240" text-anchor="middle" fill="#52514e">33</text>
+<text x="378.0" y="256" text-anchor="middle" fill="#52514e">round</text>
+<text x="12" y="130.0" fill="#52514e" transform="rotate(-90 12 130.0)" text-anchor="middle">validators</text>
+<rect x="508" y="9" width="10" height="10" rx="2" fill="#2a78d6"/>
+<text x="522" y="18" fill="#52514e">added</text>
+<rect x="608" y="9" width="10" height="10" rx="2" fill="#eb6834"/>
+<text x="622" y="18" fill="#52514e">removed</text>
+</svg>

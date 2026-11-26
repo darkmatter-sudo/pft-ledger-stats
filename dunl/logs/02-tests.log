@@ -1,0 +1,57 @@
+# dunl recorded tests + lint: repo HEAD f064c75961cf3499ad4d8501ef9811b5daee22ae, Python 3.10.12, pytest 9.1.1, ruff 0.17.1, version: 0.8.0, 2026-11-26T05:44:57Z
+$ python3 -m pytest -v tests/test_dunl.py
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.7.0 -- /usr/bin/python3
+rootdir: <repo>
+configfile: pyproject.toml
+collecting ... collected 38 items
+
+tests/test_dunl.py::test_ed25519_rfc8032_vector1 PASSED                  [  2%]
+tests/test_dunl.py::test_node_public_roundtrip_and_checksum PASSED       [  5%]
+tests/test_dunl.py::test_real_vl_signatures_and_tamper PASSED            [  7%]
+tests/test_dunl.py::test_der_rejects_noncanonical PASSED                 [ 10%]
+tests/test_dunl.py::test_modern_fixture_passes_except_pruned_history PASSED [ 13%]
+tests/test_dunl.py::test_legacy_fixture_expected_warns PASSED            [ 15%]
+tests/test_dunl.py::test_vl_decode_detects_bad_blob_signature PASSED     [ 18%]
+tests/test_dunl.py::test_vl_decode_detects_swapped_validator_key PASSED  [ 21%]
+tests/test_dunl.py::test_sequence_detects_record_mismatch_and_gap PASSED [ 23%]
+tests/test_dunl.py::test_sequence_detects_missing_round PASSED           [ 26%]
+tests/test_dunl.py::test_validity_window_detects_gap PASSED              [ 28%]
+tests/test_dunl.py::test_validity_window_detects_inverted_and_expired PASSED [ 31%]
+tests/test_dunl.py::test_validator_set_detects_unl_mismatch PASSED       [ 34%]
+tests/test_dunl.py::test_validator_set_detects_previous_unl_mismatch PASSED [ 36%]
+tests/test_dunl.py::test_validator_set_detects_oversize PASSED           [ 39%]
+tests/test_dunl.py::test_selection_replay_matches_and_detects_score_change PASSED [ 42%]
+tests/test_dunl.py::test_replay_selection_rules PASSED                   [ 44%]
+tests/test_dunl.py::test_bundle_hashes_detect_changed_file PASSED        [ 47%]
+tests/test_dunl.py::test_bundle_hashes_detect_hash_only_mismatch PASSED  [ 50%]
+tests/test_dunl.py::test_mirror_detects_divergent_mirror PASSED          [ 52%]
+tests/test_dunl.py::test_mirror_detects_stale_live_vl PASSED             [ 55%]
+tests/test_dunl.py::test_mirror_detects_unl_current_mismatch PASSED      [ 57%]
+tests/test_dunl.py::test_anchor_detects_wrong_cid PASSED                 [ 60%]
+tests/test_dunl.py::test_anchor_detects_wrong_sender_and_type PASSED     [ 63%]
+tests/test_dunl.py::test_anchor_missing_recent_tx_fails_but_pruned_warns PASSED [ 65%]
+tests/test_dunl.py::test_anchor_failed_tx_result PASSED                  [ 68%]
+tests/test_dunl.py::test_convergence_detects_summary_mismatch PASSED     [ 71%]
+tests/test_dunl.py::test_convergence_detects_bad_anchor_memo_and_missing_reveal PASSED [ 73%]
+tests/test_dunl.py::test_convergence_flags_untracked_announced_round PASSED [ 76%]
+tests/test_dunl.py::test_nodes_detect_untrusted_key_and_disagreement PASSED [ 78%]
+tests/test_dunl.py::test_nodes_detect_stale_list_and_bad_quorum PASSED   [ 81%]
+tests/test_dunl.py::test_analyses_membership_and_tenure PASSED           [ 84%]
+tests/test_dunl.py::test_outputs_deterministic PASSED                    [ 86%]
+tests/test_dunl.py::test_fetcher_retries_then_caches PASSED              [ 89%]
+tests/test_dunl.py::test_fetcher_gives_up_and_retry_if PASSED            [ 92%]
+tests/test_dunl.py::test_cache_cuts_torn_line PASSED                     [ 94%]
+tests/test_dunl.py::test_tx_not_final PASSED                             [ 97%]
+tests/test_dunl.py::test_pack_deterministic_and_trims PASSED             [100%]
+
+============================= 38 passed in 13.69s ==============================
+pytest exit=0
+$ ruff check dunl tests/test_dunl.py
+All checks passed!
+ruff check exit=0
+$ ruff format --check dunl tests/test_dunl.py
+7 files already formatted
+ruff format exit=0
+$ shellcheck dunl/nodes_dunl.sh
+shellcheck exit=0

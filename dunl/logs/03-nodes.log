@@ -1,0 +1,5 @@
+# dunl recorded own-node trusted-key snapshot: repo HEAD dec9a5fd7694d878cf421749d7ae9189f178d36b, 2026-11-26T05:43:34Z
+$ sudo bash dunl/nodes_dunl.sh dunl/data/nodes validator=postfiatd sentry=postfiatd-sentry@relay
+validator 2026-11-26T05:43:34Z: 25 trusted keys, quorum 17, lists seq 31 n 25
+sentry 2026-11-26T05:43:35Z: 25 trusted keys, quorum 17, lists seq 31 n 25
+exit=0

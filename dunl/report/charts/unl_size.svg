@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="260" viewBox="0 0 720 260" font-family="system-ui,sans-serif" font-size="11">
+<rect width="720" height="260" fill="#fcfcfb"/>
+<text x="48" y="18" font-size="13" fill="#0b0b0b">UNL size per published round</text>
+<line x1="48" x2="708" y1="226.0" y2="226.0" stroke="#e4e3df"/>
+<text x="42" y="230.0" text-anchor="end" fill="#52514e">0</text>
+<line x1="48" x2="708" y1="162.0" y2="162.0" stroke="#e4e3df"/>
+<text x="42" y="166.0" text-anchor="end" fill="#52514e">10</text>
+<line x1="48" x2="708" y1="98.0" y2="98.0" stroke="#e4e3df"/>
+<text x="42" y="102.0" text-anchor="end" fill="#52514e">20</text>
+<line x1="48" x2="708" y1="34.0" y2="34.0" stroke="#e4e3df"/>
+<text x="42" y="38.0" text-anchor="end" fill="#52514e">30</text>
+<rect x="49.0" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 3: 20</title></rect>
+<text x="58.6" y="240" text-anchor="middle" fill="#52514e">3</text>
+<rect x="70.3" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 4: 20</title></rect>
+<rect x="91.6" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 5: 20</title></rect>
+<text x="101.2" y="240" text-anchor="middle" fill="#52514e">5</text>
+<rect x="112.9" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 6: 20</title></rect>
+<rect x="134.2" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 7: 20</title></rect>
+<text x="143.8" y="240" text-anchor="middle" fill="#52514e">7</text>
+<rect x="155.5" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 8: 20</title></rect>
+<rect x="176.7" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 9: 20</title></rect>
+<text x="186.4" y="240" text-anchor="middle" fill="#52514e">9</text>
+<rect x="198.0" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 10: 20</title></rect>
+<rect x="219.3" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 11: 20</title></rect>
+<text x="229.0" y="240" text-anchor="middle" fill="#52514e">11</text>
+<rect x="240.6" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 12: 20</title></rect>
+<rect x="261.9" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 13: 20</title></rect>
+<text x="271.5" y="240" text-anchor="middle" fill="#52514e">13</text>
+<rect x="283.2" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 14: 20</title></rect>
+<rect x="304.5" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 15: 20</title></rect>
+<text x="314.1" y="240" text-anchor="middle" fill="#52514e">15</text>
+<rect x="325.8" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 16: 20</title></rect>
+<rect x="347.1" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 17: 20</title></rect>
+<text x="356.7" y="240" text-anchor="middle" fill="#52514e">17</text>
+<rect x="368.4" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 18: 20</title></rect>
+<rect x="389.6" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 19: 20</title></rect>
+<text x="399.3" y="240" text-anchor="middle" fill="#52514e">19</text>
+<rect x="410.9" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 20: 20</title></rect>
+<rect x="432.2" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 21: 20</title></rect>
+<text x="441.9" y="240" text-anchor="middle" fill="#52514e">21</text>
+<rect x="453.5" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 22: 20</title></rect>
+<rect x="474.8" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 23: 20</title></rect>
+<text x="484.5" y="240" text-anchor="middle" fill="#52514e">23</text>
+<rect x="496.1" y="98.0" width="17.3" height="128.0" rx="1.5" fill="#2a78d6"><title>size round 24: 20</title></rect>
+<rect x="517.4" y="66.0" width="17.3" height="160.0" rx="1.5" fill="#2a78d6"><title>size round 25: 25</title></rect>
+<text x="527.0" y="240" text-anchor="middle" fill="#52514e">25</text>
+<rect x="538.7" y="66.0" width="17.3" height="160.0" rx="1.5" fill="#2a78d6"><title>size round 26: 25</title></rect>
+<rect x="560.0" y="66.0" width="17.3" height="160.0" rx="1.5" fill="#2a78d6"><title>size round 27: 25</title></rect>
+<text x="569.6" y="240" text-anchor="middle" fill="#52514e">27</text>
+<rect x="581.3" y="66.0" width="17.3" height="160.0" rx="1.5" fill="#2a78d6"><title>size round 28: 25</title></rect>
+<rect x="602.5" y="66.0" width="17.3" height="160.0" rx="1.5" fill="#2a78d6"><title>size round 29: 25</title></rect>
+<text x="612.2" y="240" text-anchor="middle" fill="#52514e">29</text>
+<rect x="623.8" y="66.0" width="17.3" height="160.0" rx="1.5" fill="#2a78d6"><title>size round 30: 25</title></rect>
+<rect x="645.1" y="66.0" width="17.3" height="160.0" rx="1.5" fill="#2a78d6"><title>size round 31: 25</title></rect>
+<text x="654.8" y="240" text-anchor="middle" fill="#52514e">31</text>
+<rect x="666.4" y="66.0" width="17.3" height="160.0" rx="1.5" fill="#2a78d6"><title>size round 32: 25</title></rect>
+<rect x="687.7" y="66.0" width="17.3" height="160.0" rx="1.5" fill="#2a78d6"><title>size round 33: 25</title></rect>
+<text x="697.4" y="240" text-anchor="middle" fill="#52514e">33</text>
+<text x="378.0" y="256" text-anchor="middle" fill="#52514e">round</text>
+<text x="12" y="130.0" fill="#52514e" transform="rotate(-90 12 130.0)" text-anchor="middle">validators</text>
+</svg>

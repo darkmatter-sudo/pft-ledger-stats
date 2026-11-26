@@ -1,0 +1,54 @@
+# dunl recorded full collection: repo HEAD dec9a5fd7694d878cf421749d7ae9189f178d36b, fresh cache data/dunl/rec, Python 3.10.12, start 2026-11-26T05:23:45Z
+$ python3 -I dunl/collect_dunl.py collect --out data/dunl/rec
+2026-11-26T05:23:45Z collect start epoch=2026-11-26 api=https://scoring-testnet.postfiat.org rpc=https://rpc.testnet.postfiat.org cached_keys=0 torn_bytes=0 gap=0.5s
+2026-11-26T05:23:46Z round list: 32 rounds (total 32)
+2026-11-26T05:23:54Z round 2: status=FAILED files=2 calls=12 hit=0
+2026-11-26T05:23:58Z round 3: status=VL_PUBLISHED_MEMO_FAILED files=2 calls=17 hit=0
+2026-11-26T05:24:03Z round 4: status=COMPLETE files=2 calls=22 hit=0
+2026-11-26T05:24:08Z round 5: status=COMPLETE files=2 calls=27 hit=0
+2026-11-26T05:24:12Z round 6: status=COMPLETE files=2 calls=32 hit=0
+2026-11-26T05:24:27Z round 7: status=COMPLETE files=14 calls=49 hit=0
+2026-11-26T05:24:43Z round 8: status=COMPLETE files=14 calls=66 hit=0
+2026-11-26T05:25:03Z round 9: status=COMPLETE files=14 calls=83 hit=0
+2026-11-26T05:25:20Z round 10: status=COMPLETE files=14 calls=100 hit=0
+2026-11-26T05:25:35Z round 11: status=COMPLETE files=14 calls=117 hit=0
+2026-11-26T05:25:52Z round 12: status=COMPLETE files=15 calls=135 hit=0
+2026-11-26T05:26:08Z round 13: status=COMPLETE files=15 calls=153 hit=0
+2026-11-26T05:26:24Z round 14: status=COMPLETE files=15 calls=171 hit=0
+2026-11-26T05:26:38Z round 15: status=COMPLETE files=15 calls=189 hit=0
+2026-11-26T05:26:53Z round 16: status=COMPLETE files=16 calls=208 hit=0
+2026-11-26T05:27:11Z round 17: status=COMPLETE files=16 calls=227 hit=0
+2026-11-26T05:27:26Z round 18: status=COMPLETE files=16 calls=246 hit=0
+2026-11-26T05:27:43Z round 19: status=COMPLETE files=16 calls=265 hit=0
+2026-11-26T05:28:00Z round 20: status=COMPLETE files=16 calls=284 hit=0
+2026-11-26T05:28:17Z round 21: status=COMPLETE files=16 calls=303 hit=0
+2026-11-26T05:28:33Z round 22: status=COMPLETE files=16 calls=322 hit=0
+2026-11-26T05:28:49Z round 23: status=COMPLETE files=16 calls=341 hit=0
+2026-11-26T05:29:07Z round 24: status=COMPLETE files=16 calls=360 hit=0
+2026-11-26T05:29:23Z round 25: status=COMPLETE files=16 calls=379 hit=0
+2026-11-26T05:29:39Z round 26: status=COMPLETE files=16 calls=398 hit=0
+2026-11-26T05:29:57Z round 27: status=COMPLETE files=17 calls=418 hit=0
+2026-11-26T05:30:21Z round 28: status=COMPLETE files=17 calls=438 hit=0
+2026-11-26T05:30:43Z round 29: status=COMPLETE files=17 calls=458 hit=0
+2026-11-26T05:31:02Z round 30: status=COMPLETE files=17 calls=478 hit=0
+2026-11-26T05:31:23Z round 31: status=COMPLETE files=17 calls=498 hit=0
+2026-11-26T05:31:43Z round 32: status=COMPLETE files=17 calls=518 hit=0
+2026-11-26T05:32:05Z round 33: status=COMPLETE files=17 calls=538 hit=0
+2026-11-26T05:32:09Z rpc complete_ledgers 8300055-8375832
+2026-11-26T05:32:53Z txs 50/737 calls=592
+2026-11-26T05:33:45Z txs 100/737 calls=642
+2026-11-26T05:34:35Z txs 150/737 calls=692
+2026-11-26T05:35:21Z txs 200/737 calls=742
+2026-11-26T05:36:06Z txs 250/737 calls=792
+2026-11-26T05:36:48Z txs 300/737 calls=842
+2026-11-26T05:37:31Z txs 350/737 calls=892
+2026-11-26T05:38:15Z txs 400/737 calls=942
+2026-11-26T05:38:58Z txs 450/737 calls=992
+2026-11-26T05:39:43Z txs 500/737 calls=1042
+2026-11-26T05:40:32Z txs 550/737 calls=1092
+2026-11-26T05:41:20Z txs 600/737 calls=1142
+2026-11-26T05:42:04Z txs 650/737 calls=1192
+2026-11-26T05:42:46Z txs 700/737 calls=1242
+2026-11-26T05:43:20Z txs: 737 unique
+2026-11-26T05:43:20Z collect done rounds=32 calls=1279 cached=0 retried=0 errors=0 keys=1277
+exit=0

@@ -59,6 +59,43 @@ reported as WARN "not verifiable (pruned)". A `txnNotFound` tx inside the retain
 
 Tests: `tests/test_dunl.py`. They use the captured responses plus one synthetic mismatch per check.
 
+## Results (collection 2026-11-26, rounds 2..33)
+
+Full report: [`report/REPORT.md`](report/REPORT.md). Every result with its reason: [`report/checks.json`](report/checks.json).
+
+**234 results: 178 PASS, 56 WARN, 0 FAIL.** No two public artifacts contradict each other:
+- every one of the 31 signed VLs verifies cryptographically: the publisher manifest, the blob, and every validator manifest;
+- sequences run 1..31 with no gap;
+- the validity windows overlap without a gap;
+- each VL equals its selected UNL and the next round's `previous_unl`;
+- replaying the selector reproduces all 18 rounds with published scores exactly (UNL and alternates, in order);
+- every bundle and verification hash matches;
+- the live VL, the `postfiat.org` mirror and round 33 are byte-identical;
+- the round 33 anchor and its 34 commit/reveal txs check out on-chain;
+- both own nodes trust exactly the 25 round-33 keys at sequence 31.
+
+The 56 WARN, by cause:
+
+| WARN | count | cause |
+|---|---:|---|
+| `anchor` rounds 4-32, `convergence` rounds 12-28, 30-32 | 29 + 20 | the tx predates the public RPC's retained history (ledgers 8300055+, first closed 2026-11-23T14:02Z): not verifiable from public RPC. The convergence summaries of these rounds still equal the recount of their participants |
+| `bundle_hashes` rounds 3-6 | 4 | early legacy layout without `bundle.json` |
+| `sequence` round 2 | 1 | round `FAILED`, no VL (declared by the round itself) |
+| `anchor` round 3 | 1 | round `VL_PUBLISHED_MEMO_FAILED` (declared by the round itself) |
+| `convergence` round 29 | 1 | `/rounds/29/convergence` answers `not_tracked`, but round 29 is a normal `COMPLETE` round with a frozen input package (announced) between sealed rounds 28 and 30. The endpoint documents `not_tracked` only for override, not-yet-announced or pre-protocol rounds |
+
+Recorded runs (`logs/`):
+
+| log | what |
+|---|---|
+| `01-collect-full.log` | full collection into a fresh cache at `dec9a5f`: 32 rounds, 1,279 requests, 0 retries, 0 errors, 737 txs |
+| `02-tests.log` | `pytest -v tests/test_dunl.py` (38 passed, 0 failed), `ruff check`, `ruff format --check`, `shellcheck` |
+| `03-nodes.log` | trusted-key snapshots of the own validator and sentry |
+| `04-pack-audit.log` | pack of the recorded cache, input sha256s, full audit output (every result) and the report `SHA256SUMS` |
+| `05-fresh-clone.log` | anonymous fresh clone: tests, lint, offline audit, regenerated report byte-identical to the committed one |
+
+Log 01 ran at `dec9a5f`. The next commit, `f064c75`, changed only `pack` (it trims `server_info`), the tests and the fixtures. Logs 02-04 ran at `f064c75`.
+
 ## Reproduce
 
 From a fresh clone. Steps 1-4 re-verify the committed report offline; step 5 collects anew.

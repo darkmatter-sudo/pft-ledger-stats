@@ -1,0 +1,257 @@
+# dunl recorded pack + audit: repo HEAD f064c75961cf3499ad4d8501ef9811b5daee22ae, Python 3.10.12, 2026-11-26T05:45:11Z
+$ python3 -I dunl/collect_dunl.py pack --cache data/dunl/rec/cache.jsonl --to dunl/data/cache.jsonl.gz
+2026-11-26T05:45:12Z pack: 1277 rows (1000 with body, 277 hash-only) -> dunl/data/cache.jsonl.gz
+pack exit=0
+$ sha256sum data/dunl/rec/cache.jsonl dunl/data/cache.jsonl.gz dunl/data/nodes/*.json
+3c04371329c473b065228701e3f7b6cb8abb6cd754ebdc846011860c38cd0d89  data/dunl/rec/cache.jsonl
+d286b3bab99f31a35da72f9de0086d3b61f83f168816d1e2ba1564897900c01b  dunl/data/cache.jsonl.gz
+25f20a2166b98a86d86f30eb705ad5acde5000f40b714f203553146e7862d6f3  dunl/data/nodes/sentry.json
+671361fd8f04ca221ad6727354285f89982cec1686af2d95f81021792725b5e5  dunl/data/nodes/validator.json
+$ python3 -I dunl/audit_dunl.py --cache dunl/data/cache.jsonl.gz --nodes dunl/data/nodes --out dunl/report
+PASS vl_decode round 3: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 1 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 4: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 2 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 5: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 3 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 6: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 4 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 7: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 5 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 8: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 6 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 9: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 7 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 10: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 8 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 11: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 9 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 12: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 10 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 13: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 11 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 14: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 12 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 15: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 13 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 16: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 14 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 17: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 15 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 18: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 16 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 19: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 17 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 20: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 18 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 21: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 19 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 22: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 20 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 23: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 21 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 24: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 22 sig ok (low-S); 20/20 validator manifests ok
+PASS vl_decode round 25: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 23 sig ok (low-S); 25/25 validator manifests ok
+PASS vl_decode round 26: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 24 sig ok (low-S); 25/25 validator manifests ok
+PASS vl_decode round 27: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 25 sig ok (low-S); 25/25 validator manifests ok
+PASS vl_decode round 28: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 26 sig ok (low-S); 25/25 validator manifests ok
+PASS vl_decode round 29: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 27 sig ok (low-S); 25/25 validator manifests ok
+PASS vl_decode round 30: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 28 sig ok (low-S); 25/25 validator manifests ok
+PASS vl_decode round 31: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 29 sig ok (low-S); 25/25 validator manifests ok
+PASS vl_decode round 32: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 30 sig ok (low-S); 25/25 validator manifests ok
+PASS vl_decode round 33: publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 31 sig ok (low-S); 25/25 validator manifests ok
+PASS sequence round 3: blob sequence 1 == vl_sequence (first published)
+PASS sequence round 4: blob sequence 2 == vl_sequence after 1 (round 3)
+PASS sequence round 5: blob sequence 3 == vl_sequence after 2 (round 4)
+PASS sequence round 6: blob sequence 4 == vl_sequence after 3 (round 5)
+PASS sequence round 7: blob sequence 5 == vl_sequence after 4 (round 6)
+PASS sequence round 8: blob sequence 6 == vl_sequence after 5 (round 7)
+PASS sequence round 9: blob sequence 7 == vl_sequence after 6 (round 8)
+PASS sequence round 10: blob sequence 8 == vl_sequence after 7 (round 9)
+PASS sequence round 11: blob sequence 9 == vl_sequence after 8 (round 10)
+PASS sequence round 12: blob sequence 10 == vl_sequence after 9 (round 11)
+PASS sequence round 13: blob sequence 11 == vl_sequence after 10 (round 12)
+PASS sequence round 14: blob sequence 12 == vl_sequence after 11 (round 13)
+PASS sequence round 15: blob sequence 13 == vl_sequence after 12 (round 14)
+PASS sequence round 16: blob sequence 14 == vl_sequence after 13 (round 15)
+PASS sequence round 17: blob sequence 15 == vl_sequence after 14 (round 16)
+PASS sequence round 18: blob sequence 16 == vl_sequence after 15 (round 17)
+PASS sequence round 19: blob sequence 17 == vl_sequence after 16 (round 18)
+PASS sequence round 20: blob sequence 18 == vl_sequence after 17 (round 19)
+PASS sequence round 21: blob sequence 19 == vl_sequence after 18 (round 20)
+PASS sequence round 22: blob sequence 20 == vl_sequence after 19 (round 21)
+PASS sequence round 23: blob sequence 21 == vl_sequence after 20 (round 22)
+PASS sequence round 24: blob sequence 22 == vl_sequence after 21 (round 23)
+PASS sequence round 25: blob sequence 23 == vl_sequence after 22 (round 24)
+PASS sequence round 26: blob sequence 24 == vl_sequence after 23 (round 25)
+PASS sequence round 27: blob sequence 25 == vl_sequence after 24 (round 26)
+PASS sequence round 28: blob sequence 26 == vl_sequence after 25 (round 27)
+PASS sequence round 29: blob sequence 27 == vl_sequence after 26 (round 28)
+PASS sequence round 30: blob sequence 28 == vl_sequence after 27 (round 29)
+PASS sequence round 31: blob sequence 29 == vl_sequence after 28 (round 30)
+PASS sequence round 32: blob sequence 30 == vl_sequence after 29 (round 31)
+PASS sequence round 33: blob sequence 31 == vl_sequence after 30 (round 32)
+WARN sequence round 2: status FAILED: no signed VL published
+PASS validity_window round 3: effective 2026-05-05T17:18:33Z < expiration 2027-09-17T16:48:33Z; next list (round 4) effective 2026-05-05T17:27:35Z
+PASS validity_window round 4: effective 2026-05-05T17:27:35Z < expiration 2027-09-17T16:57:35Z; next list (round 5) effective 2026-05-12T17:33:17Z
+PASS validity_window round 5: effective 2026-05-12T17:33:17Z < expiration 2027-09-24T17:03:17Z; next list (round 6) effective 2026-05-19T17:40:35Z
+PASS validity_window round 6: effective 2026-05-19T17:40:35Z < expiration 2027-10-01T17:10:35Z; next list (round 7) effective 2026-05-26T17:50:23Z
+PASS validity_window round 7: effective 2026-05-26T17:50:23Z < expiration 2027-10-08T17:20:23Z; next list (round 8) effective 2026-06-02T18:02:52Z
+PASS validity_window round 8: effective 2026-06-02T18:02:52Z < expiration 2027-10-15T17:32:52Z; next list (round 9) effective 2026-06-09T18:13:16Z
+PASS validity_window round 9: effective 2026-06-09T18:13:16Z < expiration 2027-10-22T17:43:16Z; next list (round 10) effective 2026-06-16T18:27:26Z
+PASS validity_window round 10: effective 2026-06-16T18:27:26Z < expiration 2027-10-29T17:57:26Z; next list (round 11) effective 2026-06-23T18:39:43Z
+PASS validity_window round 11: effective 2026-06-23T18:39:43Z < expiration 2027-11-05T18:09:43Z; next list (round 12) effective 2026-06-30T19:14:14Z
+PASS validity_window round 12: effective 2026-06-30T19:14:14Z < expiration 2027-11-12T18:44:14Z; next list (round 13) effective 2026-07-07T22:49:55Z
+PASS validity_window round 13: effective 2026-07-07T22:49:55Z < expiration 2027-11-19T18:53:02Z; next list (round 14) effective 2026-07-15T02:01:25Z
+PASS validity_window round 14: effective 2026-07-15T02:01:25Z < expiration 2027-11-26T22:04:44Z; next list (round 15) effective 2026-07-21T20:07:36Z
+PASS validity_window round 15: effective 2026-07-21T20:07:36Z < expiration 2027-12-03T16:11:31Z; next list (round 16) effective 2026-07-28T20:08:45Z
+PASS validity_window round 16: effective 2026-07-28T20:08:45Z < expiration 2027-12-10T16:12:13Z; next list (round 17) effective 2026-08-04T20:10:15Z
+PASS validity_window round 17: effective 2026-08-04T20:10:15Z < expiration 2027-12-17T16:14:58Z; next list (round 18) effective 2026-08-11T20:10:35Z
+PASS validity_window round 18: effective 2026-08-11T20:10:35Z < expiration 2027-12-24T16:14:59Z; next list (round 19) effective 2026-08-18T20:10:46Z
+PASS validity_window round 19: effective 2026-08-18T20:10:46Z < expiration 2027-12-31T16:14:21Z; next list (round 20) effective 2026-08-25T20:09:48Z
+PASS validity_window round 20: effective 2026-08-25T20:09:48Z < expiration 2028-01-07T16:16:28Z; next list (round 21) effective 2026-09-01T20:06:57Z
+PASS validity_window round 21: effective 2026-09-01T20:06:57Z < expiration 2028-01-14T16:15:21Z; next list (round 22) effective 2026-09-08T20:10:25Z
+PASS validity_window round 22: effective 2026-09-08T20:10:25Z < expiration 2028-01-21T16:20:13Z; next list (round 23) effective 2026-09-15T20:11:06Z
+PASS validity_window round 23: effective 2026-09-15T20:11:06Z < expiration 2028-01-28T16:14:41Z; next list (round 24) effective 2026-09-22T20:08:25Z
+PASS validity_window round 24: effective 2026-09-22T20:08:25Z < expiration 2028-02-04T16:12:22Z; next list (round 25) effective 2026-09-29T20:08:55Z
+PASS validity_window round 25: effective 2026-09-29T20:08:55Z < expiration 2028-02-11T16:12:50Z; next list (round 26) effective 2026-10-06T20:07:56Z
+PASS validity_window round 26: effective 2026-10-06T20:07:56Z < expiration 2028-02-18T16:11:37Z; next list (round 27) effective 2026-10-13T20:06:47Z
+PASS validity_window round 27: effective 2026-10-13T20:06:47Z < expiration 2028-02-25T16:11:13Z; next list (round 28) effective 2026-10-20T20:14:56Z
+PASS validity_window round 28: effective 2026-10-20T20:14:56Z < expiration 2028-03-03T16:18:47Z; next list (round 29) effective 2026-10-27T20:13:56Z
+PASS validity_window round 29: effective 2026-10-27T20:13:56Z < expiration 2028-03-10T16:20:32Z; next list (round 30) effective 2026-11-03T20:10:06Z
+PASS validity_window round 30: effective 2026-11-03T20:10:06Z < expiration 2028-03-17T16:14:25Z; next list (round 31) effective 2026-11-10T20:12:46Z
+PASS validity_window round 31: effective 2026-11-10T20:12:46Z < expiration 2028-03-24T16:16:51Z; next list (round 32) effective 2026-11-17T20:10:08Z
+PASS validity_window round 32: effective 2026-11-17T20:10:08Z < expiration 2028-03-31T16:14:53Z; next list (round 33) effective 2026-11-24T20:11:38Z
+PASS validity_window round 33: effective 2026-11-24T20:11:38Z < expiration 2028-04-07T16:15:57Z; latest
+PASS validity_window latest: latest list (round 33) expires 2028-04-07T16:15:57Z; snapshot 2026-11-26T05:43:35Z: 498.4 days left
+PASS validator_set round 3: VL 20 keys == selected UNL
+PASS validator_set round 4: VL 20 keys == selected UNL
+PASS validator_set round 5: VL 20 keys == selected UNL
+PASS validator_set round 6: VL 20 keys == selected UNL
+PASS validator_set round 7: VL 20 keys == selected UNL
+PASS validator_set round 8: VL 20 keys == selected UNL
+PASS validator_set round 9: VL 20 keys == selected UNL
+PASS validator_set round 10: VL 20 keys == selected UNL
+PASS validator_set round 11: VL 20 keys == selected UNL
+PASS validator_set round 12: VL 20 keys == selected UNL; previous_unl input == round 11 UNL
+PASS validator_set round 13: VL 20 keys == selected UNL; previous_unl input == round 12 UNL
+PASS validator_set round 14: VL 20 keys == selected UNL; previous_unl input == round 13 UNL
+PASS validator_set round 15: VL 20 keys == selected UNL; previous_unl input == round 14 UNL
+PASS validator_set round 16: VL 20 keys == selected UNL; previous_unl input == round 15 UNL
+PASS validator_set round 17: VL 20 keys == selected UNL; previous_unl input == round 16 UNL
+PASS validator_set round 18: VL 20 keys == selected UNL; previous_unl input == round 17 UNL
+PASS validator_set round 19: VL 20 keys == selected UNL; previous_unl input == round 18 UNL
+PASS validator_set round 20: VL 20 keys == selected UNL; previous_unl input == round 19 UNL
+PASS validator_set round 21: VL 20 keys == selected UNL; previous_unl input == round 20 UNL
+PASS validator_set round 22: VL 20 keys == selected UNL; previous_unl input == round 21 UNL
+PASS validator_set round 23: VL 20 keys == selected UNL; previous_unl input == round 22 UNL
+PASS validator_set round 24: VL 20 keys == selected UNL; previous_unl input == round 23 UNL
+PASS validator_set round 25: VL 25 keys == selected UNL; previous_unl input == round 24 UNL
+PASS validator_set round 26: VL 25 keys == selected UNL; previous_unl input == round 25 UNL
+PASS validator_set round 27: VL 25 keys == selected UNL; previous_unl input == round 26 UNL
+PASS validator_set round 28: VL 25 keys == selected UNL; previous_unl input == round 27 UNL
+PASS validator_set round 29: VL 25 keys == selected UNL; previous_unl input == round 28 UNL
+PASS validator_set round 30: VL 25 keys == selected UNL; previous_unl input == round 29 UNL
+PASS validator_set round 31: VL 25 keys == selected UNL; previous_unl input == round 30 UNL
+PASS validator_set round 32: VL 25 keys == selected UNL; previous_unl input == round 31 UNL
+PASS validator_set round 33: VL 25 keys == selected UNL; previous_unl input == round 32 UNL
+PASS selection round 16: replay (cutoff 40, max 20, gap 5) == selected_unl (20 + 30 alternates, same order); 20 incumbents kept; 4 alternates score above the lowest selected (90) but within the min gap
+PASS selection round 17: replay (cutoff 40, max 20, gap 5) == selected_unl (20 + 31 alternates, same order); 18 incumbents kept; 1 alternates score above the lowest selected (92) but within the min gap
+PASS selection round 18: replay (cutoff 40, max 20, gap 5) == selected_unl (20 + 34 alternates, same order); 20 incumbents kept; 2 alternates score above the lowest selected (92) but within the min gap
+PASS selection round 19: replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 34 alternates, same order); 18 incumbents kept; 0 alternates score above the lowest selected (92) but within the min gap
+PASS selection round 20: replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 32 alternates, same order); 18 incumbents kept; 3 alternates score above the lowest selected (91) but within the min gap
+PASS selection round 21: replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 35 alternates, same order); 18 incumbents kept; 0 alternates score above the lowest selected (92) but within the min gap
+PASS selection round 22: replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 34 alternates, same order); 19 incumbents kept; 1 alternates score above the lowest selected (93) but within the min gap
+PASS selection round 23: replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 33 alternates, same order); 18 incumbents kept; 2 alternates score above the lowest selected (93) but within the min gap
+PASS selection round 24: replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 33 alternates, same order); 19 incumbents kept; 2 alternates score above the lowest selected (89) but within the min gap
+PASS selection round 25: replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 26 alternates, same order); 20 incumbents kept; 1 alternates score above the lowest selected (89) but within the min gap
+PASS selection round 26: replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 26 alternates, same order); 25 incumbents kept; 1 alternates score above the lowest selected (89) but within the min gap
+PASS selection round 27: replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 28 alternates, same order); 22 incumbents kept; 2 alternates score above the lowest selected (91) but within the min gap
+PASS selection round 28: replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 35 alternates, same order); 23 incumbents kept; 2 alternates score above the lowest selected (92) but within the min gap
+PASS selection round 29: replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 36 alternates, same order); 23 incumbents kept; 1 alternates score above the lowest selected (93) but within the min gap
+PASS selection round 30: replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 38 alternates, same order); 24 incumbents kept; 0 alternates score above the lowest selected (93) but within the min gap
+PASS selection round 31: replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 41 alternates, same order); 25 incumbents kept; 6 alternates score above the lowest selected (92) but within the min gap
+PASS selection round 32: replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 40 alternates, same order); 24 incumbents kept; 5 alternates score above the lowest selected (92) but within the min gap
+PASS selection round 33: replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 35 alternates, same order); 24 incumbents kept; 5 alternates score above the lowest selected (89) but within the min gap
+WARN bundle_hashes round 3: legacy layout: no bundle.json / file_hashes
+WARN bundle_hashes round 4: legacy layout: no bundle.json / file_hashes
+WARN bundle_hashes round 5: legacy layout: no bundle.json / file_hashes
+WARN bundle_hashes round 6: legacy layout: no bundle.json / file_hashes
+PASS bundle_hashes round 7: 14/14 file_hashes, 4/4 verification_hashes
+PASS bundle_hashes round 8: 14/14 file_hashes, 4/4 verification_hashes
+PASS bundle_hashes round 9: 14/14 file_hashes, 4/4 verification_hashes
+PASS bundle_hashes round 10: 14/14 file_hashes, 4/4 verification_hashes
+PASS bundle_hashes round 11: 14/14 file_hashes, 4/4 verification_hashes
+PASS bundle_hashes round 12: 15/15 file_hashes, 4/4 verification_hashes
+PASS bundle_hashes round 13: 15/15 file_hashes, 4/4 verification_hashes
+PASS bundle_hashes round 14: 15/15 file_hashes, 4/4 verification_hashes
+PASS bundle_hashes round 15: 15/15 file_hashes, 4/4 verification_hashes
+PASS bundle_hashes round 16: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 17: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 18: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 19: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 20: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 21: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 22: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 23: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 24: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 25: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 26: 16/16 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 27: 17/17 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 28: 17/17 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 29: 17/17 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 30: 17/17 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 31: 17/17 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 32: 17/17 file_hashes, 5/5 verification_hashes
+PASS bundle_hashes round 33: 17/17 file_hashes, 5/5 verification_hashes
+PASS mirror vl.json: scoring /vl.json == mirror VL (byte-identical)
+PASS mirror latest: live /vl.json == round 33 signed_validator_list
+PASS mirror unl/current: /unl/current == round 33 UNL (25 keys)
+WARN anchor round 3: status VL_PUBLISHED_MEMO_FAILED: VL published without an on-chain memo
+WARN anchor round 4: memo tx 0290FA98B6B3.. not verifiable: round completed 2026-05-05T16:57, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 5: memo tx 15B9D75CF11E.. not verifiable: round completed 2026-05-12T17:03, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 6: memo tx CE4F9490CD49.. not verifiable: round completed 2026-05-19T17:10, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 7: memo tx 12FE5A2787E4.. not verifiable: round completed 2026-05-26T17:20, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 8: memo tx 362FBB2CA8CB.. not verifiable: round completed 2026-06-02T17:33, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 9: memo tx 6EDF08FFFF10.. not verifiable: round completed 2026-06-09T17:43, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 10: memo tx 53493678D401.. not verifiable: round completed 2026-06-16T17:57, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 11: memo tx D0A7979618CF.. not verifiable: round completed 2026-06-23T18:11, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 12: memo tx 979B1D95A8B0.. not verifiable: round completed 2026-06-30T18:44, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 13: memo tx 34442EE50023.. not verifiable: round completed 2026-07-07T21:53, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 14: memo tx D06AA836409C.. not verifiable: round completed 2026-07-15T01:05, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 15: memo tx F0A731AEFC92.. not verifiable: round completed 2026-07-21T19:07, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 16: memo tx 08F361F8FD78.. not verifiable: round completed 2026-07-28T19:12, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 17: memo tx A4C92AFAFD45.. not verifiable: round completed 2026-08-04T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 18: memo tx 390D2CB34AAB.. not verifiable: round completed 2026-08-11T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 19: memo tx 8B7B142BFBA0.. not verifiable: round completed 2026-08-18T19:14, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 20: memo tx D77106CB159C.. not verifiable: round completed 2026-08-25T19:11, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 21: memo tx 3B8B391E1E4C.. not verifiable: round completed 2026-09-01T19:10, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 22: memo tx 2D1520D17ED5.. not verifiable: round completed 2026-09-08T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 23: memo tx 6D7F7900679B.. not verifiable: round completed 2026-09-15T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 24: memo tx 089364847A4E.. not verifiable: round completed 2026-09-22T19:12, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 25: memo tx F3C2AC58B83C.. not verifiable: round completed 2026-09-29T19:13, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 26: memo tx 77408B83E65A.. not verifiable: round completed 2026-10-06T19:11, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 27: memo tx 243EA6FE9398.. not verifiable: round completed 2026-10-13T19:11, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 28: memo tx 9EC84EAC9C7E.. not verifiable: round completed 2026-10-20T19:20, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 29: memo tx 47155A4D5A3D.. not verifiable: round completed 2026-10-27T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 30: memo tx C805308AC229.. not verifiable: round completed 2026-11-03T19:14, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 31: memo tx 9C187C0A51D5.. not verifiable: round completed 2026-11-10T19:17, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN anchor round 32: memo tx 71FB6C61F380.. not verifiable: round completed 2026-11-17T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+PASS anchor round 33: tx BD1BFB4ECFDA.. ledger 8335053 2026-11-24T19:16:20Z type pf_dynamic_unl: CID, vl_sequence 31, round match
+WARN convergence round 12: sealed; 3 participants, summary == recount; 0/6 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 6 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 13: sealed; 5 participants, summary == recount; 0/10 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 10 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 14: sealed; 12 participants, summary == recount; 0/24 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 24 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 15: sealed; 18 participants, summary == recount; 0/36 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 36 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 16: sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 17: sealed; 18 participants, summary == recount; 0/36 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 36 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 18: sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 19: sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 20: sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 21: sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 22: sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 23: sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 24: sealed; 18 participants, summary == recount; 0/36 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 36 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 25: sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 26: sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 27: sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 28: sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 29: phase not_tracked although the round is a normal COMPLETE round with a frozen input package (Qmdtr2febBtC6HvsaQGo3iZ9h57stjowoP2VhvZ4eUMEUt, frozen 2026-10-27T16:13) after convergence tracking began (round 12): no sealed report
+WARN convergence round 30: sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 31: sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+WARN convergence round 32: sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))
+PASS convergence round 33: sealed; 17 participants, summary == recount; anchor memo ok; 34/34 commit/reveal txs validated tesSUCCESS
+PASS nodes sentry: 2026-11-26T05:43:35Z: trusts 25 keys == round 33 VL seq 31 from publisher ED3F1E0DA7..; quorum 17 in [15, 20]
+PASS nodes validator: 2026-11-26T05:43:34Z: trusts 25 keys == round 33 VL seq 31 from publisher ED3F1E0DA7..; quorum 17 in [15, 20]
+PASS nodes sentry vs validator: trusted keys equal, quorum equal
+SUMMARY rounds=32 published=31 txs=737 results=234 PASS=178 WARN=56 FAIL=0
+audit exit=0
+$ cat dunl/report/SHA256SUMS
+b3d247955a1547c18b658b256b54167c8de3beefe8e8a3da9480191d0c2618c9  REPORT.md
+a12d4f638de689bb0d69a2dd0117ca979b32eea3f2f18c1af4df2c6d897190cf  charts/churn.svg
+0006bd8e7aee6af5142200c2ad63709a6b69d75a56b221206d732b26e057325f  charts/participation.svg
+78b97fa21b14321efc320f156fe4d462ceea6eb0c94c29692b7e0938363e927b  charts/unl_size.svg
+1f13d7e475d5f64b72ab486741eec987ca3950ccd8f88079b24611e2ba8153c9  checks.json
+184c9754789428e0517551ae07a47c5ba361d558b9fb4704e7c61b4ca97a6825  entry_times.csv
+860f5571a0d03ff2b8b66da86d4d7c65bb2db5a39cabd071bdb6ffe4ef06be31  membership.csv
+c8575b7d11d442a7faeb4457a6032b6495a05bc4c3184860f9e8be64ea8dbabb  participation.csv
+04b6fc5e4dd1757c9e67fa0159b6161fae299f64b946b673fe750ae5fc7181c5  scores.csv
+07614eee47ed149d477b92a6ee8f01c5cc8f3bb95c56b6ef64a1cc5830568fdc  tenure.csv

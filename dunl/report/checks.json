@@ -1,0 +1,1406 @@
+[
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 1 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 3",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 2 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 4",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 3 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 5",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 4 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 6",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 5 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 7",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 6 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 8",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 7 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 9",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 8 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 10",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 9 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 11",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 10 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 12",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 11 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 13",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 12 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 14",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 13 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 15",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 14 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 16",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 15 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 17",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 16 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 18",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 17 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 19",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 18 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 20",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 19 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 21",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 20 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 22",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 21 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 23",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 22 sig ok (low-S); 20/20 validator manifests ok",
+  "scope": "round 24",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 23 sig ok (low-S); 25/25 validator manifests ok",
+  "scope": "round 25",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 24 sig ok (low-S); 25/25 validator manifests ok",
+  "scope": "round 26",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 25 sig ok (low-S); 25/25 validator manifests ok",
+  "scope": "round 27",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 26 sig ok (low-S); 25/25 validator manifests ok",
+  "scope": "round 28",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 27 sig ok (low-S); 25/25 validator manifests ok",
+  "scope": "round 29",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 28 sig ok (low-S); 25/25 validator manifests ok",
+  "scope": "round 30",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 29 sig ok (low-S); 25/25 validator manifests ok",
+  "scope": "round 31",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 30 sig ok (low-S); 25/25 validator manifests ok",
+  "scope": "round 32",
+  "status": "PASS"
+ },
+ {
+  "check": "vl_decode",
+  "reason": "publisher ED3F1E0DA7.. manifest seq 1 sigs ok; blob seq 31 sig ok (low-S); 25/25 validator manifests ok",
+  "scope": "round 33",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 1 == vl_sequence (first published)",
+  "scope": "round 3",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 2 == vl_sequence after 1 (round 3)",
+  "scope": "round 4",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 3 == vl_sequence after 2 (round 4)",
+  "scope": "round 5",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 4 == vl_sequence after 3 (round 5)",
+  "scope": "round 6",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 5 == vl_sequence after 4 (round 6)",
+  "scope": "round 7",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 6 == vl_sequence after 5 (round 7)",
+  "scope": "round 8",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 7 == vl_sequence after 6 (round 8)",
+  "scope": "round 9",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 8 == vl_sequence after 7 (round 9)",
+  "scope": "round 10",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 9 == vl_sequence after 8 (round 10)",
+  "scope": "round 11",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 10 == vl_sequence after 9 (round 11)",
+  "scope": "round 12",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 11 == vl_sequence after 10 (round 12)",
+  "scope": "round 13",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 12 == vl_sequence after 11 (round 13)",
+  "scope": "round 14",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 13 == vl_sequence after 12 (round 14)",
+  "scope": "round 15",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 14 == vl_sequence after 13 (round 15)",
+  "scope": "round 16",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 15 == vl_sequence after 14 (round 16)",
+  "scope": "round 17",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 16 == vl_sequence after 15 (round 17)",
+  "scope": "round 18",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 17 == vl_sequence after 16 (round 18)",
+  "scope": "round 19",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 18 == vl_sequence after 17 (round 19)",
+  "scope": "round 20",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 19 == vl_sequence after 18 (round 20)",
+  "scope": "round 21",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 20 == vl_sequence after 19 (round 21)",
+  "scope": "round 22",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 21 == vl_sequence after 20 (round 22)",
+  "scope": "round 23",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 22 == vl_sequence after 21 (round 23)",
+  "scope": "round 24",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 23 == vl_sequence after 22 (round 24)",
+  "scope": "round 25",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 24 == vl_sequence after 23 (round 25)",
+  "scope": "round 26",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 25 == vl_sequence after 24 (round 26)",
+  "scope": "round 27",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 26 == vl_sequence after 25 (round 27)",
+  "scope": "round 28",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 27 == vl_sequence after 26 (round 28)",
+  "scope": "round 29",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 28 == vl_sequence after 27 (round 29)",
+  "scope": "round 30",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 29 == vl_sequence after 28 (round 30)",
+  "scope": "round 31",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 30 == vl_sequence after 29 (round 31)",
+  "scope": "round 32",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "blob sequence 31 == vl_sequence after 30 (round 32)",
+  "scope": "round 33",
+  "status": "PASS"
+ },
+ {
+  "check": "sequence",
+  "reason": "status FAILED: no signed VL published",
+  "scope": "round 2",
+  "status": "WARN"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-05-05T17:18:33Z < expiration 2027-09-17T16:48:33Z; next list (round 4) effective 2026-05-05T17:27:35Z",
+  "scope": "round 3",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-05-05T17:27:35Z < expiration 2027-09-17T16:57:35Z; next list (round 5) effective 2026-05-12T17:33:17Z",
+  "scope": "round 4",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-05-12T17:33:17Z < expiration 2027-09-24T17:03:17Z; next list (round 6) effective 2026-05-19T17:40:35Z",
+  "scope": "round 5",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-05-19T17:40:35Z < expiration 2027-10-01T17:10:35Z; next list (round 7) effective 2026-05-26T17:50:23Z",
+  "scope": "round 6",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-05-26T17:50:23Z < expiration 2027-10-08T17:20:23Z; next list (round 8) effective 2026-06-02T18:02:52Z",
+  "scope": "round 7",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-06-02T18:02:52Z < expiration 2027-10-15T17:32:52Z; next list (round 9) effective 2026-06-09T18:13:16Z",
+  "scope": "round 8",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-06-09T18:13:16Z < expiration 2027-10-22T17:43:16Z; next list (round 10) effective 2026-06-16T18:27:26Z",
+  "scope": "round 9",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-06-16T18:27:26Z < expiration 2027-10-29T17:57:26Z; next list (round 11) effective 2026-06-23T18:39:43Z",
+  "scope": "round 10",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-06-23T18:39:43Z < expiration 2027-11-05T18:09:43Z; next list (round 12) effective 2026-06-30T19:14:14Z",
+  "scope": "round 11",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-06-30T19:14:14Z < expiration 2027-11-12T18:44:14Z; next list (round 13) effective 2026-07-07T22:49:55Z",
+  "scope": "round 12",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-07-07T22:49:55Z < expiration 2027-11-19T18:53:02Z; next list (round 14) effective 2026-07-15T02:01:25Z",
+  "scope": "round 13",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-07-15T02:01:25Z < expiration 2027-11-26T22:04:44Z; next list (round 15) effective 2026-07-21T20:07:36Z",
+  "scope": "round 14",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-07-21T20:07:36Z < expiration 2027-12-03T16:11:31Z; next list (round 16) effective 2026-07-28T20:08:45Z",
+  "scope": "round 15",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-07-28T20:08:45Z < expiration 2027-12-10T16:12:13Z; next list (round 17) effective 2026-08-04T20:10:15Z",
+  "scope": "round 16",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-08-04T20:10:15Z < expiration 2027-12-17T16:14:58Z; next list (round 18) effective 2026-08-11T20:10:35Z",
+  "scope": "round 17",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-08-11T20:10:35Z < expiration 2027-12-24T16:14:59Z; next list (round 19) effective 2026-08-18T20:10:46Z",
+  "scope": "round 18",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-08-18T20:10:46Z < expiration 2027-12-31T16:14:21Z; next list (round 20) effective 2026-08-25T20:09:48Z",
+  "scope": "round 19",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-08-25T20:09:48Z < expiration 2028-01-07T16:16:28Z; next list (round 21) effective 2026-09-01T20:06:57Z",
+  "scope": "round 20",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-09-01T20:06:57Z < expiration 2028-01-14T16:15:21Z; next list (round 22) effective 2026-09-08T20:10:25Z",
+  "scope": "round 21",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-09-08T20:10:25Z < expiration 2028-01-21T16:20:13Z; next list (round 23) effective 2026-09-15T20:11:06Z",
+  "scope": "round 22",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-09-15T20:11:06Z < expiration 2028-01-28T16:14:41Z; next list (round 24) effective 2026-09-22T20:08:25Z",
+  "scope": "round 23",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-09-22T20:08:25Z < expiration 2028-02-04T16:12:22Z; next list (round 25) effective 2026-09-29T20:08:55Z",
+  "scope": "round 24",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-09-29T20:08:55Z < expiration 2028-02-11T16:12:50Z; next list (round 26) effective 2026-10-06T20:07:56Z",
+  "scope": "round 25",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-10-06T20:07:56Z < expiration 2028-02-18T16:11:37Z; next list (round 27) effective 2026-10-13T20:06:47Z",
+  "scope": "round 26",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-10-13T20:06:47Z < expiration 2028-02-25T16:11:13Z; next list (round 28) effective 2026-10-20T20:14:56Z",
+  "scope": "round 27",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-10-20T20:14:56Z < expiration 2028-03-03T16:18:47Z; next list (round 29) effective 2026-10-27T20:13:56Z",
+  "scope": "round 28",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-10-27T20:13:56Z < expiration 2028-03-10T16:20:32Z; next list (round 30) effective 2026-11-03T20:10:06Z",
+  "scope": "round 29",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-11-03T20:10:06Z < expiration 2028-03-17T16:14:25Z; next list (round 31) effective 2026-11-10T20:12:46Z",
+  "scope": "round 30",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-11-10T20:12:46Z < expiration 2028-03-24T16:16:51Z; next list (round 32) effective 2026-11-17T20:10:08Z",
+  "scope": "round 31",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-11-17T20:10:08Z < expiration 2028-03-31T16:14:53Z; next list (round 33) effective 2026-11-24T20:11:38Z",
+  "scope": "round 32",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "effective 2026-11-24T20:11:38Z < expiration 2028-04-07T16:15:57Z; latest",
+  "scope": "round 33",
+  "status": "PASS"
+ },
+ {
+  "check": "validity_window",
+  "reason": "latest list (round 33) expires 2028-04-07T16:15:57Z; snapshot 2026-11-26T05:43:35Z: 498.4 days left",
+  "scope": "latest",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL",
+  "scope": "round 3",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL",
+  "scope": "round 4",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL",
+  "scope": "round 5",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL",
+  "scope": "round 6",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL",
+  "scope": "round 7",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL",
+  "scope": "round 8",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL",
+  "scope": "round 9",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL",
+  "scope": "round 10",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL",
+  "scope": "round 11",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 11 UNL",
+  "scope": "round 12",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 12 UNL",
+  "scope": "round 13",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 13 UNL",
+  "scope": "round 14",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 14 UNL",
+  "scope": "round 15",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 15 UNL",
+  "scope": "round 16",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 16 UNL",
+  "scope": "round 17",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 17 UNL",
+  "scope": "round 18",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 18 UNL",
+  "scope": "round 19",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 19 UNL",
+  "scope": "round 20",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 20 UNL",
+  "scope": "round 21",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 21 UNL",
+  "scope": "round 22",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 22 UNL",
+  "scope": "round 23",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 20 keys == selected UNL; previous_unl input == round 23 UNL",
+  "scope": "round 24",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 25 keys == selected UNL; previous_unl input == round 24 UNL",
+  "scope": "round 25",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 25 keys == selected UNL; previous_unl input == round 25 UNL",
+  "scope": "round 26",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 25 keys == selected UNL; previous_unl input == round 26 UNL",
+  "scope": "round 27",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 25 keys == selected UNL; previous_unl input == round 27 UNL",
+  "scope": "round 28",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 25 keys == selected UNL; previous_unl input == round 28 UNL",
+  "scope": "round 29",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 25 keys == selected UNL; previous_unl input == round 29 UNL",
+  "scope": "round 30",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 25 keys == selected UNL; previous_unl input == round 30 UNL",
+  "scope": "round 31",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 25 keys == selected UNL; previous_unl input == round 31 UNL",
+  "scope": "round 32",
+  "status": "PASS"
+ },
+ {
+  "check": "validator_set",
+  "reason": "VL 25 keys == selected UNL; previous_unl input == round 32 UNL",
+  "scope": "round 33",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 20, gap 5) == selected_unl (20 + 30 alternates, same order); 20 incumbents kept; 4 alternates score above the lowest selected (90) but within the min gap",
+  "scope": "round 16",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 20, gap 5) == selected_unl (20 + 31 alternates, same order); 18 incumbents kept; 1 alternates score above the lowest selected (92) but within the min gap",
+  "scope": "round 17",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 20, gap 5) == selected_unl (20 + 34 alternates, same order); 20 incumbents kept; 2 alternates score above the lowest selected (92) but within the min gap",
+  "scope": "round 18",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 34 alternates, same order); 18 incumbents kept; 0 alternates score above the lowest selected (92) but within the min gap",
+  "scope": "round 19",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 32 alternates, same order); 18 incumbents kept; 3 alternates score above the lowest selected (91) but within the min gap",
+  "scope": "round 20",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 35 alternates, same order); 18 incumbents kept; 0 alternates score above the lowest selected (92) but within the min gap",
+  "scope": "round 21",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 34 alternates, same order); 19 incumbents kept; 1 alternates score above the lowest selected (93) but within the min gap",
+  "scope": "round 22",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 33 alternates, same order); 18 incumbents kept; 2 alternates score above the lowest selected (93) but within the min gap",
+  "scope": "round 23",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 20, gap 3) == selected_unl (20 + 33 alternates, same order); 19 incumbents kept; 2 alternates score above the lowest selected (89) but within the min gap",
+  "scope": "round 24",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 26 alternates, same order); 20 incumbents kept; 1 alternates score above the lowest selected (89) but within the min gap",
+  "scope": "round 25",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 26 alternates, same order); 25 incumbents kept; 1 alternates score above the lowest selected (89) but within the min gap",
+  "scope": "round 26",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 28 alternates, same order); 22 incumbents kept; 2 alternates score above the lowest selected (91) but within the min gap",
+  "scope": "round 27",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 35 alternates, same order); 23 incumbents kept; 2 alternates score above the lowest selected (92) but within the min gap",
+  "scope": "round 28",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 36 alternates, same order); 23 incumbents kept; 1 alternates score above the lowest selected (93) but within the min gap",
+  "scope": "round 29",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 38 alternates, same order); 24 incumbents kept; 0 alternates score above the lowest selected (93) but within the min gap",
+  "scope": "round 30",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 41 alternates, same order); 25 incumbents kept; 6 alternates score above the lowest selected (92) but within the min gap",
+  "scope": "round 31",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 40 alternates, same order); 24 incumbents kept; 5 alternates score above the lowest selected (92) but within the min gap",
+  "scope": "round 32",
+  "status": "PASS"
+ },
+ {
+  "check": "selection",
+  "reason": "replay (cutoff 40, max 25, gap 3) == selected_unl (25 + 35 alternates, same order); 24 incumbents kept; 5 alternates score above the lowest selected (89) but within the min gap",
+  "scope": "round 33",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "legacy layout: no bundle.json / file_hashes",
+  "scope": "round 3",
+  "status": "WARN"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "legacy layout: no bundle.json / file_hashes",
+  "scope": "round 4",
+  "status": "WARN"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "legacy layout: no bundle.json / file_hashes",
+  "scope": "round 5",
+  "status": "WARN"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "legacy layout: no bundle.json / file_hashes",
+  "scope": "round 6",
+  "status": "WARN"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "14/14 file_hashes, 4/4 verification_hashes",
+  "scope": "round 7",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "14/14 file_hashes, 4/4 verification_hashes",
+  "scope": "round 8",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "14/14 file_hashes, 4/4 verification_hashes",
+  "scope": "round 9",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "14/14 file_hashes, 4/4 verification_hashes",
+  "scope": "round 10",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "14/14 file_hashes, 4/4 verification_hashes",
+  "scope": "round 11",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "15/15 file_hashes, 4/4 verification_hashes",
+  "scope": "round 12",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "15/15 file_hashes, 4/4 verification_hashes",
+  "scope": "round 13",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "15/15 file_hashes, 4/4 verification_hashes",
+  "scope": "round 14",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "15/15 file_hashes, 4/4 verification_hashes",
+  "scope": "round 15",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 16",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 17",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 18",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 19",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 20",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 21",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 22",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 23",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 24",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 25",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "16/16 file_hashes, 5/5 verification_hashes",
+  "scope": "round 26",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "17/17 file_hashes, 5/5 verification_hashes",
+  "scope": "round 27",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "17/17 file_hashes, 5/5 verification_hashes",
+  "scope": "round 28",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "17/17 file_hashes, 5/5 verification_hashes",
+  "scope": "round 29",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "17/17 file_hashes, 5/5 verification_hashes",
+  "scope": "round 30",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "17/17 file_hashes, 5/5 verification_hashes",
+  "scope": "round 31",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "17/17 file_hashes, 5/5 verification_hashes",
+  "scope": "round 32",
+  "status": "PASS"
+ },
+ {
+  "check": "bundle_hashes",
+  "reason": "17/17 file_hashes, 5/5 verification_hashes",
+  "scope": "round 33",
+  "status": "PASS"
+ },
+ {
+  "check": "mirror",
+  "reason": "scoring /vl.json == mirror VL (byte-identical)",
+  "scope": "vl.json",
+  "status": "PASS"
+ },
+ {
+  "check": "mirror",
+  "reason": "live /vl.json == round 33 signed_validator_list",
+  "scope": "latest",
+  "status": "PASS"
+ },
+ {
+  "check": "mirror",
+  "reason": "/unl/current == round 33 UNL (25 keys)",
+  "scope": "unl/current",
+  "status": "PASS"
+ },
+ {
+  "check": "anchor",
+  "reason": "status VL_PUBLISHED_MEMO_FAILED: VL published without an on-chain memo",
+  "scope": "round 3",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 0290FA98B6B3.. not verifiable: round completed 2026-05-05T16:57, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 4",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 15B9D75CF11E.. not verifiable: round completed 2026-05-12T17:03, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 5",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx CE4F9490CD49.. not verifiable: round completed 2026-05-19T17:10, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 6",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 12FE5A2787E4.. not verifiable: round completed 2026-05-26T17:20, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 7",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 362FBB2CA8CB.. not verifiable: round completed 2026-06-02T17:33, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 8",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 6EDF08FFFF10.. not verifiable: round completed 2026-06-09T17:43, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 9",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 53493678D401.. not verifiable: round completed 2026-06-16T17:57, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 10",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx D0A7979618CF.. not verifiable: round completed 2026-06-23T18:11, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 11",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 979B1D95A8B0.. not verifiable: round completed 2026-06-30T18:44, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 12",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 34442EE50023.. not verifiable: round completed 2026-07-07T21:53, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 13",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx D06AA836409C.. not verifiable: round completed 2026-07-15T01:05, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 14",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx F0A731AEFC92.. not verifiable: round completed 2026-07-21T19:07, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 15",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 08F361F8FD78.. not verifiable: round completed 2026-07-28T19:12, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 16",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx A4C92AFAFD45.. not verifiable: round completed 2026-08-04T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 17",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 390D2CB34AAB.. not verifiable: round completed 2026-08-11T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 18",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 8B7B142BFBA0.. not verifiable: round completed 2026-08-18T19:14, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 19",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx D77106CB159C.. not verifiable: round completed 2026-08-25T19:11, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 20",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 3B8B391E1E4C.. not verifiable: round completed 2026-09-01T19:10, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 21",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 2D1520D17ED5.. not verifiable: round completed 2026-09-08T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 22",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 6D7F7900679B.. not verifiable: round completed 2026-09-15T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 23",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 089364847A4E.. not verifiable: round completed 2026-09-22T19:12, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 24",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx F3C2AC58B83C.. not verifiable: round completed 2026-09-29T19:13, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 25",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 77408B83E65A.. not verifiable: round completed 2026-10-06T19:11, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 26",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 243EA6FE9398.. not verifiable: round completed 2026-10-13T19:11, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 27",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 9EC84EAC9C7E.. not verifiable: round completed 2026-10-20T19:20, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 28",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 47155A4D5A3D.. not verifiable: round completed 2026-10-27T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 29",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx C805308AC229.. not verifiable: round completed 2026-11-03T19:14, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 30",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 9C187C0A51D5.. not verifiable: round completed 2026-11-10T19:17, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 31",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "memo tx 71FB6C61F380.. not verifiable: round completed 2026-11-17T19:15, before the retained history (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 32",
+  "status": "WARN"
+ },
+ {
+  "check": "anchor",
+  "reason": "tx BD1BFB4ECFDA.. ledger 8335053 2026-11-24T19:16:20Z type pf_dynamic_unl: CID, vl_sequence 31, round match",
+  "scope": "round 33",
+  "status": "PASS"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 3 participants, summary == recount; 0/6 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 6 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 12",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 5 participants, summary == recount; 0/10 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 10 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 13",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 12 participants, summary == recount; 0/24 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 24 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 14",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 18 participants, summary == recount; 0/36 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 36 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 15",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 16",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 18 participants, summary == recount; 0/36 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 36 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 17",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 18",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 19",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 20",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 21",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 22",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 19 participants, summary == recount; 0/38 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 38 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 23",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 18 participants, summary == recount; 0/36 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 36 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 24",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 25",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 26",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 27",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 28",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "phase not_tracked although the round is a normal COMPLETE round with a frozen input package (Qmdtr2febBtC6HvsaQGo3iZ9h57stjowoP2VhvZ4eUMEUt, frozen 2026-10-27T16:13) after convergence tracking began (round 12): no sealed report",
+  "scope": "round 29",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 30",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 31",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 17 participants, summary == recount; 0/34 commit/reveal txs validated tesSUCCESS; anchor tx not verifiable (pruned); 34 commit/reveal txs not verifiable (pruned) (public RPC keeps ledgers 8300055-8375832 (first closed 2026-11-23T14:02:51Z))",
+  "scope": "round 32",
+  "status": "WARN"
+ },
+ {
+  "check": "convergence",
+  "reason": "sealed; 17 participants, summary == recount; anchor memo ok; 34/34 commit/reveal txs validated tesSUCCESS",
+  "scope": "round 33",
+  "status": "PASS"
+ },
+ {
+  "check": "nodes",
+  "reason": "2026-11-26T05:43:35Z: trusts 25 keys == round 33 VL seq 31 from publisher ED3F1E0DA7..; quorum 17 in [15, 20]",
+  "scope": "sentry",
+  "status": "PASS"
+ },
+ {
+  "check": "nodes",
+  "reason": "2026-11-26T05:43:34Z: trusts 25 keys == round 33 VL seq 31 from publisher ED3F1E0DA7..; quorum 17 in [15, 20]",
+  "scope": "validator",
+  "status": "PASS"
+ },
+ {
+  "check": "nodes",
+  "reason": "trusted keys equal, quorum equal",
+  "scope": "sentry vs validator",
+  "status": "PASS"
+ }
+]
