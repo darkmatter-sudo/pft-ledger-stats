@@ -119,10 +119,19 @@ def test_rpc_hash_mismatch_fails(tmp_path):
 
 
 def test_too_few_samples_fails(tmp_path):
-    rec = VV.Recording(FIX)
+    """Every graded ledger matches in the cache, but 7 samples are below the floor of 50."""
+    d = copy_fixture(tmp_path)
+    rec = VV.Recording(d)
     ck, _g, rows, _t, _s = VV.verify(rec, args(), VV.SigCache(1))
-    VV.check_rpc(rec, ck, rows, args(sample=60))  # only 7 graded ledgers -> fewer than 50
-    assert check(ck, "rpc.crosscheck")["status"] == "FAIL"
+    cache = {
+        str(r["ledger_index"]): {"ledger_hash": r["ledger_hash"], "validated": True, "close_time": 0}
+        for r in rows
+        if r["result"] == "met"
+    }
+    json.dump(cache, open(os.path.join(d, "rpc-cache.json"), "w"))
+    VV.check_rpc(rec, ck, rows, args(sample=60))
+    c = check(ck, "rpc.crosscheck")
+    assert c["status"] == "FAIL" and c["failures"] == [] and len(c["sampled"]) == 7
 
 
 # ---------------------------------------------------------------- the five negative controls
@@ -181,6 +190,28 @@ def test_partial_and_wrong_hash_validations_do_not_count(base, tmp_path):
     r2 = next(r for r in rows2 if r["ledger_index"] == li)
     assert r2["trusted_signers"] == 0 and r2["result"] == "BELOW_QUORUM"
     assert check(ck, "validations.fields")["status"] == "FAIL"
+
+
+@pytest.mark.parametrize(
+    "edit,col",
+    [
+        ({"full": False}, "partial_validations"),
+        ({"ok": False, "reason": "bad_signature"}, "invalid_validations"),
+        ({"lh": "11" * 32}, "trusted_other_hash"),
+    ],
+    ids=["partial", "invalid", "other-hash"],
+)
+def test_only_full_valid_same_hash_validations_count(base, edit, col):
+    """Graded validations of one ledger that are partial, invalid or for another hash never count."""
+    rec, _sigs, (_ck, graded, rows, trusted, _sm) = base
+    li = next(r for r in rows if r["result"] == "met")["ledger_index"]
+    g2 = [dict(g, **edit) if g["li"] == li and g["trusted"] else g for g in copy.deepcopy(graded)]
+    ck = VV.Checks()
+    rows2 = VV.check_quorum(rec, ck, g2, trusted)
+    r2 = next(r for r in rows2 if r["ledger_index"] == li)
+    assert r2["trusted_signers"] == 0 and r2["result"] == "BELOW_QUORUM"
+    assert r2[col] >= 25
+    assert check(ck, "quorum.ledgers")["failures"] == [{"li": li, "signers": 0, "quorum": 17}]
 
 
 def test_negative_unl_lowers_signers_and_quorum(base, tmp_path):
@@ -515,12 +546,15 @@ def test_segments_torn_tail_close_and_resume(tmp_path):
     s.fh.close()
     s.fh = None
     assert C.drop_torn_tail(s.cur) == len('{"ev":"ledger","li":2')
+    with open(s.cur, "rb") as fh:
+        body = fh.read()
+    assert body.endswith(b"\n") and body.count(b"\n") == 2 and b'"li":2' not in body
     name = s.close_current()
     assert os.path.basename(name) == "000001.jsonl.gz" and not os.path.exists(s.cur)
     with open(name, "rb") as fh:
         assert fh.read(10)[4:8] == b"\x00\x00\x00\x00"  # gzip mtime 0: byte-stable segments
     st = C.State().load(C.Segments(out).lines())
-    assert st.last_ledger == 1 and st.vals == 1 and st.has(1, "a", "x")
+    assert st.last_ledger == 1 and st.vals == 1 and st.has(1, "a", "x") and st.bad_lines == 0
     assert os.path.basename(C.Segments(out).next_name()) == "000002.jsonl.gz"
 
 
