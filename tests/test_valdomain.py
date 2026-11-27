@@ -437,6 +437,9 @@ def test_classify_fetch_branches():
         {"entries": 0, "matching": 0},
     )
     assert D.classify_fetch(_rec(body=good.lower()), k, "verified.example")[0] == "key_not_listed"
+    for variant in (kb.lower(), kb.upper(), kb + " "):
+        swapped = good.replace(kb.encode(), variant.encode())
+        assert D.classify_fetch(_rec(body=swapped), k, "verified.example")[0] == "key_not_listed", variant
     assert D.classify_fetch(_rec(body=b"\xff\xfe"), k, "d")[0] == "toml_unparseable"
     assert D.classify_fetch(_rec(body=b"a = = 1"), k, "d")[0] == "toml_unparseable"
     assert D.classify_fetch(_rec(301), k, "d") == ("http_error", {"status": 301, "truncated": False})
@@ -779,13 +782,19 @@ def test_cmd_node_reads_admin_commands(tmp_path):
         if m == "server_info":
             return {"info": {"build_version": "1.0.9", "server_state": "full", "pubkey_node": "secret-ish"}}
         if m == "validators":
-            return {"publisher_lists": [{"pubkey_publisher": "ED", "seq": 1, "list": ["a"]}]}
-        return {"validator_sites": []}
+            return {
+                "publisher_lists": [
+                    {"pubkey_publisher": "ED", "seq": 1, "list": ["a"], "uri": "192.0.2.7:2559"}
+                ]
+            }
+        return {"validator_sites": [{"uri": "https://vl.example/l.json"}]}
 
     assert C.cmd_node(args(str(tmp_path), rpc="r"), call) == 0
     assert asked == ["validators", "validator_list_sites", "server_info"]
     node = json.loads((tmp_path / "node.json").read_text())
     assert node["server_info"]["build_version"] == "1.0.9" and "pubkey_node" not in json.dumps(node)
+    assert "192.0.2.7" not in json.dumps(node) and node["validators"]["publisher_lists"][0]["seq"] == 1
+    assert C.vl_site(node) == "https://vl.example/l.json"  # the VL site uri is kept
 
 
 def test_cmd_collect_needs_node_json(tmp_path):
@@ -829,3 +838,8 @@ def test_real_collection_matches_committed_results(tmp_path):
         assert fh.read() == js
     with open(os.path.join(rep, "table.md"), "rb") as fh:
         assert fh.read() == md
+    with open(os.path.join(ROOT, "valdomain", "REPORT.md")) as fh:
+        report = fh.read()
+    table = md.decode().split("\n\n")[0]
+    assert table in report
+    assert f"**All {len(rows)} validators of VL sequence" in report or V.counts(rows)["verified"] != len(rows)

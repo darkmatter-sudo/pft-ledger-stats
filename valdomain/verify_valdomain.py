@@ -190,10 +190,9 @@ def classify_all(data, ck, vals):
             if rec.get("domain") != dom or rec.get("path") != p:
                 problems.append(f"{dom}{p}: cache record names {rec.get('domain')}{rec.get('path')}")
                 continue
-            if rec.get("outcome") == "response" and "body" in rec:
-                if hashlib.sha256(rec["body"]).hexdigest() != rec.get("sha256") or len(
-                    rec["body"]
-                ) != rec.get("bytes"):
+            body = rec.get("body")
+            if rec.get("outcome") == "response" and body is not None:
+                if hashlib.sha256(body).hexdigest() != rec.get("sha256") or len(body) != rec.get("bytes"):
                     problems.append(f"{dom}{p}: body does not match its sha256/bytes")
                     continue
             try:

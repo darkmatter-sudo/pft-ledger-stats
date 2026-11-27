@@ -196,10 +196,22 @@ def say(msg):
     print(f"{iso(time.time())} {msg}", flush=True)
 
 
+def strip_uri(obj):
+    """Drop every `uri` key of the `validators` answer: a publisher list's `uri` names the PEER it
+    was received from (an IP address), never published (same rule as valsig's recorder)."""
+    if isinstance(obj, dict):
+        return {k: strip_uri(v) for k, v in obj.items() if k != "uri"}
+    if isinstance(obj, list):
+        return [strip_uri(v) for v in obj]
+    return obj
+
+
 def cmd_node(a, call=rpc_call):
     got = {}
     for m in ADMIN_COMMANDS:
         res = call(a.rpc, m)
+        if m == "validators":
+            res = strip_uri(res)
         if m == "server_info":
             info = res.get("info", {})
             res = {
