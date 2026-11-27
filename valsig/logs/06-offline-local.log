@@ -1,0 +1,28 @@
+# valsig offline rebuild (local working tree, before pin): repo HEAD d74f5cf22f359ada2f843ad647bf8f429b76d3db, Python 3.10.12, start 2026-11-27T05:45:35Z
+$ unshare -rn python3 -I valsig/verify_valsig.py run valsig/data/window-01 --out <tmp>/out --offline
+CHECK recording.files PASS closed segments numbered 000001.. without holes, no open current.jsonl
+CHECK recording.parse PASS 0 unparsable lines
+CHECK recording.gaps PASS 0 gap events, 0 index holes over 5356 ledgers
+CHECK recording.window PASS window 2026-11-27T00:49:58Z -> 2026-11-27T05:19:58Z (4.50 h planned), ledger stream span 4.499 h, last stop 'window complete', minimum 4.0 h
+CHECK vl.start PASS publisher manifest, blob signature (low-S), validity window and node trust all agree
+CHECK vl.end PASS publisher manifest, blob signature (low-S), validity window and node trust all agree
+CHECK vl.stable PASS start and end VL byte-identical (one trusted set for the whole window)
+CHECK manifests.verify PASS 102 of 102 manifests verify (master + signing signature)
+CHECK manifests.trusted PASS 25 of 25 trusted masters have a verified manifest with a signing key; node manifest older than the VL's for 0
+CHECK trust.snapshots PASS 1 validators snapshots: trusted set and signing keys match the VL and manifests
+CHECK validations.decode PASS 278501 of 278501 STValidation blobs decode
+CHECK validations.fields PASS 278501 of 278501: node-decoded fields == signed blob (key, index, hash, signing_time, flags, full, validated_hash, signature, master)
+CHECK validations.signatures PASS 278501 of 278501 signatures verify (0 invalid from trusted keys)
+CHECK validations.trust PASS signing key -> verified manifest -> master in the VL: not_in_vl 144607, trusted 133894
+CHECK quorum.node PASS 1 quorum samples; node quorum == max(ceil(eff*0.67), ceil(n*0.6)) with n=25
+CHECK quorum.ledgers PASS 5355 of 5355 observed ledgers met quorum; margin min 7, max 8
+CHECK quorum.edges PASS 1 edge ledgers (first ledger of a connection, not graded): 1 met quorum anyway
+CHECK rpc.crosscheck PASS 60 of 60 sampled ledgers: public RPC validated hash == recorded (answers kept in rpc-cache.json)
+MODE offline (rpc-cache.json only)
+RESULT PASS=18 WARN=0 FAIL=0 rpc_retries=0
+exit=0
+cmp checks.json: byte-identical
+cmp ledgers.csv: byte-identical
+cmp validators.csv: byte-identical
+cmp REPORT.md: byte-identical
+end 2026-11-27T05:54:27Z

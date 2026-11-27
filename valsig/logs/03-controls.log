@@ -1,0 +1,10 @@
+# valsig negative controls on the real recording: repo HEAD d74f5cf22f359ada2f843ad647bf8f429b76d3db, Python 3.10.12, start 2026-11-27T05:30:06Z
+$ python3 -I valsig/verify_valsig.py controls valsig/data/window-01
+BASELINE fail=none
+CONTROL flipped_blob_bit FAILS_AS_DESIGNED check=validations.signatures status=FAIL where={"k": "n9MSsKVYd8dbwbr8eTZkLFRAqCxVmybwv73qf9rLpM6yR8jiJ7c4", "li": 8398802} reason="278500 of 278501 signatures verify (1 invalid from trusted keys)" other_fails=none
+CONTROL wrong_key FAILS_AS_DESIGNED check=validations.signatures status=FAIL where={"k": "n9JbMNLnzsqks4nzc2VTrm4J5btYV2UezooidLZ4kxpA6zvdfrF3", "li": 8398802} reason="278500 of 278501 signatures verify (1 invalid from trusted keys)" other_fails=none
+CONTROL key_absent_from_manifests FAILS_AS_DESIGNED check=manifests.trusted status=FAIL where={"master": "nHUdwzTWTQJzebbxcanZG2ERXikMLU9aAZa8cHtxosfiKq5N7Vd5"} reason="24 of 25 trusted masters have a verified manifest with a signing key; node manifest older than the VL's for 0" other_fails=['trust.snapshots']
+CONTROL tampered_ledger_hash FAILS_AS_DESIGNED check=validations.signatures status=FAIL where={"k": "n9MSsKVYd8dbwbr8eTZkLFRAqCxVmybwv73qf9rLpM6yR8jiJ7c4", "li": 8398802} reason="278500 of 278501 signatures verify (1 invalid from trusted keys)" other_fails=none
+CONTROL below_quorum_signers FAILS_AS_DESIGNED check=quorum.ledgers status=FAIL where={"li": 8398803, "quorum": 17, "signers": 16} reason="5354 of 5355 observed ledgers met quorum; margin min -1, max 8" other_fails=none
+RESULT PASS controls=5 detected=5
+exit=0 end 2026-11-27T05:42:54Z

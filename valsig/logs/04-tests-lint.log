@@ -1,0 +1,14 @@
+# valsig tests + lint: repo HEAD d74f5cf22f359ada2f843ad647bf8f429b76d3db, Python 3.10.12, ruff 0.17.1, version: 0.8.0, start 2026-11-27T05:43:22Z
+$ python3 -m pytest -q -p no:cacheprovider tests/test_valsig.py
+................................................                         [100%]
+48 passed in 10.34s
+exit=0
+$ ruff check --config valsig/ruff.toml valsig tests/test_valsig.py dunl/lib_dunl.py
+All checks passed!
+exit=0
+$ ruff format --check --config valsig/ruff.toml valsig tests/test_valsig.py
+8 files already formatted
+exit=0
+$ shellcheck valsig/run_window.sh valsig/run-collector.sh
+exit=0
+end 2026-11-27T05:43:33Z

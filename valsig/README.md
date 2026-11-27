@@ -115,6 +115,27 @@ The baseline must pass first, otherwise `controls` exits 1. The tests also cover
 gap/hole/open-segment/short-window failures, VL and manifest tampering, and the recorder's dedupe,
 gap reasons, allowlist, `uri` stripping and torn-tail resume.
 
+## Results: window-01 (2026-11-27T00:49:58Z -> 05:19:58Z)
+
+All numbers come from `report/checks.json` (built from the committed recording); `report/REPORT.md`
+has the full tables.
+
+* Recording: 4.499 h of ledger stream, 1 session, 1 connection, 18 closed segments, **0 gap events,
+  0 index holes** over 5356 ledgers (8398802..8404157), 278501 validations, 0 unparsable lines.
+* VL: start and end copies byte-identical (sha256 `5c6e03b7...7ad688`), both verify; 25 trusted
+  masters, all with a verified manifest; 102 of 102 manifests verify.
+* Validations: 278501 of 278501 decode, match the node's fields and verify. 133894 are from trusted
+  signing keys; 144607 are from 27 signers outside the VL (checked, never counted).
+* Quorum: node quorum 17 (n=25, none NegativeUNL-disabled) == the formula. **5355 of 5355** graded
+  ledgers met quorum, margin min 7, max 8 (8: 5346 ledgers, 7: 9 ledgers). 24 masters signed every
+  graded ledger; one signed 5346 of 5355 (99.83 %). The one edge ledger also met quorum.
+* Public RPC: 60 of 60 sampled ledgers validated with the recorded hash.
+* Negative controls: 5 of 5 fail the named check at the mutated item. Tests: 48 passed, ruff and
+  shellcheck clean. Mutants: 36 of 36 caught.
+
+Run logs are in `logs/` (window, online verify, controls, tests and lint, mutants, offline rebuild,
+fresh public clone).
+
 ## Limits
 
 * **Single vantage point.** Only validations that reached this node are seen. A validator that

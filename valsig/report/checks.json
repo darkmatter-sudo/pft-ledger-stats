@@ -1,0 +1,251 @@
+{
+ "checks": [
+  {
+   "id": "recording.files",
+   "reason": "closed segments numbered 000001.. without holes, no open current.jsonl",
+   "segments": 18,
+   "status": "PASS"
+  },
+  {
+   "bad_lines": 0,
+   "id": "recording.parse",
+   "reason": "0 unparsable lines",
+   "status": "PASS"
+  },
+  {
+   "first_ledger": 8398802,
+   "gap_events": 0,
+   "id": "recording.gaps",
+   "index_holes": [],
+   "last_ledger": 8404157,
+   "ledgers": 5356,
+   "reason": "0 gap events, 0 index holes over 5356 ledgers",
+   "status": "PASS"
+  },
+  {
+   "connections": 1,
+   "first_ledger_received": "2026-11-27T00:50:00Z",
+   "id": "recording.window",
+   "last_ledger_received": "2026-11-27T05:19:55Z",
+   "reason": "window 2026-11-27T00:49:58Z -> 2026-11-27T05:19:58Z (4.50 h planned), ledger stream span 4.499 h, last stop 'window complete', minimum 4.0 h",
+   "sessions": 1,
+   "span_seconds": 16195.905,
+   "status": "PASS",
+   "validations": 278501,
+   "window_end": "2026-11-27T05:19:58Z",
+   "window_start": "2026-11-27T00:49:58Z"
+  },
+  {
+   "effective": "2026-11-24T20:11:38Z",
+   "expiration": "2028-04-07T16:15:57Z",
+   "id": "vl.start",
+   "publisher": "ED3F1E0DA736FCF99BE2880A60DBD470715C0E04DD793FB862236B070571FC09E2",
+   "reason": "publisher manifest, blob signature (low-S), validity window and node trust all agree",
+   "sequence": 31,
+   "sha256": "5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688",
+   "status": "PASS",
+   "validators": 25
+  },
+  {
+   "effective": "2026-11-24T20:11:38Z",
+   "expiration": "2028-04-07T16:15:57Z",
+   "id": "vl.end",
+   "publisher": "ED3F1E0DA736FCF99BE2880A60DBD470715C0E04DD793FB862236B070571FC09E2",
+   "reason": "publisher manifest, blob signature (low-S), validity window and node trust all agree",
+   "sequence": 31,
+   "sha256": "5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688",
+   "status": "PASS",
+   "validators": 25
+  },
+  {
+   "id": "vl.stable",
+   "reason": "start and end VL byte-identical (one trusted set for the whole window)",
+   "status": "PASS"
+  },
+  {
+   "failures": [],
+   "id": "manifests.verify",
+   "manifests": 102,
+   "reason": "102 of 102 manifests verify (master + signing signature)",
+   "status": "PASS"
+  },
+  {
+   "id": "manifests.trusted",
+   "missing": [],
+   "node_older": [],
+   "reason": "25 of 25 trusted masters have a verified manifest with a signing key; node manifest older than the VL's for 0",
+   "status": "PASS"
+  },
+  {
+   "id": "trust.snapshots",
+   "problems": [],
+   "reason": "1 validators snapshots: trusted set and signing keys match the VL and manifests",
+   "snapshots": 1,
+   "status": "PASS"
+  },
+  {
+   "failures": [],
+   "id": "validations.decode",
+   "reason": "278501 of 278501 STValidation blobs decode",
+   "status": "PASS",
+   "validations": 278501
+  },
+  {
+   "failures": [],
+   "id": "validations.fields",
+   "mismatches": 0,
+   "reason": "278501 of 278501: node-decoded fields == signed blob (key, index, hash, signing_time, flags, full, validated_hash, signature, master)",
+   "status": "PASS"
+  },
+  {
+   "failures": [],
+   "id": "validations.signatures",
+   "invalid": 0,
+   "reason": "278501 of 278501 signatures verify (0 invalid from trusted keys)",
+   "status": "PASS"
+  },
+  {
+   "classes": {
+    "not_in_vl": 144607,
+    "trusted": 133894
+   },
+   "id": "validations.trust",
+   "reason": "signing key -> verified manifest -> master in the VL: not_in_vl 144607, trusted 133894",
+   "status": "PASS"
+  },
+  {
+   "failures": [],
+   "id": "quorum.node",
+   "nunl_sizes": [
+    0
+   ],
+   "reason": "1 quorum samples; node quorum == max(ceil(eff*0.67), ceil(n*0.6)) with n=25",
+   "samples": 1,
+   "status": "PASS",
+   "values": [
+    17
+   ]
+  },
+  {
+   "below_quorum": 0,
+   "failures": [],
+   "id": "quorum.ledgers",
+   "margin_histogram": {
+    "7": 9,
+    "8": 5346
+   },
+   "margin_max": 8,
+   "margin_min": 7,
+   "observed": 5355,
+   "reason": "5355 of 5355 observed ledgers met quorum; margin min 7, max 8",
+   "status": "PASS"
+  },
+  {
+   "edge_ledgers": [
+    8398802
+   ],
+   "id": "quorum.edges",
+   "reason": "1 edge ledgers (first ledger of a connection, not graded): 1 met quorum anyway",
+   "status": "PASS"
+  },
+  {
+   "failures": [],
+   "id": "rpc.crosscheck",
+   "reason": "60 of 60 sampled ledgers: public RPC validated hash == recorded (answers kept in rpc-cache.json)",
+   "sampled": [
+    8398803,
+    8398894,
+    8398984,
+    8399075,
+    8399166,
+    8399257,
+    8399347,
+    8399438,
+    8399529,
+    8399620,
+    8399710,
+    8399801,
+    8399892,
+    8399983,
+    8400073,
+    8400164,
+    8400255,
+    8400346,
+    8400436,
+    8400527,
+    8400618,
+    8400709,
+    8400799,
+    8400890,
+    8400981,
+    8401072,
+    8401162,
+    8401253,
+    8401344,
+    8401435,
+    8401525,
+    8401616,
+    8401707,
+    8401798,
+    8401888,
+    8401979,
+    8402070,
+    8402161,
+    8402251,
+    8402342,
+    8402433,
+    8402524,
+    8402614,
+    8402705,
+    8402796,
+    8402887,
+    8402977,
+    8403068,
+    8403159,
+    8403250,
+    8403340,
+    8403431,
+    8403522,
+    8403613,
+    8403703,
+    8403794,
+    8403885,
+    8403976,
+    8404066,
+    8404157
+   ],
+   "status": "PASS"
+  }
+ ],
+ "inputs": {
+  "rpc-cache.json": "a3458299fc36c1f4205a4b69c29da708222485d4e6057c69fb65a9be08bf50d3",
+  "seg/000001.jsonl.gz": "59e58d88380e342b7924bf5aa5dd98705dd9b46017ae80d494d207b2a144354c",
+  "seg/000002.jsonl.gz": "cd39a81f7d83808bd3cca3a312cffa1c8f516f80d8b58d89355a73fb390f5fe7",
+  "seg/000003.jsonl.gz": "6e0300f20203b5047a82fc8fb4cab4d5c9030d1a18b870c3b8126fa5c96ea1f6",
+  "seg/000004.jsonl.gz": "0471b5d41ce363413abf0aacb821695c59a6231f38984aa76097d8a07b283455",
+  "seg/000005.jsonl.gz": "8512d0e79f147264e2cbb5363df18d558b6a5c8815ee0414369cfcbecb53b32a",
+  "seg/000006.jsonl.gz": "284062b74416e0763cd8063564f3c0db5630e4923c76953962f78952f9dec183",
+  "seg/000007.jsonl.gz": "1936072d74670c99f4d224c55efb6628bfe068750a16fc84e48fe4c06a49c939",
+  "seg/000008.jsonl.gz": "e9ef701e861ad10c8589574e4e4794936cce91b76ad7de86b0f05206c36acc34",
+  "seg/000009.jsonl.gz": "c965149f8f1cda7331bf60591b0ae85c4ff026af2086aaa9564dd1ac409a246b",
+  "seg/000010.jsonl.gz": "0930b74cb5339a28c1ff6ca5932909a834fbd3808f084ee3c0d20064e3b2079d",
+  "seg/000011.jsonl.gz": "6b15b72e4ad955005163a19fec9647951ca040bbd5d8e60368d4f5a3b7caf95f",
+  "seg/000012.jsonl.gz": "c7a7ef672df1a3ebf971ded36d41561cc7ae17c107485279c8d53e5912c4070a",
+  "seg/000013.jsonl.gz": "3345c49e7a9ff7d99d1f32720f508728f156d1c6a66eae6a0c430928309d434d",
+  "seg/000014.jsonl.gz": "061c7500c0fb450eb8b0d0abc3ec4884018a4b4e4ac01e6519550a3a0288551e",
+  "seg/000015.jsonl.gz": "c8e8bdf2e8470653ea109810bb6c71ccd18e80cdbaa96af61fe4aa37e47b9895",
+  "seg/000016.jsonl.gz": "13408c00e858a8986519604b736d0e7d2cba655d11509c9b6b002baac85b959f",
+  "seg/000017.jsonl.gz": "027bdab2cc528c62e617232163876f9fd1720f68cc010627003753c293ac36aa",
+  "seg/000018.jsonl.gz": "9a909321bbef0f255c677735ed123419e52636ca5c6e393ac25f24a271be5b0e",
+  "state.json": "3b976b2d15f327bf15a7f496a5c99d80bb3d9761fb13a411836b53cb0840149d",
+  "vl-end.json": "5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688",
+  "vl-fetch.jsonl": "aa8b486165eeb301513035097791ba9c1394bfb2defd3f3c2ddb3be036df9a34",
+  "vl-start.json": "5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688"
+ },
+ "schema": 1,
+ "summary": {
+  "FAIL": 0,
+  "PASS": 18,
+  "WARN": 0
+ }
+}

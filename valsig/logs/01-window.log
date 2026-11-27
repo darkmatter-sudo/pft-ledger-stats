@@ -1,0 +1,31 @@
+# valsig window-01 recording: transient unit agent-valsig-window-01 output (journalctl -o cat), exported 2026-11-27T05:20:15Z
+Started /usr/bin/bash -c echo "repo HEAD $(git -c safe.directory='*' rev-parse HEAD) $(date -u +%FT%TZ)"; bash valsig/run_window.sh valsig/data/window-01 4.5 2>&1.
+repo HEAD f5d5fdc30a186201556a5d9da52e534a367d9713 2026-11-27T00:49:58Z
+2026-11-27T00:49:58Z vl start: https://postfiat.org/testnet_vl.json -> vl-start.json status=200 bytes=14779 sha256=5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688
+2026-11-27T00:49:58Z start window 2026-11-27T00:49:58Z -> 2026-11-27T05:19:58Z last_ledger=None vals=0 torn_bytes=0 bad_lines=0 closed_leftover=- pid=142000
+2026-11-27T00:49:58Z connected (1) ws://127.0.0.1:6006/, subscribed validations,manifests,ledger
+2026-11-27T01:05:08Z segment 000001.jsonl.gz closed last_ledger=8399101
+2026-11-27T01:20:18Z segment 000002.jsonl.gz closed last_ledger=8399401
+2026-11-27T01:35:23Z segment 000003.jsonl.gz closed last_ledger=8399701
+2026-11-27T01:49:58Z progress last_ledger=8399990 vals=61830 dups_dropped=0 manifests=77 segments=3
+2026-11-27T01:50:31Z segment 000004.jsonl.gz closed last_ledger=8400001
+2026-11-27T02:05:41Z segment 000005.jsonl.gz closed last_ledger=8400301
+2026-11-27T02:20:46Z segment 000006.jsonl.gz closed last_ledger=8400601
+2026-11-27T02:35:53Z segment 000007.jsonl.gz closed last_ledger=8400901
+2026-11-27T02:49:59Z progress last_ledger=8401180 vals=123707 dups_dropped=0 manifests=77 segments=7
+2026-11-27T02:51:02Z segment 000008.jsonl.gz closed last_ledger=8401201
+2026-11-27T03:06:12Z segment 000009.jsonl.gz closed last_ledger=8401501
+2026-11-27T03:21:21Z segment 000010.jsonl.gz closed last_ledger=8401801
+2026-11-27T03:36:29Z segment 000011.jsonl.gz closed last_ledger=8402101
+2026-11-27T03:49:58Z progress last_ledger=8402369 vals=185529 dups_dropped=0 manifests=77 segments=11
+2026-11-27T03:51:33Z segment 000012.jsonl.gz closed last_ledger=8402401
+2026-11-27T04:06:37Z segment 000013.jsonl.gz closed last_ledger=8402701
+2026-11-27T04:21:43Z segment 000014.jsonl.gz closed last_ledger=8403001
+2026-11-27T04:36:54Z segment 000015.jsonl.gz closed last_ledger=8403301
+2026-11-27T04:49:58Z progress last_ledger=8403560 vals=247474 dups_dropped=0 manifests=77 segments=15
+2026-11-27T04:51:59Z segment 000016.jsonl.gz closed last_ledger=8403601
+2026-11-27T05:07:04Z segment 000017.jsonl.gz closed last_ledger=8403901
+2026-11-27T05:19:58Z stop (window complete) last_ledger=8404157 vals=278501 dups_dropped=0 manifests=77 last_segment=000018.jsonl.gz
+2026-11-27T05:19:58Z recorder exit=0
+2026-11-27T05:19:59Z vl end: https://postfiat.org/testnet_vl.json -> vl-end.json status=200 bytes=14779 sha256=5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688
+2026-11-27T05:19:59Z window done
