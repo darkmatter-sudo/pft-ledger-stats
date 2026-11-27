@@ -1,0 +1,135 @@
+{
+ "rpc": "http://127.0.0.1:5005/",
+ "server_info": {
+  "build_version": "1.0.9",
+  "server_state": "full",
+  "validated_ledger": {
+   "age": 1,
+   "base_fee_xrp": 1e-05,
+   "hash": "F43888D474E2F72F5AAB5869C19887D0E47136E8A615780C254DAAB0F87EBBE0",
+   "reserve_base_xrp": 10,
+   "reserve_inc_xrp": 2,
+   "seq": 8412023
+  },
+  "validator_list": {
+   "count": 1,
+   "expiration": "2028-Apr-07 16:15:57.000000000 UTC",
+   "status": "active"
+  }
+ },
+ "t": 1795780611.939,
+ "validator_list_sites": {
+  "status": "success",
+  "validator_sites": [
+   {
+    "last_refresh_status": "same_sequence",
+    "last_refresh_time": "2026-Nov-27 11:53:24.810893982 UTC",
+    "next_refresh_time": "2026-Nov-27 11:58:24.790553302 UTC",
+    "refresh_interval_min": 5,
+    "uri": "https://postfiat.org/testnet_vl.json"
+   }
+  ]
+ },
+ "validators": {
+  "local_static_keys": [],
+  "publisher_lists": [
+   {
+    "available": true,
+    "effective": "2026-Nov-24 20:11:38.000000000 UTC",
+    "expiration": "2028-Apr-07 16:15:57.000000000 UTC",
+    "list": [
+     "nHBM2nzq3pZUg8JsxvEt3G7gAAtc5Sukaef6YmvVx64uAoRK4QWM",
+     "nHBVTAUpHEoEctXcAWyC7nJhxUYULWKz1WZCuC1tSm2VnCxDshVS",
+     "nHBWFVzxVYAVQNUFHoqnHw2SWhXKy1kKRr7oYAMFeu22rqsCLYCN",
+     "nHBYKjxjbzxRzrS3XkhpgM7KXJ25jbgPHkbAjjSCQPm8PaPS5y4v",
+     "nHBb2uHHY8V78qWQT3P6ADkFz4pRyEgJpA2pEqmQyTHuxXHccBzM",
+     "nHBcnQZ9a9UjZ7hbj9zWVXZ9kTcqheUkui32YdBTpQeAsE6BxWNG",
+     "nHBcLEB4S6moQGrhMjJo1jbp58WL5psHY9EMDWNAtdqykUYiA1rF",
+     "nHB6Zc7mhr7swksEgpwTE7Hw7SvZ9cz22T2MECMSXjBeMTeHXQB7",
+     "nHBmj7zUY2yMc9f5wgNcCuWj79BUieNmc1GG8PqiEP1tgNZZWLVM",
+     "nHBAToXoTH6eZtC1cMJDvjG7eRb7ufZ3GUpeisvNVT4ofruRdVvd",
+     "nHBxxNuWsJXkzLk332ADxt1T18N1e9BSYjekjGNVCPfV813tSdvx",
+     "nHByMXejvHJgjcGJ1f9bhcAGcFeNR6ecsDmzN4t3HkhyRHZtM6Lj",
+     "nHUatddiVB2GN6zHHCk1gtepjANF8BdjPKuVcN6jwG2JwBYPea3k",
+     "nHUwdHGzvTM93oV38tMPSWZAWQ2Q6hVDS3XLQ32HPTUtcRASpayQ",
+     "nHUUXMXfPEdnKAT8u2AB89LxTWT1tWsTecDPQURoMw2XJ2WP85MK",
+     "nHUT8QPaTEVw7hmQiKr7XTvgzrLMvGPGgv2xfdfLvRYpdyRJt5XE",
+     "nHU74qX4tCQDSpE6zBS5PB3jybuGZJ7QMbeyLWDQRy3Lhb4DYDSR",
+     "nHUWciHX8W9PgM3sQmgkRiKpkuaJjTxFSyvZce4bP4WeMz81HefX",
+     "nHUdwzTWTQJzebbxcanZG2ERXikMLU9aAZa8cHtxosfiKq5N7Vd5",
+     "nHUCEXpC5LhFAm1Mmf8TqrzVGt3QCuwWoW2V8PYynDpjZe8m8mHj",
+     "nHUvKQbxx14GFyMaRB4vgu11x6pXrwMwX9yP5Ltgk4jp4SHbbgWA",
+     "nHUzc5XzsmweRV6aNyUQJD5eRUM4TT4tVCBv5DKx6T7Buq4gn9Lr",
+     "nHDfSHLutR7QqttAkx3AiYG2bukCdfAa3P9hrYL4yNJZQpvEpW1A",
+     "nHD3sPmhNtVXTXrZAGhsfHRhxhzFXKHNNxemTtGFr69SRd9q88dZ",
+     "nHDw5erSdzhtZ7khjHeotRywM6WyPgJp6sUSewscoqLgC6LGATzn"
+    ],
+    "pubkey_publisher": "ED3F1E0DA736FCF99BE2880A60DBD470715C0E04DD793FB862236B070571FC09E2",
+    "seq": 31,
+    "version": 2
+   }
+  ],
+  "signing_keys": {
+   "nHB6Zc7mhr7swksEgpwTE7Hw7SvZ9cz22T2MECMSXjBeMTeHXQB7": "n9Jqmo4qgU3jZM6UAKdEeUH1CsxioMVLuWPQuyjLCUuGaY2gcjTn",
+   "nHBAToXoTH6eZtC1cMJDvjG7eRb7ufZ3GUpeisvNVT4ofruRdVvd": "n9JbMNLnzsqks4nzc2VTrm4J5btYV2UezooidLZ4kxpA6zvdfrF3",
+   "nHBM2nzq3pZUg8JsxvEt3G7gAAtc5Sukaef6YmvVx64uAoRK4QWM": "n943qDUa2nsxEm8DXX6WJyZTCRhb7LgpYxrqhYJsM3Zie47Sw4xE",
+   "nHBVTAUpHEoEctXcAWyC7nJhxUYULWKz1WZCuC1tSm2VnCxDshVS": "n9J1jfiAsSvJJGfSGJjt3yyk26SavVZbd5VvVndv6ncYuvxSz8f8",
+   "nHBWFVzxVYAVQNUFHoqnHw2SWhXKy1kKRr7oYAMFeu22rqsCLYCN": "n9MgvdtyKKKYLvAFWT1qEC2Ypuy4Q4GrD6VvVS2eExwPE9Dmnbcy",
+   "nHBYKjxjbzxRzrS3XkhpgM7KXJ25jbgPHkbAjjSCQPm8PaPS5y4v": "n9LCGZZSGPwte1LHLp8ZPL3Ud35qof5veBraFFRVnhipKGCta4RU",
+   "nHBb2uHHY8V78qWQT3P6ADkFz4pRyEgJpA2pEqmQyTHuxXHccBzM": "n9KcuZKdeU1pXRJqj6QhAgiZ3dXkGScBPTQ3ZmfKGaoSjV96F4RV",
+   "nHBcLEB4S6moQGrhMjJo1jbp58WL5psHY9EMDWNAtdqykUYiA1rF": "n9LKqRAaexUXyodt8LSZi2jKF4zgtjwzPwE6mEspbnnDFRvkVbLn",
+   "nHBcnQZ9a9UjZ7hbj9zWVXZ9kTcqheUkui32YdBTpQeAsE6BxWNG": "n9L2tEqPL3oKGRpVJHTqsv1dLzEsu2Yf1usgJo5roN4o9xYvRKPD",
+   "nHBmj7zUY2yMc9f5wgNcCuWj79BUieNmc1GG8PqiEP1tgNZZWLVM": "n9KyAznY6x5e2Mpm2GdUWtEDeXbZTUzfAbiDPzWPRdx1Ah5p2u9w",
+   "nHBxxNuWsJXkzLk332ADxt1T18N1e9BSYjekjGNVCPfV813tSdvx": "n9KCDAwPQSNYjMYgwrt9u3ZyhoXexoXQYiuAvxEEc8ZQZEyaz3xz",
+   "nHByMXejvHJgjcGJ1f9bhcAGcFeNR6ecsDmzN4t3HkhyRHZtM6Lj": "n9LpyNgWNyq8374vj95RGpKcdPj89EKpGNF6KMgEw3U7twYhBeWK",
+   "nHD3sPmhNtVXTXrZAGhsfHRhxhzFXKHNNxemTtGFr69SRd9q88dZ": "n9JccRshCbZ2C6TftvCeV3RwwPVzAHb8sPm5Ndyq7LSoxtWrjWYn",
+   "nHDfSHLutR7QqttAkx3AiYG2bukCdfAa3P9hrYL4yNJZQpvEpW1A": "n9Jx5phP2GeHNJLtjMXupST7qfQ6HWGqrkbeSmEQDGjkR6t9e1fR",
+   "nHDw5erSdzhtZ7khjHeotRywM6WyPgJp6sUSewscoqLgC6LGATzn": "n9LUBCzvvGNixQMnyGcngMVu8e618xLBxSVyg3SJVYeDkt2pRN2f",
+   "nHU74qX4tCQDSpE6zBS5PB3jybuGZJ7QMbeyLWDQRy3Lhb4DYDSR": "n9LA23H2h2DqZWcsBHeNZ8ThXRWdy961sZy35uJVZACCdZkoVJ9q",
+   "nHUCEXpC5LhFAm1Mmf8TqrzVGt3QCuwWoW2V8PYynDpjZe8m8mHj": "n9M72Hp1qapmNt192CY7hvkYDVFnJDUyJzYFaq4mohLYXKbG6W46",
+   "nHUT8QPaTEVw7hmQiKr7XTvgzrLMvGPGgv2xfdfLvRYpdyRJt5XE": "n9MgGgByhJMxvqfCQSYA8S1Z6HnBhFveFGa4HH2rZs1wPXYrWoiN",
+   "nHUUXMXfPEdnKAT8u2AB89LxTWT1tWsTecDPQURoMw2XJ2WP85MK": "n9KBGXuNRg9ad5Y58S9R9usU6WMzMSiz9vePTFkGnCbm5BmCtjis",
+   "nHUWciHX8W9PgM3sQmgkRiKpkuaJjTxFSyvZce4bP4WeMz81HefX": "n9KMJrxhymm4HGBCdefRh5PA1o11it5DgEP7AmNy7cY76Mg7k1jg",
+   "nHUatddiVB2GN6zHHCk1gtepjANF8BdjPKuVcN6jwG2JwBYPea3k": "n9K9qcGMs72WXr1vfamHyY32TVt4vGYoEfc2D5zdgCE6c1ipEw1c",
+   "nHUdwzTWTQJzebbxcanZG2ERXikMLU9aAZa8cHtxosfiKq5N7Vd5": "n9MSsKVYd8dbwbr8eTZkLFRAqCxVmybwv73qf9rLpM6yR8jiJ7c4",
+   "nHUvKQbxx14GFyMaRB4vgu11x6pXrwMwX9yP5Ltgk4jp4SHbbgWA": "n9KAfMKurkKXogwgULkQTM9NpVTqiYhpmNs96G5tmh46DhcDeDpi",
+   "nHUwdHGzvTM93oV38tMPSWZAWQ2Q6hVDS3XLQ32HPTUtcRASpayQ": "n9K8JQsj8uJ2JfftB7dU5iMwUg8UqNpZpydNPCcE55RA2eKSVPhH",
+   "nHUzc5XzsmweRV6aNyUQJD5eRUM4TT4tVCBv5DKx6T7Buq4gn9Lr": "n9KE8jzWptyDcP7z8SDUMh7mMD9aK19D3dcKtJotWFBfpH7GcVV1"
+  },
+  "status": "success",
+  "trusted_validator_keys": [
+   "nHUatddiVB2GN6zHHCk1gtepjANF8BdjPKuVcN6jwG2JwBYPea3k",
+   "nHUT8QPaTEVw7hmQiKr7XTvgzrLMvGPGgv2xfdfLvRYpdyRJt5XE",
+   "nHBmj7zUY2yMc9f5wgNcCuWj79BUieNmc1GG8PqiEP1tgNZZWLVM",
+   "nHByMXejvHJgjcGJ1f9bhcAGcFeNR6ecsDmzN4t3HkhyRHZtM6Lj",
+   "nHDw5erSdzhtZ7khjHeotRywM6WyPgJp6sUSewscoqLgC6LGATzn",
+   "nHBAToXoTH6eZtC1cMJDvjG7eRb7ufZ3GUpeisvNVT4ofruRdVvd",
+   "nHBb2uHHY8V78qWQT3P6ADkFz4pRyEgJpA2pEqmQyTHuxXHccBzM",
+   "nHBYKjxjbzxRzrS3XkhpgM7KXJ25jbgPHkbAjjSCQPm8PaPS5y4v",
+   "nHBcLEB4S6moQGrhMjJo1jbp58WL5psHY9EMDWNAtdqykUYiA1rF",
+   "nHUzc5XzsmweRV6aNyUQJD5eRUM4TT4tVCBv5DKx6T7Buq4gn9Lr",
+   "nHUCEXpC5LhFAm1Mmf8TqrzVGt3QCuwWoW2V8PYynDpjZe8m8mHj",
+   "nHUUXMXfPEdnKAT8u2AB89LxTWT1tWsTecDPQURoMw2XJ2WP85MK",
+   "nHU74qX4tCQDSpE6zBS5PB3jybuGZJ7QMbeyLWDQRy3Lhb4DYDSR",
+   "nHBWFVzxVYAVQNUFHoqnHw2SWhXKy1kKRr7oYAMFeu22rqsCLYCN",
+   "nHD3sPmhNtVXTXrZAGhsfHRhxhzFXKHNNxemTtGFr69SRd9q88dZ",
+   "nHBcnQZ9a9UjZ7hbj9zWVXZ9kTcqheUkui32YdBTpQeAsE6BxWNG",
+   "nHB6Zc7mhr7swksEgpwTE7Hw7SvZ9cz22T2MECMSXjBeMTeHXQB7",
+   "nHBxxNuWsJXkzLk332ADxt1T18N1e9BSYjekjGNVCPfV813tSdvx",
+   "nHUvKQbxx14GFyMaRB4vgu11x6pXrwMwX9yP5Ltgk4jp4SHbbgWA",
+   "nHUWciHX8W9PgM3sQmgkRiKpkuaJjTxFSyvZce4bP4WeMz81HefX",
+   "nHUwdHGzvTM93oV38tMPSWZAWQ2Q6hVDS3XLQ32HPTUtcRASpayQ",
+   "nHBM2nzq3pZUg8JsxvEt3G7gAAtc5Sukaef6YmvVx64uAoRK4QWM",
+   "nHBVTAUpHEoEctXcAWyC7nJhxUYULWKz1WZCuC1tSm2VnCxDshVS",
+   "nHDfSHLutR7QqttAkx3AiYG2bukCdfAa3P9hrYL4yNJZQpvEpW1A",
+   "nHUdwzTWTQJzebbxcanZG2ERXikMLU9aAZa8cHtxosfiKq5N7Vd5"
+  ],
+  "validation_quorum": 17,
+  "validator_list": {
+   "count": 1,
+   "expiration": "2028-Apr-07 16:15:57.000000000 UTC",
+   "status": "active",
+   "validator_list_threshold": 1
+  }
+ }
+}

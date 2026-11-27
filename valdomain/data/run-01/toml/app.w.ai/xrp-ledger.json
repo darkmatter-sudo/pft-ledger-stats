@@ -1,0 +1,14 @@
+{
+ "bytes": 14376,
+ "content_type": "text/html; charset=utf-8",
+ "domain": "app.w.ai",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "90b0a51e81799a1e6fbcbff5a20390c0c42f0fff30d1b3141d9fe43ba4a21b13",
+ "status": 404,
+ "t": 1795780635.766,
+ "truncated": false,
+ "url": "https://app.w.ai/.well-known/xrp-ledger.toml"
+}

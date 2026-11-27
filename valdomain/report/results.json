@@ -1,0 +1,550 @@
+{
+ "checks": [
+  {
+   "files": 54,
+   "id": "sums",
+   "msg": "54 files, every sha256 matches",
+   "ok": true
+  },
+  {
+   "id": "vl",
+   "msg": "publisher manifest, blob signature (low-S), node trust, fetch record agree",
+   "ok": true,
+   "publisher": "ED3F1E0DA736FCF99BE2880A60DBD470715C0E04DD793FB862236B070571FC09E2",
+   "sequence": 31,
+   "sha256": "5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688",
+   "validators": 25
+  },
+  {
+   "failures": [],
+   "id": "manifests",
+   "msg": "25 of 25 VL manifests verify",
+   "ok": true
+  },
+  {
+   "id": "toml",
+   "msg": "25 validators x 2 TOML paths cached and intact",
+   "ok": true,
+   "problems": []
+  },
+  {
+   "id": "crosscheck",
+   "msg": "50 of 50 node/public manifest answers carry the VL domain",
+   "ok": true,
+   "problems": []
+  }
+ ],
+ "counts": {
+  "bad_attestation": 0,
+  "http_error": 0,
+  "key_not_listed": 0,
+  "no_attestation": 0,
+  "no_domain": 0,
+  "toml_unparseable": 0,
+  "unreachable": 0,
+  "verified": 25
+ },
+ "rows": [
+  {
+   "class": "verified",
+   "domain": "app.w.ai",
+   "manifest_seq": 1,
+   "master": "nHBAToXoTH6eZtC1cMJDvjG7eRb7ufZ3GUpeisvNVT4ofruRdVvd",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "auri0x.io",
+   "manifest_seq": 2,
+   "master": "nHUWciHX8W9PgM3sQmgkRiKpkuaJjTxFSyvZce4bP4WeMz81HefX",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "dex3333.github.io",
+   "manifest_seq": 1,
+   "master": "nHBmj7zUY2yMc9f5wgNcCuWj79BUieNmc1GG8PqiEP1tgNZZWLVM",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "hamedminasli.duckdns.org",
+   "manifest_seq": 1,
+   "master": "nHUvKQbxx14GFyMaRB4vgu11x6pXrwMwX9yP5Ltgk4jp4SHbbgWA",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 502,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "iopo545454-del.github.io",
+   "manifest_seq": 1,
+   "master": "nHBb2uHHY8V78qWQT3P6ADkFz4pRyEgJpA2pEqmQyTHuxXHccBzM",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "jollydinger.com",
+   "manifest_seq": 6,
+   "master": "nHBM2nzq3pZUg8JsxvEt3G7gAAtc5Sukaef6YmvVx64uAoRK4QWM",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "lc66validator.postfiatcn.org",
+   "manifest_seq": 3,
+   "master": "nHUCEXpC5LhFAm1Mmf8TqrzVGt3QCuwWoW2V8PYynDpjZe8m8mHj",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "local-maxi.github.io",
+   "manifest_seq": 1,
+   "master": "nHUatddiVB2GN6zHHCk1gtepjANF8BdjPKuVcN6jwG2JwBYPea3k",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "parshant.com",
+   "manifest_seq": 1,
+   "master": "nHUwdHGzvTM93oV38tMPSWZAWQ2Q6hVDS3XLQ32HPTUtcRASpayQ",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "pft.akirax.xyz",
+   "manifest_seq": 2,
+   "master": "nHUUXMXfPEdnKAT8u2AB89LxTWT1tWsTecDPQURoMw2XJ2WP85MK",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "pft.bigwoodnode.com",
+   "manifest_seq": 5,
+   "master": "nHByMXejvHJgjcGJ1f9bhcAGcFeNR6ecsDmzN4t3HkhyRHZtM6Lj",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 200,
+     "truncated": true
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "pft.g.money",
+   "manifest_seq": 5,
+   "master": "nHBcnQZ9a9UjZ7hbj9zWVXZ9kTcqheUkui32YdBTpQeAsE6BxWNG",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "pft.hit0ri.xyz",
+   "manifest_seq": 7,
+   "master": "nHBYKjxjbzxRzrS3XkhpgM7KXJ25jbgPHkbAjjSCQPm8PaPS5y4v",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "pft.permanentupperclass.com",
+   "manifest_seq": 6,
+   "master": "nHB6Zc7mhr7swksEgpwTE7Hw7SvZ9cz22T2MECMSXjBeMTeHXQB7",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "pft.thedarkmatter.xyz",
+   "manifest_seq": 1,
+   "master": "nHUT8QPaTEVw7hmQiKr7XTvgzrLMvGPGgv2xfdfLvRYpdyRJt5XE",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "pft.whiteguy.eu",
+   "manifest_seq": 7,
+   "master": "nHUdwzTWTQJzebbxcanZG2ERXikMLU9aAZa8cHtxosfiKq5N7Vd5",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "pft.wizbubba.xyz",
+   "manifest_seq": 7,
+   "master": "nHUzc5XzsmweRV6aNyUQJD5eRUM4TT4tVCBv5DKx6T7Buq4gn9Lr",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "pftmeech.xyz",
+   "manifest_seq": 4,
+   "master": "nHBVTAUpHEoEctXcAWyC7nJhxUYULWKz1WZCuC1tSm2VnCxDshVS",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "postfiat.live",
+   "manifest_seq": 4,
+   "master": "nHDfSHLutR7QqttAkx3AiYG2bukCdfAa3P9hrYL4yNJZQpvEpW1A",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "postfiat.maro.dpdns.org",
+   "manifest_seq": 1,
+   "master": "nHBxxNuWsJXkzLk332ADxt1T18N1e9BSYjekjGNVCPfV813tSdvx",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "postfiatd.devflows.dedyn.io",
+   "manifest_seq": 1,
+   "master": "nHDw5erSdzhtZ7khjHeotRywM6WyPgJp6sUSewscoqLgC6LGATzn",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "qwerky2233.github.io",
+   "manifest_seq": 13,
+   "master": "nHBWFVzxVYAVQNUFHoqnHw2SWhXKy1kKRr7oYAMFeu22rqsCLYCN",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "http_error",
+     "status": 404,
+     "truncated": false
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "sendoeth.com",
+   "manifest_seq": 5,
+   "master": "nHBcLEB4S6moQGrhMjJo1jbp58WL5psHY9EMDWNAtdqykUYiA1rF",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "snakespartan.pftoligarchy.com",
+   "manifest_seq": 5,
+   "master": "nHD3sPmhNtVXTXrZAGhsfHRhxhzFXKHNNxemTtGFr69SRd9q88dZ",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    }
+   },
+   "public": "same"
+  },
+  {
+   "class": "verified",
+   "domain": "validator.pftperry.com",
+   "manifest_seq": 2,
+   "master": "nHU74qX4tCQDSpE6zBS5PB3jybuGZJ7QMbeyLWDQRy3Lhb4DYDSR",
+   "node": "same",
+   "paths": {
+    "/.well-known/pft-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    },
+    "/.well-known/xrp-ledger.toml": {
+     "class": "verified",
+     "entries": 1,
+     "matching": 1
+    }
+   },
+   "public": "same"
+  }
+ ],
+ "validators": 25
+}

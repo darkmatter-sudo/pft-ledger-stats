@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSFVhdGRkaVZCMkdONnpISENrMWd0ZXBqQU5GOEJkalBLdVZjTjZqd0cySndCWVBlYTNrIgphdHRlc3RhdGlvbiA9ICI1Qzc2MUE0RUQ5OTYyQTkyRDY1QjU2REE2NjJERENGQUQzNjIzNkFEMDM1Q0QyREQyMTc0QjI4ODM2RTdGMjVBNDI0ODUzRkEwRUFEMDhFOTZFQzIxMDZCRjA3QjA0QTQzM0E3RkUyNTRDQzdCRkMwODg1MUE4ODZEMUZFMTkwMCIK",
+ "bytes": 228,
+ "content_type": "application/toml",
+ "domain": "local-maxi.github.io",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "da018350ec2e8c7d834d27942b105e05f100d9119b4c7bb66179a83687dad476",
+ "status": 200,
+ "t": 1795780641.785,
+ "truncated": false,
+ "url": "https://local-maxi.github.io/.well-known/pft-ledger.toml"
+}

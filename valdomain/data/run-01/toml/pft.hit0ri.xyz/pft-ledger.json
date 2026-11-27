@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSEJZS2p4amJ6eFJ6clMzWGtocGdNN0tYSjI1amJnUEhrYkFqalNDUVBtOFBhUFM1eTR2IgphdHRlc3RhdGlvbiA9ICJFNDY4QzgyRTI2QUY4NjNGMjU0NEMzQjM2MEMyMTU3MENFOTlCRjJBOEZFMzJBOUNDNDQxREEyQTJDM0FBMDRDMjFENTkxNjM2NjVBQUQxQjMzQ0FBOUIwOTNDNkFFNzJFNjE3Rjc0NEMyQzg2QTY4RTQzM0RCNkQ3MTNBN0UwMiIKZG9tYWluID0gInBmdC5oaXQwcmkueHl6Igo=",
+ "bytes": 254,
+ "content_type": "application/toml",
+ "domain": "pft.hit0ri.xyz",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "73c90f09870414561a871103ed37d8b631c7326161e5f5428c36759fe7c3985d",
+ "status": 200,
+ "t": 1795780645.906,
+ "truncated": false,
+ "url": "https://pft.hit0ri.xyz/.well-known/pft-ledger.toml"
+}

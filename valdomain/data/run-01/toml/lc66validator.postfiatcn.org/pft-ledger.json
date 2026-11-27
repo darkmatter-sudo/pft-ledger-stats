@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSFVDRVhwQzVMaEZBbTFNbWY4VHFyelZHdDNRQ3V3V29XMlY4UFl5bkRwalplOG04bUhqIgphdHRlc3RhdGlvbiA9ICJDOEJFMDc0MUI0MDA3NEU0ODI1MEIxQjRCOTk2OURBODg0M0Q3QTE5QkYyMTYyM0FDMDU4NzkxODc2NEIyNkM2MTdDQ0M5QjA0MzI2Qzc0Q0ZFMEQ1QjY3ODEzNjQ3MTVBNzgwRDAwODVDREI4MDg4NUY0ODI2RUE5RTY1RTQwRCIK",
+ "bytes": 228,
+ "content_type": "application/toml",
+ "domain": "lc66validator.postfiatcn.org",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "b27deeeaf2b27db64f112df1e379e58f08caa8cfc98c67acd6b1f081ca519e10",
+ "status": 200,
+ "t": 1795780639.535,
+ "truncated": false,
+ "url": "https://lc66validator.postfiatcn.org/.well-known/pft-ledger.toml"
+}

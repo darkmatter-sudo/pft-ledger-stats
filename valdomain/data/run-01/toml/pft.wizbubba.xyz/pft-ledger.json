@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSFV6YzVYenNtd2VSVjZhTnlVUUpENWVSVU00VFQ0dFZDQnY1REt4NlQ3QnVxNGduOUxyIgphdHRlc3RhdGlvbiA9ICIwNzZBQjExQkY5QTI5Qjg0QkJBNUI1RUJCRjQwNUQ4NDI3Mjc1OUQwODgxMzRDOTkxNTA1QzA4RjdCRkYwOERFMTc3QjlERjc5M0U3RTNBOTExOUVCQ0FFMjNFMDc0RTdBREZCQUM3MzEyQzU5RkIzRUE1Nzk2OUY0MDEyM0EwMiIK",
+ "bytes": 228,
+ "content_type": "application/toml",
+ "domain": "pft.wizbubba.xyz",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "3556ecd6eea4c0607718442135de6b74537fd69ef1a21ce600fdb819e695abab",
+ "status": 200,
+ "t": 1795780648.221,
+ "truncated": false,
+ "url": "https://pft.wizbubba.xyz/.well-known/pft-ledger.toml"
+}

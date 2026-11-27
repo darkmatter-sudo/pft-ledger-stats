@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSEJXRlZ6eFZZQVZRTlVGSG9xbkh3MlNXaFhLeTFrS1JyN29ZQU1GZXUyMnJxc0NMWUNOIgphdHRlc3RhdGlvbiA9ICJEQTc0M0ZFRUE2MTYwQTBBMkJDODdCREQ0MDc0OUNGMjFDMjkzMEI5REFGRjQ4NUMzOEI5ODJGNUFGMjBBQzQzMTY4MzhFMTVGMTkxNzQzRkY0NkYwOTA2RjEwNUExMjYwNDYzMjJBRkVGQjlBRDREQzBBRkZENjZDM0M5OEMwOSIK",
+ "bytes": 228,
+ "content_type": "application/toml",
+ "domain": "qwerky2233.github.io",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "77436f3713b4247a983ae0ef8e4ecca3dd58c9d4aa440f3c41447ffa51ee4c19",
+ "status": 200,
+ "t": 1795780651.993,
+ "truncated": false,
+ "url": "https://qwerky2233.github.io/.well-known/pft-ledger.toml"
+}

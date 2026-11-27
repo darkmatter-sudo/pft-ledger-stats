@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSFV3ZEhHenZUTTkzb1YzOHRNUFNXWkFXUTJRNmhWRFMzWExRMzJIUFRVdGNSQVNwYXlRIgphdHRlc3RhdGlvbiA9ICJGNjJCNTUyOTUzQjU4NUI0NTY4RjVBN0NCNTREMzA1MUFEQzJGNDA1MjA4RkNFQkZENzkwRTk0MEVBNjRDRTBBQkE2NTI0Njc4RDY4RDlCMTdFM0YzOUUzNEFFMkFFRUEwNkUzNjRGNzRDNDQyNzVBMzk1N0I0RTU0MTQ2QTAwMyIK",
+ "bytes": 228,
+ "content_type": "text/plain; charset=utf-8",
+ "domain": "parshant.com",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "2f9fc9c463c5060e049fd7adc1286fc12739f744baf670c14f6f09d4e6b4369e",
+ "status": 200,
+ "t": 1795780641.823,
+ "truncated": false,
+ "url": "https://parshant.com/.well-known/pft-ledger.toml"
+}

@@ -1,0 +1,14 @@
+{
+ "bytes": 162,
+ "content_type": "text/html",
+ "domain": "lc66validator.postfiatcn.org",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "766c1d6bcb81d3e983fb7adbc19c616d7fc01dafb7893738edc242e2adc59c07",
+ "status": 404,
+ "t": 1795780640.561,
+ "truncated": false,
+ "url": "https://lc66validator.postfiatcn.org/.well-known/xrp-ledger.toml"
+}

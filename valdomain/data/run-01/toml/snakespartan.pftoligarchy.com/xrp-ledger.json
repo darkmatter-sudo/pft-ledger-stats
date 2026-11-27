@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSEQzc1BtaE50VlhUWHJaQUdoc2ZIUmh4aHpGWEtITk54ZW1UdEdGcjY5U1JkOXE4OGRaIgphdHRlc3RhdGlvbiA9ICI5MTJEMkYyQ0U4NTczRTI4QTdDMDg3MjM3QkE3MjJGOUIyODZERDQ3MzI0NERGQjk4NzAzOUYyODI0NzgyNzQyQkI3OTc1NTFGNEZFQ0JDN0Q5MkEyOTlDQkJEQjUxRURGOEQ3RkI2NkM1NDdDNDk2OEJCMEI4NTU1MUY1QzIwQSIK",
+ "bytes": 228,
+ "content_type": "text/plain",
+ "domain": "snakespartan.pftoligarchy.com",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "5f10b1ab44ffb37fd26e5dc63099e886daa6eb06fe1fe6f9007e186f2887f329",
+ "status": 200,
+ "t": 1795780653.015,
+ "truncated": false,
+ "url": "https://snakespartan.pftoligarchy.com/.well-known/xrp-ledger.toml"
+}

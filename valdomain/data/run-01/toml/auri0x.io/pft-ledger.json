@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSFVXY2lIWDhXOVBnTTNzUW1na1JpS3BrdWFKalR4RlN5dlpjZTRiUDRXZU16ODFIZWZYIgphdHRlc3RhdGlvbj0iOEEyOTU2RUM5NTkzNkU4RkFBMDA3MTRFQjhCNjc0Q0RGRUJDMTYwMjVDQTlBMDU4RURDNTY1NzFFNTczNDc0QUQzRkVDQUQ0QUM2QTRBOUE3REM5MkFGQTZDMEFBRjlDRUVFNTQ4NUYyQ0QwNTcxRkFFMTdENEEzQTlCMkREMEIiCg==",
+ "bytes": 226,
+ "content_type": "application/octet-stream",
+ "domain": "auri0x.io",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "332a4d6e4e5cef798113f2526c90a5e5153763eb44666850fefb7102637aa1ef",
+ "status": 200,
+ "t": 1795780635.836,
+ "truncated": false,
+ "url": "https://auri0x.io/.well-known/pft-ledger.toml"
+}

@@ -1,0 +1,14 @@
+{
+ "bytes": 9379,
+ "content_type": "text/html; charset=utf-8",
+ "domain": "pft.wizbubba.xyz",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "b620507312c5e97566a3c6cfaf99144fefc18a0da7d941401dfa0f5f58fb0368",
+ "status": 404,
+ "t": 1795780648.381,
+ "truncated": false,
+ "url": "https://pft.wizbubba.xyz/.well-known/xrp-ledger.toml"
+}

@@ -1,0 +1,15 @@
+{
+ "body_b64": "IyBQb3N0IEZpYXQgVGVzdG5ldCBWYWxpZGF0b3IKIyBPcGVyYXRvcjogc2VuZG9ldGgKIyBOZXR3b3JrOiBQb3N0IEZpYXQgVGVzdG5ldCAobmV0d29ya19pZDogMjAyNSkKCltbVkFMSURBVE9SU11dCnB1YmxpY19rZXkgPSAibkhCY0xFQjRTNm1vUUdyaE1qSm8xamJwNThXTDVwc0hZOUVNRFdOQXRkcXlrVVlpQTFyRiIKYXR0ZXN0YXRpb24gPSAiNkQ1MzEzQkI1QkNDOTE3RTM5NjI4MzJCQzg4MkFEN0U5QzhERDEwOTAxRUEyNTk1NEQ5MkYxMDQxNTAyQ0U5RkNFMTE2RDVCODkwMDQ3QjdCM0YzRUVBOTdBOTAyQzgzOTZGNzg0ODg3NDE3MjE1MDlEREYyNDg1QTZCRTVGMDIiCm5ldHdvcmsgPSAidGVzdG5ldCIK",
+ "bytes": 348,
+ "content_type": "application/toml",
+ "domain": "sendoeth.com",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "4faede6e57a0a9e8e3043b69d36fcf3930f2af1e07b5cc564e2e74ecb03f8946",
+ "status": 200,
+ "t": 1795780652.161,
+ "truncated": false,
+ "url": "https://sendoeth.com/.well-known/xrp-ledger.toml"
+}

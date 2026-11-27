@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSER3NWVyU2R6aHRaN2toakhlb3RSeXdNNld5UGdKcDZzVVNld3Njb3FMZ0M2TEdBVHpuIgphdHRlc3RhdGlvbiA9ICIwOTFCODlFQ0I5Njc4NkVERTg4MzVEQzQ5QkIyMDk0RDRGM0U3M0EzODYyRUY3NUI0NUVCQ0NFQjM5RjkzNDI4NzdCOTRDMTg5NzU3MUREQUVDM0ZDMjIxMTNGNEQ5Q0ZBNEI1M0M4RDRDRDM2Q0I3RUQ5RDU1QTBBQjNFQTMwMCIK",
+ "bytes": 228,
+ "content_type": "application/toml",
+ "domain": "postfiatd.devflows.dedyn.io",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "5d44a54275f21eecc055fc57a15c90721f24a4b744fad37aba9df8a05a1b76b3",
+ "status": 200,
+ "t": 1795780650.592,
+ "truncated": false,
+ "url": "https://postfiatd.devflows.dedyn.io/.well-known/pft-ledger.toml"
+}

@@ -1,0 +1,14 @@
+{
+ "bytes": 79,
+ "content_type": "text/plain; charset=utf-8",
+ "domain": "parshant.com",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "1aecf387500ee16a46f9649b9cd2e5d5e7d7eb60a059393e11967ee9e36fc258",
+ "status": 404,
+ "t": 1795780642.103,
+ "truncated": false,
+ "url": "https://parshant.com/.well-known/xrp-ledger.toml"
+}

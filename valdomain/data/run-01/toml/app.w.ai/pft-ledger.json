@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSEJBVG9Yb1RINmVadEMxY01KRHZqRzdlUmI3dWZaM0dVcGVpc3ZOVlQ0b2ZydVJkVnZkIgphdHRlc3RhdGlvbiA9ICI4Mzc3QzIxQTU2M0NFRDdGNzFCNDdCQTQ2RkEzREFDRkYzMTc1NDUzNzdBMEY4Q0VENUEzRURDQzkyQTQzMTdCMzFGMjQwNjEwNDJDRTIwODYyQTU4NDBFNDQ2NDhERTdCQUMwMDREOTREMzM2N0NEQjAzRjVDMDc5MjE3QkUwOSIK",
+ "bytes": 228,
+ "content_type": "application/toml",
+ "domain": "app.w.ai",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "136be0ab3ac769a65092680985435135c53e0fac49a53263428fddf2e3a3be31",
+ "status": 200,
+ "t": 1795780635.718,
+ "truncated": false,
+ "url": "https://app.w.ai/.well-known/pft-ledger.toml"
+}

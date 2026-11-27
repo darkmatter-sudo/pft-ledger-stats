@@ -1,0 +1,139 @@
+valdomain collection 2026-11-27T11:56:51Z repo HEAD 4dceee51d3baf3374c8e3a8fb86667b13a0030fc
+$ git status --short | wc -l
+0
+exit=0
+$ sha256sum valdomain/*.py valdomain/*.sh
+1c9f2b521159fa3d2d442c2b99351fd78c1162f324f1f1d6cd1692a707864857  valdomain/collect_valdomain.py
+9311920bc796fa0d762ec614723c7049a6d96c9e96dca83ea39d8ac81e3aaddc  valdomain/lib_valdomain.py
+26eb14b23f142d689b92f88be84de02d4909cba4c543d961637e0e00cf168349  valdomain/make_fixture.py
+db00f3b8b4c883b3603a53e6a6a17524a4196710668bf9a498880a64da8b811f  valdomain/mutants.py
+21312c43d964e919e9c2d15ba525371cc8355b4789f9cd462eec9e604778e15e  valdomain/verify_valdomain.py
+126dd341d63d0635fbaa019213c9f1180e426a050a655556c1f33cfd4399dfa7  valdomain/run-node.sh
+45cd71193172768ea496fbf5a9397cf73c4a05316ca45697d59cb62943783903  valdomain/run_collect.sh
+exit=0
+$ sudo RUN_UID=1001 RUN_GID=1001 bash valdomain/run-node.sh --out valdomain/data/run-01
+2026-11-27T11:56:51Z node.json: publisher ED3F1E0DA736FCF99BE2880A60DBD470715C0E04DD793FB862236B070571FC09E2 seq 31 list 25
+exit=0
+$ python3 -I -u valdomain/collect_valdomain.py collect --out valdomain/data/run-01 --private ../runlogs/task_8fe8-private-reasons-r2.jsonl
+2026-11-27T11:56:52Z vl.json: https://postfiat.org/testnet_vl.json HTTP 200 14779 B sha256 5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688
+2026-11-27T11:56:52Z VL sequence 31: 25 validators, 25 with sfDomain
+2026-11-27T11:57:15Z manifests.jsonl: 50 new answers (0 cached)
+2026-11-27T11:57:15Z GET https://app.w.ai/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:15Z GET https://app.w.ai/.well-known/xrp-ledger.toml -> response HTTP 404 14376 B
+2026-11-27T11:57:16Z GET https://auri0x.io/.well-known/pft-ledger.toml -> response HTTP 200 226 B
+2026-11-27T11:57:17Z GET https://auri0x.io/.well-known/xrp-ledger.toml -> response HTTP 404 1359 B
+2026-11-27T11:57:17Z GET https://dex3333.github.io/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:17Z GET https://dex3333.github.io/.well-known/xrp-ledger.toml -> response HTTP 404 9379 B
+2026-11-27T11:57:18Z GET https://hamedminasli.duckdns.org/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:18Z GET https://hamedminasli.duckdns.org/.well-known/xrp-ledger.toml -> response HTTP 502 0 B
+2026-11-27T11:57:18Z GET https://iopo545454-del.github.io/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:19Z GET https://iopo545454-del.github.io/.well-known/xrp-ledger.toml -> response HTTP 404 9379 B
+2026-11-27T11:57:19Z GET https://jollydinger.com/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:19Z GET https://jollydinger.com/.well-known/xrp-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:20Z GET https://lc66validator.postfiatcn.org/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:21Z GET https://lc66validator.postfiatcn.org/.well-known/xrp-ledger.toml -> response HTTP 404 162 B
+2026-11-27T11:57:21Z GET https://local-maxi.github.io/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:21Z GET https://local-maxi.github.io/.well-known/xrp-ledger.toml -> response HTTP 404 9379 B
+2026-11-27T11:57:22Z GET https://parshant.com/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:22Z GET https://parshant.com/.well-known/xrp-ledger.toml -> response HTTP 404 79 B
+2026-11-27T11:57:23Z GET https://pft.akirax.xyz/.well-known/pft-ledger.toml -> response HTTP 200 546 B
+2026-11-27T11:57:24Z GET https://pft.akirax.xyz/.well-known/xrp-ledger.toml -> response HTTP 200 796 B
+2026-11-27T11:57:24Z GET https://pft.bigwoodnode.com/.well-known/pft-ledger.toml -> response HTTP 200 339 B
+2026-11-27T11:57:24Z GET https://pft.bigwoodnode.com/.well-known/xrp-ledger.toml -> response HTTP 200 65536 B
+2026-11-27T11:57:25Z GET https://pft.g.money/.well-known/pft-ledger.toml -> response HTTP 200 450 B
+2026-11-27T11:57:25Z GET https://pft.g.money/.well-known/xrp-ledger.toml -> response HTTP 200 450 B
+2026-11-27T11:57:25Z GET https://pft.hit0ri.xyz/.well-known/pft-ledger.toml -> response HTTP 200 254 B
+2026-11-27T11:57:26Z GET https://pft.hit0ri.xyz/.well-known/xrp-ledger.toml -> response HTTP 404 9379 B
+2026-11-27T11:57:26Z GET https://pft.permanentupperclass.com/.well-known/pft-ledger.toml -> response HTTP 200 1137 B
+2026-11-27T11:57:26Z GET https://pft.permanentupperclass.com/.well-known/xrp-ledger.toml -> response HTTP 404 9379 B
+2026-11-27T11:57:26Z GET https://pft.thedarkmatter.xyz/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:26Z GET https://pft.thedarkmatter.xyz/.well-known/xrp-ledger.toml -> response HTTP 404 9 B
+2026-11-27T11:57:27Z GET https://pft.whiteguy.eu/.well-known/pft-ledger.toml -> response HTTP 200 255 B
+2026-11-27T11:57:28Z GET https://pft.whiteguy.eu/.well-known/xrp-ledger.toml -> response HTTP 404 0 B
+2026-11-27T11:57:28Z GET https://pft.wizbubba.xyz/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:28Z GET https://pft.wizbubba.xyz/.well-known/xrp-ledger.toml -> response HTTP 404 9379 B
+2026-11-27T11:57:28Z GET https://pftmeech.xyz/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:28Z GET https://pftmeech.xyz/.well-known/xrp-ledger.toml -> response HTTP 404 9379 B
+2026-11-27T11:57:29Z GET https://postfiat.live/.well-known/pft-ledger.toml -> response HTTP 200 297 B
+2026-11-27T11:57:30Z GET https://postfiat.live/.well-known/xrp-ledger.toml -> response HTTP 404 2970 B
+2026-11-27T11:57:30Z GET https://postfiat.maro.dpdns.org/.well-known/pft-ledger.toml -> response HTTP 200 229 B
+2026-11-27T11:57:30Z GET https://postfiat.maro.dpdns.org/.well-known/xrp-ledger.toml -> response HTTP 404 0 B
+2026-11-27T11:57:31Z GET https://postfiatd.devflows.dedyn.io/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:31Z GET https://postfiatd.devflows.dedyn.io/.well-known/xrp-ledger.toml -> response HTTP 404 0 B
+2026-11-27T11:57:32Z GET https://qwerky2233.github.io/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:32Z GET https://qwerky2233.github.io/.well-known/xrp-ledger.toml -> response HTTP 404 9379 B
+2026-11-27T11:57:32Z GET https://sendoeth.com/.well-known/pft-ledger.toml -> response HTTP 200 248 B
+2026-11-27T11:57:32Z GET https://sendoeth.com/.well-known/xrp-ledger.toml -> response HTTP 200 348 B
+2026-11-27T11:57:33Z GET https://snakespartan.pftoligarchy.com/.well-known/pft-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:33Z GET https://snakespartan.pftoligarchy.com/.well-known/xrp-ledger.toml -> response HTTP 200 228 B
+2026-11-27T11:57:33Z GET https://validator.pftperry.com/.well-known/pft-ledger.toml -> response HTTP 200 248 B
+2026-11-27T11:57:33Z GET https://validator.pftperry.com/.well-known/xrp-ledger.toml -> response HTTP 200 248 B
+2026-11-27T11:57:33Z toml: 50 fetched, 0 cached
+2026-11-27T11:57:33Z SHA256SUMS: 54 files
+exit=0
+$ python3 -I -u valdomain/verify_valdomain.py --offline valdomain/data/run-01 --out valdomain/report
+PASS sums: 54 files, every sha256 matches
+PASS vl: publisher manifest, blob signature (low-S), node trust, fetch record agree
+PASS manifests: 25 of 25 VL manifests verify
+PASS toml: 25 validators x 2 TOML paths cached and intact
+PASS crosscheck: 50 of 50 node/public manifest answers carry the VL domain
+classes: verified=25 bad_attestation=0 no_attestation=0 key_not_listed=0 toml_unparseable=0 http_error=0 unreachable=0 no_domain=0 total=25
+RESULT OK exit=0
+exit=0
+$ python3 -I -u valdomain/verify_valdomain.py controls --offline valdomain/data/run-01 --scratch ../scratch/valdomain-ctl
+baseline: 25 validators, all checks PASS
+PASS ctl_file_edit: A cached TOML record edited (body + its own sha256), SHA256SUMS not updated -> sums FAIL. -> failed ['sums']: toml/app.w.ai/pft-ledger.json: sha256 differs
+PASS ctl_body_hash: A cached body changed but its record sha256 kept (SHA256SUMS re-made) -> toml FAIL. -> failed ['toml']: app.w.ai/.well-known/pft-ledger.toml: body does not match its sha256/bytes
+PASS ctl_attestation_flip: One verified attestation with one hex digit changed (re-hashed) -> that validator bad_attestation. -> nHBAToXoTH bad_attestation
+PASS ctl_vl_blob: VL blob signature byte changed (re-hashed) -> vl FAIL. -> failed ['vl']: blob signature invalid or not low-S
+PASS ctl_public_domain: Public node's manifest answer claims another domain in details -> crosscheck FAIL. -> failed ['crosscheck']: public nHBAToXoTH: node's decoded details differ from the manifest blob
+PASS ctl_missing_fetch: One cached TOML fetch removed (re-hashed) -> toml FAIL (collection incomplete). -> failed ['toml']: app.w.ai/.well-known/pft-ledger.toml: no cached fetch
+PASS ctl_no_data: Empty directory -> exit 2. -> nodata
+RESULT controls 7/7 PASS exit=0
+exit=0
+$ cat valdomain/report/table.md
+| key prefix | domain | class | /.well-known/pft-ledger.toml | /.well-known/xrp-ledger.toml | node manifest | public manifest |
+|---|---|---|---|---|---|---|
+| `nHBAToXoTH` | app.w.ai | verified | verified | http_error | same | same |
+| `nHUWciHX8W` | auri0x.io | verified | verified | http_error | same | same |
+| `nHBmj7zUY2` | dex3333.github.io | verified | verified | http_error | same | same |
+| `nHUvKQbxx1` | hamedminasli.duckdns.org | verified | verified | http_error | same | same |
+| `nHBb2uHHY8` | iopo545454-del.github.io | verified | verified | http_error | same | same |
+| `nHBM2nzq3p` | jollydinger.com | verified | verified | verified | same | same |
+| `nHUCEXpC5L` | lc66validator.postfiatcn.org | verified | verified | http_error | same | same |
+| `nHUatddiVB` | local-maxi.github.io | verified | verified | http_error | same | same |
+| `nHUwdHGzvT` | parshant.com | verified | verified | http_error | same | same |
+| `nHUUXMXfPE` | pft.akirax.xyz | verified | verified | verified | same | same |
+| `nHByMXejvH` | pft.bigwoodnode.com | verified | verified | http_error | same | same |
+| `nHBcnQZ9a9` | pft.g.money | verified | verified | verified | same | same |
+| `nHBYKjxjbz` | pft.hit0ri.xyz | verified | verified | http_error | same | same |
+| `nHB6Zc7mhr` | pft.permanentupperclass.com | verified | verified | http_error | same | same |
+| `nHUT8QPaTE` | pft.thedarkmatter.xyz | verified | verified | http_error | same | same |
+| `nHUdwzTWTQ` | pft.whiteguy.eu | verified | verified | http_error | same | same |
+| `nHUzc5Xzsm` | pft.wizbubba.xyz | verified | verified | http_error | same | same |
+| `nHBVTAUpHE` | pftmeech.xyz | verified | verified | http_error | same | same |
+| `nHDfSHLutR` | postfiat.live | verified | verified | http_error | same | same |
+| `nHBxxNuWsJ` | postfiat.maro.dpdns.org | verified | verified | http_error | same | same |
+| `nHDw5erSdz` | postfiatd.devflows.dedyn.io | verified | verified | http_error | same | same |
+| `nHBWFVzxVY` | qwerky2233.github.io | verified | verified | http_error | same | same |
+| `nHBcLEB4S6` | sendoeth.com | verified | verified | verified | same | same |
+| `nHD3sPmhNt` | snakespartan.pftoligarchy.com | verified | verified | verified | same | same |
+| `nHU74qX4tC` | validator.pftperry.com | verified | verified | verified | same | same |
+
+| class | validators |
+|---|---|
+| verified | 25 |
+| bad_attestation | 0 |
+| no_attestation | 0 |
+| key_not_listed | 0 |
+| toml_unparseable | 0 |
+| http_error | 0 |
+| unreachable | 0 |
+| no_domain | 0 |
+| total | 25 |
+exit=0
+$ wc -l < ../runlogs/task_8fe8-private-reasons-r2.jsonl
+0
+exit=0
+RESULT collect verify=0 controls=0
+runner exit=0

@@ -1,0 +1,15 @@
+{
+ "body_b64": "W01FVEFEQVRBXQ0KbW9kaWZpZWQgPSAyMDI2LTA1LTEyVDAwOjAwOjAwWg0KDQpbW1ZBTElEQVRPUlNdXQ0KcHVibGljX2tleSA9ICJuSERmU0hMdXRSN1FxdHRBa3gzQWlZRzJidWtDZGZBYTNQOWhyWUw0eU5KWlFwdkVwVzFBIg0KYXR0ZXN0YXRpb24gPSAiNzRGQzYwMTU1QUZDNjQ5MDUxOEM0RUZENTEyMTdCMDIyRUMzMkQyOURDMTUzQTAwMDE1NzBBRDE1NjkzQTRBRDYzRkRFNTg2REI0MjBDMTlBMTI3MDg5RkU0RDJFQTdFNzcxMDZFRUYzNjhFNTkzQ0M2NEQzRjMyOURCQTlCMEIiDQpuZXR3b3JrID0gInRlc3RuZXQi",
+ "bytes": 297,
+ "content_type": "text/plain",
+ "domain": "postfiat.live",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "d71c3569bec2496bd23c2bc2ef75a409900128beadc29d3cc7874673722b1846",
+ "status": 200,
+ "t": 1795780648.628,
+ "truncated": false,
+ "url": "https://postfiat.live/.well-known/pft-ledger.toml"
+}

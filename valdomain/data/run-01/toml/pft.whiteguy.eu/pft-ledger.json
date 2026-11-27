@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSFVkd3pUV1RRSnplYmJ4Y2FuWkcyRVJYaWtNTFU5YUFaYThjSHR4b3NmaUtxNU43VmQ1IgphdHRlc3RhdGlvbiA9ICI3RTFDMTY4Q0FCQTk2NkM4QjlDRTExQzI0NzU2ODE4MTg3QThBQkYyQTI2MzY4OUQyRkExRTAzRTI0OEM5MkU2MEEwM0JFRDQ0NzY2QUI2MDMwRjUwRjYyOUM4NjcwRjgxRjVCNDFERTQ1OTUzNTU3MjdENkQxMDlCNjE4OUMwMiIKZG9tYWluID0gInBmdC53aGl0ZWd1eS5ldSIK",
+ "bytes": 255,
+ "content_type": "text/plain",
+ "domain": "pft.whiteguy.eu",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "84d9481f85b028710bf9a6e13b72651192843e891146774720acf0cbbdec9df3",
+ "status": 200,
+ "t": 1795780646.844,
+ "truncated": false,
+ "url": "https://pft.whiteguy.eu/.well-known/pft-ledger.toml"
+}

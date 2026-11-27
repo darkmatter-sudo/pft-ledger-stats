@@ -1,0 +1,15 @@
+{
+ "body_b64": "W01FVEFEQVRBXQptb2RpZmllZCA9ICIyMDI2LTA1LTA2VDAwOjAwOjAwLjAwMFoiCgpbW1ZBTElEQVRPUlNdXQpwdWJsaWNfa2V5ID0gIm5IQnlNWGVqdkhKZ2pjR0oxZjliaGNBR2NGZU5SNmVjc0Rtek40dDNIa2h5UkhadE02TGoiCmF0dGVzdGF0aW9uID0gIjQ1M0Y0NTEyMjg5RDI0ODM3NzY5M0Q4MkI5RTEzN0U0RkE1N0NCRTQ2MUI1RTVGMTQwNTgxQjFCNDlERkUxNzcwNzAwMkRGQTMzRThCMEY3QUE3MzI0QTY0MDE0RjZDMTA5RkUzRTlGMjM3MjkxM0EwOTg3NTRBNEQ2MEYyNDBGIgpuZXR3b3JrID0gInRlc3RuZXQiCgpbW1BSSU5DSVBBTFNdXQpuYW1lID0gInBmdC5iaWd3b29kbm9kZSIK",
+ "bytes": 339,
+ "content_type": null,
+ "domain": "pft.bigwoodnode.com",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "eaf1dd10065e9838929030dfe6e8592ae9495b7df6594a48b4861c176d93ed5d",
+ "status": 200,
+ "t": 1795780644.041,
+ "truncated": false,
+ "url": "https://pft.bigwoodnode.com/.well-known/pft-ledger.toml"
+}

@@ -118,7 +118,7 @@ expected failure:
 
 ## Limits
 
-- This is a snapshot: one collection (`data/run-01`, 2026-11-27T11:51Z). An attestation proves that
+- This is a snapshot: one collection (`data/run-01`, 2026-11-27T11:56Z). An attestation proves that
   the master-key holder signed for the domain, and that the domain served that signature over
   verified HTTPS at collection time. It says nothing about who runs the domain or the node.
 - The TOML parser is a strict TOML 1.0 parser (stdlib only, because Python 3.10 has no `tomllib`).

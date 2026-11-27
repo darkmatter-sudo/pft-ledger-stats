@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSFV2S1FieHgxNEdGeU1hUkI0dmd1MTF4NnBYcndNd1g5eVA1THRnazRqcDRTSGJiZ1dBIgphdHRlc3RhdGlvbiA9ICI1RjIxMUM4N0VFMUY2QzlFRkU1REYzNjM3OEFBQkUxRURDNTlDQzMyOTFDRkVENTFFQTM4N0U2RDE2NDFBQUI3RUJCMTVFQjI5MjFCQjNBNUQ0Qjc2NEU5Q0Q5MjZDQ0U4OURFQUYxRkRDOUYzQUJDNzMwODBERTREMkI4MUEwQSIK",
+ "bytes": 228,
+ "content_type": null,
+ "domain": "hamedminasli.duckdns.org",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "be7b31c3ef0e17f07babaa1b838a22baa290b823dc8eed1d69361e03f717a781",
+ "status": 200,
+ "t": 1795780637.162,
+ "truncated": false,
+ "url": "https://hamedminasli.duckdns.org/.well-known/pft-ledger.toml"
+}

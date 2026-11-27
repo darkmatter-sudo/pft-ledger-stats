@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSEJjTEVCNFM2bW9RR3JoTWpKbzFqYnA1OFdMNXBzSFk5RU1EV05BdGRxeWtVWWlBMXJGIgphdHRlc3RhdGlvbiA9ICI2RDUzMTNCQjVCQ0M5MTdFMzk2MjgzMkJDODgyQUQ3RTlDOEREMTA5MDFFQTI1OTU0RDkyRjEwNDE1MDJDRTlGQ0UxMTZENUI4OTAwNDdCN0IzRjNFRUE5N0E5MDJDODM5NkY3ODQ4ODc0MTcyMTUwOURERjI0ODVBNkJFNUYwMiIKbmV0d29yayA9ICJ0ZXN0bmV0Igo=",
+ "bytes": 248,
+ "content_type": "application/toml",
+ "domain": "sendoeth.com",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "a2bfb395f8e735763736fdcc10424941a984dcaadddafff295ab36fa71f29205",
+ "status": 200,
+ "t": 1795780652.059,
+ "truncated": false,
+ "url": "https://sendoeth.com/.well-known/pft-ledger.toml"
+}

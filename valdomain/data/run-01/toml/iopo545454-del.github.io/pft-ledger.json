@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSEJiMnVISFk4Vjc4cVdRVDNQNkFEa0Z6NHBSeUVnSnBBMnBFcW1ReVRIdXhYSGNjQnpNIgphdHRlc3RhdGlvbiA9ICI4NjBEQzZEMTJGNUI0MkExQTlENDIxMDg5NjEwMTFBQ0Y2MzA0OERBNzAzOENENTdFOThFMzkyRDlDNUYwREIxMUUyQzdFMTQxMzIyMDhERjQzRTdGQkUyRjg1MDY5NDI4MUY2MDFFNEFGMzZCMjQ5NjYzNkREQjQyNkVFRTAwNiIK",
+ "bytes": 228,
+ "content_type": "application/toml",
+ "domain": "iopo545454-del.github.io",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "9cdd25303e5d29aaf3382488767718aca87108a122d18a2244771233e37bec92",
+ "status": 200,
+ "t": 1795780638.921,
+ "truncated": false,
+ "url": "https://iopo545454-del.github.io/.well-known/pft-ledger.toml"
+}

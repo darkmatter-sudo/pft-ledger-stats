@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0NCnB1YmxpY19rZXkgPSAibkhCeHhOdVdzSlhrekxrMzMyQUR4dDFUMThOMWU5QlNZamVrakdOVkNQZlY4MTN0U2R2eCINCmF0dGVzdGF0aW9uID0gIjEwMkI2QzU3RTFFREE1QUM5RTYyMzcxNjc4ODIyRDVFNzIzOTU1QTZGRTgyNEQzODhBNjI0QzRFQTMzRkUwNjRERUE3Nzk4OEUyMEU2MUM3MEIyNTcyOUE4QzJDN0JDMUI0QzJDMUVBOTAxMTM4QkExMjk0ODY0OTAyMzkzRDA3Ig==",
+ "bytes": 229,
+ "content_type": null,
+ "domain": "postfiat.maro.dpdns.org",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "90a735b0db869d90a424e8994f75f602b70ae5e7e0b5092f3989be6bad46c450",
+ "status": 200,
+ "t": 1795780650.08,
+ "truncated": false,
+ "url": "https://postfiat.maro.dpdns.org/.well-known/pft-ledger.toml"
+}

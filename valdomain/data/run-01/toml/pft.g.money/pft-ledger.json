@@ -1,0 +1,15 @@
+{
+ "body_b64": "IyBQb3N0IEZpYXQgTmV0d29yayBWYWxpZGF0b3IgQ29uZmlndXJhdGlvbgojIEhvc3RlZCBhdDogaHR0cHM6Ly9wZnQuZy5tb25leS8ud2VsbC1rbm93bi94cnAtbGVkZ2VyLnRvbWwKCltbVkFMSURBVE9SU11dCnB1YmxpY19rZXkgPSAibkhCY25RWjlhOVVqWjdoYmo5eldWWFo5a1RjcWhlVWt1aTMyWWRCVHBRZUFzRTZCeFdORyIKYXR0ZXN0YXRpb24gPSAiNzk4OUVCODRCNUU2NzJGN0U2NzAxMkZCMjEzMTQzMzEyMjM3RDk2Qjk2OTgwNjA4Nzg2RjhENEJBNTM0RDRCNTk0QkY2NzRDN0ZDREU0QjVDQjJBQjgwN0QxNzAzNDIwQTUyQjdERDg5MTY0MkJCMEI2QTUyQUNGQjA4M0VEMDQiCm5ldHdvcmsgPSAibWFpbiIKb3duZXJfY291bnRyeSA9ICJVUyIKc2VydmVyX2NvdW50cnkgPSAiVVMiCgpbTUVUQURBVEFdCmRvbWFpbiA9ICJwZnQuZy5tb25leSIKbmV0d29yayA9ICJwb3N0ZmlhdCIK",
+ "bytes": 450,
+ "content_type": "application/toml",
+ "domain": "pft.g.money",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "0e49a1f9f41829ba9cf7a9c0e3e1008138af2b8a3af7b7e5993f06be140b86d1",
+ "status": 200,
+ "t": 1795780644.574,
+ "truncated": false,
+ "url": "https://pft.g.money/.well-known/pft-ledger.toml"
+}

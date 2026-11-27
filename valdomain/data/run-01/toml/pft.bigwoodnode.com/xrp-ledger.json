@@ -1,0 +1,14 @@
+{
+ "bytes": 65536,
+ "content_type": "text/html; charset=utf-8",
+ "domain": "pft.bigwoodnode.com",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "68f7b2bd97d1dce13701f19c978814e5419c4a455463dd721eeb4a76fff8adaf",
+ "status": 200,
+ "t": 1795780644.386,
+ "truncated": true,
+ "url": "https://pft.bigwoodnode.com/.well-known/xrp-ledger.toml"
+}

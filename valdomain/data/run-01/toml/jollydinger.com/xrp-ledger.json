@@ -1,0 +1,15 @@
+{
+ "body_b64": "W1tWQUxJREFUT1JTXV0KcHVibGljX2tleSA9ICJuSEJNMm56cTNwWlVnOEpzeHZFdDNHN2dBQXRjNVN1a2FlZjZZbXZWeDY0dUFvUks0UVdNIgphdHRlc3RhdGlvbiA9ICI2MjgxQUZEODRGNjQxREUzNzEzMEIwN0QyNDEyODk3NzRCRjgwRDFGOTI5MkExOTUxMTY3ODM1MzE1QzAxNDRENzBDMkNGMUVGQTk4NzA2MjRDNkY1MzJGNjYwNzlDQjI4ODExOUVDMEYwNDVEMDc2MTNEMEQ0QUNBMDNDQ0UwNyIK",
+ "bytes": 228,
+ "content_type": "application/toml",
+ "domain": "jollydinger.com",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "986c6189239795a2f747e6219f686b5fe785db40b2aa91ca06476069d390fe2c",
+ "status": 200,
+ "t": 1795780639.376,
+ "truncated": false,
+ "url": "https://jollydinger.com/.well-known/xrp-ledger.toml"
+}
