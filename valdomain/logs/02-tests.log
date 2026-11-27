@@ -1,0 +1,28 @@
+valdomain tests + lint 2026-11-27T11:58:15Z repo HEAD c59bd74af554d27387aa92b2366e104eb2bd8b7c
+$ python3 --version
+Python 3.10.12
+exit=0
+$ sha256sum valdomain/*.py tests/test_valdomain.py
+1c9f2b521159fa3d2d442c2b99351fd78c1162f324f1f1d6cd1692a707864857  valdomain/collect_valdomain.py
+9311920bc796fa0d762ec614723c7049a6d96c9e96dca83ea39d8ac81e3aaddc  valdomain/lib_valdomain.py
+26eb14b23f142d689b92f88be84de02d4909cba4c543d961637e0e00cf168349  valdomain/make_fixture.py
+db00f3b8b4c883b3603a53e6a6a17524a4196710668bf9a498880a64da8b811f  valdomain/mutants.py
+21312c43d964e919e9c2d15ba525371cc8355b4789f9cd462eec9e604778e15e  valdomain/verify_valdomain.py
+2d7e254ae7b954ae214a858f9bd3e0f69d15e4c0d46ab7c187fa139b92c44ad7  tests/test_valdomain.py
+exit=0
+$ python3 -m pytest -q -p no:cacheprovider --basetemp ../scratch/pyt-valdomain tests/test_valdomain.py
+........................................................................ [ 90%]
+........                                                                 [100%]
+80 passed in 2.55s
+exit=0
+$ ruff --version
+ruff 0.17.1
+exit=0
+$ ruff check valdomain tests/test_valdomain.py
+All checks passed!
+exit=0
+$ ruff format --check valdomain tests/test_valdomain.py
+9 files already formatted
+exit=0
+$ shellcheck valdomain/run-node.sh valdomain/run_collect.sh
+exit=0

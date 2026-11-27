@@ -1,0 +1,43 @@
+valdomain mutants 2026-11-27T11:58:40Z repo HEAD c59bd74af554d27387aa92b2366e104eb2bd8b7c
+$ sha256sum valdomain/mutants.py
+db00f3b8b4c883b3603a53e6a6a17524a4196710668bf9a498880a64da8b811f  valdomain/mutants.py
+$ TMPDIR=$HOME/.cache/vdmut nice -n 15 python3 -u valdomain/mutants.py --jobs 4 --timeout 120
+BASELINE PASS 79 passed, 1 skipped in 1.56s
+MUTANT att-hex-unchecked CAUGHT 1 failed, 78 passed, 1 skipped in 1.67s | test_verify_attestation_accepts_only_exact_domain_key_and_hex
+MUTANT best-is-worst CAUGHT 8 failed, 71 passed, 1 skipped in 1.84s | test_fixture_every_validator_gets_its_hand_written_class, test_fixture_counts_cover_every_class, test_best_of_paths_and_per_path_classes
+MUTANT att-message-order CAUGHT 10 failed, 69 passed, 1 skipped in 1.89s | test_fixture_every_validator_gets_its_hand_written_class, test_fixture_counts_cover_every_class, test_best_of_paths_and_per_path_classes
+MUTANT key-match-ignores-case CAUGHT 1 failed, 78 passed, 1 skipped in 1.77s | test_classify_fetch_branches
+MUTANT empty-attestation-counts CAUGHT 1 failed, 78 passed, 1 skipped in 1.64s | test_classify_fetch_branches
+MUTANT all-attestations-needed CAUGHT 1 failed, 78 passed, 1 skipped in 1.97s | test_classify_fetch_branches
+MUTANT truncated-accepted CAUGHT 18 failed, 61 passed, 1 skipped in 2.48s | test_fixture_every_validator_gets_its_hand_written_class, test_fixture_counts_cover_every_class, test_best_of_paths_and_per_path_classes
+MUTANT non-200-parsed CAUGHT 20 failed, 59 passed, 1 skipped in 2.67s | test_fixture_every_validator_gets_its_hand_written_class, test_fixture_counts_cover_every_class, test_best_of_paths_and_per_path_classes
+MUTANT toml-duplicate-key-ok CAUGHT 1 failed, 78 passed, 1 skipped in 1.70s | test_toml_rejects_invalid[bad0]
+MUTANT toml-table-twice-ok CAUGHT 1 failed, 78 passed, 1 skipped in 1.47s | test_toml_rejects_invalid[bad1]
+MUTANT toml-bad-escape-ok CAUGHT 1 failed, 78 passed, 1 skipped in 1.60s | test_toml_rejects_invalid[bad10]
+MUTANT sums-unlisted-ignored CAUGHT 1 failed, 78 passed, 1 skipped in 1.46s | test_sums_detect_edit_unlisted_and_missing
+MUTANT vl-node-list-ignored CAUGHT 1 failed, 78 passed, 1 skipped in 1.64s | test_vl_node_trust_mismatches[list]
+MUTANT vl-seq-ignored CAUGHT 1 failed, 78 passed, 1 skipped in 1.65s | test_vl_node_trust_mismatches[seq]
+MUTANT vl-validity-ignored CAUGHT 1 failed, 78 passed, 1 skipped in 2.16s | test_vl_fetch_record_and_validity
+MUTANT vl-site-ignored CAUGHT 1 failed, 78 passed, 1 skipped in 1.97s | test_vl_node_trust_mismatches[site]
+MUTANT body-hash-ignored CAUGHT 1 failed, 78 passed, 1 skipped in 1.65s | test_controls_all_pass_on_fixture
+MUTANT cache-name-ignored CAUGHT 1 failed, 78 passed, 1 skipped in 1.63s | test_cache_record_naming_other_domain
+MUTANT cross-domain-ignored CAUGHT 1 failed, 78 passed, 1 skipped in 1.65s | test_crosscheck_domain_differs_at_same_seq
+MUTANT cross-older-ok CAUGHT 1 failed, 78 passed, 1 skipped in 1.73s | test_crosscheck_older_manifest
+MUTANT cross-details-ignored CAUGHT 2 failed, 77 passed, 1 skipped in 1.60s | test_crosscheck_answer_problems[details-seq], test_controls_all_pass_on_fixture
+MUTANT cross-missing-ok CAUGHT 2 failed, 77 passed, 1 skipped in 1.58s | test_crosscheck_answer_problems[no-answer], test_crosscheck_other_master_and_older_and_absent
+MUTANT exit-always-0 CAUGHT 1 failed, 78 passed, 1 skipped in 1.90s | test_run_exit_1_on_inconsistency
+MUTANT nodata-exit-0 CAUGHT 1 failed, 78 passed, 1 skipped in 2.04s | test_no_data_exit_2
+MUTANT controls-baseline-ignored CAUGHT 1 failed, 78 passed, 1 skipped in 2.18s | test_controls_refuse_failing_baseline
+MUTANT redirect-to-http CAUGHT 1 failed, 78 passed, 1 skipped in 1.75s | test_redirect_rules
+MUTANT redirect-unlimited CAUGHT 1 failed, 78 passed, 1 skipped in 2.16s | test_redirect_rules
+MUTANT size-cap-off CAUGHT 1 failed, 78 passed, 1 skipped in 1.94s | test_fetch_toml_200_and_cap
+MUTANT reason-published CAUGHT 1 failed, 78 passed, 1 skipped in 2.78s | test_fetch_toml_unreachable_reason_is_private
+MUTANT private-address-ok CAUGHT 1 failed, 78 passed, 1 skipped in 3.03s | test_public_host_rules
+MUTANT toml-no-resume CAUGHT 1 failed, 78 passed, 1 skipped in 2.61s | test_step_toml_one_get_per_path_resume_and_private
+MUTANT checker-skipped CAUGHT 1 failed, 78 passed, 1 skipped in 1.97s | test_fetch_toml_non_public_host_never_contacted
+MUTANT manifest-no-resume CAUGHT 1 failed, 78 passed, 1 skipped in 1.81s | test_step_manifests_resume_and_retry
+MUTANT invalid-domain-fetched CAUGHT 1 failed, 78 passed, 1 skipped in 1.97s | test_step_toml_one_get_per_path_resume_and_private
+MUTANT server-info-unfiltered CAUGHT 1 failed, 78 passed, 1 skipped in 1.54s | test_cmd_node_reads_admin_commands
+MUTANT peer-uri-kept CAUGHT 1 failed, 78 passed, 1 skipped in 1.53s | test_cmd_node_reads_admin_commands
+RESULT PASS mutants=36 caught=36
+exit=0
