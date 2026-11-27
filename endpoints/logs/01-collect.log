@@ -1,0 +1,39 @@
+$ git rev-parse HEAD
+75b9ef6caa7e18913e88a7d5ea62e2dec4eb3f37
+$ date -u
+2026-11-27T13:46:52Z
+$ python3 -I endpoints/collect_endpoints.py collect --out data/endpoints --epoch 2026-11-27
+2026-11-27T13:46:52Z collect epoch=2026-11-27 api=https://scoring-testnet.postfiat.org gap=1.0s cache rows=0
+2026-11-27T13:46:53Z round list: 32 rounds (total 32), COMPLETE 30
+2026-11-27T13:46:54Z round 4: bundle=no files=0 calls=2 cached=0 errors=0
+2026-11-27T13:46:55Z round 5: bundle=no files=0 calls=3 cached=0 errors=0
+2026-11-27T13:46:56Z round 6: bundle=no files=0 calls=4 cached=0 errors=0
+2026-11-27T13:47:02Z round 7: bundle=yes files=4 calls=9 cached=0 errors=0
+2026-11-27T13:47:07Z round 8: bundle=yes files=4 calls=14 cached=0 errors=0
+2026-11-27T13:47:13Z round 9: bundle=yes files=4 calls=19 cached=0 errors=0
+2026-11-27T13:47:18Z round 10: bundle=yes files=4 calls=24 cached=0 errors=0
+2026-11-27T13:47:23Z round 11: bundle=yes files=4 calls=29 cached=0 errors=0
+2026-11-27T13:47:29Z round 12: bundle=yes files=4 calls=34 cached=0 errors=0
+2026-11-27T13:47:34Z round 13: bundle=yes files=4 calls=39 cached=0 errors=0
+2026-11-27T13:47:39Z round 14: bundle=yes files=4 calls=44 cached=0 errors=0
+2026-11-27T13:47:44Z round 15: bundle=yes files=4 calls=49 cached=0 errors=0
+2026-11-27T13:47:50Z round 16: bundle=yes files=4 calls=54 cached=0 errors=0
+2026-11-27T13:47:55Z round 17: bundle=yes files=4 calls=59 cached=0 errors=0
+2026-11-27T13:48:01Z round 18: bundle=yes files=4 calls=64 cached=0 errors=0
+2026-11-27T13:48:07Z round 19: bundle=yes files=4 calls=69 cached=0 errors=0
+2026-11-27T13:48:13Z round 20: bundle=yes files=4 calls=74 cached=0 errors=0
+2026-11-27T13:48:18Z round 21: bundle=yes files=4 calls=79 cached=0 errors=0
+2026-11-27T13:48:24Z round 22: bundle=yes files=4 calls=84 cached=0 errors=0
+2026-11-27T13:48:29Z round 23: bundle=yes files=4 calls=89 cached=0 errors=0
+2026-11-27T13:48:34Z round 24: bundle=yes files=4 calls=94 cached=0 errors=0
+2026-11-27T13:48:39Z round 25: bundle=yes files=4 calls=99 cached=0 errors=0
+2026-11-27T13:48:45Z round 26: bundle=yes files=4 calls=104 cached=0 errors=0
+2026-11-27T13:48:51Z round 27: bundle=yes files=5 calls=110 cached=0 errors=0
+2026-11-27T13:48:58Z round 28: bundle=yes files=5 calls=116 cached=0 errors=0
+2026-11-27T13:49:05Z round 29: bundle=yes files=5 calls=122 cached=0 errors=0
+2026-11-27T13:49:11Z round 30: bundle=yes files=5 calls=128 cached=0 errors=0
+2026-11-27T13:49:18Z round 31: bundle=yes files=5 calls=134 cached=0 errors=0
+2026-11-27T13:49:24Z round 32: bundle=yes files=5 calls=140 cached=0 errors=0
+2026-11-27T13:49:30Z round 33: bundle=yes files=5 calls=146 cached=0 errors=0
+2026-11-27T13:49:30Z done: calls=146 retried=0 cached=0 errors=0
+exit=0

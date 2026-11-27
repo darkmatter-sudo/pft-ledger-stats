@@ -1,0 +1,37 @@
+$ git rev-parse HEAD
+8a532d9b2821ab3e1db9296685d2b5df8330b53a
+$ date -u +%FT%TZ
+2026-11-27T13:54:13Z
+$ TMPDIR="$HOME/.cache/ep-mut" python3 -I endpoints/mutants.py --jobs 3
+BASELINE PASS 42 passed, 1 skipped in 2.57s
+MUTANT dash-split-off CAUGHT 1 failed, 41 passed, 1 skipped in 3.11s | test_family_for[CONTABO-40021
+MUTANT trailing-cc-kept CAUGHT 5 failed, 37 passed, 1 skipped in 3.31s | test_family_for[CONTABO-40021, test_family_for[CONTABO,, test_family_for[CHERRYSERVERS4-AS,
+MUTANT digits-kept CAUGHT 1 failed, 41 passed, 1 skipped in 3.21s | test_family_for[CHERRYSERVERS4-AS,
+MUTANT needle-substring CAUGHT 1 failed, 41 passed, 1 skipped in 3.69s | test_family_for[Constantine
+MUTANT decoration-unknown CAUGHT 1 failed, 41 passed, 1 skipped in 3.83s | test_family_for[AS12876-as12876]
+MUTANT unknown-counted CAUGHT 4 failed, 38 passed, 1 skipped in 4.00s | test_concentration_order_and_unresolved, test_tampered_block_is_mismatch, test_unresolved_only_difference_is_mismatch
+MUTANT rank-ascending CAUGHT 4 failed, 38 passed, 1 skipped in 3.38s | test_concentration_order_and_unresolved, test_rank_test_holds_and_fails, test_rank_test_tie_is_not_below
+MUTANT hhi-not-squared CAUGHT 1 failed, 41 passed, 1 skipped in 3.40s | test_hhi
+MUTANT ipv4-unvalidated CAUGHT 1 failed, 41 passed, 1 skipped in 3.24s | test_find_ips_hits_and_non_hits
+MUTANT hash-unsorted CAUGHT 1 failed, 41 passed, 1 skipped in 3.39s | test_content_hash_is_canonical
+MUTANT order-ignored CAUGHT 1 failed, 41 passed, 1 skipped in 3.55s | test_reordered_block_is_mismatch
+MUTANT unresolved-ignored CAUGHT 1 failed, 41 passed, 1 skipped in 3.55s | test_unresolved_only_difference_is_mismatch
+MUTANT tie-is-below CAUGHT 1 failed, 41 passed, 1 skipped in 3.89s | test_rank_test_tie_is_not_below
+MUTANT top-is-smallest CAUGHT 2 failed, 40 passed, 1 skipped in 3.51s | test_rank_test_holds_and_fails, test_rank_test_tie_is_not_below
+MUTANT hash-unchecked CAUGHT 1 failed, 41 passed, 1 skipped in 3.32s | test_hash_mismatch_and_http_error_reported
+MUTANT ip-scan-off CAUGHT 1 failed, 41 passed, 1 skipped in 4.97s | test_ip_in_pack_is_internal_inconsistency
+MUTANT dups-allowed CAUGHT 1 failed, 41 passed, 1 skipped in 5.11s | test_internal_inconsistency_exit_1[dup]
+MUTANT prompt-country-unchecked CAUGHT 1 failed, 41 passed, 1 skipped in 5.10s | test_prompt_and_diversity_inputs_disagreement
+MUTANT became-swapped CAUGHT 1 failed, 41 passed, 1 skipped in 4.93s | test_verify_world
+MUTANT meta-only-is-data CAUGHT 1 failed, 41 passed, 1 skipped in 5.03s | test_no_data_exit_2
+MUTANT domain-ignored CAUGHT 1 failed, 41 passed, 1 skipped in 5.06s | test_valdomain_crosscheck
+MUTANT di-total-unchecked CAUGHT 1 failed, 41 passed, 1 skipped in 4.55s | test_prompt_and_diversity_inputs_disagreement
+MUTANT 404-not-final CAUGHT 1 failed, 41 passed, 1 skipped in 4.80s | test_collect_fetches_each_document_once_and_paces
+MUTANT no-pacing CAUGHT 1 failed, 41 passed, 1 skipped in 4.87s | test_collect_fetches_each_document_once_and_paces
+MUTANT no-retry CAUGHT 1 failed, 41 passed, 1 skipped in 3.87s | test_collect_retries_5xx
+MUTANT pack-ip-guard-off CAUGHT 1 failed, 41 passed, 1 skipped in 3.83s | test_pack_refuses_leftover_ip
+MUTANT address-copied CAUGHT 22 passed, 1 skipped, 20 errors in 8.43s | test_pack_strips_addresses, test_pack_is_deterministic, test_verify_world
+MUTANT failed-rounds-fetched CAUGHT 1 failed, 41 passed, 1 skipped in 11.27s | test_collect_fetches_each_document_once_and_paces
+MUTANT pack-mtime-now CAUGHT 1 failed, 41 passed, 1 skipped in 12.04s | test_pack_strips_addresses
+RESULT PASS mutants=29 caught=29
+exit=0
