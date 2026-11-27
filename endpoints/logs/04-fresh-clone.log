@@ -1,0 +1,70 @@
+# endpoints fresh anonymous clone at e1127583df4de4009c450ecdaa068534a9e45a55, Python 3.10.12, ruff 0.17.1, 2026-11-27T13:56:34Z
+$ env GIT_TERMINAL_PROMPT=0 git -c credential.helper= clone -q https://github.com/darkmatter-sudo/pft-ledger-stats repo
+$ git -c advice.detachedHead=false checkout -q e1127583df4de4009c450ecdaa068534a9e45a55
+checked out e1127583df4de4009c450ecdaa068534a9e45a55
+# every command below runs in an empty network namespace (unshare -rn): no network at all
+$ unshare -rn python3 -I -c "import urllib.request; urllib.request.urlopen('https://scoring-testnet.postfiat.org', timeout=5)"   (must fail: proves the namespace has no network)
+no network: urllib.error.URLError: <urlopen error [Errno -3] Temporary failure in name resolution>
+$ unshare -rn sha256sum endpoints/data/pack.jsonl.gz endpoints/collect_endpoints.py endpoints/lib_endpoints.py endpoints/mutants.py endpoints/verify_endpoints.py tests/test_endpoints.py endpoints/report/REPORT.md endpoints/report/results.json endpoints/report/rounds.csv
+2902cebe12b3fe430c4cb2e0d8561d22e451aa8695204aa6a7ade3d87e798161  endpoints/data/pack.jsonl.gz
+6f732b86037f5af3f24c482ef99d42c587bda6660f301fa988a8290d26f23c2d  endpoints/collect_endpoints.py
+a561d8b13f3972871dd2f68b3a85c1d86465d8d48acd1fb89d5e89d4843bb46d  endpoints/lib_endpoints.py
+1a614c76c97b56c71b9725c365359adcebaf3ac9cda81e7fc7c6fe4bfad6b0a8  endpoints/mutants.py
+16cd1fd6fb9e0752bfc7252f485223ec16f0fd6cb399795ef75298f0e0010d97  endpoints/verify_endpoints.py
+6ead75c2ed6f10bcbff08c5a0eac04795314fb598e0b0f7239647ac27603fee8  tests/test_endpoints.py
+0e69d9e8a19dda3bd96b6ead936d844c980499d45d670ed1286fb91dee2d1555  endpoints/report/REPORT.md
+78b65c6cf15cd1657c9eb1631035a393131e6a2ebe036aecf663f4ccde233917  endpoints/report/results.json
+69bbb7330637b4df38731f7fa36910ac351e21d6946a2b6559d715de6a7dd6e4  endpoints/report/rounds.csv
+$ unshare -rn python3 -m pytest -q -p no:cacheprovider --basetemp <tmp>/pyt tests/test_endpoints.py
+...........................................                              [100%]
+43 passed in 3.69s
+$ unshare -rn ruff check --no-cache endpoints tests/test_endpoints.py
+All checks passed!
+$ unshare -rn ruff format --no-cache --check endpoints tests/test_endpoints.py
+7 files already formatted
+$ find endpoints -name '*.sh' | wc -l   (no shell code in endpoints/: nothing for shellcheck)
+0
+$ unshare -rn python3 -I endpoints/verify_endpoints.py --offline --out <tmp>/out
+pack sha256 2902cebe12b3fe430c4cb2e0d8561d22e451aa8695204aa6a7ade3d87e798161
+round 4: block=block_missing hashes=ok unresolved=- rankA=-
+round 5: block=block_missing hashes=ok unresolved=- rankA=-
+round 6: block=block_missing hashes=ok unresolved=- rankA=-
+round 7: block=block_missing hashes=ok unresolved=4 rankA=yes
+round 8: block=block_missing hashes=ok unresolved=19 rankA=no
+round 9: block=block_missing hashes=ok unresolved=18 rankA=yes
+round 10: block=block_missing hashes=ok unresolved=17 rankA=yes
+round 11: block=block_missing hashes=ok unresolved=12 rankA=yes
+round 12: block=block_missing hashes=ok unresolved=12 rankA=yes
+round 13: block=block_missing hashes=ok unresolved=11 rankA=yes
+round 14: block=block_missing hashes=ok unresolved=7 rankA=yes
+round 15: block=block_missing hashes=ok unresolved=9 rankA=yes
+round 16: block=block_missing hashes=ok unresolved=7 rankA=yes
+round 17: block=match hashes=ok unresolved=8 rankA=yes
+round 18: block=match hashes=ok unresolved=8 rankA=yes
+round 19: block=match hashes=ok unresolved=7 rankA=yes
+round 20: block=match hashes=ok unresolved=8 rankA=no
+round 21: block=match hashes=ok unresolved=7 rankA=no
+round 22: block=match hashes=ok unresolved=13 rankA=no
+round 23: block=match hashes=ok unresolved=16 rankA=no
+round 24: block=match hashes=ok unresolved=15 rankA=yes
+round 25: block=match hashes=ok unresolved=10 rankA=no
+round 26: block=match hashes=ok unresolved=7 rankA=no
+round 27: block=match hashes=ok unresolved=7 rankA=yes
+round 28: block=match hashes=ok unresolved=12 rankA=yes
+round 29: block=match hashes=ok unresolved=10 rankA=no
+round 30: block=match hashes=ok unresolved=13 rankA=yes
+round 31: block=match hashes=ok unresolved=13 rankA=yes
+round 32: block=match hashes=ok unresolved=13 rankA=yes
+round 33: block=match hashes=ok unresolved=14 rankA=yes
+RESULT rounds=30 block_missing=13 match=17
+0e69d9e8a19dda3bd96b6ead936d844c980499d45d670ed1286fb91dee2d1555  REPORT.md
+78b65c6cf15cd1657c9eb1631035a393131e6a2ebe036aecf663f4ccde233917  results.json
+69bbb7330637b4df38731f7fa36910ac351e21d6946a2b6559d715de6a7dd6e4  rounds.csv
+cmp REPORT.md: byte-identical
+cmp results.json: byte-identical
+cmp rounds.csv: byte-identical
+cmp SHA256SUMS: byte-identical
+$ unshare -rn python3 -I -c import gzip,sys; sys.path.insert(0,'endpoints'); import lib_endpoints as L; t=gzip.open('endpoints/data/pack.jsonl.gz').read().decode(); print('IPv4/IPv6 addresses in committed pack:', len(L.find_ips(t)))
+IPv4/IPv6 addresses in committed pack: 0
+$ git status --porcelain
+FRESH PASS: e1127583df4de4009c450ecdaa068534a9e45a55 offline in empty netns: tests ok, lint ok, verify exit 0, 4 files byte-identical, 0 addresses in pack
