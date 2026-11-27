@@ -1,0 +1,54 @@
+{
+ "nHB8YJhCA2HrpirFckznUkvx8hCgRjXFkpcmdYBKbYpzYd5ZPfMC": {
+  "class": "key_not_listed",
+  "name": "shared.example/B"
+ },
+ "nHBQJgejbp2Twgu4pn8XBFtdqr8rkpUpavd3RD44bPM3K91gA7hz": {
+  "class": "no_attestation",
+  "name": "noatt.example"
+ },
+ "nHBbdiVEUYbyt3rkN51dfyQm8Fgtm2L9UhE3qSCvLSdpKar8Tfp4": {
+  "class": "key_not_listed",
+  "name": "notlisted.example"
+ },
+ "nHBoJSpXUA7y9bk4waw5AJ8gXj94jkN6qDBygWH7qxSV1LfaXjsL": {
+  "class": "verified",
+  "name": "verified.example"
+ },
+ "nHDGr3Zdh4To9gSReRRs5CckT53QgsLYcwY1d7MxZ46GcCN5kmSv": {
+  "class": "verified",
+  "name": "xrponly.example"
+ },
+ "nHDGxWNY6MUouLhDu3V9CrTydXhatoF8gC3k7miTcFXrQnUFgbPK": {
+  "class": "bad_attestation",
+  "name": "badatt.example"
+ },
+ "nHDsYdUQb8ZiL7Awmejm6gdEAhQ1gUQBbqVqFasTvBFJBwEVG9zc": {
+  "class": "unreachable",
+  "name": "unreach.example"
+ },
+ "nHU2af1vE4Q4zdMcysoVjfoqQG1TRZ8d7ubApcG5tofdpUr7moR9": {
+  "class": "bad_attestation",
+  "name": "otherkey.example"
+ },
+ "nHU4uso8RL2BZ8YbJ9QTBC1fbjZuQ9RB4FJGb5NQLMReQYhu6UXe": {
+  "class": "no_domain",
+  "name": "-"
+ },
+ "nHU7BoFCN6qZu5Xpqvj8LmfUdmX7BS8JFRoR5ZdyxKBvr4k7eyFQ": {
+  "class": "http_error",
+  "name": "httperr.example"
+ },
+ "nHUZ3s34D7J4ZBhNHSY2zVuHNndew3A5aHx4hzJVztYhWsPZdg4u": {
+  "class": "verified",
+  "name": "shared.example/A"
+ },
+ "nHUeDusfKVccswxaB8RRdS3K1ePmkZnGMeKP86vBc9FWDmbxy2v6": {
+  "class": "http_error",
+  "name": "trunc.example"
+ },
+ "nHUngKJdN8ErfQPH6jX33PHLxySmf5FuzyYhnLZDX9Ami6vAjMS7": {
+  "class": "toml_unparseable",
+  "name": "unparse.example"
+ }
+}

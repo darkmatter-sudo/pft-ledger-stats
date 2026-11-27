@@ -1,0 +1,14 @@
+{
+ "bytes": 150,
+ "content_type": "text/plain",
+ "domain": "trunc.example",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "6a084a6fc12661e7b95625b989210736b6afdd0697ef425fac5daaaeea29496c",
+ "status": 200,
+ "t": 1795000060,
+ "truncated": true,
+ "url": "https://trunc.example/.well-known/pft-ledger.toml"
+}

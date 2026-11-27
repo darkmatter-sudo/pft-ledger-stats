@@ -1,0 +1,39 @@
+{
+ "rpc": "http://127.0.0.1:5005/",
+ "server_info": {
+  "build_version": "1.0.9",
+  "server_state": "full"
+ },
+ "t": 1795000000,
+ "validator_list_sites": {
+  "validator_sites": [
+   {
+    "last_refresh_status": "accepted",
+    "uri": "https://vl.example/testnet_vl.json"
+   }
+  ]
+ },
+ "validators": {
+  "publisher_lists": [
+   {
+    "list": [
+     "nHB8YJhCA2HrpirFckznUkvx8hCgRjXFkpcmdYBKbYpzYd5ZPfMC",
+     "nHBQJgejbp2Twgu4pn8XBFtdqr8rkpUpavd3RD44bPM3K91gA7hz",
+     "nHBbdiVEUYbyt3rkN51dfyQm8Fgtm2L9UhE3qSCvLSdpKar8Tfp4",
+     "nHBoJSpXUA7y9bk4waw5AJ8gXj94jkN6qDBygWH7qxSV1LfaXjsL",
+     "nHDGr3Zdh4To9gSReRRs5CckT53QgsLYcwY1d7MxZ46GcCN5kmSv",
+     "nHDGxWNY6MUouLhDu3V9CrTydXhatoF8gC3k7miTcFXrQnUFgbPK",
+     "nHDsYdUQb8ZiL7Awmejm6gdEAhQ1gUQBbqVqFasTvBFJBwEVG9zc",
+     "nHU2af1vE4Q4zdMcysoVjfoqQG1TRZ8d7ubApcG5tofdpUr7moR9",
+     "nHU4uso8RL2BZ8YbJ9QTBC1fbjZuQ9RB4FJGb5NQLMReQYhu6UXe",
+     "nHU7BoFCN6qZu5Xpqvj8LmfUdmX7BS8JFRoR5ZdyxKBvr4k7eyFQ",
+     "nHUZ3s34D7J4ZBhNHSY2zVuHNndew3A5aHx4hzJVztYhWsPZdg4u",
+     "nHUeDusfKVccswxaB8RRdS3K1ePmkZnGMeKP86vBc9FWDmbxy2v6",
+     "nHUngKJdN8ErfQPH6jX33PHLxySmf5FuzyYhnLZDX9Ami6vAjMS7"
+    ],
+    "pubkey_publisher": "ED88B6088541AAEC9B07F0EEF106680DA135E5C61B78FEE92F531660D510B142FC",
+    "seq": 7
+   }
+  ]
+ }
+}

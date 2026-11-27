@@ -1,0 +1,15 @@
+{
+ "body_b64": "PCFkb2N0eXBlIGh0bWw+PGh0bWw+PGJvZHk+aGk8L2JvZHk+PC9odG1sPgo=",
+ "bytes": 44,
+ "content_type": "text/plain",
+ "domain": "unparse.example",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "699cbde24dc7b8429089d7c1af8caf65226df2105739d8fb98ddb48298e7d18c",
+ "status": 200,
+ "t": 1795000060,
+ "truncated": false,
+ "url": "https://unparse.example/.well-known/pft-ledger.toml"
+}

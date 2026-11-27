@@ -1,0 +1,14 @@
+{
+ "bytes": 4,
+ "content_type": "text/html",
+ "domain": "otherkey.example",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "ca3704aa0b06f5954c79ee837faa152d84d6b2d42838f0637a15eda8337dbdce",
+ "status": 404,
+ "t": 1795000060,
+ "truncated": false,
+ "url": "https://otherkey.example/.well-known/xrp-ledger.toml"
+}

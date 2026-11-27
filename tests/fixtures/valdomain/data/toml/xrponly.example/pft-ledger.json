@@ -1,0 +1,14 @@
+{
+ "bytes": 0,
+ "content_type": "text/html",
+ "domain": "xrponly.example",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "status": 404,
+ "t": 1795000060,
+ "truncated": false,
+ "url": "https://xrponly.example/.well-known/pft-ledger.toml"
+}

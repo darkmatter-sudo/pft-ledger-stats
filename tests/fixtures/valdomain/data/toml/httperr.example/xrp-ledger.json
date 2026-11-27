@@ -1,0 +1,14 @@
+{
+ "bytes": 4,
+ "content_type": "text/html",
+ "domain": "httperr.example",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "d13f2eadd4ed5b027fa773a29520cc0d65ce374365d641112de786f8a029c2fe",
+ "status": 500,
+ "t": 1795000060,
+ "truncated": false,
+ "url": "https://httperr.example/.well-known/xrp-ledger.toml"
+}

@@ -1,0 +1,7 @@
+{
+ "domain": "badatt.example",
+ "outcome": "unreachable",
+ "path": "/.well-known/xrp-ledger.toml",
+ "t": 1795000060,
+ "url": "https://badatt.example/.well-known/xrp-ledger.toml"
+}

@@ -1,0 +1,7 @@
+{
+ "domain": "unreach.example",
+ "outcome": "unreachable",
+ "path": "/.well-known/xrp-ledger.toml",
+ "t": 1795000060,
+ "url": "https://unreach.example/.well-known/xrp-ledger.toml"
+}

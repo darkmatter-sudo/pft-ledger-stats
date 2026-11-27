@@ -1,0 +1,7 @@
+{
+ "domain": "unreach.example",
+ "outcome": "unreachable",
+ "path": "/.well-known/pft-ledger.toml",
+ "t": 1795000060,
+ "url": "https://unreach.example/.well-known/pft-ledger.toml"
+}

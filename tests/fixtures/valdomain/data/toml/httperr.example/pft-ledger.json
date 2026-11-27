@@ -1,0 +1,14 @@
+{
+ "bytes": 9,
+ "content_type": "text/html",
+ "domain": "httperr.example",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "907ba78b4545338d3539683e63ecb51cf51c10adc9dabd86e92bd52339f298b9",
+ "status": 404,
+ "t": 1795000060,
+ "truncated": false,
+ "url": "https://httperr.example/.well-known/pft-ledger.toml"
+}

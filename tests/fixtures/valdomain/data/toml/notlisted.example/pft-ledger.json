@@ -1,0 +1,15 @@
+{
+ "body_b64": "W01FVEFEQVRBXQptb2RpZmllZCA9IDIwMjYtMTEtMThUMDA6MDA6MDBaCgpbW1ZBTElEQVRPUlNdXQpwdWJsaWNfa2V5ID0gIm5IVXNNNGlRRkgzYlROVHpmeENDZmlXVEdDZGZqazdZVnJ4cmVaenp6S2thM0tXTUR5TkciCmF0dGVzdGF0aW9uID0gIjAwIgo=",
+ "bytes": 146,
+ "content_type": "text/plain",
+ "domain": "notlisted.example",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/pft-ledger.toml",
+ "redirects": [],
+ "sha256": "71ce09b6f4d51b7079e992cd2d50ada9365003dfb2bfd97a70e0786e7dc34ee2",
+ "status": 200,
+ "t": 1795000060,
+ "truncated": false,
+ "url": "https://notlisted.example/.well-known/pft-ledger.toml"
+}

@@ -1,0 +1,7 @@
+{
+ "domain": "trunc.example",
+ "outcome": "unreachable",
+ "path": "/.well-known/xrp-ledger.toml",
+ "t": 1795000060,
+ "url": "https://trunc.example/.well-known/xrp-ledger.toml"
+}

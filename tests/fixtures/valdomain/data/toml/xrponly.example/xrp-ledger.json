@@ -1,0 +1,15 @@
+{
+ "body_b64": "W01FVEFEQVRBXQptb2RpZmllZCA9IDIwMjYtMTEtMThUMDA6MDA6MDBaCgpbW1ZBTElEQVRPUlNdXQpwdWJsaWNfa2V5ID0gIm5IREdyM1pkaDRUbzlnU1JlUlJzNUNja1Q1M1Fnc0xZY3dZMWQ3TXhaNDZHY0NONWttU3YiCmF0dGVzdGF0aW9uID0gImFjNjYyNmQ5ODgwNzk2NzJkZGIzZjA1ZjVhNzAwMDczZjMyYzQ3YjQxZWJiMDMxYzllZjMyYTdiOTc3ZTg1YmFiZmMzYTliNDNjMTFjYWQ3MzJlYzA1N2Y5NjliNzEzNDgyYzQ2NDMwM2I3MWM0NWMwMDI4Y2Y3MmQzODFiZTAxIgo=",
+ "bytes": 272,
+ "content_type": "text/plain",
+ "domain": "xrponly.example",
+ "final_url": null,
+ "outcome": "response",
+ "path": "/.well-known/xrp-ledger.toml",
+ "redirects": [],
+ "sha256": "a94222a9fb63dceee9dd35a112ac9201bfb4c578f238801fd4606cdbbd31f1ab",
+ "status": 200,
+ "t": 1795000060,
+ "truncated": false,
+ "url": "https://xrponly.example/.well-known/xrp-ledger.toml"
+}
