@@ -1,0 +1,82 @@
+# valsig fresh anonymous clone at 81016134be1bcbd1a6a660699f945ec0ee43baab, Python 3.10.12, ruff 0.17.1, 2026-11-27T06:06:26Z
+$ env GIT_TERMINAL_PROMPT=0 git -c credential.helper= clone -q https://github.com/darkmatter-sudo/pft-ledger-stats repo
+$ git -c advice.detachedHead=false checkout -q 81016134be1bcbd1a6a660699f945ec0ee43baab
+checked out 81016134be1bcbd1a6a660699f945ec0ee43baab
+$ sha256sum valsig/collect_valsig.py valsig/verify_valsig.py valsig/lib_valsig.py dunl/lib_dunl.py valsig/data/window-01/vl-start.json valsig/data/window-01/vl-end.json valsig/data/window-01/rpc-cache.json valsig/report/checks.json valsig/report/ledgers.csv valsig/report/validators.csv valsig/report/REPORT.md
+883737ba030fa4e7ccee2d98562e514e59f504c69999026f8f5dd46add460445  valsig/collect_valsig.py
+8005856bdad9780e1437a9e86fe72b3345920a231c7e5ec13817ea573548bee7  valsig/verify_valsig.py
+0145bf3ed285c5ec2e90cef215c9e570a89c3f5caf728dced62ce1cffa01f120  valsig/lib_valsig.py
+41d94701c66aabca482ef47f0dd08c438238c98a0c1576b4460b53c2404bdd32  dunl/lib_dunl.py
+5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688  valsig/data/window-01/vl-start.json
+5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688  valsig/data/window-01/vl-end.json
+a3458299fc36c1f4205a4b69c29da708222485d4e6057c69fb65a9be08bf50d3  valsig/data/window-01/rpc-cache.json
+172ab13a0fd4f19ece8422c7c8029c401394dfbb22cb17e67cf4e96c3d455286  valsig/report/checks.json
+df585b2d543c7eb906c19398d0b1d88a2db2870e5e71e6b18ab4543ab16f6e7c  valsig/report/ledgers.csv
+d732509e945e95fc1276947104cd2e9ff141d680a4fbf2b2060cab8c4f06f5d9  valsig/report/validators.csv
+1433d10e0931c1cc60e988f21b6c08dc9b974e50ef81d2ac9269c9b3547b4722  valsig/report/REPORT.md
+$ (cd valsig/data/window-01 && sha256sum -c SHA256SUMS)
+seg/000001.jsonl.gz: OK
+seg/000002.jsonl.gz: OK
+seg/000003.jsonl.gz: OK
+seg/000004.jsonl.gz: OK
+seg/000005.jsonl.gz: OK
+seg/000006.jsonl.gz: OK
+seg/000007.jsonl.gz: OK
+seg/000008.jsonl.gz: OK
+seg/000009.jsonl.gz: OK
+seg/000010.jsonl.gz: OK
+seg/000011.jsonl.gz: OK
+seg/000012.jsonl.gz: OK
+seg/000013.jsonl.gz: OK
+seg/000014.jsonl.gz: OK
+seg/000015.jsonl.gz: OK
+seg/000016.jsonl.gz: OK
+seg/000017.jsonl.gz: OK
+seg/000018.jsonl.gz: OK
+vl-start.json: OK
+vl-end.json: OK
+state.json: OK
+vl-fetch.jsonl: OK
+rpc-cache.json: OK
+collect.log: OK
+recorded data: 24 of 24 files OK, exit=0
+$ python3 -m pytest -q -p no:cacheprovider --basetemp <tmp>/pyt tests/test_valsig.py
+................................................                         [100%]
+48 passed in 11.65s
+$ ruff check --config valsig/ruff.toml valsig tests/test_valsig.py dunl/lib_dunl.py
+All checks passed!
+$ ruff format --check --config valsig/ruff.toml valsig tests/test_valsig.py
+8 files already formatted
+$ shellcheck valsig/run_window.sh valsig/run-collector.sh
+$ unshare -rn python3 -I valsig/verify_valsig.py run valsig/data/window-01 --out <tmp>/out --offline  (empty network namespace: no network at all)
+CHECK recording.files PASS closed segments numbered 000001.. without holes, no open current.jsonl
+CHECK recording.parse PASS 0 unparsable lines
+CHECK recording.gaps PASS 0 gap events, 0 index holes over 5356 ledgers
+CHECK recording.window PASS window 2026-11-27T00:49:58Z -> 2026-11-27T05:19:58Z (4.50 h planned), ledger stream span 4.499 h, last stop 'window complete', minimum 4.0 h
+CHECK vl.start PASS publisher manifest, blob signature (low-S), validity window and node trust all agree
+CHECK vl.end PASS publisher manifest, blob signature (low-S), validity window and node trust all agree
+CHECK vl.stable PASS start and end VL byte-identical (one trusted set for the whole window)
+CHECK manifests.verify PASS 102 of 102 manifests verify (master + signing signature)
+CHECK manifests.trusted PASS 25 of 25 trusted masters have a verified manifest with a signing key; node manifest older than the VL's for 0
+CHECK trust.snapshots PASS 1 validators snapshots: trusted set and signing keys match the VL and manifests
+CHECK validations.decode PASS 278501 of 278501 STValidation blobs decode
+CHECK validations.fields PASS 278501 of 278501: node-decoded fields == signed blob (key, index, hash, signing_time, flags, full, validated_hash, signature, master)
+CHECK validations.signatures PASS 278501 of 278501 signatures verify (0 invalid from trusted keys)
+CHECK validations.trust PASS signing key -> verified manifest -> master in the VL: not_in_vl 144607, trusted 133894
+CHECK quorum.node PASS 1 quorum samples; node quorum == max(ceil(eff*0.67), ceil(n*0.6)) with n=25
+CHECK quorum.ledgers PASS 5355 of 5355 observed ledgers met quorum; margin min 7, max 8
+CHECK quorum.edges PASS 1 edge ledgers (first ledger of a connection, not graded): 1 met quorum anyway
+CHECK rpc.crosscheck PASS 60 of 60 sampled ledgers: public RPC validated hash == recorded (answers kept in rpc-cache.json)
+MODE offline (rpc-cache.json only)
+RESULT PASS=18 WARN=0 FAIL=0 rpc_retries=0
+verify exit=0
+cmp checks.json: byte-identical
+cmp ledgers.csv: byte-identical
+cmp validators.csv: byte-identical
+cmp REPORT.md: byte-identical
+$ sha256sum <tmp>/out/checks.json valsig/report/checks.json
+172ab13a0fd4f19ece8422c7c8029c401394dfbb22cb17e67cf4e96c3d455286  <tmp>/out/checks.json
+172ab13a0fd4f19ece8422c7c8029c401394dfbb22cb17e67cf4e96c3d455286  valsig/report/checks.json
+$ git status --porcelain
+FRESH PASS: 81016134be1bcbd1a6a660699f945ec0ee43baab tests ok, lint ok, offline rebuild byte-identical (4 files)
+exit=0
