@@ -395,5 +395,59 @@ def secp256k1_verify(key, digest, sig):
         return False
     e = int.from_bytes(digest, "big") % _SN
     w = pow(s, _SN - 2, _SN)
-    pt = _sk_add(_sk_mul(e * w % _SN, _SG), _sk_mul(r * w % _SN, q))
+    pt = _sk_shamir(e * w % _SN, _SG, r * w % _SN, q)
     return pt is not None and pt[0] % _SN == r
+
+
+# Jacobian coordinates (X, Y, Z) <-> affine (X/Z^2, Y/Z^3); one inversion per verify instead of
+# one per point operation. Same results as _sk_add/_sk_mul (tests/test_dunl.py compares them).
+
+
+def _jac_double(p):
+    x, y, z = p
+    if y == 0 or z == 0:
+        return (1, 1, 0)
+    yy = y * y % _SP
+    s = 4 * x * yy % _SP
+    m = 3 * x * x % _SP  # curve a = 0
+    x3 = (m * m - 2 * s) % _SP
+    y3 = (m * (s - x3) - 8 * yy * yy) % _SP
+    return (x3, y3, 2 * y * z % _SP)
+
+
+def _jac_add_affine(p, q):
+    """Jacobian p + affine q."""
+    x1, y1, z1 = p
+    if z1 == 0:
+        return (q[0], q[1], 1)
+    z1z1 = z1 * z1 % _SP
+    u2 = q[0] * z1z1 % _SP
+    s2 = q[1] * z1 * z1z1 % _SP
+    h = (u2 - x1) % _SP
+    r = (s2 - y1) % _SP
+    if h == 0:
+        return _jac_double(p) if r == 0 else (1, 1, 0)
+    hh = h * h % _SP
+    hhh = h * hh % _SP
+    v = x1 * hh % _SP
+    x3 = (r * r - hhh - 2 * v) % _SP
+    y3 = (r * (v - x3) - y1 * hhh) % _SP
+    return (x3, y3, z1 * h % _SP)
+
+
+def _sk_shamir(a, p, b, q):
+    """a*p + b*q (affine in, affine out, None = infinity), one joint double-and-add pass."""
+    pq = _sk_add(p, q)
+    acc = (1, 1, 0)
+    for i in range(max(a.bit_length(), b.bit_length()) - 1, -1, -1):
+        acc = _jac_double(acc)
+        bits = ((a >> i) & 1, (b >> i) & 1)
+        add = {(1, 0): p, (0, 1): q, (1, 1): pq}.get(bits)
+        if add is not None:
+            acc = _jac_add_affine(acc, add)
+    x, y, z = acc
+    if z == 0:
+        return None
+    zi = pow(z, _SP - 2, _SP)
+    zi2 = zi * zi % _SP
+    return (x * zi2 % _SP, y * zi2 * zi % _SP)

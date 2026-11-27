@@ -1,0 +1,3 @@
+# open recorder segment and atomic-write temp files never go into git
+data/*/seg/current.jsonl
+*.tmp
