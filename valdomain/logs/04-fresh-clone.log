@@ -1,0 +1,60 @@
+# valdomain fresh anonymous clone at baea9ff6db763f2a04f338435e3a476c222b8e61, Python 3.10.12, ruff 0.17.1, 2026-11-27T12:10:05Z
+$ env GIT_TERMINAL_PROMPT=0 git -c credential.helper= clone -q https://github.com/darkmatter-sudo/pft-ledger-stats repo
+$ git -c advice.detachedHead=false checkout -q baea9ff6db763f2a04f338435e3a476c222b8e61
+checked out baea9ff6db763f2a04f338435e3a476c222b8e61
+$ sha256sum valdomain/collect_valdomain.py valdomain/lib_valdomain.py valdomain/make_fixture.py valdomain/mutants.py valdomain/verify_valdomain.py tests/test_valdomain.py valsig/lib_valsig.py valdomain/data/run-01/vl.json valdomain/data/run-01/manifests.jsonl valdomain/data/run-01/node.json valdomain/report/results.json valdomain/report/validators.csv valdomain/report/table.md valdomain/REPORT.md
+1c9f2b521159fa3d2d442c2b99351fd78c1162f324f1f1d6cd1692a707864857  valdomain/collect_valdomain.py
+9311920bc796fa0d762ec614723c7049a6d96c9e96dca83ea39d8ac81e3aaddc  valdomain/lib_valdomain.py
+26eb14b23f142d689b92f88be84de02d4909cba4c543d961637e0e00cf168349  valdomain/make_fixture.py
+db00f3b8b4c883b3603a53e6a6a17524a4196710668bf9a498880a64da8b811f  valdomain/mutants.py
+21312c43d964e919e9c2d15ba525371cc8355b4789f9cd462eec9e604778e15e  valdomain/verify_valdomain.py
+2d7e254ae7b954ae214a858f9bd3e0f69d15e4c0d46ab7c187fa139b92c44ad7  tests/test_valdomain.py
+0145bf3ed285c5ec2e90cef215c9e570a89c3f5caf728dced62ce1cffa01f120  valsig/lib_valsig.py
+5c6e03b7b054cc6921a650736cc950119d66c66c63d479b11fbc507c277ad688  valdomain/data/run-01/vl.json
+88c4df4415839421160fdbf69038af108cfb05675c0ab7933ccf170b1e08101d  valdomain/data/run-01/manifests.jsonl
+8aff0e10f9105df6b020bdd00c22497dc4666f264271c22872f2252e5f83b7e2  valdomain/data/run-01/node.json
+9c7abbb2ed237a8f363585278e6dc326406a89b9faa3389c886b8a2f0a4647c2  valdomain/report/results.json
+e42198ca5a8747e3c1b4b7fa5f4d67ba85557f284876802caa7ea88c9e1871ad  valdomain/report/validators.csv
+681d78d38e17b15328d29cefd45177a9e328d23da4527c54ee1ee7f8bc10823c  valdomain/report/table.md
+b3f956ef24aaf115bb2035d52def6fa8faf32208491eddb074808c01151d8a54  valdomain/REPORT.md
+$ (cd valdomain/data/run-01 && sha256sum -c SHA256SUMS)
+recorded data: 54 of 54 files OK, 0 not OK, exit=0
+$ python3 -m pytest -q -p no:cacheprovider --basetemp <tmp>/pyt tests/test_valdomain.py
+........................................................................ [ 90%]
+........                                                                 [100%]
+80 passed in 3.18s
+$ ruff check valdomain tests/test_valdomain.py
+All checks passed!
+$ ruff format --check valdomain tests/test_valdomain.py
+9 files already formatted
+$ shellcheck valdomain/run-node.sh valdomain/run_collect.sh
+$ unshare -rn python3 -I valdomain/verify_valdomain.py --offline valdomain/data/run-01 --out <tmp>/out  (empty network namespace: no network at all)
+PASS sums: 54 files, every sha256 matches
+PASS vl: publisher manifest, blob signature (low-S), node trust, fetch record agree
+PASS manifests: 25 of 25 VL manifests verify
+PASS toml: 25 validators x 2 TOML paths cached and intact
+PASS crosscheck: 50 of 50 node/public manifest answers carry the VL domain
+classes: verified=25 bad_attestation=0 no_attestation=0 key_not_listed=0 toml_unparseable=0 http_error=0 unreachable=0 no_domain=0 total=25
+RESULT OK exit=0
+verify exit=0
+cmp results.json: byte-identical
+cmp validators.csv: byte-identical
+cmp table.md: byte-identical
+$ sha256sum <tmp>/out/results.json valdomain/report/results.json
+9c7abbb2ed237a8f363585278e6dc326406a89b9faa3389c886b8a2f0a4647c2  <tmp>/out/results.json
+9c7abbb2ed237a8f363585278e6dc326406a89b9faa3389c886b8a2f0a4647c2  valdomain/report/results.json
+$ mkdir -p <tmp>/ctl
+$ unshare -rn python3 -I valdomain/verify_valdomain.py controls --offline valdomain/data/run-01 --scratch <tmp>/ctl
+baseline: 25 validators, all checks PASS
+PASS ctl_file_edit: A cached TOML record edited (body + its own sha256), SHA256SUMS not updated -> sums FAIL. -> failed ['sums']: toml/app.w.ai/pft-ledger.json: sha256 differs
+PASS ctl_body_hash: A cached body changed but its record sha256 kept (SHA256SUMS re-made) -> toml FAIL. -> failed ['toml']: app.w.ai/.well-known/pft-ledger.toml: body does not match its sha256/bytes
+PASS ctl_attestation_flip: One verified attestation with one hex digit changed (re-hashed) -> that validator bad_attestation. -> nHBAToXoTH bad_attestation
+PASS ctl_vl_blob: VL blob signature byte changed (re-hashed) -> vl FAIL. -> failed ['vl']: blob signature invalid or not low-S
+PASS ctl_public_domain: Public node's manifest answer claims another domain in details -> crosscheck FAIL. -> failed ['crosscheck']: public nHBAToXoTH: node's decoded details differ from the manifest blob
+PASS ctl_missing_fetch: One cached TOML fetch removed (re-hashed) -> toml FAIL (collection incomplete). -> failed ['toml']: app.w.ai/.well-known/pft-ledger.toml: no cached fetch
+PASS ctl_no_data: Empty directory -> exit 2. -> nodata
+RESULT controls 7/7 PASS exit=0
+controls exit=0
+$ git status --porcelain
+FRESH PASS: baea9ff6db763f2a04f338435e3a476c222b8e61 data sums ok, tests ok, lint ok, offline verify exit 0 byte-identical (3 files), controls 7/7
+exit=0
