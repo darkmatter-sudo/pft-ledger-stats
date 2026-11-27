@@ -244,7 +244,7 @@ def crosscheck_valdomain(rounds, path):
         vd = json.load(fh)
     ev = {v["master_key"]: v for v in r["validators"]}
     rows, counts = [], Counter()
-    for x in sorted(vd["validators"], key=lambda x: x["master"]):
+    for x in sorted(vd["rows"], key=lambda x: x["master"]):
         v = ev.get(x["master"])
         if v is None:
             res = "not_in_round"
@@ -264,7 +264,7 @@ def crosscheck_valdomain(rounds, path):
     return {
         "round": CROSSCHECK_ROUND,
         "vl_sequence": r.get("vl_sequence"),
-        "valdomain_validators": len(vd["validators"]),
+        "valdomain_validators": len(vd["rows"]),
         "counts": dict(sorted(counts.items())),
         "rows": rows,
     }
@@ -304,11 +304,8 @@ def _yn(b):
     return "yes" if b else "no"
 
 
-def _short(keys, n=6):
-    if not keys:
-        return "-"
-    s = ", ".join(keys[:n])
-    return s + (f" (+{len(keys) - n})" if len(keys) > n else "")
+def _keys(keys):
+    return ", ".join(keys) if keys else "-"
 
 
 def render(res):
@@ -421,10 +418,10 @@ def render(res):
         if v and "became_unresolved" in v:
             row(
                 x["round"],
-                _short(v["became_unresolved"]),
-                _short(v["became_resolved"]),
-                _short(v["new_unresolved"]),
-                _short(v["left_set"]),
+                _keys(v["became_unresolved"]),
+                _keys(v["became_resolved"]),
+                _keys(v["new_unresolved"]),
+                _keys(v["left_set"]),
             )
     w("\n## Guide claim: unresolved validators rank at the bottom of diversity\n\n")
     w(f'Claim ({GUIDE}): "in published rounds so far, unresolved validators have landed at the bottom ')
@@ -457,7 +454,7 @@ def render(res):
             _yn(k["below_top_family"]),
             k["resolved_min"],
             _yn(k["below_all_resolved"]),
-            _short(k["unresolved_at_or_above_top_min"]),
+            _keys(k["unresolved_at_or_above_top_min"]),
         )
     w(f"\nA holds in {len(ranked) - len(fail_top)} of {len(ranked)} rounds")
     if fail_top:

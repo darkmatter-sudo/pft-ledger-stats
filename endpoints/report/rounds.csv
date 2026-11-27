@@ -1,0 +1,31 @@
+round,vl_sequence,prompt_version,block_class,validators,resolved,unresolved,unresolved_address_seen,families,countries,hhi_family,hhi_country,top_families,top_countries
+4,2,,block_missing,,,,,,,,,,
+5,3,,block_missing,,,,,,,,,,
+6,4,,block_missing,,,,,,,,,,
+7,5,v5,block_missing,37,33,4,1,7,5,4747,3495,hetzner=22;vultr=5;digitalocean=2;cherryservers=1;contabo=1,United States=16;Germany=11;Finland=5;Bulgaria=1;Singapore=1
+8,6,v5,block_missing,51,32,19,1,6,4,5039,3701,hetzner=22;vultr=5;digitalocean=2;cherryservers=1;contabo=1,United States=16;Germany=11;Finland=5;Singapore=1
+9,7,v5,block_missing,49,31,18,1,5,4,5359,3633,hetzner=22;vultr=5;digitalocean=2;cherryservers=1;contabo=1,United States=15;Germany=11;Finland=5;Singapore=1
+10,8,v5,block_missing,49,32,17,1,6,4,5039,3701,hetzner=22;vultr=5;digitalocean=2;cherryservers=1;contabo=1,United States=16;Germany=11;Finland=5;Singapore=1
+11,9,v5,block_missing,44,32,12,1,6,4,5039,3701,hetzner=22;vultr=5;digitalocean=2;cherryservers=1;contabo=1,United States=16;Germany=11;Finland=5;Singapore=1
+12,10,v5,block_missing,45,33,12,1,6,4,5152,3685,hetzner=23;vultr=5;digitalocean=2;cherryservers=1;contabo=1,United States=16;Germany=12;Finland=5;Singapore=1
+13,11,v5,block_missing,45,34,11,1,6,4,4948,3747,hetzner=23;vultr=6;digitalocean=2;cherryservers=1;contabo=1,United States=17;Germany=12;Finland=5;Singapore=1
+14,12,v6,block_missing,42,35,7,0,6,4,4776,3747,hetzner=23;vultr=7;digitalocean=2;cherryservers=1;contabo=1,United States=17;Germany=12;Finland=5;Singapore=1
+15,13,v6,block_missing,50,41,9,0,7,5,3516,3706,hetzner=22;vultr=8;contabo=6;digitalocean=2;cable one=1,United States=20;Germany=14;Finland=5;Japan=1;Singapore=1
+16,14,v8,block_missing,51,44,7,0,8,6,3357,3388,hetzner=23;vultr=8;contabo=7;digitalocean=2;akamai=1,United States=20;Germany=15;Finland=5;Japan=2;Australia=1
+17,15,v9,match,53,45,8,1,8,9,3146,2618,hetzner=22;contabo=9;vultr=8;digitalocean=2;akamai=1,United States=17;Germany=15;Finland=5;Canada=2;Japan=2
+18,16,v9,match,55,47,8,1,10,9,2893,2439,hetzner=22;contabo=9;vultr=8;digitalocean=2;akamai=1,United States=17;Germany=15;Finland=5;Canada=3;Japan=2
+19,17,v10,match,54,47,7,1,10,9,2893,2439,hetzner=22;contabo=9;vultr=8;digitalocean=2;akamai=1,United States=17;Germany=15;Finland=5;Canada=3;Japan=2
+20,18,v10,match,56,48,8,1,10,9,2786,2486,hetzner=22;contabo=9;vultr=8;digitalocean=2;ovh=2,United States=18;Germany=15;Finland=5;Canada=3;Japan=2
+21,19,v10,match,55,48,7,1,11,11,2500,2228,hetzner=20;contabo=9;vultr=9;digitalocean=2;ovh=2,United States=17;Germany=14;Finland=5;Canada=3;Japan=2
+22,20,v10,match,60,47,13,1,11,11,2440,2083,hetzner=19;contabo=9;vultr=9;ovh=3;akamai=1,United States=16;Germany=13;Finland=5;Canada=3;United Kingdom=3
+23,21,v10,match,54,38,16,1,11,11,1953,2176,hetzner=11;vultr=9;contabo=8;ovh=3;akamai=1,United States=16;Finland=5;Germany=5;Canada=3;Japan=2
+24,22,v11,match,53,38,15,1,11,11,2202,2018,hetzner=14;vultr=9;contabo=5;ovh=3;akamai=1,United States=14;Germany=8;Finland=5;Canada=3;Japan=2
+25,23,v11,match,53,43,10,1,12,12,1985,1942,hetzner=13;vultr=10;contabo=9;ovh=3;akamai=1,United States=16;Germany=8;Finland=5;Canada=3;United Kingdom=3
+26,24,v11,match,51,44,7,1,12,13,2035,1793,hetzner=14;vultr=10;contabo=9;ovh=3;akamai=1,United States=15;Germany=9;Finland=5;Canada=3;United Kingdom=3
+27,25,v12,match,53,46,7,0,13,13,1843,1682,hetzner=13;contabo=10;vultr=10;ovh=3;google=2,United States=15;Germany=8;Finland=5;Canada=4;United Kingdom=3
+28,26,v12,match,61,49,12,0,13,14,1762,1579,hetzner=14;contabo=10;vultr=10;ovh=3;cherryservers=2,United States=15;Germany=9;Finland=5;Canada=4;Switzerland=3
+29,27,v12,match,61,51,10,0,14,15,1742,1534,hetzner=15;contabo=10;vultr=10;ovh=3;cherryservers=2,United States=15;Germany=10;Finland=5;Canada=4;Switzerland=3
+30,28,v12,match,63,50,13,0,14,15,1696,1416,hetzner=14;contabo=10;vultr=10;ovh sas=3;google=2,United States=14;Germany=9;Finland=5;Canada=4;Switzerland=3
+31,29,v12,match,66,53,13,0,15,15,1634,1420,hetzner=15;contabo=10;vultr=10;ovh sas=3;uab cherry servers=3,United States=14;Germany=11;Finland=5;Canada=4;Singapore=3
+32,30,v12,match,66,53,13,0,15,15,1634,1420,hetzner=15;contabo=10;vultr=10;ovh sas=3;uab cherry servers=3,United States=14;Germany=11;Finland=5;Canada=4;Singapore=3
+33,31,v12,match,66,52,14,0,16,18,1723,1405,hetzner=16;contabo=10;vultr=9;ovh sas=3;uab cherry servers=3,United States=13;Germany=12;Finland=5;Canada=3;Singapore=3

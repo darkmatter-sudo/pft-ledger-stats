@@ -1,0 +1,2922 @@
+{
+ "complete_rounds": 30,
+ "epoch": "2026-11-27",
+ "rounds": [
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "no frozen inputs (no validator evidence)"
+   },
+   "files": {
+    "bad": [],
+    "files": 0
+   },
+   "prompt": null,
+   "prompt_version": null,
+   "round": 4,
+   "visibility": null,
+   "vl_sequence": 2
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "no frozen inputs (no validator evidence)"
+   },
+   "files": {
+    "bad": [],
+    "files": 0
+   },
+   "prompt": null,
+   "prompt_version": null,
+   "round": 5,
+   "visibility": null,
+   "vl_sequence": 3
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "no frozen inputs (no validator evidence)"
+   },
+   "files": {
+    "bad": [],
+    "files": 0
+   },
+   "prompt": null,
+   "prompt_version": null,
+   "round": 6,
+   "visibility": null,
+   "vl_sequence": 4
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "prompt has no block"
+   },
+   "concentration": {
+    "countries": 5,
+    "families": 7,
+    "hhi_country": 3495,
+    "hhi_family": 4747,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 16
+     },
+     {
+      "country": "Germany",
+      "validators": 11
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Bulgaria",
+      "validators": 1
+     },
+     {
+      "country": "Singapore",
+      "validators": 1
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 22
+     },
+     {
+      "family": "vultr",
+      "validators": 5
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "cherryservers",
+      "validators": 1
+     },
+     {
+      "family": "contabo",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 37,
+    "family_field": false,
+    "rows": 37
+   },
+   "prompt_version": "v5",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 33,
+    "resolved_min": 45,
+    "top_family": "hetzner",
+    "top_family_min": 45,
+    "top_family_validators": 22,
+    "unresolved": 4,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 40
+   },
+   "round": 7,
+   "visibility": {
+    "resolved": 33,
+    "unresolved": 4,
+    "unresolved_address_seen": 1,
+    "validators": 37
+   },
+   "vl_sequence": 5
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "prompt has no block"
+   },
+   "concentration": {
+    "countries": 4,
+    "families": 6,
+    "hhi_country": 3701,
+    "hhi_family": 5039,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 16
+     },
+     {
+      "country": "Germany",
+      "validators": 11
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Singapore",
+      "validators": 1
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 22
+     },
+     {
+      "family": "vultr",
+      "validators": 5
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "cherryservers",
+      "validators": 1
+     },
+     {
+      "family": "contabo",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 51,
+    "family_field": false,
+    "rows": 51
+   },
+   "prompt_version": "v5",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": false,
+    "below_top_family": false,
+    "resolved": 32,
+    "resolved_min": 50,
+    "top_family": "hetzner",
+    "top_family_min": 50,
+    "top_family_validators": 22,
+    "unresolved": 19,
+    "unresolved_at_or_above_top_min": [
+     "nHBWFVzx"
+    ],
+    "unresolved_max": 50
+   },
+   "round": 8,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [
+     "nHUQ4gfP"
+    ],
+    "left_set": [],
+    "new_unresolved": [
+     "nHB28Wpr",
+     "nHBTv4Up",
+     "nHD3ChJf",
+     "nHDBj6Mq",
+     "nHDUU4Jp",
+     "nHU187ZG",
+     "nHU3TeyW",
+     "nHU3bLAA",
+     "nHU5tRRb",
+     "nHU8mFbf",
+     "nHUUTCL2",
+     "nHUWhB3a",
+     "nHUYXnP4",
+     "nHUmoQrf"
+    ],
+    "resolved": 32,
+    "unresolved": 19,
+    "unresolved_address_seen": 1,
+    "validators": 51
+   },
+   "vl_sequence": 6
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "prompt has no block"
+   },
+   "concentration": {
+    "countries": 4,
+    "families": 5,
+    "hhi_country": 3633,
+    "hhi_family": 5359,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 15
+     },
+     {
+      "country": "Germany",
+      "validators": 11
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Singapore",
+      "validators": 1
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 22
+     },
+     {
+      "family": "vultr",
+      "validators": 5
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "cherryservers",
+      "validators": 1
+     },
+     {
+      "family": "contabo",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 49,
+    "family_field": false,
+    "rows": 49
+   },
+   "prompt_version": "v5",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": false,
+    "below_top_family": true,
+    "resolved": 31,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 40,
+    "top_family_validators": 22,
+    "unresolved": 18,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 30
+   },
+   "round": 9,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [
+     "nHBYKjxj"
+    ],
+    "left_set": [
+     "nHU3bLAA",
+     "nHUQ4gfP"
+    ],
+    "new_unresolved": [],
+    "resolved": 31,
+    "unresolved": 18,
+    "unresolved_address_seen": 1,
+    "validators": 49
+   },
+   "vl_sequence": 7
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "prompt has no block"
+   },
+   "concentration": {
+    "countries": 4,
+    "families": 6,
+    "hhi_country": 3701,
+    "hhi_family": 5039,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 16
+     },
+     {
+      "country": "Germany",
+      "validators": 11
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Singapore",
+      "validators": 1
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 22
+     },
+     {
+      "family": "vultr",
+      "validators": 5
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "cherryservers",
+      "validators": 1
+     },
+     {
+      "family": "contabo",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 49,
+    "family_field": false,
+    "rows": 49
+   },
+   "prompt_version": "v5",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 32,
+    "resolved_min": 50,
+    "top_family": "hetzner",
+    "top_family_min": 55,
+    "top_family_validators": 22,
+    "unresolved": 17,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 40
+   },
+   "round": 10,
+   "visibility": {
+    "became_resolved": [
+     "nHBYKjxj"
+    ],
+    "became_unresolved": [],
+    "left_set": [],
+    "new_unresolved": [],
+    "resolved": 32,
+    "unresolved": 17,
+    "unresolved_address_seen": 1,
+    "validators": 49
+   },
+   "vl_sequence": 8
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "prompt has no block"
+   },
+   "concentration": {
+    "countries": 4,
+    "families": 6,
+    "hhi_country": 3701,
+    "hhi_family": 5039,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 16
+     },
+     {
+      "country": "Germany",
+      "validators": 11
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Singapore",
+      "validators": 1
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 22
+     },
+     {
+      "family": "vultr",
+      "validators": 5
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "cherryservers",
+      "validators": 1
+     },
+     {
+      "family": "contabo",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 44,
+    "family_field": false,
+    "rows": 44
+   },
+   "prompt_version": "v5",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 32,
+    "resolved_min": 55,
+    "top_family": "hetzner",
+    "top_family_min": 55,
+    "top_family_validators": 22,
+    "unresolved": 12,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 50
+   },
+   "round": 11,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "nHB28Wpr",
+     "nHD3ChJf",
+     "nHU3TeyW",
+     "nHUUy2dn",
+     "nHUWhB3a"
+    ],
+    "new_unresolved": [],
+    "resolved": 32,
+    "unresolved": 12,
+    "unresolved_address_seen": 1,
+    "validators": 44
+   },
+   "vl_sequence": 9
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "prompt has no block"
+   },
+   "concentration": {
+    "countries": 4,
+    "families": 6,
+    "hhi_country": 3685,
+    "hhi_family": 5152,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 16
+     },
+     {
+      "country": "Germany",
+      "validators": 12
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Singapore",
+      "validators": 1
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 23
+     },
+     {
+      "family": "vultr",
+      "validators": 5
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "cherryservers",
+      "validators": 1
+     },
+     {
+      "family": "contabo",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 45,
+    "family_field": false,
+    "rows": 45
+   },
+   "prompt_version": "v5",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 33,
+    "resolved_min": 55,
+    "top_family": "hetzner",
+    "top_family_min": 60,
+    "top_family_validators": 23,
+    "unresolved": 12,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 50
+   },
+   "round": 12,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "nHUUTCL2"
+    ],
+    "new_unresolved": [
+     "nHBTa7V8"
+    ],
+    "resolved": 33,
+    "unresolved": 12,
+    "unresolved_address_seen": 1,
+    "validators": 45
+   },
+   "vl_sequence": 10
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "prompt has no block"
+   },
+   "concentration": {
+    "countries": 4,
+    "families": 6,
+    "hhi_country": 3747,
+    "hhi_family": 4948,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 17
+     },
+     {
+      "country": "Germany",
+      "validators": 12
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Singapore",
+      "validators": 1
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 23
+     },
+     {
+      "family": "vultr",
+      "validators": 6
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "cherryservers",
+      "validators": 1
+     },
+     {
+      "family": "contabo",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 45,
+    "family_field": false,
+    "rows": 45
+   },
+   "prompt_version": "v5",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 34,
+    "resolved_min": 55,
+    "top_family": "hetzner",
+    "top_family_min": 55,
+    "top_family_validators": 23,
+    "unresolved": 11,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 50
+   },
+   "round": 13,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "nHBTa7V8",
+     "nHU5tRRb"
+    ],
+    "new_unresolved": [
+     "nHUWp4g6"
+    ],
+    "resolved": 34,
+    "unresolved": 11,
+    "unresolved_address_seen": 1,
+    "validators": 45
+   },
+   "vl_sequence": 11
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "prompt has no block"
+   },
+   "concentration": {
+    "countries": 4,
+    "families": 6,
+    "hhi_country": 3747,
+    "hhi_family": 4776,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 17
+     },
+     {
+      "country": "Germany",
+      "validators": 12
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Singapore",
+      "validators": 1
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 23
+     },
+     {
+      "family": "vultr",
+      "validators": 7
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "cherryservers",
+      "validators": 1
+     },
+     {
+      "family": "contabo",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 42,
+    "family_field": false,
+    "rows": 42
+   },
+   "prompt_version": "v6",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 35,
+    "resolved_min": 50,
+    "top_family": "hetzner",
+    "top_family_min": 50,
+    "top_family_validators": 23,
+    "unresolved": 7,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 30
+   },
+   "round": 14,
+   "visibility": {
+    "became_resolved": [
+     "nHBWFVzx"
+    ],
+    "became_unresolved": [],
+    "left_set": [
+     "nHU8mFbf",
+     "nHUWp4g6",
+     "nHUYXnP4"
+    ],
+    "new_unresolved": [],
+    "resolved": 35,
+    "unresolved": 7,
+    "unresolved_address_seen": 0,
+    "validators": 42
+   },
+   "vl_sequence": 12
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "prompt has no block"
+   },
+   "concentration": {
+    "countries": 5,
+    "families": 7,
+    "hhi_country": 3706,
+    "hhi_family": 3516,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 20
+     },
+     {
+      "country": "Germany",
+      "validators": 14
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Japan",
+      "validators": 1
+     },
+     {
+      "country": "Singapore",
+      "validators": 1
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 22
+     },
+     {
+      "family": "vultr",
+      "validators": 8
+     },
+     {
+      "family": "contabo",
+      "validators": 6
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "cable one",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 50,
+    "family_field": false,
+    "rows": 50
+   },
+   "prompt_version": "v6",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 41,
+    "resolved_min": 40,
+    "top_family": "hetzner",
+    "top_family_min": 55,
+    "top_family_validators": 22,
+    "unresolved": 9,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 30
+   },
+   "round": 15,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [
+     "nHBWFVzx",
+     "nHUVxTi8"
+    ],
+    "left_set": [],
+    "new_unresolved": [],
+    "resolved": 41,
+    "unresolved": 9,
+    "unresolved_address_seen": 0,
+    "validators": 50
+   },
+   "vl_sequence": 13
+  },
+  {
+   "block": {
+    "class": "block_missing",
+    "why": "prompt has no block"
+   },
+   "concentration": {
+    "countries": 6,
+    "families": 8,
+    "hhi_country": 3388,
+    "hhi_family": 3357,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 20
+     },
+     {
+      "country": "Germany",
+      "validators": 15
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Japan",
+      "validators": 2
+     },
+     {
+      "country": "Australia",
+      "validators": 1
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 23
+     },
+     {
+      "family": "vultr",
+      "validators": 8
+     },
+     {
+      "family": "contabo",
+      "validators": 7
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "akamai",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 51,
+    "family_field": false,
+    "rows": 51
+   },
+   "prompt_version": "v8",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 44,
+    "resolved_min": 50,
+    "top_family": "hetzner",
+    "top_family_min": 60,
+    "top_family_validators": 23,
+    "unresolved": 7,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 20
+   },
+   "round": 16,
+   "visibility": {
+    "became_resolved": [
+     "nHBWFVzx",
+     "nHUVxTi8"
+    ],
+    "became_unresolved": [],
+    "left_set": [
+     "nHUgi9Mx"
+    ],
+    "new_unresolved": [
+     "n9LY6uR3"
+    ],
+    "resolved": 44,
+    "unresolved": 7,
+    "unresolved_address_seen": 0,
+    "validators": 51
+   },
+   "vl_sequence": 14
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 9,
+    "families": 8,
+    "hhi_country": 2618,
+    "hhi_family": 3146,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 17
+     },
+     {
+      "country": "Germany",
+      "validators": 15
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 2
+     },
+     {
+      "country": "Japan",
+      "validators": 2
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 22
+     },
+     {
+      "family": "contabo",
+      "validators": 9
+     },
+     {
+      "family": "vultr",
+      "validators": 8
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "akamai",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 53,
+    "family_field": true,
+    "rows": 53
+   },
+   "prompt_version": "v9",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 45,
+    "resolved_min": 40,
+    "top_family": "hetzner",
+    "top_family_min": 40,
+    "top_family_validators": 22,
+    "unresolved": 8,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 20
+   },
+   "round": 17,
+   "visibility": {
+    "became_resolved": [
+     "nHB6Zc7m"
+    ],
+    "became_unresolved": [
+     "nHBAToXo",
+     "nHUzVW1u"
+    ],
+    "left_set": [
+     "n9LY6uR3"
+    ],
+    "new_unresolved": [
+     "nHUatddi"
+    ],
+    "resolved": 45,
+    "unresolved": 8,
+    "unresolved_address_seen": 1,
+    "validators": 53
+   },
+   "vl_sequence": 15
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 9,
+    "families": 10,
+    "hhi_country": 2439,
+    "hhi_family": 2893,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 17
+     },
+     {
+      "country": "Germany",
+      "validators": 15
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 3
+     },
+     {
+      "country": "Japan",
+      "validators": 2
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 22
+     },
+     {
+      "family": "contabo",
+      "validators": 9
+     },
+     {
+      "family": "vultr",
+      "validators": 8
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "akamai",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 55,
+    "family_field": true,
+    "rows": 55
+   },
+   "prompt_version": "v9",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 47,
+    "resolved_min": 40,
+    "top_family": "hetzner",
+    "top_family_min": 40,
+    "top_family_validators": 22,
+    "unresolved": 8,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 30
+   },
+   "round": 18,
+   "visibility": {
+    "became_resolved": [
+     "nHBAToXo"
+    ],
+    "became_unresolved": [],
+    "left_set": [
+     "nHUzVW1u"
+    ],
+    "new_unresolved": [
+     "nHU8mFbf",
+     "nHUYXnP4"
+    ],
+    "resolved": 47,
+    "unresolved": 8,
+    "unresolved_address_seen": 1,
+    "validators": 55
+   },
+   "vl_sequence": 16
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 9,
+    "families": 10,
+    "hhi_country": 2439,
+    "hhi_family": 2893,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 17
+     },
+     {
+      "country": "Germany",
+      "validators": 15
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 3
+     },
+     {
+      "country": "Japan",
+      "validators": 2
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 22
+     },
+     {
+      "family": "contabo",
+      "validators": 9
+     },
+     {
+      "family": "vultr",
+      "validators": 8
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "akamai",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 54,
+    "family_field": true,
+    "rows": 54
+   },
+   "prompt_version": "v10",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 47,
+    "resolved_min": 40,
+    "top_family": "hetzner",
+    "top_family_min": 40,
+    "top_family_validators": 22,
+    "unresolved": 7,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 30
+   },
+   "round": 19,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "nHDBj6Mq"
+    ],
+    "new_unresolved": [],
+    "resolved": 47,
+    "unresolved": 7,
+    "unresolved_address_seen": 1,
+    "validators": 54
+   },
+   "vl_sequence": 17
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 9,
+    "families": 10,
+    "hhi_country": 2486,
+    "hhi_family": 2786,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 18
+     },
+     {
+      "country": "Germany",
+      "validators": 15
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 3
+     },
+     {
+      "country": "Japan",
+      "validators": 2
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 22
+     },
+     {
+      "family": "contabo",
+      "validators": 9
+     },
+     {
+      "family": "vultr",
+      "validators": 8
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "ovh",
+      "validators": 2
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 56,
+    "family_field": true,
+    "rows": 56
+   },
+   "prompt_version": "v10",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": false,
+    "below_top_family": false,
+    "resolved": 48,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 30,
+    "top_family_validators": 22,
+    "unresolved": 8,
+    "unresolved_at_or_above_top_min": [
+     "nHUatddi"
+    ],
+    "unresolved_max": 85
+   },
+   "round": 20,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [],
+    "new_unresolved": [
+     "nHDBj6Mq"
+    ],
+    "resolved": 48,
+    "unresolved": 8,
+    "unresolved_address_seen": 1,
+    "validators": 56
+   },
+   "vl_sequence": 18
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 11,
+    "families": 11,
+    "hhi_country": 2228,
+    "hhi_family": 2500,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 17
+     },
+     {
+      "country": "Germany",
+      "validators": 14
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 3
+     },
+     {
+      "country": "Japan",
+      "validators": 2
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 20
+     },
+     {
+      "family": "contabo",
+      "validators": 9
+     },
+     {
+      "family": "vultr",
+      "validators": 9
+     },
+     {
+      "family": "digitalocean",
+      "validators": 2
+     },
+     {
+      "family": "ovh",
+      "validators": 2
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 55,
+    "family_field": true,
+    "rows": 55
+   },
+   "prompt_version": "v10",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": false,
+    "below_top_family": false,
+    "resolved": 48,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 30,
+    "top_family_validators": 20,
+    "unresolved": 7,
+    "unresolved_at_or_above_top_min": [
+     "nHUatddi"
+    ],
+    "unresolved_max": 60
+   },
+   "round": 21,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "nHU8mFbf"
+    ],
+    "new_unresolved": [],
+    "resolved": 48,
+    "unresolved": 7,
+    "unresolved_address_seen": 1,
+    "validators": 55
+   },
+   "vl_sequence": 19
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 11,
+    "families": 11,
+    "hhi_country": 2083,
+    "hhi_family": 2440,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 16
+     },
+     {
+      "country": "Germany",
+      "validators": 13
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 3
+     },
+     {
+      "country": "United Kingdom",
+      "validators": 3
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 19
+     },
+     {
+      "family": "contabo",
+      "validators": 9
+     },
+     {
+      "family": "vultr",
+      "validators": 9
+     },
+     {
+      "family": "ovh",
+      "validators": 3
+     },
+     {
+      "family": "akamai",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 60,
+    "family_field": true,
+    "rows": 60
+   },
+   "prompt_version": "v10",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": false,
+    "below_top_family": false,
+    "resolved": 47,
+    "resolved_min": 45,
+    "top_family": "hetzner",
+    "top_family_min": 45,
+    "top_family_validators": 19,
+    "unresolved": 13,
+    "unresolved_at_or_above_top_min": [
+     "nHUatddi"
+    ],
+    "unresolved_max": 75
+   },
+   "round": 22,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [
+     "nHU7VBYL",
+     "nHU9mVWt"
+    ],
+    "left_set": [],
+    "new_unresolved": [
+     "n9KhKrjw",
+     "nHU3TeyW",
+     "nHU8mFbf",
+     "nHUWhB3a"
+    ],
+    "resolved": 47,
+    "unresolved": 13,
+    "unresolved_address_seen": 1,
+    "validators": 60
+   },
+   "vl_sequence": 20
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 11,
+    "families": 11,
+    "hhi_country": 2176,
+    "hhi_family": 1953,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 16
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Germany",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 3
+     },
+     {
+      "country": "Japan",
+      "validators": 2
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 11
+     },
+     {
+      "family": "vultr",
+      "validators": 9
+     },
+     {
+      "family": "contabo",
+      "validators": 8
+     },
+     {
+      "family": "ovh",
+      "validators": 3
+     },
+     {
+      "family": "akamai",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 54,
+    "family_field": true,
+    "rows": 54
+   },
+   "prompt_version": "v10",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": false,
+    "below_top_family": false,
+    "resolved": 38,
+    "resolved_min": 40,
+    "top_family": "hetzner",
+    "top_family_min": 40,
+    "top_family_validators": 11,
+    "unresolved": 16,
+    "unresolved_at_or_above_top_min": [
+     "nHUatddi"
+    ],
+    "unresolved_max": 85
+   },
+   "round": 23,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [
+     "nHUVtfC7"
+    ],
+    "left_set": [
+     "nHBRLUW3",
+     "nHBSFFXC",
+     "nHBtS3cC",
+     "nHDBj6Mq",
+     "nHDEUdaw",
+     "nHDUU4Jp",
+     "nHU3TeyW",
+     "nHU7VBYL",
+     "nHU9mVWt",
+     "nHUUz9Ws",
+     "nHUVxTi8",
+     "nHUW8241",
+     "nHUWhB3a",
+     "nHUudksK"
+    ],
+    "new_unresolved": [
+     "n94JFyJf",
+     "n9JcRCDK",
+     "n9KGKWYq",
+     "n9L65VTg",
+     "n9LCvnbe",
+     "n9LsL4Z6",
+     "n9MLAKqg",
+     "n9MqVuBR"
+    ],
+    "resolved": 38,
+    "unresolved": 16,
+    "unresolved_address_seen": 1,
+    "validators": 54
+   },
+   "vl_sequence": 21
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 11,
+    "families": 11,
+    "hhi_country": 2018,
+    "hhi_family": 2202,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 14
+     },
+     {
+      "country": "Germany",
+      "validators": 8
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 3
+     },
+     {
+      "country": "Japan",
+      "validators": 2
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 14
+     },
+     {
+      "family": "vultr",
+      "validators": 9
+     },
+     {
+      "family": "contabo",
+      "validators": 5
+     },
+     {
+      "family": "ovh",
+      "validators": 3
+     },
+     {
+      "family": "akamai",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 53,
+    "family_field": true,
+    "rows": 53
+   },
+   "prompt_version": "v11",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 38,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 30,
+    "top_family_validators": 14,
+    "unresolved": 15,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 20
+   },
+   "round": 24,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "n9KGKWYq",
+     "n9L65VTg",
+     "n9MqVuBR",
+     "nHBPPh2s",
+     "nHBcLk5r",
+     "nHU8mFbf",
+     "nHUVtfC7",
+     "nHUYXnP4",
+     "nHUmoQrf",
+     "nHUqwEgu"
+    ],
+    "new_unresolved": [
+     "n9KUBFWU",
+     "n9Kyu2ZY",
+     "n9L6g4tX",
+     "n9LCgdG5",
+     "n9LX3XXy",
+     "n9LvLkjM"
+    ],
+    "resolved": 38,
+    "unresolved": 15,
+    "unresolved_address_seen": 1,
+    "validators": 53
+   },
+   "vl_sequence": 22
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 12,
+    "families": 12,
+    "hhi_country": 1942,
+    "hhi_family": 1985,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 16
+     },
+     {
+      "country": "Germany",
+      "validators": 8
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 3
+     },
+     {
+      "country": "United Kingdom",
+      "validators": 3
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 13
+     },
+     {
+      "family": "vultr",
+      "validators": 10
+     },
+     {
+      "family": "contabo",
+      "validators": 9
+     },
+     {
+      "family": "ovh",
+      "validators": 3
+     },
+     {
+      "family": "akamai",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 53,
+    "family_field": true,
+    "rows": 53
+   },
+   "prompt_version": "v11",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": false,
+    "below_top_family": false,
+    "resolved": 43,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 30,
+    "top_family_validators": 13,
+    "unresolved": 10,
+    "unresolved_at_or_above_top_min": [
+     "nHUatddi"
+    ],
+    "unresolved_max": 60
+   },
+   "round": 25,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "n9JcRCDK",
+     "n9KUBFWU",
+     "n9Kyu2ZY",
+     "n9L6g4tX",
+     "n9LCgdG5",
+     "n9LX3XXy",
+     "n9LsL4Z6",
+     "n9LvLkjM",
+     "n9MLAKqg"
+    ],
+    "new_unresolved": [
+     "nHBSFFXC",
+     "nHU8mFbf",
+     "nHUYXnP4",
+     "nHUmoQrf"
+    ],
+    "resolved": 43,
+    "unresolved": 10,
+    "unresolved_address_seen": 1,
+    "validators": 53
+   },
+   "vl_sequence": 23
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 13,
+    "families": 12,
+    "hhi_country": 1793,
+    "hhi_family": 2035,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 15
+     },
+     {
+      "country": "Germany",
+      "validators": 9
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 3
+     },
+     {
+      "country": "United Kingdom",
+      "validators": 3
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 14
+     },
+     {
+      "family": "vultr",
+      "validators": 10
+     },
+     {
+      "family": "contabo",
+      "validators": 9
+     },
+     {
+      "family": "ovh",
+      "validators": 3
+     },
+     {
+      "family": "akamai",
+      "validators": 1
+     }
+    ]
+   },
+   "diversity_inputs": null,
+   "files": {
+    "bad": [],
+    "files": 4
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 51,
+    "family_field": true,
+    "rows": 51
+   },
+   "prompt_version": "v11",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": false,
+    "below_top_family": false,
+    "resolved": 44,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 30,
+    "top_family_validators": 14,
+    "unresolved": 7,
+    "unresolved_at_or_above_top_min": [
+     "nHUatddi"
+    ],
+    "unresolved_max": 60
+   },
+   "round": 26,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "n9KhKrjw",
+     "n9LCvnbe",
+     "nHBSFFXC"
+    ],
+    "new_unresolved": [],
+    "resolved": 44,
+    "unresolved": 7,
+    "unresolved_address_seen": 1,
+    "validators": 51
+   },
+   "vl_sequence": 24
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 13,
+    "families": 13,
+    "hhi_country": 1682,
+    "hhi_family": 1843,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 15
+     },
+     {
+      "country": "Germany",
+      "validators": 8
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 4
+     },
+     {
+      "country": "United Kingdom",
+      "validators": 3
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 13
+     },
+     {
+      "family": "contabo",
+      "validators": 10
+     },
+     {
+      "family": "vultr",
+      "validators": 10
+     },
+     {
+      "family": "ovh",
+      "validators": 3
+     },
+     {
+      "family": "google",
+      "validators": 2
+     }
+    ]
+   },
+   "diversity_inputs": {
+    "disagree": [],
+    "entries": 53,
+    "resolved_endpoints_ok": true
+   },
+   "files": {
+    "bad": [],
+    "files": 5
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 53,
+    "family_field": true,
+    "rows": 53
+   },
+   "prompt_version": "v12",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 46,
+    "resolved_min": 40,
+    "top_family": "hetzner",
+    "top_family_min": 50,
+    "top_family_validators": 13,
+    "unresolved": 7,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 20
+   },
+   "round": 27,
+   "visibility": {
+    "became_resolved": [
+     "nHUatddi"
+    ],
+    "became_unresolved": [],
+    "left_set": [
+     "nHDEUdaw"
+    ],
+    "new_unresolved": [
+     "n9LCvnbe"
+    ],
+    "resolved": 46,
+    "unresolved": 7,
+    "unresolved_address_seen": 0,
+    "validators": 53
+   },
+   "vl_sequence": 25
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 14,
+    "families": 13,
+    "hhi_country": 1579,
+    "hhi_family": 1762,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 15
+     },
+     {
+      "country": "Germany",
+      "validators": 9
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 4
+     },
+     {
+      "country": "Switzerland",
+      "validators": 3
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 14
+     },
+     {
+      "family": "contabo",
+      "validators": 10
+     },
+     {
+      "family": "vultr",
+      "validators": 10
+     },
+     {
+      "family": "ovh",
+      "validators": 3
+     },
+     {
+      "family": "cherryservers",
+      "validators": 2
+     }
+    ]
+   },
+   "diversity_inputs": {
+    "disagree": [],
+    "entries": 61,
+    "resolved_endpoints_ok": true
+   },
+   "files": {
+    "bad": [],
+    "files": 5
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 61,
+    "family_field": true,
+    "rows": 61
+   },
+   "prompt_version": "v12",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 49,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 30,
+    "top_family_validators": 14,
+    "unresolved": 12,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 20
+   },
+   "round": 28,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "n94JFyJf"
+    ],
+    "new_unresolved": [
+     "nHB28Wpr",
+     "nHD3ChJf",
+     "nHU3TeyW",
+     "nHU5tRRb",
+     "nHUUTCL2",
+     "nHUWhB3a"
+    ],
+    "resolved": 49,
+    "unresolved": 12,
+    "unresolved_address_seen": 0,
+    "validators": 61
+   },
+   "vl_sequence": 26
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 15,
+    "families": 14,
+    "hhi_country": 1534,
+    "hhi_family": 1742,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 15
+     },
+     {
+      "country": "Germany",
+      "validators": 10
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 4
+     },
+     {
+      "country": "Switzerland",
+      "validators": 3
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 15
+     },
+     {
+      "family": "contabo",
+      "validators": 10
+     },
+     {
+      "family": "vultr",
+      "validators": 10
+     },
+     {
+      "family": "ovh",
+      "validators": 3
+     },
+     {
+      "family": "cherryservers",
+      "validators": 2
+     }
+    ]
+   },
+   "diversity_inputs": {
+    "disagree": [],
+    "entries": 61,
+    "resolved_endpoints_ok": true
+   },
+   "files": {
+    "bad": [],
+    "files": 5
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 61,
+    "family_field": true,
+    "rows": 61
+   },
+   "prompt_version": "v12",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": false,
+    "below_top_family": false,
+    "resolved": 51,
+    "resolved_min": 20,
+    "top_family": "hetzner",
+    "top_family_min": 20,
+    "top_family_validators": 15,
+    "unresolved": 10,
+    "unresolved_at_or_above_top_min": [
+     "nHB28Wpr",
+     "nHBTv4Up",
+     "nHD3ChJf",
+     "nHU187ZG",
+     "nHU3TeyW",
+     "nHU5tRRb",
+     "nHUUTCL2",
+     "nHUWhB3a",
+     "nHUYXnP4",
+     "nHUmoQrf"
+    ],
+    "unresolved_max": 20
+   },
+   "round": 29,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "n9LCvnbe",
+     "nHU8mFbf"
+    ],
+    "new_unresolved": [],
+    "resolved": 51,
+    "unresolved": 10,
+    "unresolved_address_seen": 0,
+    "validators": 61
+   },
+   "vl_sequence": 27
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 15,
+    "families": 14,
+    "hhi_country": 1416,
+    "hhi_family": 1696,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 14
+     },
+     {
+      "country": "Germany",
+      "validators": 9
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 4
+     },
+     {
+      "country": "Switzerland",
+      "validators": 3
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 14
+     },
+     {
+      "family": "contabo",
+      "validators": 10
+     },
+     {
+      "family": "vultr",
+      "validators": 10
+     },
+     {
+      "family": "ovh sas",
+      "validators": 3
+     },
+     {
+      "family": "google",
+      "validators": 2
+     }
+    ]
+   },
+   "diversity_inputs": {
+    "disagree": [],
+    "entries": 63,
+    "resolved_endpoints_ok": true
+   },
+   "files": {
+    "bad": [],
+    "files": 5
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 63,
+    "family_field": true,
+    "rows": 63
+   },
+   "prompt_version": "v12",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 50,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 30,
+    "top_family_validators": 14,
+    "unresolved": 13,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 20
+   },
+   "round": 30,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [
+     "nHDEUdaw"
+    ],
+    "new_unresolved": [
+     "n9LCvnbe",
+     "nHDBj6Mq",
+     "nHU8mFbf"
+    ],
+    "resolved": 50,
+    "unresolved": 13,
+    "unresolved_address_seen": 0,
+    "validators": 63
+   },
+   "vl_sequence": 28
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 15,
+    "families": 15,
+    "hhi_country": 1420,
+    "hhi_family": 1634,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 14
+     },
+     {
+      "country": "Germany",
+      "validators": 11
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 4
+     },
+     {
+      "country": "Singapore",
+      "validators": 3
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 15
+     },
+     {
+      "family": "contabo",
+      "validators": 10
+     },
+     {
+      "family": "vultr",
+      "validators": 10
+     },
+     {
+      "family": "ovh sas",
+      "validators": 3
+     },
+     {
+      "family": "uab cherry servers",
+      "validators": 3
+     }
+    ]
+   },
+   "diversity_inputs": {
+    "disagree": [],
+    "entries": 66,
+    "resolved_endpoints_ok": true
+   },
+   "files": {
+    "bad": [],
+    "files": 5
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 66,
+    "family_field": true,
+    "rows": 66
+   },
+   "prompt_version": "v12",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 53,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 30,
+    "top_family_validators": 15,
+    "unresolved": 13,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 20
+   },
+   "round": 31,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [],
+    "new_unresolved": [],
+    "resolved": 53,
+    "unresolved": 13,
+    "unresolved_address_seen": 0,
+    "validators": 66
+   },
+   "vl_sequence": 29
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 15,
+    "families": 15,
+    "hhi_country": 1420,
+    "hhi_family": 1634,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 14
+     },
+     {
+      "country": "Germany",
+      "validators": 11
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 4
+     },
+     {
+      "country": "Singapore",
+      "validators": 3
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 15
+     },
+     {
+      "family": "contabo",
+      "validators": 10
+     },
+     {
+      "family": "vultr",
+      "validators": 10
+     },
+     {
+      "family": "ovh sas",
+      "validators": 3
+     },
+     {
+      "family": "uab cherry servers",
+      "validators": 3
+     }
+    ]
+   },
+   "diversity_inputs": {
+    "disagree": [],
+    "entries": 66,
+    "resolved_endpoints_ok": true
+   },
+   "files": {
+    "bad": [],
+    "files": 5
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 66,
+    "family_field": true,
+    "rows": 66
+   },
+   "prompt_version": "v12",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 53,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 30,
+    "top_family_validators": 15,
+    "unresolved": 13,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 20
+   },
+   "round": 32,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [],
+    "left_set": [],
+    "new_unresolved": [],
+    "resolved": 53,
+    "unresolved": 13,
+    "unresolved_address_seen": 0,
+    "validators": 66
+   },
+   "vl_sequence": 30
+  },
+  {
+   "block": {
+    "class": "match",
+    "why": ""
+   },
+   "concentration": {
+    "countries": 18,
+    "families": 16,
+    "hhi_country": 1405,
+    "hhi_family": 1723,
+    "top_countries": [
+     {
+      "country": "United States",
+      "validators": 13
+     },
+     {
+      "country": "Germany",
+      "validators": 12
+     },
+     {
+      "country": "Finland",
+      "validators": 5
+     },
+     {
+      "country": "Canada",
+      "validators": 3
+     },
+     {
+      "country": "Singapore",
+      "validators": 3
+     }
+    ],
+    "top_families": [
+     {
+      "family": "hetzner",
+      "validators": 16
+     },
+     {
+      "family": "contabo",
+      "validators": 10
+     },
+     {
+      "family": "vultr",
+      "validators": 9
+     },
+     {
+      "family": "ovh sas",
+      "validators": 3
+     },
+     {
+      "family": "uab cherry servers",
+      "validators": 3
+     }
+    ]
+   },
+   "diversity_inputs": {
+    "disagree": [],
+    "entries": 66,
+    "resolved_endpoints_ok": true
+   },
+   "files": {
+    "bad": [],
+    "files": 5
+   },
+   "prompt": {
+    "disagree": 0,
+    "evidence": 66,
+    "family_field": true,
+    "rows": 66
+   },
+   "prompt_version": "v12",
+   "rank": {
+    "applicable": true,
+    "below_all_resolved": true,
+    "below_top_family": true,
+    "resolved": 52,
+    "resolved_min": 30,
+    "top_family": "hetzner",
+    "top_family_min": 30,
+    "top_family_validators": 16,
+    "unresolved": 14,
+    "unresolved_at_or_above_top_min": [],
+    "unresolved_max": 20
+   },
+   "round": 33,
+   "visibility": {
+    "became_resolved": [],
+    "became_unresolved": [
+     "nHBxQ3sr",
+     "nHUc7VSY"
+    ],
+    "left_set": [
+     "n9LCvnbe"
+    ],
+    "new_unresolved": [],
+    "resolved": 52,
+    "unresolved": 14,
+    "unresolved_address_seen": 0,
+    "validators": 66
+   },
+   "vl_sequence": 31
+  }
+ ],
+ "rounds_listed": 32,
+ "source": "https://scoring-testnet.postfiat.org",
+ "valdomain_crosscheck": {
+  "counts": {
+   "agree": 25
+  },
+  "round": 33,
+  "rows": [
+   {
+    "domain_verified": true,
+    "key": "nHB6Zc7m",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHBAToXo",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHBM2nzq",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHBVTAUp",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHBWFVzx",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHBYKjxj",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHBb2uHH",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHBcLEB4",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHBcnQZ9",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHBmj7zU",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHBxxNuW",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHByMXej",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHD3sPmh",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHDfSHLu",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHDw5erS",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHU74qX4",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHUCEXpC",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHUT8QPa",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHUUXMXf",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHUWciHX",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHUatddi",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHUdwzTW",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHUvKQbx",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHUwdHGz",
+    "result": "agree",
+    "valdomain": "verified"
+   },
+   {
+    "domain_verified": true,
+    "key": "nHUzc5Xz",
+    "result": "agree",
+    "valdomain": "verified"
+   }
+  ],
+  "valdomain_validators": 25,
+  "vl_sequence": 31
+ }
+}

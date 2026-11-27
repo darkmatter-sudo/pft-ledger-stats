@@ -409,20 +409,21 @@ def test_valdomain_crosscheck(world_pack, tmp_path):
     vd.write_text(
         json.dumps(
             {
-                "validators": [
+                "validators": 4,
+                "rows": [
                     {"master": "nHA1", "domain": "a.example", "class": "verified"},
                     {"master": "nHA3", "domain": "c.example", "class": "bad_attestation"},
-                    {"master": "nHA2", "domain": None, "class": "no_domain"},
+                    {"master": "nHA2", "domain": "b.example", "class": "no_attestation"},
                     {"master": "nHZZ", "domain": "z.example", "class": "verified"},
-                ]
+                ],
             }
         )
     )
     rc, res, _ = verify(tmp_path, world_pack, valdomain=vd)
     cc = res["valdomain_crosscheck"]
     assert rc == 0 and cc["round"] == 33
-    assert cc["counts"] == {"agree": 2, "disagree": 1, "not_in_round": 1}
-    assert [r["result"] for r in cc["rows"]] == ["agree", "agree", "disagree", "not_in_round"]
+    assert cc["counts"] == {"agree": 1, "disagree": 1, "domain_differs": 1, "not_in_round": 1}
+    assert [r["result"] for r in cc["rows"]] == ["agree", "domain_differs", "disagree", "not_in_round"]
 
 
 # ---------- verifier: negative controls ----------
@@ -439,6 +440,16 @@ def test_tampered_block_is_mismatch(world_pack, tmp_path):
     assert rc == 0 and b["class"] == "mismatch"
     assert b["families"] == [["hetzner", 2, 3]] and b["unresolved"] == [2, 1]
     assert "round 3: families [['hetzner', 2, 3]]" in (out / "REPORT.md").read_text()
+
+
+def test_unresolved_only_difference_is_mismatch(world_pack, tmp_path):
+    rows = read_pack(world_pack)
+    r3 = [r for r in rows if r.get("round") == 3][0]
+    r3["block"]["unresolved_endpoints"] = 3
+    write_pack(world_pack, rows)
+    _, res, _ = verify(tmp_path, world_pack)
+    b = by_round(res, 3)["block"]
+    assert b == {"class": "mismatch", "families": [], "countries": [], "unresolved": [2, 3]}
 
 
 def test_reordered_block_is_mismatch(world_pack, tmp_path):
@@ -501,8 +512,9 @@ def test_ip_in_pack_is_internal_inconsistency(world_pack, tmp_path):
 def test_internal_inconsistency_exit_1(world_pack, tmp_path, breakage):
     rows = read_pack(world_pack)
     r3 = [r for r in rows if r.get("round") == 3][0]
-    if breakage == "dup":
+    if breakage == "dup":  # listed twice in the meta too, so only the duplicate check can catch it
         rows.append(copy.deepcopy(r3))
+        rows[0]["complete_rounds"].append(3)
     elif breakage == "missing_round":
         rows = [r for r in rows if r.get("round") != 4]
     elif breakage == "endpoint_flag":
